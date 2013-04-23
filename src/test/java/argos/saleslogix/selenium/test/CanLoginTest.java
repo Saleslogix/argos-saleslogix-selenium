@@ -4,7 +4,6 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-import argos.saleslogix.selenium.BaseTest;
 
 
 

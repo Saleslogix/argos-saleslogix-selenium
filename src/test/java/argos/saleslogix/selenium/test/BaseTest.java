@@ -1,4 +1,4 @@
-package argos.saleslogix.selenium;
+package argos.saleslogix.selenium.test;
 import static org.junit.Assert.fail;
 
 import java.io.FileReader;
