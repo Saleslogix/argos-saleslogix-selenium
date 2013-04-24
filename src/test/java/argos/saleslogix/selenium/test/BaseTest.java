@@ -90,4 +90,24 @@ public abstract class BaseTest {
 			acceptNextAlert = true;
 		}
 	}
+	
+	// TODO: Come up with a pattern to move these into a utility class
+	public void doLogin(String userName) throws Exception {
+		driver.get(baseUrl + "mobile/products/argos-saleslogix/index-dev.html");
+		driver.findElement(By.cssSelector("input[name=\"username\"]")).clear();
+		driver.findElement(By.cssSelector("input[name=\"username\"]"))
+				.sendKeys(userName);
+		driver.findElement(By.cssSelector("button.button.actionButton"))
+				.click();
+		for (int second = 0;; second++) {
+			if (second >= 60)
+				fail("timeout");
+			try {
+				if (isElementPresent(By.id("pageTitle")))
+					break;
+			} catch (Exception e) {
+			}
+			Thread.sleep(1000);
+		}
+	}
 }
