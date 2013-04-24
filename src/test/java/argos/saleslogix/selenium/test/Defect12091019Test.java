@@ -2,10 +2,12 @@ package argos.saleslogix.selenium.test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Test;
 import org.openqa.selenium.By;
 
 public class Defect12091019Test extends BaseTest {
 
+	@Test
 	public void doTest () throws Exception {
 		testBody();
 	}
