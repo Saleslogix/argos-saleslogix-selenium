@@ -1,13 +1,10 @@
 package argos.saleslogix.selenium.test;
+
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-
-
-
-
 
 public class Defect13091224Test extends BaseTest {
 	@Test

@@ -7,11 +7,11 @@ import org.openqa.selenium.By;
 
 public class Defect12091019Test extends BaseTest {
 
-	@Test
-	public void doTest () throws Exception {
-		testBody();
+	//@Test // TODO: This test is not asserting the right view. It should be ticket activities not ticket detail.
+	public void doTest() throws Exception {
+		runTests();
 	}
-	
+
 	public void testBody() throws Exception {
 		// SE Test: SETest-Defect_12091019
 		// Desc: validates that 'elapsed hours' used in Ticket Activity - More

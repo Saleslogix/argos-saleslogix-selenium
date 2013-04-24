@@ -1,4 +1,5 @@
 package argos.saleslogix.selenium.test;
+
 import static org.junit.Assert.fail;
 
 import java.io.FileReader;
@@ -28,8 +29,8 @@ public abstract class BaseTest {
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver",
 				"drivers/chromedriver.exe"); // TODO: Check environment here
-		//System.setProperty("webdriver.ie.driver",
-			//	"drivers/IEDriverServer.exe"); // TODO: Check environment here
+		// System.setProperty("webdriver.ie.driver",
+		// "drivers/IEDriverServer.exe"); // TODO: Check environment here
 		loadSettings();
 	}
 
@@ -54,14 +55,14 @@ public abstract class BaseTest {
 		}
 	}
 
-	public void testBody() throws Exception {
-	}
+	public abstract void testBody() throws Exception;
 
 	@After
 	public void tearDown() throws Exception {
 		for (WebDriver d : drivers) {
 			d.quit();
 		}
+
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {
 			fail(verificationErrorString);
@@ -90,7 +91,7 @@ public abstract class BaseTest {
 			acceptNextAlert = true;
 		}
 	}
-	
+
 	// TODO: Come up with a pattern to move these into a utility class
 	public void doLogin(String userName) throws Exception {
 		driver.get(baseUrl + "mobile/products/argos-saleslogix/index-dev.html");
