@@ -12,19 +12,29 @@
 <tr><td rowspan="1" colspan="3">SETest-Defect_12091019</td></tr>
 </thead><tbody>
 <!--SE Test: SETest-Defect_12091019-->
-<!--Desc: validates that 'elapsed hours' used in Ticket Activity - More Details edit view-->
+<!--Desc: validates that 'elapsed hours' field is used in Ticket Activity - More Details details view-->
 <!--Required Entity: Ticket 000-00-000011-->
 <!--====================================-->
 <!--'Step: navigate to Home screen...-->
 <tr>
 	<td>open</td>
-	<td>/mobile-builds/stable/jenkins-argos-saleslogix-v2.1-51/#_home</td>
+	<td>#_home</td>
 	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Home</td>
 </tr>
 <!--Step: navigate to Tickets list view...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='home']/div[3]/ul[2]/li[8]/div[2]/h3</td>
+	<td>//div[@id='home']/descendant::*[text() = &quot;Tickets&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='ticket_list']/ul/li[1]</td>
 	<td></td>
 </tr>
 <!--Step: perform ticket search...-->
@@ -38,26 +48,52 @@
 	<td>css=#Sage_Platform_Mobile_SearchWidget_18 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
 	<td></td>
 </tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='ticket_list']/ul/li</td>
+	<td></td>
+</tr>
 <!--Step: navigate to target Ticket record...-->
 <tr>
 	<td>click</td>
-	<td>css=#ticket_list &gt; ul.list-content &gt; li &gt; div.list-item-content &gt; h3</td>
+	<td>XPath=.//*[@id='ticket_list']/ul/li/div/h3</td>
 	<td></td>
 </tr>
-<!--Step: expand Ticket Details - Mote Details section...-->
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>000-00-000011</td>
+</tr>
+<!--Step: expand Ticket Details - Mote Details section then open Ticket Activities view...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='ticket_detail']/div[2]/ul[2]/li[2]/a/span</td>
+	<td>XPath=//div[@id='ticket_detail']/div[2]/ul[2]/li[2]/a/span</td>
 	<td></td>
 </tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Ticket Activities</td>
+</tr>
+<!--Step: click the top Ticket Activity item to open the details view...-->
 <tr>
 	<td>click</td>
-	<td>css=h3</td>
+	<td>XPath=.//*[@id='ticketactivity_related']/ul/li[1]/div/h3</td>
 	<td></td>
 </tr>
-<!--VP: check that "elapsed hours" field is available...-->
 <tr>
-	<td>verifyText</td>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='ticketactivity_detail']/div[2]/div[1]/div[1]</td>
+	<td></td>
+</tr>
+<!--VP: check that "elapsed hours" field is available in the Ticket Activity details view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='ticketactivity_detail']/div[2]/h2[2]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
 	<td>XPath=.//*[@id='ticketactivity_detail']/div[2]/div[2]/div[2]/label</td>
 	<td>elapsed hours</td>
 </tr>
