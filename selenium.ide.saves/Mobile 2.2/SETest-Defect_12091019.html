@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/stable/latest/" />
+<title>SETest-Defect_12091019</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-Defect_12091019</td></tr>
+</thead><tbody>
+<!--SE Test: SETest-Defect_12091019-->
+<!--Version: 2.2-->
+<!--Desc: validates that 'elapsed hours' field is used in Ticket Activity - More Details details view-->
+<!--Required Entity: Ticket 000-00-000011-->
+<!--====================================-->
+<!--Step: click Top-Left button to reveal Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: navigate to Tickets list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;Tickets&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='ticket_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: perform ticket search...-->
+<tr>
+	<td>type</td>
+	<td>css=#Sage_Platform_Mobile_SearchWidget_18 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>000-00-000011</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Sage_Platform_Mobile_SearchWidget_18 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='ticket_list']/ul/li</td>
+	<td></td>
+</tr>
+<!--Step: navigate to target Ticket record...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='ticket_list']/ul/li/div/h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>000-00-000011</td>
+</tr>
+<!--Step: expand Ticket Details - Mote Details section then open Ticket Activities view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=//div[@id='ticket_detail']/div[2]/ul[2]/li[2]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Ticket Activities</td>
+</tr>
+<!--Step: click the top Ticket Activity item to open the details view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='ticketactivity_related']/ul/li[1]/div/h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='ticketactivity_detail']/div[2]/div[1]/div[1]</td>
+	<td></td>
+</tr>
+<!--VP: check that "elapsed hours" field is available in the Ticket Activity details view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='ticketactivity_detail']/div[2]/h2[2]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='ticketactivity_detail']/div[2]/div[2]/div[2]/label</td>
+	<td>elapsed hours</td>
+</tr>
+<!--'Step: navigate back to My Activities...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Ticket Activities</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>000-00-000011</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Tickets</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>My Activities</td>
+</tr>
+<!--- END-->
+</tbody></table>
+</body>
+</html>

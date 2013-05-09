@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/topic/jenkins-argos-saleslogix-topic-v2.2-33/#_login" />
+<title>SETest-Login_Admin_NoPW</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-Login_NonAdmin_NoPW</td></tr>
+</thead><tbody>
+<!--SE Test: SETest-GlobalMenu_DoSpeedSearch-->
+<!--Version: 2.2-->
+<!--Desc: Opens the Global Menu and then performs a simple SpeedSearch..-->
+<!--Condition(s): Test user is logged in.    -->
+<!--==================================================================-->
+<!--Step: click Top-Left button to reveal Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td></td>
+</tr>
+<!--VP: check  the SpeedSearch bar...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; label</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<!--Step: enter an item in the search field then click the SpeedSearch button...-->
+<tr>
+	<td>type</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; label</td>
+	<td>abbott</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Search Results</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>.//*[@id='speedsearch_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: click a specific SpeedSearch test result-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='speedsearch_list']/descendant::*[text() = 'Won the deal (2012_08_22)']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=pageTitle</td>
+	<td>History</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='history_detail']/div[2]/div/div[3]/span</td>
+	<td>Won the deal</td>
+</tr>
+<!--Step: click Top Blue Arrow button to navigate back...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Search Results</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>My Activities</td>
+</tr>
+<!---- END-->
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/topic/jenkins-argos-saleslogix-topic-v2.2-33/#_login" />
+<title>SETest-Login_Admin_NoPW</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-Login_NonAdmin_NoPW</td></tr>
+</thead><tbody>
+<!--SE Test: SETest-Defect_13091972-->
+<!--Version: 2.2-->
+<!--Desc: Confirms that the toggle button (left and right) for Global screen access is visible on screens accessible under the Add Account/Contact main screen...-->
+<!--Condition(s): Test user is logged in.    -->
+<!--==================================================================-->
+<!--Step: click Top-Left button to reveal Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: click the Add Account/Contact link...-->
+<tr>
+	<td>click</td>
+	<td>css=div.group-content &gt; ul.list-content. &gt; li &gt; div.list-item-content &gt; h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Account / Contact</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: click the Name edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_NameField_0 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Edit Name</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: click Prefix edit button to open the Name Prefix screen...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_5 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Name Prefix</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<!--Step: click Suffix edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_6 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Name Suffix</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Name edit screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Account / Contact</td>
+</tr>
+<!--Step: click the Title edit button to open the Title screen...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_0 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Title</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Name edit screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Account / Contact</td>
+</tr>
+<!--Step: click the Address edit button to open the Address screen...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_AddressField_0 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Address</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: click the Description edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_7 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Description</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Name edit screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Address</td>
+</tr>
+<!--Step: click the City edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_8 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>City</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Name edit screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Address</td>
+</tr>
+<!--Step: click the State edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_9 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>State</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Name edit screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Address</td>
+</tr>
+<!--Step: click the Country edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_10 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Country</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Address edit screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Address</td>
+</tr>
+<!--Step: navigate back to the Add Account / Contact screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Account / Contact</td>
+</tr>
+<!--Step: click the Type edit button to open the Account Type screen...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_1 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Account Type</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Add Account / Contact screen...-->
+<tr>
+	<td>click</td>
+	<td>css=h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Account / Contact</td>
+</tr>
+<!--Step: click the Sub-Type edit button to open the Account Sub-Type screen...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_2 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Account Type</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Add Account / Contact screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Account / Contact</td>
+</tr>
+<!--Step: click the Status edit button to open the Account Status screen...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_3 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Account Status</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Add Account / Contact screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Account / Contact</td>
+</tr>
+<!--Step: click the Industry edit button to open the Account Status screen...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_4 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Industry</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Add Account / Contact screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Account / Contact</td>
+</tr>
+<!--Step: click the Top Cancel button...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>My Activities</td>
+</tr>
+<!---- END-->
+</tbody></table>
+</body>
+</html>
