@@ -1,15 +1,15 @@
 package argos.saleslogix.selenium.test;
 
-import static org.junit.Assert.fail;
-
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -25,7 +25,7 @@ public abstract class BaseTest {
 	public StringBuffer verificationErrors = new StringBuffer();
 	public List<WebDriver> drivers;
 
-	@Before
+	@BeforeMethod
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver",
 				"drivers/chromedriver.exe"); // TODO: Check environment here
@@ -55,9 +55,10 @@ public abstract class BaseTest {
 		}
 	}
 
+	@Test
 	public abstract void testBody() throws Exception;
 
-	@After
+	@AfterMethod
 	public void tearDown() throws Exception {
 		for (WebDriver d : drivers) {
 			d.quit();
@@ -65,7 +66,7 @@ public abstract class BaseTest {
 
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {
-			fail(verificationErrorString);
+			Assert.fail(verificationErrorString);
 		}
 	}
 
@@ -102,7 +103,7 @@ public abstract class BaseTest {
 				.click();
 		for (int second = 0;; second++) {
 			if (second >= 60)
-				fail("timeout");
+				Assert.fail("timeout");
 			try {
 				if (isElementPresent(By.id("pageTitle")))
 					break;

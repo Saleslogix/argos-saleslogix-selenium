@@ -1,8 +1,7 @@
 package argos.saleslogix.selenium.test;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
+import static org.testng.AssertJUnit.assertEquals;
+import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 
 public class Defect12091019Test extends BaseTest {
@@ -12,6 +11,7 @@ public class Defect12091019Test extends BaseTest {
 		runTests();
 	}
 
+	@Test
 	public void testBody() throws Exception {
 		// SE Test: SETest-Defect_12091019
 		// Desc: validates that 'elapsed hours' used in Ticket Activity - More
