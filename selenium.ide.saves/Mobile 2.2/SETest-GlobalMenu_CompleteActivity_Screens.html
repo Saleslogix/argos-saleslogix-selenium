@@ -11,33 +11,48 @@
 <thead>
 <tr><td rowspan="1" colspan="3">SETest-Login_NonAdmin_NoPW</td></tr>
 </thead><tbody>
-<!--SE Test: SETest-Defect_13091972-->
+<!--SETest-GlobalMenu_CompleteActivity_Screens-->
 <!--Version: 2.2-->
-<!--Desc: Confirms that the toggle button (left and right) for Global screen access is visible on screens accessible under the Add Account/Contact main screen...-->
-<!--Note: This test script can be used as a template for creating new entity records from Add Account/Contact edit screens.-->
+<!--Desc: Confirms that the toggle button (left and right) for Global screen access is visible on screens accessible under the Complete Activity screens...-->
+<!--Note: This test script can be used as a template for completing/editing an Activity.-->
 <!--Condition(s): Test user is logged in.    -->
 <!--==================================================================-->
-<!--Step: click Top-Left button to reveal Global Menu...-->
+<!--Step: click top Activity link from the My Activities screen...-->
 <tr>
-	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
-	<td></td>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>My Activities</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
-	<td></td>
-</tr>
-<!--Step: click the Add Account/Contact link...-->
-<tr>
 	<td>click</td>
-	<td>css=div.group-content &gt; ul.list-content. &gt; li &gt; div.list-item-content &gt; h3</td>
+	<td>css=span.p-description</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Add Account / Contact</td>
+	<td>Activity</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=a &gt; label</td>
+	<td>Complete Activity</td>
+</tr>
+<!--Step: click the Complete Activity link...-->
+<tr>
+	<td>click</td>
+	<td>css=a &gt; label</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Complete Activity</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=pageTitle</td>
+	<td>Complete Activity</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -45,16 +60,16 @@
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
 	<td></td>
 </tr>
-<!--Step: click the Name edit button...-->
+<!--Step: click the Regarding edit button...-->
 <tr>
 	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_NameField_0 &gt; button.button.simpleSubHeaderButton</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_31 &gt; button.button.simpleSubHeaderButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Edit Name</td>
+	<td>Activity Regarding</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -62,16 +77,27 @@
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
 	<td></td>
 </tr>
-<!--Step: click Prefix edit button...-->
+<!--Step: navigate back to Complete Activity screen...-->
 <tr>
 	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_5 &gt; button.button.simpleSubHeaderButton</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Name Prefix</td>
+	<td>Complete Activity</td>
+</tr>
+<!--Step: click Start Date edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Sage_Platform_Mobile_Fields_DateField_10 &gt; button.button.whiteButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Calendar</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -79,99 +105,27 @@
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
 	<td></td>
 </tr>
+<!--Step: navigate back to Complete Activity screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
-	<td></td>
-</tr>
-<!--Step: click Suffix edit button...-->
-<tr>
-	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_6 &gt; button.button.simpleSubHeaderButton</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Name Suffix</td>
+	<td>Complete Activity</td>
 </tr>
-<!--VP: confirm that Global Menu button is available...-->
-<tr>
-	<td>verifyElementPresent</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
-	<td></td>
-</tr>
+<!--Step: click Duration edit button...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
-	<td></td>
-</tr>
-<!--Step: navigate back to the Name edit screen...-->
-<tr>
-	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>css=#Sage_Platform_Mobile_Fields_DurationField_2 &gt; button.button.simpleSubHeaderButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Add Account / Contact</td>
-</tr>
-<!--Step: click the Title edit button...-->
-<tr>
-	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_0 &gt; button.button.simpleSubHeaderButton</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Title</td>
-</tr>
-<!--VP: confirm that Global Menu button is available...-->
-<tr>
-	<td>verifyElementPresent</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
-	<td></td>
-</tr>
-<!--Step: navigate back to the Name edit screen...-->
-<tr>
-	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Add Account / Contact</td>
-</tr>
-<!--Step: click the Address edit button...-->
-<tr>
-	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_AddressField_0 &gt; button.button.simpleSubHeaderButton</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Address</td>
-</tr>
-<!--VP: confirm that Global Menu button is available...-->
-<tr>
-	<td>verifyElementPresent</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
-	<td></td>
-</tr>
-<!--Step: click the Description edit button...-->
-<tr>
-	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_7 &gt; button.button.simpleSubHeaderButton</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Description</td>
+	<td>List</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -188,18 +142,18 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Address</td>
+	<td>Complete Activity</td>
 </tr>
-<!--Step: click the City edit button...-->
+<!--Step: click the Result edit button...-->
 <tr>
 	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_8 &gt; button.button.simpleSubHeaderButton</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_32 &gt; button.button.simpleSubHeaderButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>City</td>
+	<td>Result</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -216,18 +170,18 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Address</td>
+	<td>Complete Activity</td>
 </tr>
-<!--Step: click the State edit button...-->
+<!--Step: click the Follow-up edit button...-->
 <tr>
 	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_9 &gt; button.button.simpleSubHeaderButton</td>
+	<td>css=#Sage_Platform_Mobile_Fields_SelectField_2 &gt; button.button.simpleSubHeaderButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>State</td>
+	<td>Follow-up type</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -244,18 +198,102 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Address</td>
+	<td>Complete Activity</td>
 </tr>
-<!--Step: click the Country edit button...-->
+<!--Step: click the Notes edit button...-->
 <tr>
 	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_10 &gt; button.button.simpleSubHeaderButton</td>
+	<td>css=#Sage_Platform_Mobile_Fields_NoteField_7 &gt; button.button.simpleSubHeaderButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Country</td>
+	<td>Notes</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Name edit screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Complete Activity</td>
+</tr>
+<!--Step: click the Priority edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_33 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Priority</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Name edit screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Complete Activity</td>
+</tr>
+<!--Step: click the Category edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_34 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Activity Category</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Name edit screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Complete Activity</td>
+</tr>
+<!--Step: click the Leader edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Sage_Platform_Mobile_Fields_LookupField_33 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Users</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -272,9 +310,26 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Address</td>
+	<td>Complete Activity</td>
 </tr>
-<!--Step: navigate back to the Add Account / Contact screen...-->
+<!--Step: click the Account edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Sage_Platform_Mobile_Fields_LookupField_34 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Accounts</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Address edit screen...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
@@ -283,18 +338,18 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Add Account / Contact</td>
+	<td>Complete Activity</td>
 </tr>
-<!--Step: click the Type edit button to open the Account Type screen...-->
+<!--Step: click the Contact edit button...-->
 <tr>
 	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_1 &gt; button.button.simpleSubHeaderButton</td>
+	<td>css=#Sage_Platform_Mobile_Fields_LookupField_35 &gt; button.button.simpleSubHeaderButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Account Type</td>
+	<td>Contacts</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -302,35 +357,7 @@
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
 	<td></td>
 </tr>
-<!--Step: navigate back to the Add Account / Contact screen...-->
-<tr>
-	<td>click</td>
-	<td>css=h3</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Add Account / Contact</td>
-</tr>
-<!--Step: click the Sub-Type edit button to open the Account Sub-Type screen...-->
-<tr>
-	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_2 &gt; button.button.simpleSubHeaderButton</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Account Type</td>
-</tr>
-<!--VP: confirm that Global Menu button is available...-->
-<tr>
-	<td>verifyElementPresent</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
-	<td></td>
-</tr>
-<!--Step: navigate back to the Add Account / Contact screen...-->
+<!--Step: navigate back to the Address edit screen...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
@@ -339,18 +366,18 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Add Account / Contact</td>
+	<td>Complete Activity</td>
 </tr>
-<!--Step: click the Status edit button to open the Account Status screen...-->
+<!--Step: click the Opportunity edit button...-->
 <tr>
 	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_3 &gt; button.button.simpleSubHeaderButton</td>
+	<td>css=#Sage_Platform_Mobile_Fields_LookupField_36 &gt; button.button.simpleSubHeaderButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Account Status</td>
+	<td>Opportunities</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -358,7 +385,7 @@
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
 	<td></td>
 </tr>
-<!--Step: navigate back to the Add Account / Contact screen...-->
+<!--Step: navigate back to the Address edit screen...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
@@ -367,18 +394,18 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Add Account / Contact</td>
+	<td>Complete Activity</td>
 </tr>
-<!--Step: click the Industry edit button to open the Account Status screen...-->
+<!--Step: click the Tickets edit button...-->
 <tr>
 	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_4 &gt; button.button.simpleSubHeaderButton</td>
+	<td>css=#Sage_Platform_Mobile_Fields_LookupField_37 &gt; button.button.simpleSubHeaderButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Industry</td>
+	<td>Tickets</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -386,7 +413,7 @@
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
 	<td></td>
 </tr>
-<!--Step: navigate back to the Add Account / Contact screen...-->
+<!--Step: navigate back to the Address edit screen...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
@@ -395,9 +422,9 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Add Account / Contact</td>
+	<td>Complete Activity</td>
 </tr>
-<!--Step: click the Top Cancel button...-->
+<!--Step: navigate back to the Add Account / Contact screen...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
