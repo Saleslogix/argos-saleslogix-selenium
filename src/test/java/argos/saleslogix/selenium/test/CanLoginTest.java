@@ -1,7 +1,6 @@
 package argos.saleslogix.selenium.test;
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
+import org.testng.annotations.Test;
+import org.testng.Assert;
 import org.openqa.selenium.By;
 
 
@@ -15,6 +14,7 @@ public class CanLoginTest extends BaseTest {
 		runTests();
 	}
 
+	@Test
 	public void testBody() throws Exception {
 		driver.get(baseUrl + "mobile/products/argos-saleslogix/index-dev.html");
 		driver.findElement(By.cssSelector("input[name=\"username\"]")).clear();
@@ -24,7 +24,7 @@ public class CanLoginTest extends BaseTest {
 				.click();
 		for (int second = 0;; second++) {
 			if (second >= 60)
-				fail("timeout");
+				Assert.fail("timeout");
 			try {
 				if (isElementPresent(By.id("pageTitle")))
 					break;

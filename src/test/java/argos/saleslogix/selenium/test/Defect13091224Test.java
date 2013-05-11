@@ -1,9 +1,8 @@
 package argos.saleslogix.selenium.test;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
+import static org.testng.AssertJUnit.assertTrue;
+import org.testng.annotations.Test;
+import org.testng.Assert;
 import org.openqa.selenium.By;
 
 public class Defect13091224Test extends BaseTest {
@@ -12,6 +11,7 @@ public class Defect13091224Test extends BaseTest {
 		runTests();
 	}
 
+	@Test
 	public void testBody() throws Exception {
 		// Open Mobile build
 		driver.get(baseUrl + "mobile/products/argos-saleslogix/index-dev.html");
@@ -23,7 +23,7 @@ public class Defect13091224Test extends BaseTest {
 				.click();
 		for (int second = 0;; second++) {
 			if (second >= 60)
-				fail("timeout");
+				Assert.fail("timeout");
 			try {
 				if (isElementPresent(By
 						.cssSelector("div.list-item-content > h3")))
@@ -45,7 +45,7 @@ public class Defect13091224Test extends BaseTest {
 		// Wait for element present - Account Type
 		for (int second = 0;; second++) {
 			if (second >= 60)
-				fail("timeout");
+				Assert.fail("timeout");
 			try {
 				if (isElementPresent(By
 						.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_1 > input[type=\"text\"]")))
@@ -58,7 +58,7 @@ public class Defect13091224Test extends BaseTest {
 		// Verify Account Type preset to Prospect
 		for (int second = 0;; second++) {
 			if (second >= 60)
-				fail("timeout");
+				Assert.fail("timeout");
 			try {
 				if ("Prospect"
 						.equals(driver
@@ -74,7 +74,7 @@ public class Defect13091224Test extends BaseTest {
 		// Wait for element present - Account Status
 		for (int second = 0;; second++) {
 			if (second >= 60)
-				fail("timeout");
+				Assert.fail("timeout");
 			try {
 				if (isElementPresent(By
 						.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_3 > input[type=\"text\"]")))
@@ -87,7 +87,7 @@ public class Defect13091224Test extends BaseTest {
 		// Verify Account Status preset to Active
 		for (int second = 0;; second++) {
 			if (second >= 60)
-				fail("timeout");
+				Assert.fail("timeout");
 			try {
 				if ("Active"
 						.equals(driver
