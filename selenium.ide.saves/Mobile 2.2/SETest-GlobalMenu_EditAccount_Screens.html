@@ -4,17 +4,17 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/topic/jenkins-argos-saleslogix-topic-v2.2-33/#_login" />
-<title>SETest-GlobalMenu_EditNote_Screen</title>
+<title>SETest-GlobalMenu_EditAccount_Screens</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">SETest-GlobalMenu_EditNote_Screen</td></tr>
+<tr><td rowspan="1" colspan="3">SETest-GlobalMenu_EditAccount_Screens</td></tr>
 </thead><tbody>
-<!--SETest-GlobalMenu_EditNote_Screens-->
+<!--SETest-GlobalMenu_EditAccount_Screens-->
 <!--Version: 2.2-->
-<!--Desc: Confirms that the toggle button (left and right) for Global Menu access is visible on screens accessible under the Edit Note screens...-->
-<!--Note: This test script can be used as a template for adding/editing a Note.-->
+<!--Desc: Confirms that the toggle button (left and right) for Global Menu access is visible on screens accessible under the Edit Account screens...-->
+<!--Note: This test script can be used as a template for completing/editing an Account.-->
 <!--Condition(s): Test user is logged in.    -->
 <!--==================================================================-->
 <!--Step: click Top-Left button to reveal Global Menu...-->
@@ -28,43 +28,43 @@
 	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
 	<td></td>
 </tr>
-<!--Step: navigate to Notes list view...-->
+<!--Step: navigate to Accounts list view...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;Notes/History&quot;]</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;Accounts&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>XPath=.//*[@id='history_list']/ul/li[1]</td>
+	<td>XPath=.//*[@id='account_list']/ul/li[1]</td>
 	<td></td>
 </tr>
-<!--Step: perform search for Note items...-->
+<!--Step: perform search for Account items...-->
 <tr>
 	<td>type</td>
-	<td>css=#Sage_Platform_Mobile_SearchWidget_27 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
-	<td>notes</td>
+	<td>css=#Sage_Platform_Mobile_SearchWidget_3 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>Big Systems</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=#Sage_Platform_Mobile_SearchWidget_27 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td>css=#Sage_Platform_Mobile_SearchWidget_3 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>XPath=.//*[@id='history_list']/ul/li[1]</td>
+	<td>XPath=.//*[@id='account_list']/ul/li[1]</td>
 	<td></td>
 </tr>
-<!--Step: navigate to top Notes/History record...-->
+<!--Step: navigate to top Account record...-->
 <tr>
 	<td>click</td>
-	<td>css=span.p-time</td>
+	<td>css=#account_list &gt; ul.list-content &gt; li &gt; div.list-item-content &gt; h3</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Note</td>
+	<td>Big Systems</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -80,19 +80,19 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>css=div.row.row-edit</td>
+	<td>css=#Sage_Platform_Mobile_Fields_TextField_14 &gt; input[name=&quot;AccountName&quot;]</td>
 	<td></td>
 </tr>
-<!--Step: click the Regarding edit buton...-->
+<!--Step: click the Business Description edit buton...-->
 <tr>
 	<td>click</td>
-	<td>css=button.button.simpleSubHeaderButton</td>
+	<td>css=#Sage_Platform_Mobile_Fields_NoteField_0 &gt; button.button.simpleSubHeaderButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Note Description</td>
+	<td>Business Description</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -100,7 +100,7 @@
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
 	<td></td>
 </tr>
-<!--Step: navigate back to Note screen...-->
+<!--Step: navigate back to Account screen...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
@@ -109,24 +109,18 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Note</td>
+	<td>Account</td>
 </tr>
-<!--Step: click the For Lead toggle to ON...-->
+<!--Step: click the For Owners toggle to ON...-->
 <tr>
 	<td>click</td>
-	<td>css=span.thumb</td>
-	<td></td>
-</tr>
-<!--Step: click the Lead edit button...-->
-<tr>
-	<td>click</td>
-	<td>css=#Sage_Platform_Mobile_Fields_LookupField_43 &gt; button.button.simpleSubHeaderButton</td>
+	<td>css=#Sage_Platform_Mobile_Fields_LookupField_1 &gt; button.button.simpleSubHeaderButton</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Leads</td>
+	<td>Owners</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -134,7 +128,7 @@
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
 	<td></td>
 </tr>
-<!--Step: navigate back to Note screen...-->
+<!--Step: navigate back to Account screen...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
@@ -143,8 +137,26 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Note</td>
+	<td>Account</td>
 </tr>
+<!--Step: click the Lead Sources edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Sage_Platform_Mobile_Fields_LookupField_2 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Lead Sources</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to Account screen...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
@@ -153,7 +165,18 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Note</td>
+	<td>Account</td>
+</tr>
+<!--Step: navigate back...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Big Systems</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -163,7 +186,7 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Notes/History</td>
+	<td>Accounts</td>
 </tr>
 <tr>
 	<td>click</td>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/topic/jenkins-argos-saleslogix-topic-v2.2-33/#_login" />
+<title>SETest-GlobalMenu_EditTicketActivities_Screens</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-GlobalMenu_EditTicketActivities_Screens</td></tr>
+</thead><tbody>
+<!--SETest-GlobalMenu_EditTicketActivities_Screens-->
+<!--Version: 2.2-->
+<!--Desc: Confirms that the toggle button (left and right) for Global Menu access is visible on screens accessible under the Ticket Activities screens...-->
+<!--Note: This test script can be used as a template for completing/editing an Ticket-Activity.-->
+<!--Condition(s): Test user is logged in.    -->
+<!--==================================================================-->
+<!--Step: click Top-Left button to reveal Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: navigate to Tickets list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;Tickets&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='ticket_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: perform search for Opportunity records...-->
+<tr>
+	<td>type</td>
+	<td>css=#Sage_Platform_Mobile_SearchWidget_18 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>000-00-000011</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Sage_Platform_Mobile_SearchWidget_18 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='ticket_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: navigate to top Opportunity record...-->
+<tr>
+	<td>click</td>
+	<td>css=#ticket_list &gt; ul.list-content &gt; li &gt; div.list-item-content &gt; h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Tickets</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Ticket view...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<!--Step: click the Ticket Activities...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='ticket_detail']/div[2]/ul[2]/li[2]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Ticket Activities</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: click the top Ticket Activity list item...-->
+<tr>
+	<td>click</td>
+	<td>css=#ticketactivity_related &gt; ul.list-content &gt; li &gt; div.list-item-content &gt; h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>id=pageTitle</td>
+	<td>Ticket Activities</td>
+</tr>
+<!--Step: click the top Edit button...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Edit Ticket Activity</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: click the Type edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_26 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Type</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Edit Ticket Activity view...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Edit Ticket Activity</td>
+</tr>
+<!--Step: click the Public Access edit button...-->
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_Fields_PicklistField_27 &gt; button.button.simpleSubHeaderButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Public Access</td>
+</tr>
+<!--VP: confirm that Global Menu button is available...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to the Edit Ticket Activity view...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Edit Ticket Activity</td>
+</tr>
+<!--Step: navigate back to the Opportunity view...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>id=pageTitle</td>
+	<td>Edit Ticket Activity</td>
+</tr>
+<!--Step: navigate back...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>id=pageTitle</td>
+	<td>Ticket Activities</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForNotText</td>
+	<td>id=pageTitle</td>
+	<td>Ticket Activities</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Tickets</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>My Activities</td>
+</tr>
+<!---- END-->
+</tbody></table>
+</body>
+</html>
