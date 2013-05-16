@@ -4,17 +4,17 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
-<title>SETest-GlobalMenu_EditContact_Screens</title>
+<title>SETest-Attachments_Contact_Screens</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">SETest-GlobalMenu_EditContact_Screens</td></tr>
+<tr><td rowspan="1" colspan="3">SETest-Attachments_Contact_Screens</td></tr>
 </thead><tbody>
-<!--SETest-GlobalMenu_EditContact_Screens-->
+<!--SETest-Attachments_Contact_Screens-->
 <!--Version: 2.2-->
-<!--Desc: Confirms that the toggle button (left and right) for Global Menu access is visible on screens accessible under the Edit Contact screens...-->
-<!--Note: This test script can be used as a template for completing/editing a Contact.-->
+<!--Desc: Confirms that the Attachments feature is functional from Contact screens...-->
+<!--Required Entities: Contact - John Abbott...-->
 <!--Condition(s): Test user is logged in.    -->
 <!--==================================================================-->
 <!--Step: click Top-Left button to reveal Global Menu...-->
@@ -39,11 +39,11 @@
 	<td>XPath=.//*[@id='contact_list']/ul/li[1]</td>
 	<td></td>
 </tr>
-<!--Step: perform search for Contact items...-->
+<!--Step: perform search for Contact item...-->
 <tr>
 	<td>type</td>
 	<td>css=#Sage_Platform_Mobile_SearchWidget_6 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
-	<td>Alfred</td>
+	<td>Abbott</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -64,54 +64,84 @@
 <tr>
 	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Alfred, John</td>
+	<td>Abbott, John</td>
 </tr>
-<!--VP: confirm that Global Menu button is available...-->
+<!--VP: confirm that Attachments is available under the Related Items section...-->
 <tr>
 	<td>verifyElementPresent</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td>xpath=(//img[@alt='icon'])[11]</td>
 	<td></td>
 </tr>
-<!--Step: click the top Edit button...-->
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='contact_detail']/div[2]/ul[2]/li[6]/a/span</td>
+	<td>Attachments</td>
+</tr>
+<!--Step: click the Attachments link...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='contact_detail']/div[2]/ul[2]/li[6]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Contact Attachments</td>
+</tr>
+<!--Step: click to open an Attachment item...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='attachment_related']/ul/li</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=image</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<!--Step: click the top Add buton...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Attachments</td>
+</tr>
+<!--VP: confirm the elements of the Add Attachments screen...-->
+<tr>
 	<td>verifyElementPresent</td>
-	<td>//div[@id='contact_edit']/div[2]/fieldset/div[2]</td>
+	<td>css=input[type=&quot;file&quot;]</td>
 	<td></td>
 </tr>
-<!--Step: click the Cuisine edit buton...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=button.button.inline</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='attachment_Add']/div[2]/div/button[2]</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to Account screen...-->
 <tr>
 	<td>click</td>
-	<td>css=#Mobile_SalesLogix_Fields_PicklistField_16 &gt; button.button.simpleSubHeaderButton</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Cuisine</td>
+	<td>Contact Attachments</td>
 </tr>
-<!--VP: confirm that Global Menu button is available...-->
-<tr>
-	<td>verifyElementPresent</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
-	<td></td>
-</tr>
-<!--Step: navigate back to Contact screen...-->
-<tr>
-	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Contact</td>
-</tr>
-<!--Step: click the top Cancel button...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
@@ -120,9 +150,8 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Alfred, John</td>
+	<td>Abbott, John</td>
 </tr>
-<!--Step: navigate back to Contacts screen...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>

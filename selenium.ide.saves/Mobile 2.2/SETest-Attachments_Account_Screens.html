@@ -4,17 +4,16 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
-<title>SETest-GlobalMenu_EditAccount_Screens</title>
+<title>SETest-Attachments_Account_Screens</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">SETest-GlobalMenu_EditAccount_Screens</td></tr>
+<tr><td rowspan="1" colspan="3">SETest-Attachments_Account_Screens</td></tr>
 </thead><tbody>
-<!--SETest-GlobalMenu_EditAccount_Screens-->
+<!--SETest-Attachments_Account_Screens-->
 <!--Version: 2.2-->
-<!--Desc: Confirms that the toggle button (left and right) for Global Menu access is visible on screens accessible under the Edit Account screens...-->
-<!--Note: This test script can be used as a template for completing/editing an Account.-->
+<!--Desc: Confirms that the Attachments feature is functional from Account screens...-->
 <!--Condition(s): Test user is logged in.    -->
 <!--==================================================================-->
 <!--Step: click Top-Left button to reveal Global Menu...-->
@@ -43,7 +42,7 @@
 <tr>
 	<td>type</td>
 	<td>css=#Sage_Platform_Mobile_SearchWidget_3 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
-	<td>Big Systems</td>
+	<td>Abbott Ltd.</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -64,119 +63,93 @@
 <tr>
 	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Big Systems</td>
+	<td>Abbott Ltd.</td>
 </tr>
-<!--VP: confirm that Global Menu button is available...-->
+<!--VP: confirm that Attachments is available under the Related Items section...-->
 <tr>
 	<td>verifyElementPresent</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td>xpath=(//img[@alt='icon'])[11]</td>
 	<td></td>
 </tr>
-<!--Step: click the top Edit button...-->
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='account_detail']/div[2]/ul[2]/li[7]/a/span</td>
+	<td>Attachments</td>
+</tr>
+<!--Step: click the Attachments link...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='account_detail']/div[2]/ul[2]/li[7]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Account Attachments</td>
+</tr>
+<!--Step: click to open an Attachment item...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='attachment_related']/ul/li/div/div[2]/h4[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Test123</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<!--Step: click the top Add buton...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>css=#Sage_Platform_Mobile_Fields_TextField_14 &gt; input[name=&quot;AccountName&quot;]</td>
-	<td></td>
-</tr>
-<!--Step: click the Business Description edit buton...-->
-<tr>
-	<td>click</td>
-	<td>css=#Sage_Platform_Mobile_Fields_NoteField_0 &gt; button.button.simpleSubHeaderButton</td>
-	<td></td>
-</tr>
-<tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Business Description</td>
+	<td>Add Attachments</td>
 </tr>
-<!--VP: confirm that Global Menu button is available...-->
+<!--VP: confirm the elements of the Add Attachments screen...-->
 <tr>
 	<td>verifyElementPresent</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td>css=input[type=&quot;file&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=button.button.inline</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='attachment_Add']/div[2]/div/button[2]</td>
 	<td></td>
 </tr>
 <!--Step: navigate back to Account screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Account</td>
+	<td>Account Attachments</td>
 </tr>
-<!--Step: click the For Owners toggle to ON...-->
 <tr>
 	<td>click</td>
-	<td>css=#Sage_Platform_Mobile_Fields_LookupField_1 &gt; button.button.simpleSubHeaderButton</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Owners</td>
-</tr>
-<!--VP: confirm that Global Menu button is available...-->
-<tr>
-	<td>verifyElementPresent</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
-	<td></td>
-</tr>
-<!--Step: navigate back to Account screen...-->
-<tr>
-	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Account</td>
-</tr>
-<!--Step: click the Lead Sources edit button...-->
-<tr>
-	<td>click</td>
-	<td>css=#Sage_Platform_Mobile_Fields_LookupField_2 &gt; button.button.simpleSubHeaderButton</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Lead Sources</td>
-</tr>
-<!--VP: confirm that Global Menu button is available...-->
-<tr>
-	<td>verifyElementPresent</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
-	<td></td>
-</tr>
-<!--Step: navigate back to Account screen...-->
-<tr>
-	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Account</td>
-</tr>
-<!--Step: navigate back...-->
-<tr>
-	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>Big Systems</td>
+	<td>Abbott Ltd.</td>
 </tr>
 <tr>
 	<td>click</td>

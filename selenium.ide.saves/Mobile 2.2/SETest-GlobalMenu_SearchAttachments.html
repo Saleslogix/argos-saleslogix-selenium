@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
+<title>SETest-GlobalMenu_SearchAttachments</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-GlobalMenu_SearchAttachments</td></tr>
+</thead><tbody>
+<!--SE Test: SETest-GlobalMenu_SearchAttachments-->
+<!--Version: 2.2-->
+<!--Desc: Opens the Global Menu, accesses the My Attachments list view then performs an Attachment search...-->
+<!--Condition(s): Test user is logged in.    -->
+<!--==================================================================-->
+<!--Step: click Top-Left button to reveal Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: navigate to Attachments list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;My Attachments&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='myattachment_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: perform search for Attachment records...-->
+<tr>
+	<td>type</td>
+	<td>css=#Sage_Platform_Mobile_SearchWidget_35 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>Plate</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Sage_Platform_Mobile_SearchWidget_35 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='myattachment_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: navigate to top Attachment record...-->
+<tr>
+	<td>assertElementPresent</td>
+	<td>XPath=.//*[@id='myattachment_list']/descendant::*[text() = &quot;Plate&quot;]</td>
+	<td></td>
+</tr>
+<!--Step: navigate back...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>My Activities</td>
+</tr>
+<!---- END-->
+</tbody></table>
+</body>
+</html>

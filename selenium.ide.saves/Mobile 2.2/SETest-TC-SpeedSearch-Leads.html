@@ -4,18 +4,18 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
-<title>SETest-GlobalMenu_DoSpeedSearch</title>
+<title>SETest-TC-SpeedSearch-Leads</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">SETest-GlobalMenu_DoSpeedSearch</td></tr>
+<tr><td rowspan="1" colspan="3">SETest-TC-SpeedSearch-Leads</td></tr>
 </thead><tbody>
-<!--SE Test: SETest-GlobalMenu_DoSpeedSearch-->
+<!--SE Test: SETest-TC-SpeedSearch-Leads-->
 <!--Version: 2.2-->
-<!--Desc: Opens the Global Menu and then performs a simple SpeedSearch..-->
-<!--Condition(s): Test user is logged in.    -->
-<!--==================================================================-->
+<!--Desc: Search on Leads-->
+<!--Required Entity: TYPE - NAME-->
+<!--====================================-->
 <!--Step: click Top-Left button to reveal Global Menu...-->
 <tr>
 	<td>click</td>
@@ -27,22 +27,23 @@
 	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
 	<td></td>
 </tr>
-<!--VP: check  the SpeedSearch bar...-->
+<!--Step: UI element check-->
 <tr>
-	<td>verifyElementPresent</td>
-	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; label</td>
+	<td>assertElementPresent</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementPresent</td>
+	<td>assertElementPresent</td>
 	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
 	<td></td>
 </tr>
-<!--Step: enter an item in the search field then click the SpeedSearch button...-->
+<!---- Section: Execute some global searches in the mobile client-->
+<!--Step: perform 1st SpeedSearch on Leads...-->
 <tr>
 	<td>type</td>
 	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
-	<td>abbott</td>
+	<td>Pacific</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -50,53 +51,79 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForTextPresent</td>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Search Results</td>
-	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
 	<td>XPath=.//*[@id='speedsearch_list']/ul/li[1]</td>
 	<td></td>
 </tr>
-<!--Step: click a specific SpeedSearch test result-->
+<!--Step: check search results...-->
 <tr>
-	<td>click</td>
-	<td>XPath=.//*[@id='speedsearch_list']/descendant::*[text() = 'Won the deal (2012_08_22)']</td>
+	<td>verifyTextNotPresent</td>
+	<td>no records</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>History</td>
+	<td>assertTextPresent</td>
+	<td>James Sibr*</td>
+	<td></td>
+</tr>
+<!--Step: click to open the 1st matching Account link...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='speedsearch_list']/ul/li[6]/h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<!--Verify: confirm that the correct Account Detail View was opened...-->
+<tr>
+	<td>verifyText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Contact</td>
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>//div[@id='history_detail']/div[2]/div/div[3]/span</td>
-	<td>Won the deal</td>
+	<td>XPath=.//*[@id='contact_detail']/div[2]/div[1]/div[1]/span</td>
+	<td>Sibr, James</td>
 </tr>
-<!--Step: click Top Blue Arrow button to navigate back...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Search Results</td>
 </tr>
+<!--Step: navigate back to Home...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForText</td>
-	<td>id=pageTitle</td>
-	<td>My Activities</td>
+	<td>click</td>
+	<td>XPath=.//*[@id='speedsearch_list']/div[3]/button</td>
+	<td></td>
 </tr>
-<!---- END-->
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

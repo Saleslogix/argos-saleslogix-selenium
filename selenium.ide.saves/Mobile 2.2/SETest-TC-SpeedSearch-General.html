@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
+<title>SETest-TC-SpeedSearch-General</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-TC-SpeedSearch-General</td></tr>
+</thead><tbody>
+<!--SE Test: SETest-TC-SpeedSearch-General-->
+<!--Version: 2.2-->
+<!--Desc: performs general searches to validate Global Search functionality-->
+<!--Required Entity: TYPE - NAME-->
+<!--====================================-->
+<!--Step: click Top-Left button to reveal Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: UI element check-->
+<tr>
+	<td>assertElementPresent</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<!---- Section: Execute some global searches in the mobile client-->
+<!--Step: perform 1st global search...-->
+<tr>
+	<td>type</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>blackberry</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Search Results</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='speedsearch_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: check search results...-->
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>no records</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Training*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Ticket*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>*Reu*</td>
+	<td></td>
+</tr>
+<!--Step: click to open the top Search Results link...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='speedsearch_list']/ul/li[1]/h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>SearchResults</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=pageTitle</td>
+	<td>History</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='history_detail']/div[2]/div/div[3]/span</td>
+	<td>Training</td>
+</tr>
+<!--Step: navigate back...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Search Results</td>
+</tr>
+<!--Step: reset the Search then nav back to Home...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[2]/button</td>
+	<td></td>
+</tr>
+<!--Step: perform 2nd global search...-->
+<tr>
+	<td>type</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>blackberri</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Search Results</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=#speedsearch_list &gt; ul.list-content &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: check search results...-->
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>no records</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Training*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Ticket*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>*Reu*</td>
+	<td></td>
+</tr>
+<!--Step: reset the Search the nav back to Home...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[2]/button</td>
+	<td></td>
+</tr>
+<!--Step: perform 3rd global search...-->
+<tr>
+	<td>type</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>blackbarry</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Search Results</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=#speedsearch_list &gt; ul.list-content &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: check search results...-->
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>no records</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Training*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Ticket*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>*Reu*</td>
+	<td></td>
+</tr>
+<!--Step: reset the Search the nav back to Home...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[2]/button</td>
+	<td></td>
+</tr>
+<!--Step: perform 4th global search...-->
+<tr>
+	<td>type</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>black berry</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Search Results</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=#speedsearch_list &gt; ul.list-content &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: check search results...-->
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>no records</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Al Bahar*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Jennifer Blake*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Bass Beer and Wine Co*</td>
+	<td></td>
+</tr>
+<!--Step: reset the Search the nav back to Home...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[2]/button</td>
+	<td></td>
+</tr>
+<!--Step: perform 5th global search...-->
+<tr>
+	<td>type</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>advisinh</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Search Results</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=#speedsearch_list &gt; ul.list-content &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: check search results...-->
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>no records</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Advising Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Jurgenson Advisory</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Advising Group Test Opp*</td>
+	<td></td>
+</tr>
+<!--Step: reset the Search the nav back to Home...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[2]/button</td>
+	<td></td>
+</tr>
+<!--Step: perform 6th global search...-->
+<tr>
+	<td>type</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>world</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Search Results</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=#speedsearch_list &gt; ul.list-content &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: check search results...-->
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>no records</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>World Electrical</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>World Beers*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Abbott WorldWide-Phase*</td>
+	<td></td>
+</tr>
+<!--Step: reset the Search the nav back to Home...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[2]/button</td>
+	<td></td>
+</tr>
+<!--Step: perform 7th global search...-->
+<tr>
+	<td>type</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>sophia</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Search Results</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=#speedsearch_list &gt; ul.list-content &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: check search results...-->
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>no records</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Drakes Cycle Shop -Phase-1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Neil Shiff</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Drakes Cycle Shop</td>
+	<td></td>
+</tr>
+<!--Step: reset the Search the nav back to Home...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[2]/button</td>
+	<td></td>
+</tr>
+<!--Step: perform 8th global search...-->
+<tr>
+	<td>type</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>sophia perez</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_1 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Search Results</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=#speedsearch_list &gt; ul.list-content &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: check search results...-->
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>no records</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Database Change*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>status*</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Sophia Perez*</td>
+	<td></td>
+</tr>
+<!--Step: reset the Search the nav back to Home...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[2]/button</td>
+	<td></td>
+</tr>
+<!---- End Section-->
+<!--Step: navigate back to Home...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>My Activities</td>
+</tr>
+<!---- End-->
+</tbody></table>
+</body>
+</html>

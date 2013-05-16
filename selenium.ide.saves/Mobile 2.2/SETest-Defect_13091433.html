@@ -4,17 +4,16 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
-<title>SETest-Defect_13091679</title>
+<title>SETest-Defect_13091433</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">SETest-Defect_13091679</td></tr>
+<tr><td rowspan="1" colspan="3">SETest-Defect_13091433</td></tr>
 </thead><tbody>
-<!--SE Test: SETest-Defect_13091679-->
-<!--Desc: validates that a Multi Currency field section is not available when adding a new Opportunity for non-Multi-Currency site-->
-<!--Required Environment: non-Multi-Currency Mobile Client site-->
-<!--Required Entity: Opportunity - Abbott WorldWide-Phase I-->
+<!--SE Test: SETest-Defect_13091433-->
+<!--Version: 2.2-->
+<!--Desc: validates that the Add Notes view does not initialize  the Notes field with 'null'-->
 <!--====================================-->
 <!--Step: click Top-Left button to reveal Global Menu...-->
 <tr>
@@ -27,54 +26,49 @@
 	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
 	<td></td>
 </tr>
-<!--Step: navigate to Opportunities list view...-->
+<!--Step: navigate to Notes list view...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;Opportunities&quot;]</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;Notes/History&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>XPath=.//*[@id='opportunity_list']/ul/li[1]</td>
+	<td>XPath=.//*[@id='history_list']/ul/li[1]</td>
 	<td></td>
 </tr>
-<tr>
-	<td>assertText</td>
-	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Opportunities</td>
-</tr>
-<!--Step: click the Top Add button to setup a new Opportunity...-->
+<!--Step: click "+" button to add a new Note record...-->
 <tr>
 	<td>click</td>
 	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Note</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Opportunity</td>
+	<td>Note</td>
 </tr>
-<!--VP: check that the Multi Currency section & fields are not displayed...-->
+<!--VP: check that 'null' is not pre-populating the Notes field...-->
 <tr>
 	<td>verifyTextNotPresent</td>
-	<td>Multi Currency</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextNotPresent</td>
-	<td>locked</td>
+	<td>null</td>
 	<td></td>
 </tr>
 <!--'End: navigate back to Home...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Opportunities</td>
+	<td>Notes/History</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -86,11 +80,7 @@
 	<td>id=pageTitle</td>
 	<td>My Activities</td>
 </tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
+<!---- End-->
 </tbody></table>
 </body>
 </html>

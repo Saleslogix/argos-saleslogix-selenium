@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
+<title>SETest-Attachments_Activity_Screens</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-Attachments_Activity_Screens</td></tr>
+</thead><tbody>
+<!--SETest-Attachments_Activity_Screens-->
+<!--Version: 2.2-->
+<!--Desc: Confirms that the Attachments feature is functional from Activity screens...-->
+<!--Required Entities: Activity - 3:15pm, Follow-up ...-->
+<!--Condition(s): Test user is logged in.    -->
+<!--==================================================================-->
+<!--Step: click Top-Left button to reveal Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td></td>
+</tr>
+<!--Step: navigate to My Activities list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;My Activities&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='myactivity_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: perform search for Activity item...-->
+<tr>
+	<td>type</td>
+	<td>css=#Sage_Platform_Mobile_SearchWidget_26 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td>Follow-up</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#Sage_Platform_Mobile_SearchWidget_26 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='myactivity_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: navigate to top Ticket record...-->
+<tr>
+	<td>click</td>
+	<td>css=span.p-description</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Activity</td>
+</tr>
+<!--VP: confirm that Attachments is available under the Related Items section...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>xpath=(//img[@alt='icon'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='activity_detail']/div[2]/ul[2]/li/a/span</td>
+	<td>Attachments</td>
+</tr>
+<!--Step: click the Attachments link...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='activity_detail']/div[2]/ul[2]/li/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Activity Attachments</td>
+</tr>
+<!--Step: click to open an Attachment item...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='attachment_related']/ul/li</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=1368571469189</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<!--Step: click the top Add buton...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Attachments</td>
+</tr>
+<!--VP: confirm the elements of the Add Attachments screen...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=input[type=&quot;file&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=button.button.inline</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='attachment_Add']/div[2]/div/button[2]</td>
+	<td></td>
+</tr>
+<!--Step: navigate back screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Activity Attachments</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Activity</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>My Activities</td>
+</tr>
+<!---- END-->
+</tbody></table>
+</body>
+</html>
