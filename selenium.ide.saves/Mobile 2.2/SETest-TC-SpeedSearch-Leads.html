@@ -24,17 +24,17 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
 	<td></td>
 </tr>
 <!--Step: UI element check-->
 <tr>
-	<td>assertElementPresent</td>
+	<td>verifyElementPresent</td>
 	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>verifyElementPresent</td>
 	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
 	<td></td>
 </tr>
@@ -67,44 +67,34 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
+	<td>verifyTextPresent</td>
 	<td>James Sibr*</td>
 	<td></td>
 </tr>
 <!--Step: click to open the 1st matching Account link...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='speedsearch_list']/ul/li[6]/h3</td>
+	<td>XPath=.//*[@id='speedsearch_list']/ul/li[1]/h3</td>
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Account</td>
 </tr>
 <!--Verify: confirm that the correct Account Detail View was opened...-->
 <tr>
 	<td>verifyText</td>
-	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Contact</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>XPath=.//*[@id='contact_detail']/div[2]/div[1]/div[1]/span</td>
-	<td>Sibr, James</td>
+	<td>XPath=.//*[@id='account_detail']/div[2]/div[1]/div[1]/span</td>
+	<td>Pacific Bearing Corp</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Search Results</td>
 </tr>
@@ -115,15 +105,11 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>XPath=.//*[@id='speedsearch_list']/div[3]/button</td>
-	<td></td>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>My Activities</td>
 </tr>
-<tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
+<!---- END-->
 </tbody></table>
 </body>
 </html>

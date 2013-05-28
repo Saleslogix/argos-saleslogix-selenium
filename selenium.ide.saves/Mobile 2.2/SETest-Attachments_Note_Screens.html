@@ -25,7 +25,7 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
 	<td></td>
 </tr>
 <!--Step: navigate to Notes/History list view...-->
@@ -58,7 +58,7 @@
 <!--Step: navigate to top Notes/History record...-->
 <tr>
 	<td>click</td>
-	<td>css=span.p-description</td>
+	<td>XPath=.//*[@id='history_list']/ul/li[1]/div/h3/span[3]</td>
 	<td></td>
 </tr>
 <tr>
@@ -92,13 +92,13 @@
 <!--NOTE: Attachment click has been disabled due to a 404 Error...-->
 <tr>
 	<td>verifyElementPresent</td>
-	<td>//div[@id='attachment_related']/ul/li</td>
+	<td>XPath=.//*[@id='history_attachment_related']/ul/li</td>
 	<td></td>
 </tr>
 <!--Step: click the top Add buton...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td>XPath=.//*[@id='history_attachment_related']/ul/li/div/div[2]/a</td>
 	<td></td>
 </tr>
 <tr>

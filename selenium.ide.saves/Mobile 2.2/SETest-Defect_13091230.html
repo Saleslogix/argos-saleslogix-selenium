@@ -26,7 +26,7 @@
 	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
 	<td></td>
 </tr>
-<!--Step: navigate to Opportunity list view...-->
+<!--Step: navigate to Contacts list view...-->
 <tr>
 	<td>click</td>
 	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;Contacts&quot;]</td>
@@ -110,7 +110,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>verifyText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Description</td>
 </tr>
@@ -121,7 +121,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Address</td>
 </tr>
@@ -164,11 +164,6 @@
 	<td>My Activities</td>
 </tr>
 <!---- End-->
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
 </tbody></table>
 </body>
 </html>

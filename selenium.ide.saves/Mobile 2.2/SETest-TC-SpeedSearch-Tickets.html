@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
+<title>SETest-TC-SpeedSearch-Leads</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-TC-SpeedSearch-Leads</td></tr>
+</thead><tbody>
+<!--SE Test: SETest-TC-SpeedSearch-Leads-->
+<!--Version: 2.2-->
+<!--Desc: Search on Tickets-->
+<!--Required Entity: TYPE - NAME-->
+<!--====================================-->
+<!--Step: click Top-Left button to reveal Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
+	<td></td>
+</tr>
+<!--Step: UI element check-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div &gt; input[name=&quot;query&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#Mobile_SalesLogix_SpeedSearchWidget_0 &gt; div.table-layout &gt; div.hasButton &gt; button.subHeaderButton.searchButton</td>
+	<td></td>
+</tr>
+<!--Step: perform 1st SpeedSearch on Tickets...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
+	<td>001-00-000004</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Search Results</td>
+</tr>
+<!--Step: check search results...-->
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>no records</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Ticket: 001-00-000004</td>
+	<td></td>
+</tr>
+<!--Step: click to open the 1st matching Account link...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='speedsearch_list']/ul/li[18]/h3</td>
+	<td></td>
+</tr>
+<!--Verify: confirm that the correct Account Detail View was opened...-->
+<tr>
+	<td>verifyText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Ticket</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>XPath=.//*[@id='ticket_detail']/div[2]/ul[1]/li/a/span</td>
+	<td>001-00-000004</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Search Results</td>
+</tr>
+<!--Step: navigate back to Home...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Tickets</td>
+</tr>
+<!---- END-->
+</tbody></table>
+</body>
+</html>

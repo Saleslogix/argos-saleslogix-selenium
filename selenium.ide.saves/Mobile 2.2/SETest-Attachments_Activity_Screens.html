@@ -55,10 +55,10 @@
 	<td>XPath=.//*[@id='myactivity_list']/ul/li[1]</td>
 	<td></td>
 </tr>
-<!--Step: navigate to top Ticket record...-->
+<!--Step: navigate to top results record...-->
 <tr>
 	<td>click</td>
-	<td>css=span.p-description</td>
+	<td>XPath=.//*[@id='myactivity_list']/ul/li[1]</td>
 	<td></td>
 </tr>
 <tr>
@@ -87,6 +87,11 @@
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
 	<td>Activity Attachments</td>
+</tr>
+<tr>
+	<td>assertTextNotPresent</td>
+	<td>no records</td>
+	<td></td>
 </tr>
 <!--Step: click to open an Attachment item...-->
 <tr>

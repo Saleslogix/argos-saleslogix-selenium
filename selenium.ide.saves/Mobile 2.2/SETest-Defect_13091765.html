@@ -25,7 +25,7 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/label</td>
 	<td></td>
 </tr>
 <!--Step: navigate to Opportunity list view...-->
@@ -42,18 +42,18 @@
 <!--Step: add a new Opportunit...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Opportunity</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>XPath=.//*[@id='Sage_Platform_Mobile_Fields_TextField_19']/input</td>
-	<td>Test Allied Corp 100-4713</td>
+	<td>Test Allied Corp 100-52513</td>
 </tr>
 <!--Step: select an Account value...-->
 <tr>
@@ -78,7 +78,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
+	<td>verifyTextPresent</td>
 	<td>Allied Corp*</td>
 	<td></td>
 </tr>
@@ -109,7 +109,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Exchange Rates</td>
 </tr>
@@ -141,16 +141,11 @@
 <!--Step: click the Top Save button...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Opportunities</td>
 </tr>
@@ -160,7 +155,7 @@
 <tr>
 	<td>type</td>
 	<td>XPath=.//*[@id='Sage_Platform_Mobile_SearchWidget_11']/div/div[1]/input</td>
-	<td>Test Allied Corp 100-4713</td>
+	<td>Test Allied Corp 100-52513</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -168,12 +163,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Opportunities</td>
 </tr>
@@ -183,14 +173,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Test Allied Corp 100-4713</td>
+	<td>Test Allied Corp 100*</td>
 </tr>
 <!--Step: click the Products link...-->
 <tr>
@@ -199,12 +184,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Products</td>
 </tr>
@@ -216,11 +196,11 @@
 <!--Step: click the '+' button to add a new Product...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Opportunity Product</td>
 </tr>
@@ -231,7 +211,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Products</td>
 </tr>
@@ -247,12 +227,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertTextPresent</td>
+	<td>verifyTextPresent</td>
 	<td>Dell Latitude*</td>
 	<td></td>
 </tr>
@@ -262,12 +237,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Opportunity Product</td>
 </tr>
@@ -284,12 +254,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Product Programs</td>
 </tr>
@@ -299,12 +264,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Opportunity Product</td>
 </tr>
@@ -343,20 +303,15 @@
 <!--Step: click the Top Savel button...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<!--Verify: product info in Products list view...-->
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Products</td>
 </tr>
+<!--Verify: product info in Products list view...-->
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Dell Latitude</td>
@@ -371,12 +326,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Dell Latitude</td>
 </tr>
@@ -389,16 +339,11 @@
 <!--Step: click the Top Edit button to load the Opportunity Edit view...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Opportunity Product</td>
 </tr>
@@ -416,29 +361,34 @@
 <!--Step: click Top Cancel to return to Product Detail view...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
-</tr>
-<tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Dell Latitude</td>
 </tr>
 <!--Step: click the Top Back button a few times to return to Opportunities list view....-->
 <tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Dell Latitude</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Products</td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Test Allied Corp*</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -446,18 +396,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<!--Step: go to Opportunities list view-->
-<tr>
-	<td>click</td>
-	<td>XPath=.//*[@id='home']/div[3]/ul[2]/li[7]/div[2]/h3</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Opportunities</td>
 </tr>
@@ -465,7 +404,7 @@
 <tr>
 	<td>type</td>
 	<td>XPath=.//*[@id='Sage_Platform_Mobile_SearchWidget_11']/div/div[1]/input</td>
-	<td>Test Allied Corp 100-4713</td>
+	<td>Test Allied Corp 100-52513</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -473,7 +412,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
+	<td>verifyTextPresent</td>
 	<td>Test Allied Corp*</td>
 	<td></td>
 </tr>
@@ -482,24 +421,24 @@
 	<td>XPath=.//*[@id='opportunity_list']/ul/li/div/h3</td>
 	<td></td>
 </tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Test Allied Corp*</td>
+</tr>
 <!--Step: click the Products link and re-open the Product...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='opportunity_detail']/div[2]/ul[2]/li[1]/a</td>
+	<td>XPath=.//*[@id='opportunity_detail']/div[2]/ul[2]/li[1]/a/span</td>
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Products</td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
+	<td>verifyTextPresent</td>
 	<td>Dell Latitude</td>
 	<td></td>
 </tr>
@@ -509,12 +448,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Dell Latitude</td>
 </tr>
@@ -527,16 +461,11 @@
 <!--Step: click the Top Edit button...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>Opportunity Product</td>
 </tr>
@@ -560,13 +489,13 @@
 <!--'End: navigate back to Home...-->
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Dell Latitude</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -574,15 +503,31 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Products</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Test Allied Corp*</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='pageTitle']</td>
+	<td>Opportunities</td>
+</tr>
+<!---- END-->
 </tbody></table>
 </body>
 </html>

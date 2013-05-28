@@ -15,6 +15,7 @@
 <!--Version: 2.2-->
 <!--Desc: Confirms that the Attachments feature is functional from Account screens...-->
 <!--Condition(s): Test user is logged in.    -->
+<!--Required Entities: Account - Abbott Ltd.-->
 <!--==================================================================-->
 <!--Step: click Top-Left button to reveal Global Menu...-->
 <tr>
@@ -24,7 +25,7 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
 	<td></td>
 </tr>
 <!--Step: navigate to Accounts list view...-->
@@ -90,7 +91,7 @@
 <!--Step: click to open an Attachment item...-->
 <tr>
 	<td>verifyElementPresent</td>
-	<td>//div[@id='attachment_related']/ul/li/div/div[2]/h4[2]</td>
+	<td>XPath=.//*[@id='account_attachment_related']/ul/li[1]</td>
 	<td></td>
 </tr>
 <tr>

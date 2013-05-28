@@ -12,6 +12,7 @@
 <tr><td rowspan="1" colspan="3">SETest-Defect_13091777</td></tr>
 </thead><tbody>
 <!--SE Test: SETest-Defect_13091777-->
+<!--NOTE: *** this test requires WebClient access ***-->
 <!--Version: 2.2-->
 <!--Desc: validates that adjusted price displays as expected, but is not being saved, as evidenced in the web client product grid-->
 <!--Pre-Run Steps: Logoff, then Log back in as 'Lee'...-->
@@ -26,7 +27,7 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
 	<td></td>
 </tr>
 <!--Step: navigate to Opportunity list view...-->

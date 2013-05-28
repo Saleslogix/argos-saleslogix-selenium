@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SpeedSearch Test Suite" verbose="3" parallel="classes">
+  
+    <test name="SpeedSearch Tests - Firefox 17">
+  <parameter name="browser" value="FF"></parameter>
+    <classes>
+      <class name="functionalTests.SpeedSearchTests"/>
+    </classes>
+  </test> <!-- Default test -->
+    
+</suite> <!-- Smoke Test Suite -->
