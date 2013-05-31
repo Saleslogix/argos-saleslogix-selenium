@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Functional Test Suite" duration-ms="50569" started-at="2013-05-28T03:08:09Z" finished-at="2013-05-28T03:09:00Z">
+  <suite name="Mobile2x Debug Test Suite" duration-ms="40219" started-at="2013-05-30T22:46:45Z" finished-at="2013-05-30T22:47:25Z">
     <groups>
     </groups>
-    <test name="Functional Test - Firefox 17" duration-ms="50569" started-at="2013-05-28T03:08:09Z" finished-at="2013-05-28T03:09:00Z">
-      <class name="functionalTests.AttachmentTests">
-        <test-method status="PASS" signature="launchBrowser(java.lang.String)[pri:0, instance:functionalTests.AttachmentTests@1991e21]" name="launchBrowser" is-config="true" duration-ms="11565" started-at="2013-05-27T20:08:09Z" finished-at="2013-05-27T20:08:21Z">
+    <test name="Global Menu Navigation Test - Firefox 17" duration-ms="40219" started-at="2013-05-30T22:46:45Z" finished-at="2013-05-30T22:47:25Z">
+      <class name="functionalTests.GlobalMenuNavigationTests">
+        <test-method status="PASS" signature="launchBrowser(java.lang.String)[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="launchBrowser" is-config="true" duration-ms="9346" started-at="2013-05-30T15:46:45Z" finished-at="2013-05-30T15:46:54Z">
           <params>
             <param index="0">
               <value>
@@ -18,60 +18,60 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method status="PASS" signature="test00_Mobile_Login()[pri:0, instance:functionalTests.AttachmentTests@1991e21]" name="test00_Mobile_Login" duration-ms="13881" started-at="2013-05-27T20:08:21Z" finished-at="2013-05-27T20:08:35Z">
+        <test-method status="PASS" signature="test00_Mobile_Login()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="test00_Mobile_Login" duration-ms="15580" started-at="2013-05-30T15:46:54Z" finished-at="2013-05-30T15:47:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test00_Mobile_Login -->
-        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:functionalTests.AttachmentTests@1991e21]" name="checkVP" is-config="true" duration-ms="1" started-at="2013-05-27T20:08:35Z" finished-at="2013-05-27T20:08:35Z">
+        <test-method status="PASS" signature="test13_SeTestTCGlobalMenuItemCheckjava()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="test13_SeTestTCGlobalMenuItemCheckjava" duration-ms="1954" started-at="2013-05-30T15:47:10Z" finished-at="2013-05-30T15:47:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test13_SeTestTCGlobalMenuItemCheckjava -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-05-30T15:47:10Z" finished-at="2013-05-30T15:47:10Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=test00_Mobile_Login status=SUCCESS method=AttachmentTests.test00_Mobile_Login()[pri:0, instance:functionalTests.AttachmentTests@1991e21] output={null}]]]>
+                <![CDATA[[TestResult name=test00_Mobile_Login status=SUCCESS method=GlobalMenuNavigationTests.test00_Mobile_Login()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkVP -->
-        <test-method status="PASS" signature="test07_SeTestTCAttachTicketScreens()[pri:0, instance:functionalTests.AttachmentTests@1991e21]" name="test07_SeTestTCAttachTicketScreens" duration-ms="11084" started-at="2013-05-27T20:08:35Z" finished-at="2013-05-27T20:08:46Z">
+        <test-method status="PASS" signature="test99_Mobile_LogOut()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="test99_Mobile_LogOut" duration-ms="12885" started-at="2013-05-30T15:47:12Z" finished-at="2013-05-30T15:47:25Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test07_SeTestTCAttachTicketScreens -->
-        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:functionalTests.AttachmentTests@1991e21]" name="checkVP" is-config="true" duration-ms="1" started-at="2013-05-27T20:08:46Z" finished-at="2013-05-27T20:08:46Z">
+        </test-method> <!-- test99_Mobile_LogOut -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-05-30T15:47:12Z" finished-at="2013-05-30T15:47:12Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=test07_SeTestTCAttachTicketScreens status=SUCCESS method=AttachmentTests.test07_SeTestTCAttachTicketScreens()[pri:0, instance:functionalTests.AttachmentTests@1991e21] output={null}]]]>
+                <![CDATA[[TestResult name=test13_SeTestTCGlobalMenuItemCheckjava status=SUCCESS method=GlobalMenuNavigationTests.test13_SeTestTCGlobalMenuItemCheckjava()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkVP -->
-        <test-method status="PASS" signature="test50_Mobile_LogOut()[pri:0, instance:functionalTests.AttachmentTests@1991e21]" name="test50_Mobile_LogOut" duration-ms="12946" started-at="2013-05-27T20:08:46Z" finished-at="2013-05-27T20:08:59Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- test50_Mobile_LogOut -->
-        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:functionalTests.AttachmentTests@1991e21]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-05-27T20:08:59Z" finished-at="2013-05-27T20:08:59Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=test50_Mobile_LogOut status=SUCCESS method=AttachmentTests.test50_Mobile_LogOut()[pri:0, instance:functionalTests.AttachmentTests@1991e21] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- checkVP -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:functionalTests.AttachmentTests@1991e21]" name="closeBrowser" is-config="true" duration-ms="1022" started-at="2013-05-27T20:08:59Z" finished-at="2013-05-27T20:09:00Z">
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="closeBrowser" is-config="true" duration-ms="437" started-at="2013-05-30T15:47:25Z" finished-at="2013-05-30T15:47:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-        <test-method status="PASS" signature="copyReport()[pri:0, instance:functionalTests.AttachmentTests@1991e21]" name="copyReport" is-config="true" duration-ms="349" started-at="2013-05-27T20:09:00Z" finished-at="2013-05-27T20:09:00Z">
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-05-30T15:47:25Z" finished-at="2013-05-30T15:47:25Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=test99_Mobile_LogOut status=SUCCESS method=GlobalMenuNavigationTests.test99_Mobile_LogOut()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkVP -->
+        <test-method status="PASS" signature="copyReport()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="copyReport" is-config="true" duration-ms="31" started-at="2013-05-30T15:47:25Z" finished-at="2013-05-30T15:47:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- copyReport -->
-      </class> <!-- functionalTests.AttachmentTests -->
-    </test> <!-- Functional Test - Firefox 17 -->
-  </suite> <!-- Functional Test Suite -->
+      </class> <!-- functionalTests.GlobalMenuNavigationTests -->
+    </test> <!-- Global Menu Navigation Test - Firefox 17 -->
+  </suite> <!-- Mobile2x Debug Test Suite -->
 </testng-results>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Mobile2x Full-Test Suite" verbose="3" parallel="classes">
+<suite name="Mobile2x Debug Test Suite" verbose="3" parallel="classes">
 
-      <test name="Defect Fix Test - Firefox 17">
+    <test name="Defect Fix Test - Firefox 17">
   <parameter name="browser" value="FF"></parameter>
     <classes>
       <class name="defectFixTests.MobileDefectTests"/>
@@ -20,6 +20,13 @@
   <parameter name="browser" value="FF"></parameter>
     <classes>
       <class name="functionalTests.AttachmentTests"/>
+    </classes>
+  </test> <!-- Default test -->
+  
+    <test name="Global Menu Navigation Test - Firefox 17">
+  <parameter name="browser" value="FF"></parameter>
+    <classes>
+      <class name="functionalTests.GlobalMenuNavigationTests"/>
     </classes>
   </test> <!-- Default test -->
     
