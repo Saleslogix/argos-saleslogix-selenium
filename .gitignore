@@ -1,5 +1,5 @@
 *.class
-
+chromedriver.log
 # Package Files #
 *.jar
 *.war
