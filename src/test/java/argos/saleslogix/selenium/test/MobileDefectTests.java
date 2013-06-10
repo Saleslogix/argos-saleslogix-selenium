@@ -4698,6 +4698,7 @@ public class MobileDefectTests extends BrowserSetup {
 	    }
 
 	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_4']/div/div[1]/input")).clear();
+	    Thread.sleep(1000);
 	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_4']/div/div[1]/input")).sendKeys("Audit Agency");
 	    Thread.sleep(1000);
 	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_4']/div/div[3]/button")).click();
@@ -4717,6 +4718,7 @@ public class MobileDefectTests extends BrowserSetup {
 	    // Step: set the Sales Potential to no value...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_MultiCurrencyField_0']/input")).clear();
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_MultiCurrencyField_0']/input")).sendKeys("");
+	    
 	    // Step: save the Opportunity...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
@@ -4847,7 +4849,7 @@ public class MobileDefectTests extends BrowserSetup {
 	    Thread.sleep(2000);	    
 	    
 	    // Step: setup a unique, time-based file name for the uploaded file...
-	    String newfilename = "upload." + new SimpleDateFormat("MM-dd-yyyy hh-mm-ss aaa").format(new GregorianCalendar().getTime()) + ".txt";
+	    String newfilename = "upload." + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime()) + ".txt";
 	    driver.findElement(By.id("File_0")).clear();
 	    driver.findElement(By.id("File_0")).sendKeys(newfilename);
 	    Thread.sleep(1000);
@@ -4896,31 +4898,6 @@ public class MobileDefectTests extends BrowserSetup {
 	    // -- END
 	}
 	
-	
-	//MARKER		
-	// *******
-	@Test
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-	
-		// Click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
-	
-		// Click the Log Off button
-		commNav.logOut();
-		Thread.sleep(3000);
-		closeAlert();
-		Thread.sleep(5000);
-					
-		// Verify the Mobile Login screen displays
-		try {
-			AssertJUnit.assertEquals("Sage SalesLogix", driver.findElement(By.id("pageTitle")).getAttribute("text"));
-		} catch (Error e) {     
-			System.out.println("Verify Mobile Login screen Displays" + e.toString());
-		}
-	}
-
 	@Test
 	  public void test33_MobileDefect13092055() throws Exception {
 	    // SETest-Defect_13092055
@@ -5075,7 +5052,7 @@ public class MobileDefectTests extends BrowserSetup {
 	  public void test34_MobileDefect13092056() throws Exception {
 	    // SETest-Defect_13092056
 	    // Version: 2.2
-	    // Desc: Confirms that the Attachments feature is functional from Notes screens...
+	    // Desc: Confirms that an Attachment added to a Contact is accessible from the associated Account...
 	    // Required Entities: Contact - Adi, Douglas; Account - TriCom International
 	    // Condition(s): Test user 'Dan' is logged in.    
 	    // ==================================================================
@@ -5087,6 +5064,7 @@ public class MobileDefectTests extends BrowserSetup {
 	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
+	    Thread.sleep(1000);
 	
 	    // Step: navigate to Contacts list view...
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'Contacts']")).click();
@@ -5264,5 +5242,736 @@ public class MobileDefectTests extends BrowserSetup {
 	    // - End Section
 	    // -- END
 	  }
+
+	@Test
+	  public void test35_MobileDefect13092057() throws Exception {
+	    // SETest-Defect_13092057
+	    // Version: 2.2
+	    // Desc: Confirms that an Attachment added to an Opportunity is accessible from the linked Account.
+	    // Required Entities: Opportunity - Advising Group-Phase1; Account - Advising Group
+	    // Condition(s): Test user 'Dan' is logged in.    
+	    // ==================================================================
+	    // - Start Section
+	    // Step: click Top-Left button to reveal Global Menu...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to Opportunities list view...
+	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'Opportunities']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: perform search for Opportunity item...
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_11']/div/div[1]/input")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_11']/div/div[1]/input")).sendKeys("Advising Group-Phase1");
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_11']/div/div[3]/button")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Warning: verifyTextPresent may require manual changes
+	    try {
+	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Advising Group-Phase1[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    // Step: navigate to top Opportunity record...
+	    driver.findElement(By.xpath(".//*[@id='opportunity_list']/ul/li/div/h3")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Advising Group-Phase1".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // VP: confirm that Attachments is available under the Related Items section...
+	    try {
+	      assertTrue(isElementPresent(By.xpath(".//*[@id='opportunity_detail']/div[2]/ul[2]/li[5]/a/img")));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    try {
+	      assertEquals("Attachments", driver.findElement(By.xpath(".//*[@id='opportunity_detail']/div[2]/ul[2]/li[5]/a/span")).getText());
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    // Step: click the Attachments link...
+	    driver.findElement(By.xpath(".//*[@id='opportunity_detail']/div[2]/ul[2]/li[5]/a/span")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Opportunity Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: click the top Add buton...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Add Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // VP: confirm the elements of the Add Attachments screen...
+	    try {
+	      assertTrue(isElementPresent(By.cssSelector("input[type=\"file\"]")));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    try {
+	      assertTrue(isElementPresent(By.cssSelector("button.button.inline")));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    try {
+	      assertTrue(isElementPresent(By.xpath("//div[@id='attachment_Add']/div[2]/div/button[2]")));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    // Step: click the 'add a file' section of the screen...
+	    String filepath = "C://uploadtest.txt";
+	    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).sendKeys(filepath);
+	    Thread.sleep(2000);	    
+	    
+	    // Step: setup a unique, time-based file name for the uploaded file...
+	    String newattachname = "upload." + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime()) + ".txt";
+	    driver.findElement(By.id("File_0")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.id("File_0")).sendKeys(newattachname);
+	    Thread.sleep(1000);
+	    
+	    // Step: proceed with file upload...
+	    driver.findElement(By.id("fileSelect-btn-upload")).click();
+	    
+	    // Verify: upload progress indicator is displayed...
+	    /*
+	    try {
+	        assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Uploading[\\s\\S]*$"));
+	      } catch (Error e) {
+	        verificationErrors.append(e.toString());
+	    }
+	    */
+	    
+	    // Step: verify that new attachment appears in the Contact Attachments list view...
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Opportunity Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Warning: verifyTextPresent may require manual changes
+	    try {
+	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newattachname + "[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    // -- End Section
+	    
+	    // - Start Section
+	    // Step: navigate back to Opportunity detail view...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Advising Group-Phase1".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to associated Account detail view..
+	    driver.findElement(By.xpath(".//*[@id='opportunity_detail']/div[2]/div[1]/div[2]/span/a")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Account".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to the Account Attachments list view...
+	    driver.findElement(By.xpath(".//*[@id='account_detail']/div[2]/ul[2]/li[7]/a/span")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Account Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: perform search of Attachment added from associated Contact detail view...
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input")).sendKeys(newattachname);
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input")).click();
+	    
+	    // VP: verify that the Attachment item is found
+	    // Warning: verifyTextPresent may require manual changes
+	    try {
+	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newattachname + "[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    // Step: navigate back to My Activities view...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to Contacts list view...
+	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // - End Section
+	    // -- END
+	  }  
+
+	@Test
+	  public void test36_MobileDefect13092058() throws Exception {
+	    // SETest-Defect_13092058
+	    // Version: 2.2
+	    // Desc: Confirms that an Attachment added to a Ticket is accessible from the linked Account and Contact.
+	    // Required Entities: Ticket - Advising Group-Phase1; Account - Advising Group
+	    // Condition(s): Test user 'Dan' is logged in.    
+	    // ==================================================================
+	    // - Start Section
+	    // Step: click Top-Left button to reveal Global Menu...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to Tickets list view...
+	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'Tickets']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: perform search for Ticket item...
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_18']/div/div[1]/input")).clear();
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_18']/div/div[1]/input")).sendKeys("000-00-000011");
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_18']/div/div[3]/button")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Warning: verifyTextPresent may require manual changes
+	    try {
+	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*000-00-000011[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    // Step: navigate to top Ticket record...
+	    driver.findElement(By.xpath(".//*[@id='ticket_list']/ul/li/div/h3")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("000-00-000011".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // VP: confirm that Attachments is available under the Related Items section...
+	    try {
+	      assertTrue(isElementPresent(By.xpath(".//*[@id='ticket_detail']/div[2]/ul[2]/li[3]/a/img")));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    try {
+	      assertEquals("Attachments", driver.findElement(By.xpath(".//*[@id='ticket_detail']/div[2]/ul[2]/li[3]/a/span")).getText());
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    // Step: click the Attachments link...
+	    driver.findElement(By.xpath(".//*[@id='ticket_detail']/div[2]/ul[2]/li[3]/a/span")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Ticket Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: click the top Add buton...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Add Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // VP: confirm the elements of the Add Attachments screen...
+	    try {
+	      assertTrue(isElementPresent(By.cssSelector("input[type=\"file\"]")));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    try {
+	      assertTrue(isElementPresent(By.cssSelector("button.button.inline")));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    try {
+	      assertTrue(isElementPresent(By.xpath("//div[@id='attachment_Add']/div[2]/div/button[2]")));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    
+	    // Step: click the 'add a file' section of the screen...
+	    String filepath = "C://uploadtest.txt";
+	    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).sendKeys(filepath);
+	    Thread.sleep(2000);	    
+	    
+	    // Step: setup a unique, time-based file name for the uploaded file...
+	    String newattachname = "upload." + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime()) + ".txt";
+	    driver.findElement(By.id("File_0")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.id("File_0")).sendKeys(newattachname);
+	    Thread.sleep(1000);
+	    
+	    // Step: proceed with file upload...
+	    driver.findElement(By.id("fileSelect-btn-upload")).click();
+	    
+	    // Verify: upload progress indicator is displayed...
+	    /*
+	    try {
+	        assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Uploading[\\s\\S]*$"));
+	      } catch (Error e) {
+	        verificationErrors.append(e.toString());
+	    }
+	    */
+	    
+	    // Step: verify that new attachment appears in the Contact Attachments list view...
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Ticket Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Warning: verifyTextPresent may require manual changes
+	    try {
+	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newattachname + "[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    
+	    // Step: verify that new attachment appears in the Ticket Attachments list view...
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Ticket Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Warning: verifyTextPresent may require manual changes
+	    try {
+	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newattachname + "[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    // -- End Section
+	    
+	    // - Start Section
+	    // Step: navigate back to Contact detail view...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("000-00-000011".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to associated Account detail view..
+	    driver.findElement(By.xpath(".//*[@id='ticket_detail']/div[2]/div[1]/div[1]/span/a")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Yard Institute".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to the Account Attachments list view...
+	    driver.findElement(By.xpath(".//*[@id='account_detail']/div[2]/ul[2]/li[7]/a/span")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Account Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: perform search of Attachment added from associated Contact detail view...
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input")).sendKeys(newattachname);
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input")).click();
+	    
+	    // VP: verify that the Attachment item is found
+	    // Warning: verifyTextPresent may require manual changes
+	    try {
+	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ newattachname +"[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    
+	    // Step: navigate back to Ticket detail view...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Yard Institute".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("000-00-000011".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: from Tickets detail view navigate to associated Contact detail view...
+	    driver.findElement(By.xpath(".//*[@id='ticket_detail']/div[2]/div[1]/div[2]/span/a")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Banks, Paul".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to the Attachments list view...
+	    driver.findElement(By.xpath(".//*[@id='contact_detail']/div[2]/ul[2]/li[6]/a/span")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Contact Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: perform a search of the target Attachment...
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_37']/div/div[1]/input")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_37']/div/div[1]/input")).sendKeys(newattachname);
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_37']/div/div[3]/button")).click();
+	    
+	    // VP: confirm that the target Attachment is listed in the results...
+	    // Warning: verifyTextPresent may require manual changes
+	    try {
+	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newattachname + "[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }
+	    
+	    // Step: navigate back to My Activities view...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    
+	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // - End Section
+	    // -- END
+	  }
+
+	@Test
+	  public void test37_MobileDefect13092067() throws Exception {
+	    // SETest-Defect_13092067
+	    // Version: 2.2
+	    // Desc: Confirms that the label for 'Related Items' under an Attachment details view is spelled correctly.
+	    // Required Entities: any Attachment record
+	    // Condition(s): Test user 'Dan' is logged in.    
+	    // ==================================================================
+	    // - Start Section
+	    // Step: click Top-Left button to reveal Global Menu...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to My Activities list view...
+	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: open the top Activity record in the list...
+	    driver.findElement(By.xpath(".//*[@id='myactivity_list']/ul/li[1]/div[2]/h3/span[2]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // VP: verify that Related Items section is available...
+	    // Warning: assertTextPresent may require manual changes
+	    assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Related Items[\\s\\S]*$"));
+	    // Step: navigate back...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to My Activities list view...
+	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // -- END
+	  }
+
+	@Test
+	  public void test38_MobileDefect13092084() throws Exception {
+	    // SETest-Defect_13092084
+	    // Version: 2.2
+	    // Desc: Confirms that the a warning message is displayed when attempting to upload a 4GB+ file.
+	    // Required Entities: N/A
+	    // Condition(s): Test user 'Dan' is logged in.    
+	    // ==================================================================
+	    // Step: click Top-Left button to reveal Global Menu...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to Notes/History list view...
+	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Attachments']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myattachment_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: click the top Add buton...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Add Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: click the 'add a file' section of the screen...
+	    String filepath = "C://4GB-OverMaxUploadFile.bmp";
+	    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).sendKeys(filepath);
+	    Thread.sleep(2000);	    
+	    
+	    // Step: setup a unique, time-based file name for the uploaded file...
+	    String newattachname = "4GBUpload." + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime()) + ".bmp";
+	    driver.findElement(By.id("File_0")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.id("File_0")).sendKeys(newattachname);
+	    Thread.sleep(1000);
+	    
+	    // Step: proceed with file upload...
+	    driver.findElement(By.id("fileSelect-btn-upload")).click();
+	    
+	    // Verify: upload progress indicator is displayed...
+	    /*
+	    try {
+	        assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Uploading[\\s\\S]*$"));
+	      } catch (Error e) {
+	        verificationErrors.append(e.toString());
+	    }
+	    */
+	    
+	    // Step: verify that new attachment appears in the Contact Attachments list view...
+	    closeAlert();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("My Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    try {
+	      assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newattachname + "[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }	    
+	
+	    // Step: navigate back screen...	
+	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // -- END
+	  }
+
+	@Test
+	  public void test39_MobileDefect13092084() throws Exception {
+	    // SETest-Defect_13092084
+	    // Version: 2.2
+	    // Desc: Confirms that the a warning message is displayed when attempting to upload a 4GB+ file.
+	    // Required Entities: N/A
+	    // Condition(s): Test user 'Dan' is logged in.    
+	    // ==================================================================
+	    // Step: click Top-Left button to reveal Global Menu...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to My Attachments list view...
+	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Attachments']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myattachment_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: click the top Add buton...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("Add Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: click the 'add a file' section of the screen...
+	    String urlattach = "http://www.gnu.org/fun/jokes/helloworld.html";
+	    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).sendKeys(urlattach);
+	    Thread.sleep(2000);	    
+	    
+	    // Step: setup a unique, time-based file name for the uploaded file...
+	    driver.findElement(By.id("File_0")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.id("File_0")).sendKeys(urlattach);
+	    Thread.sleep(1000);
+	    
+	    // Step: proceed with file upload...
+	    driver.findElement(By.id("fileSelect-btn-upload")).click();
+	    	    
+	    // Step: verify that new attachment appears in the Contact Attachments list view...
+	    closeAlert();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("My Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    try {
+	      assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + urlattach + "[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(e.toString());
+	    }	    
+	
+	    // Step: navigate back screen...	
+	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // -- END
+	  }
+
+	@Test
+	  public void test40_MobileDefect13092132() throws Exception {
+	    // SETest-Defect_13092132
+	    // Version: 2.2
+	    // Desc: Confirms that there are no extra brackets for a URL Attachment when displayed in the Attachments list view.
+	    // Required Entities: N/A
+	    // Condition(s): Test user 'Dan' is logged in.    
+	    // ==================================================================
+	    // Step: click Top-Left button to reveal Global Menu...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to My Attachments list view...
+	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Attachments']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myattachment_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: perform search on existing Attachment...
+	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_35']/div/div[1]/input")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_35']/div/div[1]/input")).sendKeys("cnn");
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_35']/div/div[3]/button")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath("//*[@id='myattachment_list']/ul/li"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // VP: check to see that expected Attachment is present and if so, perform the check...
+	    Thread.sleep(1000);
+	    assertEquals("www.cnn.com ", driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li/div/div[2]/h4[2]/span")).getText());
+	    assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*//[\\s\\S]*\\[@id='myattachment_list'\\]/ul/li/div/div\\[2\\]/h4\\[2\\]/span[\\s\\S]*$"));
+	    
+	    // Step: return to My Activities view...
+	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[1]/div[2]/h3")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if ("My Activities".equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // -- END
+	  }
+
+	//MARKER		
+	// *******
+	@Test
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+	
+		// Click the Top-Left, Global Menu button...
+		headerbutton.showGlobalMenu();
+	
+		// Click the Log Off button
+		commNav.logOut();
+		Thread.sleep(3000);
+		closeAlert();
+		Thread.sleep(5000);
+					
+		// Verify the Mobile Login screen displays
+		try {
+			AssertJUnit.assertEquals("Sage SalesLogix", driver.findElement(By.id("pageTitle")).getAttribute("text"));
+		} catch (Error e) {     
+			System.out.println("Verify Mobile Login screen Displays" + e.toString());
+		}
+	}
 
 }
