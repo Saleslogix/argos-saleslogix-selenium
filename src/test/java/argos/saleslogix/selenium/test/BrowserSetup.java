@@ -34,16 +34,21 @@ import com.google.common.io.Files;
 
 public class BrowserSetup {
 
-public static WebDriver driver;	
+public static WebDriver driver;
+public String browsername = "";
 public String baseUrl;
 public String mobileUrl;
 public String startPage;
 public String homePage;
 public String userName;
 public String userPwd;
+public String fullProdName;
+public String shortProdName;
 public String copyrightLabel;
 public String versionLabel;
 public String scriptuser;
+public String STARTLINE = "==================";
+public String ENDLINE   = "------------------";
 private boolean acceptNextAlert = true;
 protected StringBuffer verificationErrors = new StringBuffer();
 	
@@ -61,8 +66,9 @@ protected StringBuffer verificationErrors = new StringBuffer();
 	}else {
 		File file = new File("C:\\Selenium\\IEDriverServer.exe");
         System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
-		driver = new InternetExplorerDriver();			
+		driver = new InternetExplorerDriver();		
 	}
+	browsername = browser;
 		
 	Properties p = new Properties();
 	FileReader reader = new FileReader("app.properties");
@@ -74,6 +80,8 @@ protected StringBuffer verificationErrors = new StringBuffer();
 	homePage = p.getProperty("home_page");
 	userName = p.getProperty("user_name");
 	userPwd = p.getProperty("user_pwd");
+	fullProdName = p.getProperty("full_prod_name");
+	shortProdName = p.getProperty("short_prod_name");
 	copyrightLabel = p.getProperty("copyright_lbl");
 	versionLabel = p.getProperty("version_lbl");
 	scriptuser = p.getProperty("script_user");
@@ -96,6 +104,7 @@ protected StringBuffer verificationErrors = new StringBuffer();
 		}
 		//driver.close();
 		//driver.quit();
+		System.out.println("");
 	}
 		
 	protected boolean isElementPresent(By by) {

@@ -17,6 +17,7 @@
 <!--Pre-Run Steps: Logoff, then Log back in as 'Lee'...-->
 <!--Required Entity: Contact - Douglas Adi-->
 <!--====================================-->
+<!--- Start Section-->
 <!--Step: click Top-Left button to reveal Global Menu...-->
 <tr>
 	<td>click</td>
@@ -25,7 +26,7 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
 	<td></td>
 </tr>
 <!--Step: navigate to My Activities list view...-->
@@ -36,16 +37,12 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>XPath=.//*[@id='activity_list']/ul/li[1]</td>
+	<td>XPath=.//*[@id='myactivity_list']/ul</td>
 	<td></td>
-</tr>
-	<td>waitForText</td>
-	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>My Activities</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
@@ -140,7 +137,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
@@ -185,13 +182,8 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
-</tr>
-<tr>
-	<td>waitForText/td>
-	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Meeting</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -218,36 +210,10 @@
 	<td>XPath=.//*[@id='contact_related']/ul/li/div/h3</td>
 	<td></td>
 </tr>
-<tr>
-	<td>waitForText/td>
-	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Meeting</td>
-</tr>
+<!--Step: click the top-right Save button...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>My Activities</td>
-</tr>
-<!--Step: navigate back to the Home screen...-->
-<tr>
-	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Home</td>
-</tr>
-<!--Step: nav back to the My Activities list view... -->
-<tr>
-	<td>click</td>
-	<td>XPath=.//*[@id='home']/descendant::*[text()=&quot;My Activities&quot;]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
@@ -255,10 +221,11 @@
 	<td>XPath=.//*[@id='pageTitle']</td>
 	<td>My Activities</td>
 </tr>
+<!--VP: verify that newly-scheduled Activity is listed...-->
 <tr>
 	<td>verifyText</td>
 	<td>XPath=.//*[@id='myactivity_list']/ul/li[1]/div[2]/h3/span[3]</td>
-	<td>Breakfast meeting</td>
+	<td> Breakfast meeting</td>
 </tr>
 <!--Verify: click the Activity icon to see that the Complete & Call actions are available in the actions panel...-->
 <tr>
@@ -300,7 +267,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
 	<td></td>
 </tr>
 <tr>
@@ -313,6 +280,8 @@
 	<td>XPath=.//*[@id='myactivity_list']/ul/li[1]/div[2]/h3/span[3]</td>
 	<td>Breakfast meeting</td>
 </tr>
+<!--- End Section-->
+<!--- Start Section-->
 <!--Step: click Top-Left button to reveal Global Menu...-->
 <tr>
 	<td>click</td>
@@ -321,7 +290,7 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
 	<td></td>
 </tr>
 <!--Step: navigate to My Activities list view...-->
@@ -335,16 +304,7 @@
 	<td>XPath=.//*[@id='contact_list']/ul/li[1]</td>
 	<td></td>
 </tr>
-	<td>waitForText</td>
-	<td>XPath=.//*[@id='pageTitle']</td>
-	<td>Contacts</td>
-</tr>
 <!--Step: navigate to the History list view of the Contact associated with the completed Activity...-->
-<tr>
-	<td>click</td>
-	<td>XPath=.//*[@id='home']/descendant::*[text()=&quot;Contacts&quot;]</td>
-	<td></td>
-</tr>
 <tr>
 	<td>waitForText</td>
 	<td>XPath=.//*[@id='pageTitle']</td>
@@ -405,6 +365,29 @@
 	<td>verifyText</td>
 	<td>XPath=.//*[@id='history_related']/ul/li[1]/div/div/div[1]</td>
 	<td>test activity for SETest-TC-MyActivities-Complete</td>
+</tr>
+<!--- End Section-->
+<!--Step: go back to My Activities list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
+	<td></td>
+</tr>
+<!--Step: navigate to My Activities list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;My Activities&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='myactivity_list']/ul</td>
+	<td></td>
 </tr>
 <!---- END-->
 </tbody></table>

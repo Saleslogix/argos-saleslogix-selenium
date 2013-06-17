@@ -1,0 +1,342 @@
+<html>
+<head>
+<title>TestNG:  GlobalMenuNavigation Tests - IE</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>GlobalMenuNavigation Tests - IE</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/13</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Jun 17 08:40:05 MST 2013</td>
+</tr>
+<tr><td>Total time:</td><td>64 seconds (64519 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests<br>Parameters: [TestResult name=test00_Mobile_Login status=FAILURE method=GlobalMenuNavigationTests.test00_Mobile_Login()[pri:0, instance:argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8] output={null}]</td>
+<td><div><pre>org.openqa.selenium.NoSuchWindowException: Unable to get browser (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 16 milliseconds
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:52:59&apos;
+System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_17&apos;
+Session ID: cdafffa9-3ad0-4a75-8883-f9f946549b6c
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{platform=WINDOWS, elementScrollBehavior=0, javascriptEnabled=true, enablePersistentHover=true, ignoreZoomSetting=false, browserName=internet explorer, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss, version=10, cssSelectorsEnabled=true, ignoreProtectedModeSettings=false, allowAsynchronousJavaScript=true, requireWindowFocus=false, handlesAlerts=true, initialBrowserUrl=, nativeEvents=true, takesScreenshot=true}]
+	at sun.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:187)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+	at org.openqa.selenium.ie.InternetExplorerDriver.getScreenshotAs(InternetExplorerDriver.java:88)
+	at argos.saleslogix.selenium.test.BrowserSetup.checkVP(BrowserSetup.java:96)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:786)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div><a href='#' onClick='toggleBox("stack-trace15107347", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace15107347'><pre>org.openqa.selenium.NoSuchWindowException: Unable to get browser (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 16 milliseconds
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:52:59&apos;
+System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_17&apos;
+Session ID: cdafffa9-3ad0-4a75-8883-f9f946549b6c
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{platform=WINDOWS, elementScrollBehavior=0, javascriptEnabled=true, enablePersistentHover=true, ignoreZoomSetting=false, browserName=internet explorer, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss, version=10, cssSelectorsEnabled=true, ignoreProtectedModeSettings=false, allowAsynchronousJavaScript=true, requireWindowFocus=false, handlesAlerts=true, initialBrowserUrl=, nativeEvents=true, takesScreenshot=true}]
+	at sun.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:187)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+	at org.openqa.selenium.ie.InternetExplorerDriver.getScreenshotAs(InternetExplorerDriver.java:88)
+	at argos.saleslogix.selenium.test.BrowserSetup.checkVP(BrowserSetup.java:96)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:786)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.checkVP()'><b>checkVP</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.closeBrowser()'><b>closeBrowser</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test00_Mobile_Login()'><b>test00_Mobile_Login</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td><div><pre>java.lang.AssertionError: timeout
+	at org.testng.AssertJUnit.fail(AssertJUnit.java:59)
+	at argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test00_Mobile_Login(GlobalMenuNavigationTests.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div><a href='#' onClick='toggleBox("stack-trace4562882", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace4562882'><pre>java.lang.AssertionError: timeout
+	at org.testng.AssertJUnit.fail(AssertJUnit.java:59)
+	at argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test00_Mobile_Login(GlobalMenuNavigationTests.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>60</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test03_SeTestTCGlobalMenuDoSpeedSearch()'><b>test03_SeTestTCGlobalMenuDoSpeedSearch</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test04_SeTestTCGlobalMenuEditAccount()'><b>test04_SeTestTCGlobalMenuEditAccount</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test05_SeTestTCGlobalMenuEditActivity()'><b>test05_SeTestTCGlobalMenuEditActivity</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test06_SeTestTCGlobalMenuEditContact()'><b>test06_SeTestTCGlobalMenuEditContact</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test07_SeTestTCGlobalMenuEditLead()'><b>test07_SeTestTCGlobalMenuEditLead</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test08_SeTestTCGlobalMenuEditNote()'><b>test08_SeTestTCGlobalMenuEditNote</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test10_SeTestTCGlobalMenuEditOpportunityScreens()'><b>test10_SeTestTCGlobalMenuEditOpportunityScreens</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test11_SeTestTCGlobalMenuEditOppProductScreens()'><b>test11_SeTestTCGlobalMenuEditOppProductScreens</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test12_SeTestTCGlobalMenuEditOppTicketScreens()'><b>test12_SeTestTCGlobalMenuEditOppTicketScreens</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test13_SeTestTCGlobalMenuEditTicketActivitiesScreens()'><b>test13_SeTestTCGlobalMenuEditTicketActivitiesScreens</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test14_SeTestTCGlobalMenuItemCheck()'><b>test14_SeTestTCGlobalMenuItemCheck</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test15_SeTestTCGlobalMenuSearchAttachments()'><b>test15_SeTestTCGlobalMenuSearchAttachments</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.GlobalMenuNavigationTests.test99_Mobile_LogOut()'><b>test99_Mobile_LogOut</b><br>Test class: argos.saleslogix.selenium.test.GlobalMenuNavigationTests</td>
+<td></td>
+<td>0</td>
+<td>argos.saleslogix.selenium.test.GlobalMenuNavigationTests@1ebacc8</td></tr>
+</table><p>
+</body>
+</html>

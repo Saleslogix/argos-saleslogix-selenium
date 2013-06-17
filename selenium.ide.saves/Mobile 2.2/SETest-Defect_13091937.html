@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
+<title>SETest-Defect_13091937</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-Defect_13091937/td></tr>
+</thead><tbody>
+<!--SE Test: SETest-Defect_13091937-->
+<!--Version: 2.2-->
+<!--Desc: validates that a Validation Summary error message is displayed if attempting to save an Opportunity w/o a Sales Potential value.-->
+<!--Required Entity: Account - Audit Agency-->
+<!--====================================-->
+<!--'Step: open the Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
+	<td></td>
+</tr>
+<!---- Start Section-->
+<!--Step: navigate to Opportunities list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = &quot;Opportunities&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='opportunity_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: add a new Opportunity...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='opportunity_edit']/div[2]/fieldset[1]/div[1]</td>
+	<td></td>
+</tr>
+<!--Step: setup Opp. - opportunity name field... (Artistic Supply Test Opp 100x)-->
+<tr>
+	<td>type</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_Fields_TextField_19']/input</td>
+	<td>Defect Test Opp No Products1</td>
+</tr>
+<!--Step: setup Opp. - acct. field...(Artistic Supply)-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_Fields_LookupField_6']/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='account_related']/ul/li[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_SearchWidget_4']/div/div[1]/input</td>
+	<td>Audit Agency</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_SearchWidget_4']/div/div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>XPath=.//*[@id='account_related']/ul/li/div/h3</td>
+	<td>Audit Agency</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='account_related']/descendant::*[text() = &quot;Audit Agency&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForValue</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_Fields_LookupField_6']/input</td>
+	<td>Audit Agency</td>
+</tr>
+<!--Step: set the Sales Potential to no value...-->
+<tr>
+	<td>type</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Fields_MultiCurrencyField_0']/input</td>
+	<td></td>
+</tr>
+<!--Step: save the Opportunity...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='opportunity_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--VP: confirm that a Validation Summary error is displayed for missing Sales Potential value...-->
+<tr>
+	<td>verifyText</td>
+	<td>XPath=.//*[@id='opportunity_edit']/div[1]/h2</td>
+	<td>Validation Summary</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The value 'NaN' is not a valid currency number</td>
+	<td></td>
+</tr>
+<!--Step: setup the Sales Potential value...-->
+<tr>
+	<td>type</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Fields_MultiCurrencyField_0']/input</td>
+	<td>100.00</td>
+</tr>
+<!--Step: save the Opportunity...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Opportunities</td>
+</tr>
+<!---- End Section-->
+<!---- END-->
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

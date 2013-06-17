@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
+<title>SETest-Attachments_Opportunity_Screens</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-Attachments_Opportunity_Screens</td></tr>
+</thead><tbody>
+<!--SETest-Defect_13092056-->
+<!--Version: 2.2-->
+<!--Desc: Confirms that the Attachments feature is functional from Notes screens...-->
+<!--Required Entities: Contact - Adi, Douglas; Account - TriCom International-->
+<!--Condition(s): Test user 'Dan' is logged in.    -->
+<!--==================================================================-->
+<!--- Start Section-->
+<!--Step: click Top-Left button to reveal Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
+	<td></td>
+</tr>
+<!--Step: navigate to Contacts list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = 'Notes/History']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='history_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: perform search for Contact item...-->
+<tr>
+	<td>type</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_SearchWidget_6']/div/div[1]/input</td>
+	<td>Adi</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_SearchWidget_6']/div/div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='contact_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Adi, Douglas</td>
+	<td></td>
+</tr>
+<!--Step: navigate to top Contact record...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='contact_list']/ul/li/div/h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Adi, Douglas</td>
+</tr>
+<!--VP: confirm that Attachments is available under the Related Items section...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>XPath=.//*[@id='contact_detail']/div[2]/ul[2]/li[6]/a/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>XPath=.//*[@id='contact_detail']/div[2]/ul[2]/li[6]/a/span</td>
+	<td>Attachments</td>
+</tr>
+<!--Step: click the Attachments link...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='contact_detail']/div[2]/ul[2]/li[6]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Contact Attachments</td>
+</tr>
+<!--Step: click the top Add buton...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Attachments</td>
+</tr>
+<!--VP: confirm the elements of the Add Attachments screen...-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=input[type=&quot;file&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=button.button.inline</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='attachment_Add']/div[2]/div/button[2]</td>
+	<td></td>
+</tr>
+<!--TODO: add file upload steps here...-->
+<!--Step: verify that new attachment appears in the Contact Attachments list view...-->
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Contact Attachments</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>TBD</td>
+	<td></td>
+</tr>
+<!---- End Section-->
+<!--- Start Section-->
+<!--Step: navigate back to Contact detail view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Adi, Douglas</td>
+</tr>
+<!--Step: navigate to associated Account detail view..-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='contact_detail']/div[2]/div[1]/div[2]/span/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>TriCom International</td>
+</tr>
+<!--Step: navigate to the Account Attachments list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='account_detail']/div[2]/ul[2]/li[7]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Account Attachments</td>
+</tr>
+<!--Step: perform search of Attachment added from associated Contact detail view...-->
+<tr>
+	<td>type</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input</td>
+	<td>TBD</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input</td>
+	<td></td>
+</tr>
+<!--VP: verify that the Attachment item is found-->
+<tr>
+	<td>verifyTextPresent</td>
+	<td>TBD</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to My Activities view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
+	<td></td>
+</tr>
+<!--Step: navigate to Contacts list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = 'My Activities']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='myactivity_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--- End Section-->
+<!---- END-->
+</tbody></table>
+</body>
+</html>

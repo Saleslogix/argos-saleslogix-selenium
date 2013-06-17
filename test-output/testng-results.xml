@@ -1,77 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" total="11" passed="11">
   <reporter-output>
   </reporter-output>
-  <suite name="Mobile2x Debug Test Suite" duration-ms="40219" started-at="2013-05-30T22:46:45Z" finished-at="2013-05-30T22:47:25Z">
+  <suite name="SLX8Mobile2x Unit-Test Suite" duration-ms="126519" started-at="2013-06-17T19:23:17Z" finished-at="2013-06-17T19:25:24Z">
     <groups>
     </groups>
-    <test name="Global Menu Navigation Test - Firefox 17" duration-ms="40219" started-at="2013-05-30T22:46:45Z" finished-at="2013-05-30T22:47:25Z">
-      <class name="functionalTests.GlobalMenuNavigationTests">
-        <test-method status="PASS" signature="launchBrowser(java.lang.String)[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="launchBrowser" is-config="true" duration-ms="9346" started-at="2013-05-30T15:46:45Z" finished-at="2013-05-30T15:46:54Z">
+    <test name="Unit Tests" duration-ms="126519" started-at="2013-06-17T19:23:17Z" finished-at="2013-06-17T19:25:24Z">
+      <class name="argos.saleslogix.selenium.test.UnitTestX">
+        <test-method status="PASS" signature="launchBrowser(java.lang.String)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="launchBrowser" is-config="true" duration-ms="9318" started-at="2013-06-17T12:23:17Z" finished-at="2013-06-17T12:23:27Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[FF]]>
+                <![CDATA[ff]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method status="PASS" signature="test00_Mobile_Login()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="test00_Mobile_Login" duration-ms="15580" started-at="2013-05-30T15:46:54Z" finished-at="2013-05-30T15:47:10Z">
+        <test-method status="PASS" signature="test00_Mobile_Login()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test00_Mobile_Login" duration-ms="19521" started-at="2013-06-17T12:23:27Z" finished-at="2013-06-17T12:23:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test00_Mobile_Login -->
-        <test-method status="PASS" signature="test13_SeTestTCGlobalMenuItemCheckjava()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="test13_SeTestTCGlobalMenuItemCheckjava" duration-ms="1954" started-at="2013-05-30T15:47:10Z" finished-at="2013-05-30T15:47:12Z">
+        <test-method status="PASS" signature="test06_SeTestTCGlobalMenuEditContact()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test06_SeTestTCGlobalMenuEditContact" duration-ms="10720" started-at="2013-06-17T12:23:46Z" finished-at="2013-06-17T12:23:57Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test13_SeTestTCGlobalMenuItemCheckjava -->
-        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-05-30T15:47:10Z" finished-at="2013-05-30T15:47:10Z">
+        </test-method> <!-- test06_SeTestTCGlobalMenuEditContact -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-06-17T12:23:46Z" finished-at="2013-06-17T12:23:46Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=test00_Mobile_Login status=SUCCESS method=GlobalMenuNavigationTests.test00_Mobile_Login()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608] output={null}]]]>
+                <![CDATA[[TestResult name=test00_Mobile_Login status=SUCCESS method=UnitTestX.test00_Mobile_Login()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkVP -->
-        <test-method status="PASS" signature="test99_Mobile_LogOut()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="test99_Mobile_LogOut" duration-ms="12885" started-at="2013-05-30T15:47:12Z" finished-at="2013-05-30T15:47:25Z">
+        <test-method status="PASS" signature="test07_SeTestTCGlobalMenuEditLead()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test07_SeTestTCGlobalMenuEditLead" duration-ms="13532" started-at="2013-06-17T12:23:57Z" finished-at="2013-06-17T12:24:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test07_SeTestTCGlobalMenuEditLead -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-06-17T12:23:57Z" finished-at="2013-06-17T12:23:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=test06_SeTestTCGlobalMenuEditContact status=SUCCESS method=UnitTestX.test06_SeTestTCGlobalMenuEditContact()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkVP -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-06-17T12:24:10Z" finished-at="2013-06-17T12:24:10Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=test07_SeTestTCGlobalMenuEditLead status=SUCCESS method=UnitTestX.test07_SeTestTCGlobalMenuEditLead()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkVP -->
+        <test-method status="PASS" signature="test08_SeTestTCGlobalMenuEditNote()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test08_SeTestTCGlobalMenuEditNote" duration-ms="7596" started-at="2013-06-17T12:24:10Z" finished-at="2013-06-17T12:24:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test08_SeTestTCGlobalMenuEditNote -->
+        <test-method status="PASS" signature="test10_SeTestTCGlobalMenuEditOpportunityScreens()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test10_SeTestTCGlobalMenuEditOpportunityScreens" duration-ms="12034" started-at="2013-06-17T12:24:18Z" finished-at="2013-06-17T12:24:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test10_SeTestTCGlobalMenuEditOpportunityScreens -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-06-17T12:24:18Z" finished-at="2013-06-17T12:24:18Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=test08_SeTestTCGlobalMenuEditNote status=SUCCESS method=UnitTestX.test08_SeTestTCGlobalMenuEditNote()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkVP -->
+        <test-method status="PASS" signature="test11_SeTestTCGlobalMenuEditOppProductScreens()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test11_SeTestTCGlobalMenuEditOppProductScreens" duration-ms="9720" started-at="2013-06-17T12:24:30Z" finished-at="2013-06-17T12:24:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test11_SeTestTCGlobalMenuEditOppProductScreens -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-06-17T12:24:30Z" finished-at="2013-06-17T12:24:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=test10_SeTestTCGlobalMenuEditOpportunityScreens status=SUCCESS method=UnitTestX.test10_SeTestTCGlobalMenuEditOpportunityScreens()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkVP -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="1" started-at="2013-06-17T12:24:40Z" finished-at="2013-06-17T12:24:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=test11_SeTestTCGlobalMenuEditOppProductScreens status=SUCCESS method=UnitTestX.test11_SeTestTCGlobalMenuEditOppProductScreens()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkVP -->
+        <test-method status="PASS" signature="test12_SeTestTCGlobalMenuEditOppTicketScreens()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test12_SeTestTCGlobalMenuEditOppTicketScreens" duration-ms="14565" started-at="2013-06-17T12:24:40Z" finished-at="2013-06-17T12:24:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test12_SeTestTCGlobalMenuEditOppTicketScreens -->
+        <test-method status="PASS" signature="test13_SeTestTCGlobalMenuEditTicketActivitiesScreens()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test13_SeTestTCGlobalMenuEditTicketActivitiesScreens" duration-ms="9489" started-at="2013-06-17T12:24:54Z" finished-at="2013-06-17T12:25:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test13_SeTestTCGlobalMenuEditTicketActivitiesScreens -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-06-17T12:24:54Z" finished-at="2013-06-17T12:24:54Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=test12_SeTestTCGlobalMenuEditOppTicketScreens status=SUCCESS method=UnitTestX.test12_SeTestTCGlobalMenuEditOppTicketScreens()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkVP -->
+        <test-method status="PASS" signature="test14_SeTestTCGlobalMenuItemCheck()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test14_SeTestTCGlobalMenuItemCheck" duration-ms="3127" started-at="2013-06-17T12:25:04Z" finished-at="2013-06-17T12:25:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test14_SeTestTCGlobalMenuItemCheck -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-06-17T12:25:04Z" finished-at="2013-06-17T12:25:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=test13_SeTestTCGlobalMenuEditTicketActivitiesScreens status=SUCCESS method=UnitTestX.test13_SeTestTCGlobalMenuEditTicketActivitiesScreens()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkVP -->
+        <test-method status="PASS" signature="test15_SeTestTCGlobalMenuSearchAttachments()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test15_SeTestTCGlobalMenuSearchAttachments" duration-ms="4486" started-at="2013-06-17T12:25:07Z" finished-at="2013-06-17T12:25:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test15_SeTestTCGlobalMenuSearchAttachments -->
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-06-17T12:25:07Z" finished-at="2013-06-17T12:25:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=test14_SeTestTCGlobalMenuItemCheck status=SUCCESS method=UnitTestX.test14_SeTestTCGlobalMenuItemCheck()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkVP -->
+        <test-method status="PASS" signature="test99_Mobile_LogOut()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="test99_Mobile_LogOut" duration-ms="11909" started-at="2013-06-17T12:25:11Z" finished-at="2013-06-17T12:25:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test99_Mobile_LogOut -->
-        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-05-30T15:47:12Z" finished-at="2013-05-30T15:47:12Z">
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-06-17T12:25:11Z" finished-at="2013-06-17T12:25:11Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=test13_SeTestTCGlobalMenuItemCheckjava status=SUCCESS method=GlobalMenuNavigationTests.test13_SeTestTCGlobalMenuItemCheckjava()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608] output={null}]]]>
+                <![CDATA[[TestResult name=test15_SeTestTCGlobalMenuSearchAttachments status=SUCCESS method=UnitTestX.test15_SeTestTCGlobalMenuSearchAttachments()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkVP -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="closeBrowser" is-config="true" duration-ms="437" started-at="2013-05-30T15:47:25Z" finished-at="2013-05-30T15:47:25Z">
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="closeBrowser" is-config="true" duration-ms="485" started-at="2013-06-17T12:25:23Z" finished-at="2013-06-17T12:25:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-05-30T15:47:25Z" finished-at="2013-05-30T15:47:25Z">
+        <test-method status="PASS" signature="checkVP(org.testng.ITestResult)[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="checkVP" is-config="true" duration-ms="0" started-at="2013-06-17T12:25:23Z" finished-at="2013-06-17T12:25:23Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=test99_Mobile_LogOut status=SUCCESS method=GlobalMenuNavigationTests.test99_Mobile_LogOut()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608] output={null}]]]>
+                <![CDATA[[TestResult name=test99_Mobile_LogOut status=SUCCESS method=UnitTestX.test99_Mobile_LogOut()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkVP -->
-        <test-method status="PASS" signature="copyReport()[pri:0, instance:functionalTests.GlobalMenuNavigationTests@1ce4608]" name="copyReport" is-config="true" duration-ms="31" started-at="2013-05-30T15:47:25Z" finished-at="2013-05-30T15:47:25Z">
+        <test-method status="PASS" signature="copyReport()[pri:0, instance:argos.saleslogix.selenium.test.UnitTestX@13ceab3]" name="copyReport" is-config="true" duration-ms="31" started-at="2013-06-17T12:25:24Z" finished-at="2013-06-17T12:25:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- copyReport -->
-      </class> <!-- functionalTests.GlobalMenuNavigationTests -->
-    </test> <!-- Global Menu Navigation Test - Firefox 17 -->
-  </suite> <!-- Mobile2x Debug Test Suite -->
+      </class> <!-- argos.saleslogix.selenium.test.UnitTestX -->
+    </test> <!-- Unit Tests -->
+  </suite> <!-- SLX8Mobile2x Unit-Test Suite -->
 </testng-results>

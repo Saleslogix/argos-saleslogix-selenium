@@ -12,12 +12,10 @@ import org.openqa.selenium.support.PageFactory;
 import argos.saleslogix.selenium.test.CommonNavigation;
 import argos.saleslogix.selenium.test.HeaderButton;
 import argos.saleslogix.selenium.test.SLXMobileLogin;
-import argos.saleslogix.selenium.test.NavButton;
 import argos.saleslogix.selenium.test.BrowserSetup;
 
 public class SmokeTest_Navigation extends BrowserSetup {
 	
-	NavButton navbutton = PageFactory.initElements(driver, NavButton.class);
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 	
 	@Test
@@ -429,7 +427,7 @@ public class SmokeTest_Navigation extends BrowserSetup {
         headerbutton.showGlobalMenu();
 		
 		// Click the Log Off button
-		commNav.logOut();
+        commNav.clickGlobalMenuItem("log out");
 	    Thread.sleep(3000);
 	    closeAlert();
 	    Thread.sleep(5000);

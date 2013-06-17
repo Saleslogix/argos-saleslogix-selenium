@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>TestNG:  Unit Tests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Unit Tests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>11/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Jun 17 12:23:17 MST 2013</td>
+</tr>
+<tr><td>Total time:</td><td>126 seconds (126519 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test00_Mobile_Login()'><b>test00_Mobile_Login</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>19</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test06_SeTestTCGlobalMenuEditContact()'><b>test06_SeTestTCGlobalMenuEditContact</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>10</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test07_SeTestTCGlobalMenuEditLead()'><b>test07_SeTestTCGlobalMenuEditLead</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>13</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test08_SeTestTCGlobalMenuEditNote()'><b>test08_SeTestTCGlobalMenuEditNote</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>7</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test10_SeTestTCGlobalMenuEditOpportunityScreens()'><b>test10_SeTestTCGlobalMenuEditOpportunityScreens</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>12</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test11_SeTestTCGlobalMenuEditOppProductScreens()'><b>test11_SeTestTCGlobalMenuEditOppProductScreens</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>9</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test12_SeTestTCGlobalMenuEditOppTicketScreens()'><b>test12_SeTestTCGlobalMenuEditOppTicketScreens</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>14</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test13_SeTestTCGlobalMenuEditTicketActivitiesScreens()'><b>test13_SeTestTCGlobalMenuEditTicketActivitiesScreens</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>9</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test14_SeTestTCGlobalMenuItemCheck()'><b>test14_SeTestTCGlobalMenuItemCheck</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>3</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test15_SeTestTCGlobalMenuSearchAttachments()'><b>test15_SeTestTCGlobalMenuSearchAttachments</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>4</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+<tr>
+<td title='argos.saleslogix.selenium.test.UnitTestX.test99_Mobile_LogOut()'><b>test99_Mobile_LogOut</b><br>Test class: argos.saleslogix.selenium.test.UnitTestX</td>
+<td></td>
+<td>11</td>
+<td>argos.saleslogix.selenium.test.UnitTestX@13ceab3</td></tr>
+</table><p>
+</body>
+</html>

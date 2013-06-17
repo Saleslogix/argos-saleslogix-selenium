@@ -19,13 +19,11 @@ import org.testng.annotations.Test;
 
 import argos.saleslogix.selenium.test.CommonNavigation;
 import argos.saleslogix.selenium.test.HeaderButton;
-import argos.saleslogix.selenium.test.NavButton;
 import argos.saleslogix.selenium.test.SLXMobileLogin;
 import argos.saleslogix.selenium.test.BrowserSetup;
 
 public class MobileDefectTests extends BrowserSetup {
   
-	NavButton navbutton = PageFactory.initElements(driver, NavButton.class);
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
   
 	@Test
@@ -5961,7 +5959,7 @@ public class MobileDefectTests extends BrowserSetup {
 		headerbutton.showGlobalMenu();
 	
 		// Click the Log Off button
-		commNav.logOut();
+		commNav.clickGlobalMenuItem("log out");
 		Thread.sleep(3000);
 		closeAlert();
 		Thread.sleep(5000);

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="3" name="Failed suite [SLX8Mobile2x Full-Test Suite]" parallel="classes">
+  <parameter name="browser" value="ff"/>
+  <test name="GlobalMenuNavigation Tests - FF(failed)" parallel="classes">
+    <parameter name="browser" value="ff"/>
+    <classes>
+      <class name="argos.saleslogix.selenium.test.GlobalMenuNavigationTests">
+        <methods>
+          <include name="test06_SeTestTCGlobalMenuEditContact"/>
+          <include name="test08_SeTestTCGlobalMenuEditNote"/>
+          <include name="test05_SeTestTCGlobalMenuEditActivity"/>
+          <include name="test12_SeTestTCGlobalMenuEditOppTicketScreens"/>
+          <include name="test15_SeTestTCGlobalMenuSearchAttachments"/>
+          <include name="closeBrowser"/>
+          <include name="test11_SeTestTCGlobalMenuEditOppProductScreens"/>
+          <include name="test13_SeTestTCGlobalMenuEditTicketActivitiesScreens"/>
+          <include name="test07_SeTestTCGlobalMenuEditLead"/>
+          <include name="launchBrowser"/>
+          <include name="copyReport"/>
+          <include name="test10_SeTestTCGlobalMenuEditOpportunityScreens"/>
+          <include name="checkVP"/>
+        </methods>
+      </class> <!-- argos.saleslogix.selenium.test.GlobalMenuNavigationTests -->
+    </classes>
+  </test> <!-- GlobalMenuNavigation Tests - FF(failed) -->
+</suite> <!-- Failed suite [SLX8Mobile2x Full-Test Suite] -->

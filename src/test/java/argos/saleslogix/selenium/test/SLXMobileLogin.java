@@ -53,4 +53,24 @@ public class SLXMobileLogin {
 		Thread.sleep(10000);
 		return this;
 	}
+	
+	public SLXMobileLogin doLogin(String userName, String passWord, Boolean rememberMe) throws InterruptedException {
+		String methodID = "doLogin";
+		
+		// Enter username and password then click the logon button
+		enterUserName(userName);
+		Thread.sleep(1000);
+		
+		enterPassword(passWord);
+		Thread.sleep(1000);
+		
+		if (rememberMe) {
+			toggleRemember();
+		}
+		
+		logonButton();
+		
+		System.out.println(methodID + ": " + userName + ", " + passWord + ", " + rememberMe);
+		return this;
+	}
 }

@@ -17,15 +17,25 @@
 <!--Note: This test script can be used as a template for completing/editing an Activity.-->
 <!--Condition(s): Test user is logged in.    -->
 <!--==================================================================-->
-<!--Step: click top Activity link from the My Activities screen...-->
+<!--Step: search for then click an Activity link from the My Activities screen...-->
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
 	<td>My Activities</td>
 </tr>
 <tr>
+	<td>type</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[1]/input</td>
+	<td>Demonstration</td>
+</tr>
+<tr>
 	<td>click</td>
-	<td>css=span.p-description</td>
+	<td>XPath=.//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[3]/button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='myactivity_list']/ul/li[1]/div[2]/h3/span[3]</td>
 	<td></td>
 </tr>
 <tr>
@@ -36,7 +46,7 @@
 <tr>
 	<td>assertText</td>
 	<td>css=a &gt; label</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Complete Activity link...-->
 <tr>
@@ -47,12 +57,7 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--VP: confirm that Global Menu button is available...-->
 <tr>
@@ -80,13 +85,13 @@
 <!--Step: navigate back to Complete Activity screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click Start Date edit button...-->
 <tr>
@@ -108,13 +113,13 @@
 <!--Step: navigate back to Complete Activity screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[4]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click Duration edit button...-->
 <tr>
@@ -136,13 +141,13 @@
 <!--Step: navigate back to the Name edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Result edit button...-->
 <tr>
@@ -164,13 +169,13 @@
 <!--Step: navigate back to the Name edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Follow-up edit button...-->
 <tr>
@@ -192,13 +197,13 @@
 <!--Step: navigate back to the Name edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Notes edit button...-->
 <tr>
@@ -220,13 +225,13 @@
 <!--Step: navigate back to the Name edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Priority edit button...-->
 <tr>
@@ -248,13 +253,13 @@
 <!--Step: navigate back to the Name edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Category edit button...-->
 <tr>
@@ -276,13 +281,13 @@
 <!--Step: navigate back to the Name edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Leader edit button...-->
 <tr>
@@ -304,13 +309,13 @@
 <!--Step: navigate back to the Address edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Account edit button...-->
 <tr>
@@ -332,13 +337,13 @@
 <!--Step: navigate back to the Address edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Contact edit button...-->
 <tr>
@@ -360,13 +365,13 @@
 <!--Step: navigate back to the Address edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Opportunity edit button...-->
 <tr>
@@ -388,13 +393,13 @@
 <!--Step: navigate back to the Address edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: click the Tickets edit button...-->
 <tr>
@@ -416,13 +421,13 @@
 <!--Step: navigate back to the Address edit screen...-->
 <tr>
 	<td>click</td>
-	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=pageTitle</td>
-	<td>Complete Activity</td>
+	<td>Complete*</td>
 </tr>
 <!--Step: navigate back to the Add Account / Contact screen...-->
 <tr>

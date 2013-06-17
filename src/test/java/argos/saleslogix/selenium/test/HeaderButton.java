@@ -15,35 +15,35 @@ public class HeaderButton {
 		this.driver = driver;		
 	}
 		
-	@CacheLookup
+	//@CacheLookup
 	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")
 	WebElement globalMenuButton;
 	
-	@CacheLookup
+	//@CacheLookup
 	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
 	WebElement addButton;
 	
-	@CacheLookup
+	//@CacheLookup
 	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
 	WebElement editButton;
 	
-	@CacheLookup
+	//@CacheLookup
 	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
 	WebElement saveButton;
 	
-	@CacheLookup
+	//@CacheLookup
 	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
 	WebElement checkButton;
 	
-	@CacheLookup
+	//@CacheLookup
 	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
 	WebElement deleteButton;
 	
-	@CacheLookup
+	//@CacheLookup
 	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
 	WebElement cancelButton;
 	
-	@CacheLookup
+	//@CacheLookup
 	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
 	WebElement backButton;	
 	
@@ -65,14 +65,16 @@ public class HeaderButton {
 		}
 	
 	public HeaderButton showGlobalMenu() throws InterruptedException {
-		globalMenuButton.click();
-		Thread.sleep(1000);
+		// Click Header Global Menu button...
+		clickHeaderButton("global");
 		
-		// Verify the 'Global Menu' left-screen displays
+		// Verify the 'Global Menu' left-screen displays...
 		try {
 			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='left_drawer']/div[3]/h2[1]")).isDisplayed());
+			System.out.println("VP: Global Menu was accessed successfully on header button click.");
 		} catch (Error e) {     
-			System.out.println("Verify Global Menu screen Displays" + e.toString());
+			System.out.println("Error: Global Menu failed to display on header button click.");
+			System.out.println(e.toString());
 		}
 		return this;
 	}
@@ -93,19 +95,36 @@ public class HeaderButton {
 		}
 		return this;
 	}
-
-	public HeaderButton clickAdd() throws InterruptedException {
-		addButton.click();
-		Thread.sleep(5000);
-
-		return this;
-	}
 	
-	public HeaderButton clickEdit() throws InterruptedException {
-		editButton.click();
-		Thread.sleep(5000);
-
+	public HeaderButton clickHeaderButton(String buttonName) throws InterruptedException {
+		String methodID = "clickHeaderButton";
+		
+		switch (buttonName.toLowerCase()) {
+		case "global menu": case "global":
+			globalMenuButton.click();
+			break;
+		case "back": case "go back":
+			backButton.click();
+			break;
+		case "cancel":
+			cancelButton.click();
+			break;
+		case "add": case "add new":
+			addButton.click();
+			break;
+		case "edit":
+			editButton.click();
+			break;
+		case "check": case "accept":
+			checkButton.click();
+			break;
+		case "delete":
+			deleteButton.click();
+			break;
+		}
+		
+		System.out.println(methodID + ": header button - '" + buttonName + "' was clicked.");
+		Thread.sleep(1500);
 		return this;
 	}
-
 }

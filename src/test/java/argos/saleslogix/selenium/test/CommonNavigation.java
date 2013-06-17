@@ -1,6 +1,9 @@
 package argos.saleslogix.selenium.test;
 
+import static org.junit.Assert.fail;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -73,104 +76,214 @@ public class CommonNavigation {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Log Out']")
 	WebElement gmenu_logOut;
-	
-	// Menus
-	
-	@CacheLookup
-	@FindBy(id = "mnuNew_text")
-	WebElement menu_New;
-		
-	// Save button 
-	@CacheLookup
-	//@FindBy(xpath = ".//*[@id='MainContent']/descendant::*[contains(@id,'_btnSave')]")
-	@FindBy(xpath = ".//*[@id='MainContent']/descendant::*[@title='Save']")
-	WebElement save;
-	
 
-	public CommonNavigation addAcctContact() throws InterruptedException {
-		gmenu_addAccountContact.click();
-		Thread.sleep(3000);
+	
+	public CommonNavigation clickGlobalMenuItem(String gMenuItem) throws InterruptedException {
+		String methodID = "clickGlobalMenuItem";
+		
+		Boolean hasListview = true;
+		switch (gMenuItem.toLowerCase()) {
+		case "add account/contact": case "add account contact": case "add":
+			gmenu_addAccountContact.click();
+			break;
+		case "my activities": case "activities":
+			gmenu_myActivities.click();
+			break;
+		case "calendar":
+			gmenu_calendar.click();
+			hasListview = false;
+			break;
+		case "notes/history": case "notes history": case "notes":
+			gmenu_notesHistory.click();
+			break;
+		case "accounts": case "account":
+			gmenu_accounts.click();
+			break;
+		case "contacts": case "contact":
+			gmenu_contacts.click();
+			break;
+		case "leads": case "lead":
+			gmenu_leads.click();
+			break;
+		case "opportunities": case "opportunity":
+			gmenu_opportunities.click();
+			break;
+		case "tickets": case "ticket":
+			gmenu_tickets.click();
+			break;
+		case "my attachments": case "attachments": case "attachment":
+			gmenu_myAttachments.click();
+			break;
+		case "configure menu": case "configure":
+			gmenu_configureMenu.click();
+			break;
+		case "settings":
+			gmenu_settings.click();
+			hasListview = false;
+			break;
+		case "help":
+			gmenu_help.click();
+			break;
+		case "log off": case "log out": case "logout": case "logoff":
+			gmenu_logOut.click();
+			hasListview = false;
+			break;
+		}
+		
+		System.out.println(methodID + ": global menu link - '" + gMenuItem + "' was clicked.");
+		Thread.sleep(1000);
+		if (hasListview) {
+			waitForListView(gMenuItem);
+		} Thread.sleep(3000); {}
+		
 		return this;
 	}
 	
-	public CommonNavigation myActivities() throws InterruptedException {
-		gmenu_myActivities.click();
-		Thread.sleep(3000);
+	public CommonNavigation waitForListView(String listName) throws InterruptedException {
+	    
+		String itemList = "";
+		
+		switch (listName.toLowerCase()) {
+		case "my activities": case "activities":
+			itemList = "myactivity_list";
+			break;
+		case "notes/history": case "notes history": case "notes":
+			itemList = "history_list";
+			break;
+		case "accounts": case "account":
+			itemList = "account_list";
+			break;
+		case "contacts": case "contact":
+			itemList = "contact_list";
+			break;
+		case "leads": case "lead":
+			itemList = "lead_list";
+			break;			
+		case "opportunities": case "opportunity":
+			itemList = "opportunity_list";
+			break;			
+		case "tickets": case "ticket":
+			itemList = "ticket_list";
+			break;			
+		case "my attachments": case "attachments": case "attachment":
+			itemList = "attachment_list";
+			break;	
+		//TODO: continue to expand this switch case list for additional list views
+		}
+		for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='" + itemList + "']/ul/li[1]")))
+	    		System.out.println("VP: " + listName + " List View was successfully loaded.");
+	    		break; 
+	    	} 
+	    	catch (Exception e) {
+	    		System.out.println("Error: " + listName + " List View was NOT successfully loaded.");
+	    	}
+	    	Thread.sleep(1000);
+	    }
+	    
 		return this;
 	}
 	
-	public CommonNavigation calendar() throws InterruptedException {
-		gmenu_calendar.click();
-		Thread.sleep(3000);
+	public CommonNavigation searchListView(String itemType, String searchItemName) throws InterruptedException {
+		String methodID = "searchListView";
+		
+		String searchWgtIDX = "";
+		
+		switch (itemType.toLowerCase()) {
+		case "my activities": case "activities":
+			searchWgtIDX = "26";
+			break;
+		case "notes/history": case "notes history": case "notes":
+			searchWgtIDX = "27";
+			break;
+		case "accounts": case "account":
+			searchWgtIDX = "3";
+			break;
+		case "contacts": case "contact":
+			searchWgtIDX = "6";
+			break;
+		case "leads": case "lead":
+			searchWgtIDX = "16";
+			break;			
+		case "opportunities": case "opportunity":
+			searchWgtIDX = "11";
+			break;			
+		case "tickets": case "ticket":
+			searchWgtIDX = "18";
+			break;			
+		case "my attachments": case "attachments": case "attachment":
+			searchWgtIDX = "35";
+			break;	
+		//TODO: continue to expand this switch case list for additional list views
+		}
+		
+		//input the search item then perform the search
+	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).clear();
+	    Thread.sleep(500);
+	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).sendKeys(searchItemName);
+	    Thread.sleep(500);
+	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();	    
+	    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + itemType + " List View...");
+	    waitForListView(itemType);
+	    
 		return this;
 	}
 	
-	public CommonNavigation notesHistory() throws InterruptedException {
-		gmenu_notesHistory.click();
-		Thread.sleep(3000);
+	public CommonNavigation clickListViewItemN(String listName, Integer itemIndex) throws InterruptedException {
+		String methodID = "clickListViewItemN";
+		
+		String itemList = "";
+		
+		switch (listName.toLowerCase()) {
+		case "my activities": case "activities":
+			itemList = "myactivity_list";
+			break;
+		case "notes/history": case "notes history": case "notes":
+			itemList = "history_list";
+			break;
+		case "accounts": case "account":
+			itemList = "account_list";
+			break;
+		case "contacts": case "contact":
+			itemList = "contact_list";
+			break;
+		case "leads": case "lead":
+			itemList = "lead_list";
+			break;			
+		case "opportunities": case "opportunity":
+			itemList = "opportunity_list";
+			break;			
+		case "tickets": case "ticket":
+			itemList = "ticket_list";
+			break;			
+		case "my attachments": case "attachments": case "attachment":
+			itemList = "attachment_list";
+			break;	
+		//TODO: continue to expand this switch case list for additional list views
+		}
+		
+		//perform the list view item click
+		try {
+			driver.findElement(By.xpath(".//*[@id='" + itemList + "']/ul/li[" + itemIndex + "]/div/h3")).click();
+			System.out.println(methodID + ": clicking '" + itemIndex + "th item ' from the " + listName + " List View...");
+		} catch (Exception e) {
+			System.out.println("Error: Unable to click the '" + itemIndex + "th' item from the " + listName + " List View.");
+			System.out.println(e.toString());
+		}
+	    
 		return this;
 	}
 	
-	public CommonNavigation accounts() throws InterruptedException {
-		gmenu_accounts.click();
-		Thread.sleep(3000);
+	public CommonNavigation waitForPageTitle(String pageTitle) throws InterruptedException {
+	    
+		for (int second = 0;; second++) {
+	    	if (second >= 60) fail("timeout");
+	    	try { if (pageTitle.equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
 		return this;
 	}
-	
-	public CommonNavigation contacts() throws InterruptedException {
-		gmenu_contacts.click();
-		Thread.sleep(3000);
-		return this;
-	}
-	
-	public CommonNavigation leads() throws InterruptedException {
-		gmenu_leads.click();
-		Thread.sleep(3000);
-		return this;
-	}
-	
-	public CommonNavigation opportunities() throws InterruptedException {
-		gmenu_opportunities.click();
-		Thread.sleep(3000);
-		return this;
-	}
-	
-	public CommonNavigation tickets() throws InterruptedException {
-		gmenu_tickets.click();
-		Thread.sleep(3000);
-		return this;
-	}
-	
-	public CommonNavigation myAttachments() throws InterruptedException {
-		gmenu_myAttachments.click();
-		Thread.sleep(3000);
-		return this;
-	}
-	
-	public CommonNavigation configureMenu() throws InterruptedException {
-		gmenu_configureMenu.click();
-		Thread.sleep(3000);
-		return this;
-	}
-	
-	public CommonNavigation settings() throws InterruptedException {
-		gmenu_settings.click();
-		Thread.sleep(3000);
-		return this;
-	}
-	
-	public CommonNavigation help() throws InterruptedException {
-		gmenu_help.click();
-		Thread.sleep(3000);
-		return this;
-	}
-	
-	public CommonNavigation logOut() throws InterruptedException {
-		gmenu_logOut.click();
-		Thread.sleep(3000);
-		return this;
-	}
-	
 	
 	public WebElement clickListViewGridItem(By locator) throws InterruptedException {
 		int i = 0;
@@ -186,8 +299,17 @@ public class CommonNavigation {
 				element.click();
 			}
 		}
-		//Thread.sleep(10000);
 		Thread.sleep(5000);
 		return element;
-		}
+	}
+	
+	protected boolean isElementPresent(By by) {
+	    try {
+	      driver.findElement(by);
+	      return true;
+	    } catch (NoSuchElementException e) {
+	    	return false;
+	    }
+	}
+	
 }

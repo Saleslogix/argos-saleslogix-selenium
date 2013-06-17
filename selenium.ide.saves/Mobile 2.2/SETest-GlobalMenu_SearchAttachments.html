@@ -24,7 +24,7 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>css=div.group-content &gt; ul.list-content. &gt; li</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
 	<td></td>
 </tr>
 <!--Step: navigate to Attachments list view...-->
@@ -56,8 +56,8 @@
 </tr>
 <!--Step: navigate to top Attachment record...-->
 <tr>
-	<td>assertElementPresent</td>
-	<td>XPath=.//*[@id='myattachment_list']/descendant::*[text() = &quot;Plate&quot;]</td>
+	<td>verifyTextPresent</td>
+	<td>Plate</td>
 	<td></td>
 </tr>
 <!--Step: navigate back...-->

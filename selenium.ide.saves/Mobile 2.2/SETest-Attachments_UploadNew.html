@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://107.21.243.158/mobile-builds/2.2/stable/latest/" />
+<title>SETest-Attachments_Account_Screens</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SETest-Attachments_Account_Screens</td></tr>
+</thead><tbody>
+<!--SETest-Attachments_UploadNew-->
+<!--Version: 2.2-->
+<!--Desc: Confirms that a new attachment can added from the My Attacherments list view.-->
+<!--Condition(s): Test user is logged in.    -->
+<!--Required Entities: N/A-->
+<!--==================================================================-->
+<!--Step: click Top-Left button to reveal Global Menu...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input</td>
+	<td></td>
+</tr>
+<!--Step: navigate to My Attachments list view...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='left_drawer']/descendant::*[text() = 'My Attachments']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>XPath=.//*[@id='myattachment_list']/ul/li[1]</td>
+	<td></td>
+</tr>
+<!--Step: click the top right Add button...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>Add Attachments</td>
+</tr>
+<!--Step: click the 'add a file' section of the screen...-->
+<tr>
+	<td>click</td>
+	<td>XPath=.//*[@id='attachment_Add']/div[1]/div/div/input</td>
+	<td></td>
+</tr>
+<!--TODO: ***continue rest of steps with WebDriver script...***-->
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>My Attachments</td>
+</tr>
+<!--Verify: uploaded filename is listed in the My Attachements list view...-->
+<tr>
+	<td>verifyTextPresent</td>
+	<td>uploadtest</td>
+	<td></td>
+</tr>
+<!--Step: navigate back to Account screen...-->
+<tr>
+	<td>click</td>
+	<td>//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=pageTitle</td>
+	<td>My Activities</td>
+</tr>
+<!---- END-->
+</tbody></table>
+</body>
+</html>
