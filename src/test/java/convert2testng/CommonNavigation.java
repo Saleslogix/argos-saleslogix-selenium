@@ -1,6 +1,6 @@
-package argos.saleslogix.selenium.test;
+package convert2testng;
 
-//import static org.junit.Assert.fail;
+import static org.junit.Assert.fail;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.testng.AssertJUnit;
 
 public class CommonNavigation {
 	private WebDriver driver;
@@ -172,7 +171,7 @@ public class CommonNavigation {
 		//TODO: continue to expand this switch case list for additional list views
 		}
 		for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	if (second >= 60) fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='" + itemList + "']/ul/li[1]")))
 	    		System.out.println("VP: " + listName + " List View was successfully loaded.");
 	    		break; 
@@ -279,7 +278,7 @@ public class CommonNavigation {
 	public CommonNavigation waitForPageTitle(String pageTitle) throws InterruptedException {
 	    
 		for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	if (second >= 60) fail("timeout");
 	    	try { if (pageTitle.equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }

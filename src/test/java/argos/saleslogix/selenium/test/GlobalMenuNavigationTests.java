@@ -1,25 +1,14 @@
 package argos.saleslogix.selenium.test;
 
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-import static org.hamcrest.CoreMatchers.*;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
-import argos.saleslogix.selenium.test.CommonNavigation;
-import argos.saleslogix.selenium.test.HeaderButton;
-import argos.saleslogix.selenium.test.SLXMobileLogin;
-import argos.saleslogix.selenium.test.BrowserSetup;
 
 public class GlobalMenuNavigationTests extends BrowserSetup {
 
@@ -475,16 +464,16 @@ public class GlobalMenuNavigationTests extends BrowserSetup {
 	    	Thread.sleep(1000);
 	    }
 	    
-	    try {driver.findElement(By.xpath(".//*[@id='myactivity_list']/ul/li[1]/div[2]/h3/span[3]")).click(); } catch (Exception e) {}
+	    try {driver.findElement(By.xpath(".//*[@id='myactivity_list']/ul/li[1]/div[2]/h3/span")).click(); } catch (Exception e) {}
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
-	    AssertJUnit.assertTrue(driver.findElement(By.cssSelector("a > label")).getText().matches("^Complete[\\s\\S]*$"));
+	    AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='activity_detail']/div[2]/ul[1]/li/a/label")).getText().matches("^Complete[\\s\\S]*$"));
 	    
 	    // Step: click the Complete Activity link...
-	    driver.findElement(By.cssSelector("a > label")).click();
+	    driver.findElement(By.xpath("//*[@id='activity_detail']/div[2]/ul[1]/li/a/label")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -1053,7 +1042,7 @@ public class GlobalMenuNavigationTests extends BrowserSetup {
 	    	Thread.sleep(1000);
 	    }
 	
-	    AssertJUnit.assertEquals("Complete Activity", driver.findElement(By.cssSelector("a > label")).getText());
+	    AssertJUnit.assertEquals("Complete Activity", driver.findElement(By.xpath("//*[@id='activity_detail']/div[2]/ul[1]/li/a/label")).getText());
 	    // Step: click the Top cEdit Activity button...
 	    driver.findElement(By.xpath(".//*[@id='activity_detail']/div[2]/ul[1]/li/a")).click();
 	    for (int second = 0;; second++) {
@@ -1625,7 +1614,7 @@ public class GlobalMenuNavigationTests extends BrowserSetup {
 	    Thread.sleep(1000);
 	
 	    // Step: navigate to top Notes/History record...
-	    driver.findElement(By.xpath(".//*[@id='history_list']/ul/li[1]/div/h3/span[3]")).click();
+	    driver.findElement(By.xpath("//*[@id='history_list']/ul/li[1]/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Note".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -1720,7 +1709,7 @@ public class GlobalMenuNavigationTests extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test(enabled = false)
+	@Test
 	  public void test09_SeTestTCGlobalMenuEditOppContactScreens() throws Exception {
 	    // SETest-GlobalMenu_EditOppContact_Screens
 	    // Version: 2.2
@@ -2344,7 +2333,7 @@ public class GlobalMenuNavigationTests extends BrowserSetup {
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']/ul/li[1]/div[2]/h3/span[3]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -2648,7 +2637,7 @@ public class GlobalMenuNavigationTests extends BrowserSetup {
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']/ul/li[1]/div[2]/h3/span[3]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -2808,7 +2797,7 @@ public class GlobalMenuNavigationTests extends BrowserSetup {
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']/ul/li[1]/div[2]/h3/span[3]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -3014,7 +3003,7 @@ public class GlobalMenuNavigationTests extends BrowserSetup {
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	

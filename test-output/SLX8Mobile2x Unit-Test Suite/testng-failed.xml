@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite verbose="3" name="Failed suite [SLX8Mobile2x Unit-Test Suite]" parallel="classes">
-  <parameter name="browser" value="ff"/>
+  <parameter name="browser" value="chrome"/>
   <test name="Unit Tests(failed)" parallel="classes">
-    <parameter name="browser" value="ff"/>
+    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="argos.saleslogix.selenium.test.UnitTestX">
         <methods>
-          <include name="launchBrowser"/>
-          <include name="copyReport"/>
           <include name="checkVP"/>
+          <include name="launchBrowser"/>
+          <include name="test08_SeTestTCGlobalMenuEditNote"/>
           <include name="closeBrowser"/>
-          <include name="test12_SeTestTCGlobalMenuEditOppTicketScreens"/>
+          <include name="copyReport"/>
         </methods>
       </class> <!-- argos.saleslogix.selenium.test.UnitTestX -->
     </classes>
