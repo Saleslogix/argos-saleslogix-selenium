@@ -66,7 +66,7 @@ public class UnitTestX extends BrowserSetup {
 	
 	    // Step: navigate to top Account record...
 	    commNav.clickListViewItemN(entityType, 1);
-	    commNav.waitForPageTitle(entityRecordName);
+	    commNav.waitForPage(entityRecordName);
 	
 		//TODO: Left-off routine refactoring here (6/13/13)
 	    // VP: confirm that Attachments is available under the Related Items section...

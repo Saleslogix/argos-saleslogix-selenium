@@ -9,7 +9,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class SEtoJavaCheatSheetJUnit {
+public class SEtoJavaCheatSheet {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -36,7 +36,7 @@ driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/b
 
 // click: (using location text identifier)
 driver.findElement(By.xpath("//*[@id='left_drawer']/descendant::*[text() = 'SpeedSearch']")).click();
-
+// ERROR: Caught exception [unknown command []]
 // type:
 driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[1]/input")).clear();
 driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[1]/input")).sendKeys("test");
@@ -53,7 +53,12 @@ try {
 } catch (Error e) {
   verificationErrors.append(e.toString());
 }
+// ERROR: Caught exception [unknown command []]
+// assertElementNotPresent:
+// ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
 
+// verifyElementNotPresent
+// ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
 
 // assertTitle:
 assertEquals("SalesLogix", driver.getTitle());
@@ -78,11 +83,18 @@ try {
 // assertTextPresent:
 // Warning: assertTextPresent may require manual changes
 assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*My Activities[\\s\\S]*$"));
-
+// ERROR: Caught exception [unknown command []]
 // verifyTextPresent:
 // Warning: verifyTextPresent may require manual changes
 try {
   assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Send[\\s\\S]*$"));
+} catch (Error e) {
+  verificationErrors.append(e.toString());
+}
+
+// verifyValue
+try {
+  assertEquals("French", driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/input")).getAttribute("value"));
 } catch (Error e) {
   verificationErrors.append(e.toString());
 }
