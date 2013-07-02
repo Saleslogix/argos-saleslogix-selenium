@@ -5,7 +5,7 @@
         <test name="MyActivities Tests">
   <parameter name="browser" value="chrome"></parameter>
     <classes>
-      <class name="argos.saleslogix.selenium.test.MyActivities"/>
+      <class name="argos.saleslogix.selenium.test.MobileDefectTest"/>
     </classes>
   </test> <!-- Default test -->
     

@@ -21,6 +21,10 @@ public class CommonNavigation {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Add Account/Contact']")
 	WebElement gmenu_addAccountContact;
+
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'SpeedSearch']")
+	WebElement gmenu_speedSearch;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")
@@ -87,6 +91,9 @@ public class CommonNavigation {
 		case "add account/contact": case "add account contact": case "add":
 			gmenu_addAccountContact.click();
 			break;
+		case "speedsearch": case "search":
+			gmenu_speedSearch.click();
+			break;			
 		case "my activities": case "activities":
 			gmenu_myActivities.click();
 			break;
@@ -190,8 +197,13 @@ public class CommonNavigation {
 		String methodID = "searchListView";
 		
 		String searchWgtIDX = "";
+		Boolean forSpdSrch = false;
 		
 		switch (itemType.toLowerCase()) {
+		case "speedsearch": case "search": case "speed search":
+			searchWgtIDX = "0";
+			forSpdSrch = true;
+			break;
 		case "my activities": case "activities":
 			searchWgtIDX = "26";
 			break;
@@ -220,11 +232,21 @@ public class CommonNavigation {
 		}
 		
 		//input the search item then perform the search
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).clear();
-	    Thread.sleep(500);
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).sendKeys(searchItemName);
-	    Thread.sleep(500);
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();	    
+		//.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input
+	    if (forSpdSrch) {
+	    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).clear();
+	    	Thread.sleep(500);
+	    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).sendKeys(searchItemName);
+	    	Thread.sleep(500);
+	    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")).click();
+	    }
+	    else {
+	    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).clear();
+	    	Thread.sleep(500);
+	    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).sendKeys(searchItemName);
+	    	Thread.sleep(500);
+	    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();	    	
+	    }
 	    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + itemType + " List View...");
 	    waitForListView(itemType);
 	    
@@ -276,13 +298,37 @@ public class CommonNavigation {
 		return this;
 	}
 	
-	public CommonNavigation waitForPageTitle(String pageTitle) throws InterruptedException {
+	public CommonNavigation waitForPage(String pageTitle) throws InterruptedException {
+		String methodID = "waitForPage";
 	    
 		for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (pageTitle.equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
+	    	try { if (pageTitle.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText()))
+	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
+	    		break; 
+	    	} catch (Exception e) {
+	    		System.out.println(methodID + ": '" + pageTitle + "' failed to load prior to timeout");
+	    	}
 	    	Thread.sleep(1000);
 	    }
+		Thread.sleep(1000);
+		return this;
+	}
+	
+	public CommonNavigation waitForNotPage(String pageTitle) throws InterruptedException {
+		String methodID = "waitForNotPage";
+	    
+		for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if (!pageTitle.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText()))
+	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully navigated away from");
+	    		break; 
+	    	} catch (Exception e) {
+	    		System.out.println(methodID + ": '" + pageTitle + "' page failed to navigate away from prior to timeout");
+	    	}
+	    	Thread.sleep(1000);
+	    }
+		Thread.sleep(1000);
 		return this;
 	}
 	

@@ -3,7 +3,7 @@
 <suite name="SLX8Mobile2x Unit-Test Suite" verbose="3" parallel="classes">
 
         <test name="Unit Tests">
-  <parameter name="browser" value="ff"></parameter>
+  <parameter name="browser" value="chrome"></parameter>
     <classes>
       <class name="argos.saleslogix.selenium.test.UnitTest"/>
     </classes>

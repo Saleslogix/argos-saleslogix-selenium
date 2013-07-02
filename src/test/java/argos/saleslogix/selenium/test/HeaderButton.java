@@ -120,6 +120,9 @@ public class HeaderButton {
 		case "delete":
 			deleteButton.click();
 			break;
+		case "save":
+			saveButton.click();
+			break;
 		}
 		
 		System.out.println(methodID + ": header button - '" + buttonName + "' was clicked.");

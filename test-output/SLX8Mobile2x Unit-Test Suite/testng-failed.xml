@@ -5,15 +5,15 @@
   <test name="Unit Tests(failed)" parallel="classes">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="argos.saleslogix.selenium.test.UnitTestX">
+      <class name="argos.saleslogix.selenium.test.UnitTest">
         <methods>
-          <include name="checkVP"/>
+          <include name="test52_MobileDefect13092102"/>
           <include name="launchBrowser"/>
-          <include name="test08_SeTestTCGlobalMenuEditNote"/>
-          <include name="closeBrowser"/>
           <include name="copyReport"/>
+          <include name="checkVP"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- argos.saleslogix.selenium.test.UnitTestX -->
+      </class> <!-- argos.saleslogix.selenium.test.UnitTest -->
     </classes>
   </test> <!-- Unit Tests(failed) -->
 </suite> <!-- Failed suite [SLX8Mobile2x Unit-Test Suite] -->

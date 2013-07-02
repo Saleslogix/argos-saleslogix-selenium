@@ -5,7 +5,7 @@
         <test name="GlobalMenuNavigation Tests">
   <parameter name="browser" value="ff"></parameter>
     <classes>
-      <class name="argos.saleslogix.selenium.test.GlobalMenuNavigationTests"/>
+      <class name="argos.saleslogix.selenium.test.GlobalMenuNavigationTest"/>
     </classes>
   </test> <!-- Default test -->
     

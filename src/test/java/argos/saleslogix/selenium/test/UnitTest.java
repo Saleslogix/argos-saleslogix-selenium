@@ -1,7 +1,12 @@
 package argos.saleslogix.selenium.test;
 
+import static org.junit.Assert.fail;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
+
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -46,7 +51,7 @@ public class UnitTest extends BrowserSetup {
 	
 	    // Step: navigate to top Account record...
 	    commNav.clickListViewItemN(entityType, 1);
-	    commNav.waitForPageTitle(entityRecordName);
+	    commNav.waitForPage(entityRecordName);
 	
 		//TODO: Left-off routine refactoring here (6/13/13)
 	    // VP: confirm that Attachments is available under the Related Items section...
@@ -247,5 +252,5 @@ public class UnitTest extends BrowserSetup {
 		}
 		System.out.println(ENDLINE);
 	}
-	
+
 }

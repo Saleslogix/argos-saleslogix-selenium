@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite verbose="3" name="Failed suite [SLX8Mobile2x Test Suite]" parallel="classes">
-  <parameter name="browser" value="ff"/>
-  <test name="GlobalMenuNavigation Tests(failed)" parallel="classes">
-    <parameter name="browser" value="ff"/>
+<suite verbose="3" name="Failed suite [SLX8Mobile2x Unit-Test Suite]" parallel="classes">
+  <parameter name="browser" value="chrome"/>
+  <test name="Unit Tests(failed)" parallel="classes">
+    <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="argos.saleslogix.selenium.test.GlobalMenuNavigationTests">
+      <class name="argos.saleslogix.selenium.test.UnitTest">
         <methods>
-          <include name="test13_SeTestTCGlobalMenuEditTicketActivitiesScreens"/>
-          <include name="test07_SeTestTCGlobalMenuEditLead"/>
-          <include name="test06_SeTestTCGlobalMenuEditContact"/>
-          <include name="test05_SeTestTCGlobalMenuEditActivity"/>
+          <include name="test52_MobileDefect13092102"/>
           <include name="launchBrowser"/>
           <include name="copyReport"/>
-          <include name="test15_SeTestTCGlobalMenuSearchAttachments"/>
           <include name="checkVP"/>
           <include name="closeBrowser"/>
         </methods>
-      </class> <!-- argos.saleslogix.selenium.test.GlobalMenuNavigationTests -->
+      </class> <!-- argos.saleslogix.selenium.test.UnitTest -->
     </classes>
-  </test> <!-- GlobalMenuNavigation Tests(failed) -->
-</suite> <!-- Failed suite [SLX8Mobile2x Test Suite] -->
+  </test> <!-- Unit Tests(failed) -->
+</suite> <!-- Failed suite [SLX8Mobile2x Unit-Test Suite] -->
