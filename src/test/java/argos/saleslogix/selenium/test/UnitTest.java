@@ -1,11 +1,7 @@
 package argos.saleslogix.selenium.test;
 
-import static org.junit.Assert.fail;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
-
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
 
 import org.testng.annotations.Test;
 import org.testng.Assert;
