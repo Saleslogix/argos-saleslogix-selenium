@@ -3,11 +3,13 @@ package argos.saleslogix.selenium.test;
 //import static org.junit.Assert.fail;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
 
 public class CommonNavigation {
@@ -87,110 +89,161 @@ public class CommonNavigation {
 		String methodID = "clickGlobalMenuItem";
 		
 		Boolean hasListview = true;
-		switch (gMenuItem.toLowerCase()) {
-		case "add account/contact": case "add account contact": case "add":
-			gmenu_addAccountContact.click();
-			break;
-		case "speedsearch": case "search":
-			gmenu_speedSearch.click();
-			break;			
-		case "my activities": case "activities":
-			gmenu_myActivities.click();
-			break;
-		case "calendar":
-			gmenu_calendar.click();
-			hasListview = false;
-			break;
-		case "notes/history": case "notes history": case "notes":
-			gmenu_notesHistory.click();
-			break;
-		case "accounts": case "account":
-			gmenu_accounts.click();
-			break;
-		case "contacts": case "contact":
-			gmenu_contacts.click();
-			break;
-		case "leads": case "lead":
-			gmenu_leads.click();
-			break;
-		case "opportunities": case "opportunity":
-			gmenu_opportunities.click();
-			break;
-		case "tickets": case "ticket":
-			gmenu_tickets.click();
-			break;
-		case "my attachments": case "attachments": case "attachment":
-			gmenu_myAttachments.click();
-			break;
-		case "configure menu": case "configure":
-			gmenu_configureMenu.click();
-			break;
-		case "settings":
-			gmenu_settings.click();
-			hasListview = false;
-			break;
-		case "help":
-			gmenu_help.click();
-			break;
-		case "log off": case "log out": case "logout": case "logoff":
-			gmenu_logOut.click();
-			hasListview = false;
-			break;
+		try {
+			switch (gMenuItem.toLowerCase()) {
+			case "add account/contact": case "add account contact": case "add":
+				gmenu_addAccountContact.click();
+				break;
+			case "speedsearch": case "search":
+				gmenu_speedSearch.click();
+				break;			
+			case "my activities": case "activities":
+				gmenu_myActivities.click();
+				break;
+			case "calendar":
+				gmenu_calendar.click();
+				hasListview = false;
+				break;
+			case "notes/history": case "notes history": case "notes":
+				gmenu_notesHistory.click();
+				break;
+			case "accounts": case "account":
+				gmenu_accounts.click();
+				break;
+			case "contacts": case "contact":
+				gmenu_contacts.click();
+				break;
+			case "leads": case "lead":
+				gmenu_leads.click();
+				break;
+			case "opportunities": case "opportunity":
+				gmenu_opportunities.click();
+				break;
+			case "tickets": case "ticket":
+				gmenu_tickets.click();
+				break;
+			case "my attachments": case "attachments": case "attachment":
+				gmenu_myAttachments.click();
+				break;
+			case "configure menu": case "configure":
+				gmenu_configureMenu.click();
+				break;
+			case "settings":
+				gmenu_settings.click();
+				hasListview = false;
+				break;
+			case "help":
+				gmenu_help.click();
+				break;
+			case "log off": case "log out": case "logout": case "logoff":
+				gmenu_logOut.click();
+				hasListview = false;
+				break;
+			}
+			
+			System.out.println(methodID + ": global menu link - '" + gMenuItem + "' was clicked.");
+			Thread.sleep(1000);
+			if (hasListview) {
+				waitForListView(gMenuItem);
+			} Thread.sleep(3000); {}
 		}
-		
-		System.out.println(methodID + ": global menu link - '" + gMenuItem + "' was clicked.");
-		Thread.sleep(1000);
-		if (hasListview) {
-			waitForListView(gMenuItem);
-		} Thread.sleep(3000); {}
-		
+		catch (Error e) {
+			  System.out.println(e.toString());
+		}
 		return this;
+	}
+	
+	public boolean checkIfWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
+		String methodID = "checkIfWebElementPresent";
+		
+		try {
+			AssertJUnit.assertTrue(wElement.isDisplayed());
+			highlightElement(wElement);
+			System.out.println(methodID + ": " + sDesc + " is displayed on the current page/screen.");
+			return true;
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(methodID + ": " + sDesc + " is NOT displayed on the current page/screen.");
+			return false;
+		}
+	}
+	
+	public boolean clickWebElementToPage(String sDesc, WebElement wElement, String expPageTitle) throws InterruptedException {
+		String methodID = "clickWebElementToPage";
+		
+		try {
+			highlightElement(wElement);
+			wElement.click();
+			boolean pgOpened = waitForPage(expPageTitle);
+			if (pgOpened) {
+				System.out.println(methodID + ": clicking the " + sDesc + " page element successfully opened the '" + expPageTitle + "' page/screen.");
+				return pgOpened;
+			}
+			else {
+				return pgOpened;
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return false;
+		}
 	}
 	
 	public CommonNavigation waitForListView(String listName) throws InterruptedException {
 	    
 		String itemList = "";
 		
-		switch (listName.toLowerCase()) {
-		case "my activities": case "activities":
-			itemList = "myactivity_list";
-			break;
-		case "notes/history": case "notes history": case "notes":
-			itemList = "history_list";
-			break;
-		case "accounts": case "account":
-			itemList = "account_list";
-			break;
-		case "contacts": case "contact":
-			itemList = "contact_list";
-			break;
-		case "leads": case "lead":
-			itemList = "lead_list";
-			break;			
-		case "opportunities": case "opportunity":
-			itemList = "opportunity_list";
-			break;			
-		case "tickets": case "ticket":
-			itemList = "ticket_list";
-			break;			
-		case "my attachments": case "attachments": case "attachment":
-			itemList = "attachment_list";
-			break;	
-		//TODO: continue to expand this switch case list for additional list views
+		try {
+			switch (listName.toLowerCase()) {
+			case "my activities": case "activities":
+				itemList = "myactivity_list";
+				break;
+			case "notes/history": case "notes history": case "notes":
+				itemList = "history_list";
+				break;
+			case "accounts": case "account":
+				itemList = "account_list";
+				break;
+			case "contacts": case "contact":
+				itemList = "contact_list";
+				break;
+			case "leads": case "lead":
+				itemList = "lead_list";
+				break;			
+			case "opportunities": case "opportunity":
+				itemList = "opportunity_list";
+				break;			
+			case "tickets": case "ticket":
+				itemList = "ticket_list";
+				break;			
+			case "my attachments": case "attachments": case "attachment":
+				itemList = "attachment_list";
+				break;	
+			//TODO: continue to expand this switch case list for additional list views
+			}
+			for (int second = 0;; second++) {
+		    	if (second >= 60) AssertJUnit.fail("timeout");
+		    	try { if (isElementPresent(By.xpath(".//*[@id='" + itemList + "']/ul/li[1]")))
+		    		System.out.println("VP: " + listName + " List View was successfully loaded.");
+		    		break; 
+		    	} 
+		    	catch (Exception e) {
+		    		System.out.println("Error: " + listName + " List View was NOT successfully loaded.");
+		    	}
+		    	Thread.sleep(1000);
+		    }
 		}
-		for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='" + itemList + "']/ul/li[1]")))
-	    		System.out.println("VP: " + listName + " List View was successfully loaded.");
-	    		break; 
-	    	} 
-	    	catch (Exception e) {
-	    		System.out.println("Error: " + listName + " List View was NOT successfully loaded.");
-	    	}
-	    	Thread.sleep(1000);
-	    }
-	    
+		catch (Error e) {
+			  System.out.println(e.toString());
+		}	    
 		return this;
+	}
+	
+	public void scrollDownPage() throws InterruptedException {
+		JavascriptExecutor jsx = (JavascriptExecutor)driver;
+		jsx.executeScript("window.scrollBy(0,450)", "");
+		Thread.sleep(3000);
 	}
 	
 	public CommonNavigation searchListView(String itemType, String searchItemName) throws InterruptedException {
@@ -232,24 +285,31 @@ public class CommonNavigation {
 		}
 		
 		//input the search item then perform the search
-		//.//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input
-	    if (forSpdSrch) {
-	    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).clear();
-	    	Thread.sleep(500);
-	    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).sendKeys(searchItemName);
-	    	Thread.sleep(500);
-	    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")).click();
-	    }
-	    else {
-	    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).clear();
-	    	Thread.sleep(500);
-	    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).sendKeys(searchItemName);
-	    	Thread.sleep(500);
-	    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();	    	
-	    }
-	    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + itemType + " List View...");
-	    waitForListView(itemType);
-	    
+		try {
+		    if (forSpdSrch) {
+		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).clear();
+		    	Thread.sleep(500);
+		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")).click();
+		    	Thread.sleep(3000);
+		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).sendKeys(searchItemName);
+		    	Thread.sleep(500);
+		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")).click();
+		    }
+		    else {
+		    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).clear();
+		    	Thread.sleep(500);
+		    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+		    	Thread.sleep(3000);
+		    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).sendKeys(searchItemName);
+		    	Thread.sleep(500);
+		    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();	    	
+		    }
+		    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + itemType + " List View...");
+		    waitForListView(itemType);
+		}
+		catch (Error e) {
+			  System.out.println(e.toString());
+		}
 		return this;
 	}
 	
@@ -293,26 +353,24 @@ public class CommonNavigation {
 		} catch (Exception e) {
 			System.out.println("Error: Unable to click the '" + itemIndex + "th' item from the " + listName + " List View.");
 			System.out.println(e.toString());
-		}
-	    
+		}	    
 		return this;
 	}
 	
-	public CommonNavigation waitForPage(String pageTitle) throws InterruptedException {
+	public boolean waitForPage(String pageTitle) throws InterruptedException {
 		String methodID = "waitForPage";
 	    
 		for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (pageTitle.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText()))
+	    	try { 
+	    		AssertJUnit.assertEquals(pageTitle, driver.findElement(By.xpath("//*[@id='pageTitle']")).getText());
 	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
-	    		break; 
-	    	} catch (Exception e) {
-	    		System.out.println(methodID + ": '" + pageTitle + "' failed to load prior to timeout");
+	    		return true;
+	    	} catch (Error e) {
+	    		System.out.println(methodID + " " + e.toString());
+	    		return false;
 	    	}
-	    	Thread.sleep(1000);
-	    }
-		Thread.sleep(1000);
-		return this;
+	    }		
 	}
 	
 	public CommonNavigation waitForNotPage(String pageTitle) throws InterruptedException {
@@ -322,7 +380,7 @@ public class CommonNavigation {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { if (!pageTitle.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText()))
 	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully navigated away from");
-	    		break; 
+	    		break;
 	    	} catch (Exception e) {
 	    		System.out.println(methodID + ": '" + pageTitle + "' page failed to navigate away from prior to timeout");
 	    	}
@@ -346,7 +404,7 @@ public class CommonNavigation {
 				element.click();
 			}
 		}
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		return element;
 	}
 	
@@ -359,4 +417,156 @@ public class CommonNavigation {
 	    }
 	}
 	
+	public boolean isWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
+		String methodID = "isWebElementPresent";
+		
+		try { highlightElement(wElement);
+			System.out.println(methodID + ": " + sDesc + " is displayed on the current page/screen.");
+			return true;
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return false;
+		}
+	}
+	
+	public boolean isPageDisplayed(String pageTitle) {
+		
+		String methodID = "isPageDisplayed";
+		
+    	if (pageTitle.equals(driver.findElement(By.id("pageTitle")).getText())) {
+    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
+    		return true; 
+    	}
+    	else {
+    		System.out.println(methodID + ": '" + pageTitle + "' page was NOT successfully loaded");
+    		return false;		
+    	}
+	}
+
+
+	public WebElement entityListViewSearch(String entityType, String entityName) throws Exception {
+		String methodID = "entityListViewSearch";
+		
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+			
+	    //Step: click Top-Left button to reveal Global Menu...
+		headerbutton.showGlobalMenu();
+	
+	    //Step: navigate to entity list view...
+		clickGlobalMenuItem(entityType);
+	
+	    //Step: perform search for entity record items...
+		searchListView(entityType, entityName);
+		
+		//SubStep: singularize the entityType parameter
+		String entListNameXPth = "";
+		switch (entityType.toLowerCase()) {
+		case "my activities": case "activities":
+			entListNameXPth = ".//*[@id='myactivity_list']";
+			break;
+		case "notes/history": case "notes history": case "notes":
+			entListNameXPth = ".//*[@id='history_list']";
+			break;
+		case "accounts": case "account":
+			entListNameXPth = ".//*[@id='account_list']";
+			break;
+		case "contacts": case "contact":
+			entListNameXPth = ".//*[@id='contact_list']";
+			break;
+		case "leads": case "lead":
+			entListNameXPth = ".//*[@id='lead_list']";
+			break;			
+		case "opportunities": case "opportunity":
+			entListNameXPth = ".//*[@id='opportunity_list']";
+			break;			
+		case "tickets": case "ticket":
+			entListNameXPth = ".//*[@id='ticket_list']";
+			break;			
+		case "my attachments": case "attachments": case "attachment":
+			entListNameXPth = ".//*[@id='myattachment_list']";
+			break;	
+		//TODO: continue to expand this switch case list for additional list views
+		}		
+				
+		//Step: check if there is a 'no records' result
+		try {
+			//AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
+			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().contains("no records"));
+			
+			//Step: check for matching results...
+			String targetEntRecXPath = entListNameXPth + "/descendant::*[text() = '" + entityName + "']"; 
+			WebElement targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+			try {
+				AssertJUnit.assertTrue(targetEntRecord.isDisplayed());
+			} catch (Error e) {
+				String errorStr = e.toString();
+				System.out.println(errorStr);
+				System.out.println(methodID + ": " + entityType + " record search for '" + entityName + "' was NOT successful");
+				return null;
+			}
+			highlightElement(targetEntRecord);
+			System.out.println(methodID + ": " + entityType + " record search for '" + entityName + "' was successful");
+			return targetEntRecord;
+		} catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(methodID + ": un-expected 'no records' search result for '" + entityName + "' " + entityType + "; test aborted.");
+			return null;
+		}
+	}
+	
+	public boolean entityListViewNegativeSearch(String entityType, String entityName) throws Exception {
+		String methodID = "entityListViewNegativeSearch";
+		
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+			
+	    //Step: click Top-Left button to reveal Global Menu...
+		headerbutton.showGlobalMenu();
+	
+	    //Step: navigate to Accounts list view...
+		clickGlobalMenuItem(entityType);
+	
+	    //Step: perform search for Account items...
+		searchListView(entityType, entityName);		
+		
+		//Step: check if there is a 'no records' result
+		try {
+			//AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
+			AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().contains("no records"));
+			System.out.println(methodID + ": negative  " + entityType + " record List View search was successful; 'no records' results was displayed for non-existent " + entityType);
+			return true;
+		} catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(methodID + ": negative " + entityType + " record List View search failed; 'no records' results was NOT displayed for non-existent " + entityType);
+			return false;
+		}		
+	}
+	
+	public boolean entityRecordOpenDetailView(String entityType, String entityName) throws Exception {
+		String methodID = "entityRecordOpenDetailView";
+		
+		WebElement entityListItem = entityListViewSearch(entityType, entityName);
+		if (!entityListItem.equals(null)) {
+			entityListItem.click();
+			Thread.sleep(3000);
+			
+			//Step: check if the detail view is loaded
+			waitForPage(entityName);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public void highlightElement(WebElement wElement) throws InterruptedException { 
+		for (int i = 0; i <= 2; i++) { 
+			JavascriptExecutor js = (JavascriptExecutor) driver; 
+			js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: yellow; border: 2px solid yellow;"); 
+			Thread.sleep(100);
+			js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: red; border: 2px solid red;");
+			Thread.sleep(100);
+			js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "");
+		} 
+	}
 }

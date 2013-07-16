@@ -43,8 +43,12 @@ public class HeaderButton {
 	WebElement cancelButton;
 	
 	//@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
+	WebElement backButton1;
+	
+	//@CacheLookup
 	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
-	WebElement backButton;	
+	WebElement backButton2;
 	
 	public WebElement getSafeElement(By locator) throws InterruptedException {
 		int i = 0;
@@ -79,10 +83,18 @@ public class HeaderButton {
 	}
 	
 	public HeaderButton goBack() throws InterruptedException {
+		String methodID = "goBack";
+		
 		String oldPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();
-				
-		backButton.click();
-		Thread.sleep(5000);
+
+		//determine which button to actually click (back button placement varies)
+		if (backButton2.isDisplayed()) {
+			backButton2.click();
+		}
+		else {
+			backButton1.click();
+		}
+		Thread.sleep(3000);
 		
 		String newPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();
 		
@@ -90,7 +102,7 @@ public class HeaderButton {
 		try {
 			AssertJUnit.assertFalse(oldPgTitle == newPgTitle);
 		} catch (Error e) {     
-			System.out.println("Verify Previous screen Displays" + e.toString());
+			System.out.println(e.toString());
 		}
 		return this;
 	}
@@ -103,7 +115,12 @@ public class HeaderButton {
 			globalMenuButton.click();
 			break;
 		case "back": case "go back":
-			backButton.click();
+			if (backButton2.isDisplayed()) { 
+				backButton2.click();
+			}
+			else {
+				backButton1.click();
+			}
 			break;
 		case "cancel":
 			cancelButton.click();
