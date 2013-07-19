@@ -23,6 +23,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.google.common.io.Files;
@@ -49,7 +50,7 @@ protected StringBuffer verificationErrors = new StringBuffer();
 	
 @BeforeClass
 	@Parameters("browser")
-	public void launchBrowser(String browser) throws IOException {
+	public void launchBrowser(@Optional("ff") String browser) throws IOException {
 
 	// Run Locally
 	if(browser.equalsIgnoreCase("FF")){
