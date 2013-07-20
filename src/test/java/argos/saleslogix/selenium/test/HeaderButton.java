@@ -84,6 +84,7 @@ public class HeaderButton {
 			System.out.println("Error: Global Menu failed to display on header button click.");
 			System.out.println(e.toString());
 		}
+		Thread.sleep(1000);
 		return this;
 	}
 	

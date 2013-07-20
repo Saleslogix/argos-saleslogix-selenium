@@ -12,6 +12,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * @author mllena
+ * Class: AccountEntityViewsTest
+ * Desc.: Test class for the Account entity views
+ */
 public class AccountEntityViewsTest extends BrowserSetup {
 	
 	//Test Methods Set
@@ -27,7 +32,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		String entityType = "accounts";
 		String expEntityPgTitle = "Accounts";
 
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
@@ -38,12 +43,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		// SubStep: check the Page Title
 		if (commNav.isPageDisplayed(expEntityPgTitle)) {
 			
-			AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
-			
-			//Step: check the Accounts Search widget elements
-			commNav.checkIfWebElementPresent("Accounts List View, Search - input text box", accountListView.accountsSearchTxtBox);
-			commNav.checkIfWebElementPresent("Accounts List View, Search - input clear button", accountListView.accountsSearchClearBtn);
-			commNav.checkIfWebElementPresent("Accounts List View, Search - Lookup button", accountListView.accountsSearchLookupBtn);
+			AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);			
 			
 			//Step: check the Accounts list view format
 			commNav.checkIfWebElementPresent("Accounts List View", accountListView.accountsListView);
@@ -77,7 +77,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		//Test Params:
 		String entityType = "accounts";
 
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
@@ -106,7 +106,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for an existing Account record
 		commNav.entityListViewSearch("Accounts", "Abbott Ltd.");
@@ -122,7 +122,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for non-existent Account record to confirm it's non-existence
 		commNav.entityListViewNegativeSearch("Accounts", "Non-Existent Account");		
@@ -138,7 +138,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
 		commNav.entityListViewSearch("Accounts", "Big Systems");
 			
@@ -176,7 +176,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for Account entity, then open it's Detail view
 		commNav.entityRecordOpenDetailView("Accounts", "Call Color");
@@ -199,7 +199,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		//Test Parameters:
 		String accountRecord = "Call Color";
 		
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for Account entity, then open it's Detail view
 		if (commNav.entityRecordOpenDetailView("Accounts", accountRecord)) {
@@ -266,7 +266,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for Account entity, then open it's Detail view
 		try {
@@ -297,7 +297,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(STARTLINE);	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
 		
 		// Test Params:
 		String entityType = "account";
@@ -324,7 +324,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "accounts";
 		
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerButton.showGlobalMenu();
@@ -355,7 +355,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
 		
-		System.out.println(STARTLINE);	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
 		//VP: the Mobile Login screen is loaded from base URL
 		for (int second = 0;; second++) {
 			if (second >= 60) AssertJUnit.fail("timeout");
@@ -432,7 +432,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		// Click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
 	

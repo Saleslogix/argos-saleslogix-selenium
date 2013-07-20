@@ -480,33 +480,47 @@ public class CommonNavigation {
 	}
 	
 	
-	public boolean isTextNotPresentOnPage(String pageText) {
-		String methodID = "isTextNotPresentOnPage";
+	public boolean isTextNotPresentOnPage(String pageText) throws InterruptedException {
+		String methodID = "isTextNotPresentOnPage";		
 		
-		try {
-			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + pageText + "[\\s\\S]*$"));
-			System.out.println(methodID + ": '" + pageText + "' was confirmed NOT to be present on the current page/screen");
-			return true;
-		} catch (Error e) {
-			System.out.println(e.toString());
-			System.out.println(methodID + ": '" + pageText + "' was un-expectedly found on the current page/screen");
-			return false;
-		}
+		Boolean checkResult = false;
+		
+		for (int second = 0;; second++) {
+			Thread.sleep(100);
+			if (second >= 600) 
+				AssertJUnit.fail(methodID + ": page text '" + pageText + "' was not found before timeout expiration");
+				try { if (!driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + pageText + "[\\s\\S]*$"))
+					System.out.println(methodID + ": '" + pageText + "' was confirmed not to be present on the current page/screen");
+					checkResult = true;
+					break;
+				}
+				catch (Error e) {
+					System.out.println(e.toString());
+				}	
+			}
+		return checkResult;
 	}
 	
 	
-	public boolean isTextPresentOnPage(String pageText) {
+	public boolean isTextPresentOnPage(String pageText) throws InterruptedException {
 		String methodID = "isTextPresentOnPage";
 		
-		try {
-			AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + pageText + "[\\s\\S]*$"));
-			System.out.println(methodID + ": '" + pageText + "' was confirmed to be present on the current page/screen");
-			return true;
-		} catch (Error e) {
-			System.out.println(e.toString());
-			System.out.println(methodID + ": '" + pageText + "' was NOT found on the current page/screen");
-			return false;
-		}
+		Boolean checkResult = false;
+		
+		for (int second = 0;; second++) {
+			Thread.sleep(100);
+			if (second >= 600) 
+				AssertJUnit.fail(methodID + ": page text '" + pageText + "' was not found before timeout expiration");
+				try { if (driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + pageText + "[\\s\\S]*$"))
+					System.out.println(methodID + ": '" + pageText + "' was confirmed to be present on the current page/screen");
+					checkResult = true;
+					break;
+				}
+				catch (Error e) {
+					System.out.println(e.toString());
+				}	
+			}
+		return checkResult;
 	}
 
 
