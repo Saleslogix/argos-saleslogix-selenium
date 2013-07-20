@@ -2,8 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="SLX8Mobile2x Unit-Test Suite" verbose="3" parallel="classes">
 
-        <test name="Unit Tests">
-  <parameter name="browser" value="chrome"></parameter>
+  <test name="Unit Tests">
+    <parameter name="browser" value="ff"></parameter>
     <classes>
       <class name="argos.saleslogix.selenium.test.UnitTest"/>
     </classes>
