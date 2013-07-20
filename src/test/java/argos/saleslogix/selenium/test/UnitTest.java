@@ -249,99 +249,34 @@ public class UnitTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
-	public void test45_MobileDefect13092219()  throws InterruptedException {				
-		String methodID = "test45_MobileDefect13092219";
+	@Test(enabled = true)
+	public void test02_SeTestTCAccountListViewLoadMoreResults() throws Exception {
+		String methodID = "test02_SeTestTCAccountListViewLoadMoreResults";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		// test params
-		String searchItem = "Abbott";
-		String strCheck1 = "records remaining";
-		String strCheck2 = "no records";
-		
-				
+		//Test Params:
+		String entityType = "accounts";
+	
 		System.out.println(STARTLINE);
-		// Step: click the Top-Left, Global Menu button...
-		//headerbutton.showGlobalMenu();
-	
-		// Step: click the SpeedSearch link
-		//commNav.clickGlobalMenuItem("SpeedSearch");
-		
-		// Step: perform search for Account record
-		commNav.searchListView("speedsearch", searchItem);
-	
-		// VP: check for 'records remaining' label being displayed
-		try {
-			AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck1 +"[\\s\\S]*$"));
-			System.out.println("Verify: '" + strCheck1 + "' check on SpeedSearch, List View - Passed");
-		} catch (Error e) {
-			System.out.println("Verify: '" + strCheck1 + "' check on SpeedSearch, List View - FAILED");
-			verificationErrors.append(e.toString());
-		}
-		
-		// Step: perform page-down scroll (2x) to load more results
-		for (int counter = 0;; counter++) {
-			if (counter >= 3) {
-				break;
-			}
-			driver.findElement(By.xpath("//*[@id='speedsearch_list']")).sendKeys(Keys.PAGE_DOWN);
-			System.out.println("SpeedSearch ListView browser page was scrolled down");
-			Thread.sleep(5000);
-			
-			// VP: check for any 'no records' results being displayed
-			try {
-				AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck2 +"[\\s\\S]*$"));
-				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - Passed");
-			} catch (Error e) {
-				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - FAILED");
-				verificationErrors.append(e.toString());
-				break;
-			}
-		}
-		
-		// Step: click the top-search results item to go to the Detail view
-		driver.findElement(By.xpath("//*[@id='speedsearch_list']/ul/li[1]/h3")).click();
-		for (int second = 0;; second++) {
-			if (second >= 30) Assert.fail("timeout");
-			try { if (!"SpeedSearch".equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
-			Thread.sleep(1000);
-		}
-		
-		// Step: click the Header, Back button to return to the SpeedSearch List View...
-		headerbutton.clickHeaderButton("back");
-		for (int second = 0;; second++) {
-			if (second >= 30) Assert.fail("timeout");
-			try { if ("SpeedSearch".equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
-			Thread.sleep(1000);
-		}
-		
-		// Step: perform page-down scroll () to load more results
-		for (int seconds = 0;; seconds++) {
-			if (seconds >= 30) {
-				break;
-			}
-			driver.findElement(By.xpath("//*[@id='speedsearch_list']")).sendKeys(Keys.PAGE_DOWN);
-			System.out.println("SpeedSearch ListView browser page was scrolled down");
-			Thread.sleep(1000);
-			
-			// VP: check for any 'no records' results being displayed
-			try {
-				AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck2 +"[\\s\\S]*$"));
-				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - Passed");
-			} catch (Error e) {
-				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - FAILED");
-				verificationErrors.append(e.toString());
-				break;
-			}
-			Thread.sleep(1000);
-		}		
-				
-		// End Tests
-		// Step: click the Top-Left, Global Menu button...
+	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+	
+	    //Step: navigate to Accounts list view...
+		commNav.clickGlobalMenuItem(entityType);
+	
+	    //Step: load more results (click on 'x remaining records' item)
+		for (int count = 0; count<=2; count++) {
+			WebElement remainingRecordsItem = driver.findElement(By.xpath("//*[@id='account_list']/div[2]"));
+			commNav.highlightElement(remainingRecordsItem);
+			remainingRecordsItem.click();
+			Thread.sleep(3000);		
+		}
+		
+		//Step: check if the 31th record item is present
+		WebElement thirtyfirstRecordItem = driver.findElement(By.xpath("//*[@id='account_list']/ul/li[31]"));
+		commNav.checkIfWebElementPresent("31st Account List View record available after load more records", thirtyfirstRecordItem);
 		
 		System.out.println(ENDLINE);
 	}

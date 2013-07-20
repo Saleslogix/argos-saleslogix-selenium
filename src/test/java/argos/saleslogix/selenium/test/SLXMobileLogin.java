@@ -54,23 +54,27 @@ public class SLXMobileLogin {
 		return this;
 	}
 	
-	public SLXMobileLogin doLogin(String userName, String passWord, Boolean rememberMe) throws InterruptedException {
+	public boolean doLogin(String userName, String passWord, Boolean rememberMe) throws InterruptedException {
 		String methodID = "doLogin";
 		
-		// Enter username and password then click the logon button
+		//Setp: enter username
 		enterUserName(userName);
 		Thread.sleep(1000);
 		
+		//Step: enter password
 		enterPassword(passWord);
 		Thread.sleep(1000);
 		
+		//Step: conditionally set the remember option
 		if (rememberMe) {
 			toggleRemember();
 		}
 		
+		//Step: click the Log On button
 		logonButton();
 		
-		System.out.println(methodID + ": " + userName + ", " + passWord + ", " + rememberMe);
-		return this;
+		System.out.println(methodID + ": username = " + userName + ", password = " + passWord + ", remember? = " + rememberMe);
+		//TODO: may want to setup some alert handling to catch any possible login errors
+		return true;
 	}
 }
