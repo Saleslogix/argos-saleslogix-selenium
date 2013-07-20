@@ -43,8 +43,8 @@ public String shortProdName;
 public String copyrightLabel;
 public String versionLabel;
 public String scriptuser;
-public String STARTLINE = "==================";
-public String ENDLINE   = "------------------";
+public String STARTLINE = "==========";
+public String ENDLINE   = "---------- end of test ----------";
 private boolean acceptNextAlert = true;
 protected StringBuffer verificationErrors = new StringBuffer();
 	
