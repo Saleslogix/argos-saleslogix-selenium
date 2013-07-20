@@ -22,7 +22,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class MobileDefectTest extends BrowserSetup {
 
-	@Test
+	@Test(enabled = true)
 	public void test00_Mobile_Login() throws InterruptedException {
 		String methodID = "test00_Mobile_Login";
 		
@@ -87,7 +87,7 @@ public class MobileDefectTest extends BrowserSetup {
 		// VP: confirm that the 'My Activities' screen displays after login
 		Thread.sleep(3000);
 		try { assertEquals("My Activities", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());
-			assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']/ul/li[1]")).isDisplayed());
+			assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
 			System.out.println("VP: Successfully logged in to Mobile Client.");
 		} catch (Error e) {
 			closeAlert();
@@ -97,7 +97,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);	
 	}
 
-	@Test
+	@Test (enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";
 		
@@ -128,7 +128,7 @@ public class MobileDefectTest extends BrowserSetup {
 	//MARKER		
 	// *******
 	
-	@Test
+	@Test (enabled = true)
 	public void test41_MobileDefect13092144()  throws InterruptedException {				
 		String methodID = "test41_MobileDefect13092144";
 		
@@ -137,8 +137,7 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		// test params
 		String attachmentName = "bluepencil";
-		
-		
+				
 		System.out.println(STARTLINE);
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
@@ -152,14 +151,21 @@ public class MobileDefectTest extends BrowserSetup {
 		// Step: click to download and view the attachment
 		try {
 			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li/div/div[2]/h3/span")).click();
+			
+			//grab body text to capture 'loading' message
+			String attachmentLoadingTxt = driver.findElement(By.cssSelector("BODY")).getText();
+			Thread.sleep(1000);
+
+			//grab body text to capture 'Downloading' message
+			String attachmentDownLoadingTxt = driver.findElement(By.cssSelector("BODY")).getText();
+			
+			// VP: confirm that attachment is downloaded and displayed correctly
+			AssertJUnit.assertTrue(attachmentLoadingTxt.matches("^[\\s\\S]*loading...[\\s\\S]*$"));
+			AssertJUnit.assertTrue(attachmentDownLoadingTxt.matches("^[\\s\\S]*Downloading[\\s\\S]*$"));
+			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-image']")));
 		} catch (Exception e) {
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
-		};
-				
-		// VP: confirm that attachment is downloaded and displayed correctly
-		AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*loading[\\s\\S]*$"));
-		AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Downloading[\\s\\S]*$"));
-		AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-image']")));
+		};			
 		
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
@@ -180,7 +186,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	
-	@Test
+	@Test (enabled = true)
 	public void test42_MobileDefect13092160()  throws InterruptedException {				
 		String methodID = "test42_MobileDefect13092160";
 		
@@ -229,8 +235,9 @@ public class MobileDefectTest extends BrowserSetup {
 		// End Tests
 		System.out.println(ENDLINE);
 	}
+
 	
-	@Test
+	@Test (enabled = true)
 	public void test43_MobileDefect13092222()  throws InterruptedException {				
 		String methodID = "test43_MobileDefect13092222";
 		
@@ -322,7 +329,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test
+	@Test (enabled = true)
 	public void test44_MobileDefect13092239()  throws InterruptedException {				
 		String methodID = "test44_MobileDefect13092239";
 		
@@ -361,7 +368,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test
+	@Test (enabled = true)
 	public void test45_MobileDefect13092219()  throws InterruptedException {				
 		String methodID = "test45_MobileDefect13092219";
 		
@@ -375,11 +382,6 @@ public class MobileDefectTest extends BrowserSetup {
 		
 				
 		System.out.println(STARTLINE);
-		// Step: click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
-	
-		// Step: click the SpeedSearch link
-		commNav.clickGlobalMenuItem("SpeedSearch");
 		
 		// Step: perform search for Account record
 		commNav.searchListView("speedsearch", searchItem);
@@ -457,8 +459,9 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+
 	
-	@Test
+	@Test (enabled = true)
 	public void test46_MobileDefect13092249()  throws InterruptedException {				
 		String methodID = "test46_MobileDefect13092249";
 		
@@ -520,7 +523,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test
+	@Test (enabled = true)
 	public void test47_MobileDefect13092260()  throws InterruptedException {				
 		String methodID = "test47_MobileDefect13092260";
 		
@@ -559,7 +562,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test
+	@Test (enabled = false)
 	  public void test48_MobileDefect13092154() throws Exception {
 	
 		System.out.println(STARTLINE);
@@ -744,7 +747,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    // -- END
 	  }
 
-	@Test
+	@Test (enabled = true)
 	public void test49_MobileDefect13091564()  throws InterruptedException {				
 		String methodID = "test49_MobileDefect13091564";
 		
@@ -1052,7 +1055,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);		
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test51_MobileDefect13092282()  throws InterruptedException {				
 		String methodID = "test51_MobileDefect13092282";
 		
@@ -1067,7 +1070,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);		
 	}
 
-	@Test
+	@Test (enabled = false)
 	  public void test52_MobileDefect13092102() throws Exception {
 	
 		System.out.println(STARTLINE);
@@ -1299,7 +1302,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    // -- END
 	  }
 
-	@Test
+	@Test (enabled = false)
 	  public void test53_MobileDefect13092153() throws Exception {
 	
 		System.out.println(STARTLINE);

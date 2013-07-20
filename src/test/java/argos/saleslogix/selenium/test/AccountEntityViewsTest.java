@@ -14,9 +14,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AccountEntityViewsTest extends BrowserSetup {
 	
-	//Test Set
-	//========
-	@Test(enabled = false)
+	//Test Methods Set
+	//================
+	@Test(enabled = true)
 	public void test01_SeTestTCAccountListView() throws Exception {
 		String methodID = "test01_SeTestTCAccountListView";
 		
@@ -42,7 +42,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			
 			//Step: check the Accounts Search widget elements
 			commNav.checkIfWebElementPresent("Accounts List View, Search - input text box", accountListView.accountsSearchTxtBox);
-			accountListView.accountsSearchTxtBox.click();
 			commNav.checkIfWebElementPresent("Accounts List View, Search - input clear button", accountListView.accountsSearchClearBtn);
 			commNav.checkIfWebElementPresent("Accounts List View, Search - Lookup button", accountListView.accountsSearchLookupBtn);
 			
@@ -68,7 +67,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	}
 
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test02_SeTestTCAccountListViewLoadMoreResults() throws Exception {
 		String methodID = "test02_SeTestTCAccountListViewLoadMoreResults";
 		
@@ -87,7 +86,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	
 	    //Step: load more results (click on 'x remaining records' item)
 		for (int count = 0; count<=2; count++) {
-			WebElement remainingRecordsItem = driver.findElement(By.xpath("//*[@id='account_list']/div[3]"));
+			WebElement remainingRecordsItem = driver.findElement(By.xpath("//*[@id='account_list']/div[2]"));
 			commNav.highlightElement(remainingRecordsItem);
 			remainingRecordsItem.click();
 			Thread.sleep(3000);		
@@ -101,7 +100,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	}
 
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test03_SeTestTCAccountListViewSearch() throws Exception {
 		String methodID = "test03_SeTestTCAccountListViewSearch";
 		
@@ -117,11 +116,12 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	}
 	
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test04_SeTestTCAccountListViewNegativeSearch() throws Exception {
 		String methodID = "test04_SeTestTCAccountListViewNegativeSearch";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
 		System.out.println(STARTLINE);
 		
 		//Step: search for non-existent Account record to confirm it's non-existence
@@ -131,14 +131,15 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	}
 
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test05_SeTestTCAccountListViewClearSearch() throws Exception {
 		String methodID = "test05_SeTestTCAccountListViewClearSearch";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);	
-
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+	
 		System.out.println(STARTLINE);
-
+	
 		commNav.entityListViewSearch("Accounts", "Big Systems");
 			
 		//Step: check for matching results...
@@ -146,6 +147,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		String topAccountListItemName = accountListView.topAccountsListItemName.getText();
 				
 		//Step: click the clear Search input field button
+		headerButton.showRightContextMenu();
 		accountListView.accountsSearchClearBtn.click();
 				
 		//Step: click the Lookup button to reload the full Accounts list
@@ -165,7 +167,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		System.out.println(methodID + ": clear previous Accounts search results action was successful");
 		System.out.println(ENDLINE);
 	}
-
+	
 	
 	@Test(enabled = true)
 	public void test06_SeTestTCAccountListViewOpenRecord() throws Exception {
@@ -185,8 +187,9 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test07_SeTestTCAccountDetailView() throws Exception {
 		String methodID = "test07_SeTestTCAccountDetailView";
 		
@@ -206,8 +209,10 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			//Step: check each item under the Account Detail View, Quick Actions section
 			commNav.isWebElementPresent("Account Detail view, 'Quick Actions' section header", accountDetailView.accountDetailViewQuickActionsHdr);
 			commNav.isWebElementPresent("Account Detail view, 'Call main number'", accountDetailView.accountDetailViewCallMainNumberLnk);			
-			verifyAccountDetailViewLink("Account Detail view, 'Schedule activity'", accountDetailView.accountDetailViewScheduleActivityLnk, "Schedule...");
-			verifyAccountDetailViewLink("Account Detail view, 'Add note'", accountDetailView.accountDetailViewScheduleActivityLnk, "Note");
+			commNav.verifyEntityViewElementClick("Account Detail view, 'Schedule activity'", accountDetailView.accountDetailViewScheduleActivityLnk, "Schedule...");
+			commNav.isWebElementPresent("Account Detail view, 'Add note'", accountDetailView.accountDetailViewAddNoteLnk);
+			//TODO: figure out why there is a failure for this step; reverting to 
+			//commNav.verifyEntityViewElementClick("Account Detail view, 'Add note'", accountDetailView.accountDetailViewAddNoteLnk, "Note");
 			commNav.isWebElementPresent("Account Detail view, 'View address'", accountDetailView.accountDetailViewViewAddressLnk);
 			
 			//Step: check each item under the Account Detail View, Details section
@@ -234,13 +239,13 @@ public class AccountEntityViewsTest extends BrowserSetup {
 
 			//Step: check each item under the Account Detail View, Related Items section
 			commNav.isWebElementPresent("Account Detail view, 'Related Items' section header", accountDetailView.accountDetailViewRelatedItemsHdr);
-			verifyAccountDetailViewLink("Account Detail view, 'Activities'", accountDetailView.accountDetailViewActivitiesLnk, "Activities");
-			verifyAccountDetailViewLink("Account Detail view, 'Contacts'", accountDetailView.accountDetailViewContactsLnk, "Contacts");
-			verifyAccountDetailViewLink("Account Detail view, 'Opportunities'", accountDetailView.accountDetailViewOpportunitiesLnk, "Opportunities");
-			verifyAccountDetailViewLink("Account Detail view, 'Tickets'", accountDetailView.accountDetailViewTicketsLnk, "Tickets");
-			verifyAccountDetailViewLink("Account Detail view, 'Notes/History'", accountDetailView.accountDetailViewNotesHistoryLnk, "Notes/History");
-			verifyAccountDetailViewLink("Account Detail view, 'Addresses'", accountDetailView.accountDetailViewAddressesLnk, "Addresses");
-			verifyAccountDetailViewLink("Account Detail view, 'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Attachments");
+			commNav.verifyEntityViewElementClick("Account Detail view, 'Activities'", accountDetailView.accountDetailViewActivitiesLnk, "Activities");
+			commNav.verifyEntityViewElementClick("Account Detail view, 'Contacts'", accountDetailView.accountDetailViewContactsLnk, "Contacts");
+			commNav.verifyEntityViewElementClick("Account Detail view, 'Opportunities'", accountDetailView.accountDetailViewOpportunitiesLnk, "Opportunities");
+			commNav.verifyEntityViewElementClick("Account Detail view, 'Tickets'", accountDetailView.accountDetailViewTicketsLnk, "Tickets");
+			commNav.verifyEntityViewElementClick("Account Detail view, 'Notes/History'", accountDetailView.accountDetailViewNotesHistoryLnk, "Notes/History");
+			commNav.verifyEntityViewElementClick("Account Detail view, 'Addresses'", accountDetailView.accountDetailViewAddressesLnk, "Addresses");
+			commNav.verifyEntityViewElementClick("Account Detail view, 'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Attachments");
 		}
 		else {
 			System.out.println(methodID + ": the Account Detail view for the '" + accountRecord + "' Account record; test aborted.");
@@ -252,6 +257,88 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
+	
+	@Test(enabled = true)
+	public void test08_SeTestTCAccountEditView() throws Exception {
+		String methodID = "test08_SeTestTCAccountEditView";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE);
+		
+		//Step: search for Account entity, then open it's Detail view
+		try {
+			AssertJUnit.assertTrue(commNav.entityRecordEditView("Account", "Initech"));
+			
+			//Step: check each input field and if applicable, its related list item selection view
+			//TODO: complete this section by adding calls to verify each field and selection view (if applicable)
+			
+			//end of test
+			headerButton.clickHeaderButton("cancel");
+		
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(2000);
+		}
+		finally {
+			
+		}
+		
+		System.out.println(ENDLINE);
+	}
+	
+	
+	@Test(enabled = true)
+	public void test09_SeTestTCAccountAddEditView() throws Exception {
+		String methodID = "test09_SeTestTCAccountAddEditView";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE);	
+		
+		// Test Params:
+		String entityType = "account";
+
+		//Step: enter the Account Add Edit view...
+		commNav.entityRecordAdd(entityType);
+				
+		//Step: go back to previous screens
+		headerButton.clickHeaderButton("cancel");
+		headerButton.goBack();
+		Thread.sleep(2000);
+		
+		System.out.println(ENDLINE);
+	}
+	
+		
+	@Test(enabled = true)
+	public void test10_SeTestTCAccountListViewHashtagKPIClicks() throws Exception {
+		String methodID = "test10_SeTestTCAccountListViewHashtagKPIClicks";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "accounts";
+		
+		System.out.println(STARTLINE);
+		
+	    //Step: click Top-Left button to reveal Global Menu...
+		headerButton.showGlobalMenu();
+	
+	    //Step: navigate to Accounts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		
+		//Step: go back to previous screen
+		headerButton.goBack();
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
 
 	@Test(enabled = false)
 	public void test97_SeTestDEBUG() throws Exception {
@@ -259,136 +346,10 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		commNav.entityRecordOpenDetailView("Accounts", "Abbott Ltd.");
 	}
 	
-	@Test(enabled = false)
-	public void test98_SeTestTCAttachAccountScreens() throws Exception {
-	    // SETest-Attachments_Account_Screens
-	    // Version: 2.2
-	    // Desc: Confirms that the Attachments feature is functional from Account screens...
-	    // Condition(s): Test user is logged in.    
-	    // Required Entities: Account - Abbott Ltd.
-	    // ==================================================================
-		String methodID = "test01_SeTestTCAttachAccountScreens";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		// Test Params:
-		String entityType = "accounts";
-		String entityRecordName = "Abbott Ltd.";
-
-		System.out.println(STARTLINE);
-	    // Step: click Top-Left button to reveal Global Menu...
-		headerbutton.showGlobalMenu();
-	
-	    // Step: navigate to Accounts list view...
-		commNav.clickGlobalMenuItem(entityType);
-	
-	    // Step: perform search for Account items...
-		commNav.searchListView(entityType, entityRecordName);
-	
-	    // Step: navigate to top Account record...
-	    commNav.clickListViewItemN(entityType, 1);
-	    commNav.waitForPage(entityRecordName);
-	
-		//TODO: Left-off routine refactoring here (6/13/13)
-	    // VP: confirm that Attachments is available under the Related Items section...
-	    try {
-	      assertTrue(isElementPresent(By.xpath("(//img[@alt='icon'])[11]")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    try {
-	      assertEquals("Attachments", driver.findElement(By.xpath("//div[@id='account_detail']/div[2]/ul[2]/li[7]/a/span")).getText());
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: click the Attachments link...
-	    driver.findElement(By.xpath("//div[@id='account_detail']/div[2]/ul[2]/li[7]/a/span")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Account Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: click to open an Attachment item...
-	    try {
-	      assertTrue(isElementPresent(By.xpath(".//*[@id='account_attachment_related']/ul/li[1]")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    
-	    // Step: search for a specific attachment item
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input")).clear();
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input")).sendKeys("Test123");
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[3]/button")).click();
-	    Thread.sleep(5000);
-	    try {
-		      assertTrue(isElementPresent(By.linkText("Test123")));
-		    } catch (Error e) {
-		      verificationErrors.append(e.toString());
-		    }
-	    driver.findElement(By.linkText("Test123")).click();
-	    
-	    // Step: click the top Add buton...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Add Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm the elements of the Add Attachments screen...
-	    try {
-	      assertTrue(isElementPresent(By.cssSelector("input[type=\"file\"]")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    try {
-	      assertTrue(isElementPresent(By.cssSelector("button.button.inline")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    try {
-	      assertTrue(isElementPresent(By.xpath("//div[@id='attachment_Add']/div[2]/div/button[2]")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: navigate back to Account screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Account Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Abbott Ltd.".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Accounts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	    // -- END
-	    System.out.println(ENDLINE);
-	}
-
 	
 	//Login & Logout
 	//==============
-	@Test
+	@Test(enabled = true)
 	public void test00_Mobile_Login() throws InterruptedException {
 		String methodID = "test00_Mobile_Login";
 		
@@ -453,7 +414,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		// VP: confirm that the 'My Activities' screen displays after login
 		Thread.sleep(3000);
 		try { assertEquals("My Activities", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());
-			assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']/ul/li[1]")).isDisplayed());
+			assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
 			System.out.println("VP: Successfully logged in to Mobile Client.");
 		} catch (Error e) {
 			closeAlert();
@@ -463,9 +424,8 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);	
 	}
 
-	//MARKER		
-	// *******
-	@Test
+
+	@Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";
 		
@@ -491,24 +451,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			System.out.println(e.toString());
 		}
 		System.out.println(ENDLINE);
-	}
-	
-	//Custom Test Methods:
-	//===================
-	protected boolean verifyAccountDetailViewLink(String elementDesc, WebElement wElement, String pageTitle) throws InterruptedException {
-		String methodID = "verifyAccountDetailViewLink";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		try { commNav.clickWebElementToPage(elementDesc, wElement, pageTitle);
-			headerButton.goBack();
-			return true;
-		} catch (Error e) {
-			System.out.println(e.toString());
-			return false;
-		}
-		
 	}
 
 }

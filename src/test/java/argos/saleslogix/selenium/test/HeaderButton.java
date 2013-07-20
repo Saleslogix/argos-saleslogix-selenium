@@ -1,6 +1,7 @@
 package argos.saleslogix.selenium.test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,22 +21,26 @@ public class HeaderButton {
 	
 	//@CacheLookup
 	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
+	WebElement rightCntxtMnuButton;
+	
+	//@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
 	WebElement addButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
 	WebElement editButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
 	WebElement saveButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
 	WebElement checkButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
 	WebElement deleteButton;
 	
 	//@CacheLookup
@@ -82,19 +87,42 @@ public class HeaderButton {
 		return this;
 	}
 	
+	public boolean showRightContextMenu() throws InterruptedException {
+		String methodID = "showRightContextMenu";
+		
+		// Click Header Right-Context Menu button...
+		clickHeaderButton("right context menu");
+		
+		// Verify the 'Global Menu' left-screen displays...
+		try {
+			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
+			System.out.println(methodID + ": Right-Context Menu was accessed successfully on header button click.");
+			return true;
+		} catch (Error e) {     
+			System.out.println(methodID + ": Right-Context Menu failed to display on header button click.");
+			System.out.println(e.toString());
+			return false;
+		}
+	}
+	
 	public HeaderButton goBack() throws InterruptedException {
 		String methodID = "goBack";
 		
-		String oldPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();
+		WebElement pgTitleBar = driver.findElement(By.xpath(".//*[@id='pageTitle']"));
+		String oldPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();		
 
 		//determine which button to actually click (back button placement varies)
-		if (backButton2.isDisplayed()) {
+		pgTitleBar.click();
+		pgTitleBar.sendKeys(Keys.BACK_SPACE);
+		/*
+		try {
 			backButton2.click();
 		}
-		else {
+		finally {
 			backButton1.click();
 		}
-		Thread.sleep(3000);
+		*/
+		Thread.sleep(1000);
 		
 		String newPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();
 		
@@ -113,6 +141,9 @@ public class HeaderButton {
 		switch (buttonName.toLowerCase()) {
 		case "global menu": case "global":
 			globalMenuButton.click();
+			break;
+		case "right context menu": case "right menu": case "right":
+			rightCntxtMnuButton.click();
 			break;
 		case "back": case "go back":
 			if (backButton2.isDisplayed()) { 

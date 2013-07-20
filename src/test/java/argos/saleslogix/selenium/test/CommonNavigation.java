@@ -21,6 +21,10 @@ public class CommonNavigation {
 	
 	//Global Menu Items
 	@CacheLookup
+	@FindBy(xpath = ".//*[@id='left_drawer']")
+	WebElement gmenu_panel;
+	
+	@CacheLookup
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Add Account/Contact']")
 	WebElement gmenu_addAccountContact;
 
@@ -84,6 +88,12 @@ public class CommonNavigation {
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Log Out']")
 	WebElement gmenu_logOut;
 
+	
+	//Right Context Menu Items
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='right_drawer']")
+	WebElement rmenu_panel;
+	
 	
 	public CommonNavigation clickGlobalMenuItem(String gMenuItem) throws InterruptedException {
 		String methodID = "clickGlobalMenuItem";
@@ -190,6 +200,24 @@ public class CommonNavigation {
 		}
 	}
 	
+	
+	protected boolean verifyEntityViewElementClick(String elementDesc, WebElement wElement, String expPgTitle) throws InterruptedException {
+		String methodID = "verifyEntityViewElementClick";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		try { commNav.clickWebElementToPage(elementDesc, wElement, expPgTitle);
+			headerButton.goBack();
+			return true;
+		} catch (Error e) {
+			System.out.println(e.toString());
+			return false;
+		}
+		
+	}
+	
+	
 	public CommonNavigation waitForListView(String listName) throws InterruptedException {
 	    
 		String itemList = "";
@@ -249,6 +277,8 @@ public class CommonNavigation {
 	public CommonNavigation searchListView(String itemType, String searchItemName) throws InterruptedException {
 		String methodID = "searchListView";
 		
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+		
 		String searchWgtIDX = "";
 		Boolean forSpdSrch = false;
 		
@@ -287,22 +317,28 @@ public class CommonNavigation {
 		//input the search item then perform the search
 		try {
 		    if (forSpdSrch) {
+		    	//invoke Global Menu
+		    	headerbutton.showGlobalMenu();
+		    			    	
 		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).clear();
 		    	Thread.sleep(500);
-		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")).click();
-		    	Thread.sleep(3000);
+		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[2]/button")).click();
+		    	Thread.sleep(1000);
 		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).sendKeys(searchItemName);
 		    	Thread.sleep(500);
 		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")).click();
 		    }
 		    else {
-		    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).clear();
+				//invoke the Right Context menu
+				headerbutton.clickHeaderButton("right context menu");
+				
+		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
 		    	Thread.sleep(500);
-		    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
-		    	Thread.sleep(3000);
-		    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div > input[name=\"query\"]")).sendKeys(searchItemName);
+		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
+		    	Thread.sleep(1000);
+		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
 		    	Thread.sleep(500);
-		    	driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + " > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();	    	
+		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();	    	
 		    }
 		    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + itemType + " List View...");
 		    waitForListView(itemType);
@@ -430,8 +466,7 @@ public class CommonNavigation {
 		}
 	}
 	
-	public boolean isPageDisplayed(String pageTitle) {
-		
+	public boolean isPageDisplayed(String pageTitle) {		
 		String methodID = "isPageDisplayed";
 		
     	if (pageTitle.equals(driver.findElement(By.id("pageTitle")).getText())) {
@@ -442,6 +477,36 @@ public class CommonNavigation {
     		System.out.println(methodID + ": '" + pageTitle + "' page was NOT successfully loaded");
     		return false;		
     	}
+	}
+	
+	
+	public boolean isTextNotPresentOnPage(String pageText) {
+		String methodID = "isTextNotPresentOnPage";
+		
+		try {
+			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + pageText + "[\\s\\S]*$"));
+			System.out.println(methodID + ": '" + pageText + "' was confirmed NOT to be present on the current page/screen");
+			return true;
+		} catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(methodID + ": '" + pageText + "' was un-expectedly found on the current page/screen");
+			return false;
+		}
+	}
+	
+	
+	public boolean isTextPresentOnPage(String pageText) {
+		String methodID = "isTextPresentOnPage";
+		
+		try {
+			AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + pageText + "[\\s\\S]*$"));
+			System.out.println(methodID + ": '" + pageText + "' was confirmed to be present on the current page/screen");
+			return true;
+		} catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(methodID + ": '" + pageText + "' was NOT found on the current page/screen");
+			return false;
+		}
 	}
 
 
@@ -542,6 +607,7 @@ public class CommonNavigation {
 		}		
 	}
 	
+	
 	public boolean entityRecordOpenDetailView(String entityType, String entityName) throws Exception {
 		String methodID = "entityRecordOpenDetailView";
 		
@@ -555,6 +621,69 @@ public class CommonNavigation {
 			return true;
 		}
 		else {
+			return false;
+		}
+	}
+	
+	
+	public boolean entityRecordAdd(String entityType) throws Exception {
+		String methodID = "entityRecordAdd";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+	    //Step: click Top-Left button to reveal Global Menu...
+		headerButton.showGlobalMenu();
+	
+	    //Step: navigate to Accounts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		//Step: click the Header Add button...
+		headerButton.clickHeaderButton("add");
+		String addEditViewXPath = "//*[@id='" + entityType.toLowerCase() + "_edit']";
+		try {
+			WebElement entityAddEditView = driver.findElement(By.xpath(addEditViewXPath));
+			highlightElement(entityAddEditView);
+			System.out.println(methodID + ": the " + entityType + " Add Edit view was successfully opened.");
+			return true;
+		}
+		catch (Error e) {
+			System.out.println(methodID + ": " + e);
+			return false;
+		}
+	}
+	
+	
+	public boolean entityRecordEditView(String entityType, String entityName) throws Exception {
+		String methodID = "entityRecordEditView";
+		
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		WebElement entityListItem = entityListViewSearch(entityType, entityName);
+		if (!entityListItem.equals(null)) {
+			entityListItem.click();
+			Thread.sleep(3000);
+			
+			//Step: check if the detail view is loaded
+			waitForPage(entityName);
+			
+			//Step: open record Edit View
+			headerbutton.editButton.click();
+			
+			String editViewXPath = "//*[@id='" + entityType.toLowerCase() + "_edit']";
+			try {
+				WebElement entityDetailView = driver.findElement(By.xpath(editViewXPath));
+				highlightElement(entityDetailView);
+				System.out.println(methodID + ": " + entityType + " Detail view was opened for the '" + entityName + "' record.");
+				return true;
+			}
+			catch (Error e) {
+				System.out.println(methodID + ": " + e);
+				return false;
+			}
+		}
+		else {
+			System.out.println(methodID + ": search for " + entityType + " - " + "'" + entityName + "'; step aborted.");
 			return false;
 		}
 	}
