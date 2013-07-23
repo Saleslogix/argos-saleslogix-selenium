@@ -313,10 +313,10 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-		
+	
 	@Test(enabled = true)
-	public void test10_SeTestTCAccountListViewHashtagKPIClicks() throws Exception {
-		String methodID = "test10_SeTestTCAccountListViewHashtagKPIClicks";
+	public void test10_SeTestTCAccountListViewHashTags() throws Exception {
+		String methodID = "test10_SeTestTCAccountListViewHashTags";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -326,12 +326,62 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-	    //Step: click Top-Left button to reveal Global Menu...
-		headerButton.showGlobalMenu();
-	
 	    //Step: navigate to Accounts list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
+		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		
+	    //Step: test the Hash Tags header
+		//expand the Hash Tags sub-panel if it's currently collapsed
+		if (!accountsListView.accountHashTagsPnl.isDisplayed()) {
+			accountsListView.accountHashTagsHdr.click();
+			
+			//confirm the the panel was indeed expanded
+			try {
+				AssertJUnit.assertTrue(accountsListView.accountHashTagsPnl.isDisplayed());
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
+				return;
+			}
+		}
+		//collapase the Hash Tags sub-panel
+		accountsListView.accountHashTagsHdr.click();
+		try {
+			AssertJUnit.assertFalse(accountsListView.accountHashTagsPnl.isDisplayed());
+			System.out.println("VP: Hash Tags sub-panel collapse check - Passed");
+			
+			//re-expand the Hash Tags sub-panel
+			accountsListView.accountHashTagsHdr.click();
+			try {
+				AssertJUnit.assertTrue(accountsListView.accountHashTagsPnl.isDisplayed());
+				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println("VP: Hash Tags sub-panel expand check - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println("VP: Hash Tags sub-panel collapse check - FAILED");
+		}
+		
+		//Step: test each of the pre-set Hash Tag items
+		commNav.rightClickContextMenuItem("active");
+		commNav.rightClickContextMenuItem("inactive");
+		commNav.rightClickContextMenuItem("suspect");
+		commNav.rightClickContextMenuItem("lead");
+		commNav.rightClickContextMenuItem("prospect");
+		commNav.rightClickContextMenuItem("customer");
+		commNav.rightClickContextMenuItem("partner");
+		commNav.rightClickContextMenuItem("vendor");
+		commNav.rightClickContextMenuItem("influencer");
+		commNav.rightClickContextMenuItem("competitor");
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
@@ -340,6 +390,80 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
+	@Test(enabled = true)
+	public void test11_SeTestTCAccountListViewKPI() throws Exception {
+		String methodID = "test11_SeTestTCAccountListViewKPI";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "accounts";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Accounts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		
+	    //Step: test the KPI header
+		//expand the KPI sub-panel if it's currently collapsed
+		if (!accountsListView.accountKPIPnl.isDisplayed()) {
+			accountsListView.accountKPIHdr.click();
+			
+			//confirm the the panel was indeed expanded
+			try {
+				AssertJUnit.assertTrue(accountsListView.accountHashTagsPnl.isDisplayed());
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
+				return;
+			}
+		}
+		//collapse Hash Tags sub-panel check
+		accountsListView.accountKPIHdr.click();
+		try {
+			AssertJUnit.assertFalse(accountsListView.accountKPIPnl.isDisplayed());
+			System.out.println("VP: KPI sub-panel collapse check - Passed");
+			
+			//re-expand the Hash Tags sub-panel
+			accountsListView.accountKPIHdr.click();
+			try {
+				AssertJUnit.assertTrue(accountsListView.accountKPIPnl.isDisplayed());
+				System.out.println("VP: KPI sub-panel expand check - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println("VP: KPI sub-panel e check - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println("VP: KPI sub-panel collapse check - FAILED");
+		}
+		
+		//Step: test each of the pre-set KPI items
+		commNav.rightClickContextMenuItem("Configure");
+		headerButton.goBack();
+		Thread.sleep(3000);
+		
+		commNav.rightClickContextMenuItem("Total Revenue");
+		commNav.rightClickContextMenuItem("Avg Time as Customer");
+		commNav.rightClickContextMenuItem("Total Accounts");
+		
+		//Step: go back to previous screen
+		headerButton.goBack();
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+
+		
 	@Test(enabled = false)
 	public void test97_SeTestDEBUG() throws Exception {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);

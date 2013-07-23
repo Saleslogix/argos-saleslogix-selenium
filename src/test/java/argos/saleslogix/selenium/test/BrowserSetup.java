@@ -144,7 +144,7 @@ protected StringBuffer verificationErrors = new StringBuffer();
 	
 	@AfterSuite
 	public void copyReport() {
-		File sourceFile = new File("C:\\Users\\" + scriptuser + "\\workspace\\SLXMobile2x\\test-output\\emailable-report.html");
+		File sourceFile = new File("C:\\Users\\" + scriptuser + "\\Documents\\SEWebDriver\\SLX8Mobile2x\\test-output\\emailable-report.html");
 		File targetFile = new File("\\\\ML02W7U\\TestReports\\Mobile2x SmokeTest Report - " + new SimpleDateFormat("MM-dd-yyyy hh-mm-ss aaa").format(new GregorianCalendar().getTime()) + ".html");
 		try {
 			Files.copy(sourceFile, targetFile);

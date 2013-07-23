@@ -1,5 +1,5 @@
 chromedriver.log
-# Package Files #
+*.class
 *.jar
 *.war
 *.ear

@@ -93,60 +93,82 @@ public class CommonNavigation {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='right_drawer']")
 	WebElement rmenu_panel;
+
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='right_drawer']/div[4]/h2[1]")
+	WebElement rmenu_HashTagsHdr;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='right_drawer']/div[4]/ul[1]")
+	WebElement rmenu_HashTagsSubPnl;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='right_drawer']/div[4]/h2[2]")
+	WebElement rmenu_KPIHdr;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='right_drawer']/div[4]/ul[2]")
+	WebElement rmenu_KPISubPnl;
 	
 	
 	public CommonNavigation clickGlobalMenuItem(String gMenuItem) throws InterruptedException {
 		String methodID = "clickGlobalMenuItem";
 		
+		//conditionally click the GlobalMenu button to reveal panel
+		if (!gmenu_panel.isDisplayed()) {
+			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+			Thread.sleep(1000);
+		}
+				
 		Boolean hasListview = true;
 		try {
 			switch (gMenuItem.toLowerCase()) {
 			case "add account/contact": case "add account contact": case "add":
-				gmenu_addAccountContact.click();
+				highlightNClick(gmenu_addAccountContact);
 				break;
 			case "speedsearch": case "search":
-				gmenu_speedSearch.click();
+				highlightNClick(gmenu_speedSearch);
 				break;			
-			case "my activities": case "activities":
-				gmenu_myActivities.click();
+			case "my activities": case "activities":				
+				highlightNClick(gmenu_myActivities);
 				break;
 			case "calendar":
-				gmenu_calendar.click();
+				highlightNClick(gmenu_calendar);
 				hasListview = false;
 				break;
 			case "notes/history": case "notes history": case "notes":
-				gmenu_notesHistory.click();
+				highlightNClick(gmenu_notesHistory);
 				break;
 			case "accounts": case "account":
-				gmenu_accounts.click();
+				highlightNClick(gmenu_accounts);
 				break;
 			case "contacts": case "contact":
-				gmenu_contacts.click();
+				highlightNClick(gmenu_contacts);
 				break;
 			case "leads": case "lead":
-				gmenu_leads.click();
+				highlightNClick(gmenu_leads);
 				break;
 			case "opportunities": case "opportunity":
-				gmenu_opportunities.click();
+				highlightNClick(gmenu_opportunities);
 				break;
 			case "tickets": case "ticket":
-				gmenu_tickets.click();
+				highlightNClick(gmenu_tickets);
 				break;
 			case "my attachments": case "attachments": case "attachment":
-				gmenu_myAttachments.click();
+				highlightNClick(gmenu_myAttachments);
 				break;
 			case "configure menu": case "configure":
-				gmenu_configureMenu.click();
+				highlightNClick(gmenu_configureMenu);
 				break;
 			case "settings":
-				gmenu_settings.click();
-				hasListview = false;
+				highlightNClick(gmenu_settings);
+				hasListview = false;				
 				break;
 			case "help":
-				gmenu_help.click();
+				highlightNClick(gmenu_help);
 				break;
 			case "log off": case "log out": case "logout": case "logoff":
-				gmenu_logOut.click();
+				highlightNClick(gmenu_logOut);
 				hasListview = false;
 				break;
 			}
@@ -161,6 +183,35 @@ public class CommonNavigation {
 			  System.out.println(e.toString());
 		}
 		return this;
+	}
+	
+	public boolean rightClickContextMenuItem(String menuItem) throws InterruptedException {
+		String methodID = "rightClickContextMenuItem";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		//conditionally click the RightContext Menu button to reveal panel
+		if (!commNav.rmenu_panel.isDisplayed()) {
+			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+			System.out.println(methodID + ": the '" + menuItem + " Right-context Menu item was clicked.");
+			Thread.sleep(1000);
+			
+			try {
+				AssertJUnit.assertTrue(commNav.rmenu_panel.isDisplayed());
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				return false;
+			}					
+		}
+		
+		//Step: perform context menu item selection
+		WebElement contxtMnuItem = driver.findElement(By.xpath("//*[@id='right_drawer']/descendant::*[text() = '" + menuItem + "']"));
+		//driver.findElement(By.xpath("//*[@id='right_drawer']/descendant::*[text() = '" + menuItem + "']")).click();
+		highlightNClick(contxtMnuItem);
+		Thread.sleep(2000);
+		
+		return true;
 	}
 	
 	public boolean checkIfWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
@@ -702,14 +753,27 @@ public class CommonNavigation {
 		}
 	}
 	
-	public void highlightElement(WebElement wElement) throws InterruptedException { 
+	public void highlightElement(WebElement wElement) throws InterruptedException {
+		
 		for (int i = 0; i <= 2; i++) { 
-			JavascriptExecutor js = (JavascriptExecutor) driver; 
-			js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: yellow; border: 2px solid yellow;"); 
-			Thread.sleep(100);
-			js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: red; border: 2px solid red;");
-			Thread.sleep(100);
-			js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "");
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			try {
+				js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: yellow; border: 2px solid yellow;"); 
+				Thread.sleep(100);
+				js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: red; border: 2px solid red;");
+				Thread.sleep(100);
+				js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				break;
+			}
 		} 
+	}
+	
+	public void highlightNClick(WebElement wElement) throws InterruptedException {
+		
+		highlightElement(wElement);
+		wElement.click();
 	}
 }

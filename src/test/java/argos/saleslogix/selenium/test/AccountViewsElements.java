@@ -87,6 +87,23 @@ public class AccountViewsElements extends BrowserSetup {
 	@FindBy(xpath = "//*[@id='account_list']/ul/li/h3")
 	WebElement noRecordsListItem;
 	
+	//Context Menu elements
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
+	WebElement accountHashTagsHdr;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[1]")
+	WebElement accountHashTagsPnl;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[2]")
+	WebElement accountKPIHdr;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[2]")
+	WebElement accountKPIPnl;
+	
 	//Detail View elements
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']")
@@ -143,8 +160,7 @@ public class AccountViewsElements extends BrowserSetup {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[3]")
 	WebElement accountDetailViewMoreDetailsHdr;
-	
-	
+		
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]")
 	WebElement accountDetailViewMoreDetailsFields;	
@@ -200,8 +216,7 @@ public class AccountViewsElements extends BrowserSetup {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/descendant::*[text() = 'Attachments']")
 	WebElement accountDetailViewAttachmentsLnk;
-	
-	
+		
 	//Edit View elements
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='account_edit']")

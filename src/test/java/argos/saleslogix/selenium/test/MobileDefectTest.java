@@ -172,16 +172,17 @@ public class MobileDefectTest extends BrowserSetup {
 		Thread.sleep(5000);
 		
 		// Step: click the Top-Left, Global Menu button again to close...
-		headerbutton.showGlobalMenu();
+		headerbutton.clickHeaderButton("global");
 		Thread.sleep(5000);
 		
-		// VP: confirm that attachment is still displayed correctly
+		// VP: confirm that attachment is still displayed correctly after Global Menu display/non-display
 		try {
 			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-image']")));
 			System.out.println("Verify: fix check on Attachments view on Global Menu display/non-display - Passed");
 		}
-		finally {
-			System.out.println("Verify: fix check on Attachments view on Global Menu display/non-display - FAILED");
+		catch (Error e) {
+			System.out.println(e.toString());
+			AssertJUnit.fail("Verify: fix check on Attachments view on Global Menu display/non-display - FAILED");
 		}
 		
 		// Step: navigate back to the My Activities list view
@@ -570,6 +571,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	@Test (enabled = false)
+	//TODO: need to update test48_MobileDefect13092154() for 2.3
 	  public void test48_MobileDefect13092154() throws Exception {
 		String methodID = "test48_MobileDefect13092154";
 	
@@ -896,6 +898,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	@Test(enabled = false)
+	//TODO: need to update test50_MobileDefect13092146() for 2.3
 	public void test50_MobileDefect13092146()  throws InterruptedException {				
 		String methodID = "test50_MobileDefect13092146";
 		
@@ -1079,6 +1082,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	@Test (enabled = false)
+	//TODO: need to update test52_MobileDefect13092102() for 2.3
 	  public void test52_MobileDefect13092102() throws Exception {
 		String methodID = "test52_MobileDefect13092102";
 	
@@ -1312,6 +1316,7 @@ public class MobileDefectTest extends BrowserSetup {
 	  }
 
 	@Test (enabled = false)
+	//TODO: need to update test53_MobileDefect13092153() for 2.3
 	  public void test53_MobileDefect13092153() throws Exception {
 		String methodID = "test53_MobileDefect13092153";
 	
