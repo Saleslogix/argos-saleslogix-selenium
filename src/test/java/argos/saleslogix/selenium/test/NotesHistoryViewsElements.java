@@ -111,28 +111,29 @@ public class NotesHistoryViewsElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[1]")
-	WebElement notesHistoryDetailViewQuickActionsHdr;
+	WebElement notesHistoryDetailViewDetailsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/ul[1]/li[1]/a")
-	WebElement notesHistoryDetailViewCallMainNumberLnk;
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[1]")
+	WebElement notesHistoryDetailViewScheduledFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/ul[1]/li[2]/a")
-	WebElement notesHistoryDetailViewScheduleActivityLnk;
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[2]")
+	WebElement notesHistoryDetailViewCompletedFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/ul[1]/li[3]/a")
-	WebElement notesHistoryDetailViewAddNoteLnk;
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[3]")
+	WebElement notesHistoryDetailViewRegardingFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/ul[1]/li[4]/a")
-	WebElement notesHistoryDetailViewViewAddressLnk;
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[4]")
+	WebElement notesHistoryDetailViewCompletedByFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[2]")
-	WebElement notesHistoryDetailViewDetailsHdr;
+	WebElement notesHistoryDetailViewNotesHdr;
 	
+	//TODO: Left-off element updates here; continue updates when needed
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[1]")
 	WebElement notesHistoryDetailViewAccountFld;

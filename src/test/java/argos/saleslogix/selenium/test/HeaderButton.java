@@ -139,6 +139,7 @@ public class HeaderButton {
 	public HeaderButton clickHeaderButton(String buttonName) throws InterruptedException {
 		String methodID = "clickHeaderButton";
 		
+		Thread.sleep(1000);
 		switch (buttonName.toLowerCase()) {
 		case "global menu": case "global":
 			globalMenuButton.click();

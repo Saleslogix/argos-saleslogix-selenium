@@ -114,8 +114,11 @@ public class CommonNavigation {
 	public CommonNavigation clickGlobalMenuItem(String gMenuItem) throws InterruptedException {
 		String methodID = "clickGlobalMenuItem";
 		
+		//need to use local WebElement def to avoid 
+		WebElement glblMenuPnl = driver.findElement(By.xpath(".//*[@id='left_drawer']"));
+		
 		//conditionally click the GlobalMenu button to reveal panel
-		if (!gmenu_panel.isDisplayed()) {
+		if (!glblMenuPnl.isDisplayed()) {
 			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
 			Thread.sleep(1000);
 		}
