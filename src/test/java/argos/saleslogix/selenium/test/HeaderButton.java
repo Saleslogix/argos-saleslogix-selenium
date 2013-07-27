@@ -24,19 +24,19 @@ public class HeaderButton {
 	WebElement rightCntxtMnuButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
 	WebElement addButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
 	WebElement editButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
 	WebElement saveButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
 	WebElement checkButton;
 	
 	//@CacheLookup
@@ -73,6 +73,22 @@ public class HeaderButton {
 		}
 	
 	public HeaderButton showGlobalMenu() throws InterruptedException {
+		String methodID = "showGlobalMenu";
+		
+		//conditionally close the Right Context Menu panel (if blocking the Global Menu button)
+		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
+			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+			System.out.println(methodID + " the Right-context Menu panel was un-expectedly open; closing panel...");
+			Thread.sleep(1000);
+			
+			try {
+				AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed());
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+			}					
+		}
+		
 		// Click Header Global Menu button...
 		clickHeaderButton("global");
 		

@@ -120,6 +120,80 @@ public class HashTagsTest extends BrowserSetup {
 	}
 	
 	
+	public void accountHashTagSelectNSearchCheck(String hashTagName, String searchVal) throws Exception {
+		String methodID = "accountHashTagSelectNSearchCheck";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		
+	    //Step: navigate to Opportunity list view...
+		commNav.clickGlobalMenuItem("Accounts");
+		
+		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);		
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		prepHashTagsSubPanel();
+		
+		
+		//SECTION 1:		
+		//Step: test the Hash Tag item
+		String hashTagVal = hashTagName.toLowerCase();
+		String hashTagSearchVal = "#" + hashTagVal;
+		
+		//capture the initial Accounts List view text
+		String beforeAccountListViewTxt = accountsListView.getAccountsListViewTxt();		
+		
+		//click the Hash Tag
+		commNav.rightClickContextMenuItem(hashTagVal);
+		String afterAccountListViewTxt = accountsListView.getAccountsListViewTxt();
+		
+		//compare the Account List
+		String resultsMsg = "VP: '" + hashTagVal + "' Hash Tag successful load check";
+		try {
+			AssertJUnit.assertNotSame(beforeAccountListViewTxt, afterAccountListViewTxt);
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
+		//SECTION 2:
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTagSearchVal;
+		
+		String accountSearchVal = accountsListView.accountsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals(hashTagSearchVal, accountSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
+		}
+		
+		
+		//SECTION 3:
+		//Step: perform a account record search on the name fields
+		String regardingFldSearchVal = searchVal;
+		String resultMsg = "VP: account record search for account field with '" + regardingFldSearchVal;
+		String hashTagRecSrch = hashTagSearchVal + " " + regardingFldSearchVal;
+		
+		commNav.searchListView("account", hashTagRecSrch);
+		try {
+			AssertJUnit.assertTrue(commNav.isTextPresentOnPage(regardingFldSearchVal));
+			System.out.println(resultMsg + "' - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + "' - FAILED");
+		}
+	}
+
+	
+	
 	public void notesHistoryHashTagSelectNSearchCheck(String hashTagName, String searchVal) throws Exception {
 		String methodID = "notesHistoryHashTagSelectNSearchCheck";
 		
@@ -587,8 +661,7 @@ public class HashTagsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//Test Methods
-	//============
+	
 	@Test(enabled = true)
 	public void test10_SeTestTCHashTagsOpportunityGeneral() throws Exception {
 		String methodID = "test10_SeTestTCHashTagsOpportunityGeneral";
@@ -1365,6 +1438,352 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultsMsg + " - Warning");
 		}
 				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test27_SeTestTCHashTagsAccountGeneral() throws Exception {
+		String methodID = "test27_SeTestTCHashTagsAccountGeneral";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "Accounts";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Opportunities list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		prepHashTagsSubPanel();
+		
+		
+		//SECTION 1:
+	    //Step: test the Hash Tags header
+		//collapse the Hash Tags sub-panel
+		String resultsMsg = "VP: Hash Tags sub-panel collapse check";
+		
+		accountListView.accountHashTagsHdr.click();
+		try {
+			AssertJUnit.assertFalse(accountListView.accountHashTagsPnl.isDisplayed());
+			System.out.println(resultsMsg + " - Passed");
+			
+			//re-expand the Hash Tags sub-panel
+			resultsMsg = "VP: Hash Tags sub-panel expand check";
+			
+			accountListView.accountHashTagsHdr.click();
+			try {
+				AssertJUnit.assertTrue(accountListView.accountHashTagsPnl.isDisplayed());
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
+		
+		//SECTION 2:
+		//Step: close Right-Context Menu
+		headerButton.clickHeaderButton("right");
+	
+		//check to see that the Right-Context Menu is indeed closed
+		// Verify the 'Right-Context Menu' left-screen displays...
+		resultsMsg = "VP: Right-Context Menu panel expand check";
+		
+		try {
+			AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
+			System.out.println(resultsMsg + " - Passed");
+		} catch (Error e) {     
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
+		//Step: re-open Right-Context Menu (confirmation is handled in the method)
+		headerButton.showRightContextMenu();
+				
+		//SECTION 3:
+		//Step: test each of the pre-set Hash Tag items
+		commNav.rightClickContextMenuItem("active");
+		commNav.rightClickContextMenuItem("inactive");
+		commNav.rightClickContextMenuItem("suspect");
+		commNav.rightClickContextMenuItem("lead");
+		commNav.rightClickContextMenuItem("prospect");
+		commNav.rightClickContextMenuItem("customer");
+		commNav.rightClickContextMenuItem("partner");
+		commNav.rightClickContextMenuItem("vendor");
+		commNav.rightClickContextMenuItem("influencer");
+		commNav.rightClickContextMenuItem("competitor");
+				
+		System.out.println(ENDLINE);
+	}
+
+	
+	@Test(enabled = true)
+	public void test28_SeTestTCHashTagsAccountActiveHT() throws Exception {
+		String methodID = "test28_SeTestTCHashTagsAccountActiveHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'active' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("active", "");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test29_SeTestTCHashTagsAccountInactiveHT() throws Exception {
+		String methodID = "test29_SeTestTCHashTagsAccountInactiveHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: select and search on 'inactive' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("inactive", "");
+		
+	    //Step: select and search on 'inactive' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("inactive", "Alcoa");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test30_SeTestTCHashTagsAccountSuspectHT() throws Exception {
+		String methodID = "test30_SeTestTCHashTagsAccountSuspectHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: select and search on 'suspect' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("suspect", "");
+		
+	    //Step: select and search on 'suspect' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("suspect", "Campbell");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test31_SeTestTCHashTagsAccountLeadHT() throws Exception {
+		String methodID = "test31_SeTestTCHashTagsAccountLeadHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: select and search on 'lead' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("lead", "");
+		
+	    //Step: select and search on 'lead' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("lead", "Big");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test32_SeTestTCHashTagsAccountProspectHT() throws Exception {
+		String methodID = "test32_SeTestTCHashTagsAccountProspectHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: select and search on 'prospect' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("prospect", "");
+		
+	    //Step: select and search on 'prospect' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("prospect", "Artistic");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test33_SeTestTCHashTagsAccountCustomerHT() throws Exception {
+		String methodID = "test33_SeTestTCHashTagsAccountCustomerHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: select and search on 'customer' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("customer", "");
+		
+	    //Step: select and search on 'customer' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("customer", "Bell");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test34_SeTestTCHashTagsAccountPartnerHT() throws Exception {
+		String methodID = "test34_SeTestTCHashTagsAccountPartnerHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: select and search on 'partner' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("partner", "");
+		
+	    //Step: select and search on 'partner' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("partner", "Energy");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test35_SeTestTCHashTagsAccountVendorHT() throws Exception {
+		String methodID = "test35_SeTestTCHashTagsAccountVendorHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: select and search on 'vendor' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("vendor", "");
+		
+	    //Step: select and search on 'vendor' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("vendor", "FedEx");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test36_SeTestTCHashTagsAccountInfluencerHT() throws Exception {
+		String methodID = "test36_SeTestTCHashTagsAccountInfluencerHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: select and search on 'influencer' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("influencer", "");
+		
+	    //Step: select and search on 'influencer' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("influencer", "EMC");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test37_SeTestTCHashTagsAccountCompetitorHT() throws Exception {
+		String methodID = "test37_SeTestTCHashTagsAccountCompetitorHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: select and search on 'competitor' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("competitor", "");
+		
+	    //Step: select and search on 'competitor' hash tag for specific Account
+		accountHashTagSelectNSearchCheck("competitor", "Johnson");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test38_SeTestTCHashTagsAccountStateRetention() throws Exception {
+		String methodID = "test38_SeTestTCHashTagsAccountStateRetention";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "Accounts";
+		String hashTag = "competitor";		
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Accounts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+	    //Step: select the 'negotiation' hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String accountSearchVal = accountListView.accountsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals(hashTag, accountSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
+		}
+		
+		//Step: navigate back to the My Activities List view
+		headerButton.goBack();
+		
+		//Step: navigate to Contacts List view...
+		commNav.clickGlobalMenuItem("Contacts");
+		
+	    //Step: navigate back to Accounts list view...
+		headerButton.showGlobalMenu();
+		WebElement opportunityItem = driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'Accounts']"));
+		commNav.highlightNClick(opportunityItem);
+				
+		//Step: re-open the Right-Context Menu
+		headerButton.showRightContextMenu();
+		
+		accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+		//Step: check the filled-in search input field value
+		resulstMsg = "VP: right-context menu search field persistent value set to " + hashTag;		
+		accountSearchVal = accountListView.accountsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, accountSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
+		}
+		headerButton.rightCntxtMnuButton.click();
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test39_SeTestTCHashTagsAccountMutalExclusivity() throws Exception {
+		String methodID = "test39_SeTestTCHashTagsAccountMutalExclusivity";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		// Test Params:
+		String entityType = "Accounts";
+		String hashTag = "active";
+				
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Accounts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+	    //Step: select the 'note' hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String accountSearchVal = accountListView.accountsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, accountSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
+		}
+		
+		//Step: perform invalid Hash Tag combo search A: "#inactive#active"
+		String hTagComboTxt = "#inactive#active";
+		String resultsMsg = "VP: invalid combo Hash Tag search '" + hTagComboTxt + "'returned 'no results'";
+		commNav.searchListView(entityType, hTagComboTxt);
+		try {
+			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
 		System.out.println(ENDLINE);
 	}
 	

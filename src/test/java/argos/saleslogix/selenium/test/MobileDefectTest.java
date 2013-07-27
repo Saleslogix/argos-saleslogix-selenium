@@ -1069,11 +1069,7 @@ public class MobileDefectTest extends BrowserSetup {
 	@Test(enabled = true)
 	public void test51_MobileDefect13092282()  throws InterruptedException {				
 		String methodID = "test51_MobileDefect13092282";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		
+				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		System.out.println("NOTE: Please run the 'test50_MobileDefect13092146' test method instead.");
@@ -1476,4 +1472,75 @@ public class MobileDefectTest extends BrowserSetup {
 	    // - End Section
 	    // -- END
 	  }
+
+	@Test (enabled = true)
+	public void test54_MobileDefect13091934()  throws InterruptedException {				
+		String methodID = "test54_MobileDefect13091934";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+				
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		// Step: click the Top-Left, Global Menu button...
+		headerButton.showGlobalMenu();
+	
+		// Step: click the Calendar link
+		commNav.clickGlobalMenuItem("Calendar");		
+		try {
+			AssertJUnit.assertTrue(commNav.isPageDisplayed("Calendar"));
+			
+			//Step: setup 21 new Activity events for the current day
+			String regardingFldVal = "Test To-Do Activity - ";
+			for (int iCount = 0;iCount<22;iCount++ ) {
+			// click the Add Header button to setup a new Activity
+				headerButton.clickHeaderButton("add");
+				try {
+					AssertJUnit.assertTrue(commNav.waitForPage("Schedule..."));
+					
+					// select the To-Do activity type
+					driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = 'To-Do']")).click();
+					AssertJUnit.assertTrue(commNav.waitForPage("To-Do"));
+					Thread.sleep(1000);
+					
+					// setup the Regarding field value
+					driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys(regardingFldVal + iCount);
+					driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextField_102']/input")).click();
+					Thread.sleep(500);
+					
+					// click the top Save button
+					headerButton.clickHeaderButton("save");
+					AssertJUnit.assertTrue(commNav.waitForPage("Calendar"));
+					System.out.println(methodID + ": '" + regardingFldVal + "' was scheduled");
+					Thread.sleep(1000);
+				}
+				catch (Error e) {
+					System.out.println(e.toString());
+					return;
+				}
+			}
+						
+			//Step: confirm that the Retrieve More Records button is available
+			String resultsMsg = "VP: Retrieve More Records button is displayed - ";
+			try {
+				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='calendar_daylist']/div[6]/button")).isDisplayed());
+				System.out.println(resultsMsg + "Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + "FAILED");
+			}			
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}
+		
+		// End Tests
+		// Step: click the Top-Left, Global Menu button...
+		headerButton.showGlobalMenu();
+		commNav.clickGlobalMenuItem("My Activities");
+		
+		System.out.println(ENDLINE);
+	}
 }

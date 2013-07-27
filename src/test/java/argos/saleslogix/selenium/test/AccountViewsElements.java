@@ -312,6 +312,15 @@ public class AccountViewsElements extends BrowserSetup {
 	
 	
 	//Methods
+	public String getAccountsListViewTxt() {
+		String methodID = "getAccountsListViewTxt";
+		
+		WebElement notesHistoryLisViewInfo = driver.findElement(By.xpath("//*[@id='account_list']/ul[2]"));
+		
+		return notesHistoryLisViewInfo.getText();		
+	}
+	
+	
 	public boolean NoRecordsFound() {
 		boolean result = false;
 		

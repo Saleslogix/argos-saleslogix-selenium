@@ -758,6 +758,7 @@ public class CommonNavigation {
 	
 	public void highlightElement(WebElement wElement) throws InterruptedException {
 		
+		Thread.sleep(250);
 		for (int i = 0; i <= 2; i++) { 
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			try {
