@@ -193,7 +193,154 @@ public class HashTagsTest extends BrowserSetup {
 	}
 
 	
+	public void contactHashTagSelectNSearchCheck(String hashTagName, String searchVal) throws Exception {
+		String methodID = "contactHashTagSelectNSearchCheck";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		
+	    //Step: navigate to Contacts list view...
+		commNav.clickGlobalMenuItem("Contacts");
+		
+		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);		
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		prepHashTagsSubPanel();
+		
+		
+		//SECTION 1:		
+		//Step: test the Hash Tag item
+		String hashTagVal = hashTagName.toLowerCase();
+		String hashTagSearchVal = "#" + hashTagVal;
+		
+		//capture the initial Contacts List view text
+		String beforeContactListViewTxt = contactsListView.getContactsListViewTxt();		
+		
+		//click the Hash Tag
+		commNav.rightClickContextMenuItem(hashTagVal);
+		Thread.sleep(3000);
+		String afterContactListViewTxt = contactsListView.getContactsListViewTxt();
+		
+		//compare the Contact List
+		String resultsMsg = "VP: '" + hashTagVal + "' Hash Tag successful load check";
+		try {
+			AssertJUnit.assertNotSame(beforeContactListViewTxt, afterContactListViewTxt);
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
+		//SECTION 2:
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTagSearchVal;
+		
+		String contactSearchVal = contactsListView.contactsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals(hashTagSearchVal, contactSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
+		}
+		
+		
+		//SECTION 3:
+		//Step: perform a contact record search on a possible matching field value
+		String fldSearchVal = searchVal;
+		String resultMsg = "VP: contact record search for contact field with '" + fldSearchVal;
+		String hashTagRecSrch = hashTagSearchVal + " " + fldSearchVal;
+		
+		commNav.searchListView("contact", hashTagRecSrch);
+		try {
+			AssertJUnit.assertTrue(commNav.isTextPresentOnPage(fldSearchVal));
+			System.out.println(resultMsg + "' - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + "' - FAILED");
+		}
+	}
 	
+	
+	public void leadHashTagSelectNSearchCheck(String hashTagName, String searchVal) throws Exception {
+		String methodID = "leadHashTagSelectNSearchCheck";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		
+	    //Step: navigate to Lead list view...
+		commNav.clickGlobalMenuItem("Leads");
+		
+		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);		
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		prepHashTagsSubPanel();
+		
+		
+		//SECTION 1:		
+		//Step: test the Hash Tag item
+		String hashTagVal = hashTagName.toLowerCase();
+		String hashTagSearchVal = "#" + hashTagVal;
+		
+		//capture the initial Lead List view text
+		String beforeLeadListViewTxt = leadsListView.getLeadsListViewTxt();		
+		
+		//click the Hash Tag
+		commNav.rightClickContextMenuItem(hashTagVal);
+		Thread.sleep(3000);
+		String afterLeadListViewTxt = leadsListView.getLeadsListViewTxt();
+		
+		//compare the Contact List
+		String resultsMsg = "VP: '" + hashTagVal + "' Hash Tag successful load check";
+		try {
+			AssertJUnit.assertNotSame(beforeLeadListViewTxt, afterLeadListViewTxt);
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
+		//SECTION 2:
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTagSearchVal;
+		
+		String leadSearchVal = leadsListView.leadsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals(hashTagSearchVal, leadSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + leadSearchVal + "'");
+		}
+		
+		
+		//SECTION 3:
+		//Step: perform a lead record search on a possible matching field value
+		String fldSearchVal = searchVal;
+		String resultMsg = "VP: contact record search for lead field with '" + fldSearchVal;
+		String hashTagRecSrch = hashTagSearchVal + " " + fldSearchVal;
+		
+		commNav.searchListView("lead", hashTagRecSrch);
+		try {
+			AssertJUnit.assertTrue(commNav.isTextPresentOnPage(fldSearchVal));
+			System.out.println(resultMsg + "' - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + "' - FAILED");
+		}
+	}
+
+		
 	public void notesHistoryHashTagSelectNSearchCheck(String hashTagName, String searchVal) throws Exception {
 		String methodID = "notesHistoryHashTagSelectNSearchCheck";
 		
@@ -609,7 +756,7 @@ public class HashTagsTest extends BrowserSetup {
 		
 		NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 		
-	    //Step: select the 'note' hash tag
+	    //Step: select the hash tag
 		commNav.rightClickContextMenuItem(hashTag);
 		
 		//Step: check the filled-in search input field value
@@ -625,8 +772,8 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search A: "#note#meeting"
-		String hTagComboTxt = "#note#meeting";
-		String resultsMsg = "VP: invalid combo Hash Tag search '" + hTagComboTxt + "'returned 'no results'";
+		String hTagComboTxt = "#note #meeting";
+		String resultsMsg = "VP: invalid combo Hash Tag search '" + hTagComboTxt + "'returned 'no records'";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
@@ -637,7 +784,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search B: "#phonecall#personal"
-		hTagComboTxt = "#phonecall#personal";
+		hTagComboTxt = "#phonecall #personal";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
@@ -648,7 +795,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#meeting#email"
-		hTagComboTxt = "#meeting#email";
+		hTagComboTxt = "#meeting #email";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
@@ -687,8 +834,7 @@ public class HashTagsTest extends BrowserSetup {
 		//SECTION 1:
 	    //Step: test the Hash Tags header
 		//collapse the Hash Tags sub-panel
-		String resultsMsg = "VP: Hash Tags sub-panel collapse check";
-		
+		String resultsMsg = "VP: Hash Tags sub-panel collapse check";		
 		opportunityListView.opportunityHashTagsHdr.click();
 		try {
 			AssertJUnit.assertFalse(opportunityListView.opportunityHashTagsPnl.isDisplayed());
@@ -719,8 +865,7 @@ public class HashTagsTest extends BrowserSetup {
 	
 		//check to see that the Right-Context Menu is indeed closed
 		// Verify the 'Right-Context Menu' left-screen displays...
-		resultsMsg = "VP: Right-Context Menu panel expand check";
-		
+		resultsMsg = "VP: Right-Context Menu panel expand check";		
 		try {
 			AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
 			System.out.println(resultsMsg + " - Passed");
@@ -988,7 +1133,7 @@ public class HashTagsTest extends BrowserSetup {
 		
 		OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
-	    //Step: select the 'note' hash tag
+	    //Step: select the hash tag
 		commNav.rightClickContextMenuItem(hashTag);
 		
 		//Step: check the filled-in search input field value
@@ -1004,8 +1149,8 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search A: "#won#open"
-		String hTagComboTxt = "#won#open";
-		String resultsMsg = "VP: invalid combo Hash Tag search '" + hTagComboTxt + "'returned 'no results'";
+		String hTagComboTxt = "#won #open";
+		String resultsMsg = "VP: invalid combo Hash Tag search '" + hTagComboTxt + "'returned 'no records'";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
@@ -1016,7 +1161,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search B: "#open#lost"
-		hTagComboTxt = "#open#lost";
+		hTagComboTxt = "#open #lost";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
@@ -1027,7 +1172,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#open#inactive"
-		hTagComboTxt = "#open#inactive";
+		hTagComboTxt = "#open #inactive";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
@@ -1038,7 +1183,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#won#lost"
-		hTagComboTxt = "#won#lost";
+		hTagComboTxt = "#won #lost";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
@@ -1049,7 +1194,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#won#inactive"
-		hTagComboTxt = "#won#inactive";
+		hTagComboTxt = "#won #inactive";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
@@ -1060,7 +1205,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#lost#inactive"
-		hTagComboTxt = "#lost#inactive";
+		hTagComboTxt = "#lost #inactive";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
@@ -1091,7 +1236,7 @@ public class HashTagsTest extends BrowserSetup {
 		
 		OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
-	    //Step: select the 'note' hash tag
+	    //Step: select the hash tag
 		commNav.rightClickContextMenuItem(hashTag);
 		
 		//Step: check the filled-in search input field value
@@ -1107,7 +1252,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search A: "#open#prospect"
-		String hTagComboTxt = "#open#prospect";
+		String hTagComboTxt = "#open #prospect";
 		String resultsMsg = "VP: valid combo Hash Tag search '" + hTagComboTxt + "'returned results";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
@@ -1119,7 +1264,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search B: "#open#qualification"
-		hTagComboTxt = "#open#qualification";
+		hTagComboTxt = "#open #qualification";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1130,7 +1275,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#open#needs-analysis"
-		hTagComboTxt = "#open#needs-analysis";
+		hTagComboTxt = "#open #needs-analysis";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1141,7 +1286,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#open#demonstration"
-		hTagComboTxt = "#open#demonstration";
+		hTagComboTxt = "#open #demonstration";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1152,7 +1297,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#open#negotiation"
-		hTagComboTxt = "#open#negotiation";
+		hTagComboTxt = "#open #negotiation";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1183,7 +1328,7 @@ public class HashTagsTest extends BrowserSetup {
 		
 		OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
-	    //Step: select the 'note' hash tag
+	    //Step: select the hash tag
 		commNav.rightClickContextMenuItem(hashTag);
 		
 		//Step: check the filled-in search input field value
@@ -1199,7 +1344,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search A: "#won#prospect"
-		String hTagComboTxt = "#won#prospect";
+		String hTagComboTxt = "#won #prospect";
 		String resultsMsg = "VP: valid combo Hash Tag search '" + hTagComboTxt + "'returned results";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
@@ -1211,7 +1356,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search B: "#won#qualification"
-		hTagComboTxt = "#won#qualification";
+		hTagComboTxt = "#won #qualification";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1222,7 +1367,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#won#needs-analysis"
-		hTagComboTxt = "#won#needs-analysis";
+		hTagComboTxt = "#won #needs-analysis";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1233,7 +1378,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#won#demonstration"
-		hTagComboTxt = "#won#demonstration";
+		hTagComboTxt = "#won #demonstration";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1244,7 +1389,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#won#negotiation"
-		hTagComboTxt = "#won#negotiation";
+		hTagComboTxt = "#won #negotiation";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1275,7 +1420,7 @@ public class HashTagsTest extends BrowserSetup {
 		
 		OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
-	    //Step: select the 'note' hash tag
+	    //Step: select the 'hash tag
 		commNav.rightClickContextMenuItem(hashTag);
 		
 		//Step: check the filled-in search input field value
@@ -1291,7 +1436,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search A: "#lost#prospect"
-		String hTagComboTxt = "#lost#prospect";
+		String hTagComboTxt = "#lost #prospect";
 		String resultsMsg = "VP: valid combo Hash Tag search '" + hTagComboTxt + "'returned results";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
@@ -1303,7 +1448,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search B: "#lost#qualification"
-		hTagComboTxt = "#lost#qualification";
+		hTagComboTxt = "#lost #qualification";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1314,7 +1459,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#lost#needs-analysis"
-		hTagComboTxt = "#lost#needs-analysis";
+		hTagComboTxt = "#lost #needs-analysis";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1325,7 +1470,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#lost#demonstration"
-		hTagComboTxt = "#lost#demonstration";
+		hTagComboTxt = "#lost #demonstration";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1336,7 +1481,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#lost#negotiation"
-		hTagComboTxt = "#lost#negotiation";
+		hTagComboTxt = "#lost #negotiation";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1367,7 +1512,7 @@ public class HashTagsTest extends BrowserSetup {
 		
 		OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
-	    //Step: select the 'note' hash tag
+	    //Step: select the hash tag
 		commNav.rightClickContextMenuItem(hashTag);
 		
 		//Step: check the filled-in search input field value
@@ -1383,7 +1528,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search A: "#inactive#prospect"
-		String hTagComboTxt = "#inactive#prospect";
+		String hTagComboTxt = "#inactive #prospect";
 		String resultsMsg = "VP: valid combo Hash Tag search '" + hTagComboTxt + "'returned results";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
@@ -1395,7 +1540,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search B: "#inactive#qualification"
-		hTagComboTxt = "#inactive#qualification";
+		hTagComboTxt = "#inactive #qualification";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1406,7 +1551,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#inactive#needs-analysis"
-		hTagComboTxt = "#inactive#needs-analysis";
+		hTagComboTxt = "#inactive #needs-analysis";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1417,7 +1562,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#inactive#demonstration"
-		hTagComboTxt = "#inactive#demonstration";
+		hTagComboTxt = "#inactive #demonstration";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1428,7 +1573,7 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search C: "#inactive#negotiation"
-		hTagComboTxt = "#inactive#negotiation";
+		hTagComboTxt = "#inactive #negotiation";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
@@ -1757,7 +1902,7 @@ public class HashTagsTest extends BrowserSetup {
 		
 		AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
-	    //Step: select the 'note' hash tag
+	    //Step: select the hash tag
 		commNav.rightClickContextMenuItem(hashTag);
 		
 		//Step: check the filled-in search input field value
@@ -1773,8 +1918,8 @@ public class HashTagsTest extends BrowserSetup {
 		}
 		
 		//Step: perform invalid Hash Tag combo search A: "#inactive#active"
-		String hTagComboTxt = "#inactive#active";
-		String resultsMsg = "VP: invalid combo Hash Tag search '" + hTagComboTxt + "'returned 'no results'";
+		String hTagComboTxt = "#inactive #active";
+		String resultsMsg = "VP: invalid combo Hash Tag search '" + hTagComboTxt + "'returned 'no records'";
 		commNav.searchListView(entityType, hTagComboTxt);
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
@@ -1784,6 +1929,1038 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test40_SeTestTCHashTagsAccountTypeUnique() throws Exception {
+		String methodID = "test40_SeTestTCHashTagsAccountTypeUnique";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		// Test Params:
+		String entityType = "Accounts";
+		String hashTag = "suspect";
+		String[] hTagTypeList = {"#suspect", "#lead", "#prospect", "#customer", "#partner", "#vendor", "#influencer", "#competitor"};
+		String hTagComboTxt = hTagTypeList[0];
+		String resultsMsg = "VP: Account Types combo Hash Tag search returned 'no records'";
+				
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Accounts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+	    //Step: select the hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String accountSearchVal = accountListView.accountsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, accountSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #suspect and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #suspect and other types...");
+		hTagComboTxt = hTagTypeList[0];
+		for (int iCount = 1;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = hTagTypeList[0];
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			commNav.searchListView(entityType, hTagComboTxt);
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #lead and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #lead and other types...");
+		for (int iCount = 2;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = hTagTypeList[1];
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			commNav.searchListView(entityType, hTagComboTxt);
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #prospect and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #prospect and other types...");
+		for (int iCount = 3;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = hTagTypeList[2];
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			commNav.searchListView(entityType, hTagComboTxt);
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #customer and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #customer and other types...");
+		for (int iCount = 4;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = hTagTypeList[3];
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			commNav.searchListView(entityType, hTagComboTxt);
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #partner and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #partner and other types...");
+		for (int iCount = 5;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = hTagTypeList[4];
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			commNav.searchListView(entityType, hTagComboTxt);
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #vendor and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #vendor and other types...");
+		for (int iCount = 6;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = hTagTypeList[5];
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			commNav.searchListView(entityType, hTagComboTxt);
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #influencer and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #influencer and other types...");
+		for (int iCount = 7;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = hTagTypeList[6];
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			commNav.searchListView(entityType, hTagComboTxt);
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = false)
+	public void test41_SeTestTCHashTagsAccountActiveStatusType() throws Exception {
+		String methodID = "test41_SeTestTCHashTagsAccountActiveStatusType";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		// Test Params:
+		String entityType = "Accounts";
+		String hashTag = "active";
+		String[] hTagTypeList = {"#suspect", "#lead", "#prospect", "#customer", "#partner", "#vendor", "#influencer", "#competitor"};
+		String hTagComboTxt = "#" + hashTag;
+		String resultsMsg = "VP: Account #active Status + Type combo Hash Tag search returned records";
+				
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Accounts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+	    //Step: select the hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String accountSearchVal = accountListView.accountsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, accountSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #active and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #active and other types...");
+		for (int iCount = 0;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = "#" + hashTag;
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			String accountListViewTxt = accountListView.getAccountsListViewTxt();
+			commNav.searchListView(entityType, hTagComboTxt);
+			Thread.sleep(2000);
+			String searchResultsTxt = accountListView.getAccountsListViewTxt();
+			try {
+				AssertJUnit.assertTrue(!searchResultsTxt.equals(accountListViewTxt));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test42_SeTestTCHashTagsAccountInactiveStatusType() throws Exception {
+		String methodID = "test42_SeTestTCHashTagsAccountInactiveStatusType";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		// Test Params:
+		String entityType = "Accounts";
+		String hashTag = "inactive";
+		String[] hTagTypeList = {"#suspect", "#lead", "#prospect", "#customer", "#partner", "#vendor", "#influencer", "#competitor"};
+		String hTagComboTxt = "#" + hashTag;
+		String resultsMsg = "VP: Account #inactive Status + Type combo Hash Tag search returned records";
+				
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Accounts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+	    //Step: select the hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String accountSearchVal = accountListView.accountsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, accountSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #active and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #active and other types...");
+		for (int iCount = 0;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = "#" + hashTag;
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			String accountListViewTxt = accountListView.getAccountsListViewTxt();
+			commNav.searchListView(entityType, hTagComboTxt);
+			Thread.sleep(2000);
+			String searchResultsTxt = accountListView.getAccountsListViewTxt();
+			try {
+				AssertJUnit.assertTrue(!searchResultsTxt.equals(accountListViewTxt));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test43_SeTestTCHashTagsContactGeneral() throws Exception {
+		String methodID = "test43_SeTestTCHashTagsContactGeneral";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "Contacts";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Contacts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		prepHashTagsSubPanel();
+		
+		
+		//SECTION 1:
+	    //Step: test the Hash Tags header
+		//collapse the Hash Tags sub-panel
+		String resultsMsg = "VP: Hash Tags sub-panel collapse check";		
+		contactListView.contactsHashTagsHdr.click();
+		try {
+			AssertJUnit.assertFalse(contactListView.contactsHashTagsPnl.isDisplayed());
+			System.out.println(resultsMsg + " - Passed");
+			
+			//re-expand the Hash Tags sub-panel
+			resultsMsg = "VP: Hash Tags sub-panel expand check";
+			
+			contactListView.contactsHashTagsHdr.click();
+			try {
+				AssertJUnit.assertTrue(contactListView.contactsHashTagsPnl.isDisplayed());
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
+		
+		//SECTION 2:
+		//Step: close Right-Context Menu
+		headerButton.clickHeaderButton("right");
+	
+		//check to see that the Right-Context Menu is indeed closed
+		// Verify the 'Right-Context Menu' left-screen displays...
+		resultsMsg = "VP: Right-Context Menu panel expand check";		
+		try {
+			AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
+			System.out.println(resultsMsg + " - Passed");
+		} catch (Error e) {     
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
+		//Step: re-open Right-Context Menu (confirmation is handled in the method)
+		headerButton.showRightContextMenu();
+				
+		//SECTION 3:
+		//Step: test each of the pre-set Hash Tag items
+		commNav.rightClickContextMenuItem("primary");
+		commNav.rightClickContextMenuItem("not-primary");
+		commNav.rightClickContextMenuItem("can-email");
+		commNav.rightClickContextMenuItem("can-phone");
+		commNav.rightClickContextMenuItem("can-fax");
+		commNav.rightClickContextMenuItem("can-mail");
+		commNav.rightClickContextMenuItem("can-solicit");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test44_SeTestTCHashTagsContactPrimaryHT() throws Exception {
+		String methodID = "test44_SeTestTCHashTagsContactPrimaryHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'primary' hash tag
+		contactHashTagSelectNSearchCheck("primary", "");
+		
+	    //Step: select and search on 'primary' hash tag for specific Contact Name
+		contactHashTagSelectNSearchCheck("primary", "Douglas");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test45_SeTestTCHashTagsContactNotPrimaryHT() throws Exception {
+		String methodID = "test45_SeTestTCHashTagsContactNotPrimaryHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'not-primary' hash tag
+		contactHashTagSelectNSearchCheck("not-primary", "");
+		
+	    //Step: select and search on 'not-primary' hash tag for specific Contact Name
+		contactHashTagSelectNSearchCheck("not-primary", "Blow");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test46_SeTestTCHashTagsContactCanEmailHT() throws Exception {
+		String methodID = "test46_SeTestTCHashTagsContactCanEmailHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'can-email' hash tag
+		contactHashTagSelectNSearchCheck("can-email", "");
+		
+	    //Step: select and search on 'can-email' hash tag for specific Contact Name
+		contactHashTagSelectNSearchCheck("can-email", "Alvarez");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test47_SeTestTCHashTagsContactCanPhoneHT() throws Exception {
+		String methodID = "test47_SeTestTCHashTagsContactCanPhoneHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'can-phone' hash tag
+		contactHashTagSelectNSearchCheck("can-phone", "");
+		
+	    //Step: select and search on 'can-phone' hash tag for specific Contact Name
+		contactHashTagSelectNSearchCheck("can-phone", "Aiken");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test48_SeTestTCHashTagsContactCanFaxHT() throws Exception {
+		String methodID = "test48_SeTestTCHashTagsContactCanFaxHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'can-fax' hash tag
+		contactHashTagSelectNSearchCheck("can-fax", "");
+		
+	    //Step: select and search on 'can-fax' hash tag for specific Contact Name
+		contactHashTagSelectNSearchCheck("can-fax", "Chuck");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test49_SeTestTCHashTagsContactCanMailHT() throws Exception {
+		String methodID = "test49_SeTestTCHashTagsContactCanMailHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'can-mail' hash tag
+		contactHashTagSelectNSearchCheck("can-mail", "");
+		
+	    //Step: select and search on 'can-mail' hash tag for specific Contact Name
+		contactHashTagSelectNSearchCheck("can-mail", "Linda");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test50_SeTestTCHashTagsContactCanSolicitHT() throws Exception {
+		String methodID = "test50_SeTestTCHashTagsContactCanSolicitHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'can-solicit' hash tag
+		contactHashTagSelectNSearchCheck("can-solicit", "");
+		
+	    //Step: select and search on 'can-solicit' hash tag for specific Contact Name
+		contactHashTagSelectNSearchCheck("can-solicit", "Lars");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test51_SeTestTCHashTagsContactStateRetention() throws Exception {
+		String methodID = "test51_SeTestTCHashTagsContactStateRetention";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "Contacts";
+		String hashTag = "can-solicit";		
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Contacts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		
+	    //Step: select the 'negotiation' hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals(hashTag, contactSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
+		}
+		
+		//Step: navigate back to the My Activities List view
+		headerButton.goBack();
+		
+		//Step: navigate to Accounts List view...
+		commNav.clickGlobalMenuItem("Accounts");
+		
+	    //Step: navigate back to Contacts list view...
+		headerButton.showGlobalMenu();
+		WebElement opportunityItem = driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'Contacts']"));
+		commNav.highlightNClick(opportunityItem);
+				
+		//Step: re-open the Right-Context Menu
+		headerButton.showRightContextMenu();
+		
+		contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		
+		//Step: check the filled-in search input field value
+		resulstMsg = "VP: right-context menu search field persistent value set to " + hashTag;		
+		contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, contactSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
+		}
+		headerButton.rightCntxtMnuButton.click();
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test52_SeTestTCHashTagsContactMutalExclusivity() throws Exception {
+		String methodID = "test52_SeTestTCHashTagsContactMutalExclusivity";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		// Test Params:
+		String entityType = "Contacts";
+		String hashTag = "primary";
+				
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Contacts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		
+	    //Step: select the hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, contactSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
+		}
+		
+		//Step: perform invalid Hash Tag combo search A: "#not-primary #primary"
+		String hTagComboTxt = "#not-primary #primary";
+		String resultsMsg = "VP: invalid combo Hash Tag search '" + hTagComboTxt + "'returned 'no records'";
+		commNav.searchListView(entityType, hTagComboTxt);
+		try {
+			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test53_SeTestTCHashTagsContactPrimaryHTCombos() throws Exception {
+		String methodID = "test53_SeTestTCHashTagsContactPrimaryHTCombos";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		// Test Params:
+		String entityType = "Contacts";
+		String hashTag = "primary";
+		String[] hTagTypeList = {"#can-email", "#can-phone", "#can-fax", "#can-mail", "#can-solicit"};
+		String hTagComboTxt = "#" + hashTag;
+		String resultsMsg = "VP: Contact #primary indicator + donot combo Hash Tag search returned records";
+				
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Contacts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		
+	    //Step: select the hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, contactSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #active and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #primary and donot flags...");
+		for (int iCount = 0;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = "#" + hashTag;
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			String contactListViewTxt = contactListView.getContactsListViewTxt();
+			commNav.searchListView(entityType, hTagComboTxt);
+			Thread.sleep(2000);
+			String searchResultsTxt = contactListView.getContactsListViewTxt();
+			try {
+				AssertJUnit.assertTrue(!searchResultsTxt.equals(contactListViewTxt));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test54_SeTestTCHashTagsContactNotPrimaryHTCombos() throws Exception {
+		String methodID = "test54_SeTestTCHashTagsContactNotPrimaryHTCombos";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		// Test Params:
+		String entityType = "Contacts";
+		String hashTag = "not-primary";
+		String[] hTagTypeList = {"#can-email", "#can-phone", "#can-fax", "#can-mail", "#can-solicit"};
+		String hTagComboTxt = "#" + hashTag;
+		String resultsMsg = "VP: Contact #primary indicator + donot combo Hash Tag search returned records";
+				
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Contacts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		
+	    //Step: select the hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, contactSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #active and other types
+		System.out.println(methodID + ": perform Hash Tag combo search using #not-primary and donot flags...");
+		for (int iCount = 0;iCount<hTagTypeList.length;iCount++) {
+			hTagComboTxt = "#" + hashTag;
+			hTagComboTxt = hTagComboTxt + " " + hTagTypeList[iCount];
+			String contactListViewTxt = contactListView.getContactsListViewTxt();
+			commNav.searchListView(entityType, hTagComboTxt);
+			Thread.sleep(2000);
+			String searchResultsTxt = contactListView.getContactsListViewTxt();
+			try {
+				AssertJUnit.assertTrue(!searchResultsTxt.equals(contactListViewTxt));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test55_SeTestTCHashTagsLeadGeneral() throws Exception {
+		String methodID = "test55_SeTestTCHashTagsLeadGeneral";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "Leads";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Contacts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		LeadViewsElements leadListView = PageFactory.initElements(driver, LeadViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		prepHashTagsSubPanel();
+		
+		
+		//SECTION 1:
+	    //Step: test the Hash Tags header
+		//collapse the Hash Tags sub-panel
+		String resultsMsg = "VP: Hash Tags sub-panel collapse check";		
+		leadListView.leadsHashTagsHdr.click();
+		try {
+			AssertJUnit.assertFalse(leadListView.leadsHashTagsPnl.isDisplayed());
+			System.out.println(resultsMsg + " - Passed");
+			
+			//re-expand the Hash Tags sub-panel
+			resultsMsg = "VP: Hash Tags sub-panel expand check";
+			
+			leadListView.leadsHashTagsHdr.click();
+			try {
+				AssertJUnit.assertTrue(leadListView.leadsHashTagsPnl.isDisplayed());
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
+		
+		//SECTION 2:
+		//Step: close Right-Context Menu
+		headerButton.clickHeaderButton("right");
+	
+		//check to see that the Right-Context Menu is indeed closed
+		// Verify the 'Right-Context Menu' left-screen displays...
+		resultsMsg = "VP: Right-Context Menu panel expand check";		
+		try {
+			AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
+			System.out.println(resultsMsg + " - Passed");
+		} catch (Error e) {     
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - FAILED");
+		}
+		
+		//Step: re-open Right-Context Menu (confirmation is handled in the method)
+		headerButton.showRightContextMenu();
+				
+		//SECTION 3:
+		//Step: test each of the pre-set Hash Tag items
+		commNav.rightClickContextMenuItem("can-email");
+		commNav.rightClickContextMenuItem("can-phone");
+		commNav.rightClickContextMenuItem("can-fax");
+		commNav.rightClickContextMenuItem("can-mail");
+		commNav.rightClickContextMenuItem("can-solicit");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test56_SeTestTCHashTagsLeadCanEmailHT() throws Exception {
+		String methodID = "test56_SeTestTCHashTagsLeadCanEmailHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'can-email' hash tag
+		leadHashTagSelectNSearchCheck("can-email", "");
+		
+	    //Step: select and search on 'can-email' hash tag for specific Lead Name
+		leadHashTagSelectNSearchCheck("can-email", "Achew");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test57_SeTestTCHashTagsLeadCanPhoneHT() throws Exception {
+		String methodID = "test57_SeTestTCHashTagsLeadCanPhoneHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'can-phone' hash tag
+		leadHashTagSelectNSearchCheck("can-phone", "");
+		
+	    //Step: select and search on 'can-phone' hash tag for specific Lead Name
+		leadHashTagSelectNSearchCheck("can-phone", "Banks");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test58_SeTestTCHashTagsLeadCanFaxHT() throws Exception {
+		String methodID = "test58_SeTestTCHashTagsLeadCanFaxHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'can-fax' hash tag
+		leadHashTagSelectNSearchCheck("can-fax", "");
+		
+	    //Step: select and search on 'can-fax' hash tag for specific Lead Name
+		leadHashTagSelectNSearchCheck("can-fax", "Aaron");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test59_SeTestTCHashTagsLeadCanMailHT() throws Exception {
+		String methodID = "test59_SeTestTCHashTagsLeadCanMailHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'can-mail' hash tag
+		leadHashTagSelectNSearchCheck("can-mail", "");
+		
+	    //Step: select and search on 'can-mail' hash tag for specific Lead Name
+		leadHashTagSelectNSearchCheck("can-mail", "Barkley");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test60_SeTestTCHashTagsLeadCanSolicitHT() throws Exception {
+		String methodID = "test60_SeTestTCHashTagsLeadCanSolicitHT";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+	    //Step: select and search on 'can-solicit' hash tag
+		leadHashTagSelectNSearchCheck("can-solicit", "");
+		
+	    //Step: select and search on 'can-solicit' hash tag for specific Lead Name
+		leadHashTagSelectNSearchCheck("can-solicit", "John");
+				
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test61_SeTestTCHashTagsLeadStateRetention() throws Exception {
+		String methodID = "test61_SeTestTCHashTagsLeadStateRetention";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "Leads";
+		String hashTag = "can-solicit";		
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Contacts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		
+	    //Step: select the 'negotiation' hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals(hashTag, contactSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
+		}
+		
+		//Step: navigate back to the My Activities List view
+		headerButton.goBack();
+		
+		//Step: navigate to Accounts List view...
+		commNav.clickGlobalMenuItem("Accounts");
+		
+	    //Step: navigate back to Contacts list view...
+		headerButton.showGlobalMenu();
+		WebElement opportunityItem = driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'Contacts']"));
+		commNav.highlightNClick(opportunityItem);
+				
+		//Step: re-open the Right-Context Menu
+		headerButton.showRightContextMenu();
+		
+		contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		
+		//Step: check the filled-in search input field value
+		resulstMsg = "VP: right-context menu search field persistent value set to " + hashTag;		
+		contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, contactSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
+		}
+		headerButton.rightCntxtMnuButton.click();
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test62_SeTestTCHashTagsLeadCombos() throws Exception {
+		String methodID = "test62_SeTestTCHashTagsLeadCombos";			
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		// Test Params:
+		String entityType = "Leads";
+		String hashTag = "can-email";
+		String resultsMsg = "VP: Lead Types combo Hash Tag search returned results";
+				
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Leads list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		LeadViewsElements leadListView = PageFactory.initElements(driver, LeadViewsElements.class);
+		
+	    //Step: select the hash tag
+		commNav.rightClickContextMenuItem(hashTag);
+		
+		//Step: check the filled-in search input field value
+		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
+		String leadSearchVal = leadListView.leadsSearchTxtBox.getAttribute("value");
+		try {
+			AssertJUnit.assertEquals("#" + hashTag, leadSearchVal);
+			System.out.println(resulstMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + leadSearchVal + "'");
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #can-email and other types
+		String[] hTagTypeList1 = {"#can-email", "#can-phone", "#can-fax", "#can-mail", "#can-solicit"};
+		String hTagComboTxt1 = hTagTypeList1[0];
+		System.out.println(methodID + ": perform Hash Tag combo search using #can-email and other types...");
+		for (int iCount = 1;iCount<hTagTypeList1.length;iCount++) {
+			hTagComboTxt1 = hTagTypeList1[0];
+			hTagComboTxt1 = hTagComboTxt1 + " " + hTagTypeList1[iCount];
+			commNav.searchListView(entityType, hTagComboTxt1);
+			try {
+				AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #can-phone and other types
+		String[] hTagTypeList2 = {"#can-phone", "#can-email", "#can-fax", "#can-mail", "#can-solicit"};
+		String hTagComboTxt2 = hTagTypeList2[0];
+		System.out.println(methodID + ": perform Hash Tag combo search using #can-phone and other types...");
+		for (int iCount = 1;iCount<hTagTypeList2.length;iCount++) {
+			hTagComboTxt2 = hTagTypeList2[0];
+			hTagComboTxt2 = hTagComboTxt2 + " " + hTagTypeList2[iCount];
+			commNav.searchListView(entityType, hTagComboTxt2);
+			try {
+				AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #can-fax and other types
+		String[] hTagTypeList3 = {"#can-fax", "#can-phone", "#can-email", "#can-mail", "#can-solicit"};
+		String hTagComboTxt3 = hTagTypeList3[0];
+		System.out.println(methodID + ": perform Hash Tag combo search using #can-phone and other types...");
+		for (int iCount = 1;iCount<hTagTypeList3.length;iCount++) {
+			hTagComboTxt3 = hTagTypeList3[0];
+			hTagComboTxt3 = hTagComboTxt3 + " " + hTagTypeList3[iCount];
+			commNav.searchListView(entityType, hTagComboTxt3);
+			try {
+				AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #can-mail and other types
+		String[] hTagTypeList4 = {"#can-mail", "#can-fax", "#can-phone", "#can-email", "#can-solicit"};
+		String hTagComboTxt4 = hTagTypeList4[0];
+		System.out.println(methodID + ": perform Hash Tag combo search using #can-mail and other types...");
+		for (int iCount = 1;iCount<hTagTypeList4.length;iCount++) {
+			hTagComboTxt4 = hTagTypeList4[0];
+			hTagComboTxt4 = hTagComboTxt4 + " " + hTagTypeList4[iCount];
+			commNav.searchListView(entityType, hTagComboTxt4);
+			try {
+				AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+		
+		//Step: perform Hash Tag combo search using #can-solicit and other types
+		String[] hTagTypeList5 = {"#can-solicit", "#can-mail", "#can-fax", "#can-phone", "#can-email"};
+		String hTagComboTxt5 = hTagTypeList5[0];
+		System.out.println(methodID + ": perform Hash Tag combo search using #can-solicit and other types...");
+		for (int iCount = 1;iCount<hTagTypeList5.length;iCount++) {
+			hTagComboTxt5 = hTagTypeList5[0];
+			hTagComboTxt5 = hTagComboTxt5 + " " + hTagTypeList5[iCount];
+			commNav.searchListView(entityType, hTagComboTxt5);
+			try {
+				AssertJUnit.assertFalse(commNav.isTextPresentOnPage("no records"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+		System.out.println(" ");
+				
 		System.out.println(ENDLINE);
 	}
 	

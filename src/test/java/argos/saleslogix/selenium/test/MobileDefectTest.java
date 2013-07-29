@@ -1499,11 +1499,13 @@ public class MobileDefectTest extends BrowserSetup {
 					AssertJUnit.assertTrue(commNav.waitForPage("Schedule..."));
 					
 					// select the To-Do activity type
+					//TODO: re-factor the following to use ActivityViewsElements def.
 					driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = 'To-Do']")).click();
 					AssertJUnit.assertTrue(commNav.waitForPage("To-Do"));
 					Thread.sleep(1000);
 					
 					// setup the Regarding field value
+					//TODO: re-factor the following to use ActivityViewsElements def.
 					driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys(regardingFldVal + iCount);
 					driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextField_102']/input")).click();
 					Thread.sleep(500);
@@ -1523,6 +1525,7 @@ public class MobileDefectTest extends BrowserSetup {
 			//Step: confirm that the Retrieve More Records button is available
 			String resultsMsg = "VP: Retrieve More Records button is displayed - ";
 			try {
+				//TODO: re-factor the following to use CalendarViewsElements def.
 				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='calendar_daylist']/div[6]/button")).isDisplayed());
 				System.out.println(resultsMsg + "Passed");
 			}

@@ -315,9 +315,9 @@ public class AccountViewsElements extends BrowserSetup {
 	public String getAccountsListViewTxt() {
 		String methodID = "getAccountsListViewTxt";
 		
-		WebElement notesHistoryLisViewInfo = driver.findElement(By.xpath("//*[@id='account_list']/ul[2]"));
+		WebElement accountsLisViewInfo = driver.findElement(By.xpath("//*[@id='account_list']"));
 		
-		return notesHistoryLisViewInfo.getText();		
+		return accountsLisViewInfo.getText();		
 	}
 	
 	
