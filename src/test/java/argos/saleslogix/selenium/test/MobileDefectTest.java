@@ -1546,4 +1546,151 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+
+	@Test (enabled = true)
+	public void test55_MobileDefect13092411()  throws Exception {				
+		String methodID = "test55_MobileDefect13092411";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1 - schedule an activity under a Contact
+		//------------------------------------------------
+		//Test Params
+		String contactName1 = "Alexander";
+		String contactFullName1 = "Alexander, Mark";
+		
+		//Step: click and open the the Contact record
+		commNav.entityRecordOpenDetailView("Contacts", contactFullName1);		
+		try {
+			AssertJUnit.assertTrue(commNav.isPageDisplayed(contactFullName1));
+			
+			ContactViewsElements contactDetail = PageFactory.initElements(driver, ContactViewsElements.class);
+			
+			//Step: open the Activities view
+			contactDetail.contactsDetailViewActivitiesLnk.click();
+			commNav.waitForPage("Activities");
+				
+			//schedule a new Activity
+			headerButton.clickHeaderButton("add");
+			commNav.waitForPage("Schedule...");
+			
+			//select Meeting type
+			driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = 'Meeting']")).click();
+			commNav.waitForPage("Meeting");
+			
+			//setup Regarding field
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).click();
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys("Dinner meeting");
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys(Keys.RETURN);
+			Thread.sleep(1000);
+			
+			//keep remaining default field vals then save the activity
+			headerButton.clickHeaderButton("save");
+			commNav.waitForPage("Activities");
+			
+			//VP: check to see the Contact's scheduled activity is listed
+			String resultMsg = "VP: Contact's scheduled activity listed under the Contact's Activities view";
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("Dinner meeting"));
+				System.out.println(resultMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultMsg + " - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}
+		
+		//Section 2 - schedule an activity under a Lead
+		//---------------------------------------------
+		//Test Params
+		String leadName1 = "Bass";
+		String leadFullName1 = "Bass, Stuart";
+		
+		//Step: click and open the the Contact record
+		commNav.entityRecordOpenDetailView("Leads", leadFullName1);
+		try {
+			AssertJUnit.assertTrue(commNav.isPageDisplayed(leadFullName1));
+			
+			LeadViewsElements leadDetail = PageFactory.initElements(driver, LeadViewsElements.class);
+			
+			//Step: open the Activities view
+			leadDetail.leadsDetailViewActivitiesLnk.click();
+			commNav.waitForPage("Activities");
+				
+			//schedule a new Activity
+			headerButton.clickHeaderButton("add");
+			commNav.waitForPage("Schedule...");
+			
+			//select Meeting type
+			driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = 'Personal Activity']")).click();
+			commNav.waitForPage("Personal Activity");
+			
+			//setup Regarding field
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).click();
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys("Buy Gift");
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys(Keys.RETURN);
+			Thread.sleep(1000);
+			
+			//keep remaining default field vals then save the activity
+			headerButton.clickHeaderButton("save");
+			commNav.waitForPage("Activities");
+			
+			//VP: check to see the Lead's scheduled activity is listed
+			String resultMsg = "VP: Lead's scheduled activity listed under the Lead's Activities view";
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("Buy Gift"));
+				System.out.println(resultMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultMsg + " - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}
+		
+		//Section 3 - check to see that the Lead's activity is not listed under the Contact
+		//---------------------------------------------------------------------------------
+		//Step: click and re-open the the Contact record
+		commNav.entityRecordOpenDetailView("Contacts", contactFullName1);		
+		try {
+			AssertJUnit.assertTrue(commNav.isPageDisplayed(contactFullName1));
+			
+			ContactViewsElements contactDetail = PageFactory.initElements(driver, ContactViewsElements.class);
+			
+			//Step: open the Activities view
+			contactDetail.contactsDetailViewActivitiesLnk.click();
+			commNav.waitForPage("Activities");
+			
+			//VP: check to see that the Lead's activity is NOT listed under the Contact
+			String resultMsg = "VP: Lead's activity is NOT listed under the Contact record";
+			try {
+				AssertJUnit.assertTrue(commNav.isTextNotPresentOnPage("Buy Gift"));
+				System.out.println(resultMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultMsg + " - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}
+		
+		
+		// End Tests
+		commNav.clickGlobalMenuItem("My Activities");
+		
+		System.out.println(ENDLINE);
+	}
 }

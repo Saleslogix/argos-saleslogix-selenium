@@ -590,7 +590,14 @@ public class CommonNavigation {
 		clickGlobalMenuItem(entityType);
 	
 	    //Step: perform search for entity record items...
-		searchListView(entityType, entityName);
+		if (entityType.toLowerCase().equals("contacts") || entityType.toLowerCase().equals("leads")) {
+			String nameTokens[] = entityName.split(",");
+			String lastName = nameTokens[0];
+			searchListView(entityType, lastName);
+		}
+		else {
+			searchListView(entityType, entityName);
+		}
 		
 		//SubStep: singularize the entityType parameter
 		String entListNameXPth = "";

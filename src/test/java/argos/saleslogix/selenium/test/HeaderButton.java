@@ -24,7 +24,7 @@ public class HeaderButton {
 	WebElement rightCntxtMnuButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")
 	WebElement addButton;
 	
 	//@CacheLookup
