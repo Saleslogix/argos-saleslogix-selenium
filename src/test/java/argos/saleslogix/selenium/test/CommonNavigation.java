@@ -451,7 +451,8 @@ public class CommonNavigation {
 		String methodID = "waitForPage";
 	    
 		for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
+			Thread.sleep(100);
+	    	if (second >= 600) AssertJUnit.fail("timeout");
 	    	try { 
 	    		AssertJUnit.assertEquals(pageTitle, driver.findElement(By.xpath("//*[@id='pageTitle']")).getText());
 	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");

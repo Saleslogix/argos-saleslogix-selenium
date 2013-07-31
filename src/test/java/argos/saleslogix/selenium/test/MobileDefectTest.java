@@ -125,9 +125,9 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//MARKER		
-	// *******
-	
+	//Test Methods		
+	//============
+	//TODO: document functional areas for each test method
 	@Test (enabled = true)
 	public void test41_MobileDefect13092144()  throws InterruptedException {				
 		String methodID = "test41_MobileDefect13092144";
@@ -1559,7 +1559,6 @@ public class MobileDefectTest extends BrowserSetup {
 		//Section 1 - schedule an activity under a Contact
 		//------------------------------------------------
 		//Test Params
-		String contactName1 = "Alexander";
 		String contactFullName1 = "Alexander, Mark";
 		
 		//Step: click and open the the Contact record
@@ -1610,7 +1609,6 @@ public class MobileDefectTest extends BrowserSetup {
 		//Section 2 - schedule an activity under a Lead
 		//---------------------------------------------
 		//Test Params
-		String leadName1 = "Bass";
 		String leadFullName1 = "Bass, Stuart";
 		
 		//Step: click and open the the Contact record
@@ -1689,6 +1687,178 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		
 		// End Tests
+		commNav.clickGlobalMenuItem("My Activities");
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = true)
+	public void test56_MobileDefect13092300()  throws InterruptedException {				
+		String methodID = "test42_MobileDefect13092300";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// test params
+		String attachmentName = "ibm";
+		
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		// Step: click the Top-Left, Global Menu button...
+		headerbutton.showGlobalMenu();
+	
+		// Step: click the My Attachments link
+		commNav.clickGlobalMenuItem("My Attachments");
+		
+		// Step: perform search for Attachment record
+		commNav.searchListView("attachment", attachmentName);
+		
+		// Step: click to download and view the attachment
+		try {
+			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li/div/div[2]/h3/span")).click();
+		} catch (Exception e) {
+			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
+		};
+		Thread.sleep(7000);
+				
+		// VP: confirm that URL attachment is loaded and displayed correctly
+		AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
+				
+		// Step: navigate back to the My Activities list view
+		headerbutton.showGlobalMenu();
+		commNav.clickGlobalMenuItem("My Activities");
+		commNav.waitForPage("Activities");
+		
+		// End Tests
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = true)
+	public void test57_MobileDefect13092329()  throws Exception {				
+		String methodID = "test57_MobileDefect13092329";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1 - schedule an activity under an Account
+		//-------------------------------------------------
+		//Test Params
+		String accountName1 = "Abbott WorldWide";
+		
+		//Step: click and open the the Account record
+		commNav.entityRecordOpenDetailView("Accounts", accountName1);		
+		try {
+			AssertJUnit.assertTrue(commNav.isPageDisplayed(accountName1));
+			
+			AccountViewsElements accountDetail = PageFactory.initElements(driver, AccountViewsElements.class);
+			
+			//Step: open the Activities view
+			accountDetail.accountDetailViewActivitiesLnk.click();
+			commNav.waitForPage("Activities");
+				
+			//schedule a new Activity
+			headerButton.clickHeaderButton("add");
+			commNav.waitForPage("Schedule...");
+			
+			//select Meeting type
+			driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = 'Meeting']")).click();
+			Thread.sleep(2000);
+			commNav.waitForPage("Meeting");
+			
+			//setup Regarding field
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).click();
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys("Training");
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys(Keys.RETURN);
+			Thread.sleep(1000);
+			
+			//click Regarding field selection button
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/button")).click();
+			commNav.waitForPage("Activity Description");
+			String activityDescListInitTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
+			headerButton.goBack();
+			
+			//setup Category field
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/input")).click();
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/input")).sendKeys("Training");
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/input")).sendKeys(Keys.RETURN);
+			Thread.sleep(1000);
+			
+			//click Category field selection button
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/button")).click();
+			commNav.waitForPage("Activity Category");
+			String activityCatListInitTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
+			headerButton.goBack();
+			
+			//keep remaining default field vals then save the activity
+			headerButton.clickHeaderButton("save");
+			commNav.waitForPage("Activities");
+			
+			//VP: check to see the Contact's scheduled activity is listed
+			String resultMsg = "VP: Contact's scheduled activity listed under the Contact's Activities view";
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("Training"));
+				System.out.println(resultMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultMsg + " - FAILED");
+			}
+			
+			
+			//Section 2 - schedule another activity under the same Contact
+			//------------------------------------------------------------
+			//start to schedule a new Activity
+			headerButton.clickHeaderButton("add");
+			commNav.waitForPage("Schedule...");
+			
+			//select Meeting type
+			driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = 'Meeting']")).click();
+			Thread.sleep(2000);
+			commNav.waitForPage("Meeting");
+			
+			//click Regarding field selection button
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/button")).click();
+			commNav.waitForPage("Activity Description");
+			
+			//VP: check to see that Activity Description list is un-changed (i.e. no duplicate items)
+			String resultsMsg = "VP: Activity Description list view consistency check";
+			String activityDescListTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
+			try {
+				AssertJUnit.assertFalse(activityDescListTxt.equals(activityDescListInitTxt));
+				System.out.println(resultsMsg + "- Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + "- FAILED");
+			}
+			headerButton.goBack();
+			
+			//click Category field selection button
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/button")).click();
+			commNav.waitForPage("Activity Category");
+			
+			//VP: check to see that Activity Category list is un-changed (i.e. no duplicate items)
+			resultsMsg = "VP: Activity Category list view consistency check";
+			String activityCatListTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
+			try {
+				AssertJUnit.assertFalse(activityCatListTxt.equals(activityCatListInitTxt));
+				System.out.println(resultsMsg + "- Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + "- FAILED");
+			}
+			headerButton.goBack();
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}		
+		
+		// End Tests
+		headerButton.clickHeaderButton("cancel");
 		commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
