@@ -127,7 +127,7 @@ public class MobileDefectTest extends BrowserSetup {
 
 	//Test Methods		
 	//============
-	//TODO: document functional areas for each test method
+	//TODO: document functional areas or keywords using tags for each test method
 	@Test (enabled = true)
 	public void test41_MobileDefect13092144()  throws InterruptedException {				
 		String methodID = "test41_MobileDefect13092144";
@@ -670,6 +670,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    
 	    // Step: click the 'add a file' section of the screen...
 	    String filepath = "C://uploadtest.txt";
+	    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).click();
 	    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).sendKeys(filepath);
 	    Thread.sleep(2000);	    
 	    
@@ -1859,6 +1860,235 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		// End Tests
 		headerButton.clickHeaderButton("cancel");
+		commNav.clickGlobalMenuItem("My Activities");
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = true)
+	public void test58_MobileDefect13092338()  throws Exception {	
+		//tags: schedule, ticket activity, public access
+		String methodID = "test58_MobileDefect13092338";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1 - schedule a Ticket Activity under a Ticket
+		//-----------------------------------------------------
+		//Test Params
+		String ticketRecord = "000-00-000017";
+		
+		//Step: click and open the the Ticket record
+		commNav.entityRecordOpenDetailView("Tickets", ticketRecord);		
+		try {
+			AssertJUnit.assertTrue(commNav.isPageDisplayed(ticketRecord));
+			
+			TicketViewsElements ticketDetail = PageFactory.initElements(driver, TicketViewsElements.class);
+			
+			//Step: open the Ticket Activities view
+			ticketDetail.ticketsDetailViewTicketsActivitiesLnk.click();
+			commNav.waitForPage("Ticket Activities");
+				
+			//schedule a new Activity
+			headerButton.clickHeaderButton("add");
+			commNav.waitForPage("Edit Ticket Activity");
+			
+			//VP: check the default value of the Public Access field
+			String publicAccessFldVal = driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_27']/input")).getAttribute("value");
+			String expectedPublicAccessFldVal = "1-Customer";
+			String resultMsg = "VP: Default 'public access' field value set to '1-Customer'";
+			try {
+				AssertJUnit.assertTrue(publicAccessFldVal.matches(expectedPublicAccessFldVal));
+				System.out.println(resultMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultMsg + " - FAILED");
+			}
+			
+			//set User field value
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_48']/button")).click();
+			commNav.waitForPage("Users");
+			driver.findElement(By.xpath("//*[@id='user_list']/descendant::*[text() = 'Administrator, ']")).click();
+			commNav.waitForPage("Edit Ticket Activity");
+			
+			//set Start Date (use default)
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_6']/button")).click();
+			commNav.waitForPage("Calendar");
+			Thread.sleep(1000);
+			headerButton.clickHeaderButton("check");
+			commNav.waitForPage("Edit Ticket Activity");
+			
+			//set End Date (use default)
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_7']/button")).click();
+			commNav.waitForPage("Calendar");
+			Thread.sleep(1000);
+			headerButton.clickHeaderButton("check");
+			commNav.waitForPage("Edit Ticket Activity");
+			
+			//set Comments text (for record identification)
+			String commentsTxt = "Test Ticket Activity for Mobile Defect Fix 13092338";
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).click();
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).sendKeys(commentsTxt);
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).sendKeys(Keys.RETURN);
+			Thread.sleep(1000);
+			
+			//keep remaining default field vals then save the activity
+			headerButton.clickHeaderButton("save");
+			commNav.waitForPage("Ticket Activities");
+			
+			//VP: check to see that the scheduled Ticket Activity is listed
+			resultMsg = "VP: Scheduled Ticket Activity is listed under the Ticket Activities view";
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage(commentsTxt));
+				System.out.println(resultMsg + " - Passed");
+				
+				//re-open the Ticket Activity
+				driver.findElement(By.xpath("//*[@id='ticketactivity_related']/descendant::*[text() = '" + ticketRecord + "']")).click();
+				commNav.waitForNotPage("Ticket Activities");
+				
+				//VP: check to see that Public Access field value is correct
+				String actualPublicAccessFldVal = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/div[2]/div[1]/div[6]/span")).getText();
+				resultMsg = "VP: Ticket Activity, Public Access field value check";
+				try {
+					AssertJUnit.assertTrue(actualPublicAccessFldVal.matches(expectedPublicAccessFldVal));
+					System.out.println(resultMsg + " - Passed");
+				}
+				catch (Error e) {
+					System.out.println(e.toString());
+					System.out.println(resultMsg + " - FAILED");
+				}
+				
+				headerButton.goBack();
+				commNav.waitForNotPage("Ticket Activities");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultMsg + " - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}		
+		
+		// End Tests
+		commNav.clickGlobalMenuItem("My Activities");
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = true)
+	public void test59_MobileDefect13092339()  throws Exception {
+		//tags: schedule, ticket activity, public access, type, null
+		String methodID = "test59_MobileDefect13092339";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1 - schedule a Ticket Activity under a Ticket
+		//-----------------------------------------------------
+		//Test Params
+		String ticketRecord = "000-00-000022";
+		
+		//Step: click and open the the Ticket record
+		commNav.entityRecordOpenDetailView("Tickets", ticketRecord);	
+		try {
+			AssertJUnit.assertTrue(commNav.isPageDisplayed(ticketRecord));
+			
+			TicketViewsElements ticketDetail = PageFactory.initElements(driver, TicketViewsElements.class);
+			
+			//Step: open the Ticket Activities view
+			ticketDetail.ticketsDetailViewTicketsActivitiesLnk.click();
+			commNav.waitForPage("Ticket Activities");
+				
+			//schedule a new Activity
+			headerButton.clickHeaderButton("add");
+			commNav.waitForPage("Edit Ticket Activity");			
+			
+			//set User field value
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_48']/button")).click();
+			commNav.waitForPage("Users");
+			driver.findElement(By.xpath("//*[@id='user_list']/descendant::*[text() = 'Barret, Dan']")).click();
+			commNav.waitForPage("Edit Ticket Activity");
+			
+			//set Start Date (use default)
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_6']/button")).click();
+			commNav.waitForPage("Calendar");
+			Thread.sleep(1000);
+			headerButton.clickHeaderButton("check");
+			commNav.waitForPage("Edit Ticket Activity");
+			
+			//set End Date (use default)
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_7']/button")).click();
+			commNav.waitForPage("Calendar");
+			Thread.sleep(1000);
+			headerButton.clickHeaderButton("check");
+			commNav.waitForPage("Edit Ticket Activity");
+			
+			//set Comments text (for record identification)
+			String commentsTxt = "Test Ticket Activity for Mobile Defect Fix 13092338";
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).click();
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).sendKeys(commentsTxt);
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).sendKeys(Keys.RETURN);
+			Thread.sleep(1000);
+			
+			//keep remaining default field vals then save the activity
+			headerButton.clickHeaderButton("save");
+			commNav.waitForPage("Ticket Activities");
+			
+			//VP: check to see that the scheduled Ticket Activity is listed
+			String resultMsg = "VP: Scheduled Ticket Activity is listed under the Ticket Activities view";
+			try {
+				AssertJUnit.assertTrue(commNav.isTextPresentOnPage(commentsTxt));
+				System.out.println(resultMsg + " - Passed");
+				
+				//re-open the Ticket Activity
+				driver.findElement(By.xpath("//*[@id='ticketactivity_related']/descendant::*[text() = '" + ticketRecord + "']")).click();
+				commNav.waitForNotPage("Ticket Activities");
+				
+				//VP: check to see that Type field value is non-null
+				String actualTypeFldVal = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/div[2]/div[1]/div[5]/span")).getText();
+				resultMsg = "VP: Ticket Activity, Public Access field non-null value check";
+				try {
+					AssertJUnit.assertFalse(actualTypeFldVal.matches("null"));
+					System.out.println(resultMsg + " - Passed");
+				}
+				catch (Error e) {
+					System.out.println(e.toString());
+					System.out.println(resultMsg + " - FAILED");
+				}
+				
+				//VP: check to see that Public Access field value is correct
+				String actualPublicAccessFldVal = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/div[2]/div[1]/div[6]/span")).getText();
+				resultMsg = "VP: Ticket Activity, Public Access field non-null value check";
+				try {
+					AssertJUnit.assertFalse(actualPublicAccessFldVal.matches("null"));
+					System.out.println(resultMsg + " - Passed");
+				}
+				catch (Error e) {
+					System.out.println(e.toString());
+					System.out.println(resultMsg + " - FAILED");
+				}
+				
+				headerButton.goBack();
+				commNav.waitForNotPage("Ticket Activities");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultMsg + " - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}		
+		
+		// End Tests
 		commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
