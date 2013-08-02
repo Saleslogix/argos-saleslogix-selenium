@@ -331,7 +331,7 @@ public class LeadViewsElements extends BrowserSetup {
 		String listViewTxt = "";
 		
 		try {
-			WebElement leadsLisViewInfo = driver.findElement(By.xpath("//*[@id='lead_list']"));
+			WebElement leadsLisViewInfo = driver.findElement(By.xpath("//*[@id='lead_list']/ul"));
 			listViewTxt = leadsLisViewInfo.getText();
 		}
 		catch (Exception excptn) {

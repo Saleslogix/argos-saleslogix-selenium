@@ -125,16 +125,10 @@ public class HeaderButton {
 		String oldPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();		
 
 		//determine which button to actually click (back button placement varies)
-		pgTitleBar.click();
-		pgTitleBar.sendKeys(Keys.BACK_SPACE);
-		/*
-		try {
-			backButton2.click();
-		}
-		finally {
-			backButton1.click();
-		}
-		*/
+		//pgTitleBar.click();
+		//pgTitleBar.sendKeys(Keys.BACK_SPACE);
+
+		backButton.click();
 		Thread.sleep(1000);
 		
 		String newPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();

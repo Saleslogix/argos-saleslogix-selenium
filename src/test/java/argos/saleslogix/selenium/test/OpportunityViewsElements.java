@@ -316,7 +316,7 @@ public class OpportunityViewsElements extends BrowserSetup {
 	public String getOpportunityListViewTxt() {
 		String methodID = "getOpportunityListViewTxt";
 		
-		WebElement OpportunityLisViewInfo = driver.findElement(By.xpath("//*[@id='opportunity_list']/ul[2]"));
+		WebElement OpportunityLisViewInfo = driver.findElement(By.xpath("//*[@id='opportunity_list']/ul"));
 		
 		return OpportunityLisViewInfo.getText();		
 	}

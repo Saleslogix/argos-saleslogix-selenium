@@ -571,192 +571,114 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	@Test (enabled = false)
-	//TODO: need to update test48_MobileDefect13092154() for 2.3
+	//TODO: need to separate out to run only on Chrome
 	  public void test48_MobileDefect13092154() throws Exception {
 		String methodID = "test48_MobileDefect13092154";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-	    // - Start Section
-	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
+		
+
+		//Test Params
+		String leadRecord = "Aaron, John";
+				
+	    //Section 1 - select and open a Lead Detail view
+		//----------------------------------------------
+		commNav.entityRecordOpenDetailView("Leads", leadRecord);
+		try {
+			AssertJUnit.assertTrue(commNav.isPageDisplayed(leadRecord));
+			
+			LeadViewsElements leadDetailView = PageFactory.initElements(driver, LeadViewsElements.class);
+			
+		    // Step: click the Notes/History link...
+			leadDetailView.leadsDetailViewNotesHistoryLnk.click();
+			commNav.waitForPage("Notes/History");
+		    
+		    // Step: click the top Notes/History record...
+		    driver.findElement(By.xpath("//*[@id='history_related']/ul[2]/li[1]/div[3]/h3")).click();
+		    commNav.waitForPage("Meeting");
+		    
+		    // Step: click the Attachments link...
+		    driver.findElement(By.xpath("//*[@id='history_detail']/descendant::*[text() = 'Attachments']")).click();
+		    commNav.waitForPage("History Attachments");
+		
+		    // Step: click the top Add buton...
+		    headerButton.clickHeaderButton("add");
+		    commNav.waitForPage("Add Attachments");
+		    
+		    // Step: click the 'add a file' section of the screen...
+		    //TODO: the sendKeys() action doesn't work correctly on FF browser; works only on Chrome
+		    String filepath = "C://uploadtest.txt";
+		    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).sendKeys(filepath);
+		    Thread.sleep(2000);	    
+		    
+		    // Step: setup a unique, time-based file name for the uploaded file...
+		    String newfilename = "upload." + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime()) + ".txt";
+		    driver.findElement(By.id("File_0")).clear();
+		    Thread.sleep(1000);
+		    driver.findElement(By.id("File_0")).sendKeys(newfilename);
+		    Thread.sleep(1000);
+		    
+		    // Step: proceed with file upload...
+		    driver.findElement(By.id("fileSelect-btn-upload")).click();
+		    Thread.sleep(3000);
+		    commNav.waitForPage("History Attachments");
+		    
+		    // VP: verify that new attachment appears in the Lead Attachments list view...		   
+		    try {
+		      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
+		    } catch (Error e) {
+		      verificationErrors.append(e.toString());
+		    }
+		    
+		    //Section 2 - 
+		    //-----------
+		    // Step: navigate back to Lead detail view...
+		    headerButton.goBack();
+		    commNav.waitForNotPage("History Attachments");
+
+		    headerButton.goBack();
+		    commNav.waitForPage("Notes/History");
+
+		    headerButton.goBack();
+		    commNav.waitForPage(leadRecord);
+		
+		    // Step: navigate to the Lead Attachments list view...
+		    leadDetailView.leadsDetailViewAttachmentsLnk.click();
+		    commNav.waitForPage("Lead Attachments");
+		
+		    // Step: perform search of Attachment added from associated Contact detail view...
+		    headerButton.showRightContextMenu();
+		    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_38']/div/div[1]/input")).clear();
+		    Thread.sleep(1000);
+		    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_38']/div/div[1]/input")).sendKeys(newfilename);
+		    Thread.sleep(1000);
+		    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_38']/div/div[3]/button")).click();
+		    Thread.sleep(3000);
+		    
+		    // VP: verify that the Attachment item is found
+		    try {
+		      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
+		    } catch (Error e) {
+		      verificationErrors.append(e.toString());
+		    }
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}		
+		
+		// End Tests
+	    headerButton.goBack();
 	    Thread.sleep(1000);
-	
-	    // Step: navigate to Leads list view...
-	    driver.findElement(By.xpath("//*[@id='left_drawer']/descendant::*[text() = 'Leads']")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath("//*[@id='lead_list']/ul/li[1]"))) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: perform search for a Lead item...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[1]/input")).clear();
-	    Thread.sleep(500);
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[1]/input")).sendKeys("Aaron");
-	    Thread.sleep(1000);
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[3]/button")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath("//*[@id='lead_list']/ul/li[1]"))) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	    try {
-	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Aaron, John[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    
-	    // Step: navigate to top Lead record...
-	    driver.findElement(By.xpath("//*[@id='lead_list']/ul/li/div/h3")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if ("Aaron, John".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: click the Notes/History link...
-	    driver.findElement(By.xpath("//*[@id='lead_detail']/descendant::*[text() = 'Notes/History']")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if ("Notes/History".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	    
-	    // Step: click the top Notes/History record...
-	    driver.findElement(By.xpath("//*[@id='history_related']/ul/li/div/h3")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if ("Note".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	    
-	    // Step: click the Attachments link...
-	    driver.findElement(By.xpath("//*[@id='history_detail']/descendant::*[text() = 'Attachments']")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if ("History Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: click the top Add buton...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if ("Add Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm the elements of the Add Attachments screen...
-	    try {
-	      assertTrue(isElementPresent(By.cssSelector("input[type=\"file\"]")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    try {
-	      assertTrue(isElementPresent(By.cssSelector("button.button.inline")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    try {
-	      assertTrue(isElementPresent(By.xpath("//div[@id='attachment_Add']/div[2]/div/button[2]")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    
-	    // Step: click the 'add a file' section of the screen...
-	    String filepath = "C://uploadtest.txt";
-	    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).click();
-	    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).sendKeys(filepath);
-	    Thread.sleep(2000);	    
-	    
-	    // Step: setup a unique, time-based file name for the uploaded file...
-	    String newfilename = "upload." + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime()) + ".txt";
-	    driver.findElement(By.id("File_0")).clear();
-	    Thread.sleep(1000);
-	    driver.findElement(By.id("File_0")).sendKeys(newfilename);
-	    Thread.sleep(1000);
-	    
-	    // Step: proceed with file upload...
-	    driver.findElement(By.id("fileSelect-btn-upload")).click();
-	    
-	    // Step: verify that new attachment appears in the Lead Attachments list view...
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if ("History Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	    try {
-	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // -- End Section
-	    
-	    // - Start Section
-	    // Step: navigate back to Lead detail view...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if ("Note".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if ("Notes/History".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if ("Aaron, John".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: navigate to the Lead Attachments list view...
-	    driver.findElement(By.xpath("//*[@id='lead_detail']/descendant::*[text() = 'Attachments']")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if ("Lead Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: perform search of Attachment added from associated Contact detail view...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_38']/div/div[1]/input")).clear();
-	    Thread.sleep(1000);
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_38']/div/div[1]/input")).sendKeys(newfilename);
-	    Thread.sleep(1000);
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_38']/div/div[1]/input")).click();
-	    
-	    // VP: verify that the Attachment item is found
-	    try {
-	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    
-	    // Step: navigate back to My Activities view...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']/ul/li[1]"))) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	    System.out.println(ENDLINE);	
-	    // - End Section
-	    // -- END
-	  }
+	    headerButton.goBack();
+	    Thread.sleep(1000); 
+		commNav.clickGlobalMenuItem("My Activities");
+		
+		System.out.println(ENDLINE);
+	}
 
 	@Test (enabled = true)
 	public void test49_MobileDefect13091564()  throws InterruptedException {				

@@ -334,7 +334,7 @@ public class ContactViewsElements extends BrowserSetup {
 		String listViewTxt = "";
 		
 		try {
-			WebElement contactsLisViewInfo = driver.findElement(By.xpath("//*[@id='contact_list']"));
+			WebElement contactsLisViewInfo = driver.findElement(By.xpath("//*[@id='contact_list']/ul"));
 			listViewTxt = contactsLisViewInfo.getText();
 		}
 		catch (Exception excptn) {

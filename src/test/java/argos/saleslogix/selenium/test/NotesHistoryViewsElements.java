@@ -317,7 +317,7 @@ public class NotesHistoryViewsElements extends BrowserSetup {
 	public String getNotesHistoryListViewTxt() {
 		String methodID = "getNotesHistoryListViewTxt";
 		
-		WebElement notesHistoryLisViewInfo = driver.findElement(By.xpath("//*[@id='history_list']/ul[2]"));
+		WebElement notesHistoryLisViewInfo = driver.findElement(By.xpath("//*[@id='history_list']/ul"));
 		
 		return notesHistoryLisViewInfo.getText();		
 	}
