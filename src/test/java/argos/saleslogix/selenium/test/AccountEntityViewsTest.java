@@ -76,7 +76,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		//Test Params:
 		String entityType = "accounts";
-
+	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
@@ -86,7 +86,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	
 	    //Step: load more results (click on 'x remaining records' item)
 		for (int count = 0; count<=2; count++) {
-			WebElement remainingRecordsItem = driver.findElement(By.xpath("//*[@id='account_list']/div[2]"));
+			WebElement remainingRecordsItem = driver.findElement(By.xpath("//*[@id='account_list']/div[3]"));
 			commNav.highlightElement(remainingRecordsItem);
 			remainingRecordsItem.click();
 			Thread.sleep(3000);		
@@ -457,17 +457,11 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		commNav.rightClickContextMenuItem("Total Accounts");
 		
 		//Step: go back to previous screen
+		headerButton.clickHeaderButton("right context menu");
 		headerButton.goBack();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
-	}
-
-		
-	@Test(enabled = false)
-	public void test97_SeTestDEBUG() throws Exception {
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		commNav.entityRecordOpenDetailView("Accounts", "Abbott Ltd.");
 	}
 	
 	
