@@ -1700,7 +1700,7 @@ public class MobileDefectTest extends BrowserSetup {
 			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/button")).click();
 			commNav.waitForPage("Activity Description");
 			String activityDescListInitTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
-			headerButton.goBack();
+			headerButton.clickHeaderButton("cancel");
 			
 			//setup Category field
 			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/input")).click();
@@ -1712,7 +1712,7 @@ public class MobileDefectTest extends BrowserSetup {
 			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/button")).click();
 			commNav.waitForPage("Activity Category");
 			String activityCatListInitTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
-			headerButton.goBack();
+			headerButton.clickHeaderButton("cancel");
 			
 			//keep remaining default field vals then save the activity
 			headerButton.clickHeaderButton("save");
@@ -1728,8 +1728,7 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(e.toString());
 				System.out.println(resultMsg + " - FAILED");
 			}
-			
-			
+						
 			//Section 2 - schedule another activity under the same Contact
 			//------------------------------------------------------------
 			//start to schedule a new Activity
@@ -1756,7 +1755,7 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(e.toString());
 				System.out.println(resultsMsg + "- FAILED");
 			}
-			headerButton.goBack();
+			headerButton.clickHeaderButton("cancel");
 			
 			//click Category field selection button
 			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/button")).click();
@@ -1773,7 +1772,7 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(e.toString());
 				System.out.println(resultsMsg + "- FAILED");
 			}
-			headerButton.goBack();
+			headerButton.clickHeaderButton("cancel");
 		}
 		catch (Error e) {
 			System.out.println(e.toString());
@@ -2013,6 +2012,79 @@ public class MobileDefectTest extends BrowserSetup {
 		// End Tests
 		commNav.clickGlobalMenuItem("My Activities");
 		
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = true)
+	public void test60_MobileDefect13092370()  throws Exception {
+		//tags: add account/contact, account manager, account owner
+		String methodID = "test60_MobileDefect13092370";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1 - add a new Account/Contact 
+		//-------------------------------------
+		//Test Params
+		String firstNameTestVal = "Teddy";
+		String lastNameTestVal = "Tester-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+		String accountNameTestVal = "TestAccount-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+		
+		//Step: click and open the the Ticket record
+		commNav.clickGlobalMenuItem("add account/contact");		
+		try {
+			AssertJUnit.assertTrue(commNav.waitForPage("Add Account / Contact"));
+						
+			//setup Name field
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_NameField_0']/input")).click();
+			commNav.waitForPage("Edit Name");
+			WebElement firstNameFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextField_66']/input"));
+			commNav.setupInputFieldValue(firstNameFld, firstNameTestVal);
+			WebElement lastNameFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextField_68']/input"));
+			commNav.setupInputFieldValue(lastNameFld, lastNameTestVal);
+			headerButton.clickHeaderButton("check");
+			commNav.waitForPage("Add Account / Contact");
+			
+			//setup Account field
+			WebElement accountFld = driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_TextField_62']/input"));
+			commNav.setupInputFieldValue(accountFld, accountNameTestVal);
+			
+			//setup the Account Manager field
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_20']/input")).click();
+			commNav.waitForPage("Users");
+			//driver.findElement(By.xpath("//*[@id='user_list']/descendant::*[text() = 'Administrator, ']")).click();
+			headerButton.clickHeaderButton("cancel");
+			commNav.waitForPage("Add Account / Contact");
+			
+			//setup the Owner field
+			driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_LookupField_21']/input")).click();
+			commNav.waitForPage("Owners");
+			headerButton.clickHeaderButton("cancel");
+			commNav.waitForPage("Add Account / Contact");
+			
+			//save the new Account/Contact record
+			headerButton.clickHeaderButton("save");
+	
+			//VP: check to see that new Account/Contact record is saved
+			String resultMsg = "VP: Account/Contact record successfully added";
+			try {
+				AssertJUnit.assertTrue(commNav.waitForPage(accountNameTestVal));
+				System.out.println(resultMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultMsg + " - FAILED");
+			}
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}		
+		
+		// End Tests
+		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}
 }

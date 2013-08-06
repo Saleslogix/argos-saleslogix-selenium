@@ -4,6 +4,7 @@ package argos.saleslogix.selenium.test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -251,6 +252,18 @@ public class CommonNavigation {
 		catch (Error e) {
 			System.out.println(e.toString());
 			return false;
+		}
+	}
+	
+
+	public void setupInputFieldValue(WebElement inputFld, String inputValue) {
+		try {
+			inputFld.click();
+			inputFld.sendKeys(inputValue);
+			inputFld.sendKeys(Keys.RETURN);
+		}
+		catch (Exception e) {
+			System.out.println(e.toString());
 		}
 	}
 	

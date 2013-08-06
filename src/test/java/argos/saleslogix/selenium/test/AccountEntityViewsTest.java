@@ -570,5 +570,4 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		}
 		System.out.println(ENDLINE);
 	}
-
 }
