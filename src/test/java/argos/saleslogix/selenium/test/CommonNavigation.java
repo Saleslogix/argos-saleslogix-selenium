@@ -2,6 +2,8 @@ package argos.saleslogix.selenium.test;
 
 //import static org.junit.Assert.fail;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -650,7 +652,15 @@ public class CommonNavigation {
 			
 			//Step: check for matching results...
 			String targetEntRecXPath = entListNameXPth + "/descendant::*[text() = '" + entityName + "']"; 
-			WebElement targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+			List<WebElement> targetEntRecords = driver.findElements(By.xpath(targetEntRecXPath));
+			WebElement targetEntRecord = null;
+			if (targetEntRecords.size() > 1) {
+				//specify the actual record name so that the search label is not clicked
+				targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li/div[3]/h3"));
+			}
+			else {
+				targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+			}
 			try {
 				AssertJUnit.assertTrue(targetEntRecord.isDisplayed());
 			} catch (Error e) {

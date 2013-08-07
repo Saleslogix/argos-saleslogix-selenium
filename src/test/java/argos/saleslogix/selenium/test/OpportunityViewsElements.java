@@ -263,6 +263,14 @@ public class OpportunityViewsElements extends BrowserSetup {
 	WebElement opportunityEditViewSubTypeFldBtn;
 	
 	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_30']/input")
+	WebElement opportunityEditViewResellerFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_30']/button")
+	WebElement opportunityEditViewResellerFldBtn;
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_13']/input")
 	WebElement opportunityEditViewStatusFld;
 	

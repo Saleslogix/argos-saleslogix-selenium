@@ -2087,4 +2087,139 @@ public class MobileDefectTest extends BrowserSetup {
 		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}
+
+	@Test (enabled = true)
+	public void test61_MobileDefect13092371()  throws Exception {
+		//tags: add account/contact, account manager, account owner
+		String methodID = "test61_MobileDefect13092371";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1 - open an existing Account record 
+		//-------------------------------------------
+		//Test Params
+		String accountRecord = "Abbott Ltd.";
+		
+		//Step: click and open the the Account record
+		commNav.entityRecordOpenDetailView("Accounts", accountRecord);	
+		try {
+			AssertJUnit.assertTrue(commNav.waitForPage("Abbott Ltd."));
+			
+			AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
+			
+			//open the Opportunities list
+			accountDetailView.accountDetailViewOpportunitiesLnk.click();
+			commNav.waitForPage("Opportunities");
+			
+			//Step 2: click and open the top Opportunity record
+			//-------------------------------------------------
+			driver.findElement(By.xpath("//*[@id='opportunity_related']/ul/li[1]/div[3]/h3")).click();
+			commNav.waitForNotPage("Opportunities");			
+			
+			//click top Edit button
+			headerButton.clickHeaderButton("edit");
+			commNav.waitForPage("Opportunity");
+			
+			OpportunityViewsElements opportunityDetailView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+			
+			//click the Reseller field selection button
+			opportunityDetailView.opportunityEditViewResellerFldBtn.click();
+			commNav.waitForPage("Accounts");
+			
+			//VP: confirm that accessible Account records are listed
+			String resultMsg = "VP: Accounts List view displays accessible Account records";
+			try {
+				AssertJUnit.assertTrue(commNav.isTextNotPresentOnPage("no records"));
+				System.out.println(resultMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultMsg + " - Failed");
+			}			
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}		
+		
+		// End Tests
+		headerButton.clickHeaderButton("cancel");
+		headerButton.clickHeaderButton("cancel");
+		headerButton.clickHeaderButton("back");
+		commNav.clickGlobalMenuItem("My Activities");		
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = true)
+	public void test62_MobileDefect13092375()  throws Exception {
+		//tags: edit account, note, server error
+		String methodID = "test62_MobileDefect13092375";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1 - open an existing Account record 
+		//-------------------------------------------
+		//Test Params
+		String accountRecord = "ABM Industries Incorporated";
+		
+		//Step: click and open the the Account record
+		commNav.entityRecordOpenDetailView("Accounts", accountRecord);	
+		try {
+			AssertJUnit.assertTrue(commNav.waitForPage(accountRecord));
+			
+			AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
+			
+			//click the Add Note link
+			accountDetailView.accountDetailViewAddNoteLnk.click();
+			commNav.waitForPage("Note");
+			
+			//setup the Note fields then save
+			WebElement noteRegardingFld = driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_35']/input"));
+			commNav.setupInputFieldValue(noteRegardingFld, "Test Note");
+			
+			WebElement noteNotesFld = driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_5']/textarea"));
+			commNav.setupInputFieldValue(noteNotesFld, "Test Notes for Defect Fix 13092375");
+			
+			headerButton.clickHeaderButton("save");
+			commNav.waitForNotPage("Note");
+			
+			//Step 2: edit and save the Account record
+			//----------------------------------------
+			headerButton.clickHeaderButton("edit");
+			commNav.waitForNotPage("Account");
+			
+			//edit the Account Phone number (800) 944-5709
+			WebElement accountPhoneFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_PhoneField_5']/input"));
+			commNav.setupInputFieldValue(accountPhoneFld, "800-944-5709");
+			
+			//save the changes
+			headerButton.clickHeaderButton("save");
+			
+			//VP: confirm that accessible Account records are listed
+			String resultMsg = "VP: Account changes successfully saved after add note and field value edit";
+			try {
+				AssertJUnit.assertTrue(commNav.isElementPresent(By.xpath("//*[@id='account_detail']")));
+				System.out.println(resultMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(e.toString());
+				System.out.println(resultMsg + " - Failed");
+			}			
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			return;
+		}		
+		
+		// End Tests
+		headerButton.clickHeaderButton("back");
+		commNav.clickGlobalMenuItem("My Activities");		
+		System.out.println(ENDLINE);
+	}
 }
