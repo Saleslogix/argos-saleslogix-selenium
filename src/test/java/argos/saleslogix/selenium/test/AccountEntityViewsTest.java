@@ -83,18 +83,32 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	
 	    //Step: navigate to Accounts list view...
 		commNav.clickGlobalMenuItem(entityType);
-	
+
+		//capture the initial Accounts List view info
+		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		String initAccountsListInfo = accountsListView.getAccountsListViewTxt();
+		
 	    //Step: load more results (click on 'x remaining records' item)
-		for (int count = 0; count<=2; count++) {
-			WebElement remainingRecordsItem = driver.findElement(By.xpath("//*[@id='account_list']/div[3]"));
-			commNav.highlightElement(remainingRecordsItem);
-			remainingRecordsItem.click();
-			Thread.sleep(3000);		
+		for (int count = 1; count<3; count++) {			
+			//driver.findElement(By.xpath("//*[@id='account_list']")).sendKeys(Keys.PAGE_DOWN);
+			//Thread.sleep(3000);
+			JavascriptExecutor jsx = (JavascriptExecutor)driver;
+			jsx.executeScript("window.scrollBy(0,450)", "");
 		}
 		
-		//Step: check if the 31th record item is present
-		WebElement thirtyfirstRecordItem = driver.findElement(By.xpath("//*[@id='account_list']/ul/li[31]"));
-		commNav.checkIfWebElementPresent("31st Account List View record available after load more records", thirtyfirstRecordItem);
+		//capture the expanded Accounts List view
+		String expandedAccountsListInfo = accountsListView.getAccountsListViewTxt();
+		
+		//VP: confirm that the Accounts List view is indeed expanded with more record data
+		String resultMsg = "VP: scrolling down the Accounts List view loaded more records";
+		try {
+			AssertJUnit.assertFalse(initAccountsListInfo.matches(expandedAccountsListInfo));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + " - Failed");
+		}
 		
 		System.out.println(ENDLINE);
 	}

@@ -2222,4 +2222,54 @@ public class MobileDefectTest extends BrowserSetup {
 		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}
+
+	@Test (enabled = true)
+	public void test63_MobileDefect13092387()  throws Exception {
+		//tags: notes/history, hashtag, #phonecall
+		String methodID = "test63_MobileDefect13092387";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1 - open an existing Notes/History record 
+		//-------------------------------------------------
+		//navigate to the Notes/History List view then click the phonecall hashtag
+		commNav.clickGlobalMenuItem("Notes/History");
+		commNav.rightClickContextMenuItem("phonecall");
+		
+		//VP: check that Regarding field value of top record is not null
+		WebElement topRegardingFld = driver.findElement(By.xpath("//*[@id='history_list']/ul/li[1]/div[3]/h4[2]"));		
+		String resultMsg = "VP: Notes/History List record's Regarding value is non-null";
+		try {
+			AssertJUnit.assertFalse(topRegardingFld.getText().equals(null));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + " - Failed");
+		}
+		
+		//click the Notes/History record to open the Detail view
+		topRegardingFld.click();
+		commNav.waitForNotPage("Notes/History");
+		
+		//VP: check the Regarding field value in the Notes/History detail view
+		WebElement regardingFld = driver.findElement(By.xpath("//*[@id='history_detail']/div[2]/div[1]/div[3]/span"));
+		resultMsg = "VP: Notes/History record's Detail view Regarding field value is non-null";
+		try {
+			AssertJUnit.assertFalse(regardingFld.getText().equals(null));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + " - Failed");
+		}		
+		
+		// End Tests
+		headerButton.clickHeaderButton("back");
+		commNav.clickGlobalMenuItem("My Activities");		
+		System.out.println(ENDLINE);
+	}
 }
