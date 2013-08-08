@@ -72,18 +72,7 @@ public class HeaderButton {
 		String methodID = "showGlobalMenu";
 		
 		//conditionally close the Right Context Menu panel (if blocking the Global Menu button)
-		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
-			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
-			System.out.println(methodID + " the Right-context Menu panel was un-expectedly open; closing panel...");
-			Thread.sleep(1000);
-			
-			try {
-				AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed());
-			}
-			catch (Error e) {
-				System.out.println(e.toString());
-			}					
-		}
+		closeRightContextMenu();
 		
 		// Click Header Global Menu button...
 		clickHeaderButton("global");
@@ -179,5 +168,25 @@ public class HeaderButton {
 		System.out.println(methodID + ": header button - '" + buttonName + "' was clicked.");
 		Thread.sleep(1500);
 		return this;
+	}
+	
+	public boolean closeRightContextMenu() throws InterruptedException {
+		String methodID = "closeRightContextMenu";
+				
+		//conditionally close the Right-Context menu...
+		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
+			// Click Header Right-Context Menu button...
+			clickHeaderButton("right context menu");
+			try {
+				AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
+				System.out.println(methodID + ": Right-Context Menu was successfully closed on header button click.");
+			}
+			catch (Error e) {     
+				System.out.println(methodID + ": Right-Context Menu failed to close on header button click.");
+				System.out.println(e.toString());
+				return false;
+			}
+		}
+		return true;
 	}
 }
