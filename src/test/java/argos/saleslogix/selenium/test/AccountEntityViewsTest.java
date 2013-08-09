@@ -545,7 +545,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		// VP: confirm that the 'My Activities' screen displays after login
 		Thread.sleep(3000);
-		try { assertEquals("My Activities", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());
+		try {
 			assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
 			System.out.println("VP: Successfully logged in to Mobile Client.");
 		} catch (Error e) {

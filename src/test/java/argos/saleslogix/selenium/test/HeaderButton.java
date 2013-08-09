@@ -177,15 +177,6 @@ public class HeaderButton {
 		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
 			// Click Header Right-Context Menu button...
 			clickHeaderButton("right context menu");
-			try {
-				AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
-				System.out.println(methodID + ": Right-Context Menu was successfully closed on header button click.");
-			}
-			catch (Error e) {     
-				System.out.println(methodID + ": Right-Context Menu failed to close on header button click.");
-				System.out.println(e.toString());
-				return false;
-			}
 		}
 		return true;
 	}
