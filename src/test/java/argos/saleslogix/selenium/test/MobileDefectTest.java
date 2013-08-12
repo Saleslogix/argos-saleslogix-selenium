@@ -1796,10 +1796,9 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Section 1 - schedule a Ticket Activity under a Ticket
-		//-----------------------------------------------------
 		//Test Params
 		String ticketRecord = "000-00-000017";
+		
 		
 		//Step: click and open the the Ticket record
 		commNav.entityRecordOpenDetailView("Tickets", ticketRecord);		
@@ -1911,10 +1910,9 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Section 1 - schedule a Ticket Activity under a Ticket
-		//-----------------------------------------------------
 		//Test Params
 		String ticketRecord = "000-00-000022";
+		
 		
 		//Step: click and open the the Ticket record
 		commNav.entityRecordOpenDetailView("Tickets", ticketRecord);	
@@ -2025,12 +2023,11 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Section 1 - add a new Account/Contact 
-		//-------------------------------------
 		//Test Params
 		String firstNameTestVal = "Teddy";
 		String lastNameTestVal = "Tester-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
 		String accountNameTestVal = "TestAccount-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+		
 		
 		//Step: click and open the the Ticket record
 		commNav.clickGlobalMenuItem("add account/contact");		
@@ -2103,6 +2100,7 @@ public class MobileDefectTest extends BrowserSetup {
 		//Test Params
 		String accountRecord = "Abbott Ltd.";
 		
+		
 		//Step: click and open the the Account record
 		commNav.entityRecordOpenDetailView("Accounts", accountRecord);	
 		try {
@@ -2163,13 +2161,12 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Section 1 - open an existing Account record 
-		//-------------------------------------------
 		//Test Params
 		String accountRecord = "ABM Industries Incorporated";
 		
+		
 		//Step: click and open the the Account record
-		commNav.entityRecordOpenDetailView("Accounts", accountRecord);	
+		commNav.entityRecordOpenDetailView("Accounts", accountRecord);
 		try {
 			AssertJUnit.assertTrue(commNav.waitForPage(accountRecord));
 			
@@ -2233,8 +2230,6 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Section 1 - open an existing Notes/History record 
-		//-------------------------------------------------
 		//navigate to the Notes/History List view then click the phonecall hashtag
 		commNav.clickGlobalMenuItem("Notes/History");
 		commNav.rightClickContextMenuItem("phonecall");
@@ -2269,6 +2264,192 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		// End Tests
 		headerButton.clickHeaderButton("back");
+		commNav.clickGlobalMenuItem("My Activities");		
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = true)
+	public void test64_MobileDefect13092410()  throws Exception {
+		//tags: accounts, list view, no records
+		String methodID = "test64_MobileDefect13092410";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Test Params
+		String accountRecord = "Agilent Technologies, Inc.";
+		
+		
+		//Step: click and open the the Account record
+		commNav.entityRecordOpenDetailView("Accounts", accountRecord);
+		
+		AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+		//click the Activities link
+		accountDetailView.accountDetailViewActivitiesLnk.click();
+		commNav.waitForNotPage("Activities");
+		
+		//VP: check that 'no records' is displayed if there are no Activities listed 	
+		String resultMsg = "VP: 'no records' is displayed for empty Activities list view";
+		try {
+			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + " - Failed");
+		}
+			
+		// End Tests
+		headerButton.clickHeaderButton("back");
+		commNav.clickGlobalMenuItem("My Activities");		
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = true)
+	public void test65_MobileDefect13092422()  throws Exception {
+		//tags: My Activities, list view, Unknown
+		String methodID = "test65_MobileDefect13092422";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);				
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+				
+		//Step: click and open the the My Activities List view
+		commNav.clickGlobalMenuItem("My Activities");
+		
+		//VP: check that 'no records' is displayed if there are no Activities listed 	
+		String resultMsg = "VP: 'Unknown' is not displayed as a grouping within the My Activities list view";
+		try {
+			AssertJUnit.assertTrue(commNav.isTextNotPresentOnPage("Unknown"));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + " - Failed");
+		}
+			
+		// End Tests
+		commNav.clickGlobalMenuItem("My Activities");		
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = true)
+	public void test66_MobileDefect13092494()  throws Exception {
+		//tags: accounts, detail view, lookup, #active hashtag
+		String methodID = "test66_MobileDefect13092494";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+				
+		//Test Params
+		String accountRecord = "A1 Enterprises";
+		
+		
+		//Step: click and open the the Accounts List view
+		commNav.clickGlobalMenuItem("Accounts");
+		
+		//Step: select the #active hashtag
+		commNav.rightClickContextMenuItem("active");
+		
+		//Step: click and open the the Account record
+		commNav.entityRecordOpenDetailView("Accounts", accountRecord);
+		
+		//Step: click top Back button to return to the Acounts List view
+		headerButton.clickHeaderButton("back");
+		commNav.waitForPage("Accounts");
+		
+		//VP: check that old Lookup control is not displayed in the Accounts List view... 	
+		String resultMsg = "VP: previous-version Lookup control is not displayed in the Accounts List view";
+		try {
+			AssertJUnit.assertFalse(commNav.isElementPresent(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_3']")));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + " - Failed");
+		}
+			
+		// End Tests
+		commNav.clickGlobalMenuItem("My Activities");		
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = true)
+	public void test67_MobileDefect13092497()  throws Exception {
+		//tags: accounts, my activities, right context menu, browser back button
+		String methodID = "test67_MobileDefect13092497";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: click and open the the Accounts List view
+		commNav.clickGlobalMenuItem("Accounts");
+		
+		//Step: reveal the Right-Context menu
+		headerButton.showRightContextMenu();
+		
+		//Step: click browser Back button
+		driver.navigate().back();
+		Thread.sleep(1000);
+		
+		//VP: check that Right-Context menu is still open 	
+		String resultMsg = "VP: Right-Context menu is displayed while navigating back a page";
+		try {
+			AssertJUnit.assertTrue(commNav.rmenu_panel.isDisplayed());
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + " - Failed");
+		}
+			
+		// End Tests
+		commNav.clickGlobalMenuItem("My Activities");		
+		System.out.println(ENDLINE);
+	}
+
+	@Test (enabled = false)
+	public void test68_MobileDefect13092506()  throws Exception {
+		//tags: accounts list view, kpi, Avg Time as Customer 
+		String methodID = "test68_MobileDefect13092506";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: click and open the the Accounts List view
+		commNav.clickGlobalMenuItem("Accounts");
+		
+		//Step: select the 'Avg Time as Customer' KPI item
+		commNav.rightClickContextMenuItem("Avg Time as Customer");
+		headerButton.closeRightContextMenu();
+		Thread.sleep(3000);
+		
+		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+		//VP: check that 'Avg Time as Customer' KPI value is rounded up
+		String resultMsg = "VP: Accounts 'Avg Time as Customer' KPI decimal value is rounded up";
+		try {
+			//TODO: need to figure out how to get a stable KPI control 
+			AssertJUnit.assertTrue(accountsListView.accountsListViewKPIBox1.isDisplayed());
+			String kpiVal = accountsListView.accountsListViewKPIBox1.getAttribute("metric-value");
+			AssertJUnit.assertTrue(kpiVal.contains("K"));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + " - Failed");
+		}
+			
+		// End Tests
 		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}

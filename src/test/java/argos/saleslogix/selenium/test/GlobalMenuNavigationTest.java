@@ -117,330 +117,200 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 			System.out.println(e.toString());
 		}
 	}
+	
+	public void checkGlobalMenuStatus(String resultMsg) {
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+	    try {
+	    	AssertJUnit.assertTrue(headerButton.globalMenuButton.isDisplayed());
+	    	System.out.println(resultMsg + " - Passed");
+	    } catch (Error e) {
+	    	verificationErrors.append(e.toString());
+	    	System.out.println(resultMsg + " - Failed");
+	    }
+	}
 
 	@Test (enabled = true)
-	  public void test01_SeTestTCGlobalMenuAddAccountContactScreens() throws Exception {
-	    // SE Test: SETest-GlobalMenu-AddAccountContact_Screens
+	public void test01_SeTestTCGlobalMenuAddAccountContactScreens() throws Exception {
+		// SE Test: SETest-GlobalMenu-AddAccountContact_Screens
 	    // Version: 2.3
 	    // Desc: Confirms that the toggle button (left and right) for Global screen access is visible on screens accessible under the Add Account/Contact main screen...
 	    // Note: This test script can be used as a template for creating new entity records from Add Account/Contact edit screens.
 	    // Condition(s): Test user is logged in.    
 	    // ==================================================================
+		//tags: global menu, add account/contact
 		String methodID = "test01_SeTestTCGlobalMenuAddAccountContactScreens";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: click the Add Account/Contact link...
-	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'Add Account/Contact']")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Add Account / Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
+	    // Step: navigate to the Add Account/Contact Edit view...
+		commNav.clickGlobalMenuItem("Add Account/Contact");
+		AddAccountContactEditViewElements addAccConEditView = PageFactory.initElements(driver, AddAccountContactEditViewElements.class);
 	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: click the Name edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_NameField_0 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Edit Name".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: click Prefix edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_5 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Name Prefix".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    Thread.sleep(1000);
+		String pageName = "Add Account / Contact";
+		String resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+		checkGlobalMenuStatus(resultMsg);
 	    
-	    // Step: click Suffix edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_6 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Name Suffix".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    Thread.sleep(1000);
-	    
-	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Add Account / Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
+	    //click the Name edit button...
+	    addAccConEditView.addAcctCntctNameInputBtn.click();
+	    pageName = "Edit Name";
+	    commNav.waitForPage(pageName);
+	    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+	    // VP: confirm that Global Menu button is available...	    
+	    checkGlobalMenuStatus(resultMsg);
+		    
+			MiscEntityItemViewsElements nameItemViews = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+		    
+		    //click Name - Prefix edit button...
+			nameItemViews.nameEditPrefixInputBtn.click();
+		    pageName = "Prefix";
+		    commNav.waitForPage(pageName);
+		    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+		    // VP: confirm that Global Menu button is available...
+		    checkGlobalMenuStatus(resultMsg);
+		    headerButton.clickHeaderButton("cancel");
+		    commNav.waitForPage("Edit Name");
+		    
+		    //click Name - Suffix edit button...
+		    nameItemViews.nameEditSuffixInputBtn.click();
+		    pageName = "Suffix";
+		    commNav.waitForPage(pageName);
+		    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+		    // VP: confirm that Global Menu button is available...
+		    checkGlobalMenuStatus(resultMsg);
+		    headerButton.clickHeaderButton("cancel");
+		    commNav.waitForPage("Edit Name");
+		    
+		    //navigate back to the Add Account / Contact edit screen...
+		    headerButton.clickHeaderButton("cancel");
+		    commNav.waitForPage("Add Account / Contact");
 	
 	    // Step: click the Title edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_0 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Title".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Add Account / Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
+	    addAccConEditView.addAcctCntctTitleInputBtn.click();
+	    pageName = "Title";
+	    commNav.waitForPage(pageName);
+	    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+	    // VP: confirm that Global Menu button is available...	    
+	    checkGlobalMenuStatus(resultMsg);
+	    headerButton.clickHeaderButton("cancel");
+	    commNav.waitForPage("Add Account / Contact");
 	
 	    // Step: click the Address edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_AddressField_0 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Address".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
+	    addAccConEditView.addAcctCntctAddressInputBtn.click();
+	    pageName = "Address";
+	    commNav.waitForPage(pageName);
+	    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+	    // VP: confirm that Global Menu button is available...	    
+	    checkGlobalMenuStatus(resultMsg);
+	    
+	    	MiscEntityItemViewsElements addressItemViews = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+	    
+		    //click the Address - Description edit button...
+	    	addressItemViews.addressEditDescriptionInputBtn.click();
+		    pageName = "Description";
+		    commNav.waitForPage(pageName);
+		    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+		    // VP: confirm that Global Menu button is available...
+		    checkGlobalMenuStatus(resultMsg);
+		    headerButton.clickHeaderButton("cancel");
+		    commNav.waitForPage("Address");
+		    
+		    //click the Address - City edit button...
+	    	addressItemViews.addressEditCityInputBtn.click();
+		    pageName = "City";
+		    commNav.waitForPage(pageName);
+		    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+		    // VP: confirm that Global Menu button is available...
+		    checkGlobalMenuStatus(resultMsg);
+		    headerButton.clickHeaderButton("cancel");
+		    commNav.waitForPage("Address");
+		    
+		    //click the Address - State edit button...
+	    	addressItemViews.addressEditStateInputBtn.click();
+		    pageName = "State";
+		    commNav.waitForPage(pageName);
+		    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+		    // VP: confirm that Global Menu button is available...
+		    checkGlobalMenuStatus(resultMsg);
+		    headerButton.clickHeaderButton("cancel");
+		    commNav.waitForPage("Address");
+		    
+		    //click the Address - Country edit button...
+	    	addressItemViews.addressEditCountryInputBtn.click();
+		    pageName = "Country";
+		    commNav.waitForPage(pageName);
+		    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+		    // VP: confirm that Global Menu button is available...
+		    checkGlobalMenuStatus(resultMsg);
+		    headerButton.clickHeaderButton("cancel");
+		    commNav.waitForPage("Address");
+
+		    //navigate back to the Add Account / Contact edit screen...
+		    headerButton.clickHeaderButton("cancel");
+		    commNav.waitForPage("Add Account / Contact");
 	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: click the Description edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_7 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Description".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
+	    //Step: click the Type edit button to open the Account Type screen...
+	    addAccConEditView.addAcctCntctTypeInputBtn.click();
+	    pageName = "Account Type";
+	    commNav.waitForPage(pageName);
+	    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+	    // VP: confirm that Global Menu button is available...	    
+	    checkGlobalMenuStatus(resultMsg);
+	    headerButton.clickHeaderButton("cancel");
+	    commNav.waitForPage("Add Account / Contact");
 	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Address".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
+	    //Step: click the Sub-Type edit button to open the Account Sub-Type screen...
+	    addAccConEditView.addAcctCntctSubTypeInputBtn.click();
+	    pageName = "Account SubType";
+	    commNav.waitForPage(pageName);
+	    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+	    // VP: confirm that Global Menu button is available...	    
+	    checkGlobalMenuStatus(resultMsg);
+	    headerButton.clickHeaderButton("cancel");
+	    commNav.waitForPage("Add Account / Contact");
 	
-	    // Step: click the City edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_8 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("City".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
+	    //Step: click the Status edit button to open the Account Status screen...
+	    addAccConEditView.addAcctCntctStatusFldBtn.click();
+	    pageName = "Account Status";
+	    commNav.waitForPage(pageName);
+	    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+	    // VP: confirm that Global Menu button is available...	    
+	    checkGlobalMenuStatus(resultMsg);
+	    headerButton.clickHeaderButton("cancel");
+	    commNav.waitForPage("Add Account / Contact");
 	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Address".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
+	    //Step: click the Industry edit button to open the Industry screen...
+	    addAccConEditView.addAcctCntctIndustryFldBtn.click();
+	    pageName = "Industry";
+	    commNav.waitForPage(pageName);
+	    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+	    // VP: confirm that Global Menu button is available...	    
+	    checkGlobalMenuStatus(resultMsg);
+	    headerButton.clickHeaderButton("cancel");
+	    commNav.waitForPage("Add Account / Contact");
+	    
+	    //Step: click the Owner edit button to open the Owners screen...
+	    addAccConEditView.addAcctCntctOwnerFldBtn.click();
+	    pageName = "Owners";
+	    commNav.waitForPage(pageName);
+	    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
+	    // VP: confirm that Global Menu button is available...	    
+	    checkGlobalMenuStatus(resultMsg);
+	    headerButton.clickHeaderButton("cancel");
+	    commNav.waitForPage("Add Account / Contact");
 	
-	    // Step: click the State edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_9 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("State".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Address".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: click the Country edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_10 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Country".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: navigate back to the Address edit screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Address".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: navigate back to the Add Account / Contact screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Add Account / Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: click the Type edit button to open the Account Type screen...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_1 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Account Type".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: navigate back to the Add Account / Contact screen...
-	    driver.findElement(By.cssSelector("#pick_list_7 > ul.list-content > li > div.list-item-content > h3")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Add Account / Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: click the Sub-Type edit button to open the Account Sub-Type screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/button")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Account Type".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: navigate back to the Add Account / Contact screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Add Account / Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: click the Status edit button to open the Account Status screen...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_3 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Account Status".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: navigate back to the Add Account / Contact screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Add Account / Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: click the Industry edit button to open the Account Status screen...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_4 > button.button.simpleSubHeaderButton")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Industry".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // VP: confirm that Global Menu button is available...
-	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
-	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
-	    }
-	    // Step: navigate back to the Add Account / Contact screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("Add Account / Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
-	
-	    // Step: click the Top Cancel button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-	    for (int second = 0;; second++) {
-	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
-	    }
+	    //Step: click the Top Cancel button...
+	    headerButton.clickHeaderButton("cancel");
+	    commNav.waitForPage("My Activities");
 	    // -- END
 	    System.out.println(ENDLINE);
-	  }
+	}
 
 	
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test02_SeTestTCGlobalMenuCompleteActivityScreens() throws Exception {
 	    // SETest-GlobalMenu_CompleteActivity_Screens
 	    // Version: 2.2
@@ -789,7 +659,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test03_SeTestTCGlobalMenuDoSpeedSearch() throws Exception {
 	    // SE Test: SETest-GlobalMenu_DoSpeedSearch
 	    // Version: 2.2
@@ -870,7 +740,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test04_SeTestTCGlobalMenuEditAccount() throws Exception {
 	    // SETest-GlobalMenu_EditAccount_Screens
 	    // Version: 2.2
@@ -1025,7 +895,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test05_SeTestTCGlobalMenuEditActivity() throws Exception {
 	    // SETest-GlobalMenu_EditActivity_Screens
 	    // Version: 2.2
@@ -1362,7 +1232,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test06_SeTestTCGlobalMenuEditContact() throws Exception {
 	    // SETest-GlobalMenu_EditContact_Screens
 	    // Version: 2.2
@@ -1477,7 +1347,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test07_SeTestTCGlobalMenuEditLead() throws Exception {
 	    // SETest-GlobalMenu_EditLead_Screens
 	    // Version: 2.2
@@ -1584,7 +1454,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test08_SeTestTCGlobalMenuEditNote() throws Exception {
 	    // SETest-GlobalMenu_EditNote_Screens
 	    // Version: 2.2
@@ -1720,7 +1590,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test09_SeTestTCGlobalMenuEditOppContactScreens() throws Exception {
 	    // SETest-GlobalMenu_EditOppContact_Screens
 	    // Version: 2.2
@@ -1922,7 +1792,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test10_SeTestTCGlobalMenuEditOpportunityScreens() throws Exception {
 	    // SETest-GlobalMenu_EditOpportunity_Screens
 	    // Version: 2.2
@@ -2183,7 +2053,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test11_SeTestTCGlobalMenuEditOppProductScreens() throws Exception {
 	    // SETest-GlobalMenu_EditOppProduct_Screens
 	    // Version: 2.2
@@ -2333,7 +2203,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test12_SeTestTCGlobalMenuEditOppTicketScreens() throws Exception {
 	    // SETest-GlobalMenu_EditTicket_Screens
 	    // Version: 2.2
@@ -2638,7 +2508,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test13_SeTestTCGlobalMenuEditTicketActivitiesScreens() throws Exception {
 	    // SETest-GlobalMenu_EditTicketActivities_Screens
 	    // Version: 2.2
@@ -2800,7 +2670,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);	
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test14_SeTestTCGlobalMenuItemCheck() throws Exception {
 	    // SETest-GlobalMenu_ItemCheck
 	    // Version: 2.2
@@ -3007,7 +2877,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    System.out.println(ENDLINE);
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	  public void test15_SeTestTCGlobalMenuSearchAttachments() throws Exception {
 	    // SE Test: SETest-GlobalMenu_SearchAttachments
 	    // Version: 2.2

@@ -40,6 +40,18 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountsListView;
 	
 	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MetricWidget_1']/button")
+	WebElement accountsListViewKPIBox1;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MetricWidget_2']/button")
+	WebElement accountsListViewKPIBox2;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MetricWidget_3']/button")
+	WebElement accountsListViewKPIBox3;
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]")
 	WebElement topAccountsListItem;
 	
