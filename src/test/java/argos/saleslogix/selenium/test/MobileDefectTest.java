@@ -128,7 +128,7 @@ public class MobileDefectTest extends BrowserSetup {
 	//Test Methods		
 	//============
 	//TODO: document functional areas or keywords using tags for each test method
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test41_MobileDefect13092144()  throws InterruptedException {				
 		String methodID = "test41_MobileDefect13092144";
 		
@@ -194,7 +194,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test42_MobileDefect13092160()  throws InterruptedException {				
 		String methodID = "test42_MobileDefect13092160";
 		
@@ -376,7 +376,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test45_MobileDefect13092219()  throws InterruptedException {				
 		String methodID = "test45_MobileDefect13092219";
 		
@@ -1396,7 +1396,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    // -- END
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test54_MobileDefect13091934()  throws InterruptedException {				
 		String methodID = "test54_MobileDefect13091934";
 		
@@ -2151,7 +2151,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test62_MobileDefect13092375()  throws Exception {
 		//tags: edit account, note, server error
 		String methodID = "test62_MobileDefect13092375";
@@ -2308,7 +2308,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test65_MobileDefect13092422()  throws Exception {
 		//tags: My Activities, list view, Unknown
 		String methodID = "test65_MobileDefect13092422";
