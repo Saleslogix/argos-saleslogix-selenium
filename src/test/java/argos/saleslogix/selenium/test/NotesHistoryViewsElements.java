@@ -36,12 +36,16 @@ public class NotesHistoryViewsElements extends BrowserSetup {
 	WebElement notesHistorysSearchLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul[2]")
-	WebElement notesHistorysListViewRecords;
+	@FindBy(xpath = "//*[@id='history_list']/ul")
+	WebElement notesHistorysListView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]")
 	WebElement topNotesHistoryListItem;
+
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div[1]")
+	WebElement topNotesHistoryListItemTab;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/button")
@@ -49,23 +53,50 @@ public class NotesHistoryViewsElements extends BrowserSetup {
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div/h3")
-	WebElement topNotesHistoryListItemName;
+	WebElement topNotesHistoryListItemScheduledTime;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div/h4[1]")
-	WebElement topNotesHistoryListItemLine2;
+	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div[3]/h4[1]")
+	WebElement topNotesHistoryListItemContactAccount;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div/h4[2]")
-	WebElement topNotesHistoryListItemLine3;
+	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div[3]/h4[2]")
+	WebElement topNotesHistoryListItemRegarding;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div/h4[3]")
-	WebElement topNotesHistoryListItemLine4;
+	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div[3]/div/div")
+	WebElement topNotesHistoryListItemNotes;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div/h4[4]")
-	WebElement topNotesHistoryListItemLine5;
+	@FindBy(css = "#history_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	WebElement topNotesHistoryListItemTouch;
+	
+	//TODO: figure out the css identifier for the ToDo icon that is right of the touch icon
+	/*
+	@CacheLookup
+	@FindBy(css = "#history_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	WebElement topNotesHistoryListItemTouch;
+	*/
+	
+	@CacheLookup
+	@FindBy(css = "#history_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	WebElement topNotesHistoryListItemQuickActionsBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='history_list']/ul/li[2]/button[4]")
+	WebElement topNotesHistoryListItemQuickActionsAddAttachmentBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='history_list']/ul/li[2]/button[3]")
+	WebElement topNotesHistoryListItemQuickActionsContactsBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='history_list']/ul/li[2]/button[2]")
+	WebElement topNotesHistoryListItemQuickActionsOpportunityBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='history_list']/ul/li[2]/button[1]")
+	WebElement topNotesHistoryListItemQuickActionsAccountBtn;	
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_list']/ul/li[11]")
