@@ -62,7 +62,7 @@ public class AccountViewsElements extends BrowserSetup {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h3")
 	WebElement topAccountsListItemName;
-	
+		
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h4[1]")
 	WebElement topAccountsListItemLine2;
@@ -78,6 +78,46 @@ public class AccountViewsElements extends BrowserSetup {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h4[4]")
 	WebElement topAccountsListItemLine5;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h4[5]")
+	WebElement topAccountsListItemLine6;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h4[6]")
+	WebElement topAccountsListItemLine7;
+	
+	@CacheLookup
+	@FindBy(css = "#account_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	WebElement topAccountsListItemTouch;
+	
+	@CacheLookup
+	@FindBy(css = "#account_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	WebElement topAccountsListItemQuickActionsBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[6]")
+	WebElement topAccountsListItemQuickActionsAddAttachmentBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[5]")
+	WebElement topAccountsListItemQuickActionsAddActivityBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[4]")
+	WebElement topAccountsListItemQuickActionsAddNoteBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[3]")
+	WebElement topAccountsListItemQuickActionsContactsBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[2]")
+	WebElement topAccountsListItemQuickActionsCallMainBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[1]")
+	WebElement topAccountsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']/ul/li[11]")

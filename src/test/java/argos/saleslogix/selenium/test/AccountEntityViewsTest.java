@@ -29,19 +29,20 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// Test Params:
-		String entityType = "accounts";
+		String entityType = "Accounts";
 		String expEntityPgTitle = "Accounts";
+		String entityRecord = "Abbott Ltd.";
 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
 	    //Step: navigate to Accounts list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.entityListViewSearch(entityType, entityRecord);
 		
 		//Step: test Accounts, List View page elements
 		// SubStep: check the Page Title
-		if (commNav.isPageDisplayed(expEntityPgTitle)) {
+		if (commNav.isPageDisplayed(entityType)) {
 			
 			AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);			
 			
@@ -50,15 +51,40 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			
 			//Step: check an Account list view item record
 			commNav.checkIfWebElementPresent("Accounts List View, item record", accountListView.topAccountsListItem);
-			commNav.checkIfWebElementPresent("Accounts List View, item record icon", accountListView.topAccountsListItemIcon);
-			commNav.checkIfWebElementPresent("Accounts List View, item record name", accountListView.topAccountsListItemName);
-			commNav.checkIfWebElementPresent("Accounts List View, item record line 2", accountListView.topAccountsListItemLine2);
-			commNav.checkIfWebElementPresent("Accounts List View, item record line 3", accountListView.topAccountsListItemLine3);
-			commNav.checkIfWebElementPresent("Accounts List View, item record line 4", accountListView.topAccountsListItemLine4);
-			commNav.checkIfWebElementPresent("Accounts List View, item record line 5", accountListView.topAccountsListItemLine5);
+			commNav.checkIfWebElementPresent("Accounts List View, item record Icon", accountListView.topAccountsListItemIcon);
+			commNav.checkIfWebElementPresent("Accounts List View, item record Name", accountListView.topAccountsListItemName);
+			commNav.checkIfWebElementPresent("Accounts List View, item record Industry", accountListView.topAccountsListItemLine2);
+			commNav.checkIfWebElementPresent("Accounts List View, item record Type & Sub-Type", accountListView.topAccountsListItemLine3);
+			commNav.checkIfWebElementPresent("Accounts List View, item record Acct. Mgr & Owner", accountListView.topAccountsListItemLine4);
+			commNav.checkIfWebElementPresent("Accounts List View, item record Web", accountListView.topAccountsListItemLine5);
+			commNav.checkIfWebElementPresent("Accounts List View, item record Phone", accountListView.topAccountsListItemLine6);
+			commNav.checkIfWebElementPresent("Accounts List View, item record Fax", accountListView.topAccountsListItemLine7);
+			commNav.checkIfWebElementPresent("Accounts List View, item record touch widget", accountListView.topAccountsListItemTouch);
+			
+			//Step: check the Quick Action button and items
+			try {
+				//click Quick Action button to reveal Quick Action items
+				commNav.checkIfWebElementPresent("Accounts List View, Quick Action button", accountListView.topAccountsListItemQuickActionsBtn);
+				accountListView.topAccountsListItemQuickActionsBtn.click();
+				
+				//click the Quick Action button, then check each of the Quick Action items
+				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsAddAttachmentBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsAddActivityBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsAddNoteBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsContactsBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsCallMainBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsEditBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsEditBtn);
+				
+				//click Quick Action button to hide the Quick Action items
+				accountListView.topAccountsListItemQuickActionsBtn.click();
+			}
+			catch (Exception e) {
+				System.out.println(e.toString());				
+			}
 			
 			//Step: check the "X records remaining" item box at the bottom of the list view
-			commNav.checkIfWebElementPresent("Accounts List View, 'x remaining records' item", accountListView.recordsRemainingListItem);
+			//commNav.checkIfWebElementPresent("Accounts List View, 'x remaining records' item", accountListView.recordsRemainingListItem);
 		}
 		else {
 			System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
