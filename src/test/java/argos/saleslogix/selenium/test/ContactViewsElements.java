@@ -23,6 +23,7 @@ public class ContactViewsElements extends BrowserSetup {
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
 	//List View elements
+	//------------------
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_6']/div/div[1]/input")
 	WebElement contactsSearchTxtBox;
@@ -48,40 +49,76 @@ public class ContactViewsElements extends BrowserSetup {
 	WebElement contactsListViewMetricsBox1;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]")
+	@FindBy(xpath = "//*[@id='contact_list']/ul")
 	WebElement contactsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[1]")
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]")
 	WebElement topContactsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[1]/button")
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/button")
 	WebElement topContactsListItemIcon;	
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[1]/div[3]/h3")
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/div[3]/h3")
 	WebElement topContactsListItemName;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[1]/div[3]/h4[1]")
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/div[3]/h4[1]")
 	WebElement topContactsListItemLine2;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[1]/div[3]/h4[3]")
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/div[3]/h4[3]")
 	WebElement topContactsListItemLine3;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[1]/div[3]/h4[4]")
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/div[3]/h4[4]")
 	WebElement topContactsListItemLine4;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[1]/div[3]/h4[5]")
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/div[3]/h4[5]")
 	WebElement topContactsListItemLine5;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
-	WebElement topContactsListItemBtmIndicator;
+	@FindBy(css = "#contact_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	WebElement topContactsListItemTouch;
+	
+	@CacheLookup
+	@FindBy(css = "#contact_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	WebElement topContactsListItemQuickActionsBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[8]")
+	WebElement topContactsListItemQuickActionsAddAttachmentBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[7]")
+	WebElement topContactsListItemQuickActionsAddActivityBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[6]")
+	WebElement topContactsListItemQuickActionsAddNoteBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[5]")
+	WebElement topContactsListItemQuickActionsEmailBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[4]")
+	WebElement topContactsListItemQuickActionsAccountBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[3]")
+	WebElement topContactsListItemQuickActionsCallMobileBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[2]")
+	WebElement topContactsListItemQuickActionsCallWorkBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[1]")
+	WebElement topContactsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[11]")
@@ -100,10 +137,11 @@ public class ContactViewsElements extends BrowserSetup {
 	WebElement recordsRemainingListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li/h3")
+	@FindBy(xpath = "//*[@id='contact_list']/ul/li/h3")
 	WebElement noRecordsListItem;
 	
 	//Context Menu elements
+	//---------------------
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
 	WebElement contactsHashTagsHdr;
@@ -234,6 +272,7 @@ public class ContactViewsElements extends BrowserSetup {
 	WebElement contactsDetailViewAttachmentsLnk;
 		
 	//Edit View elements
+	//------------------
 	//TODO: the Contact Edit fields need to be updated when needed
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_edit']")
@@ -329,6 +368,7 @@ public class ContactViewsElements extends BrowserSetup {
 	
 	
 	//Methods
+	//-------
 	public String getContactsListViewTxt() {
 		String methodID = "getContactsListViewTxt";
 		String listViewTxt = "";
