@@ -23,6 +23,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	//================
 	@Test(enabled = true)
 	public void test01_SeTestTCAccountListView() throws Exception {
+		//Reference: MBL-10069
 		String methodID = "test01_SeTestTCAccountListView";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -497,7 +498,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		commNav.rightClickContextMenuItem("Total Accounts");
 		
 		//Step: go back to previous screen
-		headerButton.closeRightContextMenu();
 		headerButton.goBack();
 		Thread.sleep(3000);
 		
