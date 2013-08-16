@@ -113,12 +113,19 @@ public class HeaderButton {
 		WebElement pgTitleBar = driver.findElement(By.xpath(".//*[@id='pageTitle']"));
 		String oldPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();		
 
-		//determine which button to actually click (back button placement varies)
-		//pgTitleBar.click();
-		//pgTitleBar.sendKeys(Keys.BACK_SPACE);
-
-		backButton.click();
-		Thread.sleep(1000);
+		//conditionally close the Right Context Menu panel (if blocking the Global Menu button)
+		closeRightContextMenu();
+		
+		try {
+			//click the Header Back button
+			backButton.click();
+			Thread.sleep(1000);
+		}
+		catch (Error e) {
+			//revert to Backspace key-press if Back button click fails
+			pgTitleBar.click();
+			pgTitleBar.sendKeys(Keys.BACK_SPACE);
+		}
 		
 		String newPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();
 		
