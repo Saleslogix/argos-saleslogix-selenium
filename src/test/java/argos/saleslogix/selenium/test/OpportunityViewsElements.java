@@ -36,12 +36,16 @@ public class OpportunityViewsElements extends BrowserSetup {
 	WebElement opportunitySearchLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul[2]")
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul")
 	WebElement opportunityListViewRecords;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]")
 	WebElement topOpportunityListItem;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[1]")
+	WebElement topOpportunityListItemTab;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/button")
@@ -52,20 +56,56 @@ public class OpportunityViewsElements extends BrowserSetup {
 	WebElement topOpportunityListItemName;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div/h4[1]")
-	WebElement topOpportunityListItemLine2;
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[3]/h4[1]")
+	WebElement topOpportunityListItemAccount;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div/h4[2]")
-	WebElement topOpportunityListItemLine3;
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[3]/h4[2]")
+	WebElement topOpportunityListItemAcctMgrInfo;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div/h4[3]")
-	WebElement topOpportunityListItemLine4;
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[3]/h4[3]")
+	WebElement topOpportunityListItemStatusInfo;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div/h4[4]")
-	WebElement topOpportunityListItemLine5;
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[3]/h4[4]/strong")
+	WebElement topOpportunityListItemSalesPotOppRate;
+	
+	@CacheLookup
+	@FindBy(css = "#opportunity_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	WebElement topOpportunityListItemTouch;
+	
+	@CacheLookup
+	@FindBy(css = "#opportunity_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	WebElement topOpportunityListItemQuickActionsBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[7]")
+	WebElement topOpportunityListItemQuickActionsAddAttachmentBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[6]")
+	WebElement topOpportunityListItemQuickActionsAddActivityBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[5]")
+	WebElement topOpportunityListItemQuickActionsAddNoteBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[4]")
+	WebElement topOpportunityListItemQuickActionsProductsBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[3]")
+	WebElement topOpportunityListItemQuickActionsContactsBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[2]")
+	WebElement topOpportunityListItemQuickActionsAccountBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[1]")
+	WebElement topOpportunityListItemQuickActionsEditBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[11]")
