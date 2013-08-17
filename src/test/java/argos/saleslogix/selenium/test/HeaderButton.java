@@ -71,15 +71,16 @@ public class HeaderButton {
 	public HeaderButton showGlobalMenu() throws InterruptedException {
 		String methodID = "showGlobalMenu";
 		
-		//conditionally close the Right Context Menu panel (if blocking the Global Menu button)
-		closeRightContextMenu();
+		//click the Page Title (forces closure of any blocking panels)
+		driver.findElement(By.id("pageTitle")).click();
+		Thread.sleep(1000);
 		
 		// Click Header Global Menu button...
 		clickHeaderButton("global");
 		
 		// Verify the 'Global Menu' left-screen displays...
 		try {
-			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='left_drawer']/div[3]/h2[1]")).isDisplayed());
+			AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='left_drawer']")).isDisplayed());
 			System.out.println("VP: Global Menu was accessed successfully on header button click.");
 		} catch (Error e) {     
 			System.out.println("Error: Global Menu failed to display on header button click.");

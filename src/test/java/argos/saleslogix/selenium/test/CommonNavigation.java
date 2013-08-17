@@ -117,18 +117,14 @@ public class CommonNavigation {
 	public CommonNavigation clickGlobalMenuItem(String gMenuItem) throws InterruptedException {
 		String methodID = "clickGlobalMenuItem";
 		
-		//conditionally close the Right-Context menu...
-		if (driver.findElement(By.xpath("//*[@id='right_drawer']")).isDisplayed()) {
-			// Click Header Right-Context Menu button...
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
-		}
-		
-		//need to use local WebElement def to avoid 
-		WebElement glblMenuPnl = driver.findElement(By.xpath(".//*[@id='left_drawer']"));
+		//click the Page Title (forces closure of any blocking panels)
+		driver.findElement(By.id("pageTitle")).click();
+		Thread.sleep(1000);
 		
 		//conditionally click the GlobalMenu button to reveal panel
+		WebElement glblMenuPnl = driver.findElement(By.xpath(".//*[@id='left_drawer']"));
 		if (!glblMenuPnl.isDisplayed()) {
-			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
 			Thread.sleep(1000);
 		}
 						
@@ -224,8 +220,9 @@ public class CommonNavigation {
 		
 		//conditionally close the Right-Context menu...
 		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
-			// Click Header Right-Context Menu button...
-			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+			// Click Page Title to close...
+			driver.findElement(By.id("pageTitle")).click();
+			Thread.sleep(1000);
 		}
 		return true;
 	}
