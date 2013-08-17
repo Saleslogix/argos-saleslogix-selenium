@@ -219,10 +219,14 @@ public class CommonNavigation {
 		
 		//Step: perform context menu item selection
 		WebElement contxtMnuItem = driver.findElement(By.xpath("//*[@id='right_drawer']/descendant::*[text() = '" + menuItem + "']"));
-		//driver.findElement(By.xpath("//*[@id='right_drawer']/descendant::*[text() = '" + menuItem + "']")).click();
 		highlightNClick(contxtMnuItem);
 		Thread.sleep(2000);
 		
+		//conditionally close the Right-Context menu...
+		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
+			// Click Header Right-Context Menu button...
+			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+		}
 		return true;
 	}
 	
@@ -662,7 +666,12 @@ public class CommonNavigation {
 			WebElement targetEntRecord = null;
 			if (targetEntRecords.size() > 1) {
 				//specify the actual record name so that the search label is not clicked
-				targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li/div[3]/h3"));
+				if (entityType.toLowerCase().equals("my activities")) {
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/div[3]/ul[1]/li/div[3]/h3/span"));
+				}
+				else {
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li/div[3]/h3"));
+				}
 			}
 			else {
 				targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
