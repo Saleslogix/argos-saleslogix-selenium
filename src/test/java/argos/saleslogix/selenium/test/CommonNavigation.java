@@ -522,10 +522,23 @@ public class CommonNavigation {
 	}
 	
 	protected boolean isElementPresent(By by) {
+		
 	    try {
 	      driver.findElement(by);
 	      return true;
 	    } catch (NoSuchElementException e) {
+	    	return false;
+	    }
+	}
+	
+	protected boolean isElementDisplayed(By by) {
+		
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(by).isDisplayed());
+	    	return true;
+	    } 
+	    catch (NoSuchElementException e) {
+	    	System.out.println(e.toString());
 	    	return false;
 	    }
 	}
@@ -537,7 +550,7 @@ public class CommonNavigation {
 			System.out.println(methodID + ": " + sDesc + " is displayed on the current page/screen.");
 			return true;
 		}
-		catch (Error e) {
+		catch (Exception e) {
 			System.out.println(e.toString());
 			return false;
 		}
@@ -801,21 +814,27 @@ public class CommonNavigation {
 	
 	public void highlightElement(WebElement wElement) throws InterruptedException {
 		
-		Thread.sleep(250);
-		for (int i = 0; i <= 2; i++) { 
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			try {
-				js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: yellow; border: 2px solid yellow;"); 
-				Thread.sleep(100);
-				js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: red; border: 2px solid red;");
-				Thread.sleep(100);
-				js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "");
-			}
-			catch (Error e) {
-				System.out.println(e.toString());
-				break;
-			}
-		} 
+		try {
+			AssertJUnit.assertTrue(wElement.isDisplayed());
+			Thread.sleep(250);
+			for (int i = 0; i <= 2; i++) { 
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				try {
+					js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: yellow; border: 2px solid yellow;"); 
+					Thread.sleep(100);
+					js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: red; border: 2px solid red;");
+					Thread.sleep(100);
+					js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "");
+				}
+				catch (Error e) {
+					System.out.println(e.toString());
+					break;
+				}
+			} 
+		}
+		catch (Exception e){
+			System.out.println(e.toString());
+		}
 	}
 	
 	public void highlightNClick(WebElement wElement) throws InterruptedException {

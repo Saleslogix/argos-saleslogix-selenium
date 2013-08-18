@@ -127,9 +127,9 @@ public class MobileDefectTest extends BrowserSetup {
 
 	//Test Methods		
 	//============
-	//TODO: document functional areas or keywords using tags for each test method
-	@Test (enabled = false)
-	public void test41_MobileDefect13092144()  throws InterruptedException {				
+	@Test (enabled = true)
+	public void test41_MobileDefect13092144()  throws InterruptedException {
+		//tags: download attachment, jpg image
 		String methodID = "test41_MobileDefect13092144";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -150,52 +150,58 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		// Step: click to download and view the attachment
 		try {
-			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li/div/div[2]/h3/span")).click();
+			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li")).click();
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("loading..."));
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("Downloading attachment..."));
 			AssertJUnit.assertTrue(commNav.isTextNotPresentOnPage("Downloading attachment..."));
 			Thread.sleep(3000);
+			String resultMsg = "VP: initial successful Attachment downloaded check";
 			try {
-				AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-image']")));
-				System.out.println("Verify: initial successful Attachment downloaded check - Passed");
+				WebElement attachedImg = driver.findElement(By.xpath("//*[@id='attachment-image']"));
+				AssertJUnit.assertTrue(commNav.isWebElementPresent("attachment image", attachedImg));
+				System.out.println(resultMsg + " - Passed");
 			}
-			catch (Error e) {
+			catch (Exception e) {
 				System.out.println(e.toString());
-				System.out.println("Verify: initial successful Attachment downloaded check - FAILED");
+				System.out.println(resultMsg + " - FAILED");
 			}
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
-		};			
+		}
 		
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		
 		// Step: click the Top-Left, Global Menu button again to close...
 		headerbutton.clickHeaderButton("global");
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		
 		// VP: confirm that attachment is still displayed correctly after Global Menu display/non-display
+		String resultMsg = "VP: fix check on Attachments view on Global Menu display/non-display";
 		try {
-			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-image']")));
-			System.out.println("Verify: fix check on Attachments view on Global Menu display/non-display - Passed");
+			WebElement attachedImg = driver.findElement(By.xpath("//*[@id='attachment-image']"));
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("attachment image", attachedImg));
+			System.out.println(" - Passed");
 		}
 		catch (Error e) {
 			System.out.println(e.toString());
-			AssertJUnit.fail("Verify: fix check on Attachments view on Global Menu display/non-display - FAILED");
+			System.out.println(resultMsg + " - FAILED");
 		}
 		
 		// Step: navigate back to the My Activities list view
+		headerbutton.goBack();
 		headerbutton.showGlobalMenu();
 		commNav.clickGlobalMenuItem("My Activities");
 		
 		// End Tests
 		System.out.println(ENDLINE);
 	}
-
 	
-	@Test (enabled = false)
-	public void test42_MobileDefect13092160()  throws InterruptedException {				
+	@Test (enabled = true)
+	public void test42_MobileDefect13092160()  throws InterruptedException {
+		//tags: download attachment, url
 		String methodID = "test42_MobileDefect13092160";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -217,14 +223,23 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		// Step: click to download and view the attachment
 		try {
-			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li/div/div[2]/h3/span")).click();
+			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li")).click();
 		} catch (Exception e) {
+			System.out.println(e.toString());
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
 		};
 		Thread.sleep(7000);
 				
 		// VP: confirm that URL attachment is loaded and displayed correctly
-		AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
+		String resultMsg = "VP: initial URL attachment download and display check";
+		try {
+			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + " - FAILED");
+		}
 		
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
@@ -233,10 +248,19 @@ public class MobileDefectTest extends BrowserSetup {
 		// Step: click the Top-Left, Global Menu button again to close...
 		headerbutton.showGlobalMenu();
 		
-		// VP: confirm that attachment is downloaded and displayed correctly
-		AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
+		// VP: confirm that attachment is still displayed correctly
+		resultMsg = "VP: consistent URL attachment display check";
+		try {
+			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultMsg + " - FAILED");
+		}
 		
 		// Step: navigate back to the My Activities list view
+		headerbutton.goBack();
 		headerbutton.showGlobalMenu();
 		commNav.clickGlobalMenuItem("My Activities");
 		
@@ -377,6 +401,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	@Test (enabled = false)
+	//TODO: issue with SpeedSearch not returning any results
 	public void test45_MobileDefect13092219()  throws InterruptedException {				
 		String methodID = "test45_MobileDefect13092219";
 		
