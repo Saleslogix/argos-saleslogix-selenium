@@ -44,40 +44,80 @@ public class LeadViewsElements extends BrowserSetup {
 	WebElement leadsListViewHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']/ul[2]")
+	@FindBy(xpath = "//*[@id='lead_list']/ul")
 	WebElement leadsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']/ul[2]/li[1]")
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[1]")
 	WebElement topLeadsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']/ul[2]/li[1]/button")
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[1]/div[1]")
+	WebElement topLeadsListItemTab;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[1]/button")
 	WebElement topLeadsListItemIcon;	
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']/ul[2]/li[1]/div[3]/h3")
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[1]/div/h3")
 	WebElement topLeadsListItemName;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']/ul[2]/li[1]/div[3]/h4[1]")
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[1]/div[3]/h4[1]")
 	WebElement topLeadsListItemLine2;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']/ul[2]/li[1]/div[3]/h4[3]")
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[1]/div[3]/h4[2]")
 	WebElement topLeadsListItemLine3;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']/ul[2]/li[1]/div[3]/h4[4]")
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[1]/div[3]/h4[3]")
 	WebElement topLeadsListItemLine4;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']/ul[2]/li[1]/div[3]/h4[5]")
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[1]/div[3]/h4[4]")
 	WebElement topLeadsListItemLine5;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
 	WebElement topLeadsListItemBtmIndicator;
+	
+	@CacheLookup
+	@FindBy(css = "#lead_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	WebElement topLeadsListItemTouch;
+	
+	@CacheLookup
+	@FindBy(css = "#lead_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	WebElement topLeadsListItemQuickActionsBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[2]/button[7]")
+	WebElement topLeadsListItemQuickActionsAddAttachmentBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[2]/button[6]")
+	WebElement topLeadsListItemQuickActionsAddActivityBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[2]/button[5]")
+	WebElement topLeadsListItemQuickActionsAddNoteBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[2]/button[4]")
+	WebElement topLeadsListItemQuickActionsEmailBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[2]/button[3]")
+	WebElement topLeadsListItemQuickActionsCallMobileBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[2]/button[2]")
+	WebElement topLeadsListItemQuickActionsCallWorkBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_list']/ul/li[2]/button[1]")
+	WebElement topLeadsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_list']/ul[2]/li[11]")
