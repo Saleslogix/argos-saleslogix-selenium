@@ -44,40 +44,76 @@ public class TicketViewsElements extends BrowserSetup {
 	WebElement ticketsListViewHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]")
+	@FindBy(xpath = "//*[@id='ticket_list']/ul")
 	WebElement ticketsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[1]")
-	WebElement topLeadsListItem;
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]")
+	WebElement topTicketsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[1]/button")
-	WebElement topLeadsListItemIcon;	
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[1]")
+	WebElement topTicketsListItemTab;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/button")
+	WebElement topTicketsListItemIcon;	
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[1]/div[3]/h3")
-	WebElement topLeadsListItemName;
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[3]/h3")
+	WebElement topTicketsListItemNumber;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[1]/div[3]/h4[1]")
-	WebElement topLeadsListItemLine2;
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[3]/h4[2]")
+	WebElement topTicketsListItemLine2;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[1]/div[3]/h4[3]")
-	WebElement topLeadsListItemLine3;
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[3]/h4[3]")
+	WebElement topTicketsListItemLine3;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[1]/div[3]/h4[4]")
-	WebElement topLeadsListItemLine4;
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[3]/h4[4]")
+	WebElement topTicketsListItemLine4;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[1]/div[3]/h4[5]")
-	WebElement topLeadsListItemLine5;
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[3]/h4[5]")
+	WebElement topTicketsListItemLine5;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
-	WebElement topLeadsListItemBtmIndicator;
+	WebElement topTicketsListItemBtmIndicator;
+	
+	@CacheLookup
+	@FindBy(css = "#ticket_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	WebElement topTicketsListItemTouch;
+	
+	@CacheLookup
+	@FindBy(css = "#ticket_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	WebElement topTicketsListItemQuickActionsBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[6]")
+	WebElement topTicketsListItemQuickActionsAddAttachmentBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[5]")
+	WebElement topTicketsListItemQuickActionsAddActivityBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[4]")
+	WebElement topTicketsListItemQuickActionsAddNoteBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[3]")
+	WebElement topTicketsListItemQuickActionsContactBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[2]")
+	WebElement topTicketsListItemQuickActionsAccountBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[1]")
+	WebElement topTicketsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[11]")
