@@ -24,7 +24,7 @@ public class MyActivityViewsElements extends BrowserSetup {
 
 	//List View elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/h2[1]")
+	@FindBy(xpath = "//*[@id='myactivity_list_search-expression']")
 	WebElement myActivitiesListViewHeader;
 	
 	@CacheLookup
@@ -32,31 +32,31 @@ public class MyActivityViewsElements extends BrowserSetup {
 	WebElement myActivitiesListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[1]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[1]")
 	WebElement topMyActivitiesListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[1]/div[1]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[1]/div[1]")
 	WebElement topMyActivitiesListItemTab;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[1]/button")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[1]/button")
 	WebElement topMyActivitiesListItemIcon;
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[1]/div[3]/h3/span")
+	@FindBy(xpath = ".//*[@id='myactivity_list']/ul/li[1]/div[3]/h3/span")
 	WebElement topMyActivitiesListItemRegarding;
 		
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li/div[3]/h4[1]/strong")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[1]/div[3]/h4[1]/strong")
 	WebElement topMyActivitiesListItemStartTime;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[1]/div[3]/h4[2]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul[1]/li[1]/div[3]/h4[2]")
 	WebElement topMyActivitiesListItemContactAccount;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[1]/div[3]/h4[3]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul[1]/li[1]/div[3]/h4[3]")
 	WebElement topMyActivitiesListItemPhone;
 	
 	@CacheLookup
@@ -84,35 +84,35 @@ public class MyActivityViewsElements extends BrowserSetup {
 	WebElement topMyActivitiesListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[2]/button[8]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[2]/button[8]")
 	WebElement topMyActivitiesListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[2]/button[7]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[2]/button[7]")
 	WebElement topMyActivitiesListItemQuickActionsCallBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[2]/button[6]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[2]/button[6]")
 	WebElement topMyActivitiesListItemQuickActionsDeclineBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[2]/button[5]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[2]/button[5]")
 	WebElement topMyActivitiesListItemQuickActionsAcceptBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[2]/button[4]")
 	WebElement topMyActivitiesListItemQuickActionsCompleteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[2]/button[3]")
 	WebElement topMyActivitiesListItemQuickActionsContactBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[2]/button[2]")
 	WebElement topMyActivitiesListItemQuickActionsOpportunityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/ul[1]/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[2]/button[1]")
 	WebElement topMyActivitiesListItemQuickActionsAccountBtn;
 	
 	@CacheLookup

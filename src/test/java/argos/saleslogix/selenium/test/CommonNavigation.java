@@ -221,7 +221,8 @@ public class CommonNavigation {
 		//conditionally close the Right-Context menu...
 		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
 			// Click Page Title to close...
-			driver.findElement(By.id("pageTitle")).click();
+			//driver.findElement(By.id("pageTitle")).click();
+			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_3']/div/div[3]/button")).click();
 			Thread.sleep(1000);
 		}
 		return true;
@@ -677,7 +678,7 @@ public class CommonNavigation {
 			if (targetEntRecords.size() > 1) {
 				//specify the actual record name so that the search label is not clicked
 				if (entityType.toLowerCase().equals("my activities")) {
-					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/div[3]/ul[1]/li/div[3]/h3/span"));
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul[1]/li/div[3]/h3/span"));
 				}
 				else {
 					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li/div[3]/h3"));
