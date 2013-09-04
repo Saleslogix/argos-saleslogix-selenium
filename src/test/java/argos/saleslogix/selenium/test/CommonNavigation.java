@@ -221,8 +221,8 @@ public class CommonNavigation {
 		//conditionally close the Right-Context menu...
 		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
 			// Click Page Title to close...
-			//driver.findElement(By.id("pageTitle")).click();
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_3']/div/div[3]/button")).click();
+			driver.findElement(By.id("pageTitle")).click();
+			//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_3']/div/div[3]/button")).click();
 			Thread.sleep(1000);
 		}
 		return true;
