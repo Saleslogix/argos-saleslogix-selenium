@@ -127,7 +127,7 @@ public class MobileDefectTest extends BrowserSetup {
 
 	//Test Methods		
 	//============
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test41_MobileDefect13092144()  throws InterruptedException {
 		//tags: download attachment, jpg image
 		String methodID = "test41_MobileDefect13092144";
@@ -199,7 +199,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test42_MobileDefect13092160()  throws InterruptedException {
 		//tags: download attachment, url
 		String methodID = "test42_MobileDefect13092160";

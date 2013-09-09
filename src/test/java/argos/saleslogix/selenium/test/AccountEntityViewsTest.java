@@ -431,7 +431,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test11_SeTestTCAccountListViewKPI() throws Exception {
 		String methodID = "test11_SeTestTCAccountListViewKPI";
 		
