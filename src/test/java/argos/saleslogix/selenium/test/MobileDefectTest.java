@@ -127,6 +127,7 @@ public class MobileDefectTest extends BrowserSetup {
 
 	//Test Methods		
 	//============
+	//TODO: find out why this test mysteriously fails on Jenkins server
 	@Test (enabled = false)
 	public void test41_MobileDefect13092144()  throws InterruptedException {
 		//tags: download attachment, jpg image
@@ -199,6 +200,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
+	//TODO: find out why this test mysteriously fails on Jenkins server
 	@Test (enabled = false)
 	public void test42_MobileDefect13092160()  throws InterruptedException {
 		//tags: download attachment, url
@@ -400,6 +402,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
+	//TODO: find out why this test mysteriously fails on Jenkins server
 	@Test (enabled = false)
 	//TODO: issue with SpeedSearch not returning any results
 	public void test45_MobileDefect13092219()  throws InterruptedException {				
