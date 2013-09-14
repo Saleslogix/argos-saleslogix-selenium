@@ -97,7 +97,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);	
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";
 		
@@ -271,7 +271,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test43_MobileDefect13092222()  throws InterruptedException {				
 		String methodID = "test43_MobileDefect13092222";
 		
@@ -363,7 +363,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test44_MobileDefect13092239()  throws InterruptedException {				
 		String methodID = "test44_MobileDefect13092239";
 		
@@ -497,7 +497,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test46_MobileDefect13092249()  throws InterruptedException {				
 		String methodID = "test46_MobileDefect13092249";
 		
@@ -559,7 +559,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test47_MobileDefect13092260()  throws InterruptedException {				
 		String methodID = "test47_MobileDefect13092260";
 		
@@ -708,7 +708,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test49_MobileDefect13091564()  throws InterruptedException {				
 		String methodID = "test49_MobileDefect13091564";
 		
@@ -1498,7 +1498,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = false)
 	public void test55_MobileDefect13092411()  throws Exception {				
 		String methodID = "test55_MobileDefect13092411";
 		
@@ -1643,7 +1643,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test56_MobileDefect13092300()  throws InterruptedException {
 		//tags: my attachments, download view attachment
 		String methodID = "test56_MobileDefect13092300";
@@ -1689,7 +1689,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test57_MobileDefect13092329()  throws Exception {				
 		String methodID = "test57_MobileDefect13092329";
 		
@@ -1819,7 +1819,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = false)
 	public void test58_MobileDefect13092338()  throws Exception {	
 		//tags: schedule, ticket activity, public access
 		String methodID = "test58_MobileDefect13092338";
@@ -1933,7 +1933,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test59_MobileDefect13092339()  throws Exception {
 		//tags: schedule, ticket activity, public access, type, null
 		String methodID = "test59_MobileDefect13092339";
@@ -2046,7 +2046,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test60_MobileDefect13092370()  throws Exception {
 		//tags: add account/contact, account manager, account owner
 		String methodID = "test60_MobileDefect13092370";
@@ -2118,7 +2118,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test61_MobileDefect13092371()  throws Exception {
 		//tags: add account/contact, account manager, account owner
 		String methodID = "test61_MobileDefect13092371";
@@ -2253,7 +2253,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test63_MobileDefect13092387()  throws Exception {
 		//tags: notes/history, hashtag, #phonecall
 		String methodID = "test63_MobileDefect13092387";
@@ -2301,7 +2301,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test64_MobileDefect13092410()  throws Exception {
 		//tags: accounts, list view, no records
 		String methodID = "test64_MobileDefect13092410";
@@ -2369,7 +2369,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test66_MobileDefect13092494()  throws Exception {
 		//tags: accounts, detail view, lookup, #active hashtag
 		String methodID = "test66_MobileDefect13092494";
@@ -2412,7 +2412,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test67_MobileDefect13092497()  throws Exception {
 		//tags: accounts, my activities, right context menu, browser back button
 		String methodID = "test67_MobileDefect13092497";
