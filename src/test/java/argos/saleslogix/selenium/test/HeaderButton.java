@@ -68,6 +68,14 @@ public class HeaderButton {
 		return element;
 		}
 	
+	
+	/**
+	 * This method will click the header Global Menu button to display the Global Menu items.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	N/A
+	 * @exception InterruptedException
+	 */
 	public HeaderButton showGlobalMenu() throws InterruptedException {
 		String methodID = "showGlobalMenu";
 		

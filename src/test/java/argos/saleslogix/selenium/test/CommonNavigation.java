@@ -15,6 +15,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
 
+/**
+ * CommonNavigation class defines webelements and methods for any commonly accessed items (e.g. Global Menu).
+ * This class also defines a collection of methods for commonly-used verifications.
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class CommonNavigation {
 	private WebDriver driver;
 
@@ -34,6 +40,18 @@ public class CommonNavigation {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'SpeedSearch']")
 	WebElement gmenu_speedSearch;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")
+	WebElement gmenu_speedSearchLookupFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")
+	WebElement gmenu_speedSearchLookupBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[2]/button")
+	WebElement gmenu_speedSearchLookupClearBtn;	
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")
@@ -193,6 +211,14 @@ public class CommonNavigation {
 		return this;
 	}
 	
+	
+	/**
+	 * This method will select an menu item from the Right-context menu on the current list view.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	menuItem	menu item from the Right-context menu to select
+	 * @exception InterruptedException
+	 */	
 	public boolean rightClickContextMenuItem(String menuItem) throws InterruptedException {
 		String methodID = "rightClickContextMenuItem";
 		
@@ -201,7 +227,7 @@ public class CommonNavigation {
 		//conditionally click the RightContext Menu button to reveal panel
 		if (!commNav.rmenu_panel.isDisplayed()) {
 			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
-			System.out.println(methodID + ": the '" + menuItem + " Right-context Menu item was clicked.");
+			System.out.println(methodID + ": the '" + menuItem + "' Right-context Menu item was clicked.");
 			Thread.sleep(1000);
 			
 			try {
@@ -276,8 +302,102 @@ public class CommonNavigation {
 			System.out.println(e.toString());
 		}
 	}
+
+	
+	/**
+	 * This method will compare the attribute value of an on-screen WebElement.
+	 * The comparison result will be tracked in the console log.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	elementDesc	description of the WebElement item
+	 * @param	wElement	WebElement object
+	 * @param	strAttribute	attribute type to check
+	 * @param	expAttrVal		attribute value of the type to check against	
+	 * @exception InterruptedException
+	 */
+	public void verifyWebElementAttributeVal(String elementDesc, WebElement wElement, String strAttribute, String expAttrVal) throws InterruptedException {
+		String methodID = "verifyWebElementAttributeVal";
+		
+		String strResultsMsg = "VP: WebElement " + strAttribute + " check for " + elementDesc;
+		
+		try { 
+			AssertJUnit.assertEquals(wElement.getAttribute(strAttribute), expAttrVal);
+			highlightElement(wElement);
+			System.out.println(strResultsMsg + " - Passed");
+		} catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(strResultsMsg + " - FAILED");
+		}		
+	}
 	
 	
+	/**
+	 * This method will compare the text value of an on-screen WebElement.
+	 * The comparison result will be tracked in the console log.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	elementDesc	description of the WebElement item
+	 * @param	wElement	WebElement object
+	 * @param	expText		text value of the WebElement to check against
+	 * @see		highlightElement()
+	 * @exception InterruptedException
+	 */	
+	public void verifyWebElementText(String elementDesc, WebElement wElement, String expText) throws InterruptedException {
+		String methodID = "verifyWebElementText";
+		
+		String strResultsMsg = "VP: WebElement text check for " + elementDesc;
+		
+		try { 
+			AssertJUnit.assertEquals(wElement.getText(), expText);
+			highlightElement(wElement);
+			System.out.println(strResultsMsg + " - Passed");
+		} catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(strResultsMsg + " - FAILED");
+		}		
+	}
+	
+	
+	/**
+	 * This method will compare the attribute value of an on-screen WebElement.
+	 * The comparison result will be tracked in the console log.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	elementDesc	description of the WebElement item
+	 * @param	wElement	WebElement object
+	 * @param	expValue	value of the WebElement to check against
+	 * @see		highlightElement()
+	 * @exception InterruptedException
+	 */
+	public void verifyWebElementValue(String elementDesc, WebElement wElement, String expValue) throws InterruptedException {
+		String methodID = "verifyWebElementValue";
+		
+		String strResultsMsg = "VP: WebElement value check for " + elementDesc;
+		
+		try { 
+			AssertJUnit.assertEquals(wElement.getAttribute("value"), expValue);
+			highlightElement(wElement);
+			System.out.println(strResultsMsg + " - Passed");
+		} catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(strResultsMsg + " - FAILED");
+		}
+	}
+	
+	
+	/**
+	 * This method will click an on-screen WebElement and verify that the expected page is successfully 
+	 * navigated to.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	elementDesc	description of the WebElement item to click
+	 * @param	wElement	WebElement object to click
+	 * @param	expPgTitle	title of the expected page
+	 * @return	<code>True</code> if the title of the loaded page matches the expected page title
+	 * 			<code>False</code> othewise 
+	 * @see		clickWebElement()
+	 * @exception InterruptedException
+	 */
 	protected boolean verifyEntityViewElementClick(String elementDesc, WebElement wElement, String expPgTitle) throws InterruptedException {
 		String methodID = "verifyEntityViewElementClick";
 		
@@ -351,7 +471,17 @@ public class CommonNavigation {
 		Thread.sleep(3000);
 	}
 	
-	public CommonNavigation searchListView(String itemType, String searchItemName) throws InterruptedException {
+	
+	/**
+	 * This method will perform SpeedSearch (from Global Menu) or entity record lookup (from the 
+	 * Right-Context menu).
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	searchType  	specify 'SpeedSearch' or the entity record type
+	 * @param	searchItemName	item or entity record to search for
+	 * @exception InterruptedException
+	 */
+	public CommonNavigation searchListView(String searchType, String searchItemName) throws InterruptedException {
 		String methodID = "searchListView";
 		
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
@@ -359,15 +489,15 @@ public class CommonNavigation {
 		String searchWgtIDX = "";
 		Boolean forSpdSrch = false;
 		
-		switch (itemType.toLowerCase()) {
+		switch (searchType.toLowerCase()) {
 		case "speedsearch": case "search": case "speed search":
 			searchWgtIDX = "0";
 			forSpdSrch = true;
 			break;
-		case "my activities": case "activities":
+		case "my activities": case "activities": case "activity":
 			searchWgtIDX = "26";
 			break;
-		case "notes/history": case "notes history": case "notes":
+		case "notes/history": case "notes history": case "notes": case "note": case "history":
 			searchWgtIDX = "27";
 			break;
 		case "accounts": case "account":
@@ -397,13 +527,13 @@ public class CommonNavigation {
 		    	//invoke Global Menu
 		    	headerbutton.showGlobalMenu();
 		    			    	
-		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).clear();
+		    	gmenu_speedSearchLookupFld.clear();
 		    	Thread.sleep(500);
-		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[2]/button")).click();
+		    	gmenu_speedSearchLookupClearBtn.click();
 		    	Thread.sleep(1000);
-		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).sendKeys(searchItemName);
+		    	gmenu_speedSearchLookupFld.sendKeys(searchItemName);
 		    	Thread.sleep(500);
-		    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")).click();
+		    	gmenu_speedSearchLookupBtn.click();
 		    }
 		    else {
 				//invoke the Right Context menu
@@ -417,8 +547,8 @@ public class CommonNavigation {
 		    	Thread.sleep(500);
 		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();	    	
 		    }
-		    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + itemType + " List View...");
-		    waitForListView(itemType);
+		    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
+		    waitForListView(searchType);
 		}
 		catch (Error e) {
 			  System.out.println(e.toString());
@@ -510,12 +640,12 @@ public class CommonNavigation {
 		while (i < 5) {
 			try {
 				element = driver.findElement(locator);
-				element.click();
+				highlightNClick(element);
 				break;
 			} catch (Exception e) {
 				Thread.sleep(1000);
 				element = driver.findElement(locator);
-				element.click();
+				highlightNClick(element);
 			}
 		}
 		Thread.sleep(3000);

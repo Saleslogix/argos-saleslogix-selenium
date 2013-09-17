@@ -3,6 +3,13 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+import java.util.Properties;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -23,6 +30,7 @@ public class AccountViewsElements extends BrowserSetup {
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
 	//List View elements
+	//==================
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_3']/div/div[1]/input")
 	WebElement accountsSearchTxtBox;
@@ -275,11 +283,11 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountEditView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_14']/input")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextField_54']/input")
 	WebElement accountEditViewAccountInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_15']/input")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextField_55']/input")
 	WebElement accountEditViewWebInputFld;
 	
 	@CacheLookup
@@ -339,31 +347,158 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountEditViewBusDescFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_22']/input")
 	WebElement accountEditViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_22']/button")
 	WebElement accountEditViewAcctMgrFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_23']/input")
 	WebElement accountEditViewOwnerFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_23']/button")
 	WebElement accountEditViewOwnerFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_24']/input")
 	WebElement accountEditViewLeadSourceFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_24']/button")
 	WebElement accountEditViewLeadSourceFldBtn;
 	
 	
 	//Methods
+	//=======
+	/**
+	 * This method will add an auto-generated test Account record by filling-in the Account Edit input fields.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	strAccountName	account name to set
+	 * @exception InterruptedException
+	 */
+	public void doAddRandTestAccount(String strAccountName) throws InterruptedException, IOException {
+		String methodID = "doAddRandTestAccount";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Accounts list view
+		commNav.clickGlobalMenuItem("Accounts");
+		
+		//Step: click the Add header button to enter Account edit view
+		headerbutton.clickHeaderButton("Add");
+		
+		//Step: setup new Account field values
+		//setup account field		
+		accountEditViewAccountInputFld.sendKeys(strAccountName);
+		commNav.verifyWebElementValue("Account field", accountEditViewAccountInputFld, strAccountName);
+		
+		//setup web field
+		String sWebVal = "www.SeAutoTestAcct.com";
+		accountEditViewWebInputFld.sendKeys(sWebVal);
+		
+		//setup phone field
+		String sPhoneVal = "888-987-6543";
+		accountEditViewPhoneInputFld.sendKeys(sPhoneVal);
+		
+		//setup address fields
+		accountEditViewAddressFldBtn.click();
+			commView.addressDescriptionInputFldBtn.click();
+			commView.selectFieldValListItem("Description", "Mailing");
+			
+			commView.addressPrimaryTgl.click();
+			commView.addressShippingTgl.click();
+			commView.addressLine1.sendKeys("8800 Mobile St.");
+			commView.addressLine2.sendKeys("Corporate Campus");
+			commView.addressLine3.sendKeys("Suite 100");
+			
+			commView.addressCityInputFldBtn.click();
+			commView.selectFieldValListItem("City", "Phoenix");
+			
+			commView.addressStateInputFldBtn.click();
+			commView.selectFieldValListItem("State", "AZ");
+			
+			commView.addressPostalInputFld.sendKeys("85048");
+			
+			commView.addressCountryInputFldBtn.click();
+			commView.selectFieldValListItem("Country", "USA");
+			
+			commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
+		headerbutton.clickHeaderButton("check");
+		
+		//setup fax field
+		accountEditViewFaxInputFld.sendKeys("480-987-6543");
+		
+		//setup type field
+		accountEditViewTypeFldBtn.click();
+		commView.selectFieldValListItem("account type", "Partner");
+		
+		//setup subtype field
+		accountEditViewSubTypeFldBtn.click();
+		commView.selectFieldValListItem("Subtype", "Computers/Electronics/High Tech");
+		
+		//setup status field
+		accountEditViewStatusFldBtn.click();
+		commView.selectFieldValListItem("Status", "Active");
+		
+		//setup industry field
+		accountEditViewIndustryFldBtn.click();
+		commView.selectFieldValListItem("Industry", "Reseller");
+		
+		//setup bus desc field
+		accountEditViewBusDescFldBtn.click();
+		commView.setBusDescription("Business Description - Random Automated Test Account");
+		
+		//setup acct mgr field
+		accountEditViewAcctMgrFldBtn.click();
+		commView.selectFieldValListItem("Acct Mgr", "Hogan");
+		
+		//setup owner field
+		//TODO: re-enable after server error is resolved from the Owners list view
+//		accountEditViewOwnerFldBtn.click();
+//		commView.selectUser("Everyone");
+		
+		//setup lead source field
+		//TODO: re-enable after server error is resolved from the Lead Sources list view		
+//		accountEditViewLeadSourceFldBtn.click();
+//		commView.selectLeadSource("None");		
+		
+		//Step: save the new Account field values
+		headerbutton.clickHeaderButton("save");
+		commNav.waitForNotPage("Account");
+		
+		System.out.println(methodID + ": Auto-test Account - " +  strAccountName + " record was created.");
+	}
+	
+	
+	//TODO: finish doSearchAccount() method
+	public boolean doSearchAccount(String strAcctName) throws InterruptedException, Exception {
+		String methodID = "doSearchAccount";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+			
+	    //Step: search for then click to open Account record detail view
+		commNav.highlightNClick(commNav.entityListViewSearch("Accounts", strAcctName));
+		
+		//Step: confirm Account record detail view is displayed
+		if (commNav.waitForPage(strAcctName)) {
+			return true;
+		}
+		else {		
+			return false;
+		}
+	}
+	
+	
 	public String getAccountsListViewTxt() {
 		String methodID = "getAccountsListViewTxt";
 		

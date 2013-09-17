@@ -3,6 +3,9 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -506,7 +509,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	
 	//Login & Logout
 	//==============
 	@Test(enabled = true)
@@ -610,6 +612,37 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			System.out.println("Error: Mobile Client Logout Check - FAILED");
 			System.out.println(e.toString());
 		}
+		System.out.println(ENDLINE);
+	}
+
+
+	@Test(enabled = true)
+	public void test12_SeTestTCAccountListViewAddAccount() throws Exception {
+		String methodID = "test12_SeTestTCAccountListViewAddAccount";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		//HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+				
+		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+		//Step: add a random test Account record
+		String newAcctName = "SeAutoTestAcct-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+		accountsListView.doAddRandTestAccount(newAcctName);
+		
+		//Step: find the newly-added test Account record
+		String strResultsMsg = "VP: recently added test Account '" + newAcctName + "' was found.";
+		if (accountsListView.doSearchAccount(newAcctName)) {
+			System.out.println(strResultsMsg + " - Passed");
+		}
+		else {
+			System.out.println(strResultsMsg + " - FAILED");
+		}
+		
+		//Step: go back to My Activities view
+		commNav.clickGlobalMenuItem("My Activities");
+		
 		System.out.println(ENDLINE);
 	}
 }
