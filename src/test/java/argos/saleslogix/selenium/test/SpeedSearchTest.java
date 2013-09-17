@@ -7,13 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 
 import argos.saleslogix.selenium.test.CommonNavigation;
 import argos.saleslogix.selenium.test.HeaderButton;
-import argos.saleslogix.selenium.test.NavButton;
 import argos.saleslogix.selenium.test.SLXMobileLogin;
 import argos.saleslogix.selenium.test.BrowserSetup;
 
 public class SpeedSearchTest extends BrowserSetup {
 	
-NavButton navbutton = PageFactory.initElements(driver, NavButton.class);
 CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
 
