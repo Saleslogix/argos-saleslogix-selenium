@@ -600,6 +600,14 @@ public class CommonNavigation {
 		return this;
 	}
 	
+	
+	/**
+	 * This method will wait up to 60s. for an expected page to load.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	pageTitle  exact page title of expected page
+	 * @exception InterruptedException
+	 */	
 	public boolean waitForPage(String pageTitle) throws InterruptedException {
 		String methodID = "waitForPage";
 	    
@@ -607,7 +615,7 @@ public class CommonNavigation {
 			Thread.sleep(100);
 	    	if (second >= 6000) AssertJUnit.fail("timeout");
 	    	try { 
-	    		AssertJUnit.assertEquals(pageTitle, driver.findElement(By.xpath("//*[@id='pageTitle']")).getText());
+	    		AssertJUnit.assertEquals(pageTitle, driver.findElement(By.id("pageTitle")).getText());
 	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
 	    		return true;
 	    	} catch (Error e) {
@@ -662,6 +670,15 @@ public class CommonNavigation {
 	    }
 	}
 	
+	
+	/**
+	 * This method will determine whether a specific WebElement is displayed on the page.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	By			by locator string for target WebElement
+	 * @return	boolean		true - if WebElement with matching by locator is displayed; 
+	 * 						false - otherwise
+	 */	
 	protected boolean isElementDisplayed(By by) {
 		
 	    try {
@@ -687,6 +704,15 @@ public class CommonNavigation {
 		}
 	}
 	
+	
+	/**
+	 * This method will determine whether a page with a specific pagetitle is displayed.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	pageTitle	exact pagetitle text for expected page
+	 * @return	boolean		true - if page with matching pagetitle is displayed; 
+	 * 						false - otherwise
+	 */	
 	public boolean isPageDisplayed(String pageTitle) {		
 		String methodID = "isPageDisplayed";
 		

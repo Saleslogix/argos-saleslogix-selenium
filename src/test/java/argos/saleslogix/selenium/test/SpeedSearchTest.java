@@ -35,6 +35,10 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
 	    AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    
+		//click the Page Title (forces closure of any blocking panels)
+		driver.findElement(By.id("pageTitle")).click();
+		Thread.sleep(1000);
+	    
 	    //-- Section: Execute some global searches in the mobile client
 	    //Step: perform 1st global search...
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -254,6 +258,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    
 		System.out.println(ENDLINE);
 	}
+
 	
 	
 	//TODO: complete re-factoring test02_SeTestTCSpeedSearchLeads()
@@ -812,6 +817,47 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 			System.out.println("Error: Mobile Client Logout Check - FAILED");
 			System.out.println(e.toString());
 		}
+		System.out.println(ENDLINE);
+	}
+
+
+	//MBL10115 - Index filtering Selection in Contextual menu
+	@Test(enabled = true)
+	public void test05_MBL10115() throws Exception {
+		String methodID = "test05_MBL10115";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String searchItem = "software";
+		String indexFilter = "";
+		String resultsMsg = "";
+		String[] indexFilters = {"Account", "Activity", "Contact", "History", "Lead", "Opportunity", "Ticket"};
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: perform SpeedSearch
+		commNav.searchListView("SpeedSearch", searchItem);
+		
+		//Step: select index filter
+		for (int iCount = 0;iCount<indexFilters.length;iCount++) {
+			indexFilter = indexFilters[iCount];
+			resultsMsg = "VP: Index filter - " + indexFilter + " succesfully filtered the SpeedSearch results";
+			commNav.rightClickContextMenuItem(indexFilter);
+			if (commNav.isTextPresentOnPage(indexFilter)) {
+				System.out.println(resultsMsg + " - Passed");
+				commNav.rightClickContextMenuItem(indexFilter);
+			}
+			else {
+				System.out.println(resultsMsg + " - FAILED");
+			}
+		}
+				
+		//Step: go back to previous screen
+		commNav.clickGlobalMenuItem("My Activities");
+		Thread.sleep(3000);
+		
 		System.out.println(ENDLINE);
 	}
 	

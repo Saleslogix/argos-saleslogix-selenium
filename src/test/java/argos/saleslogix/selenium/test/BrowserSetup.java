@@ -5,12 +5,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -118,29 +121,49 @@ protected StringBuffer verificationErrors = new StringBuffer();
 	    }
 	}
 
+	private boolean isAlertPresent() {
+	    try {
+	      driver.switchTo().alert();
+	      return true;
+	    } catch (NoAlertPresentException e) {
+	      return false;
+	    }
+	 }
+
 	protected String closeAlertAndGetItsText() {
-		try {
-			Alert alert = driver.switchTo().alert();
-			if (acceptNextAlert) {
-				alert.accept();
-			} else {
-				alert.dismiss();
-			}
-		return alert.getText();
-		} finally {
-			acceptNextAlert = true;
-		}
+	    try {
+	      Alert alert = driver.switchTo().alert();
+	      String alertText = alert.getText();
+	      if (acceptNextAlert) {
+	        alert.accept();
+	      } else {
+	        alert.dismiss();
+	      }
+	      return alertText;
+	    } finally {
+	      acceptNextAlert = true;
+	    }
 	}
 	
-	protected String closeAlert() {
+	public String closeAlert() {
 		try {
 			Alert alert = driver.switchTo().alert();
 			String alertTxt = alert.getText();
 			alert.accept();
+			System.out.println(alertTxt);
 			return alertTxt;
 		} finally {
 		}
     }
+	
+	public void closeModal() {
+		Set<String> windowids = driver.getWindowHandles();
+		Iterator<String> iter= windowids.iterator();
+		//String mainWindowId=iter.next();
+		String popupWindowId=iter.next();
+		driver.switchTo().window(popupWindowId);
+	}
+	
 	
 	@AfterClass
 	public void closeBrowser() {

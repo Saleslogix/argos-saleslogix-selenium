@@ -359,6 +359,7 @@ public class CommonViewsElements extends BrowserSetup {
 				}
 			}
 			
+			Thread.sleep(1000);
 			commNav.waitForNotPage(pageTitle);
 		}
 		else {
