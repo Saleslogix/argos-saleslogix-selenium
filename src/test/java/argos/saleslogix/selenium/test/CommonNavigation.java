@@ -530,7 +530,7 @@ public class CommonNavigation {
 		    	gmenu_speedSearchLookupFld.clear();
 		    	Thread.sleep(500);
 		    	gmenu_speedSearchLookupClearBtn.click();
-		    	Thread.sleep(1000);
+		    	Thread.sleep(500);
 		    	gmenu_speedSearchLookupFld.sendKeys(searchItemName);
 		    	Thread.sleep(500);
 		    	gmenu_speedSearchLookupBtn.click();
@@ -542,7 +542,7 @@ public class CommonNavigation {
 		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
 		    	Thread.sleep(500);
 		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
-		    	Thread.sleep(1000);
+		    	Thread.sleep(500);
 		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
 		    	Thread.sleep(500);
 		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();	    	
@@ -553,6 +553,59 @@ public class CommonNavigation {
 		catch (Error e) {
 			  System.out.println(e.toString());
 		}
+		return this;
+	}
+	
+	/**
+	 * This method will perform entity record lookup (from the Right-Context 
+	 * menu) for record selection from another entity Edit view.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	searchType  	specify 'SpeedSearch' or the entity record type
+	 * @param	searchItemName	item or entity record to search for
+	 * @exception InterruptedException
+	 */
+	public CommonNavigation searchNSelectListView(String searchType, String searchItemName) throws InterruptedException {
+		String methodID = "searchListView";
+		
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		String searchWgtIDX = "";
+		Boolean forSpdSrch = false;
+		
+		switch (searchType.toLowerCase()) {
+		case "accounts": case "account":
+			searchWgtIDX = "4";
+			break;
+		case "contacts": case "contact":
+			searchWgtIDX = "7";
+			break;
+		case "leads": case "lead":
+			searchWgtIDX = "17";
+			break;			
+		case "opportunities": case "opportunity":
+			searchWgtIDX = "12";
+			break;			
+		case "tickets": case "ticket":
+			searchWgtIDX = "19";
+			break;		
+		//TODO: continue to expand this switch case list for additional list views
+		}
+
+		//invoke the Right Context menu
+		headerbutton.clickHeaderButton("right context menu");
+		
+    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
+    	Thread.sleep(500);
+    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
+    	Thread.sleep(500);
+    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
+    	Thread.sleep(500);
+    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();	    	
+	    	
+	    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
+	    waitForListView(searchType);
+	
 		return this;
 	}
 	
@@ -625,21 +678,19 @@ public class CommonNavigation {
 	    }		
 	}
 	
-	public CommonNavigation waitForNotPage(String pageTitle) throws InterruptedException {
+	public boolean waitForNotPage(String pageTitle) throws InterruptedException {
 		String methodID = "waitForNotPage";
 	    
 		for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { if (!pageTitle.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText()))
 	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully navigated away from");
-	    		break;
+	    		return true;
 	    	} catch (Exception e) {
 	    		System.out.println(methodID + ": '" + pageTitle + "' page failed to navigate away from prior to timeout");
+	    		return false;
 	    	}
-	    	Thread.sleep(1000);
 	    }
-		Thread.sleep(1000);
-		return this;
 	}
 	
 	public WebElement clickListViewGridItem(By locator) throws InterruptedException {
@@ -691,6 +742,38 @@ public class CommonNavigation {
 	    }
 	}
 	
+	/**
+	 * This method will determine if webelement's value attribute is empty or not.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	WebElement	WebElement object
+	 * @return	boolean		true - if WebElement's value is empty; 
+	 * 						false - otherwise
+	 */
+	public boolean isFieldValueEmpty(String sDesc, WebElement wElement) {
+		String methodID = "isFieldValueEmpty";
+		
+		String fieldVal = wElement.getAttribute("value");
+		if (fieldVal.contentEquals("")) {
+			System.out.println(methodID + ": " + sDesc + " field value is empty.");
+			return true;
+		}
+		else {
+			System.out.println(methodID + ": " + sDesc + " field has a value of '" + fieldVal + "'");
+			return false;
+		}
+	}
+	
+	/**
+	 * This method will determine if a webelement is present or not.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	String		description of webelement (for logging purposes)
+	 * @param	WebElement	WebElement object
+	 * @return	boolean		true - if WebElement is present
+	 * 						false - otherwise
+	 * @throws	InterruptedException
+	 */
 	public boolean isWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
 		String methodID = "isWebElementPresent";
 		
@@ -860,6 +943,93 @@ public class CommonNavigation {
 			return null;
 		}
 	}
+	
+	public WebElement entityListViewSelect(String entityType, String entityName) throws Exception {
+		String methodID = "entityListViewSelect";
+		
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+			
+	
+	    //Step: perform search for entity record items...
+		if (entityType.toLowerCase().equals("contacts") || entityType.toLowerCase().equals("leads")) {
+			String nameTokens[] = entityName.split(",");
+			String lastName = nameTokens[0];
+			searchNSelectListView(entityType, lastName);
+		}
+		else {
+			searchNSelectListView(entityType, entityName);
+		}
+		
+		//SubStep: singularize the entityType parameter
+		String entListNameXPth = "";
+		switch (entityType.toLowerCase()) {
+		case "my activities":
+			entListNameXPth = ".//*[@id='myactivity_related']";
+			break;
+		case "activities": case "activity": 
+			entListNameXPth = ".//*[@id='activity_related']";
+			break;			
+		case "notes/history": case "notes history": case "notes":
+			entListNameXPth = ".//*[@id='history_related']";
+			break;
+		case "accounts": case "account":
+			entListNameXPth = ".//*[@id='account_related']";
+			break;
+		case "contacts": case "contact":
+			entListNameXPth = ".//*[@id='contact_related']";
+			break;
+		case "leads": case "lead":
+			entListNameXPth = ".//*[@id='lead_related']";
+			break;			
+		case "opportunities": case "opportunity":
+			entListNameXPth = ".//*[@id='opportunity_related']";
+			break;			
+		case "tickets": case "ticket":
+			entListNameXPth = ".//*[@id='ticket_related']";
+			break;			
+		case "my attachments": case "attachments": case "attachment":
+			entListNameXPth = ".//*[@id='myattachment_related']";
+			break;	
+		//TODO: continue to expand this switch case list for additional list views
+		}		
+				
+		//Step: check if there is a 'no records' result
+		try {
+			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().contains("no records"));
+			
+			//Step: check for matching results...
+			String targetEntRecXPath = entListNameXPth + "/descendant::*[text() = '" + entityName + "']"; 
+			List<WebElement> targetEntRecords = driver.findElements(By.xpath(targetEntRecXPath));
+			WebElement targetEntRecord = null;
+			if (targetEntRecords.size() > 1) {
+				//specify the actual record name so that the search label is not clicked
+				if (entityType.toLowerCase().equals("my activities")) {
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul[1]/li/div[3]/h3/span"));
+				}
+				else {
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li/div[3]/h3"));
+				}
+			}
+			else {
+				targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+			}
+			try {
+				AssertJUnit.assertTrue(targetEntRecord.isDisplayed());
+			} catch (Error e) {
+				String errorStr = e.toString();
+				System.out.println(errorStr);
+				System.out.println(methodID + ": " + entityType + " record search 'n select for '" + entityName + "' was NOT successful");
+				return null;
+			}
+			highlightElement(targetEntRecord);
+			System.out.println(methodID + ": " + entityType + " record search for '" + entityName + "' was successful");
+			return targetEntRecord;
+		} catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(methodID + ": un-expected 'no records' search result for '" + entityName + "' " + entityType + "; test aborted.");
+			return null;
+		}
+	}	
 	
 	public boolean entityListViewNegativeSearch(String entityType, String entityName) throws Exception {
 		String methodID = "entityListViewNegativeSearch";

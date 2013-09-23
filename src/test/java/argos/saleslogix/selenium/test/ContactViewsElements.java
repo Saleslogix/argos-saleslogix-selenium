@@ -3,6 +3,8 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.io.IOException;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -279,93 +281,84 @@ public class ContactViewsElements extends BrowserSetup {
 	WebElement contactsEditView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_14']/input")
-	WebElement contactsEditViewContactInputFld;
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/input")
+	WebElement contactsEditViewCuisineFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_15']/input")
-	WebElement contactsEditViewWebInputFld;
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/button")
+	WebElement contactsEditViewCuisineFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_5']/input")
-	WebElement contactsEditViewPhoneInputFld;
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_56']/input")
+	WebElement contactsEditViewWebFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_2']/div")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_7']/input")
+	WebElement contactsEditViewPhoneFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_3']/div")
 	WebElement contactsEditViewAddressFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_2']/button")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_3']/button")
 	WebElement contactsEditViewAddressFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_6']/input")
-	WebElement contactsEditViewFaxInputFld;
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_57']/input")
+	WebElement contactsEditViewEmailFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_11']/input")
-	WebElement contactsEditViewTypeFld;
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_10']/input")
+	WebElement contactsEditViewFaxFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_11']/button")
-	WebElement contactsEditViewTypeFldBtn;
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_15']/input")
+	WebElement contactsEditViewTitleFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_12']/input")
-	WebElement contactsEditViewSubTypeFld;
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_15']/button")
+	WebElement contactsEditViewTitleFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_12']/button")
-	WebElement contactsEditViewSubTypeFldBtn;
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_PhoneField_8']/input")
+	WebElement contactsEditViewHomePhoneFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_13']/input")
-	WebElement contactsEditViewStatusFld;
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_25']/input")
+	WebElement contactsEditViewAccountFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_13']/button")
-	WebElement contactsEditViewStatusFldBtn;
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_25']/button")
+	WebElement contactsEditViewAccountFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_14']/input")
-	WebElement contactsEditViewIndustryFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_14']/button")
-	WebElement contactsEditViewIndustryFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/div")
-	WebElement contactsEditViewBusDescFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/button")
-	WebElement contactsEditViewBusDescFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_26']/input")
 	WebElement contactsEditViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_26']/button")
 	WebElement contactsEditViewAcctMgrFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_PhoneField_9']/input")
+	WebElement contactsEditViewMobileFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Fields_NameField_1']/input")
+	WebElement contactsEditViewNameFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Fields_NameField_1']/button")
+	WebElement contactsEditViewNameFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_27']/input")
 	WebElement contactsEditViewOwnerFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_27']/button")
 	WebElement contactsEditViewOwnerFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
-	WebElement contactsEditViewLeadSourceFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
-	WebElement contactsEditViewLeadSourceFldBtn;
-	
 	
 	//Methods
 	//-------
@@ -390,4 +383,151 @@ public class ContactViewsElements extends BrowserSetup {
 		
 		return result;
 	}
+
+
+	//Methods
+		//=======
+		/**
+		 * This method will add an auto-generated test Contact record by filling-in the Contact Edit input fields.
+		 * The Contact will have a unique string appended to the Last Name in order to ensure uniqueness.
+		 * @author	mike.llena@swiftpage.com
+		 * @version	1.0
+		 * @param	strContactLastName	contact last name to set
+		 * @param	strContactFirstName	contact first name to set
+		 * @param	strContactAccount	account record to associate this contact with
+		 * @throws Exception 
+		 */
+		public void doAddRandTestContact(String strContactLastName, String strContactFirstName, String strContactAccount) throws Exception {
+			String methodID = "doAddRandTestContact";
+			
+			CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+			HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+			CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+			
+			System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+			
+		    //Step: navigate to Contacts list view
+			commNav.clickGlobalMenuItem("Contacts");
+			
+			//Step: click the Add header button to enter Contact edit view
+			headerbutton.clickHeaderButton("Add");
+			
+			//Step: setup new Contact field values
+			//setup name fields		
+			contactsEditViewNameFldBtn.click();
+				commView.namePrefixInputFldBtn.click();
+				commView.selectFieldValListItem("Name Prefix", "Mr.");
+				commView.nameFirstInputFld.sendKeys(strContactFirstName);
+				commView.nameMiddleInputFld.sendKeys("Neo");
+				commView.nameLastInputFld.sendKeys(strContactLastName);
+				commView.nameSuffixInputFldBtn.click();
+				commView.selectFieldValListItem("Name Suffix", "Sr.");
+				headerbutton.clickHeaderButton("check");
+				
+			//setup account field
+			contactsEditViewAccountFldBtn.click();
+				commNav.highlightNClick(commNav.entityListViewSelect("Accounts", strContactAccount));
+			
+			//conditionaly setup web field	
+			if (commNav.isFieldValueEmpty("Web", contactsEditViewWebFld)) {
+				contactsEditViewWebFld.sendKeys("www.saleslogix.com");
+			}
+			
+			//conditionally setup phone field
+			if (commNav.isFieldValueEmpty("Phone", contactsEditViewPhoneFld)) {
+				contactsEditViewPhoneFld.sendKeys("888-867-5309");
+			}
+			
+			//setup email field
+			contactsEditViewEmailFld.sendKeys("theone@boguscompany.com");
+			
+			//setup title field
+			contactsEditViewTitleFldBtn.click();
+				commView.selectFieldValListItem("Title", "Principal");
+			
+			//conditionally setup address fields
+			if (contactsEditViewAddressFld.getText().equals("")) {
+				contactsEditViewAddressFldBtn.click();
+				//temp disable (doesn't work on Jenkins server)
+				//commView.addressDescriptionInputFldBtn.click();
+				//commView.selectFieldValListItem("Description", "Mailing");
+				//commView.addressDescriptionInputFld.sendKeys("Mailing");
+				
+				commView.addressPrimaryTgl.click();
+				commView.addressShippingTgl.click();
+				commView.addressLine1.sendKeys("8800 Mobile St.");
+				commView.addressLine2.sendKeys("Corporate Campus");
+				commView.addressLine3.sendKeys("Suite 100");
+				
+				commView.addressCityInputFldBtn.click();
+				commView.selectFieldValListItem("City", "Phoenix");
+				
+				commView.addressStateInputFldBtn.click();
+				commView.selectFieldValListItem("State", "AZ");
+				
+				commView.addressPostalInputFld.sendKeys("85048");
+				
+				commView.addressCountryInputFldBtn.click();
+				commView.selectFieldValListItem("Country", "USA");
+				
+				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
+				headerbutton.clickHeaderButton("check");
+			}				
+			
+			//setup home phone field
+			contactsEditViewHomePhoneFld.sendKeys("(480)-867-5309");
+			
+			//setup mobile field
+			contactsEditViewMobileFld.sendKeys("(602)-867-5309");
+
+			//setup fax field
+			contactsEditViewFaxFld.sendKeys("(866)-867-5309");
+			
+			//conditionally setup acct mgr field
+			if (commNav.isFieldValueEmpty("Acct Mgr", contactsEditViewAcctMgrFld)) {
+				contactsEditViewAcctMgrFldBtn.click();
+				commNav.highlightNClick(commNav.entityListViewSearch("Users", "Hogan"));				
+			}
+			
+			//conditionally setup owner field
+			if (commNav.isFieldValueEmpty("Owner", contactsEditViewOwnerFld)) {
+				//temp disable - doesn't work for Trinity DB
+				//contactsEditViewOwnerFldBtn.click();
+				//commNav.highlightNClick(commNav.entityListViewSearch("Owners", "Midwest"));
+				contactsEditViewOwnerFld.sendKeys("Midwest");
+			}
+			
+			//setup cuisine field
+			contactsEditViewCuisineFldBtn.click();
+				commView.selectFieldValListItem("Cuisine", "Chinese");
+				headerbutton.clickHeaderButton("check");
+			
+			//Step: save the new Contact field values
+			commNav.waitForPage("Contact");
+			headerbutton.clickHeaderButton("save");
+			commNav.waitForNotPage("Contact");
+			
+			System.out.println(methodID + ": Auto-test Contact - " +  strContactLastName + ", " + strContactLastName + " record was created under the '" + strContactAccount + "' Account.");
+		}
+
+
+		//TODO: finish doSearchAccount() method
+		public boolean doSearchContact(String strContactName) throws InterruptedException, Exception {
+			String methodID = "doSearchContact";
+			
+			CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+			HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+			CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+				
+		    //Step: search for then click to open Contact record detail view
+			commNav.highlightNClick(commNav.entityListViewSearch("Contacts", strContactName));
+			
+			//Step: confirm Account record detail view is displayed
+			if (commNav.waitForNotPage("Contacts")) {
+				return true;
+			}
+			else {		
+				return false;
+			}
+		}
 }

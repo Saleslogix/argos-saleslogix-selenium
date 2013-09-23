@@ -97,45 +97,87 @@ public class CommonViewsElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextField_53']/input")
-	WebElement addressAttentionInputFld;	
+	WebElement addressAttentionInputFld;		
 	
+	//Edit Name input fields:
+	//=======================
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Fields_PicklistField_5']/input")
+	WebElement namePrefixInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Fields_PicklistField_5']/button")
+	WebElement namePrefixInputFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextField_46']/input")
+	WebElement nameFirstInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextField_47']/input")
+	WebElement nameMiddleInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextField_48']/input")
+	WebElement nameLastInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/input")
+	WebElement nameSuffixInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/button")
+	WebElement nameSuffixInputFldBtn;
 	
 	//List View selection elements
 	//============================
 	//Account Type selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_47']/div/div[1]/input")
+	@FindBy(css = "input[name='query']")
 	WebElement accountTypeLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_47']/div/div[3]/button")
+	@FindBy(xpath = "//div[3]/button")
 	WebElement accountTypeLookupBtn;
 	
 	//City selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_44']/div/div[1]/input")
+	@FindBy(css = "input[name='query']")
 	WebElement cityLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_44']/div/div[3]/button")
+	@FindBy(xpath = "//div[3]/button")
 	WebElement cityLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='pick_list_1']/div[2]/button")
+	@FindBy(xpath = ".//*[@id='pick_list_4']/div[2]/button")
 	WebElement citySelectNoneBtn;
 	
 	//Country selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_46']/div/div[1]/input")
+	@FindBy(css = "input[name='query']")
 	WebElement countryLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_46']/div/div[3]/button")
+	@FindBy(xpath = "//div[3]/button")
 	WebElement countryLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_3']/div[2]/button")
-	WebElement countrySelectNoneBtn;	
+	WebElement countrySelectNoneBtn;
+	
+	//Cuisine selection:
+	@CacheLookup
+	@FindBy(css = "input[name='query']")
+	WebElement cuisineLookupInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//div[3]/button")
+	WebElement cuisineLookupBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='pick_list_3']/div[2]/button")
+	WebElement cuisineSelectNoneBtn;		
 	
 	//Description selection:
 	@CacheLookup
@@ -172,6 +214,24 @@ public class CommonViewsElements extends BrowserSetup {
 	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_33']/div/div[3]/button")
 	WebElement leadSourceLookupBtn;	
 	
+	//Name Prefix selection:
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_43']/div/div[1]/input")
+	WebElement namePrefixLookupInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_43']/div/div[3]/button")
+	WebElement namePrefixLookupBtn;
+	
+	//Name Suffix selection:
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_44']/div/div[1]/input")
+	WebElement nameSuffixLookupInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_44']/div/div[3]/button")
+	WebElement nameSuffixLookupBtn;
+	
 	//Owner selection:
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_30']/div/div[1]/input")
@@ -183,7 +243,7 @@ public class CommonViewsElements extends BrowserSetup {
 	
 	//State selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_45']/div/div[1]/input")
+	@FindBy(css = "input[name='query']")
 	WebElement stateLookupInputFld;
 	
 	@CacheLookup
@@ -209,7 +269,7 @@ public class CommonViewsElements extends BrowserSetup {
 	
 	//Account Subtype selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_43']/div/div[1]/input")
+	@FindBy(css = "input[name='query']")
 	WebElement subtypeLookupInputFld;
 	
 	@CacheLookup
@@ -219,6 +279,19 @@ public class CommonViewsElements extends BrowserSetup {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_0']/div[2]/button")
 	WebElement subtypeSelectNoneBtn;	
+	
+	//Title (name) selection:
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_45']/div/div[1]/input")
+	WebElement titleLookupInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_45']/div/div[1]/button")
+	WebElement titleLookupBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='pick_list_2']/div[2]/button")
+	WebElement titleSelectNoneBtn;
 	
 	//Users selection:
 	@CacheLookup
@@ -284,12 +357,18 @@ public class CommonViewsElements extends BrowserSetup {
 			pageTitle = "City";
 			lookupFld = cityLookupInputFld;
 			lookupBtn = cityLookupBtn;			
-			pickListID = "pick_list_1";
+			pickListID = "pick_list_0";
 			break;
 		case "country":
 			pageTitle = "Country";
 			lookupFld = countryLookupInputFld;
 			lookupBtn = countryLookupBtn;			
+			pickListID = "pick_list_3";
+			break;	
+		case "cuisine":
+			pageTitle = "Cuisine";
+			lookupFld = cuisineLookupInputFld;
+			lookupBtn = cuisineLookupBtn;			
 			pickListID = "pick_list_3";
 			break;			
 		case "description":
@@ -309,6 +388,18 @@ public class CommonViewsElements extends BrowserSetup {
 			lookupFld = leadSourceLookupInputFld;
 			lookupBtn = leadSourceLookupBtn;			
 			pickListID = "leadsource_list";
+			break;
+		case "name prefix": case "prefix":
+			pageTitle = "Name Prefix";
+			lookupFld = namePrefixLookupInputFld;
+			lookupBtn = namePrefixLookupBtn;			
+			pickListID = "pick_list_0";
+			break;		
+		case "name suffix": case "suffix":
+			pageTitle = "Name Suffix";
+			lookupFld = nameSuffixLookupInputFld;
+			lookupBtn = nameSuffixLookupBtn;			
+			pickListID = "pick_list_1";
 			break;			
 		case "owner":
 			pageTitle = "Owner";
@@ -328,7 +419,13 @@ public class CommonViewsElements extends BrowserSetup {
 			lookupBtn = statusLookupBtn;			
 			pickListID = "pick_list_5";
 			break;
-		case "user": case "acct mgr":
+		case "title":
+			pageTitle = "Title";
+			lookupFld = titleLookupInputFld;
+			lookupBtn = titleLookupBtn;			
+			pickListID = "pick_list_2";
+			break;			
+		case "user": case "users": case "acct mgr":
 			pageTitle = "Users";
 			lookupFld = userLookupInputFld;
 			lookupBtn = userLookupBtn;			
@@ -344,12 +441,19 @@ public class CommonViewsElements extends BrowserSetup {
 			}
 			//perform item search and selection
 			else {
+				lookupFld.click();
 				lookupFld.sendKeys(strSelectItem);
-				Thread.sleep(1000);	
-				lookupBtn.click();
+				Thread.sleep(100);	
+				lookupFld.sendKeys(Keys.ENTER);
 				Thread.sleep(3000);			
 				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='" + pickListID + "']/descendant::*[text() = '" + strSelectItem + "']"));
+					if (pageTitle.toLowerCase().equals("users")) {
+						//commNav.clickListViewGridItem(By.xpath(".//*[@id='" + pickListID + "']/descendant::*[text() = '" + strSelectItem + "']"));
+						commNav.clickListViewGridItem(By.xpath(".//*[@id='user_list']/ul/li/div[1]/h3"));
+					}
+					else {
+						commNav.clickListViewGridItem(By.xpath("//li[1]/div/h3"));
+					}
 					System.out.println(methodID + ": " + strFieldName + " - " + strSelectItem + " was selected.");
 				}
 				catch (Exception e){
@@ -405,366 +509,6 @@ public class CommonViewsElements extends BrowserSetup {
 	
 	
 	/**
-	 * @deprecated use @link selectFieldValListItem() instead.
-	 */
-	@Deprecated
-	public void selectCity(String strCity) throws InterruptedException {
-		String methodID = "selectCity";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		if (commNav.isPageDisplayed("City")) {		
-			//make City selection
-			if (strCity.toUpperCase().equals("NONE")) {
-				citySelectNoneBtn.click();
-			}
-			else {
-				cityLookupInputFld.sendKeys(strCity);
-				cityLookupBtn.click();
-				Thread.sleep(2000);			
-				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='pick_list_1']/descendant::*[text() = '" + strCity + "']"));
-				}
-				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					citySelectNoneBtn.click();
-				}
-			}
-			
-			System.out.println(methodID + ":" + "City - " + strCity + " was selected.");
-			commNav.waitForNotPage("City");
-		}
-		else {
-			System.out.println(methodID + ": City list view was not displayed; selection step skipped.");
-		}	
-	}
-	
-	
-	/**
-	 * @deprecated use @link selectFieldValListItem() instead.
-	 */
-	@Deprecated
-	public void selectCountry(String strCountry) throws InterruptedException {
-		String methodID = "selectCountry";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		if (commNav.isPageDisplayed("Country")) {		
-			//make Country selection
-			if (strCountry.toUpperCase().equals("NONE")) {
-				countrySelectNoneBtn.click();
-			}
-			else {
-				countryLookupInputFld.sendKeys(strCountry);
-				countryLookupBtn.click();
-				Thread.sleep(2000);			
-				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='pick_list_3']/descendant::*[text() = '" + strCountry + "']"));
-				}
-				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					countrySelectNoneBtn.click();
-				}
-			}
-			
-			System.out.println(methodID + ":" + "Country - " + strCountry + " was selected.");
-			commNav.waitForNotPage("Country");
-		}
-		else {
-			System.out.println(methodID + ": City list view was not displayed; selection step skipped.");
-		}			
-	}		
-	
-	
-	/**
-	 * @deprecated use @link selectFieldValListItem() instead.
-	 */
-	@Deprecated
-	public void selectDescription(String strDescription) throws InterruptedException {
-		String methodID = "selectDescription";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		if (commNav.isPageDisplayed("Description")) {			
-			//make Description selection
-			if (strDescription.toUpperCase().equals("NONE")) {
-				descriptionSelectNoneBtn.click();
-			}
-			else {
-				descriptionLookupInputFld.sendKeys(strDescription);
-				descriptionLookupBtn.click();
-				Thread.sleep(2000);			
-				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='pick_list_0']/descendant::*[text() = '" + strDescription + "']"));
-				}
-				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					descriptionSelectNoneBtn.click();
-				}
-			}
-			
-			System.out.println(methodID + ":" + "Description - " + strDescription + " was selected.");
-			commNav.waitForNotPage("Description");
-		}
-		else {
-			System.out.println(methodID + ": Description list view was not displayed; selection step skipped.");
-		}		
-	}
-	
-	
-	/**
-	 * @deprecated use @link selectFieldValListItem() instead.
-	 */
-	@Deprecated
-	public void selectIndustry(String strIndustry) throws InterruptedException {
-		String methodID = "selectIndustry";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		if (commNav.isPageDisplayed("Industry")) {			
-			//make Industry selection
-			if (strIndustry.toUpperCase().equals("NONE")) {
-				industrySelectNoneBtn.click();
-			}
-			else {
-				industryLookupInputFld.sendKeys(strIndustry);
-				industryLookupBtn.click();
-				Thread.sleep(2000);			
-				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='pick_list_6']/descendant::*[text() = '" + strIndustry + "']"));
-				}
-				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					industrySelectNoneBtn.click();
-				}
-			}
-			
-			System.out.println(methodID + ":" + "Industry - " + strIndustry + " was selected.");
-			commNav.waitForNotPage("Industry");
-		}
-		else {
-			System.out.println(methodID + ": Industry list view was not displayed; selection step skipped.");
-		}		
-	}	
-
-	
-	/**
-	 * @deprecated use @link selectFieldValListItem() instead.
-	 */
-	@Deprecated
-	public void selectLeadSource(String strLeadSrc) throws InterruptedException {
-		String methodID = "selectLeadSource";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		if (commNav.isPageDisplayed("Lead Sources")) { 		
-			//make Owner selection
-			if (strLeadSrc.toUpperCase().equals("NONE")) {
-				driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-			}
-			else {
-				leadSourceLookupInputFld.sendKeys(strLeadSrc);
-				leadSourceLookupBtn.click();
-				Thread.sleep(2000);			
-				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='owner_list']/descendant::*[text() = '" + strLeadSrc + "']"));
-				}
-				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-				}
-			}
-			
-			System.out.println(methodID + ":" + "Lead Source - " + strLeadSrc + " was selected.");
-			commNav.waitForNotPage("Lead Sources");
-		}
-		else {
-			System.out.println(methodID + ": Lead Sources list view was not displayed; selection step skipped.");
-		}		
-	}
-	
-	
-	/**
-	 * @deprecated use @link selectFieldValListItem() instead.
-	 */
-	@Deprecated
-	public void selectOwner(String strOwner) throws InterruptedException {
-		String methodID = "selectOwner";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		if (commNav.isPageDisplayed("Owners")) { 		
-			//make Owner selection
-			if (strOwner.toUpperCase().equals("NONE")) {
-				driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-			}
-			else {
-				ownerLookupInputFld.sendKeys(strOwner);
-				ownerLookupBtn.click();
-				Thread.sleep(2000);			
-				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='owner_list']/descendant::*[text() = '" + strOwner + "']"));
-				}
-				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-				}
-			}
-			
-			System.out.println(methodID + ":" + "Owner - " + strOwner + " was selected.");
-			commNav.waitForNotPage("Owners");
-		}
-		else {
-			System.out.println(methodID + ": Owners list view was not displayed; selection step skipped.");
-		}		
-	}
-	
-	
-	/**
-	 * @deprecated use @link selectFieldValListItem() instead.
-	 */
-	@Deprecated
-	public void selectState(String strState) throws InterruptedException {
-		String methodID = "selectState";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		if (commNav.isPageDisplayed("State")) {	
-			//make State selection
-			if (strState.toUpperCase().equals("NONE")) {
-				stateSelectNoneBtn.click();
-			}
-			else {
-				stateLookupInputFld.sendKeys(strState);
-				stateLookupBtn.click();
-				Thread.sleep(2000);			
-				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='pick_list_2']/descendant::*[text() = '" + strState.toUpperCase() + "']"));
-				}
-				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					stateSelectNoneBtn.click();
-				}
-			}
-			
-			System.out.println(methodID + ":" + "State - " + strState + " was selected.");
-			commNav.waitForNotPage("State");
-		}
-		else {
-			System.out.println(methodID + ": State list view was not displayed; selection step skipped.");
-		}		
-	}
-	
-	
-	/**
-	 * @deprecated use @link selectFieldValListItem() instead.
-	 */
-	@Deprecated
-	public void selectStatus(String strStatus) throws InterruptedException {
-		String methodID = "selectStatus";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		if (commNav.isPageDisplayed("Account Status")) { 
-			//make Status selection
-			if (strStatus.toUpperCase().equals("NONE")) {
-				statusSelectNoneBtn.click();
-			}
-			else {
-				statusLookupInputFld.sendKeys(strStatus);
-				statusLookupBtn.click();
-				Thread.sleep(2000);			
-				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='pick_list_5']/descendant::*[text() = '" + strStatus + "']"));
-				}
-				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					statusSelectNoneBtn.click();
-				}
-			}
-			
-			System.out.println(methodID + ":" + "Account Status - " + strStatus + " was selected.");
-			commNav.waitForNotPage("Account Status");
-		}
-		else {
-			System.out.println(methodID + ": Account Status list view was not displayed; selection step skipped.");
-		}
-	}
-	
-	
-	/**
-	 * @deprecated use @link selectFieldValListItem() instead.
-	 */
-	@Deprecated
-	public void selectSubtype(String strSubtype) throws InterruptedException {
-		String methodID = "selectSubtype";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		if (commNav.isPageDisplayed("Account Subtype")) {		
-			//make Subtype selection
-			if (strSubtype.toUpperCase().equals("NONE")) {
-				subtypeSelectNoneBtn.click();
-			}
-			else {
-				subtypeLookupInputFld.sendKeys(strSubtype);
-				subtypeLookupBtn.click();
-				Thread.sleep(2000);			
-				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='pick_list_0']/descendant::*[text() = '" + strSubtype + "']"));
-				}
-				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					subtypeSelectNoneBtn.click();
-				}
-			}
-			
-			System.out.println(methodID + ":" + "Account Subtype - " + strSubtype + " was selected.");
-			commNav.waitForNotPage("Account Subtype");
-		}
-		else {
-			System.out.println(methodID + ": Account Subtype list view was not displayed; selection step skipped.");
-		}
-	}
-	
-	
-	/**
-	 * @deprecated use @link selectFieldValListItem() instead.
-	 */
-	@Deprecated
-	public void selectUser(String strUser) throws InterruptedException {
-		String methodID = "selectUser";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		if (commNav.isPageDisplayed("Users")) { 		
-			//make User selection
-			if (strUser.toUpperCase().equals("NONE")) {
-				driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-			}
-			else {
-				userLookupInputFld.sendKeys(strUser);
-				userLookupBtn.click();
-				Thread.sleep(2000);			
-				try {
-					commNav.clickListViewGridItem(By.xpath(".//*[@id='pick_list_4']/descendant::*[text() = '" + strUser + "']"));
-				}
-				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
-				}
-			}
-			
-			System.out.println(methodID + ":" + "User - " + strUser + " was selected.");
-			commNav.waitForNotPage("Users");
-		}
-		else {
-			System.out.println(methodID + ": Users list view was not displayed; selection step skipped.");
-		}		
-	}
-	
-	
-	/**
 	 * This method will enter text for the Business Description.
 	 * @author	mike.llena@swiftpage.com
 	 * @version	1.0
@@ -783,6 +527,7 @@ public class CommonViewsElements extends BrowserSetup {
 			
 			System.out.println(methodID + ":" + "Business Description - " + strBusDesc + " was set.");
 			commNav.waitForNotPage("Business Description");
+			Thread.sleep(1000);
 		}
 		else {
 			System.out.println(methodID + ": Business Description text area was not displayed; step skipped.");

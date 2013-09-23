@@ -410,8 +410,10 @@ public class AccountViewsElements extends BrowserSetup {
 		
 		//setup address fields
 		accountEditViewAddressFldBtn.click();
-			commView.addressDescriptionInputFldBtn.click();
-			commView.selectFieldValListItem("Description", "Mailing");
+			//temp disable (doesn't work on Jenkins server)
+			//commView.addressDescriptionInputFldBtn.click();
+			//commView.selectFieldValListItem("Description", "Mailing");
+			//commView.addressDescriptionInputFld.sendKeys("Mailing");
 			
 			commView.addressPrimaryTgl.click();
 			commView.addressShippingTgl.click();
@@ -442,7 +444,7 @@ public class AccountViewsElements extends BrowserSetup {
 		
 		//setup subtype field
 		accountEditViewSubTypeFldBtn.click();
-		commView.selectFieldValListItem("Subtype", "Computers/Electronics/High Tech");
+		commView.selectFieldValListItem("Subtype", "Reseller");
 		
 		//setup status field
 		accountEditViewStatusFldBtn.click();
@@ -450,7 +452,7 @@ public class AccountViewsElements extends BrowserSetup {
 		
 		//setup industry field
 		accountEditViewIndustryFldBtn.click();
-		commView.selectFieldValListItem("Industry", "Reseller");
+		commView.selectFieldValListItem("Industry", "Computers/Electronics/High Tech");
 		
 		//setup bus desc field
 		accountEditViewBusDescFldBtn.click();

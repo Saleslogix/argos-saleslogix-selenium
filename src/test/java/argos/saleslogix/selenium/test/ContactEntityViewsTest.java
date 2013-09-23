@@ -3,6 +3,9 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -13,12 +16,6 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class ContactEntityViewsTest extends BrowserSetup {
-	
-	@Test(enabled = false)
-	public void test97_SeTestDEBUG() throws Exception {
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		commNav.entityRecordOpenDetailView("Contacts", "Abbott Ltd.");
-	}
 	
 	//Login & Logout
 	//==============
@@ -610,6 +607,36 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		headerButton.closeRightContextMenu();
 		headerButton.goBack();
 		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test12_SeTestTCContactListViewAddContact() throws Exception {
+		String methodID = "test12_SeTestTCContactListViewAddContact";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		//HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+				
+		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		
+		//Step: add a random test Contact record
+		String newConLastName = "Andersen-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+		contactsListView.doAddRandTestContact(newConLastName, "Thomas", "AECOM");
+		
+		//Step: find the newly-added test Contact record
+		String strResultsMsg = "VP: recently added test Contact '" + newConLastName + "' was found.";
+		if (contactsListView.doSearchContact(newConLastName)) {
+			System.out.println(strResultsMsg + " - Passed");
+		}
+		else {
+			System.out.println(strResultsMsg + " - FAILED");
+		}
+		
+		//Step: go back to My Activities view
+		commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
