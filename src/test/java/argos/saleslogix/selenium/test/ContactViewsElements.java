@@ -416,7 +416,9 @@ public class ContactViewsElements extends BrowserSetup {
 			//setup name fields		
 			contactsEditViewNameFldBtn.click();
 				commView.namePrefixInputFldBtn.click();
-				commView.selectFieldValListItem("Name Prefix", "Mr.");
+				//TEMP: disable Name Prefix selection in favor of direct input field value setting
+				//commView.selectFieldValListItem("Name Prefix", "Mr.");
+				commView.namePrefixInputFld.sendKeys("Mr.");
 				commView.nameFirstInputFld.sendKeys(strContactFirstName);
 				commView.nameMiddleInputFld.sendKeys("Neo");
 				commView.nameLastInputFld.sendKeys(strContactLastName);
