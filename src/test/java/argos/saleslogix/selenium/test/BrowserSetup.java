@@ -130,7 +130,7 @@ protected StringBuffer verificationErrors = new StringBuffer();
 	    }
 	 }
 
-	protected String closeAlertAndGetItsText() {
+	public String closeAlertAndGetItsText() {
 	    try {
 	      Alert alert = driver.switchTo().alert();
 	      String alertText = alert.getText();
