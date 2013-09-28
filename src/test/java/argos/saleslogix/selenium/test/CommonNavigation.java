@@ -742,6 +742,7 @@ public class CommonNavigation {
 	    }
 	}
 	
+	
 	/**
 	 * This method will determine if webelement's value attribute is empty or not.
 	 * @author	mike.llena@swiftpage.com
@@ -763,6 +764,7 @@ public class CommonNavigation {
 			return false;
 		}
 	}
+	
 	
 	/**
 	 * This method will determine if a webelement is present or not.

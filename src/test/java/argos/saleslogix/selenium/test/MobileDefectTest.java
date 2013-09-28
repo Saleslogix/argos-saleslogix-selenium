@@ -2128,8 +2128,6 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Section 1 - open an existing Account record 
-		//-------------------------------------------
 		//Test Params
 		String accountRecord = "Abbott Ltd.";
 		
@@ -2146,7 +2144,6 @@ public class MobileDefectTest extends BrowserSetup {
 			commNav.waitForPage("Opportunities");
 			
 			//Step 2: click and open the top Opportunity record
-			//-------------------------------------------------
 			driver.findElement(By.xpath("//*[@id='opportunity_related']/ul/li[1]/div[3]/h3")).click();
 			commNav.waitForNotPage("Opportunities");			
 			

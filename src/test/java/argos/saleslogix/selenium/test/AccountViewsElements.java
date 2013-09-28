@@ -421,8 +421,8 @@ public class AccountViewsElements extends BrowserSetup {
 			commView.addressLine2.sendKeys("Corporate Campus");
 			commView.addressLine3.sendKeys("Suite 100");
 			
-			commView.addressCityInputFldBtn.click();
 			//TEMP: disable City selection in favor of direct input field value setting
+			//commView.addressCityInputFldBtn.click();
 			//commView.selectFieldValListItem("City", "Phoenix");
 			commView.addressCityInputFld.sendKeys("Phoenix");
 			
