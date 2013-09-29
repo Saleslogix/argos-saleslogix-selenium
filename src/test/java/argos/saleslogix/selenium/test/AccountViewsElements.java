@@ -440,29 +440,38 @@ public class AccountViewsElements extends BrowserSetup {
 		accountEditViewFaxInputFld.sendKeys("480-987-6543");
 		
 		//setup type field
-		accountEditViewTypeFld.sendKeys("Partner");
+		if (commNav.isFieldValueEmpty("Type", accountEditViewTypeFld)) {
+			accountEditViewTypeFld.sendKeys("Partner");
+		}
 		
 		//setup subtype field
 		accountEditViewSubTypeFld.sendKeys("Reseller");
 		
 		//setup status field
-		accountEditViewStatusFld.sendKeys("Active");
+		if (commNav.isFieldValueEmpty("Status", accountEditViewStatusFld)) {
+			accountEditViewStatusFld.sendKeys("Active");
+		}
 		
 		//setup industry field
 		accountEditViewIndustryFld.sendKeys("Computers/Electronics/High Tech");
 		
 		//setup bus desc field
 		accountEditViewBusDescFldBtn.click();
+		Thread.sleep(3000);
 		commView.setBusDescription("Business Description - Random Automated Test Account");
 		
 		//setup acct mgr field
-//		accountEditViewAcctMgrFldBtn.click();
-//		commView.selectFieldValListItem("Acct Mgr", "Hogan");
+		if (commNav.isFieldValueEmpty("Acct Mgr", accountEditViewAcctMgrFld)) {
+			accountEditViewAcctMgrFldBtn.click();
+			commView.selectFieldValListItem("Acct Mgr", "Hogan");			
+		}
 		
 		//setup owner field
-		//TODO: re-enable after server error is resolved from the Owners list view
-//		accountEditViewOwnerFldBtn.click();
-//		commView.selectUser("Everyone");
+		if (commNav.isFieldValueEmpty("Acct Mgr", accountEditViewOwnerFld)) {
+		//TODO: re-enable after server error is resolved from the Owners list view		
+			accountEditViewOwnerFldBtn.click();
+			commView.selectFieldValListItem("User", "Everyone");
+		}
 		
 		//setup lead source field
 		//TODO: re-enable after server error is resolved from the Lead Sources list view		
