@@ -441,34 +441,21 @@ public class ContactViewsElements extends BrowserSetup {
 			contactsEditViewEmailFld.sendKeys("theone@boguscompany.com");
 			
 			//setup title field
-			contactsEditViewTitleFldBtn.click();
-				commView.selectFieldValListItem("Title", "Principal");
+			contactsEditViewTitleFld.sendKeys("Principal");
 			
 			//conditionally setup address fields
 			if (contactsEditViewAddressFld.getText().equals("")) {
 				contactsEditViewAddressFldBtn.click();
-				//TEMP disable (doesn't work on Jenkins server)
-				//commView.addressDescriptionInputFldBtn.click();
-				//commView.selectFieldValListItem("Description", "Mailing");
-				//commView.addressDescriptionInputFld.sendKeys("Mailing");
-				
+				//TEMP disable selection views (doesn't work on Jenkins server)				
 				commView.addressPrimaryTgl.click();
 				commView.addressShippingTgl.click();
 				commView.addressLine1.sendKeys("8800 Mobile St.");
 				commView.addressLine2.sendKeys("Corporate Campus");
 				commView.addressLine3.sendKeys("Suite 100");
-				
-				commView.addressCityInputFldBtn.click();
-				commView.selectFieldValListItem("City", "Phoenix");
-				
-				commView.addressStateInputFldBtn.click();
-				commView.selectFieldValListItem("State", "AZ");
-				
+				commView.addressCityInputFld.sendKeys("Phoenix");				
+				commView.addressStateInputFld.sendKeys("AZ");				
 				commView.addressPostalInputFld.sendKeys("85048");
-				
-				commView.addressCountryInputFldBtn.click();
-				commView.selectFieldValListItem("Country", "USA");
-				
+				commView.addressCountryInputFld.sendKeys("USA");				
 				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
 				headerButton.clickHeaderButton("check");
 			}				
@@ -491,8 +478,6 @@ public class ContactViewsElements extends BrowserSetup {
 			//conditionally setup owner field
 			if (commNav.isFieldValueEmpty("Owner", contactsEditViewOwnerFld)) {
 				//TEMP disable - doesn't work for Trinity DB
-				//contactsEditViewOwnerFldBtn.click();
-				//commNav.highlightNClick(commNav.entityListViewSearch("Owners", "Midwest"));
 				contactsEditViewOwnerFld.sendKeys("Midwest");
 			}
 			

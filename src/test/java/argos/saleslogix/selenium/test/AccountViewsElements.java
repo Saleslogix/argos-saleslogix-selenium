@@ -410,11 +410,8 @@ public class AccountViewsElements extends BrowserSetup {
 		
 		//setup address fields
 		accountEditViewAddressFldBtn.click();
-			//temp disable (doesn't work on Jenkins server)
-			//commView.addressDescriptionInputFldBtn.click();
-			//commView.selectFieldValListItem("Description", "Mailing");
-			//commView.addressDescriptionInputFld.sendKeys("Mailing");
-			
+			//TEMP disable (doesn't work on Jenkins server)
+			commView.addressDescriptionInputFld.sendKeys("Mailing");			
 			commView.addressPrimaryTgl.click();
 			commView.addressShippingTgl.click();
 			commView.addressLine1.sendKeys("8800 Mobile St.");

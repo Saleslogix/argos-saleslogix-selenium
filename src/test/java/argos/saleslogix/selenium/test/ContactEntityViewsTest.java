@@ -127,7 +127,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 
 	//Test Methods Set
 	//================
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test01_SeTestTCContactListView() throws Exception {
 		String methodID = "test01_SeTestTCContactListView";
 		
