@@ -421,18 +421,20 @@ public class AccountViewsElements extends BrowserSetup {
 			commView.addressLine2.sendKeys("Corporate Campus");
 			commView.addressLine3.sendKeys("Suite 100");
 			
-			//TEMP: disable City selection in favor of direct input field value setting
+			//TEMP: disable City, State & Country selections in favor of direct input field value setting
 			//commView.addressCityInputFldBtn.click();
 			//commView.selectFieldValListItem("City", "Phoenix");
 			commView.addressCityInputFld.sendKeys("Phoenix");
 			
-			commView.addressStateInputFldBtn.click();
-			commView.selectFieldValListItem("State", "AZ");
+			//commView.addressStateInputFldBtn.click();
+			//commView.selectFieldValListItem("State", "AZ");
+			commView.addressStateInputFld.sendKeys("AZ");
 			
 			commView.addressPostalInputFld.sendKeys("85048");
-			
-			commView.addressCountryInputFldBtn.click();
-			commView.selectFieldValListItem("Country", "USA");
+
+			//commView.addressCountryInputFldBtn.click();
+			//commView.selectFieldValListItem("Country", "USA");
+			commView.addressCountryInputFld.sendKeys("USA");
 			
 			commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
 		headerbutton.clickHeaderButton("check");

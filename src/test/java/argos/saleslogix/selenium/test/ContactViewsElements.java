@@ -401,7 +401,7 @@ public class ContactViewsElements extends BrowserSetup {
 			String methodID = "doAddRandTestContact";
 			
 			CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-			HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+			HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 			CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 			
 			System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -410,21 +410,18 @@ public class ContactViewsElements extends BrowserSetup {
 			commNav.clickGlobalMenuItem("Contacts");
 			
 			//Step: click the Add header button to enter Contact edit view
-			headerbutton.clickHeaderButton("Add");
+			headerButton.clickHeaderButton("Add");
 			
 			//Step: setup new Contact field values
 			//setup name fields		
 			contactsEditViewNameFldBtn.click();
 				//TEMP: disable Name Prefix selection in favor of direct input field value setting
-				//commView.namePrefixInputFldBtn.click();
-				//commView.selectFieldValListItem("Name Prefix", "Mr.");
 				commView.namePrefixInputFld.sendKeys("Mr.");
 				commView.nameFirstInputFld.sendKeys(strContactFirstName);
 				commView.nameMiddleInputFld.sendKeys("Neo");
 				commView.nameLastInputFld.sendKeys(strContactLastName);
-				commView.nameSuffixInputFldBtn.click();
-				commView.selectFieldValListItem("Name Suffix", "Sr.");
-				headerbutton.clickHeaderButton("check");
+				commView.nameSuffixInputFld.sendKeys("Sr.");
+				headerButton.clickHeaderButton("check");
 				
 			//setup account field
 			contactsEditViewAccountFldBtn.click();
@@ -450,7 +447,7 @@ public class ContactViewsElements extends BrowserSetup {
 			//conditionally setup address fields
 			if (contactsEditViewAddressFld.getText().equals("")) {
 				contactsEditViewAddressFldBtn.click();
-				//temp disable (doesn't work on Jenkins server)
+				//TEMP disable (doesn't work on Jenkins server)
 				//commView.addressDescriptionInputFldBtn.click();
 				//commView.selectFieldValListItem("Description", "Mailing");
 				//commView.addressDescriptionInputFld.sendKeys("Mailing");
@@ -473,7 +470,7 @@ public class ContactViewsElements extends BrowserSetup {
 				commView.selectFieldValListItem("Country", "USA");
 				
 				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
-				headerbutton.clickHeaderButton("check");
+				headerButton.clickHeaderButton("check");
 			}				
 			
 			//setup home phone field
@@ -493,7 +490,7 @@ public class ContactViewsElements extends BrowserSetup {
 			
 			//conditionally setup owner field
 			if (commNav.isFieldValueEmpty("Owner", contactsEditViewOwnerFld)) {
-				//temp disable - doesn't work for Trinity DB
+				//TEMP disable - doesn't work for Trinity DB
 				//contactsEditViewOwnerFldBtn.click();
 				//commNav.highlightNClick(commNav.entityListViewSearch("Owners", "Midwest"));
 				contactsEditViewOwnerFld.sendKeys("Midwest");
@@ -502,11 +499,11 @@ public class ContactViewsElements extends BrowserSetup {
 			//setup cuisine field
 			contactsEditViewCuisineFldBtn.click();
 				commView.selectFieldValListItem("Cuisine", "Chinese");
-				headerbutton.clickHeaderButton("check");
+				headerButton.clickHeaderButton("check");
 			
 			//Step: save the new Contact field values
 			commNav.waitForPage("Contact");
-			headerbutton.clickHeaderButton("save");
+			headerButton.clickHeaderButton("save");
 			commNav.waitForNotPage("Contact");
 			
 			System.out.println(methodID + ": Auto-test Contact - " +  strContactLastName + ", " + strContactLastName + " record was created under the '" + strContactAccount + "' Account.");
