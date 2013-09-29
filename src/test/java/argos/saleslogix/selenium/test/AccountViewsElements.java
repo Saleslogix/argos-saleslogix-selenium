@@ -454,7 +454,6 @@ public class AccountViewsElements extends BrowserSetup {
 		//setup bus desc field
 		accountEditViewBusDescFldBtn.click();
 		commView.setBusDescription("Business Description - Random Automated Test Account");
-		headerbutton.clickHeaderButton("Check");
 		
 		//setup acct mgr field
 //		accountEditViewAcctMgrFldBtn.click();

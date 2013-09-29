@@ -520,6 +520,7 @@ public class CommonViewsElements extends BrowserSetup {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
+		commNav.waitForPage("Business Description");
 		if (commNav.isPageDisplayed("Business Description")) {		
 			//set Business Description text
 			busdescTxtArea.sendKeys(strBusDesc);
