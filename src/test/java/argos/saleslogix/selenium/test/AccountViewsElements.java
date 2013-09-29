@@ -440,27 +440,24 @@ public class AccountViewsElements extends BrowserSetup {
 		accountEditViewFaxInputFld.sendKeys("480-987-6543");
 		
 		//setup type field
-		accountEditViewTypeFldBtn.click();
-		commView.selectFieldValListItem("account type", "Partner");
+		accountEditViewTypeFld.sendKeys("Partner");
 		
 		//setup subtype field
-		accountEditViewSubTypeFldBtn.click();
-		commView.selectFieldValListItem("Subtype", "Reseller");
+		accountEditViewSubTypeFld.sendKeys("Reseller");
 		
 		//setup status field
 		accountEditViewStatusFld.sendKeys("Active");
 		
 		//setup industry field
-		accountEditViewIndustryFldBtn.click();
-		commView.selectFieldValListItem("Industry", "Computers/Electronics/High Tech");
+		accountEditViewIndustryFld.sendKeys("Computers/Electronics/High Tech");
 		
 		//setup bus desc field
 		accountEditViewBusDescFldBtn.click();
 		commView.setBusDescription("Business Description - Random Automated Test Account");
 		
 		//setup acct mgr field
-		accountEditViewAcctMgrFldBtn.click();
-		commView.selectFieldValListItem("Acct Mgr", "Hogan");
+//		accountEditViewAcctMgrFldBtn.click();
+//		commView.selectFieldValListItem("Acct Mgr", "Hogan");
 		
 		//setup owner field
 		//TODO: re-enable after server error is resolved from the Owners list view
