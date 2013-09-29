@@ -19,61 +19,64 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	
 	//Login & Logout
 	//==============
-	@Test
-	public void test00_Mobile_Login() throws InterruptedException {
-		String methodID = "test00_Mobile_Login";
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
 		
 		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
 		
-		System.out.println(STARTLINE);	
-		//VP: the Mobile Login screen is loaded from base URL
-		for (int second = 0;; second++) {
-			if (second >= 60) AssertJUnit.fail("timeout");
-			try { if (fullProdName.equals(driver.findElement(By.id("pageTitle")).getText()))
-				System.out.println("VP: " + fullProdName + " - Mobile Client load check - Passed");
-				break; 
-			} catch (Exception e) {
-			System.out.println("Error: " + fullProdName + " - Mobile Client load check - FAILED");
-			}
-			Thread.sleep(1000);
-		}
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//VP: Page Title
+		//VP: the Mobile Login screen is loaded from base URL
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		commNav.waitForPage(fullProdName);
+		
+		//VP: Page Title (header text - not pagetitle property)
 		Thread.sleep(1000);
-		try { assertEquals(shortProdName, driver.getTitle());
+		try { 
+			AssertJUnit.assertEquals(shortProdName, driver.getTitle());
 			System.out.println("VP: Login Screen Title check - Passed");
-			} catch (Error e) {
+		} 
+		catch (Error e) {
 			System.out.println("Error: Login Screen Title check - FAILED");
 			verificationErrors.append(e.toString());
 		}
 		
 		//VP: Login Page Name
-		Thread.sleep(1000);
-		for (int second = 0;; second++) {
-			if (second >= 60) AssertJUnit.fail("timeout");
-			try { if (fullProdName.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
-			Thread.sleep(1000);
-		}		
+		Thread.sleep(1000);	
 		try {
-			assertEquals(fullProdName, driver.findElement(By.xpath("//*[@id='pageTitle']")).getText());
+			AssertJUnit.assertTrue(commNav.isPageDisplayed(fullProdName));
 			System.out.println("VP: Login Page Name check - Passed");
-			} catch (Error e) {
+		} 
+		catch (Error e) {
 			System.out.println("Error: Login Page Name check - FAILED");
 			verificationErrors.append(e.toString());
 		}
 		
-		//VP: Copyright Info...
+		//VP: product logo
 		try {
-			assertEquals(copyrightLabel, driver.findElement(By.xpath(".//*[@id='login']/span[1]")).getText());
+			AssertJUnit.assertTrue(commNav.isElementDisplayed(By.xpath(".//*[@id='login']/p/img")));
+			System.out.println("VP: 'saleslog!x' logo check  - Passed");
+		}
+		catch (Error e) {
+			System.out.println("Error: product logo check - FAILED");
+			verificationErrors.append(e.toString());
+		}		
+		
+		//VP: Copyright Info
+		try {
+			AssertJUnit.assertEquals(copyrightLabel, driver.findElement(By.xpath(".//*[@id='login']/span[1]")).getText());
 			System.out.println("VP: Copyright check - Passed");
-			} catch (Error e) {
+		} 
+		catch (Error e) {
 			System.out.println("Error: Copyright check - FAILED");
 			verificationErrors.append(e.toString());
 		}
 		try {
-			assertEquals(versionLabel, driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText());
+			AssertJUnit.assertEquals(versionLabel, driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText());
 			System.out.println("VP: Version Label check - Passed");
-			} catch (Error e) {
+		} 
+		catch (Error e) {
 			System.out.println("Error: Version Label check - FAILED");
 			verificationErrors.append(e.toString());
 		}
@@ -84,28 +87,27 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		// VP: confirm that the 'My Activities' screen displays after login
 		Thread.sleep(3000);
 		try {
-			assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
+			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
 			System.out.println("VP: Successfully logged in to Mobile Client.");
-		} catch (Error e) {
-			closeAlert();
+		} catch (UnhandledAlertException e) {
+			//closeAlert();
+			closeModal();
+			//assertEquals("The user name or password is invalid.", closeAlertAndGetItsText());
 			System.out.println("Error: Unable to login to Mobile Client.");
 			System.out.println(e.toString());
 		}
 		System.out.println(ENDLINE);	
 	}
+	
 
-	//MARKER		
-	// *******
-	@Test
+	@Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(STARTLINE);
-		// Click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
 		// Click the Log Off button
 		commNav.clickGlobalMenuItem("log out");
