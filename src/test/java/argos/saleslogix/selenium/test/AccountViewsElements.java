@@ -448,8 +448,7 @@ public class AccountViewsElements extends BrowserSetup {
 		commView.selectFieldValListItem("Subtype", "Reseller");
 		
 		//setup status field
-		accountEditViewStatusFldBtn.click();
-		commView.selectFieldValListItem("Status", "Active");
+		accountEditViewStatusFld.sendKeys("Active");
 		
 		//setup industry field
 		accountEditViewIndustryFldBtn.click();
