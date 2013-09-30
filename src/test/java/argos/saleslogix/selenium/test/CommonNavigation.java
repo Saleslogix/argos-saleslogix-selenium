@@ -248,7 +248,8 @@ public class CommonNavigation {
 		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
 			// Click Page Title to close...
 			//driver.findElement(By.id("pageTitle")).click();
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='toggleRightDrawer']")).click();
+			//driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='toggleRightDrawer']")).click();
+			driver.findElement(By.xpath("//div[95]/button[2]")).click();
 			Thread.sleep(1000);
 		}
 		return true;
