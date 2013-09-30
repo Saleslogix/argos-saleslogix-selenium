@@ -134,7 +134,7 @@ public class MobileSprint233Test extends BrowserSetup {
 	}
 
 	//MBL10006 - After opening widget and pressing back arrow, not taken to expected listview per scenario
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test01_MBL10006() throws Exception {
 		String methodID = "test01_MBL10006";
 		
@@ -311,7 +311,7 @@ public class MobileSprint233Test extends BrowserSetup {
 	}
 
 	//MBL10222 - KPI widgets need to work for listviews under an entity - Notes/History
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test04_MBL10112_NotesHistory() throws InterruptedException {
 		String methodID = "test04_MBL10112_NotesHistory";
 		
