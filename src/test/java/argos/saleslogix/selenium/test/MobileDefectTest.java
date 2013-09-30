@@ -127,8 +127,8 @@ public class MobileDefectTest extends BrowserSetup {
 
 	//Test Methods		
 	//============
-	//TODO: find out why this test mysteriously fails on Jenkins server
-	@Test(enabled = false)
+	//TODO: test41_MobileDefect13092144 mysteriously fails to run on Jenkins server
+	@Test(enabled = true)
 	public void test41_MobileDefect13092144()  throws InterruptedException {
 		//tags: download attachment, jpg image
 		String methodID = "test41_MobileDefect13092144";
@@ -200,8 +200,8 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	//TODO: find out why this test mysteriously fails on Jenkins server
-	@Test(enabled = false)
+	//TODO: test42_MobileDefect13092160 mysteriously fails on Jenkins server
+	@Test(enabled = true)
 	public void test42_MobileDefect13092160()  throws InterruptedException {
 		//tags: download attachment, url
 		String methodID = "test42_MobileDefect13092160";
@@ -402,9 +402,8 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//TODO: find out why this test mysteriously fails on Jenkins server
-	@Test(enabled = false)
-	//TODO: issue with SpeedSearch not returning any results
+	//TODO: test45_MobileDefect13092219 mysteriously fails on Jenkins server
+	@Test(enabled = true)
 	public void test45_MobileDefect13092219()  throws InterruptedException {				
 		String methodID = "test45_MobileDefect13092219";
 		
@@ -598,8 +597,8 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
+	//TODO: test48_MobileDefect13092154 runs only on Chrome
 	@Test (enabled = false)
-	//TODO: need to separate out to run only on Chrome
 	  public void test48_MobileDefect13092154() throws Exception {
 		String methodID = "test48_MobileDefect13092154";
 		
@@ -848,8 +847,8 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
+	//TODO: test50_MobileDefect13092146 needs for 2.3
 	@Test(enabled = false)
-	//TODO: need to update test50_MobileDefect13092146() for 2.3
 	public void test50_MobileDefect13092146()  throws InterruptedException {				
 		String methodID = "test50_MobileDefect13092146";
 		
@@ -1028,8 +1027,8 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);		
 	}
 
+	//TODO: test52_MobileDefect13092102() needs and update for 2.3
 	@Test (enabled = false)
-	//TODO: need to update test52_MobileDefect13092102() for 2.3
 	  public void test52_MobileDefect13092102() throws Exception {
 		String methodID = "test52_MobileDefect13092102";
 	
@@ -1262,8 +1261,8 @@ public class MobileDefectTest extends BrowserSetup {
 	    // -- END
 	  }
 
+	//TODO: need to update test53_MobileDefect13092153() needs an update for 2.3
 	@Test (enabled = false)
-	//TODO: need to update test53_MobileDefect13092153() for 2.3
 	  public void test53_MobileDefect13092153() throws Exception {
 		String methodID = "test53_MobileDefect13092153";
 	
@@ -1424,7 +1423,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    // -- END
 	  }
 
-	@Test (enabled = false)
+	@Test (enabled = true)
 	public void test54_MobileDefect13091934()  throws InterruptedException {				
 		String methodID = "test54_MobileDefect13091934";
 		
@@ -1498,7 +1497,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test55_MobileDefect13092411()  throws Exception {				
 		String methodID = "test55_MobileDefect13092411";
 		
@@ -1819,7 +1818,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test58_MobileDefect13092338()  throws Exception {	
 		//tags: schedule, ticket activity, public access
 		String methodID = "test58_MobileDefect13092338";
@@ -2046,6 +2045,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
+	//TODO: test60_MobileDefect13092370 needs a fix
 	@Test(enabled = true)
 	public void test60_MobileDefect13092370()  throws Exception {
 		//tags: add account/contact, account manager, account owner
@@ -2181,7 +2181,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = false)
+	@Test (enabled = true)
 	public void test62_MobileDefect13092375()  throws Exception {
 		//tags: edit account, note, server error
 		String methodID = "test62_MobileDefect13092375";
@@ -2297,7 +2297,7 @@ public class MobileDefectTest extends BrowserSetup {
 		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}
-
+	//TODO: test64_MobileDefect13092410 needs a bug fix
 	@Test(enabled = true)
 	public void test64_MobileDefect13092410()  throws Exception {
 		//tags: accounts, list view, no records
@@ -2338,7 +2338,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = false)
+	@Test (enabled = true)
 	public void test65_MobileDefect13092422()  throws Exception {
 		//tags: My Activities, list view, Unknown
 		String methodID = "test65_MobileDefect13092422";
@@ -2445,7 +2445,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = false)
+	@Test (enabled = true)
 	public void test68_MobileDefect13092506()  throws Exception {
 		//tags: accounts list view, kpi, Avg Time as Customer 
 		String methodID = "test68_MobileDefect13092506";
@@ -2484,7 +2484,8 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = false)
+	//TODO: test70_MobileDefect13093076 cannot be run on Jenkins server
+	@Test(enabled = true)
 	public void test70_MobileDefect13093076()  throws Exception {
 		//tags: accounts list view, kpi, Avg Time as Customer 
 		String methodID = "test70_MobileDefect13093076";
