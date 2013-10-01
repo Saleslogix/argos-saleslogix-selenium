@@ -311,7 +311,7 @@ public class MobileSprint233Test extends BrowserSetup {
 	}
 
 	//MBL10222 - KPI widgets need to work for listviews under an entity - Notes/History
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test04_MBL10112_NotesHistory() throws InterruptedException {
 		String methodID = "test04_MBL10112_NotesHistory";
 		
@@ -456,20 +456,19 @@ public class MobileSprint233Test extends BrowserSetup {
 		catch (NoSuchElementException e) {
 			System.out.println(e.toString());
 			System.out.println(resultsMsg + " - Failed");
-		}		
-
+		}
+		
+		//Step: un-select all KPI metrics (test cleanup)
+		commNav.rightClickContextMenuItem("Total History");
+		Thread.sleep(5000);
+		
 		//Section 3: Total Duration KPI metric selection
 		//----------
 		headerButton.showRightContextMenu();
 		
 		totalHistoryKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total History']"));
 		totalDurationKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Duration']"));
-		
-		//Step: un-select all KPI metrics (test prep)
-		commNav.highlightNClick(totalHistoryKPI);
-		headerButton.closeRightContextMenu();
-		Thread.sleep(5000);
-		
+				
 		//Step: select the Total Duration KPI metric
 		headerButton.showRightContextMenu();
 		commNav.highlightNClick(totalDurationKPI);
@@ -508,10 +507,115 @@ public class MobileSprint233Test extends BrowserSetup {
 			System.out.println(e.toString());
 			System.out.println(resultsMsg + " - Failed");
 		}
-
-		//Section 4: Total History KPI metric + #note filter 
-		//----------
 		
+		//Step: un-select all KPI metrics (test cleanup)
+		commNav.rightClickContextMenuItem("Total Duration");
+		Thread.sleep(5000);	
+	
+		//Section 4: Total History KPI metric & filters 
+		//----------
+		//Step: select the Total History KPI metric		
+		commNav.rightClickContextMenuItem("Total History");
+		Thread.sleep(5000);
+		
+		//Step: select each filter
+		String hSelectedFilter = "";
+		String[] hTagFilters = {"note", "phonecall", "meeting", "personal", "email"};
+		for (int iCount = 1;iCount<hTagFilters.length;iCount++) {
+			hSelectedFilter = hTagFilters[iCount];
+			commNav.rightClickContextMenuItem(hSelectedFilter);
+			Thread.sleep(3000);		
+			resultsMsg = "VP: Total History KPI metric card is displayed above the list view with #'" + hSelectedFilter + " filter";
+			try {
+				WebElement kpiTotalHistoryCard = driver.findElement(By.xpath("//div[19]/div[2]/div/button")); 
+				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiTotalHistoryCard));
+				System.out.println(resultsMsg + " - Passed");
+				
+				resultsMsg = "VP: Total History KPI card title check";
+				try {
+					String kpiTotalHistoryCardTitle = kpiTotalHistoryCard.getText();
+					String regExp = "^[\\s\\S]*" + "Total History" + "[\\s\\S]*$";
+					AssertJUnit.assertTrue(kpiTotalHistoryCardTitle.matches(regExp));
+					System.out.println(resultsMsg + " - Passed");
+					
+					String kpiTotalHistoryCardVal = getKPICardValue(kpiTotalHistoryCardTitle);
+					System.out.println("KPI Total History & #" + hSelectedFilter + " card value: " + kpiTotalHistoryCardVal);
+				}
+				catch (Error e) {
+					System.out.println(resultsMsg + " - Failed");
+				}
+			}
+			catch (NoSuchElementException e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - Failed");
+			}
+		}
+		
+		//Step: un-select all KPI metrics (test cleanup)
+		headerButton.showRightContextMenu();
+		commNav.rightClickContextMenuItem("Total History");
+		Thread.sleep(3000);
+		
+		//Step: remove any current hash-tags/filters then perform a Lookup
+		notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+		notesHistoryListView.notesHistorysSearchTxtBox.click();
+		Thread.sleep(500);
+		notesHistoryListView.notesHistorysSearchClearBtn.click();
+		Thread.sleep(1000);
+		notesHistoryListView.notesHistorysSearchLookupBtn.click();
+		Thread.sleep(3000);
+		
+		//Section 5: Total Duration KPI metric & filters 
+		//----------
+		//Step: select the Total Duration KPI metric		
+		commNav.rightClickContextMenuItem("Total Duration");
+		Thread.sleep(5000);
+		
+		//Step: select each filter
+		hSelectedFilter = "";
+		for (int iCount = 1;iCount<hTagFilters.length;iCount++) {
+			hSelectedFilter = hTagFilters[iCount];
+			commNav.rightClickContextMenuItem(hSelectedFilter);
+			Thread.sleep(3000);		
+			resultsMsg = "VP: Total Duration KPI metric card is displayed above the list view with #'" + hSelectedFilter + " filter";
+			try {
+				WebElement kpiTotalDurationCard = driver.findElement(By.xpath("//div[19]/div[2]/div/button")); 
+				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiTotalDurationCard));
+				System.out.println(resultsMsg + " - Passed");
+				
+				resultsMsg = "VP: Total Duration KPI card title check";
+				try {
+					String kpiTotalDurationCardTitle = kpiTotalDurationCard.getText();
+					String regExp = "^[\\s\\S]*" + "Total Duration" + "[\\s\\S]*$";
+					AssertJUnit.assertTrue(kpiTotalDurationCardTitle.matches(regExp));
+					System.out.println(resultsMsg + " - Passed");
+					
+					String kpiTotalHistoryCardVal = getKPICardValue(kpiTotalDurationCardTitle);
+					System.out.println("KPI Total Duration & #" + hSelectedFilter + " card value: " + kpiTotalHistoryCardVal);
+				}
+				catch (Error e) {
+					System.out.println(resultsMsg + " - Failed");
+				}
+			}
+			catch (NoSuchElementException e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - Failed");
+			}
+		}
+		
+		//Step: un-select all KPI metrics (test cleanup)
+		headerButton.showRightContextMenu();
+		commNav.rightClickContextMenuItem("Total Duration");
+		Thread.sleep(3000);
+		
+		//Step: remove any current hash-tags/filters then perform a Lookup
+		notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+		notesHistoryListView.notesHistorysSearchTxtBox.click();
+		Thread.sleep(500);
+		notesHistoryListView.notesHistorysSearchClearBtn.click();
+		Thread.sleep(1000);
+		notesHistoryListView.notesHistorysSearchLookupBtn.click();
+		Thread.sleep(3000);
 		
 		//END
 		//---
