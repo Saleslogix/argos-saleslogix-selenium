@@ -949,6 +949,95 @@ public class CommonNavigation {
 		}
 	}
 	
+	public WebElement entityListViewSearchContains(String entityType, String entityName) throws Exception {
+		String methodID = "entityListViewSearchContains";
+		
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+			
+	    //Step: click Top-Left button to reveal Global Menu...
+		headerbutton.showGlobalMenu();
+	
+	    //Step: navigate to entity list view...
+		clickGlobalMenuItem(entityType);
+	
+	    //Step: perform search for entity record items...
+		if (entityType.toLowerCase().equals("contacts") || entityType.toLowerCase().equals("leads")) {
+			String nameTokens[] = entityName.split(",");
+			String lastName = nameTokens[0];
+			searchListView(entityType, lastName);
+		}
+		else {
+			searchListView(entityType, entityName);
+		}
+		
+		//SubStep: singularize the entityType parameter
+		String entListNameXPth = "";
+		switch (entityType.toLowerCase()) {
+		case "my activities": case "activities":
+			entListNameXPth = ".//*[@id='myactivity_list']";
+			break;
+		case "notes/history": case "notes history": case "notes":
+			entListNameXPth = ".//*[@id='history_list']";
+			break;
+		case "accounts": case "account":
+			entListNameXPth = ".//*[@id='account_list']";
+			break;
+		case "contacts": case "contact":
+			entListNameXPth = ".//*[@id='contact_list']";
+			break;
+		case "leads": case "lead":
+			entListNameXPth = ".//*[@id='lead_list']";
+			break;			
+		case "opportunities": case "opportunity":
+			entListNameXPth = ".//*[@id='opportunity_list']";
+			break;			
+		case "tickets": case "ticket":
+			entListNameXPth = ".//*[@id='ticket_list']";
+			break;			
+		case "my attachments": case "attachments": case "attachment":
+			entListNameXPth = ".//*[@id='myattachment_list']";
+			break;	
+		//TODO: continue to expand this switch case list for additional list views
+		}		
+				
+		//Step: check if there is a 'no records' result
+		try {
+			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().contains("no records"));
+			
+			//Step: check for matching results...
+			String targetEntRecXPath = entListNameXPth + "/descendant::*[text()[contains(., '" + entityName + "')]]";
+			List<WebElement> targetEntRecords = driver.findElements(By.xpath(targetEntRecXPath));
+			WebElement targetEntRecord = null;
+			if (targetEntRecords.size() > 1) {
+				//specify the actual record name so that the search label is not clicked
+				if (entityType.toLowerCase().equals("my activities")) {
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul[1]/li/div[3]/h3/span"));
+				}
+				else {
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li/div[3]/h3"));
+				}
+			}
+			else {
+				targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+			}
+			try {
+				AssertJUnit.assertTrue(targetEntRecord.isDisplayed());
+			} catch (Error e) {
+				String errorStr = e.toString();
+				System.out.println(errorStr);
+				System.out.println(methodID + ": " + entityType + " record search for '" + entityName + "' was NOT successful");
+				return null;
+			}
+			highlightElement(targetEntRecord);
+			System.out.println(methodID + ": " + entityType + " record search for '" + entityName + "' was successful");
+			return targetEntRecord;
+		} catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(methodID + ": un-expected 'no records' search result for '" + entityName + "' " + entityType + "; test aborted.");
+			return null;
+		}
+	}
+	
 	public WebElement entityListViewSelect(String entityType, String entityName) throws Exception {
 		String methodID = "entityListViewSelect";
 		
@@ -1118,7 +1207,7 @@ public class CommonNavigation {
 		WebElement entityListItem = entityListViewSearch(entityType, entityName);
 		if (!entityListItem.equals(null)) {
 			entityListItem.click();
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			
 			//Step: check if the detail view is loaded
 			waitForPage(entityName);

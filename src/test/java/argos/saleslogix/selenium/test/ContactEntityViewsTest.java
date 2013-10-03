@@ -140,12 +140,13 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		String entityType = "Contacts";
 		String entityRecord = "Adi";
 	
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
 	    //Step: navigate to Contacts list view...
-		commNav.entityListViewSearch(entityType, entityRecord);
+		commNav.entityListViewSearchContains(entityType, entityRecord);
 		
 		//Step: test Contacts, List View page elements
 		// SubStep: check the Page Title
@@ -596,11 +597,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			System.out.println("VP: KPI sub-panel collapse check - FAILED");
 		}
 		
-		//Step: test each of the pre-set KPI items
-		commNav.rightClickContextMenuItem("Configure");
-		headerButton.goBack();
-		Thread.sleep(3000);
-		
+		//Step: test each of the pre-set KPI items		
 		commNav.rightClickContextMenuItem("Total Revenue");
 		commNav.rightClickContextMenuItem("Avg Time as Customer");
 		commNav.rightClickContextMenuItem("Total Accounts");
@@ -612,8 +609,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
-
-	@Test(enabled = true)
+	//TODO: need to update the Contact Edit field selector ids' in ContactViewsElements.java
+	@Test(enabled = false)
 	public void test12_SeTestTCContactListViewAddContact() throws Exception {
 		String methodID = "test12_SeTestTCContactListViewAddContact";
 		

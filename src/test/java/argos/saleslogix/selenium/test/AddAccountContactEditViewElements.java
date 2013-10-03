@@ -140,11 +140,11 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	WebElement addAcctCntctAcctMgrFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_21']/input")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
 	WebElement addAcctCntctOwnerFldInput;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_21']/button")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
 	WebElement addAcctCntctOwnerFldBtn;		
 	
 	//Methods

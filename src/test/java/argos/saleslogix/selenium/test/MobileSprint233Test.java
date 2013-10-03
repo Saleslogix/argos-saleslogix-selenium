@@ -310,10 +310,10 @@ public class MobileSprint233Test extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//MBL10222 - KPI widgets need to work for listviews under an entity - Notes/History
+	//MBL10112 - KPI widgets need to work for listviews under an entity - Notes/History (no filtering by hash tags)
 	@Test(enabled = true)
-	public void test04_MBL10112_NotesHistory() throws InterruptedException {
-		String methodID = "test04_MBL10112_NotesHistory";
+	public void test04_MBL10112_NotesHistory_NoFiltering() throws InterruptedException {
+		String methodID = "test04_MBL10112_NotesHistory_NoFiltering";
 		
 		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -324,8 +324,6 @@ public class MobileSprint233Test extends BrowserSetup {
 		// Test Params:
 		String entityType = "Notes/History";
 		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
 	    //Step: navigate to Notes/History list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
@@ -333,6 +331,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		
 		//VP: confirm that current hash-tag/filter appears above the list view
 		String resultsMsg = "VP: current hash-tag/filter is displayed above the Notes/History list view";
+		/*
 		WebElement currHashTag = driver.findElement(By.xpath(".//*[@id='history_list_search-expression']/div"));
 		try {
 			AssertJUnit.assertTrue(commNav.isWebElementPresent("default Notes/History hash-tag/filter", currHashTag));
@@ -342,6 +341,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		catch (Error e) {
 			System.out.println(resultsMsg + " - Failed");
 		}
+		*/
 		
 		//Section 1: clear the default hash-tag/filter
 		//----------		
@@ -355,8 +355,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		Thread.sleep(1000);
 		
 		//VP: check that the 'no search applied' label is displayed above the list view
+		/*
 		resultsMsg = "VP: 'no search applied' label displayed above list view for cleared hash-tags/filters";
-		currHashTag = driver.findElement(By.xpath(".//*[@id='history_list_search-expression']/div"));
+		WebElement currHashTag = driver.findElement(By.xpath(".//*[@id='history_list_search-expression']/div"));
 		String expLblTxt = currHashTag.getText();
 		try {
 			AssertJUnit.assertTrue(expLblTxt.equals("no search applied"));
@@ -365,6 +366,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		catch (Error e) {
 			System.out.println(resultsMsg + " - Failed");
 		}
+		*/
 		
 		//Section 2: KPI metrics
 		//----------
@@ -406,7 +408,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		}
 		headerButton.closeRightContextMenu();
 		
-		//Section 2: Total History KPI metric selection
+		//Section 3: Total History KPI metric selection
 		//----------
 		headerButton.showRightContextMenu();
 		
@@ -462,7 +464,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		commNav.rightClickContextMenuItem("Total History");
 		Thread.sleep(5000);
 		
-		//Section 3: Total Duration KPI metric selection
+		//Section 4: Total Duration KPI metric selection
 		//----------
 		headerButton.showRightContextMenu();
 		
@@ -508,14 +510,41 @@ public class MobileSprint233Test extends BrowserSetup {
 			System.out.println(resultsMsg + " - Failed");
 		}
 		
-		//Step: un-select all KPI metrics (test cleanup)
-		commNav.rightClickContextMenuItem("Total Duration");
-		Thread.sleep(5000);	
-	
-		//Section 4: Total History KPI metric & filters 
-		//----------
-		//Step: select the Total History KPI metric		
+		//Step: select all default KPI metrics (test cleanup)
 		commNav.rightClickContextMenuItem("Total History");
+		Thread.sleep(5000);	
+			
+		//END
+		//---
+		//Step: go back to start screen
+		commNav.clickGlobalMenuItem("My Activities");
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+	//MBL10112 - KPI widgets need to work for listviews under an entity - Notes/History (filtering by hash tags)
+	@Test(enabled = true)
+	public void test05_MBL10112_NotesHistory_Filtering() throws InterruptedException {
+		String methodID = "test04_MBL10112_NotesHistory_Filtering";
+		
+		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		// Test Params:
+		String entityType = "Notes/History";
+		
+	    //Step: navigate to Notes/History list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+	
+		//Section 1: Total History KPI metric & filters 
+		//----------
+		//Step: un-select only the Total Duration KPI metric (this should leave Total History KPI selected)
+		commNav.rightClickContextMenuItem("Total Duration");
 		Thread.sleep(5000);
 		
 		//Step: select each filter
@@ -525,7 +554,7 @@ public class MobileSprint233Test extends BrowserSetup {
 			hSelectedFilter = hTagFilters[iCount];
 			commNav.rightClickContextMenuItem(hSelectedFilter);
 			Thread.sleep(3000);		
-			resultsMsg = "VP: Total History KPI metric card is displayed above the list view with #'" + hSelectedFilter + " filter";
+			String resultsMsg = "VP: Total History KPI metric card is displayed above the list view with #'" + hSelectedFilter + " filter";
 			try {
 				WebElement kpiTotalHistoryCard = driver.findElement(By.xpath("//div[19]/div[2]/div/button")); 
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiTotalHistoryCard));
@@ -565,7 +594,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		notesHistoryListView.notesHistorysSearchLookupBtn.click();
 		Thread.sleep(3000);
 		
-		//Section 5: Total Duration KPI metric & filters 
+		System.out.println("");
+		
+		//Section 2: Total Duration KPI metric & filters 
 		//----------
 		//Step: select the Total Duration KPI metric		
 		commNav.rightClickContextMenuItem("Total Duration");
@@ -577,7 +608,7 @@ public class MobileSprint233Test extends BrowserSetup {
 			hSelectedFilter = hTagFilters[iCount];
 			commNav.rightClickContextMenuItem(hSelectedFilter);
 			Thread.sleep(3000);		
-			resultsMsg = "VP: Total Duration KPI metric card is displayed above the list view with #'" + hSelectedFilter + " filter";
+			String resultsMsg = "VP: Total Duration KPI metric card is displayed above the list view with #'" + hSelectedFilter + " filter";
 			try {
 				WebElement kpiTotalDurationCard = driver.findElement(By.xpath("//div[19]/div[2]/div/button")); 
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiTotalDurationCard));
@@ -603,9 +634,9 @@ public class MobileSprint233Test extends BrowserSetup {
 			}
 		}
 		
-		//Step: un-select all KPI metrics (test cleanup)
+		//Step: re-select all KPI metrics (test cleanup)
 		headerButton.showRightContextMenu();
-		commNav.rightClickContextMenuItem("Total Duration");
+		commNav.rightClickContextMenuItem("Total History");
 		Thread.sleep(3000);
 		
 		//Step: remove any current hash-tags/filters then perform a Lookup
@@ -617,6 +648,267 @@ public class MobileSprint233Test extends BrowserSetup {
 		notesHistoryListView.notesHistorysSearchLookupBtn.click();
 		Thread.sleep(3000);
 		
+		//END
+		//---
+		//Step: go back to start screen
+		commNav.clickGlobalMenuItem("My Activities");
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+
+	//MBL10112 - KPI widgets need to work for listviews under an entity - Accounts (no filtering by hash tags)
+	@Test(enabled = true)
+	public void test06_MBL10112_Accounts_NoFiltering() throws InterruptedException {
+		String methodID = "test06_MBL10112_Accounts_NoFiltering";
+		
+		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		// Test Params:
+		String entityType = "Accounts";
+		
+	    //Step: navigate to Accounts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+		//VP: confirm that current hash-tag/filter appears above the list view
+		String resultsMsg = "VP: current hash-tag/filter is displayed above the Accounts list view";
+		WebElement currHashTag = driver.findElement(By.xpath(".//*[@id='account_list_search-expression']/div"));
+		try {
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("default Accounts hash-tag/filter", currHashTag));
+			System.out.println("Current Accounts hash-tags/filter: '" + currHashTag.getText() + "'");
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//Section 1: clear the default hash-tag/filter
+		//----------		
+		//Step: remove any current hash-tags/filters then perform a Lookup		
+		headerButton.showRightContextMenu();
+		accountsListView.accountsSearchTxtBox.click();
+		Thread.sleep(500);
+		accountsListView.accountsSearchClearBtn.click();
+		Thread.sleep(1000);
+		accountsListView.accountsSearchLookupBtn.click();
+		Thread.sleep(1000);
+		
+		//VP: check that the 'no search applied' label is displayed above the list view
+		resultsMsg = "VP: 'no search applied' label displayed above list view for cleared hash-tags/filters";
+		currHashTag = driver.findElement(By.xpath(".//*[@id='account_list_search-expression']/div"));
+		String expLblTxt = currHashTag.getText();
+		try {
+			AssertJUnit.assertTrue(expLblTxt.equals("no search applied"));
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//Section 2: KPI metrics
+		//----------
+		headerButton.showRightContextMenu();
+		
+		//Step: verify the KPI section header
+		resultsMsg = "VP: KPI header label is displayed in right-context menu";
+		WebElement KPIHeaderXPath = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'KPI']"));
+		String headerLbl = KPIHeaderXPath.getText();
+		try {
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", KPIHeaderXPath));			
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//Step: verify the removal of KPI Configure link
+		resultsMsg = "VP: KPI Configure link is not displayed in right-context menu";
+		try {
+			AssertJUnit.assertTrue(driver.findElements(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Configure']")).size() == 0);			
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//Step: verify the KPI metric items
+		resultsMsg = "VP: KPI metric items are available in right-context menu";
+		WebElement totalRevenuKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Revenue']"));
+		WebElement avgTimeAsCustomerKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Avg Time as Customer']"));
+		WebElement totalAccountsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Accounts']"));
+		try {
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Revenue KPI header label", totalRevenuKPI));
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("Avg Time as Customer KPI header label", avgTimeAsCustomerKPI));
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Accounts KPI header label", totalAccountsKPI));
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(resultsMsg + " - Failed");
+		}
+		headerButton.closeRightContextMenu();
+		
+		//Section 3: Total Revenue KPI metric selection
+		//----------
+		headerButton.showRightContextMenu();
+		
+		totalRevenuKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Revenue']"));
+		
+		//Step: un-select all KPI metrics (test prep)
+		commNav.rightClickContextMenuItem("Total Revenue");
+		commNav.rightClickContextMenuItem("Avg Time as Customer");
+		commNav.rightClickContextMenuItem("Total Accounts");
+		headerButton.closeRightContextMenu();
+		Thread.sleep(5000);
+		
+		//Step: select the Total Revenue KPI metric
+		headerButton.showRightContextMenu();
+		commNav.highlightNClick(totalRevenuKPI);
+		headerButton.closeRightContextMenu();
+		Thread.sleep(5000);
+		resultsMsg = "VP: Total Revenue KPI metric button is displayed above the list view";
+		try {
+			WebElement kpiTotalRevenueCard = driver.findElement(By.xpath("//div[75]/div[2]/div/button")); 
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiTotalRevenueCard));
+			System.out.println(resultsMsg + " - Passed");
+			
+			resultsMsg = "VP: Total Revenue KPI card title check";
+			try {
+				String kpiTotalRevenueCardTitle = kpiTotalRevenueCard.getText();
+				String regExp = "^[\\s\\S]*" + "Total Revenue" + "[\\s\\S]*$";
+				AssertJUnit.assertTrue(kpiTotalRevenueCardTitle.matches(regExp));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - Failed");
+			}
+			
+			resultsMsg = "VP: Total Revenue KPI Chart page check";
+			commNav.highlightNClick(kpiTotalRevenueCard);
+			try {
+				commNav.waitForPage("Total Revenue");
+				WebElement kpiChart = driver.findElement(By.id("chart_generic_bar"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (NoSuchElementException e) {
+				System.out.println(resultsMsg + " - Failed");
+			}
+			headerButton.clickHeaderButton("back");
+		}
+		catch (NoSuchElementException e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//Step: un-select KPI metric (test cleanup)
+		commNav.rightClickContextMenuItem("Total Revenue");
+		Thread.sleep(5000);
+		
+		//Section 4: Avg Time as Customer KPI metric selection
+		//----------
+		headerButton.showRightContextMenu();
+		
+		avgTimeAsCustomerKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Avg Time as Customer']"));
+				
+		//Step: select the Total Duration KPI metric
+		headerButton.showRightContextMenu();
+		commNav.highlightNClick(avgTimeAsCustomerKPI);
+		headerButton.closeRightContextMenu();
+		Thread.sleep(5000);
+		resultsMsg = "VP: Avg Time as Customer KPI metric button is displayed above the list view";
+		try {
+			WebElement kpiAvgTimeAsCustomerCard = driver.findElement(By.xpath("//div[75]/div[2]/div/button")); 
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiAvgTimeAsCustomerCard));
+			System.out.println(resultsMsg + " - Passed");
+			
+			resultsMsg = "VP: Avg Time as Customer KPI card title check";
+			try {
+				String kpiAvgTimeAsCustomerTitle = kpiAvgTimeAsCustomerCard.getText();
+				String regExp = "^[\\s\\S]*" + "Avg Time as Customer" + "[\\s\\S]*$";
+				AssertJUnit.assertTrue(kpiAvgTimeAsCustomerTitle.matches(regExp));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - Failed");
+			}
+			
+			resultsMsg = "VP: Avg Time as Customer KPI Chart page check";
+			commNav.highlightNClick(kpiAvgTimeAsCustomerCard);
+			try {
+				commNav.waitForPage("Avg Time as Customer");
+				WebElement kpiChart = driver.findElement(By.id("chart_generic_bar"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (NoSuchElementException e) {
+				System.out.println(resultsMsg + " - Failed");
+			}
+			headerButton.clickHeaderButton("back");
+		}
+		catch (NoSuchElementException e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//Step: un-select KPI metric (test cleanup)
+		commNav.rightClickContextMenuItem("Avg Time as Customer");
+		Thread.sleep(5000);
+		
+		//Section 5: Total Accounts KPI metric selection
+		//----------
+		headerButton.showRightContextMenu();
+		
+		totalAccountsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Accounts']"));
+				
+		//Step: select the Total Accounts KPI metric
+		headerButton.showRightContextMenu();
+		commNav.highlightNClick(totalAccountsKPI);
+		headerButton.closeRightContextMenu();
+		Thread.sleep(5000);
+		resultsMsg = "VP: Total Accounts KPI metric button is displayed above the list view";
+		try {
+			WebElement kpiTotalAccountsCard = driver.findElement(By.xpath("//div[75]/div[2]/div/button")); 
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiTotalAccountsCard));
+			System.out.println(resultsMsg + " - Passed");
+			
+			resultsMsg = "VP: Total Accounts KPI card title check";
+			try {
+				String kpiTotalAccountsTitle = kpiTotalAccountsCard.getText();
+				String regExp = "^[\\s\\S]*" + "Total Accounts" + "[\\s\\S]*$";
+				AssertJUnit.assertTrue(kpiTotalAccountsTitle.matches(regExp));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (Error e) {
+				System.out.println(resultsMsg + " - Failed");
+			}
+			
+			resultsMsg = "VP: Total Accounts KPI Chart page check";
+			commNav.highlightNClick(kpiTotalAccountsCard);
+			try {
+				commNav.waitForPage("Total Accounts");
+				WebElement kpiChart = driver.findElement(By.id("chart_generic_bar"));
+				System.out.println(resultsMsg + " - Passed");
+			}
+			catch (NoSuchElementException e) {
+				System.out.println(resultsMsg + " - Failed");
+			}
+			headerButton.clickHeaderButton("back");
+		}
+		catch (NoSuchElementException e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//Step: select all default KPI metrics (test cleanup)
+		commNav.rightClickContextMenuItem("Total Revenue");
+		commNav.rightClickContextMenuItem("Avg Time as Customer");
+		commNav.rightClickContextMenuItem("Total Accounts");
+		Thread.sleep(5000);	
+			
 		//END
 		//---
 		//Step: go back to start screen

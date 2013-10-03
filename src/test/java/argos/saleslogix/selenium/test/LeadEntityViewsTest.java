@@ -29,12 +29,13 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		String expEntityPgTitle = "Leads";
 		String leadRecord = "Compista";
 	
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
 	    //Step: navigate to Leads list view...
-		commNav.entityListViewSearch(entityType, leadRecord);
+		commNav.entityListViewSearchContains(entityType, leadRecord);
 		
 		//Step: test Leads, List View page elements
 		if (commNav.isPageDisplayed(expEntityPgTitle)) {
@@ -82,6 +83,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		else {
 			System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
 		}
+		
 		System.out.println(ENDLINE);
 	}
 	
@@ -95,7 +97,8 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		//Test Params:
 		String entityType = "Leads";
 
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
@@ -124,7 +127,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for an existing Lead record
 		commNav.entityListViewSearch("Leads", "Abbott Ltd.");		
@@ -136,9 +139,10 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	@Test(enabled = false)
 	public void test04_SeTestTCLeadListViewNegativeSearch() throws Exception {
 		String methodID = "test04_SeTestTCLeadListViewNegativeSearch";
+
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		System.out.println(STARTLINE);
 		
 		//Step: search for non-existent Lead record to confirm it's non-existence
 		commNav.entityListViewNegativeSearch("Leads", "Non-Existent Lead");		
@@ -151,9 +155,9 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	public void test05_SeTestTCLeadListViewClearSearch() throws Exception {
 		String methodID = "test05_SeTestTCLeadListViewClearSearch";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);	
-
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
 		commNav.entityListViewSearch("Leads", "Big Systems");
 			
@@ -187,10 +191,10 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	public void test06_SeTestTCLeadListViewOpenRecord() throws Exception {
 		String methodID = "test06_SeTestTCLeadListViewOpenRecord";
 		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE);
 		
 		//Step: search for Lead entity, then open it's Detail view
 		commNav.entityRecordOpenDetailView("Leads", "Call Color");
@@ -206,10 +210,10 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	public void test07_SeTestTCLeadDetailView() throws Exception {
 		String methodID = "test07_SeTestTCLeadDetailView";
 		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE);
 		
 		//Step: search for Lead entity, then open it's Detail view
 		if (commNav.entityRecordOpenDetailView("Leads", "Call Color")) {
@@ -217,8 +221,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		}
 		else {
 			
-		}
-		
+		}		
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
@@ -250,7 +253,8 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		String entityType = "Leads";
 		String entityRecordName = "Abbott Ltd.";
 
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 	    // Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
@@ -368,7 +372,8 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		
 		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
 		
-		System.out.println(STARTLINE);	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 		//VP: the Mobile Login screen is loaded from base URL
 		for (int second = 0;; second++) {
 			if (second >= 60) AssertJUnit.fail("timeout");
@@ -446,7 +451,8 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(STARTLINE);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 		// Click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
 	

@@ -166,7 +166,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 		    
 		    //click Name - Prefix edit button...
 			nameItemViews.nameEditPrefixInputBtn.click();
-		    pageName = "Prefix";
+		    pageName = "Name Prefix";
 		    commNav.waitForPage(pageName);
 		    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
 		    // VP: confirm that Global Menu button is available...
@@ -176,7 +176,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 		    
 		    //click Name - Suffix edit button...
 		    nameItemViews.nameEditSuffixInputBtn.click();
-		    pageName = "Suffix";
+		    pageName = "Name Suffix";
 		    commNav.waitForPage(pageName);
 		    resultMsg = "Global Menu button is available in the '" + pageName + "' view";
 		    // VP: confirm that Global Menu button is available...
@@ -247,7 +247,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 		    checkGlobalMenuStatus(resultMsg);
 		    headerButton.clickHeaderButton("cancel");
 		    commNav.waitForPage("Address");
-
+	
 		    //navigate back to the Add Account / Contact edit screen...
 		    headerButton.clickHeaderButton("cancel");
 		    commNav.waitForPage("Add Account / Contact");
@@ -305,10 +305,10 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    //Step: click the Top Cancel button...
 	    headerButton.clickHeaderButton("cancel");
 	    commNav.waitForPage("My Activities");
+	    
 	    // -- END
 	    System.out.println(ENDLINE);
 	}
-
 	
 	@Test(enabled = false)
 	public void test02_SeTestTCGlobalMenuCompleteActivityScreens() throws Exception {

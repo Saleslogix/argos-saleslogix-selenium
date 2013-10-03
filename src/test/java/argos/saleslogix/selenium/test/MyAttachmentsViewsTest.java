@@ -32,14 +32,15 @@ public class MyAttachmentsViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "My Attachments";
 		String expEntityPgTitle = "My Attachments";
-		String attachmentRecord = "IBM";
+		String attachmentRecord = "ibm";
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
 	    //Step: navigate to My Attachments list view...
-		commNav.entityListViewSearch(entityType, attachmentRecord);
+		commNav.entityListViewSearchContains(entityType, attachmentRecord);
 		
 		//Step: test the My Attachments, List View Card Layout page elements
 		// SubStep: check the Page Title
@@ -69,6 +70,7 @@ public class MyAttachmentsViewsTest extends BrowserSetup {
 		}
 		System.out.println(ENDLINE);
 	}
+
 	
 	//Login & Logout
 	//==============

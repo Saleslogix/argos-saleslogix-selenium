@@ -39,7 +39,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		headerbutton.showGlobalMenu();
 	
 	    //Step: navigate to Notes/History list view...
-		commNav.entityListViewSearch(entityType, regardingRecord);
+		commNav.entityListViewSearchContains(entityType, regardingRecord);
 		
 		//Step: test Notes/History, List View page elements
 		// SubStep: check the Page Title

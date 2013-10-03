@@ -492,11 +492,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			System.out.println("VP: KPI sub-panel collapse check - FAILED");
 		}
 		
-		//Step: test each of the pre-set KPI items
-		commNav.rightClickContextMenuItem("Configure");
-		headerButton.goBack();
-		Thread.sleep(3000);
-		
+		//Step: test each of the pre-set KPI items		
 		commNav.rightClickContextMenuItem("Total Revenue");
 		//TODO: see why this next step fails on Jenkins; disabling for now...
 		commNav.rightClickContextMenuItem("Avg Time as Customer");
@@ -509,7 +505,8 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	@Test(enabled = true)
+	//TODO: need to update the Account Edit field selector ids' in AccountViewsElements.java
+	@Test(enabled = false)
 	public void test12_SeTestTCAccountListViewAddAccount() throws Exception {
 		String methodID = "test12_SeTestTCAccountListViewAddAccount";
 		
