@@ -668,8 +668,8 @@ public class CommonNavigation {
 		String methodID = "waitForPage";
 	    
 		for (int second = 0;; second++) {
-			Thread.sleep(100);
-	    	if (second >= 6000) AssertJUnit.fail("timeout");
+			Thread.sleep(1000);
+	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { 
 	    		AssertJUnit.assertEquals(pageTitle, driver.findElement(By.id("pageTitle")).getText());
 	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
@@ -685,6 +685,7 @@ public class CommonNavigation {
 		String methodID = "waitForNotPage";
 	    
 		for (int second = 0;; second++) {
+			Thread.sleep(1000);
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { if (!pageTitle.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText()))
 	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully navigated away from");
@@ -1207,7 +1208,7 @@ public class CommonNavigation {
 		WebElement entityListItem = entityListViewSearch(entityType, entityName);
 		if (!entityListItem.equals(null)) {
 			entityListItem.click();
-			Thread.sleep(5000);
+			Thread.sleep(7000);
 			
 			//Step: check if the detail view is loaded
 			waitForPage(entityName);

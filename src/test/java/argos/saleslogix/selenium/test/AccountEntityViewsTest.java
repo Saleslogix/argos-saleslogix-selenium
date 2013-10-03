@@ -497,6 +497,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		//TODO: see why this next step fails on Jenkins; disabling for now...
 		commNav.rightClickContextMenuItem("Avg Time as Customer");
 		commNav.rightClickContextMenuItem("Total Accounts");
+		headerButton.closeRightContextMenu();
 		
 		//Step: go back to previous screen
 		headerButton.goBack();

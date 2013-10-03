@@ -677,6 +677,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
 		//VP: confirm that current hash-tag/filter appears above the list view
+		/*
 		String resultsMsg = "VP: current hash-tag/filter is displayed above the Accounts list view";
 		WebElement currHashTag = driver.findElement(By.xpath(".//*[@id='account_list_search-expression']/div"));
 		try {
@@ -687,6 +688,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		catch (Error e) {
 			System.out.println(resultsMsg + " - Failed");
 		}
+		*/
 		
 		//Section 1: clear the default hash-tag/filter
 		//----------		
@@ -700,8 +702,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		Thread.sleep(1000);
 		
 		//VP: check that the 'no search applied' label is displayed above the list view
-		resultsMsg = "VP: 'no search applied' label displayed above list view for cleared hash-tags/filters";
-		currHashTag = driver.findElement(By.xpath(".//*[@id='account_list_search-expression']/div"));
+		/*
+		String resultsMsg = "VP: 'no search applied' label displayed above list view for cleared hash-tags/filters";
+		WebElement currHashTag = driver.findElement(By.xpath(".//*[@id='account_list_search-expression']/div"));
 		String expLblTxt = currHashTag.getText();
 		try {
 			AssertJUnit.assertTrue(expLblTxt.equals("no search applied"));
@@ -710,13 +713,14 @@ public class MobileSprint233Test extends BrowserSetup {
 		catch (Error e) {
 			System.out.println(resultsMsg + " - Failed");
 		}
+		*/
 		
 		//Section 2: KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
 		//Step: verify the KPI section header
-		resultsMsg = "VP: KPI header label is displayed in right-context menu";
+		String resultsMsg = "VP: KPI header label is displayed in right-context menu";
 		WebElement KPIHeaderXPath = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'KPI']"));
 		String headerLbl = KPIHeaderXPath.getText();
 		try {
@@ -768,7 +772,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		
 		//Step: select the Total Revenue KPI metric
 		headerButton.showRightContextMenu();
-		commNav.highlightNClick(totalRevenuKPI);
+		commNav.rightClickContextMenuItem("Total Revenue");
 		headerButton.closeRightContextMenu();
 		Thread.sleep(5000);
 		resultsMsg = "VP: Total Revenue KPI metric button is displayed above the list view";
@@ -912,6 +916,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		//END
 		//---
 		//Step: go back to start screen
+		headerButton.closeRightContextMenu();
 		commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
