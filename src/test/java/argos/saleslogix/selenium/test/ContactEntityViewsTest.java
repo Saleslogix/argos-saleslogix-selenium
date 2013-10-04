@@ -201,8 +201,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-
-	@Test(enabled = true)
+	//TODO: complete test02_SeTestTCContactListViewLoadMoreResults for Contacts
+	@Test(enabled = false)
 	public void test02_SeTestTCContactListViewLoadMoreResults() throws Exception {
 		String methodID = "test02_SeTestTCContactListViewLoadMoreResults";
 		
@@ -248,8 +248,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-
-	@Test(enabled = true)
+	//TODO: complete test03_SeTestTCContactListViewSearch for Contacts
+	@Test(enabled = false)
 	public void test03_SeTestTCContactListViewSearch() throws Exception {
 		String methodID = "test03_SeTestTCContactListViewSearch";
 		
@@ -264,8 +264,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-
-	@Test(enabled = true)
+	//TODO: complete test04_SeTestTCContactListViewNegativeSearch for Contacts
+	@Test(enabled = false)
 	public void test04_SeTestTCContactListViewNegativeSearch() throws Exception {
 		String methodID = "test04_SeTestTCContactListViewNegativeSearch";
 		
@@ -279,8 +279,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-
-	@Test(enabled = true)
+	//TODO: complete test05_SeTestTCContactListViewClearSearch for Contacts
+	@Test(enabled = false)
 	public void test05_SeTestTCContactListViewClearSearch() throws Exception {
 		String methodID = "test05_SeTestTCContactListViewClearSearch";
 		
@@ -318,7 +318,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	}
 
 
-	@Test(enabled = true)
+	//TODO: complete test06_SeTestTCContactListViewOpenRecord for Contacts
+	@Test(enabled = false)
 	public void test06_SeTestTCContactListViewOpenRecord() throws Exception {
 		String methodID = "test06_SeTestTCContactListViewOpenRecord";
 		
@@ -337,8 +338,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-
-	@Test(enabled = true)
+	//TODO: complete test07_SeTestTCContactDetailView for Contacts
+	@Test(enabled = false)
 	public void test07_SeTestTCContactDetailView() throws Exception {
 		String methodID = "test07_SeTestTCContactDetailView";
 		
@@ -407,8 +408,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-
-	@Test(enabled = true)
+	//TODO: complete test08_SeTestTCContactEditView for Contacts
+	@Test(enabled = false)
 	public void test08_SeTestTCContactEditView() throws Exception {
 		String methodID = "test08_SeTestTCContactEditView";
 		
@@ -438,8 +439,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-
-	@Test(enabled = true)
+	//TODO: complete test09_SeTestTCContactAddEditView for Contacts
+	@Test(enabled = false)
 	public void test09_SeTestTCContactAddEditView() throws Exception {
 		String methodID = "test09_SeTestTCContactAddEditView";
 		
@@ -462,8 +463,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-
-	@Test(enabled = true)
+	//TODO: complete test10_SeTestTCContactListViewHashTags for Contacts
+	@Test(enabled = false)
 	public void test10_SeTestTCContactListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCContactListViewHashTags";
 		
@@ -540,7 +541,9 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	}
 
 
-	@Test(enabled = true)
+	
+	//TODO: complete test11_SeTestTCContactListViewKPI for Contacts
+	@Test(enabled = false)
 	public void test11_SeTestTCContactListViewKPI() throws Exception {
 		String methodID = "test11_SeTestTCContactListViewKPI";
 		
@@ -548,11 +551,11 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// Test Params:
-		String entityType = "accounts";
+		String entityType = "contacts";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-	    //Step: navigate to Accounts list view...
+	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
@@ -598,9 +601,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		}
 		
 		//Step: test each of the pre-set KPI items		
-		commNav.rightClickContextMenuItem("Total Revenue");
-		commNav.rightClickContextMenuItem("Avg Time as Customer");
-		commNav.rightClickContextMenuItem("Total Accounts");
+		commNav.scrollDownPage();
+		commNav.rightClickContextMenuItem("Total Contacts");
 		
 		//Step: go back to previous screen
 		headerButton.closeRightContextMenu();
@@ -609,6 +611,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 	//TODO: need to update the Contact Edit field selector ids' in ContactViewsElements.java
 	@Test(enabled = false)
 	public void test12_SeTestTCContactListViewAddContact() throws Exception {

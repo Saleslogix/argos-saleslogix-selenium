@@ -10,6 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -469,9 +470,16 @@ public class CommonNavigation {
 	}
 	
 	public void scrollDownPage() throws InterruptedException {
+		
+		/* below doesn't work
 		JavascriptExecutor jsx = (JavascriptExecutor)driver;
 		jsx.executeScript("window.scrollBy(0,450)", "");
 		Thread.sleep(3000);
+		*/
+		
+		Actions action = new Actions(driver);
+        action.sendKeys(Keys.PAGE_DOWN);
+        action.perform();
 	}
 	
 	

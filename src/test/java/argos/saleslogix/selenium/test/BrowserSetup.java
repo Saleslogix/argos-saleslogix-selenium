@@ -93,7 +93,7 @@ protected StringBuffer verificationErrors = new StringBuffer();
 	
 	driver.get(baseUrl + mobileUrl + startPage);
 	driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-	//driver.manage().window().maximize();
+	driver.manage().window().maximize();
 	}
 	
 	@AfterMethod
