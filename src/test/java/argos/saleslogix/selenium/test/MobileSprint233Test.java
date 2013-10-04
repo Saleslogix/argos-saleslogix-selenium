@@ -105,8 +105,6 @@ public class MobileSprint233Test extends BrowserSetup {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		// Click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
 	
 		// Click the Log Off button
 		commNav.clickGlobalMenuItem("log out");
@@ -124,6 +122,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		}
 		System.out.println(ENDLINE);
 	}
+
 	
 	public String getKPICardValue(String fullKPICardVal) {
 		

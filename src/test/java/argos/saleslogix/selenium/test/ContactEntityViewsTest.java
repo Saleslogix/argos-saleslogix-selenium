@@ -127,6 +127,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	}
 
 
+
 	//Test Methods Set
 	//================
 	@Test(enabled = true)
