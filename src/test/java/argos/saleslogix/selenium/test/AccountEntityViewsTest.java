@@ -494,7 +494,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			System.out.println("VP: KPI sub-panel collapse check - FAILED");
 		}
 		
-		//Step: test each of the pre-set KPI items		
+		//Step: re-enabled each of the KPI items		
 		commNav.rightClickContextMenuItem("Total Revenue");
 		//TODO: see why this next step fails on Jenkins; disabling for now...
 		commNav.scrollDownPage();
@@ -505,7 +505,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		
 		System.out.println(ENDLINE);
 	}

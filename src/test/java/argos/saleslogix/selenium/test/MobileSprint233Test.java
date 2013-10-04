@@ -521,6 +521,8 @@ public class MobileSprint233Test extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
+	
 	//MBL10112 - KPI widgets need to work for listviews under an entity - Notes/History (filtering by hash tags)
 	@Test(enabled = true)
 	public void test05_MBL10112_NotesHistory_Filtering() throws InterruptedException {
