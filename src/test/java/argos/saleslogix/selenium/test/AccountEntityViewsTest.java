@@ -316,8 +316,9 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for Account entity, then open it's Detail view
+		String accountName = "Allied Corp.";
 		try {
-			AssertJUnit.assertTrue(commNav.entityRecordEditView("Account", "Initech"));
+			AssertJUnit.assertTrue(commNav.entityRecordEditView("Account", accountName));
 			
 			//Step: check each input field and if applicable, its related list item selection view
 			//TODO: complete this section by adding calls to verify each field and selection view (if applicable)
@@ -329,8 +330,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			headerButton.goBack();
 			Thread.sleep(2000);
 		}
-		finally {
-			
+		finally {		
 		}
 		
 		System.out.println(ENDLINE);

@@ -1,5 +1,5 @@
 /**
- * 
+ * .
  */
 package argos.saleslogix.selenium.test;
 
