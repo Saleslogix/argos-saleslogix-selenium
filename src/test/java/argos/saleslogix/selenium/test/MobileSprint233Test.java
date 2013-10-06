@@ -310,7 +310,7 @@ public class MobileSprint233Test extends BrowserSetup {
 	}
 
 	//MBL10112 - KPI widgets need to work for listviews under an entity - Notes/History (no filtering by hash tags)
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test04_MBL10112_NotesHistory_NoFiltering() throws InterruptedException {
 		String methodID = "test04_MBL10112_NotesHistory_NoFiltering";
 		
@@ -524,7 +524,7 @@ public class MobileSprint233Test extends BrowserSetup {
 	
 	
 	//MBL10112 - KPI widgets need to work for listviews under an entity - Notes/History (filtering by hash tags)
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test05_MBL10112_NotesHistory_Filtering() throws InterruptedException {
 		String methodID = "test04_MBL10112_NotesHistory_Filtering";
 		
@@ -659,7 +659,7 @@ public class MobileSprint233Test extends BrowserSetup {
 	}
 
 	//MBL10112 - KPI widgets need to work for listviews under an entity - Accounts (no filtering by hash tags)
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test06_MBL10112_Accounts_NoFiltering() throws InterruptedException {
 		String methodID = "test06_MBL10112_Accounts_NoFiltering";
 		
