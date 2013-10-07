@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.saleslogix</groupId>
-	<artifactId>SLX8Mobile2x</artifactId>
-	<version>2.3</version>
+	<artifactId>SLX8Mobile3x</artifactId>
+	<version>3.0</version>
 	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>

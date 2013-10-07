@@ -90,17 +90,14 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	}
 
 
-	@Test (enabled = true)
+	@Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		// Click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
 	
 		// Click the Log Off button
 		commNav.clickGlobalMenuItem("log out");
@@ -110,12 +107,13 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 					
 		// Verify the Mobile Login screen displays
 		try {
-			AssertJUnit.assertEquals("Sage SalesLogix", driver.findElement(By.id("pageTitle")).getAttribute("text"));
+			AssertJUnit.assertEquals(fullProdName, driver.findElement(By.id("pageTitle")).getText());
 			System.out.println("VP: Mobile Client Logout Check - Passed");
 		} catch (Error e) {     
 			System.out.println("Error: Mobile Client Logout Check - FAILED");
 			System.out.println(e.toString());
 		}
+		System.out.println(ENDLINE);
 	}
 	
 	public void checkGlobalMenuStatus(String resultMsg) {
