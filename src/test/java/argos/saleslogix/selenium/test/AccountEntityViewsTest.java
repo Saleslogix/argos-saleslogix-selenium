@@ -647,6 +647,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			System.out.println("Error: Mobile Client Logout Check - FAILED");
 			System.out.println(e.toString());
 		}
+		
 		System.out.println(ENDLINE);
 	}
 
