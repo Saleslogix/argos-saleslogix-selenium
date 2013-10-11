@@ -502,6 +502,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		commNav.scrollDownPage();
 		commNav.rightClickContextMenuItem("Total Accounts");
 		headerButton.closeRightContextMenu();
+		Thread.sleep(500);
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
