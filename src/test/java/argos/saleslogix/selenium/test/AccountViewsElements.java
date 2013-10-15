@@ -48,6 +48,14 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountsListView;
 	
 	@CacheLookup
+	@FindBy(xpath = "//div[8]/div[2]/div/button")
+	WebElement accountsListView1stKPICard;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='account_list_search-expression']/div")
+	WebElement accountsListView1stHashTagFilter;
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MetricWidget_1']/button")
 	WebElement accountsListViewKPIBox1;
 	

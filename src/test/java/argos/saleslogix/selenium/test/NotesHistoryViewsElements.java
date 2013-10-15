@@ -32,12 +32,24 @@ public class NotesHistoryViewsElements extends BrowserSetup {
 	WebElement notesHistorysSearchClearBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_27']/div/div[3]/button")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_27']/div/div[3]/button")
 	WebElement notesHistorysSearchLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_list']/ul")
 	WebElement notesHistorysListView;
+	
+	@CacheLookup
+	@FindBy(xpath = "//div[9]/div[2]/div/button")
+	WebElement notesHistorysListView1stKPICard;
+	
+	@CacheLookup
+	@FindBy(xpath = "//div[10]/div[2]/div/button")
+	WebElement notesHistorysListView2ndKPICard;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='history_list_search-expression']/div")
+	WebElement notesHistorysListView1stHashTagFilter;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]")

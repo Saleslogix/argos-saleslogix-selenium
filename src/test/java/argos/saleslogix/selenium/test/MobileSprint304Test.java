@@ -20,7 +20,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author mllena
  *
  */
-public class MobileSprint234Test extends BrowserSetup {
+public class MobileSprint304Test extends BrowserSetup {
 
 	@Test(enabled = true)
 	public void test00_Mobile_Login() throws InterruptedException {
