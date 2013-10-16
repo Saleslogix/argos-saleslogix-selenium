@@ -52,6 +52,14 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountsListView1stKPICard;
 	
 	@CacheLookup
+	@FindBy(xpath = "//div[9]/div[2]/div/button")
+	WebElement accountsListView2ndKPICard;
+	
+	@CacheLookup
+	@FindBy(xpath = "//div[10]/div[2]/div/button")
+	WebElement accountsListView3rdKPICard;
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list_search-expression']/div")
 	WebElement accountsListView1stHashTagFilter;
 	

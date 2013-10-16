@@ -48,6 +48,15 @@ public class LeadViewsElements extends BrowserSetup {
 	WebElement leadsListView;
 	
 	@CacheLookup
+	@FindBy(xpath = "//div[6]/div[2]/div/button")
+	WebElement leadsListView1stKPICard;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_list_search-expression']/div")
+	WebElement leadsListView1stHashTagFilter;
+
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_list']/ul/li[1]")
 	WebElement topLeadsListItem;
 	

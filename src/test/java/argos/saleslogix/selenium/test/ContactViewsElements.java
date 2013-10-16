@@ -55,6 +55,15 @@ public class ContactViewsElements extends BrowserSetup {
 	WebElement contactsListView;
 	
 	@CacheLookup
+	@FindBy(xpath = "//div[7]/div[2]/div/button")
+	WebElement contactsListView1stKPICard;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='contact_list_search-expression']/div")
+	WebElement contactsListView1stHashTagFilter;
+	
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]")
 	WebElement topContactsListItem;
 	
