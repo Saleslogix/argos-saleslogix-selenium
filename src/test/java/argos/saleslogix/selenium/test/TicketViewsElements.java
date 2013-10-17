@@ -48,6 +48,14 @@ public class TicketViewsElements extends BrowserSetup {
 	WebElement ticketsListView;
 	
 	@CacheLookup
+	@FindBy(xpath = "//div[4]/div[2]/div/button")
+	WebElement ticketsListView1stKPICard;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_list_search-expression']/div")
+	WebElement ticketsListView1stHashTagFilter;
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]")
 	WebElement topTicketsListItem;
 	

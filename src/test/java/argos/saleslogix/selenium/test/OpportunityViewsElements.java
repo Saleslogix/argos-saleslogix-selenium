@@ -44,6 +44,14 @@ public class OpportunityViewsElements extends BrowserSetup {
 	WebElement topOpportunityListItem;
 	
 	@CacheLookup
+	@FindBy(xpath = "//div[5]/div[2]/div/button")
+	WebElement opportunityListView1stKPICard;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_list_search-expression']/div")
+	WebElement opportunityListView1stHashTagFilter;
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[1]")
 	WebElement topOpportunityListItemTab;
 	
