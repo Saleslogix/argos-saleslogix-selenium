@@ -1,7 +1,11 @@
 package argos.saleslogix.selenium.test;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -94,7 +98,27 @@ public class SLXMobileLogin {
 		Thread.sleep(5000);		
  		
 		System.out.println(methodID + ": username = " + userName + ", password = " + passWord + ", remember? = " + rememberMe);
-		//TODO: may want to setup some alert handling to catch any possible login errors
+
+		// VP: confirm that the 'My Activities' screen displays after login
+		Thread.sleep(3000);
+		try {
+			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
+			System.out.println("VP: Successfully logged in to Mobile Client.");
+		} catch (UnhandledAlertException e) {
+			//closeAlert();
+			closeModal();
+			//assertEquals("The user name or password is invalid.", closeAlertAndGetItsText());
+			System.out.println("Error: Unable to login to Mobile Client.");
+			System.out.println(e.toString());
+		}
+		
 		return true;
+	}
+	
+	public void closeModal() {
+		Set<String> windowids = driver.getWindowHandles();
+		Iterator<String> iter= windowids.iterator();
+		String popupWindowId=iter.next();
+		driver.switchTo().window(popupWindowId);
 	}
 }

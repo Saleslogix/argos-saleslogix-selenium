@@ -17,10 +17,13 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.AssertJUnit;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
@@ -162,6 +165,26 @@ protected StringBuffer verificationErrors = new StringBuffer();
 		//String mainWindowId=iter.next();
 		String popupWindowId=iter.next();
 		driver.switchTo().window(popupWindowId);
+	}
+	
+	public void LogOutThenLogBackIn(String userName, String passWord) throws InterruptedException {
+		String methodID = "LogOutThenLogBackIn";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);
+		
+		//Step: Log out of Mobile Client
+		commNav.clickGlobalMenuItem("log out");
+		Thread.sleep(2000);
+		closeAlert();
+		Thread.sleep(1000);
+		System.out.println("invoking " + methodID + " method...");
+		
+		//Step: Attempt invalid login
+		driver.manage().deleteAllCookies();
+		
+		//Step: Redo login using valid credentials
+		slxmobilelogin.doLogin(userName, passWord, true);
 	}
 	
 	

@@ -323,6 +323,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		// Test Params:
 		String entityType = "Notes/History";
 		
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
+		
 	    //Step: navigate to Notes/History list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
@@ -536,6 +539,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Notes/History";
+		
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
 		
 	    //Step: navigate to Notes/History list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -908,6 +914,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		// Test Params:
 		String entityType = "Accounts";
 		
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
+		
 	    //Step: navigate to Accounts list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
@@ -1026,6 +1035,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Contacts";
+		
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
 		
 	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -1173,6 +1185,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		// Test Params:
 		String entityType = "Contacts";
 		
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
+		
 	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
 	
@@ -1271,6 +1286,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Leads";
+		
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
 		
 	    //Step: navigate to Leads list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -1419,6 +1437,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		// Test Params:
 		String entityType = "Leads";
 		
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
+		
 	    //Step: navigate to Leads list view...
 		commNav.clickGlobalMenuItem(entityType);
 	
@@ -1520,6 +1541,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		// Test Params:
 		String entityType = "Opportunities";
 		int KPIIndex = 5;
+		
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
 		
 	    //Step: navigate to Opportunities list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -1681,6 +1705,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		String entityType = "Opportunities";
 		int KPIIndex = 5;
 		
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
+		
 	    //Step: navigate to Opportunities list view...
 		commNav.clickGlobalMenuItem(entityType);
 	
@@ -1772,7 +1799,7 @@ public class MobileSprint233Test extends BrowserSetup {
 	}
 
 	//MBL10112 - KPI widgets need to work for listviews under an entity - Tickets (no filtering by hash tags)
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test14_MBL10112_Tickets_NoFiltering() throws InterruptedException {
 		String methodID = "test14_MBL10112_Tickets_NoFiltering";
 		
@@ -1786,9 +1813,11 @@ public class MobileSprint233Test extends BrowserSetup {
 		String entityType = "Tickets";
 		int KPIIndex = 4;
 		
-	    //Step: navigate to Tickets list view...
-		commNav.clickGlobalMenuItem(entityType);
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
 		
+	    //Step: navigate to Tickets list view...
+		commNav.clickGlobalMenuItem(entityType);		
 		TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 		
 		//VP: confirm that current hash-tag/filter appears above the list view
@@ -1831,7 +1860,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		//----------
 		headerButton.showRightContextMenu();
 		
-		//Step: verify the KPI section header
+		//VP: verify the KPI section header
 		resultsMsg = "VP: KPI header label is displayed in right-context menu";
 		WebElement KPIHeaderXPath = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'KPI']"));
 		String headerLbl = KPIHeaderXPath.getText();
@@ -1843,7 +1872,7 @@ public class MobileSprint233Test extends BrowserSetup {
 			System.out.println(resultsMsg + " - Failed");
 		}
 		
-		//Step: verify the removal of KPI Configure link
+		//VP: verify the removal of KPI Configure link
 		resultsMsg = "VP: KPI Configure link is not displayed in right-context menu";
 		try {
 			AssertJUnit.assertTrue(driver.findElements(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Configure']")).size() == 0);			
@@ -1853,7 +1882,7 @@ public class MobileSprint233Test extends BrowserSetup {
 			System.out.println(resultsMsg + " - Failed");
 		}
 		
-		//Step: verify the KPI metric items
+		//VP: verify the KPI metric items
 		resultsMsg = "VP: KPI metric items are available in right-context menu";
 		WebElement totalTicktsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Tickets']"));
 		WebElement openAgeAvgKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Open Age Average']"));
@@ -1867,7 +1896,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		}
 		headerButton.closeRightContextMenu();
 		
-		//Section 3: Total Tickets KPI metric selection
+		//Section 3: Test Tickets KPI metric selections
 		//----------
 		String selectedKpiMetric = "";
 		String[] kpiMetrics = {"Total Tickets", "Open Age Average"};
@@ -1945,6 +1974,9 @@ public class MobileSprint233Test extends BrowserSetup {
 		// Test Params:
 		String entityType = "Tickets";
 		int KPIIndex = 4;
+		
+		//Step: login & log back in
+		LogOutThenLogBackIn("Lee", "");
 		
 	    //Step: navigate to Tickets list view...
 		commNav.clickGlobalMenuItem(entityType);

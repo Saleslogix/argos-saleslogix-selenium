@@ -76,6 +76,34 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountsListViewKPIBox3;
 	
 	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']")
+	WebElement accountsListViewNotesBox;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]")
+	WebElement accountsListViewNotesBox1stItem;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[1]/div")
+	WebElement accountsListViewNotesBox1stItemInitialsBox;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[1]/strong")
+	WebElement accountsListViewNotesBox1stItemRegarding;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[2]")
+	WebElement accountsListViewNotesBox1stItemLastActivity;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[3]/div/h4")
+	WebElement accountsListViewNotesBox1stItemNotes;
+	
+	@CacheLookup
+	@FindBy(xpath = "//div[2]/div[4]/div[2]")
+	WebElement accountsListViewNotesBoxSeeListLink;
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]")
 	WebElement topAccountsListItem;
 	
@@ -299,19 +327,19 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountEditView;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextField_0']/input")
+	@FindBy(css = "input[name='AccountName']")
 	WebElement accountEditViewAccountInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextField_1']/input")
+	@FindBy(css = "input[name='WebAddress']")
 	WebElement accountEditViewWebInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_0']/input")
+	@FindBy(css = "input[name='MainPhone']")
 	WebElement accountEditViewPhoneInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_0']/div")
+	@FindBy(css = "//*[@id='Mobile_SalesLogix_Fields_AddressField_0']/div")
 	WebElement accountEditViewAddressFld;
 	
 	@CacheLookup
@@ -319,71 +347,71 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountEditViewAddressFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_1']/input")
+	@FindBy(css = "input[name='Fax']")
 	WebElement accountEditViewFaxInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_5']/input")
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
 	WebElement accountEditViewTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_5']/button")
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
 	WebElement accountEditViewTypeFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/input")
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_1']/input")
 	WebElement accountEditViewSubTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/button")
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_1']/button")
 	WebElement accountEditViewSubTypeFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_7']/input")
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_2']/input")
 	WebElement accountEditViewStatusFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_7']/button")
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_2']/button")
 	WebElement accountEditViewStatusFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_8']/input")
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_3']/input")
 	WebElement accountEditViewIndustryFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_8']/button")
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_3']/input")
 	WebElement accountEditViewIndustryFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/div")
+	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_NoteField_0']/div")
 	WebElement accountEditViewBusDescFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/button")
+	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_NoteField_0']/button")
 	WebElement accountEditViewBusDescFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
+	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
 	WebElement accountEditViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
+	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
 	WebElement accountEditViewAcctMgrFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/input")
+	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
 	WebElement accountEditViewOwnerFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/button")
+	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
 	WebElement accountEditViewOwnerFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/input")
+	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
 	WebElement accountEditViewLeadSourceFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/button")
+	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
 	WebElement accountEditViewLeadSourceFldBtn;
 	
 	
