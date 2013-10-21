@@ -56,6 +56,34 @@ public class TicketViewsElements extends BrowserSetup {
 	WebElement ticketsListView1stHashTagFilter;
 	
 	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']")
+	WebElement ticketsListViewNotesBox;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]")
+	WebElement ticketsListViewNotesBox1stItem;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[1]/div")
+	WebElement ticketsListViewNotesBox1stItemInitialsBox;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[1]/strong")
+	WebElement ticketsListViewNotesBox1stItemRegarding;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[2]")
+	WebElement ticketsListViewNotesBox1stItemLastActivity;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[3]/div/h4")
+	WebElement ticketsListViewNotesBox1stItemNotes;
+	
+	@CacheLookup
+	@FindBy(xpath = "//div[2]/div[4]/div[2]")
+	WebElement ticketsListViewNotesBoxSeeListLink;
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]")
 	WebElement topTicketsListItem;
 	

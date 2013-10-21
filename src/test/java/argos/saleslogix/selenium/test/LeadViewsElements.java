@@ -38,6 +38,34 @@ public class LeadViewsElements extends BrowserSetup {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_list']")
 	WebElement leadsListViewPnl;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']")
+	WebElement leadsListViewNotesBox;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]")
+	WebElement leadsListViewNotesBox1stItem;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[1]/div")
+	WebElement leadsListViewNotesBox1stItemInitialsBox;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[1]/strong")
+	WebElement leadsListViewNotesBox1stItemRegarding;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[2]")
+	WebElement leadsListViewNotesBox1stItemLastActivity;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[3]/div/h4")
+	WebElement leadsListViewNotesBox1stItemNotes;
+	
+	@CacheLookup
+	@FindBy(xpath = "//div[2]/div[4]/div[2]")
+	WebElement leadsListViewNotesBoxSeeListLink;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_list']/ul")

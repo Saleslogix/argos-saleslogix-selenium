@@ -231,12 +231,6 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	}
 
 	@Test(enabled = false)
-	public void test97_SeTestDEBUG() throws Exception {
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		commNav.entityRecordOpenDetailView("Leads", "Abbott Ltd.");
-	}
-	
-	@Test(enabled = false)
 	public void test98_SeTestTCAttachLeadScreens() throws Exception {
 	    // SETest-Attachments_Lead_Screens
 	    // Version: 2.2
@@ -470,6 +464,88 @@ public class LeadEntityViewsTest extends BrowserSetup {
 			System.out.println("Error: Mobile Client Logout Check - FAILED");
 			System.out.println(e.toString());
 		}
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test13_SeTestTCLeadListViewNotesBox() throws Exception {
+		//Reference: MBL-10042
+		String methodID = "test13_SeTestTCLeadListViewNotesBox";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "Leads";
+		String expEntityPgTitle = "Leads";
+		String entityRecord = "Anderson";	//Anderson, Aaron
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: navigate to Leads list view...
+		commNav.entityListViewSearch(entityType, entityRecord);
+		
+		//Step: test Leads, List View page elements
+		// SubStep: check the Page Title
+		if (commNav.isPageDisplayed(entityType)) {
+			
+			LeadViewsElements leadListView = PageFactory.initElements(driver, LeadViewsElements.class);			
+			
+			//Step: check the Leads list view format
+			commNav.checkIfWebElementPresent("Leads List View", leadListView.leadsListView);
+			
+			//Step: check an Account list view item record
+			commNav.checkIfWebElementPresent("Leads List View, Notes Box", leadListView.leadsListViewNotesBox1stItem);			
+			commNav.checkIfWebElementPresent("Leads List View, Notes Box item, Initials box", leadListView.leadsListViewNotesBox1stItemInitialsBox);			
+			commNav.checkIfWebElementPresent("Leads List View, Notes Box item, Regarding header", leadListView.leadsListViewNotesBox1stItemRegarding);			
+			commNav.checkIfWebElementPresent("Leads List View, Notes Box item, Last Activity note", leadListView.leadsListViewNotesBox1stItemLastActivity);			
+			commNav.checkIfWebElementPresent("Leads List View, Notes Box item, note item", leadListView.leadsListViewNotesBox1stItemNotes);			
+			commNav.checkIfWebElementPresent("Leads List View, Notes Box item, see list link", leadListView.leadsListViewNotesBoxSeeListLink);
+			
+			//Step: check the Notes Box list item click navigation
+			String expPgTitle = "Meeting";
+			String resultsMsg = "VP: Clicking Notes Box item navigated to the expected page";
+			try {
+				//click the 1st Notes Box item
+				leadListView.leadsListViewNotesBox1stItem.click();
+				Thread.sleep(5000);
+				commNav.isPageDisplayed(expPgTitle);
+				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_detail']")).isDisplayed());
+				headerButton.goBack();
+				Thread.sleep(2000);
+				System.out.println(resultsMsg + " - Passed");
+				
+			}
+			catch (Exception e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - Failed");
+			}
+			
+			leadListView = PageFactory.initElements(driver, LeadViewsElements.class);
+			
+			//Step: check the Notes Box 'see list' link click navigation
+			expPgTitle = "Notes";
+			resultsMsg = "VP: Clicking Notes Box 'see list' link navigated to the expected page";
+			try {
+				//click the Notes Box 'see list' link
+				leadListView.leadsListViewNotesBoxSeeListLink.click();
+				Thread.sleep(5000);
+				commNav.isPageDisplayed(expPgTitle);
+				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_related']")).isDisplayed());
+				headerButton.goBack();
+				Thread.sleep(2000);
+				System.out.println(resultsMsg + " - Passed");
+				
+			}
+			catch (Exception e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - Failed");
+			}
+		}
+		else {
+			System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
+		}
+		
 		System.out.println(ENDLINE);
 	}
 

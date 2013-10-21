@@ -145,6 +145,38 @@ public class OpportunityViewsElements extends BrowserSetup {
 	WebElement opportunityHashTagsPnl;
 	
 	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_list']")
+	WebElement opportunityListViewPnl;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']")
+	WebElement opportunityListViewNotesBox;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]")
+	WebElement opportunityListViewNotesBox1stItem;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[1]/div")
+	WebElement opportunityListViewNotesBox1stItemInitialsBox;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[1]/strong")
+	WebElement opportunityListViewNotesBox1stItemRegarding;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[2]")
+	WebElement opportunityListViewNotesBox1stItemLastActivity;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[3]/div/h4")
+	WebElement opportunityListViewNotesBox1stItemNotes;
+	
+	@CacheLookup
+	@FindBy(xpath = "//div[2]/div[4]/div[2]")
+	WebElement opportunityListViewNotesBoxSeeListLink;
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[2]")
 	WebElement opportunityKPIHdr;
 	

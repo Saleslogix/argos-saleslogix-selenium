@@ -197,4 +197,87 @@ public class TicketViewsTest extends BrowserSetup {
 		}
 		System.out.println(ENDLINE);
 	}
+
+
+	@Test(enabled = true)
+	public void test13_SeTestTCTicketListViewNotesBox() throws Exception {
+		//Reference: MBL-10042
+		String methodID = "test13_SeTestTCTicketListViewNotesBox";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "Tickets";
+		String expEntityPgTitle = "Tickets";
+		String entityRecord = "001-00-000026";
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: navigate to Tickets list view...
+		commNav.entityListViewSearch(entityType, entityRecord);
+		
+		//Step: test Tickets, List View page elements
+		// SubStep: check the Page Title
+		if (commNav.isPageDisplayed(entityType)) {
+			
+			TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);			
+			
+			//Step: check the Tickets list view format
+			commNav.checkIfWebElementPresent("Tickets List View", ticketsListView.ticketsListViewPnl);
+			
+			//Step: check an Account list view item record
+			commNav.checkIfWebElementPresent("Tickets List View, Notes Box", ticketsListView.ticketsListViewNotesBox1stItem);			
+			commNav.checkIfWebElementPresent("Tickets List View, Notes Box item, Initials box", ticketsListView.ticketsListViewNotesBox1stItemInitialsBox);			
+			commNav.checkIfWebElementPresent("Tickets List View, Notes Box item, Regarding header", ticketsListView.ticketsListViewNotesBox1stItemRegarding);			
+			commNav.checkIfWebElementPresent("Tickets List View, Notes Box item, Last Activity note", ticketsListView.ticketsListViewNotesBox1stItemLastActivity);			
+			commNav.checkIfWebElementPresent("Tickets List View, Notes Box item, note item", ticketsListView.ticketsListViewNotesBox1stItemNotes);			
+			commNav.checkIfWebElementPresent("Tickets List View, Notes Box item, see list link", ticketsListView.ticketsListViewNotesBoxSeeListLink);
+			
+			//Step: check the Notes Box list item click navigation
+			String expPgTitle = "Meeting";
+			String resultsMsg = "VP: Clicking Notes Box item navigated to the expected page";
+			try {
+				//click the 1st Notes Box item
+				ticketsListView.ticketsListViewNotesBox1stItem.click();
+				Thread.sleep(5000);
+				commNav.isPageDisplayed(expPgTitle);
+				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_detail']")).isDisplayed());
+				headerButton.goBack();
+				Thread.sleep(2000);
+				System.out.println(resultsMsg + " - Passed");
+				
+			}
+			catch (Exception e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - Failed");
+			}
+			
+			ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
+			
+			//Step: check the Notes Box 'see list' link click navigation
+			expPgTitle = "Notes";
+			resultsMsg = "VP: Clicking Notes Box 'see list' link navigated to the expected page";
+			try {
+				//click the Notes Box 'see list' link
+				ticketsListView.ticketsListViewNotesBoxSeeListLink.click();
+				Thread.sleep(5000);
+				commNav.isPageDisplayed(expPgTitle);
+				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_related']")).isDisplayed());
+				headerButton.goBack();
+				Thread.sleep(2000);
+				System.out.println(resultsMsg + " - Passed");
+				
+			}
+			catch (Exception e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - Failed");
+			}
+		}
+		else {
+			System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
+		}
+		
+		System.out.println(ENDLINE);
+	}
 }

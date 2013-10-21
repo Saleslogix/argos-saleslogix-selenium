@@ -203,7 +203,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	}
 
 	//TODO: complete test02_SeTestTCContactListViewLoadMoreResults for Contacts
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test02_SeTestTCContactListViewLoadMoreResults() throws Exception {
 		String methodID = "test02_SeTestTCContactListViewLoadMoreResults";
 		
@@ -211,18 +211,19 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		//Test Params:
-		String entityType = "accounts";
+		String entityType = "contacts";
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
-	    //Step: navigate to Accounts list view...
+	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
 	
-		//capture the initial Accounts List view info
-		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-		String initAccountsListInfo = accountsListView.getAccountsListViewTxt();
+		//capture the initial Contacts List view info
+		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		String initListInfo = contactsListView.getContactsListViewTxt();
 		
 	    //Step: load more results (click on 'x remaining records' item)
 		for (int count = 1; count<3; count++) {			
@@ -232,13 +233,13 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			jsx.executeScript("window.scrollBy(0,450)", "");
 		}
 		
-		//capture the expanded Accounts List view
-		String expandedAccountsListInfo = accountsListView.getAccountsListViewTxt();
+		//capture the expanded Contacts List view
+		String expandedListInfo = contactsListView.getContactsListViewTxt();
 		
-		//VP: confirm that the Accounts List view is indeed expanded with more record data
+		//VP: confirm that the Contacts List view is indeed expanded with more record data
 		String resultMsg = "VP: scrolling down the Accounts List view loaded more records";
 		try {
-			AssertJUnit.assertFalse(initAccountsListInfo.matches(expandedAccountsListInfo));
+			AssertJUnit.assertFalse(initListInfo.matches(expandedListInfo));
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -622,6 +623,9 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		//HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
 				
 		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 		
@@ -640,6 +644,89 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		//Step: go back to My Activities view
 		commNav.clickGlobalMenuItem("My Activities");
+		
+		System.out.println(ENDLINE);
+	}
+
+
+	@Test(enabled = true)
+	public void test13_SeTestTCContactListViewNotesBox() throws Exception {
+		//Reference: MBL-10042
+		String methodID = "test13_SeTestTCContactListViewNotesBox";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// Test Params:
+		String entityType = "Contacts";
+		String expEntityPgTitle = "Contacts";
+		String entityRecord = "Adi";	//Adi, Douglas
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: navigate to Contacts list view...
+		commNav.entityListViewSearch(entityType, entityRecord);
+		
+		//Step: test Contacts, List View page elements
+		// SubStep: check the Page Title
+		if (commNav.isPageDisplayed(entityType)) {
+			
+			ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);			
+			
+			//Step: check the Contacts list view format
+			commNav.checkIfWebElementPresent("Contacts List View", contactListView.contactsListView);
+			
+			//Step: check an Account list view item record
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box", contactListView.contactsListViewNotesBox1stItem);			
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Initials box", contactListView.contactsListViewNotesBox1stItemInitialsBox);			
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Regarding header", contactListView.contactsListViewNotesBox1stItemRegarding);			
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Last Activity note", contactListView.contactsListViewNotesBox1stItemLastActivity);			
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, note item", contactListView.contactsListViewNotesBox1stItemNotes);			
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, see list link", contactListView.contactsListViewNotesBoxSeeListLink);
+			
+			//Step: check the Notes Box list item click navigation
+			String expPgTitle = "Meeting";
+			String resultsMsg = "VP: Clicking Notes Box item navigated to the expected page";
+			try {
+				//click the 1st Notes Box item
+				contactListView.contactsListViewNotesBox1stItem.click();
+				Thread.sleep(5000);
+				commNav.isPageDisplayed(expPgTitle);
+				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_detail']")).isDisplayed());
+				headerButton.goBack();
+				Thread.sleep(2000);
+				System.out.println(resultsMsg + " - Passed");
+				
+			}
+			catch (Exception e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - Failed");
+			}
+			
+			contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+			
+			//Step: check the Notes Box 'see list' link click navigation
+			expPgTitle = "Notes";
+			resultsMsg = "VP: Clicking Notes Box 'see list' link navigated to the expected page";
+			try {
+				//click the Notes Box 'see list' link
+				contactListView.contactsListViewNotesBoxSeeListLink.click();
+				Thread.sleep(5000);
+				commNav.isPageDisplayed(expPgTitle);
+				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_related']")).isDisplayed());
+				headerButton.goBack();
+				Thread.sleep(2000);
+				System.out.println(resultsMsg + " - Passed");
+				
+			}
+			catch (Exception e) {
+				System.out.println(e.toString());
+				System.out.println(resultsMsg + " - Failed");
+			}
+		}
+		else {
+			System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
+		}
 		
 		System.out.println(ENDLINE);
 	}

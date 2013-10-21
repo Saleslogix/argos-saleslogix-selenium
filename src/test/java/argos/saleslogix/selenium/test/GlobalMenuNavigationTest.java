@@ -147,6 +147,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    // Step: navigate to the Add Account/Contact Edit view...
 		commNav.clickGlobalMenuItem("Add Account/Contact");
 		AddAccountContactEditViewElements addAccConEditView = PageFactory.initElements(driver, AddAccountContactEditViewElements.class);
+		
 	    // VP: confirm that Global Menu button is available...
 		String pageName = "Add Account / Contact";
 		String resultMsg = "Global Menu button is available in the '" + pageName + "' view";

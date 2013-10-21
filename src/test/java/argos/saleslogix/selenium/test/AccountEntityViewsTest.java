@@ -512,7 +512,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	}
 	
 	//TODO: need to update the Account Edit field selector ids' in AccountViewsElements.java
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test12_SeTestTCAccountListViewAddAccount() throws Exception {
 		String methodID = "test12_SeTestTCAccountListViewAddAccount";
 		
@@ -520,11 +520,13 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		//HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-				
-		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
 		
 		//Step: add a random test Account record
 		String newAcctName = "SeAutoTestAcct-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		accountsListView.doAddRandTestAccount(newAcctName);
 		
 		//Step: find the newly-added test Account record
