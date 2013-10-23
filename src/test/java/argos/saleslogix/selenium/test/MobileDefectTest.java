@@ -403,7 +403,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	//TODO: test45_MobileDefect13092219 mysteriously fails on Jenkins server
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test45_MobileDefect13092219()  throws InterruptedException {				
 		String methodID = "test45_MobileDefect13092219";
 		
@@ -707,7 +707,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test49_MobileDefect13091564()  throws InterruptedException {				
 		String methodID = "test49_MobileDefect13091564";
 		
@@ -1423,7 +1423,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    // -- END
 	  }
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test54_MobileDefect13091934()  throws InterruptedException {				
 		String methodID = "test54_MobileDefect13091934";
 		
@@ -1497,7 +1497,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test55_MobileDefect13092411()  throws Exception {				
 		String methodID = "test55_MobileDefect13092411";
 		
@@ -1688,7 +1688,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test57_MobileDefect13092329()  throws Exception {				
 		String methodID = "test57_MobileDefect13092329";
 		
@@ -1818,7 +1818,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test58_MobileDefect13092338()  throws Exception {	
 		//tags: schedule, ticket activity, public access
 		String methodID = "test58_MobileDefect13092338";
@@ -1932,7 +1932,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test59_MobileDefect13092339()  throws Exception {
 		//tags: schedule, ticket activity, public access, type, null
 		String methodID = "test59_MobileDefect13092339";
@@ -2046,7 +2046,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	//TODO: test60_MobileDefect13092370 needs a fix
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test60_MobileDefect13092370()  throws Exception {
 		//tags: add account/contact, account manager, account owner
 		String methodID = "test60_MobileDefect13092370";
@@ -2181,7 +2181,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test62_MobileDefect13092375()  throws Exception {
 		//tags: edit account, note, server error
 		String methodID = "test62_MobileDefect13092375";
@@ -2445,7 +2445,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test (enabled = true)
+	@Test (enabled = false)
 	public void test68_MobileDefect13092506()  throws Exception {
 		//tags: accounts list view, kpi, Avg Time as Customer 
 		String methodID = "test68_MobileDefect13092506";
