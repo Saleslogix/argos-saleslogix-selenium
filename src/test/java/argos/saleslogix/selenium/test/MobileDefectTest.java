@@ -2655,12 +2655,13 @@ public class MobileDefectTest extends BrowserSetup {
 	    catch (Error e) {
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
+	    headerButton.clickHeaderButton("back");
 	    
 	    //VP: 
 		
 		// End Tests
 		// Step: navigate back to the default startup view
-		commNav.clickGlobalMenuItem(entityView);
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);		
 	}
