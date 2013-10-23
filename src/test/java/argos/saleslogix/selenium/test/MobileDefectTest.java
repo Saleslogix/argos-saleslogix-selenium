@@ -2665,4 +2665,63 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);		
 	}
+
+	@Test(enabled = true)
+	public void test72_MobileDefect_MBL10268()  throws InterruptedException {
+		//Reference: MBL-10268
+		String methodID = "test72_MobileDefect_MBL10268";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// test params
+		String entityView = "Tickets";
+	
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+		//Step: open the entities List view from the Global Menu
+		commNav.clickGlobalMenuItem(entityView);
+		commNav.waitForPage(entityView);
+	
+		//Step: open the Ticket Detail view  
+		commNav.clickListViewItemN(entityView, 1);
+		
+		//Step: click the Ticket Activities link
+		String tcktActivitiesLnkXPath = "//*[@id='ticket_detail']/descendant::*[text() = 'Ticket Activities']";
+		driver.findElement(By.xpath(tcktActivitiesLnkXPath)).click();
+		commNav.waitForPage("Ticket Activities");
+		
+		//Step: click header Add button 
+		headerButton.clickHeaderButton("add");
+		commNav.waitForPage("Edit Ticket Activity");
+		
+		//VP: check that User field default value is not empty 
+		String userFldXPath = "(//input[@type='text'])[3]";
+		String userFldVal = driver.findElement(By.xpath(userFldXPath)).getAttribute("value");
+		String resultsMsg = "VP: Edit Ticket Activity, User field default value is not blank";
+		try {
+			AssertJUnit.assertTrue(!"".equals(userFldVal));
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Exception e) {
+			System.out.println("VP: The Edit Ticket Activity, User field default value was blank.");
+			System.out.println(resultsMsg + " - Failed");
+		}
+		finally {
+			// End Tests
+			// Step: navigate back to the default startup view
+			headerButton.clickHeaderButton("cancel");
+			commNav.waitForPage("Ticket Activities");
+			headerButton.clickHeaderButton("back");
+			commNav.waitForNotPage("Ticket Activities");
+			headerButton.clickHeaderButton("back");
+			commNav.waitForPage("Tickets");
+			
+			System.out.println(ENDLINE);	
+		}
+		
+		
+				
+	}
 }
