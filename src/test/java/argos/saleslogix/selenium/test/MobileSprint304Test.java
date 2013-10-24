@@ -210,4 +210,63 @@ public class MobileSprint304Test extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+
+	@Test(enabled = true)
+	public void test03_MBL10015_NoXtraRetMoreRecs() throws Exception {
+		String methodID = "test03_MBL10015_NoXtraRetMoreRecs";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		//Test Params:
+		String entityType = "My Activities";
+		String hashTag = "alarm";
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
+	
+	    //Step: navigate to My Activities list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		//Step: select the alarm hash-tag filter item
+		commNav.rightClickContextMenuItem(hashTag);
+		Thread.sleep(3000);
+		
+		//Step: scroll-down to the "x records remaining" label
+		String recsRemainLblXPath = "//*[@id='myactivity_list']/div[3]/div";
+		String resultsMsg = "VP: Invalid 'Retrieve More Records' label not found after loading more records";
+		try {
+			driver.findElement(By.xpath(recsRemainLblXPath)).click();
+			Thread.sleep(1000);
+			driver.findElement(By.xpath("//*[@id='myactivity_list']")).sendKeys(Keys.PAGE_DOWN);
+			Thread.sleep(3000);			
+			try {
+				AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Retrieve More Records[\\s\\S]*$"));
+				System.out.println(resultsMsg + " - Passed");
+			} 
+			catch (Error er) {
+				verificationErrors.append(er.toString());
+				System.out.println(resultsMsg + " - Failed");
+			}
+		}
+		catch (Exception exp) {
+		    //Step: load more results (click on 'x remaining records' item)
+			for (int count = 1; count<3; count++) {			
+				driver.findElement(By.xpath("//*[@id='myactivity_list']")).sendKeys(Keys.PAGE_DOWN);
+				Thread.sleep(3000);
+				//JavascriptExecutor jsx = (JavascriptExecutor)driver;
+				//jsx.executeScript("window.scrollBy(0,450)", "");
+				
+				try {
+					AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Retrieve More Records[\\s\\S]*$"));
+					System.out.println(resultsMsg + " - Passed");
+				} 
+				catch (Error er) {
+					verificationErrors.append(er.toString());
+					System.out.println(resultsMsg + " - Failed");
+				}
+			}				
+		}
+		
+		//END
+		System.out.println(ENDLINE);
+	}
 }
