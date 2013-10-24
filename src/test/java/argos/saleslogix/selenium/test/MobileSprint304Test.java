@@ -269,4 +269,54 @@ public class MobileSprint304Test extends BrowserSetup {
 		//END
 		System.out.println(ENDLINE);
 	}
+
+	@Test(enabled = true)
+	public void test04_MBL10127_MobilePhoneFieldCheck() throws Exception {
+		String methodID = "test04_MBL10127_MobilePhoneFieldCheck";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
+		
+		//Test Params:
+		String entityType = "Leads";
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
+	
+	    //Step: navigate to the Leads list view
+		commNav.clickGlobalMenuItem(entityType);
+		
+		//Step: click and open the top Leads record
+		commNav.clickListViewItemN(entityType, 1);
+		commNav.waitForNotPage("Leads");
+		
+		//VP: check to see that the Mobile Phone field is available in the Detail view
+		String mobilePhoneDtlViewFldXPath = "//*[@id='lead_detail']/descendant::*[text() = 'mobile phone']";
+		String resultsMsg = "VP: the Mobile Phone field is available in the Lead Detail view";
+		try {
+			AssertJUnit.assertTrue(driver.findElement(By.xpath(mobilePhoneDtlViewFldXPath)).isDisplayed());
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//Step: navigate to Lead Edit view
+		headerButton.clickHeaderButton("edit");
+		commNav.waitForPage("Lead");
+		
+		//VP: check to see that the Mobile Phone field is available in the Edit view
+		String mobilePhoneEdtViewFldCSS = "input[name='Mobile']";
+		resultsMsg = "VP: the Mobile Phone field is available in the Lead Edit view";
+		try {
+			AssertJUnit.assertTrue(driver.findElement(By.cssSelector(mobilePhoneEdtViewFldCSS)).isDisplayed());
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(resultsMsg + " - Failed");
+		}
+			
+		//END
+		commNav.clickGlobalMenuItem("My Activities");
+		System.out.println(ENDLINE);
+	}
 }
