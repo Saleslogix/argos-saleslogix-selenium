@@ -375,6 +375,22 @@ public class MyActivityViewsElements extends BrowserSetup {
 		return myActivitiesLisViewInfo.getText();		
 	}
 	
+	public void performNoFilterSearch() throws InterruptedException {
+		String methodID = "performNoFilterSearch";
+		
+		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class); 
+				
+		//Step: execute a filter-free search
+		headerButton.showRightContextMenu();
+		activitiesListView.myActivitiesSearchTxtBox.click();
+		Thread.sleep(500);
+		activitiesListView.myActivitiesSearchClearBtn.click();
+		Thread.sleep(1000);
+		activitiesListView.myActivitiesSearchLookupBtn.click();
+		Thread.sleep(3000);
+	}
+	
 	
 	public boolean NoRecordsFound() {
 		boolean result = false;
