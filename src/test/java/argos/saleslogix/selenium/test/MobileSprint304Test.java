@@ -393,6 +393,7 @@ public class MobileSprint304Test extends BrowserSetup {
 			System.out.println(resultsMsg + " - Failed");
 		}
 		
+		
 		//END
 		System.out.println(ENDLINE);
 	}
