@@ -212,7 +212,8 @@ public class MobileSprint304Test extends BrowserSetup {
 	}
 
 	@Test(enabled = true)
-	public void test03_MBL10015_NoXtraRetMoreRecs() throws Exception {
+	public void test03_MobileDefect_MBL10015() throws Exception {
+		//MBL-10015: Under My Activities, when scrolling/ loading next batch of records, seeing expected ‘loading’ message, plus unexpected ‘Retrieve More Records’ beneath
 		String methodID = "test03_MBL10015_NoXtraRetMoreRecs";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -271,8 +272,9 @@ public class MobileSprint304Test extends BrowserSetup {
 	}
 
 	@Test(enabled = true)
-	public void test04_MBL10127_MobilePhoneFieldCheck() throws Exception {
-		String methodID = "test04_MBL10127_MobilePhoneFieldCheck";
+	public void test04_MobileDefect_MBL10127() throws Exception {
+		//MBL-10127: Lead Detail/Edit - Add Mobile Phone
+		String methodID = "test04_MobileDefect_MBL10127";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
@@ -322,6 +324,7 @@ public class MobileSprint304Test extends BrowserSetup {
 
 	@Test(enabled = true)
 	public void test05_MobileDefect_MBL10137() throws Exception {
+		//MBL-10137: My Activities/entities - unexpectedly seeing #this-week hash tag displaying per scenario of scrolling, opening/closing an activity and contextual menu
 		String methodID = "test05_MobileDefect_MBL10137";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -393,6 +396,38 @@ public class MobileSprint304Test extends BrowserSetup {
 			System.out.println(resultsMsg + " - Failed");
 		}
 		
+		
+		//END
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test06_MobileDefect_MBL10139() throws Exception {
+		//MBL-10139: SpeedSearch - card layout includes some unexpected html
+		String methodID = "test06_MobileDefect_MBL10139";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
+		
+		//Test Params:
+	    String searchItem = "abbott";
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
+	
+	    //Step: click Top-Left button to reveal Global Menu...
+		headerButton.showGlobalMenu();
+	    commNav.searchListView("speedsearch", searchItem);
+		
+		//VP: check to see that HTML code (e.g. '<a NAME=TheBody>') is not displayed on the page
+	    String htmlCode = "<a NAME=TheBody>";
+		String resultsMsg = "VP: invalid HTML code was not present in the SpeedSearch results list";
+		try { if (!driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + htmlCode + "[\\s\\S]*$"))
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - Failed");
+		}
 		
 		//END
 		System.out.println(ENDLINE);
