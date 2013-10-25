@@ -319,4 +319,81 @@ public class MobileSprint304Test extends BrowserSetup {
 		commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
+
+	@Test(enabled = true)
+	public void test05_MobileDefect_MBL10137() throws Exception {
+		String methodID = "test05_MobileDefect_MBL10137";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
+		
+		//Test Params:
+		String entityType = "My Activities";
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
+	
+	    //Step: navigate to the My Activities list view
+		commNav.clickGlobalMenuItem(entityType);
+		
+		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+		
+		//Step: execute a filter-free search
+		activitiesListView.performNoFilterSearch();
+		
+		//Step: scroll-down the list a few times
+		for (int count = 1; count<4; count++) {			
+			driver.findElement(By.xpath("//*[@id='myactivity_list']")).sendKeys(Keys.PAGE_DOWN);
+			Thread.sleep(3000);
+		}
+		
+		//Step: open any activity record
+		commNav.clickListViewItemN(entityType, 5);
+		commNav.waitForPage("Activity");
+		
+		//Step: navigate back to the Activities List view
+		headerButton.clickHeaderButton("back");
+		commNav.waitForPage(entityType);
+		
+		//Step: open the Right-context menu
+		headerButton.showRightContextMenu();
+		
+		//VP: check to see if '#this-week' populates the Lookup input field
+		String filter2Check = "#this-week";
+		String lookupFldVal = activitiesListView.myActivitiesSearchTxtBox.getText();
+		String resultsMsg = "VP: Lookup search field is not set to '" + filter2Check + "'";
+		try {
+			AssertJUnit.assertFalse(lookupFldVal.equals(filter2Check));
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - False");
+		}
+		finally {
+			headerButton.closeRightContextMenu();
+		}
+		
+		//Step: scroll-down the list a few times (again)
+		for (int count = 1; count<4; count++) {			
+			driver.findElement(By.xpath("//*[@id='myactivity_list']")).sendKeys(Keys.PAGE_DOWN);
+			Thread.sleep(3000);
+		}
+		
+		//Step: click the title bar to jump to the top of the list
+		driver.findElement(By.xpath(".//*[@id='pageTitle']")).click();
+		Thread.sleep(1000);
+		
+		//VP: check to see that '#this-week' filter is not displayed on the page
+		resultsMsg = "VP: the '" + filter2Check + "' hash-tag filter was not present";
+		try { if (!driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + filter2Check + "[\\s\\S]*$"))
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//END
+		System.out.println(ENDLINE);
+	}
 }
