@@ -135,7 +135,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	@Test(enabled = true)
 	public void test01_MobileDefect_MBL10191() throws InterruptedException {
 		//MBL-10191: Remove configure option
-		String methodID = "test01_MBL10191_RemoveConfigureOption";
+		String methodID = "test01_MobileDefect_MBL10191";
 			
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
@@ -211,10 +211,10 @@ public class MobileSprint304Test extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test03_MobileDefect_MBL10015() throws Exception {
 		//MBL-10015: Under My Activities, when scrolling/ loading next batch of records, seeing expected ‘loading’ message, plus unexpected ‘Retrieve More Records’ beneath
-		String methodID = "test03_MBL10015_NoXtraRetMoreRecs";
+		String methodID = "test03_MobileDefect_MBL10015";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
