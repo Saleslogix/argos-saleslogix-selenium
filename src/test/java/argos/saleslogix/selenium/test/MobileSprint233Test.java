@@ -1031,7 +1031,7 @@ public class MobileSprint233Test extends BrowserSetup {
 	
 
 	//MBL10112 - KPI widgets need to work for list views under an entity - Contacts (filtering by hash tags)
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test09_MBL10112_Contacts_Filtering() throws InterruptedException {
 		String methodID = "test09_MBL10112_Contacts_Filtering";
 		
