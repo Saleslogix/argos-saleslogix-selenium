@@ -132,9 +132,9 @@ public class MobileSprint304Test extends BrowserSetup {
 		return cardValue;
 	}
 
-	//MBL-10191 - Remove configure option
 	@Test(enabled = true)
-	public void test01_MBL10191_RemoveConfigureOption() throws InterruptedException {
+	public void test01_MobileDefect_MBL10191() throws InterruptedException {
+		//MBL-10191: Remove configure option
 		String methodID = "test01_MBL10191_RemoveConfigureOption";
 			
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -173,10 +173,10 @@ public class MobileSprint304Test extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//MBL-10191 - Right Contextual menu - where SpeedSearch is executed...
 	@Test(enabled = true)
-	public void test02_MBL10190_HideRightContextMenuAfter2ndSpeedSearch() throws InterruptedException {
-		String methodID = "test02_MBL10190_HideRightContextMenuAfter2ndSpeedSearch";
+	public void test02_MobileDefect_MBL10190() throws InterruptedException {
+		//MBL-10190: Right Contextual menu - where SpeedSearch is executed consecutively more than once from the left Global menu, the contextual menu opens and hides a good part of the SpeedS
+		String methodID = "test02_MobileDefect_MBL10190";
 			
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
@@ -418,6 +418,135 @@ public class MobileSprint304Test extends BrowserSetup {
 		headerButton.showGlobalMenu();
 	    commNav.searchListView("speedsearch", searchItem);
 		
+		//VP: check to see that HTML code (e.g. '<a NAME=TheBody>') is not displayed on the page
+	    String htmlCode = "<a NAME=TheBody>";
+		String resultsMsg = "VP: invalid HTML code was not present in the SpeedSearch results list";
+		try { if (!driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + htmlCode + "[\\s\\S]*$"))
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//END
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = false)
+	public void test07_MobileDefect_MBL10143() throws Exception {
+		//MBL-10143: Entity activities - where activities for multiple entities are viewed, the default activity filter for the first entity only is as expected
+		String methodID = "test07_MobileDefect_MBL10143";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
+		
+		//Test Params:
+		String entityType = "Accounts";
+	    String searchItem = "Abbott Ltd.";
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1: perform test for Account
+		
+	    //Step: open Accounts view then perform record search
+		commNav.clickGlobalMenuItem(entityType);
+	    commNav.searchListView(entityType, searchItem);
+	    
+	    //Step: open the Account record
+	    commNav.clickListViewItemN(entityType, 1);
+	    commNav.waitForPage(searchItem);
+	    
+	    //Step: open the Account Activities view
+	    String acctDetVwActivitiesXPath = "//*[@id='account_detail']/div[2]/ul[2]/li[1]/a/span";
+	    
+		//LEFT-OFF HERE (10/25/13)
+		//VP: check to see that HTML code (e.g. '<a NAME=TheBody>') is not displayed on the page
+	    String htmlCode = "<a NAME=TheBody>";
+		String resultsMsg = "VP: invalid HTML code was not present in the SpeedSearch results list";
+		try { if (!driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + htmlCode + "[\\s\\S]*$"))
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//END
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = false)
+	public void test08_MobileDefect_MBL10144() throws Exception {
+		//MBL-10144: Entity notes/history - where notes/history for multiple entities are viewed, the default notes/history filter for the first entity only is as expected
+		String methodID = "test08_MobileDefect_MBL10144";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
+		
+		//Test Params:
+		String entityType = "Accounts";
+	    String searchItem = "Abbott Ltd.";
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1: perform test for Account
+		
+	    //Step: open Accounts view then perform record search
+		commNav.clickGlobalMenuItem(entityType);
+	    commNav.searchListView(entityType, searchItem);
+	    
+	    //Step: open the Account record
+	    commNav.clickListViewItemN(entityType, 1);
+	    commNav.waitForPage(searchItem);
+	    
+	    //Step: open the Account Activities view
+	    String acctDetVwActivitiesXPath = "//*[@id='account_detail']/div[2]/ul[2]/li[1]/a/span";
+	    
+		//LEFT-OFF HERE (10/25/13)
+		//VP: check to see that HTML code (e.g. '<a NAME=TheBody>') is not displayed on the page
+	    String htmlCode = "<a NAME=TheBody>";
+		String resultsMsg = "VP: invalid HTML code was not present in the SpeedSearch results list";
+		try { if (!driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + htmlCode + "[\\s\\S]*$"))
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(e.toString());
+			System.out.println(resultsMsg + " - Failed");
+		}
+		
+		//END
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = false)
+	public void test09_MobileDefect_MBL10151() throws Exception {
+		//MBL-10144: Entity notes/history - where notes/history for multiple entities are viewed, the default notes/history filter for the first entity only is as expected
+		String methodID = "test09_MobileDefect_MBL10151";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
+		
+		//Test Params:
+		String entityType = "Accounts";
+	    String searchItem = "Abbott Ltd.";
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1: perform test for Account
+		
+	    //Step: open Accounts view then perform record search
+		commNav.clickGlobalMenuItem(entityType);
+	    commNav.searchListView(entityType, searchItem);
+	    
+	    //Step: open the Account record
+	    commNav.clickListViewItemN(entityType, 1);
+	    commNav.waitForPage(searchItem);
+	    
+	    //Step: open the Account Activities view
+	    String acctDetVwActivitiesXPath = "//*[@id='account_detail']/div[2]/ul[2]/li[1]/a/span";
+	    
+		//LEFT-OFF HERE (10/25/13)
 		//VP: check to see that HTML code (e.g. '<a NAME=TheBody>') is not displayed on the page
 	    String htmlCode = "<a NAME=TheBody>";
 		String resultsMsg = "VP: invalid HTML code was not present in the SpeedSearch results list";
