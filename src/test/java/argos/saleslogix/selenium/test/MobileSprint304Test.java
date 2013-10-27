@@ -213,7 +213,7 @@ public class MobileSprint304Test extends BrowserSetup {
 
 	@Test(enabled = false)
 	public void test03_MobileDefect_MBL10015() throws Exception {
-		//MBL-10015: Under My Activities, when scrolling/ loading next batch of records, seeing expected ‘loading’ message, plus unexpected ‘Retrieve More Records’ beneath
+		//MBL-10015: Under My Activities, when scrolling/ loading next batch of records, seeing expected ï¿½loadingï¿½ message, plus unexpected ï¿½Retrieve More Recordsï¿½ beneath
 		String methodID = "test03_MobileDefect_MBL10015";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -322,7 +322,7 @@ public class MobileSprint304Test extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test05_MobileDefect_MBL10137() throws Exception {
 		//MBL-10137: My Activities/entities - unexpectedly seeing #this-week hash tag displaying per scenario of scrolling, opening/closing an activity and contextual menu
 		String methodID = "test05_MobileDefect_MBL10137";
