@@ -2118,7 +2118,7 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test61_MobileDefect13092371()  throws Exception {
 		//tags: add account/contact, account manager, account owner
 		String methodID = "test61_MobileDefect13092371";
