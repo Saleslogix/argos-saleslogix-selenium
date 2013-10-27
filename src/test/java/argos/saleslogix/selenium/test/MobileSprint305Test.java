@@ -314,7 +314,7 @@ public class MobileSprint305Test extends BrowserSetup {
 						
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test03_MobileDefect_MBL10269() throws Exception {
 		String methodID = "test03_MobileDefect_MBL10269";
 		
@@ -332,6 +332,7 @@ public class MobileSprint305Test extends BrowserSetup {
 		//Step: select the alarm hash-tag filter item
 		commNav.rightClickContextMenuItem(hashTag);
 		Thread.sleep(3000);
+		//NOTE: Jenkins Server gets stuck at this point
 		
 		//Step: scroll-down to the "x records remaining" label
 		String recsRemainLblXPath = "//*[@id='myactivity_list']/div[3]/div";
