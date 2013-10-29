@@ -23,60 +23,64 @@ import org.openqa.selenium.support.PageFactory;
 public class MobileSprint304Test extends BrowserSetup {
 
 	@Test(enabled = true)
-	public void test00_Mobile_Login() throws InterruptedException {
-		String methodID = "test00_Mobile_Login";
+	public void test00_MobileClient_Login() throws InterruptedException {
+		//TODO: need to setup a method for Login() under CommonNavigation
+		String methodID = "test00_MobileClient_Login";
 		
 		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
 		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
-		//VP: the Mobile Login screen is loaded from base URL
-		for (int second = 0;; second++) {
-			if (second >= 60) AssertJUnit.fail("timeout");
-			try { if (fullProdName.equals(driver.findElement(By.id("pageTitle")).getText()))
-				System.out.println("VP: " + fullProdName + " - Mobile Client load check - Passed");
-				break; 
-			} catch (Exception e) {
-			System.out.println("Error: " + fullProdName + " - Mobile Client load check - FAILED");
-			}
-			Thread.sleep(1000);
-		}
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//VP: Page Title
+		//VP: the Mobile Login screen is loaded from base URL
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		commNav.waitForPage(fullProdName);
+		
+		//VP: Page Title (header text - not pagetitle property)
 		Thread.sleep(1000);
-		try { assertEquals(shortProdName, driver.getTitle());
+		try { 
+			AssertJUnit.assertEquals(shortProdName, driver.getTitle());
 			System.out.println("VP: Login Screen Title check - Passed");
-			} catch (Error e) {
+		} 
+		catch (Error e) {
 			System.out.println("Error: Login Screen Title check - FAILED");
 			verificationErrors.append(e.toString());
 		}
 		
 		//VP: Login Page Name
-		Thread.sleep(1000);
-		for (int second = 0;; second++) {
-			if (second >= 60) AssertJUnit.fail("timeout");
-			try { if (fullProdName.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
-			Thread.sleep(1000);
-		}		
+		Thread.sleep(1000);	
 		try {
-			assertEquals(fullProdName, driver.findElement(By.xpath("//*[@id='pageTitle']")).getText());
+			AssertJUnit.assertTrue(commNav.isPageDisplayed(fullProdName));
 			System.out.println("VP: Login Page Name check - Passed");
-			} catch (Error e) {
+		} 
+		catch (Error e) {
 			System.out.println("Error: Login Page Name check - FAILED");
 			verificationErrors.append(e.toString());
 		}
 		
-		//VP: Copyright Info...
+		//VP: product logo
 		try {
-			assertEquals(copyrightLabel, driver.findElement(By.xpath(".//*[@id='login']/span[1]")).getText());
+			AssertJUnit.assertTrue(commNav.isElementDisplayed(By.xpath(".//*[@id='login']/p/img")));
+			System.out.println("VP: 'saleslog!x' logo check  - Passed");
+		}
+		catch (Error e) {
+			System.out.println("Error: product logo check - FAILED");
+			verificationErrors.append(e.toString());
+		}		
+		
+		//VP: Copyright Info
+		try {
+			AssertJUnit.assertEquals(copyrightLabel, driver.findElement(By.xpath(".//*[@id='login']/span[1]")).getText());
 			System.out.println("VP: Copyright check - Passed");
-			} catch (Error e) {
+		} 
+		catch (Error e) {
 			System.out.println("Error: Copyright check - FAILED");
 			verificationErrors.append(e.toString());
 		}
 		try {
-			assertEquals(versionLabel, driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText());
+			AssertJUnit.assertEquals(versionLabel, driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText());
 			System.out.println("VP: Version Label check - Passed");
-			} catch (Error e) {
+		} 
+		catch (Error e) {
 			System.out.println("Error: Version Label check - FAILED");
 			verificationErrors.append(e.toString());
 		}
@@ -87,22 +91,24 @@ public class MobileSprint304Test extends BrowserSetup {
 		// VP: confirm that the 'My Activities' screen displays after login
 		Thread.sleep(3000);
 		try {
-			assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
+			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
 			System.out.println("VP: Successfully logged in to Mobile Client.");
-		} catch (Error e) {
-			closeAlert();
+		} catch (UnhandledAlertException e) {
+			//closeAlert();
+			closeModal();
+			//assertEquals("The user name or password is invalid.", closeAlertAndGetItsText());
 			System.out.println("Error: Unable to login to Mobile Client.");
 			System.out.println(e.toString());
 		}
 		System.out.println(ENDLINE);	
 	}
+
 	
 	@Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
@@ -433,132 +439,543 @@ public class MobileSprint304Test extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test07_MobileDefect_MBL10143() throws Exception {
 		//MBL-10143: Entity activities - where activities for multiple entities are viewed, the default activity filter for the first entity only is as expected
 		String methodID = "test07_MobileDefect_MBL10143";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
-		
-		//Test Params:
-		String entityType = "Accounts";
-	    String searchItem = "Abbott Ltd.";
-	
+			
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Section 1: perform test for Account
+		//Test vars:
+	    String hashTagXPath = "//*[@id='activity_related_search-expression']/descendant::*[text() = '#this-week']";
+	    String entityDetailViewLink = "Activities";
 		
-	    //Step: open Accounts view then perform record search
-		commNav.clickGlobalMenuItem(entityType);
-	    commNav.searchListView(entityType, searchItem);
-	    
-	    //Step: open the Account record
-	    commNav.clickListViewItemN(entityType, 1);
-	    commNav.waitForPage(searchItem);
+		//Section 1: perform test for Account Details, Activities List view	
+	    //Step: open the Account Detail view
+	    String entityType = "Accounts";
+	    String searchItem = "Abbott Ltd.";
+		commNav.entityRecordOpenDetailView(entityType, searchItem);
 	    
 	    //Step: open the Account Activities view
-	    String acctDetVwActivitiesXPath = "//*[@id='account_detail']/div[2]/ul[2]/li[1]/a/span";
+	    String acctDetVwActivitiesXPath = "//*[@id='account_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(acctDetVwActivitiesXPath)).click();
+	    commNav.waitForPage("Activities");
 	    
-		//LEFT-OFF HERE (10/25/13)
-		//VP: check to see that HTML code (e.g. '<a NAME=TheBody>') is not displayed on the page
-	    String htmlCode = "<a NAME=TheBody>";
-		String resultsMsg = "VP: invalid HTML code was not present in the SpeedSearch results list";
-		try { if (!driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + htmlCode + "[\\s\\S]*$"))
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(e.toString());
-			System.out.println(resultsMsg + " - Failed");
-		}
+	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
+	    String resultsMsg = "VP: #this-week hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    //Section 2: perform test for Contact Details, Activities List view
+	    //Step: open the Contact Detail view
+	    entityType = "Contacts";
+	    String contactName = "Abbott, John";
+	    commNav.entityRecordOpenDetailView(entityType, contactName);
+	    
+	    //Step: open the Contact Activities view
+	    String cntctDetVwActivitiesXPath = "//*[@id='contact_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(cntctDetVwActivitiesXPath)).click();
+	    commNav.waitForPage("Activities");
+	    
+	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
+	    resultsMsg = "VP: #this-week hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    //Section 3: perform test for Lead Details, Activities List view
+	    //Step: open the Lead Detail view
+	    entityType = "Leads";
+	    String leadSearch = "Anderson";	//Anderson, Aaron
+	    String leadName = "Anderson, Aaron";
+	    headerButton.showGlobalMenu();
+		commNav.clickGlobalMenuItem(entityType);
+		commNav.searchListView(entityType, leadSearch);
+		commNav.clickListViewItemN(entityType, 1);
+		commNav.waitForPage(leadName);
+	    
+	    //Step: open the Lead Activities view
+	    String leadDetVwActivitiesXPath = "//*[@id='lead_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(leadDetVwActivitiesXPath)).click();
+	    commNav.waitForPage("Activities");
+	    
+	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
+	    resultsMsg = "VP: #this-week hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    //Section 4: perform test for Opportunity Details, Activities List view
+	    //Step: open the Opportunity Detail view
+	    entityType = "Opportunities";
+	    String oppItem = "Abbott WorldWide-Phase I";
+		commNav.entityRecordOpenDetailView(entityType, oppItem);
+	    
+	    //Step: open the Lead Activities view
+	    String oppDetVwActivitiesXPath = "//*[@id='opportunity_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(oppDetVwActivitiesXPath)).click();
+	    commNav.waitForPage("Activities");
+	    
+	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
+	    resultsMsg = "VP: #this-week hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    //Section 5: perform test for Ticket Details, Activities List view
+	    //Step: open the Opportunity Detail view
+	    entityType = "Tickets";
+	    String tktItem = "001-00-000102";
+		commNav.entityRecordOpenDetailView(entityType, tktItem);
+	    
+	    //Step: open the Lead Activities view
+	    String tktDetVwActivitiesXPath = "//*[@id='ticket_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(tktDetVwActivitiesXPath)).click();
+	    commNav.waitForPage("Activities");
+	    
+	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
+	    resultsMsg = "VP: #this-week hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
 		
 		//END
+	    commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = false)
+
+	@Test(enabled = true)
 	public void test08_MobileDefect_MBL10144() throws Exception {
 		//MBL-10144: Entity notes/history - where notes/history for multiple entities are viewed, the default notes/history filter for the first entity only is as expected
 		String methodID = "test08_MobileDefect_MBL10144";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
-		
-		//Test Params:
-		String entityType = "Accounts";
-	    String searchItem = "Abbott Ltd.";
-	
+			
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Section 1: perform test for Account
+		//Test vars:
+	    String hashTagXPath = "//*[@id='history_related_search-expression']/descendant::*[text() = '#my-history']";
+	    String entityDetailViewLink = "Notes/History";
+	    String hashTag = "#my-history";
 		
-	    //Step: open Accounts view then perform record search
-		commNav.clickGlobalMenuItem(entityType);
-	    commNav.searchListView(entityType, searchItem);
-	    
-	    //Step: open the Account record
-	    commNav.clickListViewItemN(entityType, 1);
-	    commNav.waitForPage(searchItem);
+		//Section 1: perform test for Account Details, Activities List view	
+	    //Step: open the Account Detail view
+	    String entityType = "Accounts";
+	    String searchItem = "Abbott Ltd.";
+		commNav.entityRecordOpenDetailView(entityType, searchItem);
 	    
 	    //Step: open the Account Activities view
-	    String acctDetVwActivitiesXPath = "//*[@id='account_detail']/div[2]/ul[2]/li[1]/a/span";
+	    String acctDetVwActivitiesXPath = "//*[@id='account_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(acctDetVwActivitiesXPath)).click();
+	    commNav.waitForPage(entityDetailViewLink);
 	    
-		//LEFT-OFF HERE (10/25/13)
-		//VP: check to see that HTML code (e.g. '<a NAME=TheBody>') is not displayed on the page
-	    String htmlCode = "<a NAME=TheBody>";
-		String resultsMsg = "VP: invalid HTML code was not present in the SpeedSearch results list";
-		try { if (!driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + htmlCode + "[\\s\\S]*$"))
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(e.toString());
-			System.out.println(resultsMsg + " - Failed");
-		}
+	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
+	    String resultsMsg = "VP: " + hashTag + " hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    //Section 2: perform test for Contact Details, Activities List view
+	    //Step: open the Contact Detail view
+	    entityType = "Contacts";
+	    String contactName = "Abbott, John";
+	    commNav.entityRecordOpenDetailView(entityType, contactName);
+	    
+	    //Step: open the Contact Activities view
+	    String cntctDetVwActivitiesXPath = "//*[@id='contact_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(cntctDetVwActivitiesXPath)).click();
+	    commNav.waitForPage(entityDetailViewLink);
+	    
+	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
+	    resultsMsg = "VP: " + hashTag + " hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    //Section 3: perform test for Lead Details, Activities List view
+	    //Step: open the Lead Detail view
+	    entityType = "Leads";
+	    String leadName = "Anderson, Aaron";
+	    commNav.entityRecordOpenDetailView(entityType, leadName);
+	    
+	    //Step: open the Lead Activities view
+	    String leadDetVwActivitiesXPath = "//*[@id='lead_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(leadDetVwActivitiesXPath)).click();
+	    commNav.waitForPage(entityDetailViewLink);
+	    
+	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
+	    resultsMsg = "VP: " + hashTag + " hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    //Section 4: perform test for Opportunity Details, Activities List view
+	    //Step: open the Opportunity Detail view
+	    entityType = "Opportunities";
+	    String oppItem = "Abbott WorldWide-Phase I";
+		commNav.entityRecordOpenDetailView(entityType, oppItem);
+	    
+	    //Step: open the Lead Activities view
+	    String oppDetVwActivitiesXPath = "//*[@id='opportunity_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(oppDetVwActivitiesXPath)).click();
+	    commNav.waitForPage(entityDetailViewLink);
+	    
+	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
+	    resultsMsg = "VP: " + hashTag + " hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }	    
 		
 		//END
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = false)
-	public void test09_MobileDefect_MBL10151() throws Exception {
-		//MBL-10144: Entity notes/history - where notes/history for multiple entities are viewed, the default notes/history filter for the first entity only is as expected
-		String methodID = "test09_MobileDefect_MBL10151";
+	@Test(enabled = true)
+	public void test09_MobileDefect_MBL10160() throws Exception {
+		//MBL-10160: Entity Opportunities - where opportunities for multiple entities are viewed, the default opportunities filter for the first entity only is as expected
+		String methodID = "test09_MobileDefect_MBL10160";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
-		
-		//Test Params:
-		String entityType = "Accounts";
-	    String searchItem = "Abbott Ltd.";
-	
+			
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Section 1: perform test for Account
+		//Test vars:
+	    String hashTagXPath = "//*[@id='opportunity_related_search-expression']/descendant::*[text() = '#my-opportunities']";
+	    String entityDetailViewLink = "Opportunities";
+	    String hashTag = "#my-opportunities";
 		
-	    //Step: open Accounts view then perform record search
-		commNav.clickGlobalMenuItem(entityType);
-	    commNav.searchListView(entityType, searchItem);
-	    
-	    //Step: open the Account record
-	    commNav.clickListViewItemN(entityType, 1);
-	    commNav.waitForPage(searchItem);
+		//Section 1: perform test for Account Details, Activities List view	
+	    //Step: open the Account Detail view
+	    String entityType = "Accounts";
+	    String searchItem = "Abbott Ltd.";
+		commNav.entityRecordOpenDetailView(entityType, searchItem);
 	    
 	    //Step: open the Account Activities view
-	    String acctDetVwActivitiesXPath = "//*[@id='account_detail']/div[2]/ul[2]/li[1]/a/span";
+	    String acctDetVwActivitiesXPath = "//*[@id='account_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(acctDetVwActivitiesXPath)).click();
+	    commNav.waitForPage(entityDetailViewLink);
 	    
-		//LEFT-OFF HERE (10/25/13)
-		//VP: check to see that HTML code (e.g. '<a NAME=TheBody>') is not displayed on the page
-	    String htmlCode = "<a NAME=TheBody>";
-		String resultsMsg = "VP: invalid HTML code was not present in the SpeedSearch results list";
-		try { if (!driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + htmlCode + "[\\s\\S]*$"))
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(e.toString());
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
+	    //VP: check to see that the '#my-opportunities' hash-tag is displayed/applied
+	    String resultsMsg = "VP: " + hashTag + " hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    //Section 2: perform test for Contact Details, Activities List view
+	    //Step: open the Contact Detail view
+	    entityType = "Contacts";
+	    String contactName = "Abbott, John";
+	    commNav.entityRecordOpenDetailView(entityType, contactName);
+	    
+	    //Step: open the Contact Activities view
+	    String cntctDetVwActivitiesXPath = "//*[@id='contact_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(cntctDetVwActivitiesXPath)).click();
+	    commNav.waitForPage(entityDetailViewLink);
+	    
+	    //VP: check to see that the '#my-opportunitie' hash-tag is displayed/applied
+	    resultsMsg = "VP: " + hashTag + " hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
 		//END
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test10_MobileDefect_MBL10166() throws Exception {
+		//MBL-10160: Entity Opportunities - where opportunities for multiple entities are viewed, the default opportunities filter for the first entity only is as expected
+		String methodID = "test10_MobileDefect_MBL10166";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);	
+			
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+			
+	    //Step: perform SpeedSearch then open a target results record
+		//Note: the target results record to open must have an empty Completed By field
+	    String searchItem = "Sophia Perez";
+	    String recordItem = "Database Change (2012_10_13)";
+	    
+	    commNav.goToSpeedSearchResultDetailView(searchItem, recordItem);
+		
+	    //VP: check to see that the History detail page is successfully loaded (when the Completed By field is empty)
+	    String resultsMsg = "VP: History Detail page was successfully loaded";
+	    try {
+	    	AssertJUnit.assertTrue(commNav.waitForPage("History"));
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+		//END
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test11_MobileDefect_MBL10172() throws Exception {
+		//MBL-10172: Mobile - Ticket Activities : elapsed hours not displaying as it does in web client (16 dec positions versus 2) [DTS 13091638]
+		String methodID = "test11_MobileDefect_MBL10172";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);	
+			
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+					
+	    //Step: open the Ticket Detail view
+	    String entityType = "Tickets";
+	    String tktItem = "001-00-000017";
+	    String entityDetailViewLink = "Ticket Activities";
+		commNav.entityRecordOpenDetailView(entityType, tktItem);
+	    
+	    //Step: open the Ticket Activities view
+	    String tktDetVwActivitiesXPath = "//*[@id='ticket_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(tktDetVwActivitiesXPath)).click();
+	    commNav.waitForPage(entityDetailViewLink);
+	    
+	    //Step: perform a Ticket Activity search
+	    String searchItem = "Customer follow up to check on new units";
+	    WebElement searchFld = driver.findElement(By.name("query"));
+	    WebElement lookupBtn = driver.findElement(By.xpath("//div[3]/button"));
+	    searchFld.clear();
+	    searchFld.sendKeys(searchItem);
+	    lookupBtn.click();
+	    Thread.sleep(2000);
+	    
+	    //Step: click to open the Ticket Activity record
+	    WebElement tktListItem = driver.findElement(By.xpath("//*[@id='ticketactivity_related']/ul/li"));
+	    tktListItem.click();
+	    commNav.waitForNotPage(entityDetailViewLink);
+	    
+	    //Step: expand the More Details link
+	    WebElement moreDetailsLnk = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/descendant::*[text() = 'More Details']"));
+	    moreDetailsLnk.click();
+	    
+	    //VP: check to see that the Elapsed Hours field is not equal to 0.0333333333333333
+	    String txt2Chk = "0.0333333333333333";
+	    String resultsMsg = "VP: The Elapsed Hours field value is not equal to " + txt2Chk;
+	    try {
+		    WebElement elapsedHrsFld = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/div[2]/div[2]/div[2]"));
+		    String elapsedHrsVal = elapsedHrsFld.getText();
+	    	AssertJUnit.assertFalse(elapsedHrsVal.equals("elapsed hours" + txt2Chk));
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Exception e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+		//END
+	    commNav.clickGlobalMenuItem("My Activities");
+		System.out.println(ENDLINE);
+	}
+
+
+	@Test(enabled = true)
+	public void test12_MobileDefect_MBL10185() throws Exception {
+		//Edit Ticket Activity view : displaying 'yyyy' and 'tt' instead of the expected 4 digit year and AM/ PM respectively
+		String methodID = "test12_MobileDefect_MBL10185";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+			
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+					
+	    //Step: open the Ticket Detail view
+	    String entityType = "Tickets";
+	    String tktItem = "001-00-000026";
+	    String entityDetailViewLink = "Ticket Activities";
+		commNav.entityRecordOpenDetailView(entityType, tktItem);
+	    
+		//Step: click the Ticket Activities List view
+	    String tktDetVwActivitiesXPath = "//*[@id='ticket_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(tktDetVwActivitiesXPath)).click();
+	    commNav.waitForPage(entityDetailViewLink);
+	    
+	    //Step: click the top Ticket Activity item to open it's Detail view
+	    WebElement tktListItem = driver.findElement(By.xpath("//*[@id='ticketactivity_related']/ul/li/div[1]/h3"));
+	    tktListItem.click();
+	    commNav.waitForNotPage(entityDetailViewLink);
+	    
+	    //Step: enter the Edit view of the Ticket Activity record
+	    headerButton.clickHeaderButton("Edit");
+	    commNav.waitForPage("Edit Ticket Activity");
+	    
+	    //VP: check to see that 'yyyy' does not appear as a value for Year labels in the Start/End Date fields
+	    String txt2Chk = "yyyy";
+	    String resultsMsg = "VP: The Start & End Date field values do not contain '" + txt2Chk + "' for the Year labels";
+	    try {
+	    	AssertJUnit.assertTrue(commNav.isTextNotPresentOnPage(txt2Chk));
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Exception e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    //VP: check to see that 'tt' does not appear as a value for the AM/PM labels in the Start/End Date fields
+	    txt2Chk = "tt";
+	    resultsMsg = "VP: The Start & End Date field values do not contain '" + txt2Chk + "' for the AM/PM labels";
+	    try {
+	    	AssertJUnit.assertTrue(commNav.isTextNotPresentOnPage(txt2Chk));
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Exception e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+		//END
+	    commNav.clickGlobalMenuItem("My Activities");
+		System.out.println(ENDLINE);
+	}
+
+
+	@Test(enabled = false)
+	public void test13_MobileDefect_MBL10186() throws Exception {
+		//MBL-10186: Activity Work Phone
+		String methodID = "test13_MobileDefect_MBL10186";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+			
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Section 1: test the Account-based scenario
+	    //Step: open the Account Detail view
+	    String entityType = "Accounts";
+	    String searchItem = "Abbott Ltd.";
+		commNav.entityRecordOpenDetailView(entityType, searchItem);
+		
+		//Step: capture the phone number from the Account Detail view
+		String acctDetVwPhoneFldXPath = "//*[@id='account_detail']/div[2]/ul[1]/li[1]/a/span";
+		String acctDetVwPhoneNum = driver.findElement(By.xpath(acctDetVwPhoneFldXPath)).getText();
+		
+	    //Step: schedule an activity from an Account Detail view
+		String entityDetailViewLink = "Schedule activity";
+	    String acctDetVwSchedActivityXPath = "//*[@id='account_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(acctDetVwSchedActivityXPath)).click();
+	    commNav.waitForPage("Schedule...");
+	    
+	    String actyType = "Meeting";
+	    String actyTypeLinkXPath = ".//*[@id='activity_types_list']/descendant::*[text() = '" + actyType + "']";
+	    driver.findElement(By.xpath(actyTypeLinkXPath)).click();
+	    commNav.waitForPage(actyType);
+	    
+	    String actyEditViewPhoneFldCSS = "input[name='PhoneNumber']";
+	    String actyEditViewPhoneFldVal = driver.findElement(By.cssSelector(actyEditViewPhoneFldCSS)).getAttribute("value");
+	    
+	    //VP: check to see that the phone number value in the Activity Insert/Edit matches the assoicated Acccount 
+	    String resultsMsg = "VP: The Phone Number in the Activity Edit view matches that of the accociated Account record";
+	    try {
+	    	AssertJUnit.assertTrue(actyEditViewPhoneFldVal.equals(acctDetVwPhoneNum));
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Exception e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    System.out.println("");
+	    
+		//Section 2: test the Contact-based scenario
+	    //Step: open the Contact Detail view
+	    entityType = "Contacts";
+	    searchItem = "Abbott, John";
+		commNav.entityRecordOpenDetailView(entityType, searchItem);
+		
+		//Step: capture the phone number from the Contact Detail view
+		String cntctDetVwPhoneFldXPath = "//*[@id='contact_detail']/div[2]/ul[1]/li[1]/a/span";
+		String cntctDetVwPhoneNum = driver.findElement(By.xpath(acctDetVwPhoneFldXPath)).getText();
+		
+	    //Step: schedule an activity from an Account Detail view
+		entityDetailViewLink = "Schedule activity";
+	    String cntctDetVwSchedActivityXPath = "//*[@id='contact_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(cntctDetVwSchedActivityXPath)).click();
+	    commNav.waitForPage("Schedule...");
+	    
+	    actyType = "Meeting";
+	    actyTypeLinkXPath = ".//*[@id='activity_types_list']/descendant::*[text() = '" + actyType + "']";
+	    driver.findElement(By.xpath(actyTypeLinkXPath)).click();
+	    commNav.waitForPage(actyType);
+	    
+	    //String actyEditViewPhoneFldCSS = "input[name='PhoneNumber']";
+	    //String actyEditViewPhoneFldVal = driver.findElement(By.cssSelector(actyEditViewPhoneFldCSS)).getAttribute("value");
+	    
+	    //VP: check to see that the phone number value in the Activity Insert/Edit matches the assoicated Acccount 
+	    resultsMsg = "VP: The Phone Number in the Activity Edit view matches that of the accociated Contact record";
+	    try {
+	    	AssertJUnit.assertTrue(actyEditViewPhoneFldVal.equals(acctDetVwPhoneNum));
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Exception e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+		//END
+	    commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 }

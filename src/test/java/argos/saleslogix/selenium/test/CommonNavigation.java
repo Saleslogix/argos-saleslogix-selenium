@@ -650,12 +650,23 @@ public class CommonNavigation {
 		case "my attachments": case "attachments": case "attachment":
 			itemList = "attachment_list";
 			break;	
+		case "speedsearch": case "speed search":
+			itemList = "speedsearch_list";
+			break;
 		//TODO: continue to expand this switch case list for additional list views
 		}
 		
 		//perform the list view item click
+		String srchItemXPath = "";
+		if (!listName.toLowerCase().contains("speed")) {
+			srchItemXPath = "//*[@id='" + itemList + "']/ul/li[" + itemIndex + "]/div/h3";	
+		}
+		else {
+			srchItemXPath = ".//*[@id='" + itemList + "']/ul/li[" + itemIndex + "]/div[3]/h4";
+		}
+		
 		try {
-			driver.findElement(By.xpath(".//*[@id='" + itemList + "']/ul/li[" + itemIndex + "]/div/h3")).click();
+			driver.findElement(By.xpath(srchItemXPath)).click();
 			System.out.println(methodID + ": clicking '" + itemIndex + "th item ' from the " + listName + " List View...");
 		} catch (Exception e) {
 			System.out.println("Error: Unable to click the '" + itemIndex + "th' item from the " + listName + " List View.");
@@ -867,7 +878,14 @@ public class CommonNavigation {
 		return checkResult;
 	}
 
-
+	/**
+	 * This method will search for a given entity record and return the resulting entity List view.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	entityType	entity type to search for
+	 * @param	entityName	entity record name to search for
+	 * @exception Exception
+	 */	
 	public WebElement entityListViewSearch(String entityType, String entityName) throws Exception {
 		String methodID = "entityListViewSearch";
 		
@@ -1132,7 +1150,23 @@ public class CommonNavigation {
 			System.out.println(methodID + ": un-expected 'no records' search result for '" + entityName + "' " + entityType + "; test aborted.");
 			return null;
 		}
-	}	
+	}
+	
+	/**
+	 * This method will perform a SpeedSearch for a given search item string.
+	 * This method is a wrapper method for searchListView().
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	searchItem	item to search for
+	 * @exception InterruptedException
+	 */	
+	public void doSpeedSearch(String searchItem) throws InterruptedException {
+		String methodID = "doSpeedSearch";
+		
+		String searchType = "SpeedSearch";
+		searchListView(searchType, searchItem);
+		
+	}
 	
 	public boolean entityListViewNegativeSearch(String entityType, String entityName) throws Exception {
 		String methodID = "entityListViewNegativeSearch";
@@ -1161,7 +1195,15 @@ public class CommonNavigation {
 		}		
 	}
 	
-	
+	/**
+	 * This method will search for then open the entity Detail view of a given record.
+	 * This method first calls the entityListViewSearch() method to find the target WebElement.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	entityType	entity type to search for
+	 * @param	entityItem	item to search for
+	 * @exception Exception
+	 */	
 	public boolean entityRecordOpenDetailView(String entityType, String entityName) throws Exception {
 		String methodID = "entityRecordOpenDetailView";
 		
@@ -1240,6 +1282,20 @@ public class CommonNavigation {
 			System.out.println(methodID + ": search for " + entityType + " - " + "'" + entityName + "'; step aborted.");
 			return false;
 		}
+	}
+	
+	public void goToSpeedSearchResultDetailView(String searchItem, String recordToOpen)  throws InterruptedException {
+		String methodID = "goToSpeedSearchResultDetailView";
+		
+		//perform SpeedSearch on the target item
+		doSpeedSearch(searchItem);
+		
+		String targetSpdSearchResultXPath = "//*[@id='speedsearch_list']/descendant::*[text() = '" + recordToOpen + "'][1]";
+		
+		//open the top matching search result from the List view 
+		clickListViewGridItem(By.xpath(targetSpdSearchResultXPath));
+		waitForNotPage("SpeedSearch");
+			
 	}
 	
 	public void highlightElement(WebElement wElement) throws InterruptedException {
