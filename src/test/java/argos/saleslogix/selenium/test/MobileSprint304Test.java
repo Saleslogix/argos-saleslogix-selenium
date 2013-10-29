@@ -978,4 +978,86 @@ public class MobileSprint304Test extends BrowserSetup {
 	    commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
+
+
+	@Test(enabled = false)
+	public void test14_MobileDefect_MBL10192() throws Exception {
+		//MBL-10192: Listviews - after an item is added to a listview, then edited, the default filter does display above the list, but it is not in effect
+		String methodID = "test14_MobileDefect_MBL10192";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+			
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Test vars:
+	    String hashTagXPath = "//*[@id='activity_related_search-expression']/descendant::*[text() = '#this-week']";
+	    String entityDetailViewLink = "Activities";
+	    String actType = "Meeting";
+	    String regardingVal = "Demonstration";
+		
+		//Section 1: perform test for Account Details, Activities List view	
+	    //Step: open the Account Detail view
+	    String entityType = "Accounts";
+	    String searchItem = "Abbott Ltd.";
+		commNav.entityRecordOpenDetailView(entityType, searchItem);
+	    
+	    //Step: open the Account Activities view
+	    String acctDetVwActivitiesXPath = "//*[@id='account_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+	    driver.findElement(By.xpath(acctDetVwActivitiesXPath)).click();
+	    commNav.waitForPage(entityDetailViewLink);
+	    
+	    //Step: add an Account Activity item
+	    headerButton.clickHeaderButton("add");
+		try {
+			AssertJUnit.assertTrue(commNav.waitForPage("Schedule..."));
+			
+			//TODO: create a separate class for scheduling activities...
+			//SubStep: set the Activity Type...
+			driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = '" + actType + "']")).click();
+			commNav.waitForPage(actType);
+		    
+			//SubStep: setup the activity...
+			//NOTE: here we just set the value of the input text field; selecting a Regarding value is not supported by Se WebDriver
+			String regardingFldXPath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input";
+			driver.findElement(By.xpath(regardingFldXPath)).clear();
+			driver.findElement(By.xpath(regardingFldXPath)).sendKeys(regardingVal);
+		    
+		    //SubStep: leave all other Activity fields set to their defaults...
+			
+		    //Step: click the Header, Save button to return to Contact detail view...
+		    headerButton.clickHeaderButton("save");
+		    Thread.sleep(5000);
+		    commNav.waitForPage(entityDetailViewLink);
+		}
+		catch (Exception e) {
+			System.out.println("VP: The Schedule view was not displayed; test aborted.");
+		}
+	    
+		//Step: find and re-open the scheduled Activity
+		MyActivityViewsElements activitiesList = PageFactory.initElements(driver, MyActivityViewsElements.class);		
+				
+		activitiesList.performRelActivitiesSearch(regardingVal);
+		activitiesList.selectRelatedActivityListItem(regardingVal);
+		
+		
+	    
+	    //OLD
+	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
+	    String resultsMsg = "VP: #this-week hash-tag is applied to the " + entityType + ", Activities List view";
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.xpath(hashTagXPath)).isDisplayed());
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }
+	    
+	    System.out.println("");
+	    	    
+		//END
+	    commNav.clickGlobalMenuItem("My Activities");
+		System.out.println(ENDLINE);
+	}
 }

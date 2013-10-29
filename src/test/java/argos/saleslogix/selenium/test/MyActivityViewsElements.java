@@ -32,6 +32,14 @@ public class MyActivityViewsElements extends BrowserSetup {
 	WebElement myActivitiesListView;
 	
 	@CacheLookup
+	@FindBy(xpath = "//*[@id='activity_related_search-expression']")
+	WebElement relatedActivitiesListViewHeader;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='activity_related']")
+	WebElement relatedActivitiesListView;	
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']/ul/li[1]")
 	WebElement topMyActivitiesListItem;
 	
@@ -147,6 +155,18 @@ public class MyActivityViewsElements extends BrowserSetup {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[3]/button")
 	WebElement myActivitiesSearchLookupBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_25']/div/div[1]/input")
+	WebElement relatedActivitiesSearchTxtBox;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_25']/div/div[2]/button")
+	WebElement relatedActivitiesSearchClearBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_25']/div/div[3]/button")
+	WebElement relatedActivitiesSearchLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
@@ -375,6 +395,24 @@ public class MyActivityViewsElements extends BrowserSetup {
 		return myActivitiesLisViewInfo.getText();		
 	}
 	
+	public void performMyActivitiesSearch(String regarding) throws InterruptedException {
+		String methodID = "performMyActivitiesSearch";
+		
+		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class); 
+				
+		//Step: execute a filter-free search
+		headerButton.showRightContextMenu();
+		activitiesListView.myActivitiesSearchTxtBox.click();
+		Thread.sleep(500);
+		activitiesListView.myActivitiesSearchClearBtn.click();
+		Thread.sleep(1000);
+		activitiesListView.myActivitiesSearchTxtBox.sendKeys(regarding);
+		Thread.sleep(500);
+		activitiesListView.myActivitiesSearchLookupBtn.click();
+		Thread.sleep(3000);
+	}
+	
 	public void performNoFilterSearch() throws InterruptedException {
 		String methodID = "performNoFilterSearch";
 		
@@ -389,6 +427,43 @@ public class MyActivityViewsElements extends BrowserSetup {
 		Thread.sleep(1000);
 		activitiesListView.myActivitiesSearchLookupBtn.click();
 		Thread.sleep(3000);
+	}
+	
+	public void performRelActivitiesSearch(String regarding) throws InterruptedException {
+		String methodID = "performRelActivitiesSearch";
+		
+		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class); 
+				
+		//Step: execute a Related Activities search
+		headerButton.showRightContextMenu();
+		activitiesListView.relatedActivitiesSearchTxtBox.click();
+		Thread.sleep(500);
+		activitiesListView.relatedActivitiesSearchClearBtn.click();
+		Thread.sleep(1000);
+		activitiesListView.relatedActivitiesSearchTxtBox.sendKeys(regarding);
+		Thread.sleep(500);
+		activitiesListView.relatedActivitiesSearchLookupBtn.click();
+		Thread.sleep(3000);
+	}
+	
+	public void selectRelatedActivityListItem(String regarding) {
+		String methodID = "selectRelatedActivityListItem";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+
+		try {
+			WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='activity_related']/descendant::*[text() = '" + regarding + "']"));
+			System.out.println(methodID + ": successfully found, selected and clicked the '" + regarding + "' related Activity List item");
+			commNav.highlightNClick(activityItemLnk);
+			commNav.waitForNotPage("Activities");
+		}
+		catch (Exception e) {
+			System.out.println(e.toString());
+			System.out.println(methodID + ": unable to find the '" + regarding + "' related Activity List item");
+		}
+			
 	}
 	
 	
