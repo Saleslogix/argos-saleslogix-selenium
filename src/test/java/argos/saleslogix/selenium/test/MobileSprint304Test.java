@@ -832,7 +832,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	}
 
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test12_MobileDefect_MBL10185() throws Exception {
 		//Edit Ticket Activity view : displaying 'yyyy' and 'tt' instead of the expected 4 digit year and AM/ PM respectively
 		String methodID = "test12_MobileDefect_MBL10185";
