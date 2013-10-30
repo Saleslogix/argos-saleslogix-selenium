@@ -832,7 +832,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	}
 
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test12_MobileDefect_MBL10185() throws Exception {
 		//Edit Ticket Activity view : displaying 'yyyy' and 'tt' instead of the expected 4 digit year and AM/ PM respectively
 		String methodID = "test12_MobileDefect_MBL10185";
@@ -892,7 +892,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	}
 
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test13_MobileDefect_MBL10186() throws Exception {
 		//MBL-10186: Activity Work Phone
 		String methodID = "test13_MobileDefect_MBL10186";
@@ -979,8 +979,9 @@ public class MobileSprint304Test extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-
-	@Test(enabled = false)
+	
+	//TODO: setup additional test methods for notes/history, contacts, leads, opps. & tickets list views
+	@Test(enabled = true)
 	public void test14_MobileDefect_MBL10192() throws Exception {
 		//MBL-10192: Listviews - after an item is added to a listview, then edited, the default filter does display above the list, but it is not in effect
 		String methodID = "test14_MobileDefect_MBL10192";
@@ -996,7 +997,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    String actType = "Meeting";
 	    String regardingVal = "Demonstration";
 		
-		//Section 1: perform test for Account Details, Activities List view	
+		//Section 1:	
 	    //Step: open the Account Detail view
 	    String entityType = "Accounts";
 	    String searchItem = "Abbott Ltd.";
@@ -1019,7 +1020,8 @@ public class MobileSprint304Test extends BrowserSetup {
 		    
 			//SubStep: setup the activity...
 			//NOTE: here we just set the value of the input text field; selecting a Regarding value is not supported by Se WebDriver
-			String regardingFldXPath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input";
+			String regardingFldXPath = "//div[2]/div/input";
+			driver.findElement(By.xpath(regardingFldXPath)).click();
 			driver.findElement(By.xpath(regardingFldXPath)).clear();
 			driver.findElement(By.xpath(regardingFldXPath)).sendKeys(regardingVal);
 		    
@@ -1034,15 +1036,41 @@ public class MobileSprint304Test extends BrowserSetup {
 			System.out.println("VP: The Schedule view was not displayed; test aborted.");
 		}
 	    
-		//Step: find and re-open the scheduled Activity
+		//Section 2:
+		//Step: capture the current Activities List view text
 		MyActivityViewsElements activitiesList = PageFactory.initElements(driver, MyActivityViewsElements.class);		
-				
+		
+		String initActivityListViewTxt = activitiesList.getRelatedActivitiesListViewTxt();
+		
+		//Step: find and re-open the scheduled Activity
 		activitiesList.performRelActivitiesSearch(regardingVal);
-		activitiesList.selectRelatedActivityListItem(regardingVal);
+		activitiesList.selectNOpenRelatedActivityListItem(regardingVal);
 		
+		//Step: edit the Activity record
+		headerButton.clickHeaderButton("edit");
+		commNav.waitForPage("Activity");
 		
-	    
-	    //OLD
+		//Step: modify and save the Activity
+		WebElement actyEditLocationFld = driver.findElement(By.cssSelector("input[name='Location']"));
+		String modLocVal = "secret, un-disclosed location";
+		actyEditLocationFld.click();
+		actyEditLocationFld.sendKeys(modLocVal);
+		
+		headerButton.clickHeaderButton("save");
+		commNav.waitForNotPage("Activity");
+		
+		//Section 3:
+		//Step: navigate back to the Activities List view
+		headerButton.clickHeaderButton("back");
+		commNav.waitForPage("Activities");
+		
+		//Step: capture the current Activities List view text
+		commNav.rightClickContextMenuItem("this-week");
+		Thread.sleep(5000);
+		activitiesList = PageFactory.initElements(driver, MyActivityViewsElements.class);		
+		
+		String nextActivityListViewTxt = activitiesList.getRelatedActivitiesListViewTxt();
+		
 	    //VP: check to see that the '#this-week' hash-tag is displayed/applied
 	    String resultsMsg = "VP: #this-week hash-tag is applied to the " + entityType + ", Activities List view";
 	    try {
@@ -1053,6 +1081,17 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
+	    
+	    //VP: check to see that the current Activities List view matches the initially captured view
+	    resultsMsg = "VP: the current Activity List view results are appplicable to the '#this-week' hash-tag filter";
+	    try {
+	    	AssertJUnit.assertTrue(initActivityListViewTxt.equals(nextActivityListViewTxt));
+	    	System.out.println(resultsMsg + " - Passed");
+	    }
+	    catch (Error e) {
+	    	System.out.println(e.toString());
+	    	System.out.println(resultsMsg + " - Failed");
+	    }	    
 	    
 	    System.out.println("");
 	    	    

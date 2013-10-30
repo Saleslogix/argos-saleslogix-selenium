@@ -387,6 +387,12 @@ public class MyActivityViewsElements extends BrowserSetup {
 	
 	//Methods
 	//-------
+	/**
+	 * This method will return a string that consists of all the activity items displayed on the first
+	 * page of the My Activities List view.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 */
 	public String getMyActivitiesListViewTxt() {
 		String methodID = "getMyActivitiesListViewTxt";
 		
@@ -395,6 +401,30 @@ public class MyActivityViewsElements extends BrowserSetup {
 		return myActivitiesLisViewInfo.getText();		
 	}
 	
+	
+	/**
+	 * This method will return a string that consists of all the activity items displayed on the first
+	 * page of the Activities (related) List view.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 */
+	public String getRelatedActivitiesListViewTxt() {
+		String methodID = "getRelatedActivitiesListViewTxt";
+		
+		WebElement relActivitiesLisViewInfo = driver.findElement(By.xpath("//*[@id='activity_related']/ul"));
+		
+		return relActivitiesLisViewInfo.getText();		
+	}
+	
+	
+	/**
+	 * This method will perform a search for an activity record (using the regarding field value) from the 
+	 * My Activities List view.  The resulting activity search is displayed.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	regarding	the target Activity's regarding field value
+	 * @exception InterruptedException
+	 */
 	public void performMyActivitiesSearch(String regarding) throws InterruptedException {
 		String methodID = "performMyActivitiesSearch";
 		
@@ -413,6 +443,14 @@ public class MyActivityViewsElements extends BrowserSetup {
 		Thread.sleep(3000);
 	}
 	
+	
+	/**
+	 * This method will perform a "filter-less" search (no hash-tag & no search string) on the My Activities 
+	 * List view.  The resulting activity search is displayed.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @exception InterruptedException
+	 */
 	public void performNoFilterSearch() throws InterruptedException {
 		String methodID = "performNoFilterSearch";
 		
@@ -429,6 +467,15 @@ public class MyActivityViewsElements extends BrowserSetup {
 		Thread.sleep(3000);
 	}
 	
+	
+	/**
+	 * This method will perform a search for an activity record (using the regarding field value) from the 
+	 * Activities (related) List view.  The resulting activity search is displayed.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	regarding	the target Activity's regarding field value
+	 * @exception InterruptedException
+	 */
 	public void performRelActivitiesSearch(String regarding) throws InterruptedException {
 		String methodID = "performRelActivitiesSearch";
 		
@@ -447,14 +494,51 @@ public class MyActivityViewsElements extends BrowserSetup {
 		Thread.sleep(3000);
 	}
 	
-	public void selectRelatedActivityListItem(String regarding) {
+	
+	/**
+	 * This method will search for an activity record (using the regarding field value) from the 
+	 * current Activities (related) List view.  The selected activity record item is open such that
+	 * the Activity Detail view is opened.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	regarding	the target Activity's regarding field value
+	 * @exception InterruptedException
+	 */
+	public void selectNOpenMyActivitiesListItem(String regarding) {
+		String methodID = "selectNOpenMyActivitiesListItem";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+
+		try {
+			WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']/ul/li[1]/descendant::*[text() = '" + regarding + "']"));
+			System.out.println(methodID + ": successfully found, selected and clicked the '" + regarding + "' My Activities List item");
+			commNav.highlightNClick(activityItemLnk);
+			commNav.waitForNotPage("Activities");
+		}
+		catch (Exception e) {
+			System.out.println(e.toString());
+			System.out.println(methodID + ": unable to find the '" + regarding + "' My Activities List item");
+		}
+			
+	}
+	
+	
+	/**
+	 * This method will search for an activity record (using the regarding field value) from the 
+	 * current My Activities List view.  The selected activity record item is open such that
+	 * the Activity Detail view is opened.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	regarding	the target Activity's regarding field value
+	 * @exception InterruptedException
+	 */
+	public void selectNOpenRelatedActivityListItem(String regarding) {
 		String methodID = "selectRelatedActivityListItem";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
 
 		try {
-			WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='activity_related']/descendant::*[text() = '" + regarding + "']"));
+			WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='activity_related']/ul/li[1]/descendant::*[text() = '" + regarding + "']"));
 			System.out.println(methodID + ": successfully found, selected and clicked the '" + regarding + "' related Activity List item");
 			commNav.highlightNClick(activityItemLnk);
 			commNav.waitForNotPage("Activities");
