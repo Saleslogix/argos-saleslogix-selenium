@@ -3,6 +3,8 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.io.IOException;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -21,7 +23,9 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	}
 	
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-			
+	
+	//WebElements
+	//-----------
 	//Contact/Account Info section
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='add_account_contact']")
@@ -147,6 +151,13 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
 	WebElement addAcctCntctOwnerFldBtn;		
 	
+	
 	//Methods
-	//TBD
+	//-------
+	//TODO: complete this method
+	public void doAddAccountContact() throws InterruptedException, IOException {
+		String methodID = "doAddAccountContact";
+		
+		//under construction
+	}
 }

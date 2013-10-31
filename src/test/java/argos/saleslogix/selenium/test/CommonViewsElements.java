@@ -321,7 +321,7 @@ public class CommonViewsElements extends BrowserSetup {
 	 * The selectFieldValListItem method will search for and select an item from a field input list 
 	 * view selection list (i.e. Account Type, City, Industry, etc.).  This method should be called
 	 * immediately after clicking an input field button that invokes a list view selection.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	strFieldName  	field value label name that invokes this list view selection
 	 * @param	strSelectItem	target list item to search and select
@@ -510,7 +510,7 @@ public class CommonViewsElements extends BrowserSetup {
 	
 	/**
 	 * This method will enter text for the Business Description.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	strBusDesc  text for the Business Description
 	 * @exception InterruptedException

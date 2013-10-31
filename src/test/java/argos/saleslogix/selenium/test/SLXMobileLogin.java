@@ -63,7 +63,7 @@ public class SLXMobileLogin {
 		Thread.sleep(10000);
 		return this;
 	}
-	
+
 	
 	/**
 	 * Assuming that the Mobile Client login page is displayed, this method will enter a username,

@@ -17,8 +17,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
 
 /**
- * CommonNavigation class defines webelements and methods for any commonly accessed items (e.g. Global Menu).
+ * CommonNavigation class defines WebElements and methods for any commonly accessed items (e.g. Global Menu).
  * This class also defines a collection of methods for commonly-used verifications.
+ * 
  * @author	mike.llena@swiftpage.com
  * @version	1.0
  */
@@ -132,7 +133,15 @@ public class CommonNavigation {
 	@FindBy(xpath = ".//*[@id='right_drawer']/div[4]/ul[2]")
 	WebElement rmenu_KPISubPnl;
 	
-	
+	//Methods
+	//-------
+	/**
+	 * This method will open and select an item from the Global menu.
+	 * 
+	 * @version	1.0
+	 * @param gMenuItem		global menu item to select
+	 * @exception InterruptedException
+	 */
 	public CommonNavigation clickGlobalMenuItem(String gMenuItem) throws InterruptedException {
 		String methodID = "clickGlobalMenuItem";
 		
@@ -214,8 +223,8 @@ public class CommonNavigation {
 	
 	
 	/**
-	 * This method will select an menu item from the Right-context menu on the current list view.
-	 * @author	mike.llena@swiftpage.com
+	 * This method will select a menu item from the Right-context menu on the current list view.
+	 * 
 	 * @version	1.0
 	 * @param	menuItem	menu item from the Right-context menu to select
 	 * @exception InterruptedException
@@ -241,23 +250,25 @@ public class CommonNavigation {
 		}
 		
 		//Step: perform context menu item selection
-		WebElement contxtMnuItem = driver.findElement(By.xpath("//*[@id='right_drawer']/descendant::*[text() = '" + menuItem + "']"));
-		highlightNClick(contxtMnuItem);
-		Thread.sleep(2000);
-		
-		//conditionally close the Right-Context menu...
-		/*
-		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
-			// Click Page Title to close...
-			driver.findElement(By.id("pageTitle")).click();
-			//driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='toggleRightDrawer']")).click();
-			//driver.findElement(By.xpath("//div[95]/button[2]")).click();
-			Thread.sleep(1000);
+		try {
+			WebElement contxtMnuItem = driver.findElement(By.xpath("//*[@id='right_drawer']/descendant::*[text() = '" + menuItem + "']"));
+			highlightNClick(contxtMnuItem);
+			Thread.sleep(2000);		
 		}
-		*/
+		catch (Exception e) {
+			System.out.println(e.toString());
+		}
 		return true;
 	}
 	
+	
+	/**
+	 * This method will return a boolean value indicating if a specific WebElement is displayed.
+	 * 
+	 * @version	1.0
+	 * @param sDesc		description of the WebElement; for logging purposes
+	 * @param wElement	WebElement object
+	 */
 	public boolean checkIfWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
 		String methodID = "checkIfWebElementPresent";
 		
@@ -274,6 +285,16 @@ public class CommonNavigation {
 		}
 	}
 	
+	
+	/**
+	 * This method will click a WebElement to open an expected page.
+	 * 
+	 * @version	1.0
+	 * @param sDesc			description of the WebElement; for logging purposes
+	 * @param wElement		WebElement object
+	 * @param expPageTitle	title of the expected page to open
+	 * @exception InterruptedException
+	 */
 	public boolean clickWebElementToPage(String sDesc, WebElement wElement, String expPageTitle) throws InterruptedException {
 		String methodID = "clickWebElementToPage";
 		
@@ -296,6 +317,13 @@ public class CommonNavigation {
 	}
 	
 
+	/**
+	 * This method will enter a value into an input field.
+	 * 
+	 * @version	1.0
+	 * @param inputFld		WebElement object of the input field
+	 * @param inputValue	field value to set
+	 */
 	public void setupInputFieldValue(WebElement inputFld, String inputValue) {
 		try {
 			inputFld.click();
@@ -311,10 +339,10 @@ public class CommonNavigation {
 	/**
 	 * This method will compare the attribute value of an on-screen WebElement.
 	 * The comparison result will be tracked in the console log.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
-	 * @param	elementDesc	description of the WebElement item
-	 * @param	wElement	WebElement object
+	 * @param	elementDesc		description of the WebElement item
+	 * @param	wElement		WebElement object
 	 * @param	strAttribute	attribute type to check
 	 * @param	expAttrVal		attribute value of the type to check against	
 	 * @exception InterruptedException
@@ -338,7 +366,7 @@ public class CommonNavigation {
 	/**
 	 * This method will compare the text value of an on-screen WebElement.
 	 * The comparison result will be tracked in the console log.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	elementDesc	description of the WebElement item
 	 * @param	wElement	WebElement object
@@ -365,7 +393,7 @@ public class CommonNavigation {
 	/**
 	 * This method will compare the attribute value of an on-screen WebElement.
 	 * The comparison result will be tracked in the console log.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	elementDesc	description of the WebElement item
 	 * @param	wElement	WebElement object
@@ -392,7 +420,7 @@ public class CommonNavigation {
 	/**
 	 * This method will click an on-screen WebElement and verify that the expected page is successfully 
 	 * navigated to.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	elementDesc	description of the WebElement item to click
 	 * @param	wElement	WebElement object to click
@@ -419,6 +447,14 @@ public class CommonNavigation {
 	}
 	
 	
+	/**
+	 * This method will wait for a specific Entity List view to load.  This method should is applicable
+	 * when performing a search on a list view.
+	 * 
+	 * @version	1.0
+	 * @param listName			description of the WebElement; for logging purposes
+	 * @exception InterruptedException
+	 */
 	public CommonNavigation waitForListView(String listName) throws InterruptedException {
 	    
 		String itemList = "";
@@ -468,15 +504,23 @@ public class CommonNavigation {
 		}	    
 		return this;
 	}
+
 	
+	/**
+	 * This method will perform page scroll-down action.
+	 *
+	 * @version	1.0
+	 * @exception InterruptedException
+	 */
 	public void scrollDownPage() throws InterruptedException {
 		
-		/* below doesn't work
+		/* below doesn't seem to work anymore
 		JavascriptExecutor jsx = (JavascriptExecutor)driver;
 		jsx.executeScript("window.scrollBy(0,450)", "");
 		Thread.sleep(3000);
 		*/
 		
+		//resorting to sendKeys action
 		Actions action = new Actions(driver);
         action.sendKeys(Keys.PAGE_DOWN);
         action.perform();
@@ -486,7 +530,7 @@ public class CommonNavigation {
 	/**
 	 * This method will perform SpeedSearch (from Global Menu) or entity record lookup (from the 
 	 * Right-Context menu).
-	 * @author	mike.llena@swiftpage.com
+	 *
 	 * @version	1.0
 	 * @param	searchType  	specify 'SpeedSearch' or the entity record type
 	 * @param	searchItemName	item or entity record to search for
@@ -570,7 +614,7 @@ public class CommonNavigation {
 	/**
 	 * This method will perform entity record lookup (from the Right-Context 
 	 * menu) for record selection from another entity Edit view.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	searchType  	specify 'SpeedSearch' or the entity record type
 	 * @param	searchItemName	item or entity record to search for
@@ -620,6 +664,15 @@ public class CommonNavigation {
 		return this;
 	}
 	
+	
+	/**
+	 * This method will find and then click a specific WebElement object.
+	 * 
+	 * @version	1.0
+	 * @param listName		name of entity list view
+	 * @param intemIndex	index of list item to click
+	 * @exception InterruptedException
+	 */
 	public CommonNavigation clickListViewItemN(String listName, Integer itemIndex) throws InterruptedException {
 		String methodID = "clickListViewItemN";
 		
@@ -678,7 +731,7 @@ public class CommonNavigation {
 	
 	/**
 	 * This method will wait up to 60s. for an expected page to load.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	pageTitle  exact page title of expected page
 	 * @exception InterruptedException
@@ -700,6 +753,14 @@ public class CommonNavigation {
 	    }		
 	}
 	
+	
+	/**
+	 * This method will wait up to 60s. for a page transition from a given start page.
+	 * 
+	 * @version	1.0
+	 * @param	pageTitle  exact title of transition from page
+	 * @exception InterruptedException
+	 */	
 	public boolean waitForNotPage(String pageTitle) throws InterruptedException {
 		String methodID = "waitForNotPage";
 	    
@@ -716,6 +777,14 @@ public class CommonNavigation {
 	    }
 	}
 	
+	
+	/**
+	 * This method will find and then click a specific WebElement object.
+	 * 
+	 * @version	1.0
+	 * @param locator		WebElement locator
+	 * @exception InterruptedException
+	 */
 	public WebElement clickListViewGridItem(By locator) throws InterruptedException {
 		int i = 0;
 		WebElement element = null;
@@ -734,6 +803,16 @@ public class CommonNavigation {
 		return element;
 	}
 	
+	
+	/**
+	 * This method will return a boolean value that determines whether a specific WebElement is present 
+	 * (not necessarily displayed) on the page.
+	 * 
+	 * @version	1.0
+	 * @param	By			by locator string for target WebElement
+	 * @return	boolean		true - if WebElement with matching by locator is displayed; 
+	 * 						false - otherwise
+	 */
 	protected boolean isElementPresent(By by) {
 		
 	    try {
@@ -746,8 +825,9 @@ public class CommonNavigation {
 	
 	
 	/**
-	 * This method will determine whether a specific WebElement is displayed on the page.
-	 * @author	mike.llena@swiftpage.com
+	 * This method will return a boolean value that determines whether a specific WebElement is displayed 
+	 * on the page.
+	 * 
 	 * @version	1.0
 	 * @param	By			by locator string for target WebElement
 	 * @return	boolean		true - if WebElement with matching by locator is displayed; 
@@ -768,7 +848,7 @@ public class CommonNavigation {
 	
 	/**
 	 * This method will determine if webelement's value attribute is empty or not.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	WebElement	WebElement object
 	 * @return	boolean		true - if WebElement's value is empty; 
@@ -790,8 +870,8 @@ public class CommonNavigation {
 	
 	
 	/**
-	 * This method will determine if a webelement is present or not.
-	 * @author	mike.llena@swiftpage.com
+	 * This method will determine if a WebelEment is present or not.
+	 * 
 	 * @version	1.0
 	 * @param	String		description of webelement (for logging purposes)
 	 * @param	WebElement	WebElement object
@@ -815,7 +895,7 @@ public class CommonNavigation {
 	
 	/**
 	 * This method will determine whether a page with a specific pagetitle is displayed.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	pageTitle	exact pagetitle text for expected page
 	 * @return	boolean		true - if page with matching pagetitle is displayed; 
@@ -835,6 +915,16 @@ public class CommonNavigation {
 	}
 	
 	
+	/**
+	 * This method will return a boolean value that determines whether a specific text string is NOT present 
+	 * on the page.  This method can be used for negative verification.
+	 * 
+	 * @version	1.0
+	 * @param	By			by locator string for target WebElement
+	 * @return	boolean		true - if WebElement with matching by locator is displayed; 
+	 * 						false - otherwise
+	 * @exception InterruptedException
+	 */
 	public boolean isTextNotPresentOnPage(String pageText) throws InterruptedException {
 		String methodID = "isTextNotPresentOnPage";		
 		
@@ -857,6 +947,16 @@ public class CommonNavigation {
 	}
 	
 	
+	/**
+	 * This method will return a boolean value that determines whether a specific text string is present 
+	 * on the page.
+	 * 
+	 * @version	1.0
+	 * @param	pageText	text to check for
+	 * @return	boolean		true - if WebElement with matching by locator is displayed; 
+	 * 						false - otherwise
+	 * @exception InterruptedException
+	 */
 	public boolean isTextPresentOnPage(String pageText) throws InterruptedException {
 		String methodID = "isTextPresentOnPage";
 		
@@ -877,10 +977,11 @@ public class CommonNavigation {
 			}
 		return checkResult;
 	}
+	
 
 	/**
-	 * This method will search for a given entity record and return the resulting entity List view.
-	 * @author	mike.llena@swiftpage.com
+	 * This method will search for a given entity record.
+	 * 
 	 * @version	1.0
 	 * @param	entityType	entity type to search for
 	 * @param	entityName	entity record name to search for
@@ -976,6 +1077,15 @@ public class CommonNavigation {
 		}
 	}
 	
+	
+	/**
+	 * This method will return a WebElement object from an entity List view that matches a partial description.
+	 * 
+	 * @version	1.0
+	 * @param	entityType	type of entity list view to search
+	 * @param	entityName	item to search for
+	 * @exception Exception
+	 */	
 	public WebElement entityListViewSearchContains(String entityType, String entityName) throws Exception {
 		String methodID = "entityListViewSearchContains";
 		
@@ -1065,6 +1175,15 @@ public class CommonNavigation {
 		}
 	}
 	
+	
+	/**
+	 * This method will return a WebElement object from an entity List view that matches an exact description.
+	 * 
+	 * @version	1.0
+	 * @param	entityType	type of entity list view to search
+	 * @param	entityName	item to search for
+	 * @exception Exception
+	 */	
 	public WebElement entityListViewSelect(String entityType, String entityName) throws Exception {
 		String methodID = "entityListViewSelect";
 		
@@ -1152,10 +1271,11 @@ public class CommonNavigation {
 		}
 	}
 	
+	
 	/**
 	 * This method will perform a SpeedSearch for a given search item string.
 	 * This method is a wrapper method for searchListView().
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	searchItem	item to search for
 	 * @exception InterruptedException
@@ -1168,6 +1288,16 @@ public class CommonNavigation {
 		
 	}
 	
+	
+	/**
+	 * This method will return a boolean value that indicates whether or not a specific item is displayed
+	 * in an entity List view.
+	 * 
+	 * @version	1.0
+	 * @param	entityType	type of entity list view to search
+	 * @param	entityName	item to search for
+	 * @exception Exception
+	 */	
 	public boolean entityListViewNegativeSearch(String entityType, String entityName) throws Exception {
 		String methodID = "entityListViewNegativeSearch";
 		
@@ -1198,7 +1328,7 @@ public class CommonNavigation {
 	/**
 	 * This method will search for then open the entity Detail view of a given record.
 	 * This method first calls the entityListViewSearch() method to find the target WebElement.
-	 * @author	mike.llena@swiftpage.com
+	 * 
 	 * @version	1.0
 	 * @param	entityType	entity type to search for
 	 * @param	entityItem	item to search for
@@ -1222,6 +1352,13 @@ public class CommonNavigation {
 	}
 	
 	
+	/**
+	 * This method will click the Header Add button from a given entity List view.
+	 * 
+	 * @version	1.0
+	 * @param	entityType	type of entity list view to search
+	 * @exception Exception
+	 */	
 	public boolean entityRecordAdd(String entityType) throws Exception {
 		String methodID = "entityRecordAdd";
 		
@@ -1231,7 +1368,7 @@ public class CommonNavigation {
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerButton.showGlobalMenu();
 	
-	    //Step: navigate to Accounts list view...
+	    //Step: navigate to entity list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
 		//Step: click the Header Add button...
@@ -1250,6 +1387,13 @@ public class CommonNavigation {
 	}
 	
 	
+	/**
+	 * This method will locate and then click an item from an entity list view to open the item's edit view.
+	 * 
+	 * @version	1.0
+	 * @param	entityType	type of entity list view to search
+	 * @exception Exception
+	 */
 	public boolean entityRecordEditView(String entityType, String entityName) throws Exception {
 		String methodID = "entityRecordEditView";
 		
@@ -1284,6 +1428,16 @@ public class CommonNavigation {
 		}
 	}
 	
+	
+	/**
+	 * This method will perform a SpeedSearch for a given term, then select to open a specific results item's
+	 * detail view.
+	 * 
+	 * @version	1.0
+	 * @param	searchItem		item to search for
+	 * @param	recordToOpen	speedsearch results item to open
+	 * @exception Exception
+	 */
 	public void goToSpeedSearchResultDetailView(String searchItem, String recordToOpen)  throws InterruptedException {
 		String methodID = "goToSpeedSearchResultDetailView";
 		
@@ -1298,6 +1452,16 @@ public class CommonNavigation {
 			
 	}
 	
+	
+	/**
+	 * This method will invoke javascript commands to highlight a given WebElement on the page.
+	 * The assumption is that the given WebElement is displayed on the page.  This method is 
+	 * useful for debugging by providing a visual confirmation of target WebElement objects.
+	 * 
+	 * @version	1.0
+	 * @param	wElement	a WebElement object on the page
+	 * @return	void 
+	 */	
 	public void highlightElement(WebElement wElement) throws InterruptedException {
 		
 		try {
@@ -1323,6 +1487,14 @@ public class CommonNavigation {
 		}
 	}
 	
+	
+	/**
+	 * This method will first highlight a target WebElement then click the same object.
+	 *
+	 * @version	1.0
+	 * @param	wElement	a WebElement object on the page
+	 * @return	void
+	 */	
 	public void highlightNClick(WebElement wElement) throws InterruptedException {
 		
 		highlightElement(wElement);
