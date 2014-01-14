@@ -16,7 +16,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	
 	//Test Set
 	//========
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test01_SeTestTCLeadListView() throws Exception {
 		//Reference: MBL-10050
 		String methodID = "test01_SeTestTCLeadListView";
@@ -358,7 +358,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	}
 
 	
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test13_SeTestTCLeadListViewNotesBox() throws Exception {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCLeadListViewNotesBox";
