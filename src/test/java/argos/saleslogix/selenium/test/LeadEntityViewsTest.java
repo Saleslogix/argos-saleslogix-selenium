@@ -16,7 +16,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	
 	//Test Set
 	//========
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test01_SeTestTCLeadListView() throws Exception {
 		//Reference: MBL-10050
 		String methodID = "test01_SeTestTCLeadListView";
@@ -27,14 +27,11 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Leads";
 		String expEntityPgTitle = "Leads";
-		String leadRecord = "Compista";
+		String leadRecord = "Adams";
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-	    //Step: click Top-Left button to reveal Global Menu...
-		headerbutton.showGlobalMenu();
 	
-	    //Step: navigate to Leads list view...
+	    //Step: navigate to specific Leads list view...
 		commNav.entityListViewSearchContains(entityType, leadRecord);
 		
 		//Step: test Leads, List View page elements
@@ -358,7 +355,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	}
 
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test13_SeTestTCLeadListViewNotesBox() throws Exception {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCLeadListViewNotesBox";
@@ -369,7 +366,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Leads";
 		String expEntityPgTitle = "Leads";
-		String entityRecord = "Anderson";	//Anderson, Aaron
+		String entityRecord = "Adams";	//Adams, Adelaide
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
