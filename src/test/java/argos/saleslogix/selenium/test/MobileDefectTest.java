@@ -34,7 +34,7 @@ public class MobileDefectTest extends BrowserSetup {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String attachmentName = "bluepencil";
+		String attachmentName = "tulips";
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		// Step: click the Top-Left, Global Menu button...

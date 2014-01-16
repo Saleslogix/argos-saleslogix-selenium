@@ -70,7 +70,7 @@ public class BrowserSetup {
 	 */
 	@BeforeClass
 	@Parameters("browser")
-	public void launchBrowser(@Optional("ff") String browser) throws IOException {
+	public void launchBrowser(@Optional("chrome") String browser) throws IOException {
 
 		// Run Locally
 		if(browser.equalsIgnoreCase("FF")){

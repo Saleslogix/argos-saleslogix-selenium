@@ -244,7 +244,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		//Test Parameters:
-		String accountRecord = "Call Color";
+		String accountRecord = "Advising Group";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
