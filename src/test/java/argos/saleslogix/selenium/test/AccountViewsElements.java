@@ -403,7 +403,7 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountEditViewIndustryFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_NoteField_0']/div")
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/textarea")
 	WebElement accountEditViewBusDescFld;
 	
 	@CacheLookup
@@ -563,9 +563,9 @@ public class AccountViewsElements extends BrowserSetup {
 		accountEditViewIndustryFld.sendKeys("Computers/Electronics/High Tech");
 		
 		//setup bus desc field
-		accountEditViewBusDescFldBtn.click();
+		accountEditViewBusDescFld.sendKeys("Business Description - Random Automated Test Account");
 		Thread.sleep(3000);
-		commView.setBusDescription("Business Description - Random Automated Test Account");
+		//commView.setBusDescription("Business Description - Random Automated Test Account");
 		
 		//setup acct mgr field
 		if (commNav.isFieldValueEmpty("Acct Mgr", accountEditViewAcctMgrFld)) {
