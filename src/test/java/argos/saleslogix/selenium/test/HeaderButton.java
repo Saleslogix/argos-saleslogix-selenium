@@ -130,7 +130,7 @@ public class HeaderButton {
 			backButton.click();
 			Thread.sleep(1000);
 		}
-		catch (Error e) {
+		catch (Exception e) {
 			//revert to Backspace key-press if Back button click fails
 			pgTitleBar.click();
 			pgTitleBar.sendKeys(Keys.BACK_SPACE);

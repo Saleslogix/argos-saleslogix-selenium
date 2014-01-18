@@ -28,7 +28,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Contacts";
-		String entityRecord = "Adi";
+		String entityRecord = "Adi, Douglas";
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -126,7 +126,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		String expandedListInfo = contactsListView.getContactsListViewTxt();
 		
 		//VP: confirm that the Contacts List view is indeed expanded with more record data
-		String resultMsg = "VP: scrolling down the Accounts List view loaded more records";
+		String resultMsg = "VP: scrolling down the Contacts List view loaded more records";
 		try {
 			AssertJUnit.assertFalse(initListInfo.matches(expandedListInfo));
 			System.out.println(resultMsg + " - Passed");
@@ -140,7 +140,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	}
 
 	//TODO: complete test03_SeTestTCContactListViewSearch for Contacts
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test03_SeTestTCContactListViewSearch() throws Exception {
 		String methodID = "test03_SeTestTCContactListViewSearch";
 		
@@ -149,14 +149,14 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for an existing Account record
-		commNav.entityListViewSearch("Accounts", "Abbott Ltd.");
-		//commNav.entityListViewSearch("Accounts", "Non-Existent Account");		//debug test
+		commNav.entityListViewSearch("Contacts", "Adi, Douglas");
+		//commNav.entityListViewSearch("Contacts", "Non-Existent Account");		//debug test
 		
 		System.out.println(ENDLINE);
 	}
 
 	//TODO: complete test04_SeTestTCContactListViewNegativeSearch for Contacts
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test04_SeTestTCContactListViewNegativeSearch() throws Exception {
 		String methodID = "test04_SeTestTCContactListViewNegativeSearch";
 		
@@ -164,14 +164,14 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Step: search for non-existent Account record to confirm it's non-existence
-		commNav.entityListViewNegativeSearch("Accounts", "Non-Existent Account");		
+		//Step: search for non-existent Contact record to confirm it's non-existence
+		commNav.entityListViewNegativeSearch("Contacts", "Non-Existent Contact");		
 		
 		System.out.println(ENDLINE);
 	}
 
 	//TODO: complete test05_SeTestTCContactListViewClearSearch for Contacts
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test05_SeTestTCContactListViewClearSearch() throws Exception {
 		String methodID = "test05_SeTestTCContactListViewClearSearch";
 		
@@ -180,37 +180,37 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
-		commNav.entityListViewSearch("Accounts", "Big Systems");
+		commNav.entityListViewSearch("Contacts", "Adi, Douglas");
 			
 		//Step: check for matching results...
-		AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
-		String topAccountListItemName = accountListView.topAccountsListItemName.getText();
+		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		String topAccountListItemName = contactsListView.topContactsListItemName.getText();
 				
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
-		accountListView.accountsSearchClearBtn.click();
+		contactsListView.contactsSearchClearBtn.click();
 				
-		//Step: click the Lookup button to reload the full Accounts list
-		accountListView.accountsSearchLookupBtn.click();
+		//Step: click the Lookup button to reload the full Contacts list
+		contactsListView.contactsSearchLookupBtn.click();
 		Thread.sleep(3000);
 				
 		//Step: check if the previous search results were cleared
-		String currTopAccountsListViewName = driver.findElement(By.xpath("//*[@id='account_list']/ul/li[1]/div/h3")).getText();
+		String currTopContactsListViewName = driver.findElement(By.xpath("//*[@id='contact_list']/ul/li[1]/div/h3")).getText();
 		try {
-			AssertJUnit.assertEquals(topAccountListItemName, currTopAccountsListViewName);
+			AssertJUnit.assertEquals(topAccountListItemName, currTopContactsListViewName);
 		} catch (Error e) {
 			verificationErrors.append(e.toString());
-			System.out.println(methodID + ": clear previous Accounts search results action failed");
+			System.out.println(methodID + ": clear previous Contacts search results action failed");
 			return;
 		}
 		
-		System.out.println(methodID + ": clear previous Accounts search results action was successful");
+		System.out.println(methodID + ": clear previous Contacts search results action was successful");
 		System.out.println(ENDLINE);
 	}
 
 
 	//TODO: complete test06_SeTestTCContactListViewOpenRecord for Contacts
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test06_SeTestTCContactListViewOpenRecord() throws Exception {
 		String methodID = "test06_SeTestTCContactListViewOpenRecord";
 		
@@ -219,8 +219,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Step: search for Account entity, then open it's Detail view
-		commNav.entityRecordOpenDetailView("Accounts", "Call Color");
+		//Step: search for Contact entity, then open it's Detail view
+		commNav.entityRecordOpenDetailView("Contacts", "Adi, Douglas");
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
@@ -230,7 +230,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	}
 
 	//TODO: complete test07_SeTestTCContactDetailView for Contacts
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test07_SeTestTCContactDetailView() throws Exception {
 		String methodID = "test07_SeTestTCContactDetailView";
 		
@@ -238,80 +238,80 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		//Test Parameters:
-		String accountRecord = "Call Color";
+		String contactRecord = "Adi, Douglas";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for Account entity, then open it's Detail view
-		if (commNav.entityRecordOpenDetailView("Accounts", accountRecord)) {
+		if (commNav.entityRecordOpenDetailView("Contacts", contactRecord)) {
 			
-			AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
+			ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
 			
-			//Step: check each item under the Account Detail View, Quick Actions section
-			commNav.isWebElementPresent("Account Detail view, 'Quick Actions' section header", accountDetailView.accountDetailViewQuickActionsHdr);
-			commNav.isWebElementPresent("Account Detail view, 'Call main number'", accountDetailView.accountDetailViewCallMainNumberLnk);			
-			commNav.verifyEntityViewElementClick("Account Detail view, 'Schedule activity'", accountDetailView.accountDetailViewScheduleActivityLnk, "Schedule...");
-			commNav.isWebElementPresent("Account Detail view, 'Add note'", accountDetailView.accountDetailViewAddNoteLnk);
-			//TODO: figure out why there is a failure for this step; reverting to 
-			//commNav.verifyEntityViewElementClick("Account Detail view, 'Add note'", accountDetailView.accountDetailViewAddNoteLnk, "Note");
-			commNav.isWebElementPresent("Account Detail view, 'View address'", accountDetailView.accountDetailViewViewAddressLnk);
+			//Step: check each item under the Contact Detail View, Quick Actions section
+			commNav.isWebElementPresent("Contact Detail view, 'Quick Actions' section header", contactDetailView.contactsDetailViewQuickActionsHdr);
+			commNav.isWebElementPresent("Contact Detail view, 'Call main number'", contactDetailView.contactsDetailViewCallMainNumberLnk);
+			commNav.isWebElementPresent("Contact Detail view, 'Call mobile'", contactDetailView.contactsDetailViewCallMobileLnk);
+			commNav.isWebElementPresent("Contact Detail view, 'Send email'", contactDetailView.contactsDetailViewSendEmailLnk);
+			commNav.verifyEntityViewElementClick("Contact Detail view, 'Schedule activity'", contactDetailView.contactsDetailViewScheduleActivityLnk, "Schedule...");
+			commNav.isWebElementPresent("Contact Detail view, 'Add note'", contactDetailView.contactsDetailViewAddNoteLnk);
+			commNav.isWebElementPresent("Contact Detail view, 'View address'", contactDetailView.contactsDetailViewViewAddressLnk);
 			
-			//Step: check each item under the Account Detail View, Details section
-			commNav.isWebElementPresent("Account Detail view, 'Details' section header", accountDetailView.accountDetailViewDetailsHdr);
-			commNav.isWebElementPresent("Account Detail view, 'account'", accountDetailView.accountDetailViewAccountFld);
-			commNav.isWebElementPresent("Account Detail view, 'web'", accountDetailView.accountDetailViewWebFld);
-			commNav.isWebElementPresent("Account Detail view, 'fax'", accountDetailView.accountDetailViewFaxFld);
-			commNav.isWebElementPresent("Account Detail view, 'type'", accountDetailView.accountDetailViewTypeFld);
-			commNav.isWebElementPresent("Account Detail view, 'subtype'", accountDetailView.accountDetailViewSubTypeFld);
-			commNav.isWebElementPresent("Account Detail view, 'status'", accountDetailView.accountDetailViewStatusFld);
+			//Step: check each item under the Contact Detail View, Details section
+			commNav.isWebElementPresent("Contact Detail view, 'Details' section header", contactDetailView.contactsDetailViewDetailsHdr);
+			commNav.isWebElementPresent("Contact Detail view, 'contact'", contactDetailView.contactsDetailViewContactFld);
+			commNav.isWebElementPresent("Contact Detail view, 'account'", contactDetailView.contactsDetailViewAccountFld);
+			commNav.isWebElementPresent("Contact Detail view, 'web'", contactDetailView.contactsDetailViewWebFld);
+			commNav.isWebElementPresent("Contact Detail view, 'title'", contactDetailView.contactsDetailViewTitleFld);
 	
-			//Step: check each item under the Account Detail View, More Details section
-			commNav.isWebElementPresent("Account Detail view, 'More Details' section header", accountDetailView.accountDetailViewMoreDetailsHdr);
+			//Step: check each item under the Contact Detail View, More Details section
+			commNav.isWebElementPresent("Contact Detail view, 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
 			//SubStep: conditionally expand the More Details section
-			if (accountDetailView.accountDetailViewMoreDetailsFields.getSize().height < 1) {
-				accountDetailView.accountDetailViewMoreDetailsHdr.click();
+			if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
+				contactDetailView.contactsDetailViewMoreDetailsHdr.click();
 				Thread.sleep(1000);
 			}
-			commNav.isWebElementPresent("Account Detail view, 'industry'", accountDetailView.accountDetailViewIndustryFld);
-			commNav.isWebElementPresent("Account Detail view, 'bus desc'", accountDetailView.accountDetailViewBusDescFld);
-			commNav.isWebElementPresent("Account Detail view, 'acct mgr'", accountDetailView.accountDetailViewAcctMgrFld);
-			commNav.isWebElementPresent("Account Detail view, 'owner'", accountDetailView.accountDetailViewOwnerFld);
-			commNav.isWebElementPresent("Account Detail view, 'lead source'", accountDetailView.accountDetailViewLeadSourceFld);
+			commNav.isWebElementPresent("Contact Detail view, 'home phone'", contactDetailView.contactsDetailViewHomePhoneFld);
+			commNav.isWebElementPresent("Contact Detail view, 'fax'", contactDetailView.contactsDetailViewFaxFld);
+			commNav.isWebElementPresent("Contact Detail view, 'acct mgr'", contactDetailView.contactsDetailViewAcctMgrFld);
+			commNav.isWebElementPresent("Contact Detail view, 'owner'", contactDetailView.contactsDetailViewOwnerFld);
+			commNav.isWebElementPresent("Contact Detail view, 'cuisine'", contactDetailView.contactsDetailViewCuisineFld);
 	
-			//Step: check each item under the Account Detail View, Related Items section
-			commNav.isWebElementPresent("Account Detail view, 'Related Items' section header", accountDetailView.accountDetailViewRelatedItemsHdr);
-			commNav.verifyEntityViewElementClick("Account Detail view, 'Activities'", accountDetailView.accountDetailViewActivitiesLnk, "Activities");
-			commNav.verifyEntityViewElementClick("Account Detail view, 'Contacts'", accountDetailView.accountDetailViewContactsLnk, "Contacts");
-			commNav.verifyEntityViewElementClick("Account Detail view, 'Opportunities'", accountDetailView.accountDetailViewOpportunitiesLnk, "Opportunities");
-			commNav.verifyEntityViewElementClick("Account Detail view, 'Tickets'", accountDetailView.accountDetailViewTicketsLnk, "Tickets");
-			commNav.verifyEntityViewElementClick("Account Detail view, 'Notes/History'", accountDetailView.accountDetailViewNotesHistoryLnk, "Notes/History");
-			commNav.verifyEntityViewElementClick("Account Detail view, 'Addresses'", accountDetailView.accountDetailViewAddressesLnk, "Addresses");
-			commNav.verifyEntityViewElementClick("Account Detail view, 'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Attachments");
+			//Step: check each item under the Contact Detail View, Related Items section
+			commNav.isWebElementPresent("Contact Detail view, 'Related Items' section header", contactDetailView.contactsDetailViewRelatedItemsHdr);
+			commNav.verifyEntityViewElementClick("Contact Detail view, 'Activities'", contactDetailView.contactsDetailViewActivitiesLnk, "Activities");
+			commNav.verifyEntityViewElementClick("Contact Detail view, 'Opportunities'", contactDetailView.contactsDetailViewOpportunitiesLnk, "Opportunities");
+			commNav.verifyEntityViewElementClick("Contact Detail view, 'Tickets'", contactDetailView.contactsDetailViewTicketsLnk, "Tickets");
+			commNav.verifyEntityViewElementClick("Contact Detail view, 'Notes/History'", contactDetailView.contactsDetailViewNotesHistoryLnk, "Notes/History");
+			commNav.verifyEntityViewElementClick("Contact Detail view, 'Addresses'", contactDetailView.contactsDetailViewAddressesLnk, "Addresses");
+			commNav.verifyEntityViewElementClick("Contact Detail view, 'Attachments'", contactDetailView.contactsDetailViewAttachmentsLnk, "Attachments");
 		}
 		else {
-			System.out.println(methodID + ": the Account Detail view for the '" + accountRecord + "' Account record; test aborted.");
+			System.out.println(methodID + ": the Contact Detail view for the '" + contactRecord + "' Contact record; test aborted.");
 		}
 				
 		//Step: go back to previous screen
 		headerButton.goBack();
-		commNav.waitForPage("Accounts");
+		commNav.waitForPage("Contacts");
 		
 		System.out.println(ENDLINE);
 	}
 
 	//TODO: complete test08_SeTestTCContactEditView for Contacts
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test08_SeTestTCContactEditView() throws Exception {
 		String methodID = "test08_SeTestTCContactEditView";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
+		//Test Parameters:
+		String contactRecord = "Adi, Douglas";
+		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for Account entity, then open it's Detail view
 		try {
-			AssertJUnit.assertTrue(commNav.entityRecordEditView("Account", "Initech"));
+			AssertJUnit.assertTrue(commNav.entityRecordEditView("Contact", contactRecord));
 			
 			//Step: check each input field and if applicable, its related list item selection view
 			//TODO: complete this section by adding calls to verify each field and selection view (if applicable)
@@ -323,15 +323,15 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			headerButton.goBack();
 			Thread.sleep(2000);
 		}
-		finally {
-			
+		catch (Exception e) {
+			System.out.println(e.toString());
 		}
 		
 		System.out.println(ENDLINE);
 	}
 
 	//TODO: complete test09_SeTestTCContactAddEditView for Contacts
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test09_SeTestTCContactAddEditView() throws Exception {
 		String methodID = "test09_SeTestTCContactAddEditView";
 		
@@ -341,9 +341,9 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
 		
 		// Test Params:
-		String entityType = "account";
+		String entityType = "Contact";
 	
-		//Step: enter the Account Add Edit view...
+		//Step: enter the Contact Add Edit view...
 		commNav.entityRecordAdd(entityType);
 				
 		//Step: go back to previous screens
@@ -355,7 +355,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	}
 
 	//TODO: complete test10_SeTestTCContactListViewHashTags for Contacts
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test10_SeTestTCContactListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCContactListViewHashTags";
 		
@@ -363,26 +363,26 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// Test Params:
-		String entityType = "accounts";
+		String entityType = "Contacts";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-	    //Step: navigate to Accounts list view...
+	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
-		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 		
 		//Step: reveal Right Context Menu panel
 		headerButton.showRightContextMenu();
 		
 	    //Step: test the Hash Tags header
 		//expand the Hash Tags sub-panel if it's currently collapsed
-		if (!accountsListView.accountHashTagsPnl.isDisplayed()) {
-			accountsListView.accountHashTagsHdr.click();
+		if (!contactsListView.contactsHashTagsPnl.isDisplayed()) {
+			contactsListView.contactsHashTagsHdr.click();
 			
 			//confirm the the panel was indeed expanded
 			try {
-				AssertJUnit.assertTrue(accountsListView.accountHashTagsPnl.isDisplayed());
+				AssertJUnit.assertTrue(contactsListView.contactsHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
 				System.out.println(e.toString());
@@ -391,15 +391,15 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			}
 		}
 		//collapase the Hash Tags sub-panel
-		accountsListView.accountHashTagsHdr.click();
+		contactsListView.contactsHashTagsHdr.click();
 		try {
-			AssertJUnit.assertFalse(accountsListView.accountHashTagsPnl.isDisplayed());
+			AssertJUnit.assertFalse(contactsListView.contactsHashTagsPnl.isDisplayed());
 			System.out.println("VP: Hash Tags sub-panel collapse check - Passed");
 			
 			//re-expand the Hash Tags sub-panel
-			accountsListView.accountHashTagsHdr.click();
+			contactsListView.contactsHashTagsHdr.click();
 			try {
-				AssertJUnit.assertTrue(accountsListView.accountHashTagsPnl.isDisplayed());
+				AssertJUnit.assertTrue(contactsListView.contactsHashTagsPnl.isDisplayed());
 				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
 			}
 			catch (Error e) {
@@ -434,7 +434,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 
 	
 	//TODO: complete test11_SeTestTCContactListViewKPI for Contacts
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test11_SeTestTCContactListViewKPI() throws Exception {
 		String methodID = "test11_SeTestTCContactListViewKPI";
 		
@@ -442,26 +442,26 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// Test Params:
-		String entityType = "contacts";
+		String entityType = "Contacts";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
-		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 		
 		//Step: reveal Right Context Menu panel
 		headerButton.showRightContextMenu();
 		
 	    //Step: test the KPI header
 		//expand the KPI sub-panel if it's currently collapsed
-		if (!accountsListView.accountKPIPnl.isDisplayed()) {
-			accountsListView.accountKPIHdr.click();
+		if (!contactsListView.contactsKPIPnl.isDisplayed()) {
+			contactsListView.contactsKPIHdr.click();
 			
 			//confirm the the panel was indeed expanded
 			try {
-				AssertJUnit.assertTrue(accountsListView.accountHashTagsPnl.isDisplayed());
+				AssertJUnit.assertTrue(contactsListView.contactsHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
 				System.out.println(e.toString());
@@ -470,15 +470,15 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			}
 		}
 		//collapse Hash Tags sub-panel check
-		accountsListView.accountKPIHdr.click();
+		contactsListView.contactsKPIHdr.click();
 		try {
-			AssertJUnit.assertFalse(accountsListView.accountKPIPnl.isDisplayed());
+			AssertJUnit.assertFalse(contactsListView.contactsKPIPnl.isDisplayed());
 			System.out.println("VP: KPI sub-panel collapse check - Passed");
 			
 			//re-expand the Hash Tags sub-panel
-			accountsListView.accountKPIHdr.click();
+			contactsListView.contactsKPIHdr.click();
 			try {
-				AssertJUnit.assertTrue(accountsListView.accountKPIPnl.isDisplayed());
+				AssertJUnit.assertTrue(contactsListView.contactsKPIPnl.isDisplayed());
 				System.out.println("VP: KPI sub-panel expand check - Passed");
 			}
 			catch (Error e) {
@@ -504,7 +504,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	}
 	
 	//TODO: need to update the Contact Edit field selector ids' in ContactViewsElements.java
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test12_SeTestTCContactListViewAddContact() throws Exception {
 		String methodID = "test12_SeTestTCContactListViewAddContact";
 		
@@ -549,7 +549,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Contacts";
 		String expEntityPgTitle = "Contacts";
-		String entityRecord = "Adi";	//Adi, Douglas
+		String entityRecord = "Adi, Douglas";
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
@@ -560,25 +560,25 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		// SubStep: check the Page Title
 		if (commNav.isPageDisplayed(entityType)) {
 			
-			ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);			
+			ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);			
 			
 			//Step: check the Contacts list view format
-			commNav.checkIfWebElementPresent("Contacts List View", contactListView.contactsListView);
+			commNav.checkIfWebElementPresent("Contacts List View", contactsListView.contactsListView);
 			
 			//Step: check an Account list view item record
-			commNav.checkIfWebElementPresent("Contacts List View, Notes Box", contactListView.contactsListViewNotesBox1stItem);			
-			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Initials box", contactListView.contactsListViewNotesBox1stItemInitialsBox);			
-			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Regarding header", contactListView.contactsListViewNotesBox1stItemRegarding);			
-			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Last Activity note", contactListView.contactsListViewNotesBox1stItemLastActivity);			
-			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, note item", contactListView.contactsListViewNotesBox1stItemNotes);			
-			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, see list link", contactListView.contactsListViewNotesBoxSeeListLink);
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box", contactsListView.contactsListViewNotesBox1stItem);			
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Initials box", contactsListView.contactsListViewNotesBox1stItemInitialsBox);			
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Regarding header", contactsListView.contactsListViewNotesBox1stItemRegarding);			
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Last Activity note", contactsListView.contactsListViewNotesBox1stItemLastActivity);			
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, note item", contactsListView.contactsListViewNotesBox1stItemNotes);			
+			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, see list link", contactsListView.contactsListViewNotesBoxSeeListLink);
 			
 			//Step: check the Notes Box list item click navigation
 			String expPgTitle = "Meeting";
 			String resultsMsg = "VP: Clicking Notes Box item navigated to the expected page";
 			try {
 				//click the 1st Notes Box item
-				contactListView.contactsListViewNotesBox1stItem.click();
+				contactsListView.contactsListViewNotesBox1stItem.click();
 				Thread.sleep(5000);
 				commNav.isPageDisplayed(expPgTitle);
 				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_detail']")).isDisplayed());
@@ -592,14 +592,14 @@ public class ContactEntityViewsTest extends BrowserSetup {
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
-			contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+			contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 			
 			//Step: check the Notes Box 'see list' link click navigation
 			expPgTitle = "Notes";
 			resultsMsg = "VP: Clicking Notes Box 'see list' link navigated to the expected page";
 			try {
 				//click the Notes Box 'see list' link
-				contactListView.contactsListViewNotesBoxSeeListLink.click();
+				contactsListView.contactsListViewNotesBoxSeeListLink.click();
 				Thread.sleep(5000);
 				commNav.isPageDisplayed(expPgTitle);
 				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_related']")).isDisplayed());

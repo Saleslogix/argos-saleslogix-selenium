@@ -343,8 +343,12 @@ public class AccountViewsElements extends BrowserSetup {
 		
 	//Edit View elements
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='account_edit']")
+	@FindBy(xpath = "//*[@id='account_edit']")
 	WebElement accountEditView;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='account_edit']/div[2]/h2")
+	WebElement accountEditViewDetailsHdr;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='AccountName']")
@@ -399,11 +403,11 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountEditViewIndustryFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_3']/input")
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_3']/button")
 	WebElement accountEditViewIndustryFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/textarea")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/textarea")
 	WebElement accountEditViewBusDescFld;
 	
 	@CacheLookup

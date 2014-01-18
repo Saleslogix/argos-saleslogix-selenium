@@ -215,7 +215,7 @@ public class CommonNavigation {
 				waitForListView(gMenuItem);
 			} Thread.sleep(3000); {}
 		}
-		catch (Error e) {
+		catch (Exception e) {
 			  System.out.println(e.toString());
 		}
 		return this;
@@ -243,7 +243,7 @@ public class CommonNavigation {
 			try {
 				AssertJUnit.assertTrue(commNav.rmenu_panel.isDisplayed());
 			}
-			catch (Error e) {
+			catch (Exception e) {
 				System.out.println(e.toString());
 				return false;
 			}					
@@ -310,7 +310,7 @@ public class CommonNavigation {
 				return pgOpened;
 			}
 		}
-		catch (Error e) {
+		catch (Exception e) {
 			System.out.println(e.toString());
 			return false;
 		}
@@ -426,7 +426,7 @@ public class CommonNavigation {
 	 * @param	wElement	WebElement object to click
 	 * @param	expPgTitle	title of the expected page
 	 * @return	<code>True</code> if the title of the loaded page matches the expected page title
-	 * 			<code>False</code> othewise 
+	 * 			<code>False</code> otherwise 
 	 * @see		clickWebElement()
 	 * @exception InterruptedException
 	 */
@@ -436,10 +436,11 @@ public class CommonNavigation {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		try { commNav.clickWebElementToPage(elementDesc, wElement, expPgTitle);
+		try { 
+			commNav.clickWebElementToPage(elementDesc, wElement, expPgTitle);
 			headerButton.goBack();
 			return true;
-		} catch (Error e) {
+		} catch (Exception e) {
 			System.out.println(e.toString());
 			return false;
 		}
@@ -499,7 +500,7 @@ public class CommonNavigation {
 		    	Thread.sleep(1000);
 		    }
 		}
-		catch (Error e) {
+		catch (Exception e) {
 			  System.out.println(e.toString());
 		}	    
 		return this;
@@ -605,7 +606,7 @@ public class CommonNavigation {
 		    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
 		    waitForListView(searchType);
 		}
-		catch (Error e) {
+		catch (Exception e) {
 			  System.out.println(e.toString());
 		}
 		return this;
@@ -746,7 +747,8 @@ public class CommonNavigation {
 	    		AssertJUnit.assertEquals(pageTitle, driver.findElement(By.id("pageTitle")).getText());
 	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
 	    		return true;
-	    	} catch (Error e) {
+	    	} 
+	    	catch (Error e) {
 	    		System.out.println(methodID + " " + e.toString());
 	    		return false;
 	    	}
@@ -999,7 +1001,7 @@ public class CommonNavigation {
 		clickGlobalMenuItem(entityType);
 	
 	    //Step: perform search for entity record items...
-		if (entityType.toLowerCase().equals("contacts") || entityType.toLowerCase().equals("leads")) {
+		if (entityType.toLowerCase().contains("contact") || entityType.toLowerCase().contains("lead")) {
 			String nameTokens[] = entityName.split(",");
 			String lastName = nameTokens[0];
 			searchListView(entityType, lastName);
@@ -1061,7 +1063,8 @@ public class CommonNavigation {
 			}
 			try {
 				AssertJUnit.assertTrue(targetEntRecord.isDisplayed());
-			} catch (Error e) {
+			} 
+			catch (Error e) {
 				String errorStr = e.toString();
 				System.out.println(errorStr);
 				System.out.println(methodID + ": " + entityType + " record search for '" + entityName + "' was NOT successful");
@@ -1070,7 +1073,8 @@ public class CommonNavigation {
 			highlightElement(targetEntRecord);
 			System.out.println(methodID + ": " + entityType + " record search for '" + entityName + "' was successful");
 			return targetEntRecord;
-		} catch (Error e) {
+		} 
+		catch (Error e) {
 			System.out.println(e.toString());
 			System.out.println(methodID + ": un-expected 'no records' search result for '" + entityName + "' " + entityType + "; test aborted.");
 			return null;
@@ -1159,7 +1163,8 @@ public class CommonNavigation {
 			}
 			try {
 				AssertJUnit.assertTrue(targetEntRecord.isDisplayed());
-			} catch (Error e) {
+			} 
+			catch (Error e) {
 				String errorStr = e.toString();
 				System.out.println(errorStr);
 				System.out.println(methodID + ": " + entityType + " record search for '" + entityName + "' was NOT successful");
@@ -1255,7 +1260,8 @@ public class CommonNavigation {
 			}
 			try {
 				AssertJUnit.assertTrue(targetEntRecord.isDisplayed());
-			} catch (Error e) {
+			} 
+			catch (Error e) {
 				String errorStr = e.toString();
 				System.out.println(errorStr);
 				System.out.println(methodID + ": " + entityType + " record search 'n select for '" + entityName + "' was NOT successful");
@@ -1380,7 +1386,7 @@ public class CommonNavigation {
 			System.out.println(methodID + ": the " + entityType + " Add Edit view was successfully opened.");
 			return true;
 		}
-		catch (Error e) {
+		catch (Exception e) {
 			System.out.println(methodID + ": " + e);
 			return false;
 		}
@@ -1414,10 +1420,10 @@ public class CommonNavigation {
 			try {
 				WebElement entityDetailView = driver.findElement(By.xpath(editViewXPath));
 				highlightElement(entityDetailView);
-				System.out.println(methodID + ": " + entityType + " Detail view was opened for the '" + entityName + "' record.");
+				System.out.println(methodID + ": " + entityType + " Edit view was opened for the '" + entityName + "' record.");
 				return true;
 			}
-			catch (Error e) {
+			catch (Exception e) {
 				System.out.println(methodID + ": " + e);
 				return false;
 			}
@@ -1476,7 +1482,7 @@ public class CommonNavigation {
 					Thread.sleep(100);
 					js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "");
 				}
-				catch (Error e) {
+				catch (Exception e) {
 					System.out.println(e.toString());
 					break;
 				}
