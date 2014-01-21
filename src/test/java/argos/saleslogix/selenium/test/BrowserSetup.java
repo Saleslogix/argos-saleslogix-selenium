@@ -70,24 +70,19 @@ public class BrowserSetup {
 	 */
 	@BeforeClass
 	@Parameters("browser")
-	public void launchBrowser(@Optional("chrome") String browser) throws IOException {
+	public void launchBrowser(@Optional("ff") String browser) throws IOException {
+		
+		System.out.println("Running SLXMobile3x WebDriver Tests on SLX 8.1 Mobile Client");
+		System.out.println("************************************************************");
+		System.out.println("launching " + browser + " WebDriver browser...");		
 
 		// Run Locally
 		if(browser.equalsIgnoreCase("FF")){
 			driver = new FirefoxDriver();
-		} else if(browser.equalsIgnoreCase("chrome")){
-			/*
-			try {
-				File file = new File("D:\\Jenkins\\workspace\\argos-saleslogix-selenium\\drivers\\chromedriver.exe");
-				System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-				driver = new ChromeDriver();
-			}
-			catch (Exception e) {
-			*/
-				File file = new File("C:\\Selenium\\chromedriver.exe");
-				System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-				driver = new ChromeDriver();
-			//}
+		} else if(browser.equalsIgnoreCase("CR")){
+			File file = new File("C:\\Selenium\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+			driver = new ChromeDriver();
 		}else {
 			File file = new File("C:\\Selenium\\IEDriverServer.exe");
 	        System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
@@ -114,6 +109,10 @@ public class BrowserSetup {
 		driver.get(baseUrl + mobileUrl + startPage);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
+		
+		System.out.println("Testing Build Version: " + versionLabel);
+		System.out.println("Testing Site URL: " + baseUrl + mobileUrl);
+		System.out.println("");
 	}
 	
 	
