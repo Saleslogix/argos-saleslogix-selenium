@@ -21,13 +21,13 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		//Reference: MBL-10050
 		String methodID = "test01_SeTestTCLeadListView";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		// Test Params:
 		String entityType = "Leads";
 		String expEntityPgTitle = "Leads";
 		String leadRecord = "Adams";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
@@ -71,7 +71,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 				LeadListView.topLeadsListItemQuickActionsBtn.click();
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());				
+				verificationErrors.append(e.toString());				
 			}
 			
 			//Step: check the "X records remaining" item box at the bottom of the list view
@@ -84,15 +84,16 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	@Test(enabled = false)
+	
+	@Test(enabled = true)
 	public void test02_SeTestTCLeadListViewLoadMoreResults() throws Exception {
 		String methodID = "test02_SeTestTCLeadListViewLoadMoreResults";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		//Test Params:
 		String entityType = "Leads";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -104,30 +105,34 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	
 	    //Step: load more results (click on 'x remaining records' item)
 		for (int count = 0; count<=2; count++) {
-			WebElement remainingRecordsItem = driver.findElement(By.xpath("//*[@id='Lead_list']/div[3]"));
+			WebElement remainingRecordsItem = driver.findElement(By.xpath("//*[@id='lead_list']/div[4]"));
 			commNav.highlightElement(remainingRecordsItem);
 			remainingRecordsItem.click();
 			Thread.sleep(3000);		
 		}
 		
 		//Step: check if the 31th record item is present
-		WebElement thirtyfirstRecordItem = driver.findElement(By.xpath("//*[@id='Lead_list']/ul/li[31]"));
+		WebElement thirtyfirstRecordItem = driver.findElement(By.xpath("//*[@id='lead_list']/ul/li[31]"));
 		commNav.checkIfWebElementPresent("31st Lead List View record available after load more records", thirtyfirstRecordItem);
 		
 		System.out.println(ENDLINE);
 	}
 
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test03_SeTestTCLeadListViewSearch() throws Exception {
 		String methodID = "test03_SeTestTCLeadListViewSearch";
+		
+		// Test Params:
+		String entityType = "Leads";
+		String entityRecord = "Adams, Adelaide";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for an existing Lead record
-		commNav.entityListViewSearch("Leads", "Abbott Ltd.");		
+		commNav.entityListViewSearch(entityType, entityRecord);		
 		
 		System.out.println(ENDLINE);
 	}
@@ -139,24 +144,31 @@ public class LeadEntityViewsTest extends BrowserSetup {
 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
+		//Test Params:
+		String entityType = "leads";
+		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
 		//Step: search for non-existent Lead record to confirm it's non-existence
-		commNav.entityListViewNegativeSearch("Leads", "Non-Existent Lead");		
+		commNav.entityListViewNegativeSearch(entityType, "Non-Existent Lead");		
 		
 		System.out.println(ENDLINE);
 	}
 
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test05_SeTestTCLeadListViewClearSearch() throws Exception {
 		String methodID = "test05_SeTestTCLeadListViewClearSearch";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
+		// Test Params:
+		String entityType = "Leads";
+		String entityRecord = "Adams, Adelaide";
+		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
-		commNav.entityListViewSearch("Leads", "Big Systems");
+		commNav.entityListViewSearch(entityType, entityRecord);
 			
 		//Step: check for matching results...
 		LeadViewsElements LeadListView = PageFactory.initElements(driver, LeadViewsElements.class);
@@ -184,17 +196,21 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	}
 
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test06_SeTestTCLeadListViewOpenRecord() throws Exception {
 		String methodID = "test06_SeTestTCLeadListViewOpenRecord";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
+		// Test Params:
+		String entityType = "Leads";
+		String entityRecord = "Adams, Adelaide";
+		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		//Step: search for Lead entity, then open it's Detail view
-		commNav.entityRecordOpenDetailView("Leads", "Call Color");
+		commNav.entityRecordOpenDetailView(entityType, entityRecord);
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
@@ -203,26 +219,129 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test07_SeTestTCLeadDetailView() throws Exception {
 		String methodID = "test07_SeTestTCLeadDetailView";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
+		// Test Params:
+		String entityType = "Leads";
+		String entityRecord = "Adams, Adelaide";
+		String viewName = "Lead Detail view";
+		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		//Step: search for Lead entity, then open it's Detail view
-		if (commNav.entityRecordOpenDetailView("Leads", "Call Color")) {
+		try {
+			//Step: search for Lead entity, then open it's Detail view
+			commNav.entityRecordOpenDetailView(entityType, entityRecord);
 			
+			LeadViewsElements leadDetailView = PageFactory.initElements(driver, LeadViewsElements.class);
+			
+			//Step: check each item under the Lead Detail View, Quick Actions section
+			commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", leadDetailView.leadsDetailViewQuickActionsHdr);
+			commNav.isWebElementPresent(viewName + ",'Call main number'", leadDetailView.leadsDetailViewCallMainNumberLnk);
+			commNav.isWebElementPresent(viewName + ",'Send email'", leadDetailView.leadsDetailViewSendEmailLnk);
+			commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", leadDetailView.leadsDetailViewScheduleActivityLnk, "Schedule...");
+			commNav.isWebElementPresent(viewName + ",'Add note'", leadDetailView.leadsDetailViewAddNoteLnk);
+			//TODO: figure out why there is a failure for this step; reverting to 
+			commNav.verifyEntityViewElementClick(viewName + ",'Add note'", leadDetailView.leadsDetailViewAddNoteLnk, "Note");
+			commNav.isWebElementPresent(viewName + ",'View address'", leadDetailView.leadsDetailViewViewAddressLnk);
+			
+			//Step: check each item under the Lead Detail View, Details section
+			commNav.isWebElementPresent(viewName + ",'Details' section header", leadDetailView.leadsDetailViewDetailsHdr);
+			commNav.isWebElementPresent(viewName + ",'name'", leadDetailView.leadsDetailViewNameFld);
+			commNav.isWebElementPresent(viewName + ",'company'", leadDetailView.leadsDetailViewCompanyFld);
+			commNav.isWebElementPresent(viewName + ",'web'", leadDetailView.leadsDetailViewWebFld);
+			commNav.isWebElementPresent(viewName + ",'title'", leadDetailView.leadsDetailViewTitleFld);
+			commNav.isWebElementPresent(viewName + ",'work phone'", leadDetailView.leadsDetailViewWorkPhoneFld);
+			commNav.isWebElementPresent(viewName + ",'mobile phone'", leadDetailView.leadsDetailViewMobilePhoneFld);
+			commNav.isWebElementPresent(viewName + ",'toll free'", leadDetailView.leadsDetailViewTollFreeFld);
+			commNav.isWebElementPresent(viewName + ",'lead source'", leadDetailView.leadsDetailViewLeadSourceFld);
+
+			//Step: check each item under the Lead Detail View, More Details section
+			commNav.isWebElementPresent(viewName + ",'More Details' section header", leadDetailView.leadsDetailViewMoreDetailsHdr);
+			//SubStep: conditionally expand the More Details section
+			if (leadDetailView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
+				leadDetailView.leadsDetailViewMoreDetailsHdr.click();
+				Thread.sleep(1000);
+			}
+			commNav.isWebElementPresent(viewName + ",'interests'", leadDetailView.leadsDetailViewIndustryFld);
+			commNav.isWebElementPresent(viewName + ",'industry'", leadDetailView.leadsDetailViewIndustryFld);
+			commNav.isWebElementPresent(viewName + ",'sic code'", leadDetailView.leadsDetailViewSicCodeFld);
+			commNav.isWebElementPresent(viewName + ",'bus desc'", leadDetailView.leadsDetailViewBusDescFld);
+			commNav.isWebElementPresent(viewName + ",'comments'", leadDetailView.leadsDetailViewCommentsFld);
+			commNav.isWebElementPresent(viewName + ",'owner'", leadDetailView.leadsDetailViewOwnerFld);
+
+			//Step: check each item under the Lead Detail View, Related Items section
+			commNav.isWebElementPresent(viewName + ",'Related Items' section header", leadDetailView.leadsDetailViewRelatedItemsHdr);
+			commNav.verifyEntityViewElementClick(viewName + ",'Activities'", leadDetailView.leadsDetailViewActivitiesLnk, "Activities");
+			commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", leadDetailView.leadsDetailViewNotesHistoryLnk, "Notes/History");
+			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", leadDetailView.leadsDetailViewAttachmentsLnk, "Attachments");
+			
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(3000);
 		}
-		else {
-			
-		}		
+		catch (Exception e) {
+			verificationErrors.append(e.toString());
+		}
 		
-		//Step: go back to previous screen
-		headerButton.goBack();
-		Thread.sleep(3000);
+		System.out.println(ENDLINE);
+	}
+	
+	@Test(enabled = false)
+	public void test08_SeTestTCAccountEditView() throws Exception {
+		String methodID = "test08_SeTestTCAccountEditView";
+		
+		// Test Params:
+		String entityType = "Account";
+		String entityRecord = "Allied Corp.";
+		String viewName = "Account Edit view";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+		
+		try {
+			//Step: search for Account entity, then open it's Edit view
+			AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
+			
+			LeadViewsElements leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
+			
+			/*
+			//Step: check each input field and if applicable, its related list item selection view
+			commNav.isWebElementPresent(viewName + ", 'Details' section header", accountEditView.accountEditViewDetailsHdr);
+			commNav.isWebElementPresent(viewName + ", account field", accountEditView.accountEditViewAccountInputFld);
+			commNav.isWebElementPresent(viewName + ", web field", accountEditView.accountEditViewWebInputFld);
+			commNav.isWebElementPresent(viewName + ", phone field", accountEditView.accountEditViewPhoneInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ",'address field'", accountEditView.accountEditViewAddressFldBtn, "Address");
+			commNav.isWebElementPresent(viewName + ", fax field", accountEditView.accountEditViewFaxInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ",'type field'", accountEditView.accountEditViewTypeFldBtn, "Account Type");
+			commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Subtype");
+			commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Status");
+			commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewIndustryFldBtn, "Industry");
+			commNav.isWebElementPresent(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
+			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
+			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
+			commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
+			*/
+			
+			//end of test
+			headerButton.clickHeaderButton("cancel");
+		
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(2000);
+		} catch (Error e) {
+			verificationErrors.append(e.toString());
+			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
+		}
 		
 		System.out.println(ENDLINE);
 	}
@@ -359,14 +478,14 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	public void test13_SeTestTCLeadListViewNotesBox() throws Exception {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCLeadListViewNotesBox";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
+
 		// Test Params:
 		String entityType = "Leads";
 		String expEntityPgTitle = "Leads";
-		String entityRecord = "Adams";	//Adams, Adelaide
+		String entityRecord = "Adams, Adelaide";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
@@ -405,7 +524,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 				
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());
+				verificationErrors.append(e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -426,7 +545,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 				
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());
+				verificationErrors.append(e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 		}

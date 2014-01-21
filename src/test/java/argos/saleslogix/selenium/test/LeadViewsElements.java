@@ -209,14 +209,18 @@ public class LeadViewsElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/ul[1]/li[2]/a")
-	WebElement leadsDetailViewScheduleActivityLnk;
+	WebElement leadsDetailViewSendEmailLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/ul[1]/li[3]/a")
-	WebElement leadsDetailViewAddNoteLnk;
+	WebElement leadsDetailViewScheduleActivityLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/ul[1]/li[4]/a")
+	WebElement leadsDetailViewAddNoteLnk;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/ul[1]/li[5]/a")
 	WebElement leadsDetailViewViewAddressLnk;
 	
 	@CacheLookup
@@ -225,7 +229,11 @@ public class LeadViewsElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[1]")
-	WebElement leadsDetailViewContactFld;
+	WebElement leadsDetailViewNameFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[2]")
+	WebElement leadsDetailViewCompanyFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[2]")
@@ -233,19 +241,23 @@ public class LeadViewsElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[3]")
-	WebElement leadsDetailViewFaxFld;
+	WebElement leadsDetailViewTitleFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[4]")
-	WebElement leadsDetailViewTypeFld;
+	WebElement leadsDetailViewWorkPhoneFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[5]")
-	WebElement leadsDetailViewSubTypeFld;
+	WebElement leadsDetailViewMobilePhoneFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[6]")
-	WebElement leadsDetailViewStatusFld;
+	WebElement leadsDetailViewTollFreeFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[7]")
+	WebElement leadsDetailViewLeadSourceFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/h2[3]")
@@ -257,24 +269,28 @@ public class LeadViewsElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[1]")
-	WebElement leadsDetailViewIndustryFld;
+	WebElement leadsDetailViewInterestsFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[2]")
-	WebElement leadsDetailViewBusDescFld;
+	WebElement leadsDetailViewIndustryFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[3]")
-	WebElement leadsDetailViewAcctMgrFld;
+	WebElement leadsDetailViewSicCodeFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[4]")
-	WebElement leadsDetailViewOwnerFld;
+	WebElement leadsDetailViewBusDescFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[5]")
-	WebElement leadsDetailViewLeadSourceFld;
-
+	WebElement leadsDetailViewCommentsFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[6]")
+	WebElement leadsDetailViewOwnerFld;
+	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/h2[4]")
 	WebElement leadsDetailViewRelatedItemsHdr;
@@ -284,24 +300,8 @@ public class LeadViewsElements extends BrowserSetup {
 	WebElement leadsDetailViewActivitiesLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/descendant::*[text() = 'Contacts']")
-	WebElement leadsDetailViewContactsLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/descendant::*[text() = 'Opportunities']")
-	WebElement leadsDetailViewOpportunitiesLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/descendant::*[text() = 'Tickets']")
-	WebElement leadsDetailViewTicketsLnk;
-	
-	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/descendant::*[text() = 'Notes/History']")
 	WebElement leadsDetailViewNotesHistoryLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/descendant::*[text() = 'Addresses']")
-	WebElement leadsDetailViewAddressesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/descendant::*[text() = 'Attachments']")

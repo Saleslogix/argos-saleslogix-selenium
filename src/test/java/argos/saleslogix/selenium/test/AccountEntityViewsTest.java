@@ -30,13 +30,13 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		//Reference: MBL-10069
 		String methodID = "test01_SeTestTCAccountListView";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		// Test Params:
 		String entityType = "Accounts";
 		String expEntityPgTitle = "Accounts";
 		String entityRecord = "Abbott Ltd.";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    //Step: click Top-Left button to reveal Global Menu...
@@ -85,7 +85,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				accountListView.topAccountsListItemQuickActionsBtn.click();
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());				
+				verificationErrors.append(e.toString());				
 			}
 			
 			//Step: check the "X records remaining" item box at the bottom of the list view
@@ -137,7 +137,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			verificationErrors.append(e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 		
@@ -239,12 +239,17 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Step: search for Account entity, then open it's Detail view
-		commNav.entityRecordOpenDetailView(entityType, entityRecord);
-		
-		//Step: go back to previous screen
-		headerButton.goBack();
-		Thread.sleep(3000);
+		try {
+			//Step: search for Account entity, then open it's Detail view
+			commNav.entityRecordOpenDetailView(entityType, entityRecord);
+			
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(3000);
+		}
+		catch (Exception e) {
+			verificationErrors.append(e.toString());
+		}
 		
 		System.out.println(ENDLINE);
 	}
@@ -264,8 +269,12 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Step: search for Account entity, then open it's Detail view
-		if (commNav.entityRecordOpenDetailView(entityType, entityRecord)) {
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+		
+		try {
+			//Step: search for Account entity, then open it's Detail view
+			commNav.entityRecordOpenDetailView(entityType, entityRecord);
 			
 			AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
 			
@@ -310,7 +319,8 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			commNav.verifyEntityViewElementClick(viewName + ",'Addresses'", accountDetailView.accountDetailViewAddressesLnk, "Addresses");
 			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Attachments");
 		}
-		else {
+		catch (Exception e) {
+			verificationErrors.append(e.toString());
 			System.out.println(methodID + ": the Account Detail view for the '" + entityRecord + "' Account record; test aborted.");
 		}
 				
@@ -322,7 +332,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	}
 	
 	
-	//TODO: find out why this test mysteriously fails on Jenkins server
 	@Test(enabled = true)
 	public void test08_SeTestTCAccountEditView() throws Exception {
 		String methodID = "test08_SeTestTCAccountEditView";
@@ -337,8 +346,11 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Step: search for Account entity, then open it's Edit view
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+		
 		try {
+			//Step: search for Account entity, then open it's Edit view
 			AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
 			
 			AccountViewsElements accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
@@ -351,9 +363,9 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			commNav.verifyEntityViewElementClick(viewName + ",'address field'", accountEditView.accountEditViewAddressFldBtn, "Address");
 			commNav.isWebElementPresent(viewName + ", fax field", accountEditView.accountEditViewFaxInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'type field'", accountEditView.accountEditViewTypeFldBtn, "Account Type");
-			commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Sub Type");
-			commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Sub Type");
-			commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewStatusFldBtn, "Account Industry");
+			commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Subtype");
+			commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Status");
+			commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewIndustryFldBtn, "Industry");
 			commNav.isWebElementPresent(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
 			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
@@ -387,33 +399,42 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
 		
-		//Step: enter the Account Add Edit view...
-		commNav.entityRecordAdd(entityType);
-				
-		AccountViewsElements accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
 		
-		//Step: check each input field and if applicable, its related list item selection view
-		commNav.isWebElementPresent(viewName + ", 'Details' section header", accountEditView.accountEditViewDetailsHdr);
-		commNav.isWebElementPresent(viewName + ", account field", accountEditView.accountEditViewAccountInputFld);
-		commNav.isWebElementPresent(viewName + ", web field", accountEditView.accountEditViewWebInputFld);
-		commNav.isWebElementPresent(viewName + ", phone field", accountEditView.accountEditViewPhoneInputFld);
-		commNav.verifyEntityViewElementClick(viewName + ",'address field'", accountEditView.accountEditViewAddressFldBtn, "Address");
-		commNav.isWebElementPresent(viewName + ", fax field", accountEditView.accountEditViewFaxInputFld);
-		commNav.verifyEntityViewElementClick(viewName + ",'type field'", accountEditView.accountEditViewTypeFldBtn, "Account Type");
-		commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Subtype");
-		commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Status");
-		commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewIndustryFldBtn, "Industry");
-		commNav.isWebElementPresent(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
-		commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
-		commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
-		commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
+		try {
+			//Step: enter the Account Add Edit view...
+			commNav.entityRecordAdd(entityType);
+					
+			AccountViewsElements accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
+			
+			//Step: check each input field and if applicable, its related list item selection view
+			commNav.isWebElementPresent(viewName + ", 'Details' section header", accountEditView.accountEditViewDetailsHdr);
+			commNav.isWebElementPresent(viewName + ", account field", accountEditView.accountEditViewAccountInputFld);
+			commNav.isWebElementPresent(viewName + ", web field", accountEditView.accountEditViewWebInputFld);
+			commNav.isWebElementPresent(viewName + ", phone field", accountEditView.accountEditViewPhoneInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ",'address field'", accountEditView.accountEditViewAddressFldBtn, "Address");
+			commNav.isWebElementPresent(viewName + ", fax field", accountEditView.accountEditViewFaxInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ",'type field'", accountEditView.accountEditViewTypeFldBtn, "Account Type");
+			commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Subtype");
+			commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Status");
+			commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewIndustryFldBtn, "Industry");
+			commNav.isWebElementPresent(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
+			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
+			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
+			commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
+			
+			//end of test
+			headerButton.clickHeaderButton("cancel");
 		
-		//end of test
-		headerButton.clickHeaderButton("cancel");
-	
-		//Step: go back to previous screen
-		headerButton.goBack();
-		Thread.sleep(2000);
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(2000);
+		}
+		catch (Exception e) {
+			verificationErrors.append(e.toString());
+			System.out.println(methodID + ": unable to open the Account Edit Add view.");			
+		}
 		
 		System.out.println(ENDLINE);
 	}
@@ -423,13 +444,16 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	public void test10_SeTestTCAccountListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCAccountListViewHashTags";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		// Test Params:
 		String entityType = "accounts";
 		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Accounts list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -449,7 +473,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(accountsListView.accountHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				verificationErrors.append(e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -467,12 +491,12 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				verificationErrors.append(e.toString());
 				System.out.println("VP: Hash Tags sub-panel expand check - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			verificationErrors.append(e.toString());
 			System.out.println("VP: Hash Tags sub-panel collapse check - FAILED");
 		}
 		
@@ -499,13 +523,16 @@ public class AccountEntityViewsTest extends BrowserSetup {
 	public void test11_SeTestTCAccountListViewKPI() throws Exception {
 		String methodID = "test11_SeTestTCAccountListViewKPI";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		// Test Params:
 		String entityType = "accounts";
 		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Accounts list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -525,7 +552,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(accountsListView.accountHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				verificationErrors.append(e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -543,12 +570,12 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				System.out.println("VP: KPI sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				verificationErrors.append(e.toString());
 				System.out.println("VP: KPI sub-panel e check - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			verificationErrors.append(e.toString());
 			System.out.println("VP: KPI sub-panel collapse check - FAILED");
 		}
 		
@@ -608,15 +635,18 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCAccountListViewNotesBox";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		// Test Params:
 		String entityType = "Accounts";
 		String expEntityPgTitle = "Accounts";
 		String entityRecord = "Abbott Ltd.";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
 	
 	    //Step: navigate to Accounts list view...
 		commNav.entityListViewSearch(entityType, entityRecord);
@@ -653,7 +683,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());
+				verificationErrors.append(e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -674,7 +704,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());
+				verificationErrors.append(e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 		}

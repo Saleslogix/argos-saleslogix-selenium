@@ -884,12 +884,14 @@ public class CommonNavigation {
 	public boolean isWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
 		String methodID = "isWebElementPresent";
 		
-		try { highlightElement(wElement);
+		try { 
+			highlightElement(wElement);
 			System.out.println(methodID + ": " + sDesc + " is displayed on the current page/screen.");
 			return true;
 		}
 		catch (Exception e) {
 			System.out.println(e.toString());
+			System.out.println(methodID + ": Unable to locate '" + sDesc + "' on the current page/screen.");
 			return false;
 		}
 	}
@@ -1488,7 +1490,7 @@ public class CommonNavigation {
 				}
 			} 
 		}
-		catch (Exception e){
+		catch (Error e){
 			System.out.println(e.toString());
 		}
 	}

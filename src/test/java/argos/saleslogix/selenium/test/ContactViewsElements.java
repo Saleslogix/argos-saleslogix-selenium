@@ -308,90 +308,93 @@ public class ContactViewsElements extends BrowserSetup {
 		
 	//Edit View elements
 	//------------------
-	//TODO: the Contact Edit fields need to be updated when needed
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_edit']")
 	WebElement contactsEditView;
 	
 	@CacheLookup
-	@FindBy(css= "#Mobile_SalesLogix_Fields_PicklistField_1 > input[type='text']")
-	WebElement contactsEditViewCuisineFld;
+	@FindBy(xpath = "//*[@id='contact_edit']/div[2]/h2")
+	WebElement contactsEditViewDetailsHdr;
 	
 	@CacheLookup
-	@FindBy(css = "#Mobile_SalesLogix_Fields_PicklistField_1 > button.button.simpleSubHeaderButton")
-	WebElement contactsEditViewCuisineFldBtn;
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_NameField_0']/input")
+	WebElement contactsEditViewNameInputFld;
 	
 	@CacheLookup
-	@FindBy(css = "input[name='WebAddress']")
-	WebElement contactsEditViewWebFld;
-	
-	@CacheLookup
-	@FindBy(css = "input[name='WorkPhone']")
-	WebElement contactsEditViewPhoneFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_AddressField_0']/div")
-	WebElement contactsEditViewAddressFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_AddressField_0']/button")
-	WebElement contactsEditViewAddressFldBtn;
-	
-	@CacheLookup
-	@FindBy(css = "input[name='Email']")
-	WebElement contactsEditViewEmailFld;
-	
-	@CacheLookup
-	@FindBy(css = "input[name='Fax']")
-	WebElement contactsEditViewFaxFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "(//input[@type='text'])[11]")
-	WebElement contactsEditViewTitleFld;
-	
-	@CacheLookup
-	@FindBy(css = "#Mobile_SalesLogix_Fields_PicklistField_0 > button.button.simpleSubHeaderButton")
-	WebElement contactsEditViewTitleFldBtn;
-	
-	@CacheLookup
-	@FindBy(css = "input[name='HomePhone']")
-	WebElement contactsEditViewHomePhoneFld;
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_NameField_0']/button")
+	WebElement contactsEditViewNameInputFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
-	WebElement contactsEditViewAccountFld;
+	WebElement contactsEditViewAccountInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
-	WebElement contactsEditViewAccountFldBtn;
+	WebElement contactsEditViewAccountInputFldBtn;
 	
 	@CacheLookup
-	@FindBy(css = "#Sage_Platform_Mobile_Fields_LookupField_1 > input[type='text']")
-	WebElement contactsEditViewAcctMgrFld;
+	@FindBy(css = "input[name='WebAddress']")
+	WebElement contactsEditViewWebInputFld;
 	
 	@CacheLookup
-	@FindBy(css = "#Sage_Platform_Mobile_Fields_LookupField_1 > button.button.simpleSubHeaderButton")
-	WebElement contactsEditViewAcctMgrFldBtn;
+	@FindBy(css = "input[name='WorkPhone']")
+	WebElement contactsEditViewPhoneInputFld;
+	
+	@CacheLookup
+	@FindBy(css = "input[name='Email']")
+	WebElement contactsEditViewEmailInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
+	WebElement contactsEditViewTitleInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
+	WebElement contactsEditViewTitleInputFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_AddressField_0']/div")
+	WebElement contactsEditViewAddressInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_AddressField_0']/button")
+	WebElement contactsEditViewAddressInputFldBtn;
+	
+	@CacheLookup
+	@FindBy(css = "input[name='HomePhone']")
+	WebElement contactsEditViewHomePhoneInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='Mobile']")
-	WebElement contactsEditViewMobileFld;
+	WebElement contactsEditViewMobileInputFld;
 	
 	@CacheLookup
-	@FindBy(css = "input[type='text']")
-	WebElement contactsEditViewNameFld;
+	@FindBy(css = "input[name='Fax']")
+	WebElement contactsEditViewFaxInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_NameField_0']/button")
-	WebElement contactsEditViewNameFldBtn;
+	@FindBy(css = "#Sage_Platform_Mobile_Fields_LookupField_1 > input[type='text']")
+	WebElement contactsEditViewAcctMgrInputFld;
+	
+	@CacheLookup
+	@FindBy(css = "#Sage_Platform_Mobile_Fields_LookupField_1 > button.button.simpleSubHeaderButton")
+	WebElement contactsEditViewAcctMgrInputFldBtn;
 	
 	@CacheLookup
 	@FindBy(css = "#Sage_Platform_Mobile_Fields_LookupField_2 > input[type='text']")
-	WebElement contactsEditViewOwnerFld;
+	WebElement contactsEditViewOwnerInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "#Sage_Platform_Mobile_Fields_LookupField_2 > button.button.simpleSubHeaderButton")
-	WebElement contactsEditViewOwnerFldBtn;
+	WebElement contactsEditViewOwnerInputFldBtn;
+	
+	@CacheLookup
+	@FindBy(css= "#Mobile_SalesLogix_Fields_PicklistField_1 > input[type='text']")
+	WebElement contactsEditViewCuisineInputFld;
+	
+	@CacheLookup
+	@FindBy(css = "#Mobile_SalesLogix_Fields_PicklistField_1 > button.button.simpleSubHeaderButton")
+	WebElement contactsEditViewCuisineInputFldBtn;
 	
 	//Methods
 	//-------
@@ -447,7 +450,7 @@ public class ContactViewsElements extends BrowserSetup {
 			
 			//Step: setup new Contact field values
 			//setup name fields		
-			contactsEditViewNameFldBtn.click();
+			contactsEditViewNameInputFldBtn.click();
 				//TEMP: disable Name Prefix selection in favor of direct input field value setting
 				commView.namePrefixInputFld.sendKeys("Mr.");
 				commView.nameFirstInputFld.sendKeys(strContactFirstName);
@@ -457,28 +460,28 @@ public class ContactViewsElements extends BrowserSetup {
 				headerButton.clickHeaderButton("check");
 				
 			//setup account field
-			contactsEditViewAccountFldBtn.click();
+			contactsEditViewAccountInputFldBtn.click();
 				commNav.highlightNClick(commNav.entityListViewSelect("Accounts", strContactAccount));
 			
 			//conditionaly setup web field	
-			if (commNav.isFieldValueEmpty("Web", contactsEditViewWebFld)) {
-				contactsEditViewWebFld.sendKeys("www.saleslogix.com");
+			if (commNav.isFieldValueEmpty("Web", contactsEditViewWebInputFld)) {
+				contactsEditViewWebInputFld.sendKeys("www.saleslogix.com");
 			}
 			
 			//conditionally setup phone field
-			if (commNav.isFieldValueEmpty("Phone", contactsEditViewPhoneFld)) {
-				contactsEditViewPhoneFld.sendKeys("888-867-5309");
+			if (commNav.isFieldValueEmpty("Phone", contactsEditViewPhoneInputFld)) {
+				contactsEditViewPhoneInputFld.sendKeys("888-867-5309");
 			}
 			
 			//setup email field
-			contactsEditViewEmailFld.sendKeys("theone@boguscompany.com");
+			contactsEditViewEmailInputFld.sendKeys("theone@boguscompany.com");
 			
 			//setup title field
-			contactsEditViewTitleFld.sendKeys("Principal");
+			contactsEditViewTitleInputFld.sendKeys("Principal");
 			
 			//conditionally setup address fields
-			if (contactsEditViewAddressFld.getText().equals("")) {
-				contactsEditViewAddressFldBtn.click();
+			if (contactsEditViewAddressInputFld.getText().equals("")) {
+				contactsEditViewAddressInputFldBtn.click();
 				//TEMP disable selection views (doesn't work on Jenkins server)				
 				commView.addressPrimaryTgl.click();
 				commView.addressShippingTgl.click();
@@ -494,28 +497,28 @@ public class ContactViewsElements extends BrowserSetup {
 			}				
 			
 			//setup home phone field
-			contactsEditViewHomePhoneFld.sendKeys("(480)-867-5309");
+			contactsEditViewHomePhoneInputFld.sendKeys("(480)-867-5309");
 			
 			//setup mobile field
-			contactsEditViewMobileFld.sendKeys("(602)-867-5309");
+			contactsEditViewMobileInputFld.sendKeys("(602)-867-5309");
 
 			//setup fax field
-			contactsEditViewFaxFld.sendKeys("(866)-867-5309");
+			contactsEditViewFaxInputFld.sendKeys("(866)-867-5309");
 			
 			//conditionally setup acct mgr field
-			if (commNav.isFieldValueEmpty("Acct Mgr", contactsEditViewAcctMgrFld)) {
-				contactsEditViewAcctMgrFldBtn.click();
+			if (commNav.isFieldValueEmpty("Acct Mgr", contactsEditViewAcctMgrInputFld)) {
+				contactsEditViewAcctMgrInputFldBtn.click();
 				commNav.highlightNClick(commNav.entityListViewSearch("Users", "Hogan"));				
 			}
 			
 			//conditionally setup owner field
-			if (commNav.isFieldValueEmpty("Owner", contactsEditViewOwnerFld)) {
+			if (commNav.isFieldValueEmpty("Owner", contactsEditViewOwnerInputFld)) {
 				//TEMP disable - doesn't work for Trinity DB
-				contactsEditViewOwnerFld.sendKeys("Midwest");
+				contactsEditViewOwnerInputFld.sendKeys("Midwest");
 			}
 			
 			//setup cuisine field
-			contactsEditViewCuisineFldBtn.click();
+			contactsEditViewCuisineInputFldBtn.click();
 				commView.selectFieldValListItem("Cuisine", "Chinese");
 				headerButton.clickHeaderButton("check");
 			
