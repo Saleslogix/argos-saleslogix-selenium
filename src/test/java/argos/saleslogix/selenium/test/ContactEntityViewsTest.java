@@ -104,6 +104,9 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
@@ -360,14 +363,13 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//TODO: complete test09_SeTestTCContactAddEditView for Contacts
 	@Test(enabled = true)
 	public void test09_SeTestTCContactAddEditView() throws Exception {
 		String methodID = "test09_SeTestTCContactAddEditView";
 		
 		// Test Params:
 		String entityType = "Contact";
-		String viewName = "Contact Edit view";
+		String viewName = "Contact Add Edit view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);

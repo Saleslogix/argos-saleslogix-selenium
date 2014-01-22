@@ -109,6 +109,10 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 			
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
@@ -392,7 +396,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "account";
-		String viewName = "Add Account Edit view";
+		String viewName = "Account Add Edit view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);

@@ -72,15 +72,13 @@ public class LeadEntityViewsTest extends BrowserSetup {
 			}
 			catch (Exception e) {
 				verificationErrors.append(e.toString());				
-			}
-			
-			//Step: check the "X records remaining" item box at the bottom of the list view
-			//commNav.checkIfWebElementPresent("Leads List View, 'x remaining records' item", LeadListView.recordsRemainingListItem);
+			}			
 		}
 		else {
 			System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
 		}
 		
+		commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 	
@@ -96,6 +94,9 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
@@ -138,7 +139,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	}
 	
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test04_SeTestTCLeadListViewNegativeSearch() throws Exception {
 		String methodID = "test04_SeTestTCLeadListViewNegativeSearch";
 
@@ -167,14 +168,15 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		String entityRecord = "Adams, Adelaide";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
 		commNav.entityListViewSearch(entityType, entityRecord);
 			
 		//Step: check for matching results...
 		LeadViewsElements LeadListView = PageFactory.initElements(driver, LeadViewsElements.class);
-		String topLeadListItemName = LeadListView.topLeadsListItemName.getText();
 				
 		//Step: click the clear Search input field button
+		headerButton.showRightContextMenu();
 		LeadListView.leadsSearchClearBtn.click();
 				
 		//Step: click the Lookup button to reload the full Leads list
@@ -182,9 +184,9 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		Thread.sleep(3000);
 				
 		//Step: check if the previous search results were cleared
-		String currTopLeadsListViewName = driver.findElement(By.xpath("//*[@id='Lead_list']/ul/li[1]/div/h3")).getText();
 		try {
-			AssertJUnit.assertEquals(topLeadListItemName, currTopLeadsListViewName);
+			String leadsListSearchExpression = driver.findElement(By.xpath("//*[@id='lead_list_search-expression']/div")).getText();
+			AssertJUnit.assertEquals(leadsListSearchExpression, "no search applied");
 		} catch (Error e) {
 			verificationErrors.append(e.toString());
 			System.out.println(methodID + ": clear previous Leads search results action failed");
@@ -226,7 +228,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		// Test Params:
-		String entityType = "Leads";
+		String entityType = "Lead";
 		String entityRecord = "Adams, Adelaide";
 		String viewName = "Lead Detail view";
 		
@@ -291,14 +293,14 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	@Test(enabled = false)
-	public void test08_SeTestTCAccountEditView() throws Exception {
-		String methodID = "test08_SeTestTCAccountEditView";
+	@Test(enabled = true)
+	public void test08_SeTestTCLeadEditView() throws Exception {
+		String methodID = "test08_SeTestTCLeadEditView";
 		
 		// Test Params:
-		String entityType = "Account";
-		String entityRecord = "Allied Corp.";
-		String viewName = "Account Edit view";
+		String entityType = "Lead";
+		String entityRecord = "Adams, Adelaide";
+		String viewName = "Lead Detail view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -309,28 +311,28 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
-			//Step: search for Account entity, then open it's Edit view
+			//Step: search for Lead entity, then open it's Edit view
 			AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
 			
 			LeadViewsElements leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
-			
-			/*
+		
 			//Step: check each input field and if applicable, its related list item selection view
-			commNav.isWebElementPresent(viewName + ", 'Details' section header", accountEditView.accountEditViewDetailsHdr);
-			commNav.isWebElementPresent(viewName + ", account field", accountEditView.accountEditViewAccountInputFld);
-			commNav.isWebElementPresent(viewName + ", web field", accountEditView.accountEditViewWebInputFld);
-			commNav.isWebElementPresent(viewName + ", phone field", accountEditView.accountEditViewPhoneInputFld);
-			commNav.verifyEntityViewElementClick(viewName + ",'address field'", accountEditView.accountEditViewAddressFldBtn, "Address");
-			commNav.isWebElementPresent(viewName + ", fax field", accountEditView.accountEditViewFaxInputFld);
-			commNav.verifyEntityViewElementClick(viewName + ",'type field'", accountEditView.accountEditViewTypeFldBtn, "Account Type");
-			commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Subtype");
-			commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Status");
-			commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewIndustryFldBtn, "Industry");
-			commNav.isWebElementPresent(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
-			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
-			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
-			commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
-			*/
+			commNav.isWebElementPresent(viewName + ", 'Details' section header", leadEditView.leadsEditViewDetailsHdr);
+			commNav.verifyEntityViewElementClick(viewName + ", name field", leadEditView.leadsEditViewNameFldBtn, "Edit Name");			
+			commNav.isWebElementPresent(viewName + ", company field", leadEditView.leadsEditViewCompanyInputFld);			
+			commNav.isWebElementPresent(viewName + ", web field", leadEditView.leadsEditViewWebInputFld);			
+			commNav.isWebElementPresent(viewName + ", work phone field", leadEditView.leadsEditViewWorkPhoneInputFld);			
+			commNav.isWebElementPresent(viewName + ", mobile phone field", leadEditView.leadsEditViewWorkPhoneInputFld);
+			commNav.isWebElementPresent(viewName + ", toll free field", leadEditView.leadsEditViewTollFreeInputFld);
+			commNav.isWebElementPresent(viewName + ", email field", leadEditView.leadsEditViewEmailInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ", title field", leadEditView.leadsEditViewTitleFldBtn, "Title");			
+			commNav.verifyEntityViewElementClick(viewName + ", address field", leadEditView.leadsEditViewAddressFldBtn, "Address");
+			commNav.verifyEntityViewElementClick(viewName + ", lead source field", leadEditView.leadsEditViewLeadSourceFldBtn, "Lead Sources");
+			commNav.isWebElementPresent(viewName + ", interests field", leadEditView.leadsEditViewInterestsInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ", industry field", leadEditView.leadsEditViewIndustryFldBtn, "Industry");			
+			commNav.isWebElementPresent(viewName + ", sic code field", leadEditView.leadsEditViewSicCodeInputFld);
+			commNav.isWebElementPresent(viewName + ", business description text area", leadEditView.leadsEditViewBusDescInputFld);			
+			commNav.verifyEntityViewElementClick(viewName + ", owner field", leadEditView.leadsEditViewOwnerFldBtn, "Owners");
 			
 			//end of test
 			headerButton.clickHeaderButton("cancel");
@@ -338,9 +340,66 @@ public class LeadEntityViewsTest extends BrowserSetup {
 			//Step: go back to previous screen
 			headerButton.goBack();
 			Thread.sleep(2000);
-		} catch (Error e) {
+		} catch (Exception e) {
 			verificationErrors.append(e.toString());
 			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
+		}
+		
+		System.out.println(ENDLINE);
+	}
+	
+	@Test(enabled = true)
+	public void test09_SeTestTCLeadAddEditView() throws Exception {
+		String methodID = "test09_SeTestTCLeadAddEditView";
+		
+		// Test Params:
+		String entityType = "Lead";
+		String viewName = "Lead Add Edit view";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
+		
+		try {
+			//Step: enter the Contact Add Edit view...
+			commNav.entityRecordAdd(entityType);
+			
+			LeadViewsElements leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
+			
+			//Step: check each input field and if applicable, its related list item selection view
+			commNav.isWebElementPresent(viewName + ", 'Details' section header", leadEditView.leadsEditViewDetailsHdr);
+			commNav.verifyEntityViewElementClick(viewName + ", name field", leadEditView.leadsEditViewNameFldBtn, "Edit Name");			
+			commNav.isWebElementPresent(viewName + ", company field", leadEditView.leadsEditViewCompanyInputFld);			
+			commNav.isWebElementPresent(viewName + ", web field", leadEditView.leadsEditViewWebInputFld);			
+			commNav.isWebElementPresent(viewName + ", work phone field", leadEditView.leadsEditViewWorkPhoneInputFld);			
+			commNav.isWebElementPresent(viewName + ", mobile phone field", leadEditView.leadsEditViewWorkPhoneInputFld);
+			commNav.isWebElementPresent(viewName + ", toll free field", leadEditView.leadsEditViewTollFreeInputFld);
+			commNav.isWebElementPresent(viewName + ", email field", leadEditView.leadsEditViewEmailInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ", title field", leadEditView.leadsEditViewTitleFldBtn, "Title");			
+			commNav.verifyEntityViewElementClick(viewName + ", address field", leadEditView.leadsEditViewAddressFldBtn, "Address");
+			commNav.verifyEntityViewElementClick(viewName + ", lead source field", leadEditView.leadsEditViewLeadSourceFldBtn, "Lead Sources");
+			commNav.isWebElementPresent(viewName + ", interests field", leadEditView.leadsEditViewInterestsInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ", industry field", leadEditView.leadsEditViewIndustryFldBtn, "Industry");			
+			commNav.isWebElementPresent(viewName + ", sic code field", leadEditView.leadsEditViewSicCodeInputFld);
+			commNav.isWebElementPresent(viewName + ", business description text area", leadEditView.leadsEditViewBusDescInputFld);			
+			commNav.verifyEntityViewElementClick(viewName + ", owner field", leadEditView.leadsEditViewOwnerFldBtn, "Owners");
+			
+			//end of test
+			headerButton.clickHeaderButton("cancel");
+		
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(2000);
+					
+			//Step: go back to previous screens
+			headerButton.clickHeaderButton("cancel");
+			headerButton.goBack();
+			Thread.sleep(2000);
+		}
+		catch (Exception e) {
+			verificationErrors.append(e.toString());
+			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
 		}
 		
 		System.out.println(ENDLINE);
