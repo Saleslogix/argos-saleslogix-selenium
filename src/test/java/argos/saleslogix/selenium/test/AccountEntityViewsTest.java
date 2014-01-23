@@ -163,7 +163,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		//Step: search for an existing Account record
 		commNav.entityListViewSearch(entityType, entityRecord);
-		//commNav.entityListViewSearch("Accounts", "Non-Existent Account");		//debug test
 		
 		System.out.println(ENDLINE);
 	}
@@ -265,7 +264,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Accounts";
-		String entityRecord = "Advising Group";
+		String entityRecord = "A1 Enterprises";
 		String viewName = "Account Detail view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -342,7 +341,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Account";
-		String entityRecord = "Allied Corp.";
+		String entityRecord = "A1 Enterprises";
 		String viewName = "Account Edit view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);

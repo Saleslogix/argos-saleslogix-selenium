@@ -25,7 +25,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Contacts";
-		String entityRecord = "Adi, Douglas";
+		String entityRecord = "Barbosa, Angelo";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
@@ -91,7 +91,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//TODO: complete test02_SeTestTCContactListViewLoadMoreResults for Contacts
+
 	@Test(enabled = true)
 	public void test02_SeTestTCContactListViewLoadMoreResults() throws Exception {
 		String methodID = "test02_SeTestTCContactListViewLoadMoreResults";
@@ -141,24 +141,27 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 
-	//TODO: complete test03_SeTestTCContactListViewSearch for Contacts
 	@Test(enabled = true)
 	public void test03_SeTestTCContactListViewSearch() throws Exception {
 		String methodID = "test03_SeTestTCContactListViewSearch";
+		
+		// Test Params:
+		String entityType = "Contacts";
+		String entityRecord = "Barbosa, Angelo";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for an existing Account record
-		commNav.entityListViewSearch("Contacts", "Adi, Douglas");
-		//commNav.entityListViewSearch("Contacts", "Non-Existent Account");		//debug test
+		commNav.entityListViewSearch(entityType, entityRecord);
 		
 		System.out.println(ENDLINE);
 	}
 
-	//TODO: complete test04_SeTestTCContactListViewNegativeSearch for Contacts
+
 	@Test(enabled = true)
 	public void test04_SeTestTCContactListViewNegativeSearch() throws Exception {
 		String methodID = "test04_SeTestTCContactListViewNegativeSearch";
@@ -173,14 +176,14 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//TODO: complete test05_SeTestTCContactListViewClearSearch for Contacts
+
 	@Test(enabled = true)
 	public void test05_SeTestTCContactListViewClearSearch() throws Exception {
 		String methodID = "test05_SeTestTCContactListViewClearSearch";
 		
 		// Test Params:
 		String entityType = "Contacts";
-		String entityRecord = "Adi, Douglas";
+		String entityRecord = "Barbosa, Angelo";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -216,14 +219,13 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	}
 
 
-	//TODO: complete test06_SeTestTCContactListViewOpenRecord for Contacts
 	@Test(enabled = true)
 	public void test06_SeTestTCContactListViewOpenRecord() throws Exception {
 		String methodID = "test06_SeTestTCContactListViewOpenRecord";
 		
 		// Test Params:
 		String entityType = "Contacts";
-		String entityRecord = "Adi, Douglas";
+		String entityRecord = "Barbosa, Angelo";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -240,14 +242,14 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//TODO: complete test07_SeTestTCContactDetailView for Contacts
+
 	@Test(enabled = true)
 	public void test07_SeTestTCContactDetailView() throws Exception {
 		String methodID = "test07_SeTestTCContactDetailView";
 		
 		//Test Parameters:
 		String entityType = "Contacts";
-		String contactRecord = "Adi, Douglas";
+		String contactRecord = "Barbosa, Angelo";
 		String viewName = "Contact Detail view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -311,14 +313,14 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//TODO: complete test08_SeTestTCContactEditView for Contacts
+
 	@Test(enabled = true)
 	public void test08_SeTestTCContactEditView() throws Exception {
 		String methodID = "test08_SeTestTCContactEditView";
 		
 		//Test Parameters:
 		String entityType = "Contact";
-		String contactRecord = "Adi, Douglas";
+		String contactRecord = "Barbosa, Angelo";
 		String viewName = "Contact Edit view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -362,6 +364,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 
 	@Test(enabled = true)
 	public void test09_SeTestTCContactAddEditView() throws Exception {
@@ -417,8 +420,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 
-	//TODO: complete test10_SeTestTCContactListViewHashTags for Contacts
 	@Test(enabled = false)
 	public void test10_SeTestTCContactListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCContactListViewHashTags";
@@ -495,9 +498,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-
 	
-	//TODO: complete test11_SeTestTCContactListViewKPI for Contacts
 	@Test(enabled = true)
 	public void test11_SeTestTCContactListViewKPI() throws Exception {
 		String methodID = "test11_SeTestTCContactListViewKPI";
@@ -567,7 +568,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	//TODO: need to update the Contact Edit field selector ids' in ContactViewsElements.java
+	
 	@Test(enabled = true)
 	public void test12_SeTestTCContactListViewAddContact() throws Exception {
 		String methodID = "test12_SeTestTCContactListViewAddContact";
@@ -610,7 +611,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Contacts";
 		String expEntityPgTitle = "Contacts";
-		String entityRecord = "Adi, Douglas";
+		String entityRecord = "Barbosa, Angelo";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -683,6 +684,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 
 	//Login & Logout
 	//==============
@@ -697,6 +699,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);	
 	}
 
+	
 	@Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";

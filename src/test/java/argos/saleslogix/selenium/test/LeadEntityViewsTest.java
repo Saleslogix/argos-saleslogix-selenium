@@ -3,6 +3,9 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -103,6 +106,13 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	
 	    //Step: navigate to Leads list view...
 		commNav.clickGlobalMenuItem(entityType);
+		
+		//Step: reveal Right Context Menu panel
+		headerbutton.showRightContextMenu();
+		
+		//Step: test each of the pre-set KPI items		
+		commNav.scrollDownPage();
+		commNav.rightClickContextMenuItem("Total Leads");
 	
 	    //Step: load more results (click on 'x remaining records' item)
 		for (int count = 0; count<=2; count++) {
@@ -530,6 +540,180 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	    }
 	    // -- END
 	    System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test10_SeTestTCLeadListViewHashTags() throws Exception {
+		String methodID = "test10_SeTestTCLeadListViewHashTags";
+		
+		// Test Params:
+		String entityType = "Leads";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Contacts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		
+	    //Step: test the Hash Tags header
+		//expand the Hash Tags sub-panel if it's currently collapsed
+		if (!leadsListView.leadsHashTagsPnl.isDisplayed()) {
+			leadsListView.leadsHashTagsHdr.click();
+			
+			//confirm the the panel was indeed expanded
+			try {
+				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
+				return;
+			}
+		}
+		//collapase the Hash Tags sub-panel
+		leadsListView.leadsHashTagsHdr.click();
+		try {
+			AssertJUnit.assertFalse(leadsListView.leadsHashTagsPnl.isDisplayed());
+			System.out.println("VP: Hash Tags sub-panel collapse check - Passed");
+			
+			//re-expand the Hash Tags sub-panel
+			leadsListView.leadsHashTagsHdr.click();
+			try {
+				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
+				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println("VP: Hash Tags sub-panel expand check - FAILED");
+			}
+		}
+		catch (Error e) {
+			verificationErrors.append(e.toString());
+			System.out.println("VP: Hash Tags sub-panel collapse check - FAILED");
+		}
+		
+		//Step: test each of the pre-set Hash Tag items
+		commNav.rightClickContextMenuItem("my-leads");
+		commNav.rightClickContextMenuItem("can-email");
+		commNav.rightClickContextMenuItem("can-phone");
+		commNav.rightClickContextMenuItem("can-fax");
+		commNav.rightClickContextMenuItem("can-mail");
+		commNav.rightClickContextMenuItem("can-solicit");
+		
+		//Step: go back to previous screen
+		headerButton.goBack();
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+	
+	@Test(enabled = true)
+	public void test11_SeTestTCLeadListViewKPI() throws Exception {
+		String methodID = "test11_SeTestTCLeadListViewKPI";
+		
+		// Test Params:
+		String entityType = "Leads";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Contacts list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		
+	    //Step: test the KPI header
+		//expand the KPI sub-panel if it's currently collapsed
+		if (!leadsListView.leadsKPIPnl.isDisplayed()) {
+			leadsListView.leadsKPIHdr.click();
+			
+			//confirm the the panel was indeed expanded
+			try {
+				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
+				return;
+			}
+		}
+		//collapse Hash Tags sub-panel check
+		leadsListView.leadsKPIHdr.click();
+		try {
+			AssertJUnit.assertFalse(leadsListView.leadsKPIPnl.isDisplayed());
+			System.out.println("VP: KPI sub-panel collapse check - Passed");
+			
+			//re-expand the Hash Tags sub-panel
+			leadsListView.leadsKPIHdr.click();
+			try {
+				AssertJUnit.assertTrue(leadsListView.leadsKPIPnl.isDisplayed());
+				System.out.println("VP: KPI sub-panel expand check - Passed");
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println("VP: KPI sub-panel e check - FAILED");
+			}
+		}
+		catch (Error e) {
+			verificationErrors.append(e.toString());
+			System.out.println("VP: KPI sub-panel collapse check - FAILED");
+		}
+		
+		//Step: test each of the pre-set KPI items		
+		commNav.scrollDownPage();
+		commNav.rightClickContextMenuItem("Total Leads");
+		
+		//Step: go back to previous screen
+		headerButton.closeRightContextMenu();
+		headerButton.goBack();
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+	
+	@Test(enabled = true)
+	public void test12_SeTestTCLeadListViewAddLead() throws Exception {
+		String methodID = "test12_SeTestTCLeadListViewAddLead";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		//HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+				
+		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+		
+		//Step: add a random test Contact record
+		String newLeadLastName = "Turing-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+		leadsListView.doAddRandTestLead(newLeadLastName, "Alan", "Turing and Co.");
+		
+		//Step: find the newly-added test Contact record
+		String strResultsMsg = "VP: recently added test Lead '" + newLeadLastName + "' was found.";
+		if (leadsListView.doSearchLead(newLeadLastName)) {
+			System.out.println(strResultsMsg + " - Passed");
+		}
+		else {
+			System.out.println(strResultsMsg + " - FAILED");
+		}
+		
+		//Step: go back to My Activities view
+		commNav.clickGlobalMenuItem("My Activities");
+		
+		System.out.println(ENDLINE);
 	}
 
 	

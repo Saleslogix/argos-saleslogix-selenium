@@ -26,13 +26,13 @@ public class MyActivityViewsTest extends BrowserSetup {
 		//Reference: MBL-10071
 		String methodID = "test01_SeTestTCMyActivitiesListView";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		// Test Params:
 		String entityType = "My Activities";
 		String expEntityPgTitle = "My Activities";
-		String regardingRecord = "Staff Meeting";
+		String regardingRecord = "Send quote";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    //Step: click Top-Left button to reveal Global Menu...

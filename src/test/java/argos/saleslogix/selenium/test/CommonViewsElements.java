@@ -318,6 +318,57 @@ public class CommonViewsElements extends BrowserSetup {
 	//Methods
 	//=======
 	/**
+	 * The lookupNSelectListItem method will lookup then select an item from a field input list 
+	 * view selection list (i.e. Account Type, City, Industry, etc.).  This method should be called
+	 * immediately after clicking an input field button that invokes a list view selection.
+	 * 
+	 * @version	1.0
+	 * @param	strFieldName  	field value label name that invokes this list view selection
+	 * @param	strSelectItem	target list item to search and select
+	 * @exception InterruptedException
+	 */
+	public void lookupNSelectListItem(String strFieldName, String strSelectItem) throws InterruptedException {
+		String methodID = "lookupNSelectListItem";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		String listXPathSubStr = "";
+		String listItemXPath = "";
+		//.//*[@id='owner_list']
+		//setup common elements based on field name to set
+		switch (strFieldName.toLowerCase()) {
+		case "lead source": case "lead sources":
+			listXPathSubStr = "//*[@id='leadsource_list']";
+			break;
+		case "owners": case "owner":
+			listXPathSubStr = "//*[@id='owner_list']";
+			break;		
+		}
+		
+		try {
+			WebElement lookupFld = driver.findElement(By.name("query"));
+			WebElement lookupBtn = driver.findElement(By.cssSelector("button.subHeaderButton.searchButton"));
+			
+			//enter the lookup item into the query field
+			lookupFld.sendKeys(strSelectItem);
+			
+			//click the Lookup button to find the item
+			lookupBtn.click();
+			Thread.sleep(3000);
+			
+			//click to select the lookup item
+			listItemXPath = listXPathSubStr + "//descendant::*[text()='" + strSelectItem + "']";
+			driver.findElement(By.xpath(listItemXPath)).click();
+			Thread.sleep(3000);
+		}
+		catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+	}
+	
+	
+	/**
 	 * The selectFieldValListItem method will search for and select an item from a field input list 
 	 * view selection list (i.e. Account Type, City, Industry, etc.).  This method should be called
 	 * immediately after clicking an input field button that invokes a list view selection.

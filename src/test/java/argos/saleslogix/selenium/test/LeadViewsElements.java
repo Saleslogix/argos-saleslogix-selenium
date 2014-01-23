@@ -367,7 +367,7 @@ public class LeadViewsElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
-	WebElement leadsEditViewLeadSourceFld;
+	WebElement leadsEditViewLeadSourceInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
@@ -431,5 +431,135 @@ public class LeadViewsElements extends BrowserSetup {
 		boolean result = false;
 		
 		return result;
+	}
+
+	
+	/**
+	 * This method will add an auto-generated test Lead record by filling-in the Lead Edit input fields.
+	 * The Lead will have a unique string appended to the Last Name in order to ensure uniqueness.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	strLeadLastName	lead last name to set
+	 * @param	strLeadFirstName	lead first name to set
+	 * @param	strLeadCompany	company name for lead
+	 * @throws Exception 
+	 */
+	public void doAddRandTestLead(String strLeadLastName, String strLeadFirstName, String strLeadCompany) throws Exception {
+		String methodID = "doAddRandTestLead";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Leads list view
+		commNav.clickGlobalMenuItem("Leads");
+		
+		//Step: click the Add header button to enter Lead edit view
+		headerButton.clickHeaderButton("Add");
+		
+		//Step: setup new Lead field values
+		//setup name fields		
+		leadsEditViewNameFldBtn.click();
+			//TEMP: disable Name Prefix selection in favor of direct input field value setting
+			commView.namePrefixInputFld.sendKeys("Mr.");
+			commView.nameFirstInputFld.sendKeys(strLeadFirstName);
+			commView.nameMiddleInputFld.sendKeys("Neo");
+			commView.nameLastInputFld.sendKeys(strLeadLastName);
+			commView.nameSuffixInputFld.sendKeys("Jr.");
+			headerButton.clickHeaderButton("check");
+			
+		//setup company field
+		leadsEditViewCompanyInputFld.sendKeys(strLeadCompany);
+		
+		//setup web field
+		leadsEditViewWebInputFld.sendKeys("www.saleslogix.com");
+		
+		//setup work phone field
+		leadsEditViewWorkPhoneInputFld.sendKeys("888-867-5309");
+		
+		//setup mobile phone field
+		leadsEditViewMobilePhoneInputFld.sendKeys("408-867-5309");
+		
+		//setup toll free field
+		leadsEditViewMobilePhoneInputFld.sendKeys("800-867-5309");
+		
+		//setup email field
+		leadsEditViewEmailInputFld.sendKeys("aturing@fakemail.com");
+		
+		//setup title field
+		leadsEditViewTitleInputFld.sendKeys("CEO");
+		
+		//conditionally setup address fields
+		if (leadsEditViewAddressInputFld.getText().equals("")) {
+			leadsEditViewAddressFldBtn.click();
+			//TEMP disable selection views (doesn't work on Jenkins server)
+			commView.addressDescriptionInputFld.sendKeys("Mailing");
+			commView.addressPrimaryTgl.click();
+			commView.addressShippingTgl.click();
+			commView.addressLine1.sendKeys("8800 Mobile St.");
+			commView.addressLine2.sendKeys("Corporate Campus");
+			commView.addressLine3.sendKeys("Suite 200");
+			commView.addressCityInputFld.sendKeys("Phoenix");				
+			commView.addressStateInputFld.sendKeys("AZ");				
+			commView.addressPostalInputFld.sendKeys("85048");
+			commView.addressCountryInputFld.sendKeys("USA");				
+			commView.addressAttentionInputFld.sendKeys("Mrs. Rogers");
+			headerButton.clickHeaderButton("check");
+		}				
+		
+		//setup lead source field
+		leadsEditViewLeadSourceFldBtn.click();
+			commView.lookupNSelectListItem("Lead Sources", "Web - General");
+		
+		//setup interests field
+		leadsEditViewInterestsInputFld.sendKeys("automated test");
+	
+		//setup industry field
+		leadsEditViewIndustryInputFld.sendKeys("Computers/Electronics/High Tech");
+		//leadsEditViewIndustryFldBtn.click();
+		//	commView.selectFieldValListItem("Industry", "Computers/Electronics/High Tech");
+		//	headerButton.clickHeaderButton("check");
+		
+		//setup sic code field
+		leadsEditViewSicCodeInputFld.sendKeys("51CC0D3");			
+		
+		//setup business desc field
+		leadsEditViewBusDescInputFld.sendKeys("automated test lead entity record");
+		
+		//setup comments field
+		leadsEditViewCommentsInputFld.sendKeys("automated test lead entity record");
+		
+		//setup owner field
+		leadsEditViewOwnerFldBtn.click();
+			commView.lookupNSelectListItem("Owners", "Everyone");
+		
+		//Step: save the new Lead field values
+		commNav.waitForPage("Lead");
+		headerButton.clickHeaderButton("save");
+		commNav.waitForNotPage("Lead");
+		
+		System.out.println(methodID + ": Auto-test Lead - " +  strLeadLastName + ", " + strLeadLastName + " record was created.");
+	}
+
+
+	public boolean doSearchLead(String strLeadName) throws InterruptedException, Exception {
+		String methodID = "doSearchLead";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+			
+	    //Step: search for then click to open Contact record detail view
+		commNav.highlightNClick(commNav.entityListViewSearch("Leads", strLeadName));
+		
+		//Step: confirm Account record detail view is displayed
+		if (commNav.waitForNotPage("Contacts")) {
+			return true;
+		}
+		else {		
+			return false;
+		}
 	}
 }
