@@ -679,51 +679,57 @@ public class MobileSprint304Test extends BrowserSetup {
 					
 	    //Step: open the Ticket Detail view
 	    String entityType = "Tickets";
-	    String tktItem = "001-00-000017";
+	    String tktItem = "001-00-000012";
 	    String entityDetailViewLink = "Ticket Activities";
-		commNav.entityRecordOpenDetailView(entityType, tktItem);
-	    
-	    //Step: open the Ticket Activities view
-	    String tktDetVwActivitiesXPath = "//*[@id='ticket_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
-	    driver.findElement(By.xpath(tktDetVwActivitiesXPath)).click();
-	    commNav.waitForPage(entityDetailViewLink);
-	    
-	    //Step: perform a Ticket Activity search
-	    String searchItem = "Customer follow up to check on new units";
-	    WebElement searchFld = driver.findElement(By.name("query"));
-	    WebElement lookupBtn = driver.findElement(By.xpath("//div[3]/button"));
-	    searchFld.clear();
-	    searchFld.sendKeys(searchItem);
-	    lookupBtn.click();
-	    Thread.sleep(2000);
-	    
-	    //Step: click to open the Ticket Activity record
-	    WebElement tktListItem = driver.findElement(By.xpath("//*[@id='ticketactivity_related']/ul/li"));
-	    tktListItem.click();
-	    commNav.waitForNotPage(entityDetailViewLink);
-	    
-	    //Step: expand the More Details link
-	    WebElement moreDetailsLnk = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/descendant::*[text() = 'More Details']"));
-	    moreDetailsLnk.click();
-	    
-	    //VP: check to see that the Elapsed Hours field is not equal to 0.0333333333333333
-	    String txt2Chk = "0.0333333333333333";
-	    String resultsMsg = "VP: The Elapsed Hours field value is not equal to " + txt2Chk;
 	    try {
-		    WebElement elapsedHrsFld = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/div[2]/div[2]/div[2]"));
-		    String elapsedHrsVal = elapsedHrsFld.getText();
-	    	AssertJUnit.assertFalse(elapsedHrsVal.equals("elapsed hours" + txt2Chk));
-	    	System.out.println(resultsMsg + " - Passed");
+			commNav.entityRecordOpenDetailView(entityType, tktItem);
+		    
+		    //Step: open the Ticket Activities view
+		    String tktDetVwActivitiesXPath = "//*[@id='ticket_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+		    driver.findElement(By.xpath(tktDetVwActivitiesXPath)).click();
+		    commNav.waitForPage(entityDetailViewLink);
+		    
+		    //Step: perform a Ticket Activity search
+		    String searchItem = "Customer follow up to check on new units";
+		    WebElement searchFld = driver.findElement(By.name("query"));
+		    WebElement lookupBtn = driver.findElement(By.xpath("//div[3]/button"));
+		    searchFld.clear();
+		    searchFld.sendKeys(searchItem);
+		    lookupBtn.click();
+		    Thread.sleep(2000);
+		    
+		    //Step: click to open the Ticket Activity record
+		    WebElement tktListItem = driver.findElement(By.xpath("//*[@id='ticketactivity_related']/ul/li"));
+		    tktListItem.click();
+		    commNav.waitForNotPage(entityDetailViewLink);
+		    
+		    //Step: expand the More Details link
+		    WebElement moreDetailsLnk = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/descendant::*[text() = 'More Details']"));
+		    moreDetailsLnk.click();
+		    
+		    //VP: check to see that the Elapsed Hours field is not equal to 0.0333333333333333
+		    String txt2Chk = "0.0333333333333333";
+		    String resultsMsg = "VP: The Elapsed Hours field value is not equal to " + txt2Chk;
+		    try {
+			    WebElement elapsedHrsFld = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/div[2]/div[2]/div[2]"));
+			    String elapsedHrsVal = elapsedHrsFld.getText();
+		    	AssertJUnit.assertFalse(elapsedHrsVal.equals("elapsed hours" + txt2Chk));
+		    	System.out.println(resultsMsg + " - Passed");
+		    }
+		    catch (Exception e) {
+		    	System.out.println(e.toString());
+		    	System.out.println(resultsMsg + " - Failed");
+		    }
 	    }
 	    catch (Exception e) {
-	    	System.out.println(e.toString());
-	    	System.out.println(resultsMsg + " - Failed");
+	    	verificationErrors.append(e.toString());
 	    }
 	    
 		//END
 	    commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
+
 
 
 	@Test(enabled = false)

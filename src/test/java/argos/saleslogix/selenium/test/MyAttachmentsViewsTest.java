@@ -32,7 +32,7 @@ public class MyAttachmentsViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "My Attachments";
 		String expEntityPgTitle = "My Attachments";
-		String attachmentRecord = "ibm";
+		String attachmentRecord = "image";
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		

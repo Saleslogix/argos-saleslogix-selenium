@@ -2387,6 +2387,8 @@ public class MobileDefectTest extends BrowserSetup {
 		//tags: accounts list view, kpi, Avg Time as Customer 
 		String methodID = "test70_MobileDefect13093076";
 		
+		String userName = "Lou";
+		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
 		
@@ -2399,7 +2401,7 @@ public class MobileDefectTest extends BrowserSetup {
 		Thread.sleep(1000);
 		
 		//Step: Attempt invalid login 
-		slxmobilelogin.enterUserName("Lee");
+		slxmobilelogin.enterUserName(userName);
 		Thread.sleep(1000);
 		slxmobilelogin.enterPassword("bogus");
 		Thread.sleep(1000);
@@ -2409,7 +2411,7 @@ public class MobileDefectTest extends BrowserSetup {
 		closeAlertAndGetItsText();
 		
 		//Step: Redo login using valid credentials
-		slxmobilelogin.doLogin("Lee", "", true);
+		slxmobilelogin.doLogin(userName, "", true);
 		
 		// VP: confirm that the 'My Activities' screen displays after login
 		Thread.sleep(3000);

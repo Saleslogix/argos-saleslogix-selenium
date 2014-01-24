@@ -283,7 +283,7 @@ public class MobileSprint305Test extends BrowserSetup {
 		//Test Params:
 		String entityType1 = "Accounts";
 		String entityType2 = "My Activities";
-		String recordItem = "Abbott Ltd";
+		String recordItem = "A1 Enterprises";
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
 	
@@ -309,29 +309,33 @@ public class MobileSprint305Test extends BrowserSetup {
 		String remainingLblTxtA = "";
 		String remainingLblTxtB = "";
 		String recsRemainLblXPath = "//*[@id='myactivity_list']/div[3]/div";
-		String resultsMsg = "VP: Records Remaining label text is correctly updated on scrool-down ";
-		WebElement recsRemainingLbl = driver.findElement(By.xpath(recsRemainLblXPath));
-		for (int count = 1; count<3; count++) {
-			remainingLblTxtA = recsRemainingLbl.getText();
-			driver.findElement(By.xpath(recsRemainLblXPath)).click();
-			Thread.sleep(1000);
-			driver.findElement(By.xpath("//*[@id='myactivity_list']")).sendKeys(Keys.PAGE_DOWN);
-			Thread.sleep(3000);
-			remainingLblTxtB = recsRemainingLbl.getText();
-			try {
-				AssertJUnit.assertFalse(remainingLblTxtA.equals(remainingLblTxtB));
-				System.out.println(resultsMsg + count + " - Passed");
+		String resultsMsg = "VP: Records Remaining label text is correctly updated on scroll-down ";
+		try {
+			WebElement recsRemainingLbl = driver.findElement(By.xpath(recsRemainLblXPath));
+			for (int count = 1; count<3; count++) {
+				remainingLblTxtA = recsRemainingLbl.getText();
+				driver.findElement(By.xpath(recsRemainLblXPath)).click();
+				Thread.sleep(1000);
+				driver.findElement(By.xpath("//*[@id='myactivity_list']")).sendKeys(Keys.PAGE_DOWN);
+				Thread.sleep(3000);
+				remainingLblTxtB = recsRemainingLbl.getText();
+				try {
+					AssertJUnit.assertFalse(remainingLblTxtA.equals(remainingLblTxtB));
+					System.out.println(resultsMsg + count + " - Passed");
+				}
+				catch (Error e) {
+					System.out.println(resultsMsg + count + " - Failed");
+				}
 			}
-			catch (Error e) {
-				System.out.println(resultsMsg + count + " - Failed");
-			}
+		}
+		catch (Exception e) {
+			verificationErrors.append(e.toString());
 		}
 			
 		//END
 		commNav.clickGlobalMenuItem(entityType2);
 		System.out.println(ENDLINE);
 	}
-
 	//Login & Logout
 	//==============
 	@Test(enabled = true)

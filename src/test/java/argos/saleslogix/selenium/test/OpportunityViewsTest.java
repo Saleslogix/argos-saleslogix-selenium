@@ -26,13 +26,13 @@ public class OpportunityViewsTest extends BrowserSetup {
 		//Reference: MBL-10049
 		String methodID = "test01_SeTestTCOpportunityListView";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		// Test Params:
 		String entityType = "Opportunities";
 		String expEntityPgTitle = "Opportunities";
-		String oppRecord = "Abbott WorldWide-Phase I";
+		String oppRecord = "Regions Financial Corporation - Phase 1";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    //Step: click Top-Left button to reveal Global Menu...
@@ -99,74 +99,78 @@ public class OpportunityViewsTest extends BrowserSetup {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCOpportunityListViewNotesBox";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		// Test Params:
 		String entityType = "Opportunities";
 		String expEntityPgTitle = "Opportunities";
-		String entityRecord = "Abbott WorldWide-Phase I";
+		String oppRecord = "Regions Financial Corporation - Phase 1";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
 	    //Step: navigate to Opportunities list view...
-		commNav.entityListViewSearch(entityType, entityRecord);
+		commNav.entityListViewSearch(entityType, oppRecord);
 		
 		//Step: test Opportunities, List View page elements
 		// SubStep: check the Page Title
 		if (commNav.isPageDisplayed(entityType)) {
-			
-			OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);			
-			
-			//Step: check the Opportunities list view format
-			commNav.checkIfWebElementPresent("Opportunities List View", opportunityListView.opportunityListViewPnl);
-			
-			//Step: check an Account list view item record
-			commNav.checkIfWebElementPresent("Opportunities List View, Notes Box", opportunityListView.opportunityListViewNotesBox1stItem);			
-			commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Initials box", opportunityListView.opportunityListViewNotesBox1stItemInitialsBox);			
-			commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Regarding header", opportunityListView.opportunityListViewNotesBox1stItemRegarding);			
-			commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Last Activity note", opportunityListView.opportunityListViewNotesBox1stItemLastActivity);			
-			commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, note item", opportunityListView.opportunityListViewNotesBox1stItemNotes);			
-			commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, see list link", opportunityListView.opportunityListViewNotesBoxSeeListLink);
-			
-			//Step: check the Notes Box list item click navigation
-			String expPgTitle = "Meeting";
-			String resultsMsg = "VP: Clicking Notes Box item navigated to the expected page";
 			try {
-				//click the 1st Notes Box item
-				opportunityListView.opportunityListViewNotesBox1stItem.click();
-				Thread.sleep(5000);
-				commNav.isPageDisplayed(expPgTitle);
-				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_detail']")).isDisplayed());
-				headerButton.goBack();
-				Thread.sleep(2000);
-				System.out.println(resultsMsg + " - Passed");
+				OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);			
 				
+				//Step: check the Opportunities list view format
+				commNav.checkIfWebElementPresent("Opportunities List View", opportunityListView.opportunityListViewPnl);
+				
+				//Step: check an Opportunity list view item record
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box", opportunityListView.opportunityListViewNotesBox1stItem);			
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Initials box", opportunityListView.opportunityListViewNotesBox1stItemInitialsBox);			
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Regarding header", opportunityListView.opportunityListViewNotesBox1stItemRegarding);			
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Last Activity note", opportunityListView.opportunityListViewNotesBox1stItemLastActivity);			
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, note item", opportunityListView.opportunityListViewNotesBox1stItemNotes);			
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, see list link", opportunityListView.opportunityListViewNotesBoxSeeListLink);
+				
+				//Step: check the Notes Box list item click navigation
+				String expPgTitle = "Meeting";
+				String resultsMsg = "VP: Clicking Notes Box item navigated to the expected page";
+				try {
+					//click the 1st Notes Box item
+					opportunityListView.opportunityListViewNotesBox1stItem.click();
+					Thread.sleep(5000);
+					commNav.isPageDisplayed(expPgTitle);
+					AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_detail']")).isDisplayed());
+					headerButton.goBack();
+					Thread.sleep(2000);
+					System.out.println(resultsMsg + " - Passed");
+					
+				}
+				catch (Exception e) {
+					System.out.println(e.toString());
+					System.out.println(resultsMsg + " - Failed");
+				}
+				
+				opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+				
+				//Step: check the Notes Box 'see list' link click navigation
+				expPgTitle = "Notes";
+				resultsMsg = "VP: Clicking Notes Box 'see list' link navigated to the expected page";
+				try {
+					//click the Notes Box 'see list' link
+					opportunityListView.opportunityListViewNotesBoxSeeListLink.click();
+					Thread.sleep(5000);
+					commNav.isPageDisplayed(expPgTitle);
+					AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_related']")).isDisplayed());
+					headerButton.goBack();
+					Thread.sleep(2000);
+					System.out.println(resultsMsg + " - Passed");
+					
+				}
+				catch (Exception e) {
+					System.out.println(e.toString());
+					System.out.println(resultsMsg + " - Failed");
+				}
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());
-				System.out.println(resultsMsg + " - Failed");
-			}
-			
-			opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-			
-			//Step: check the Notes Box 'see list' link click navigation
-			expPgTitle = "Notes";
-			resultsMsg = "VP: Clicking Notes Box 'see list' link navigated to the expected page";
-			try {
-				//click the Notes Box 'see list' link
-				opportunityListView.opportunityListViewNotesBoxSeeListLink.click();
-				Thread.sleep(5000);
-				commNav.isPageDisplayed(expPgTitle);
-				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_related']")).isDisplayed());
-				headerButton.goBack();
-				Thread.sleep(2000);
-				System.out.println(resultsMsg + " - Passed");
-				
-			}
-			catch (Exception e) {
-				System.out.println(e.toString());
-				System.out.println(resultsMsg + " - Failed");
+				verificationErrors.append(e.toString());
 			}
 		}
 		else {
