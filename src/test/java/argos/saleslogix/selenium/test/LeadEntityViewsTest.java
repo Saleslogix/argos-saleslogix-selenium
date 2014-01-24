@@ -112,7 +112,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		
 		//Step: test each of the pre-set KPI items		
 		commNav.scrollDownPage();
-		commNav.rightClickContextMenuItem("Total Leads");
+		commNav.rightClickContextMenuItem("can-solicit");
 	
 	    //Step: load more results (click on 'x remaining records' item)
 		for (int count = 0; count<=2; count++) {
