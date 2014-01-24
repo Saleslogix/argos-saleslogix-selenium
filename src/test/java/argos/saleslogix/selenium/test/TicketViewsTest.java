@@ -26,13 +26,13 @@ public class TicketViewsTest extends BrowserSetup {
 		//Reference: MBL-10049
 		String methodID = "test01_SeTestTCTicketListView";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		// Test Params:
 		String entityType = "Tickets";
 		String expEntityPgTitle = "Tickets";
-		String ticketRecord = "000-00-000011";
+		String ticketRecord = "001-00-000693";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    //Step: click Top-Left button to reveal Global Menu...
@@ -97,13 +97,13 @@ public class TicketViewsTest extends BrowserSetup {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCTicketListViewNotesBox";
 		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
 		// Test Params:
 		String entityType = "Tickets";
 		String expEntityPgTitle = "Tickets";
-		String entityRecord = "001-00-000026";
+		String entityRecord = "001-00-000693";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
