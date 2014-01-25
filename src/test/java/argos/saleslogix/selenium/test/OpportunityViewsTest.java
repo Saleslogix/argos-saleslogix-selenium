@@ -19,6 +19,32 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class OpportunityViewsTest extends BrowserSetup {
 	
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
+
+
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}
+
+	
 	//Test Methods Set
 	//================
 	@Test(enabled = true)
@@ -95,6 +121,76 @@ public class OpportunityViewsTest extends BrowserSetup {
 
 	
 	@Test(enabled = true)
+	public void test02_SeTestTCOpportunityListViewLoadMoreResults() throws Exception {
+		String methodID = "test02_SeTestTCOpportunityListViewLoadMoreResults";
+		
+		//Test Params:
+		String entityType = "opportunities";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+		
+	    //Step: click Top-Left button to reveal Global Menu...
+		headerbutton.showGlobalMenu();
+	
+	    //Step: navigate to Opportunities list view...
+		commNav.clickGlobalMenuItem(entityType);
+	
+		//capture the initial Opportunities List view info
+		OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+		String initListInfo = opportunitiesListView.getOpportunityListViewTxt();
+		
+	    //Step: load more results (click on 'x remaining records' item)
+		for (int count = 1; count<3; count++) {			
+			JavascriptExecutor jsx = (JavascriptExecutor)driver;
+			jsx.executeScript("window.scrollBy(0,450)", "");
+		}
+		
+		//capture the expanded Opportunities List view
+		String expandedListInfo = opportunitiesListView.getOpportunityListViewTxt();
+		
+		//VP: confirm that the Opportunities List view is indeed expanded with more record data
+		String resultMsg = "VP: scrolling down the Opportunities List view loaded more records";
+		try {
+			AssertJUnit.assertFalse(initListInfo.matches(expandedListInfo));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			verificationErrors.append(e.toString());
+			System.out.println(resultMsg + " - Failed");
+		}
+		
+		System.out.println(ENDLINE);
+	}
+
+
+	@Test(enabled = true)
+	public void test03_SeTestTCOpportunityViewSearch() throws Exception {
+		String methodID = "test03_SeTestTCOpportunityViewSearch";
+		
+		// Test Params:
+		String entityType = "Opportunity";
+		String entityRecord = "Regions Financial Corporation - Phase 1";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: search for an existing Opportunity record
+		commNav.entityListViewSearch(entityType, entityRecord);
+		
+		System.out.println(ENDLINE);
+	}
+	
+	
+	
+	
+	@Test(enabled = true)
 	public void test13_SeTestTCOpportunityListViewNotesBox() throws Exception {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCOpportunityListViewNotesBox";
@@ -102,7 +198,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Opportunities";
 		String expEntityPgTitle = "Opportunities";
-		String oppRecord = "Regions Financial Corporation - Phase 1";
+		String oppRecord = "International Hampton - Phase 3";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -181,28 +277,84 @@ public class OpportunityViewsTest extends BrowserSetup {
 	}
 
 
-	//Login & Logout
-	//==============
 	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
+	public void test04_SeTestTCOpportunityListViewNegativeSearch() throws Exception {
+		String methodID = "test04_SeTestTCOpportunityListViewNegativeSearch";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
+		//Step: search for non-existent Opportunity record to confirm it's non-existence
+		commNav.entityListViewNegativeSearch("Opportunities", "Non-Existent Opportunity");		
 		
 		System.out.println(ENDLINE);
 	}
+
+
+	@Test(enabled = true)
+	public void test05_SeTestTCOpportunityListViewClearSearch() throws Exception {
+		String methodID = "test05_SeTestTCOpportunityListViewClearSearch";
+		
+		// Test Params:
+		String entityType = "Opportunities";
+		String entityRecord = "Regions Financial Corporation - Phase 1";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+		commNav.entityListViewSearch(entityType, entityRecord);
+			
+		//Step: check for matching results...
+		OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+		String topEntityListItemName = opportunitiesListView.topOpportunityListItemName.getText();
+				
+		//Step: click the clear Search input field button
+		headerButton.showRightContextMenu();
+		opportunitiesListView.opportunitySearchClearBtn.click();
+				
+		//Step: click the Lookup button to reload the full Opportunities list
+		opportunitiesListView.opportunitySearchLookupBtn.click();
+		Thread.sleep(3000);
+				
+		//Step: check if the previous search results were cleared
+		String currTopOpportunitiesListViewName = driver.findElement(By.xpath("//*[@id='opportunity_list']/ul/li[1]/div/h3")).getText();
+		try {
+			AssertJUnit.assertEquals(topEntityListItemName, currTopOpportunitiesListViewName);
+		} catch (Error e) {
+			verificationErrors.append(e.toString());
+			System.out.println(methodID + ": clear previous Opportunities search results action failed");
+			return;
+		}
+		
+		System.out.println(methodID + ": clear previous Opportunities search results action was successful");
+		System.out.println(ENDLINE);
+	}
+
+
+	@Test(enabled = true)
+	public void test06_SeTestTCOpportunityListViewOpenRecord() throws Exception {
+		String methodID = "test06_SeTestTCOpportunityListViewOpenRecord";
+		
+		// Test Params:
+		String entityType = "Opportunities";
+		String entityRecord = "Regions Financial Corporation - Phase 1";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: search for Opportunity entity, then open it's Detail view
+		commNav.entityRecordOpenDetailView(entityType, entityRecord);
+		
+		//Step: go back to previous screen
+		headerButton.goBack();
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+
 }
