@@ -99,7 +99,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: login & log back in (to clear cookies)
-		LogOutThenLogBackIn(userName, userPwd);
+		//LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
