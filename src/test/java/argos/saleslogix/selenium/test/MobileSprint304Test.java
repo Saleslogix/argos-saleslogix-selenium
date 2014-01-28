@@ -42,7 +42,7 @@ public class MobileSprint304Test extends BrowserSetup {
 		
 		// Test Params:
 		String selectedEntity = "";
-		String[] entityList = {"My Activities", "Notes/History", "meeting", "personal", "email"};
+		String[] entityList = {"My Activities", "Notes/History", "Accounts", "Contacts", "Leads", "Opportunities", "Tickets", "My Attachments"};
 		for (int iCount = 1;iCount<entityList.length;iCount++) {
 		    //Step: navigate to entity list view...
 			selectedEntity = entityList[iCount];

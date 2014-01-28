@@ -195,19 +195,11 @@ public class OpportunityViewsElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/ul[1]/li[1]/a")
-	WebElement opportunityDetailViewCallMainNumberLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/ul[1]/li[2]/a")
 	WebElement opportunityDetailViewScheduleActivityLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/ul[1]/li[3]/a")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/ul[1]/li[2]/a")
 	WebElement opportunityDetailViewAddNoteLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/ul[1]/li[4]/a")
-	WebElement opportunityDetailViewViewAddressLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/h2[2]")
@@ -215,27 +207,67 @@ public class OpportunityViewsElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[1]")
-	WebElement opportunityDetailViewAccountFld;
+	WebElement opportunityDetailViewOpportunityFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[2]")
-	WebElement opportunityDetailViewWebFld;
+	WebElement opportunityDetailViewAcctFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[3]")
-	WebElement opportunityDetailViewFaxFld;
+	WebElement opportunityDetailViewResellerFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[4]")
-	WebElement opportunityDetailViewTypeFld;
+	WebElement opportunityDetailViewEstCloseFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[5]")
-	WebElement opportunityDetailViewSubTypeFld;
+	WebElement opportunityDetailViewStatusFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[6]")
-	WebElement opportunityDetailViewStatusFld;
+	WebElement opportunityDetailViewTypeFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[7]")
+	WebElement opportunityDetailViewCloseProbFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[8]")
+	WebElement opportunityDetailViewSalesPotentialBaseRateFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[9]")
+	WebElement opportunityDetailViewSalesPotentialMyRateFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[10]")
+	WebElement opportunityDetailViewSalesPotentialOppRateFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/h2[2]")
+	WebElement opportunityDetailViewMultiCurrencyHdr;
+		
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]")
+	WebElement opportunityDetailViewMultiCurrencyFields;	
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[1]")
+	WebElement opportunityDetailViewExchangeRateFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[2]")
+	WebElement opportunityDetailViewCodeFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[3]")
+	WebElement opportunityDetailViewRateDateFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[4]")
+	WebElement opportunityDetailViewRateLockedFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/h2[3]")
@@ -247,22 +279,10 @@ public class OpportunityViewsElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[1]")
-	WebElement opportunityDetailViewIndustryFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[2]")
-	WebElement opportunityDetailViewBusDescFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[3]")
 	WebElement opportunityDetailViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[4]")
-	WebElement opportunityDetailViewOwnerFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[5]")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[2]")
 	WebElement opportunityDetailViewLeadSourceFld;
 
 	@CacheLookup
@@ -270,28 +290,20 @@ public class OpportunityViewsElements extends BrowserSetup {
 	WebElement opportunityDetailViewRelatedItemsHdr;
 	
 	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Products']")
+	WebElement opportunityDetailViewProductsLnk;
+	
+	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Activities']")
 	WebElement opportunityDetailViewActivitiesLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Contacts']")
-	WebElement opportunityDetailViewContactsLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Opportunities']")
-	WebElement opportunityDetailViewOpportunitiesLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Tickets']")
-	WebElement opportunityDetailViewTicketsLnk;
+	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Opportunity Contacts']")
+	WebElement opportunityDetailViewOpportunityContactsLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Notes/History']")
-	WebElement opportunityDetailViewOpportunityLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Addresses']")
-	WebElement opportunityDetailViewAddressesLnk;
+	WebElement opportunityDetailViewNotesHistoryLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Attachments']")
@@ -303,101 +315,124 @@ public class OpportunityViewsElements extends BrowserSetup {
 	WebElement opportunityEditView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_14']/input")
-	WebElement opportunityEditViewAccountInputFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_15']/input")
-	WebElement opportunityEditViewWebInputFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_5']/input")
-	WebElement opportunityEditViewPhoneInputFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_2']/div")
-	WebElement opportunityEditViewAddressFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_2']/button")
-	WebElement opportunityEditViewAddressFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_6']/input")
-	WebElement opportunityEditViewFaxInputFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_11']/input")
-	WebElement opportunityEditViewTypeFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_11']/button")
-	WebElement opportunityEditViewTypeFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_12']/input")
-	WebElement opportunityEditViewSubTypeFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_12']/button")
-	WebElement opportunityEditViewSubTypeFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_30']/input")
-	WebElement opportunityEditViewResellerFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_30']/button")
-	WebElement opportunityEditViewResellerFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_13']/input")
-	WebElement opportunityEditViewStatusFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_13']/button")
-	WebElement opportunityEditViewStatusFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_14']/input")
-	WebElement opportunityEditViewIndustryFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_14']/button")
-	WebElement opportunityEditViewIndustryFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/div")
-	WebElement opportunityEditViewBusDescFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/button")
-	WebElement opportunityEditViewBusDescFldBtn;
+	@FindBy(xpath = "//*[@id='opportunity_edit']/descendant::*[@name='Description'][2]")
+	WebElement opportunityEditViewOpportunityInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
-	WebElement opportunityEditViewAcctMgrFld;
+	WebElement opportunityEditViewAccountInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	WebElement opportunityEditViewAcctInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
-	WebElement opportunityEditViewAcctMgrFldBtn;
+	WebElement opportunityEditViewAcctFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
-	WebElement opportunityEditViewOwnerFld;
+	WebElement opportunityEditViewAcctMgrInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
-	WebElement opportunityEditViewOwnerFldBtn;
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
+	WebElement opportunityEditViewAcctMgrFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
-	WebElement opportunityEditViewLeadSourceFld;
+	WebElement opportunityEditViewResellerInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
+	WebElement opportunityEditViewResellerFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/input")
+	WebElement opportunityEditViewEstCloseInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/button")
+	WebElement opportunityEditViewEstCloseFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_MultiCurrencyField_0']/input")
+	WebElement opportunityEditViewSalesPotentialInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_MultiCurrencyField_0']/span")
+	WebElement opportunityEditViewSalesPotentialCurrencyFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
+	WebElement opportunityEditViewTypeInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
+	WebElement opportunityEditViewTypeFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/input")
+	WebElement opportunityEditViewStatusInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/button")
+	WebElement opportunityEditViewStatusFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/input")
+	WebElement opportunityEditViewLeadSourceInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']button")
 	WebElement opportunityEditViewLeadSourceFldBtn;
 	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/input")
+	WebElement opportunityEditViewOwnerInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/button")
+	WebElement opportunityEditViewOwnerFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_2']/input")
+	WebElement opportunityEditViewCloseProbInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_2']/button")
+	WebElement opportunityEditViewCloseProbFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_edit']/div[2]/fieldset[2]/div[1]")
+	WebElement opportunityEditViewExchangeRateFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_2']/input")
+	WebElement opportunityEditViewExchangeRateInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_edit']/div[2]/fieldset[2]/div[2]")
+	WebElement opportunityEditViewCodeFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_5']/input")
+	WebElement opportunityEditViewCodeInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_5']/button")
+	WebElement opportunityEditViewCodeFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_edit']/div[2]/fieldset[2]/div[3]")
+	WebElement opportunityEditViewRateLockedFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_BooleanField_1']/div/span[2]")
+	WebElement opportunityEditViewRateLockedToggle;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='opportunity_edit']/div[2]/fieldset[2]/div[4]")
+	WebElement opportunityEditViewRateDateFld;
 	
 	//Methods
 	//-------

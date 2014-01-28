@@ -1010,6 +1010,7 @@ public class CommonNavigation {
 		}
 		else {
 			searchListView(entityType, entityName);
+			Thread.sleep(3000);
 		}
 		
 		//SubStep: singularize the entityType parameter
@@ -1054,10 +1055,10 @@ public class CommonNavigation {
 			if (targetEntRecords.size() > 1) {
 				//specify the actual record name so that the search label is not clicked
 				if (entityType.toLowerCase().equals("my activities")) {
-					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul[1]/li/div[3]/h3/span"));
+					targetEntRecord = targetEntRecords.get(0);
 				}
 				else {
-					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li/div[3]/h3"));
+					targetEntRecord = targetEntRecords.get(1);
 				}
 			}
 			else {
@@ -1111,6 +1112,7 @@ public class CommonNavigation {
 		}
 		else {
 			searchListView(entityType, entityName);
+			Thread.sleep(3000);
 		}
 		
 		//SubStep: singularize the entityType parameter
@@ -1154,10 +1156,10 @@ public class CommonNavigation {
 			if (targetEntRecords.size() > 1) {
 				//specify the actual record name so that the search label is not clicked
 				if (entityType.toLowerCase().equals("my activities")) {
-					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul[1]/li/div[3]/h3/span"));
+					targetEntRecord = targetEntRecords.get(0);
 				}
 				else {
-					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li/div[3]/h3"));
+					targetEntRecord = targetEntRecords.get(1);
 				}
 			}
 			else {
@@ -1345,16 +1347,18 @@ public class CommonNavigation {
 	public boolean entityRecordOpenDetailView(String entityType, String entityName) throws Exception {
 		String methodID = "entityRecordOpenDetailView";
 		
-		WebElement entityListItem = entityListViewSearch(entityType, entityName);
-		if (!entityListItem.equals(null)) {
+		try {
+			WebElement entityListItem = entityListViewSearch(entityType, entityName);
 			entityListItem.click();
 			Thread.sleep(3000);
 			
 			//Step: check if the detail view is loaded
 			waitForPage(entityName);
 			return true;
-		}
-		else {
+			}
+		catch (Exception e) {
+			System.out.println(e.toString());
+			System.out.println(methodID + ": Unable to open the " + entityType + " - " + entityName + " detail view");
 			return false;
 		}
 	}

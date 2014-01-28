@@ -351,7 +351,6 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountEditViewDetailsHdr;
 	
 	@CacheLookup
-	//@FindBy(xpath = "//*[@id='account_edit']/div[2]/fieldset/div[1]")
 	@FindBy(css = "input[name='AccountName']")
 	WebElement accountEditViewAccountInputFld;
 	
