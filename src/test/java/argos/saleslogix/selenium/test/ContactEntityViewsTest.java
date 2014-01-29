@@ -155,7 +155,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Step: search for an existing Account record
+		//Step: search for an existing Contact record
 		commNav.entityListViewSearch(entityType, entityRecord);
 		
 		System.out.println(ENDLINE);
@@ -194,7 +194,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			
 		//Step: check for matching results...
 		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-		String topAccountListItemName = contactsListView.topContactsListItemName.getText();
+		String topContactListItemName = contactsListView.topContactsListItemName.getText();
 				
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
@@ -207,7 +207,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		//Step: check if the previous search results were cleared
 		String currTopContactsListViewName = driver.findElement(By.xpath("//*[@id='contact_list']/ul/li[1]/div/h3")).getText();
 		try {
-			AssertJUnit.assertEquals(topAccountListItemName, currTopContactsListViewName);
+			AssertJUnit.assertEquals(topContactListItemName, currTopContactsListViewName);
 		} catch (Error e) {
 			verificationErrors.append(e.toString());
 			System.out.println(methodID + ": clear previous Contacts search results action failed");
@@ -258,7 +258,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		try {
-			//Step: search for Account entity, then open it's Detail view
+			//Step: search for Contact entity, then open it's Detail view
 			commNav.entityRecordOpenDetailView(entityType, contactRecord);
 			
 			ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
@@ -329,7 +329,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		try {
-			//Step: search for Account entity, then open it's Detail view
+			//Step: search for Contact entity, then open it's Detail view
 			AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, contactRecord));
 			
 			//Step: check each input field and if applicable, its related list item selection view			
@@ -630,7 +630,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			//Step: check the Contacts list view format
 			commNav.checkIfWebElementPresent("Contacts List View", contactsListView.contactsListView);
 			
-			//Step: check an Account list view item record
+			//Step: check an Contact list view item record
 			commNav.checkIfWebElementPresent("Contacts List View, Notes Box", contactsListView.contactsListViewNotesBox1stItem);			
 			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Initials box", contactsListView.contactsListViewNotesBox1stItemInitialsBox);			
 			commNav.checkIfWebElementPresent("Contacts List View, Notes Box item, Regarding header", contactsListView.contactsListViewNotesBox1stItemRegarding);			

@@ -551,11 +551,11 @@ public class LeadViewsElements extends BrowserSetup {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 			
-	    //Step: search for then click to open Contact record detail view
+	    //Step: search for then click to open Lead record detail view
 		commNav.highlightNClick(commNav.entityListViewSearch("Leads", strLeadName));
 		
-		//Step: confirm Account record detail view is displayed
-		if (commNav.waitForNotPage("Contacts")) {
+		//Step: confirm Lead record detail view is displayed
+		if (commNav.waitForNotPage("Leads")) {
 			return true;
 		}
 		else {		

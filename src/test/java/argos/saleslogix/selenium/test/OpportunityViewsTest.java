@@ -18,7 +18,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * @author mllena
  * Class: AccountEntityViewsTest
- * Desc.: Test class for the Account entity views
+ * Desc.: Test class for the Opportunity entity views
  */
 public class OpportunityViewsTest extends BrowserSetup {
 	
@@ -289,7 +289,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		try {
-			//Step: search for Lead entity, then open it's Detail view
+			//Step: search for Opportunity entity, then open it's Detail view
 			commNav.entityRecordOpenDetailView(entityType, entityRecord);
 			
 			OpportunityViewsElements opportunityDetailView = PageFactory.initElements(driver, OpportunityViewsElements.class);
@@ -299,7 +299,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 			commNav.isWebElementPresent(viewName + ",'Schedule activity'", opportunityDetailView.opportunityDetailViewScheduleActivityLnk);
 			commNav.isWebElementPresent(viewName + ",'Add note'", opportunityDetailView.opportunityDetailViewAddNoteLnk);
 			
-			//Step: check each item under the Lead Detail View, Details section
+			//Step: check each item under the Opportunity Detail View, Details section
 			commNav.isWebElementPresent(viewName + ",'Details' section header", opportunityDetailView.opportunityDetailViewDetailsHdr);
 			commNav.isWebElementPresent(viewName + ",'opportunity'", opportunityDetailView.opportunityDetailViewOpportunityFld);			
 			commNav.isWebElementPresent(viewName + ",'acct'", opportunityDetailView.opportunityDetailViewAcctFld);			
@@ -312,7 +312,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 			commNav.isWebElementPresent(viewName + ",'sales potential (my rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialMyRateFld);
 			commNav.isWebElementPresent(viewName + ",'sales potential (opp rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialOppRateFld);
 	
-			//Step: check each item under the Lead Detail View, Multi Currency section
+			//Step: check each item under the Opportunity Detail View, Multi Currency section
 			commNav.isWebElementPresent(viewName + ",'Multi Currency' section header", opportunityDetailView.opportunityDetailViewMultiCurrencyHdr);
 			//SubStep: conditionally expand the Multi Currency section
 			if (opportunityDetailView.opportunityDetailViewMultiCurrencyFields.getSize().height < 1) {
@@ -324,7 +324,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 			commNav.isWebElementPresent(viewName + ",'rate date'", opportunityDetailView.opportunityDetailViewRateDateFld);
 			commNav.isWebElementPresent(viewName + ",'rate locked'", opportunityDetailView.opportunityDetailViewRateLockedFld);
 	
-			//Step: check each item under the Lead Detail View, More Details section
+			//Step: check each item under the Opportunity Detail View, More Details section
 			commNav.isWebElementPresent(viewName + ",'More Details' section header", opportunityDetailView.opportunityDetailViewMoreDetailsHdr);
 			//SubStep: conditionally expand the More Details section
 			if (opportunityDetailView.opportunityDetailViewMoreDetailsFields.getSize().height < 1) {
@@ -481,19 +481,19 @@ public class OpportunityViewsTest extends BrowserSetup {
 	    //Step: navigate to Opportunities list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
-		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+		OpportunityViewsElements oppsListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
 		//Step: reveal Right Context Menu panel
 		headerButton.showRightContextMenu();
 		
 	    //Step: test the Hash Tags header
 		//expand the Hash Tags sub-panel if it's currently collapsed
-		if (!leadsListView.leadsHashTagsPnl.isDisplayed()) {
-			leadsListView.leadsHashTagsHdr.click();
+		if (!oppsListView.opportunityHashTagsPnl.isDisplayed()) {
+			oppsListView.opportunityHashTagsHdr.click();
 			
 			//confirm the the panel was indeed expanded
 			try {
-				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
+				AssertJUnit.assertTrue(oppsListView.opportunityHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
 				verificationErrors.append(e.toString());
@@ -502,15 +502,15 @@ public class OpportunityViewsTest extends BrowserSetup {
 			}
 		}
 		//collapase the Hash Tags sub-panel
-		leadsListView.leadsHashTagsHdr.click();
+		oppsListView.opportunityHashTagsHdr.click();
 		try {
-			AssertJUnit.assertFalse(leadsListView.leadsHashTagsPnl.isDisplayed());
+			AssertJUnit.assertFalse(oppsListView.opportunityHashTagsPnl.isDisplayed());
 			System.out.println("VP: Hash Tags sub-panel collapse check - Passed");
 			
 			//re-expand the Hash Tags sub-panel
-			leadsListView.leadsHashTagsHdr.click();
+			oppsListView.opportunityHashTagsHdr.click();
 			try {
-				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
+				AssertJUnit.assertTrue(oppsListView.opportunityHashTagsPnl.isDisplayed());
 				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
 			}
 			catch (Error e) {
@@ -559,19 +559,19 @@ public class OpportunityViewsTest extends BrowserSetup {
 	    //Step: navigate to Opportunities list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
-		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+		OpportunityViewsElements oppsListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
 		//Step: reveal Right Context Menu panel
 		headerButton.showRightContextMenu();
 		
 	    //Step: test the KPI header
 		//expand the KPI sub-panel if it's currently collapsed
-		if (!leadsListView.leadsKPIPnl.isDisplayed()) {
-			leadsListView.leadsKPIHdr.click();
+		if (!oppsListView.opportunityKPIPnl.isDisplayed()) {
+			oppsListView.opportunityKPIHdr.click();
 			
 			//confirm the the panel was indeed expanded
 			try {
-				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
+				AssertJUnit.assertTrue(oppsListView.opportunityKPIPnl.isDisplayed());
 			}
 			catch (Error e) {
 				verificationErrors.append(e.toString());
@@ -579,16 +579,17 @@ public class OpportunityViewsTest extends BrowserSetup {
 				return;
 			}
 		}
-		//collapse Hash Tags sub-panel check
-		leadsListView.leadsKPIHdr.click();
+		
+		//collapse KPI Tags sub-panel check
+		oppsListView.opportunityKPIHdr.click();
 		try {
-			AssertJUnit.assertFalse(leadsListView.leadsKPIPnl.isDisplayed());
+			AssertJUnit.assertFalse(oppsListView.opportunityKPIPnl.isDisplayed());
 			System.out.println("VP: KPI sub-panel collapse check - Passed");
 			
-			//re-expand the Hash Tags sub-panel
-			leadsListView.leadsKPIHdr.click();
+			//re-expand the KPI Tags sub-panel
+			oppsListView.opportunityKPIHdr.click();
 			try {
-				AssertJUnit.assertTrue(leadsListView.leadsKPIPnl.isDisplayed());
+				AssertJUnit.assertTrue(oppsListView.opportunityKPIPnl.isDisplayed());
 				System.out.println("VP: KPI sub-panel expand check - Passed");
 			}
 			catch (Error e) {
@@ -615,7 +616,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 	}
 
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test12_SeTestTCOpportunityListViewAddOpportunity() throws Exception {
 		String methodID = "test12_SeTestTCOpportunityListViewAddOpportunity";
 		

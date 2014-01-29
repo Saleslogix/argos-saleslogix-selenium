@@ -1244,6 +1244,7 @@ public class CommonNavigation {
 				
 		//Step: check if there is a 'no records' result
 		try {
+			Thread.sleep(3000);
 			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().contains("no records"));
 			
 			//Step: check for matching results...
@@ -1253,10 +1254,10 @@ public class CommonNavigation {
 			if (targetEntRecords.size() > 1) {
 				//specify the actual record name so that the search label is not clicked
 				if (entityType.toLowerCase().equals("my activities")) {
-					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul[1]/li/div[3]/h3/span"));
+					targetEntRecord = targetEntRecords.get(0);
 				}
 				else {
-					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li/div[3]/h3"));
+					targetEntRecord = targetEntRecords.get(1);
 				}
 			}
 			else {
