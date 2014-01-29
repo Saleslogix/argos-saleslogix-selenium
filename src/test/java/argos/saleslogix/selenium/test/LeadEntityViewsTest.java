@@ -115,6 +115,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		commNav.rightClickContextMenuItem("can-solicit");
 	
 	    //Step: load more results (click on 'x remaining records' item)
+		Thread.sleep(3000);
 		for (int count = 0; count<=2; count++) {
 			WebElement remainingRecordsItem = driver.findElement(By.xpath("//*[@id='lead_list']/div[4]"));
 			commNav.highlightElement(remainingRecordsItem);
