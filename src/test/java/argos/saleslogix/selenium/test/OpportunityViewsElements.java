@@ -383,7 +383,7 @@ public class OpportunityViewsElements extends BrowserSetup {
 	WebElement opportunityEditViewLeadSourceInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']button")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/button")
 	WebElement opportunityEditViewLeadSourceFldBtn;
 	
 	@CacheLookup
@@ -449,5 +449,84 @@ public class OpportunityViewsElements extends BrowserSetup {
 		boolean result = false;
 		
 		return result;
+	}
+
+
+	/**
+	 * This method will add an auto-generated test Opportunity record by filling-in the Opportunity Edit input fields.
+	 * The Opportunity will have a unique string appended to the Opportunity Name in order to ensure uniqueness.
+	 * @author	mike.llena@swiftpage.com
+	 * @version	1.0
+	 * @param	strOppName	lead last name to set
+	 * @param	strOppAccount	lead first name to set
+	 * @throws Exception 
+	 */
+	public void doAddRandTestOpportunity(String strOppName, String strOppAccount) throws Exception {
+		String methodID = "doAddRandTestOpportunity";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Opportunity list view
+		commNav.clickGlobalMenuItem("Opportunities");
+		
+		//Step: click the Add header button to enter Opportunity edit view
+		headerButton.clickHeaderButton("Add");
+		
+		//Step: setup new Opportunity field values
+		//setup Opportunity fields		
+		opportunityEditViewOpportunityInputFld.sendKeys(strOppName);
+			
+		//setup acct field
+		opportunityEditViewAcctFldBtn.click();
+			commNav.highlightNClick(commNav.entityListViewSelect("Accounts", strOppAccount));
+	
+		//TO-DO: complete selection of remaining non-required fields
+		
+		//Step: save the new Opportunity field values
+		headerButton.clickHeaderButton("save");
+		commNav.waitForNotPage("Opportunity");
+		
+		System.out.println(methodID + ": Auto-test Opportunity - " +  strOppName + " record was created.");
+	}
+
+
+	public boolean doSearchOpportunity(String strOppName) throws InterruptedException, Exception {
+		String methodID = "doSearchOpportunity";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+			
+	    //Step: search for then click to open Opportunity record detail view
+		commNav.highlightNClick(commNav.entityListViewSearch("Opportunities", strOppName));
+		
+		//Step: confirm Opportunity record detail view is displayed
+		if (commNav.waitForNotPage("Opportunities")) {
+			return true;
+		}
+		else {		
+			return false;
+		}
+	}
+
+
+	//Methods
+	public String getOpportunitiesListViewTxt() {
+		String methodID = "getOpportunitiesListViewTxt";
+		String listViewTxt = "";
+		
+		try {
+			WebElement oppsLisViewInfo = driver.findElement(By.xpath("//*[@id='opportunity_list']/ul"));
+			listViewTxt = oppsLisViewInfo.getText();
+		}
+		catch (Exception excptn) {
+			System.out.println(excptn.toString());
+		}
+		
+		return listViewTxt;		
 	}
 }

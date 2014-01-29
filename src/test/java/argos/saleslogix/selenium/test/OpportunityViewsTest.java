@@ -3,6 +3,9 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -191,93 +194,6 @@ public class OpportunityViewsTest extends BrowserSetup {
 	
 	
 	@Test(enabled = true)
-	public void test13_SeTestTCOpportunityListViewNotesBox() throws Exception {
-		//Reference: MBL-10042
-		String methodID = "test13_SeTestTCOpportunityListViewNotesBox";
-		
-		// Test Params:
-		String entityType = "Opportunities";
-		String expEntityPgTitle = "Opportunities";
-		String oppRecord = "International Hampton - Phase 3";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-	
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-	
-	    //Step: navigate to Opportunities list view...
-		commNav.entityListViewSearch(entityType, oppRecord);
-		
-		//Step: test Opportunities, List View page elements
-		// SubStep: check the Page Title
-		if (commNav.isPageDisplayed(entityType)) {
-			try {
-				OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);			
-				
-				//Step: check the Opportunities list view format
-				commNav.checkIfWebElementPresent("Opportunities List View", opportunityListView.opportunityListViewPnl);
-				
-				//Step: check an Opportunity list view item record
-				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box", opportunityListView.opportunityListViewNotesBox1stItem);			
-				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Initials box", opportunityListView.opportunityListViewNotesBox1stItemInitialsBox);			
-				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Regarding header", opportunityListView.opportunityListViewNotesBox1stItemRegarding);			
-				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Last Activity note", opportunityListView.opportunityListViewNotesBox1stItemLastActivity);			
-				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, note item", opportunityListView.opportunityListViewNotesBox1stItemNotes);			
-				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, see list link", opportunityListView.opportunityListViewNotesBoxSeeListLink);
-				
-				//Step: check the Notes Box list item click navigation
-				String expPgTitle = "Meeting";
-				String resultsMsg = "VP: Clicking Notes Box item navigated to the expected page";
-				try {
-					//click the 1st Notes Box item
-					opportunityListView.opportunityListViewNotesBox1stItem.click();
-					Thread.sleep(5000);
-					commNav.isPageDisplayed(expPgTitle);
-					AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_detail']")).isDisplayed());
-					headerButton.goBack();
-					Thread.sleep(2000);
-					System.out.println(resultsMsg + " - Passed");
-					
-				}
-				catch (Exception e) {
-					System.out.println(e.toString());
-					System.out.println(resultsMsg + " - Failed");
-				}
-				
-				opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-				
-				//Step: check the Notes Box 'see list' link click navigation
-				expPgTitle = "Notes";
-				resultsMsg = "VP: Clicking Notes Box 'see list' link navigated to the expected page";
-				try {
-					//click the Notes Box 'see list' link
-					opportunityListView.opportunityListViewNotesBoxSeeListLink.click();
-					Thread.sleep(5000);
-					commNav.isPageDisplayed(expPgTitle);
-					AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_related']")).isDisplayed());
-					headerButton.goBack();
-					Thread.sleep(2000);
-					System.out.println(resultsMsg + " - Passed");
-					
-				}
-				catch (Exception e) {
-					System.out.println(e.toString());
-					System.out.println(resultsMsg + " - Failed");
-				}
-			}
-			catch (Exception e) {
-				verificationErrors.append(e.toString());
-			}
-		}
-		else {
-			System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
-		}
-		
-		System.out.println(ENDLINE);
-	}
-
-
-	@Test(enabled = true)
 	public void test04_SeTestTCOpportunityListViewNegativeSearch() throws Exception {
 		String methodID = "test04_SeTestTCOpportunityListViewNegativeSearch";
 		
@@ -438,12 +354,12 @@ public class OpportunityViewsTest extends BrowserSetup {
 	}
 
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test08_SeTestTCOpportunityEditView() throws Exception {
 		String methodID = "test08_SeTestTCOpportunityEditView";
 		
 		// Test Params:
-		String entityType = "Opportunities";
+		String entityType = "Opportunity";
 		String entityRecord = "Regions Financial Corporation - Phase 1";
 		String viewName = "Opportunity Detail Edit view";
 		
@@ -548,5 +464,278 @@ public class OpportunityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+
+	
+	@Test(enabled = true)
+	public void test10_SeTestTCOpportunityListViewHashTags() throws Exception {
+		String methodID = "test10_SeTestTCOpportunityListViewHashTags";
+		
+		// Test Params:
+		String entityType = "Opportunities";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Opportunities list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		
+	    //Step: test the Hash Tags header
+		//expand the Hash Tags sub-panel if it's currently collapsed
+		if (!leadsListView.leadsHashTagsPnl.isDisplayed()) {
+			leadsListView.leadsHashTagsHdr.click();
+			
+			//confirm the the panel was indeed expanded
+			try {
+				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
+				return;
+			}
+		}
+		//collapase the Hash Tags sub-panel
+		leadsListView.leadsHashTagsHdr.click();
+		try {
+			AssertJUnit.assertFalse(leadsListView.leadsHashTagsPnl.isDisplayed());
+			System.out.println("VP: Hash Tags sub-panel collapse check - Passed");
+			
+			//re-expand the Hash Tags sub-panel
+			leadsListView.leadsHashTagsHdr.click();
+			try {
+				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
+				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println("VP: Hash Tags sub-panel expand check - FAILED");
+			}
+		}
+		catch (Error e) {
+			verificationErrors.append(e.toString());
+			System.out.println("VP: Hash Tags sub-panel collapse check - FAILED");
+		}
+		
+		//Step: test each of the pre-set Hash Tag items
+		commNav.rightClickContextMenuItem("my-opportunities");
+		commNav.rightClickContextMenuItem("open");
+		commNav.rightClickContextMenuItem("won");
+		commNav.rightClickContextMenuItem("lost");
+		commNav.rightClickContextMenuItem("inactive");
+		commNav.rightClickContextMenuItem("prospect");
+		commNav.rightClickContextMenuItem("qualification");
+		commNav.rightClickContextMenuItem("needs-analysis");
+		commNav.rightClickContextMenuItem("demonstration");
+		commNav.rightClickContextMenuItem("negotiation");
+		commNav.rightClickContextMenuItem("decision");
+		
+		//Step: go back to previous screen
+		headerButton.goBack();
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+	
+
+	@Test(enabled = true)
+	public void test11_SeTestTCOpportunityListViewKPI() throws Exception {
+		String methodID = "test11_SeTestTCOpportunityListViewKPI";
+		
+		// Test Params:
+		String entityType = "Opportunities";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Opportunities list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		
+	    //Step: test the KPI header
+		//expand the KPI sub-panel if it's currently collapsed
+		if (!leadsListView.leadsKPIPnl.isDisplayed()) {
+			leadsListView.leadsKPIHdr.click();
+			
+			//confirm the the panel was indeed expanded
+			try {
+				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
+				return;
+			}
+		}
+		//collapse Hash Tags sub-panel check
+		leadsListView.leadsKPIHdr.click();
+		try {
+			AssertJUnit.assertFalse(leadsListView.leadsKPIPnl.isDisplayed());
+			System.out.println("VP: KPI sub-panel collapse check - Passed");
+			
+			//re-expand the Hash Tags sub-panel
+			leadsListView.leadsKPIHdr.click();
+			try {
+				AssertJUnit.assertTrue(leadsListView.leadsKPIPnl.isDisplayed());
+				System.out.println("VP: KPI sub-panel expand check - Passed");
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println("VP: KPI sub-panel e check - FAILED");
+			}
+		}
+		catch (Error e) {
+			verificationErrors.append(e.toString());
+			System.out.println("VP: KPI sub-panel collapse check - FAILED");
+		}
+		
+		//Step: test each of the pre-set KPI items		
+		commNav.scrollDownPage();
+		commNav.rightClickContextMenuItem("Total Opportunities");
+		commNav.rightClickContextMenuItem("Sales Potential");
+		
+		//Step: go back to previous screen
+		headerButton.closeRightContextMenu();
+		headerButton.goBack();
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+
+
+	@Test(enabled = false)
+	public void test12_SeTestTCOpportunityListViewAddOpportunity() throws Exception {
+		String methodID = "test12_SeTestTCOpportunityListViewAddOpportunity";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		//HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+				
+		OpportunityViewsElements oppsListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+		
+		//Step: add a random test Opportunity record
+		String newOpportunityName = "AutoTestOpportunity-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+		oppsListView.doAddRandTestOpportunity(newOpportunityName, "AECOM");
+		
+		//Step: find the newly-added test Opportunity record
+		String strResultsMsg = "VP: recently added test Opportunity '" + newOpportunityName + "' was found.";
+		if (oppsListView.doSearchOpportunity(newOpportunityName)) {
+			System.out.println(strResultsMsg + " - Passed");
+		}
+		else {
+			System.out.println(strResultsMsg + " - FAILED");
+		}
+		
+		//Step: go back to My Activities view
+		commNav.clickGlobalMenuItem("My Activities");
+		
+		System.out.println(ENDLINE);
+	}
+
+
+	@Test(enabled = true)
+	public void test13_SeTestTCOpportunityListViewNotesBox() throws Exception {
+		//Reference: MBL-10042
+		String methodID = "test13_SeTestTCOpportunityListViewNotesBox";
+		
+		// Test Params:
+		String entityType = "Opportunities";
+		String expEntityPgTitle = "Opportunities";
+		String oppRecord = "International Hampton - Phase 3";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+	    //Step: navigate to Opportunities list view...
+		commNav.entityListViewSearch(entityType, oppRecord);
+		
+		//Step: test Opportunities, List View page elements
+		// SubStep: check the Page Title
+		if (commNav.isPageDisplayed(entityType)) {
+			try {
+				OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);			
+				
+				//Step: check the Opportunities list view format
+				commNav.checkIfWebElementPresent("Opportunities List View", opportunityListView.opportunityListViewPnl);
+				
+				//Step: check an Opportunity list view item record
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box", opportunityListView.opportunityListViewNotesBox1stItem);			
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Initials box", opportunityListView.opportunityListViewNotesBox1stItemInitialsBox);			
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Regarding header", opportunityListView.opportunityListViewNotesBox1stItemRegarding);			
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, Last Activity note", opportunityListView.opportunityListViewNotesBox1stItemLastActivity);			
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, note item", opportunityListView.opportunityListViewNotesBox1stItemNotes);			
+				commNav.checkIfWebElementPresent("Opportunities List View, Notes Box item, see list link", opportunityListView.opportunityListViewNotesBoxSeeListLink);
+				
+				//Step: check the Notes Box list item click navigation
+				String expPgTitle = "Meeting";
+				String resultsMsg = "VP: Clicking Notes Box item navigated to the expected page";
+				try {
+					//click the 1st Notes Box item
+					opportunityListView.opportunityListViewNotesBox1stItem.click();
+					Thread.sleep(5000);
+					commNav.isPageDisplayed(expPgTitle);
+					AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_detail']")).isDisplayed());
+					headerButton.goBack();
+					Thread.sleep(2000);
+					System.out.println(resultsMsg + " - Passed");
+					
+				}
+				catch (Exception e) {
+					System.out.println(e.toString());
+					System.out.println(resultsMsg + " - Failed");
+				}
+				
+				opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+				
+				//Step: check the Notes Box 'see list' link click navigation
+				expPgTitle = "Notes";
+				resultsMsg = "VP: Clicking Notes Box 'see list' link navigated to the expected page";
+				try {
+					//click the Notes Box 'see list' link
+					opportunityListView.opportunityListViewNotesBoxSeeListLink.click();
+					Thread.sleep(5000);
+					commNav.isPageDisplayed(expPgTitle);
+					AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_related']")).isDisplayed());
+					headerButton.goBack();
+					Thread.sleep(2000);
+					System.out.println(resultsMsg + " - Passed");
+					
+				}
+				catch (Exception e) {
+					System.out.println(e.toString());
+					System.out.println(resultsMsg + " - Failed");
+				}
+			}
+			catch (Exception e) {
+				verificationErrors.append(e.toString());
+			}
+		}
+		else {
+			System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
+		}
+		
+		System.out.println(ENDLINE);
+	}
+
+
+
 
 }
