@@ -1062,7 +1062,7 @@ public class CommonNavigation {
 				}
 			}
 			else {
-				if (entityType.toLowerCase().contains("notes/")) {
+				if (entityType.toLowerCase().contains("notes")) {
 					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li[1]"));
 				}
 				else {
@@ -1168,7 +1168,12 @@ public class CommonNavigation {
 				}
 			}
 			else {
-				targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+				if (entityType.toLowerCase().contains("notes")) {
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li[1]"));
+				}
+				else {
+					targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+				}
 			}
 			try {
 				AssertJUnit.assertTrue(targetEntRecord.isDisplayed());
@@ -1266,7 +1271,12 @@ public class CommonNavigation {
 				}
 			}
 			else {
-				targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+				if (entityType.toLowerCase().contains("notes")) {
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li[1]"));
+				}
+				else {
+					targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+				}
 			}
 			try {
 				AssertJUnit.assertTrue(targetEntRecord.isDisplayed());
@@ -1360,12 +1370,12 @@ public class CommonNavigation {
 			Thread.sleep(3000);
 			
 			//Step: check if the detail view is loaded
-			if (!entityType.toLowerCase().contains("notes/")) {
+			if (!entityType.toLowerCase().contains("notes")) {
 				waitForPage(entityName);
 				return true;
 			}
 			else if (entityType.toLowerCase().contains("notes") && entityType.toLowerCase().contains("history")) {
-				waitForPage("Note");
+				waitForNotPage("Notes/History");
 				return true;	
 			}
 			else {
