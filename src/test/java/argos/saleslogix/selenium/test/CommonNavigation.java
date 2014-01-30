@@ -1062,7 +1062,12 @@ public class CommonNavigation {
 				}
 			}
 			else {
-				targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+				if (entityType.toLowerCase().contains("notes/")) {
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li[1]"));
+				}
+				else {
+					targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
+				}
 			}
 			try {
 				AssertJUnit.assertTrue(targetEntRecord.isDisplayed());
@@ -1350,13 +1355,23 @@ public class CommonNavigation {
 		
 		try {
 			WebElement entityListItem = entityListViewSearch(entityType, entityName);
-			entityListItem.click();
+			highlightNClick(entityListItem);
+			//entityListItem.click();
 			Thread.sleep(3000);
 			
 			//Step: check if the detail view is loaded
-			waitForPage(entityName);
-			return true;
+			if (!entityType.toLowerCase().contains("notes/")) {
+				waitForPage(entityName);
+				return true;
 			}
+			else if (entityType.toLowerCase().contains("notes") && entityType.toLowerCase().contains("history")) {
+				waitForPage("Note");
+				return true;	
+			}
+			else {
+				return false;				
+			}
+		}
 		catch (Exception e) {
 			System.out.println(e.toString());
 			System.out.println(methodID + ": Unable to open the " + entityType + " - " + entityName + " detail view");
