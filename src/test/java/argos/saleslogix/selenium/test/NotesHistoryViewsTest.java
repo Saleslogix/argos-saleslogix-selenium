@@ -256,4 +256,104 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+
+	@Test(enabled = true)
+	public void test07_SeTestTCNotesHistoryDetailView() throws Exception {
+		String methodID = "test07_SeTestTCNotesHistoryDetailView";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		// Test Params:
+		String entityType = "Notes/History";
+		String entityRecord = "Research the prospect";
+		String viewName = "History Detail view";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		try {
+			//Step: search for Notes/History entity, then open it's Detail view
+			commNav.entityRecordOpenDetailView(entityType, entityRecord);
+			
+			NotesHistoryViewsElements notesHistoryDetailView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+			
+			//Step: check each item under the History Detail View, Quick Actions section
+			commNav.isWebElementPresent(viewName + ",'Details' section header", notesHistoryDetailView.notesHistoryDetailViewDetailsHdr);
+			commNav.isWebElementPresent(viewName + ",'scheduled'", notesHistoryDetailView.notesHistoryDetailViewScheduledFld);
+			commNav.isWebElementPresent(viewName + ",'completed'", notesHistoryDetailView.notesHistoryDetailViewCompletedFld);
+			commNav.isWebElementPresent(viewName + ",'regarding'", notesHistoryDetailView.notesHistoryDetailViewRegardingFld);
+			commNav.isWebElementPresent(viewName + ",'completed by'", notesHistoryDetailView.notesHistoryDetailViewCompletedByFld);
+			
+			//Step: check each item under the History Detail View, Details section
+			commNav.isWebElementPresent(viewName + ",'Notes' section header", notesHistoryDetailView.notesHistoryDetailViewNotesHdr);
+			commNav.isWebElementPresent(viewName + ",'notes field'", notesHistoryDetailView.notesHistoryDetailViewNotesFld);
+			
+			//Step: check each item under the History Detail View, Related Items (top) section
+			commNav.isWebElementPresent(viewName + ",'Related Items (top)' section header", notesHistoryDetailView.notesHistoryDetailRelatedItems1Hdr);
+			commNav.isWebElementPresent(viewName + ",'account'", notesHistoryDetailView.notesHistoryDetailViewAccountFld);
+			commNav.isWebElementPresent(viewName + ",'contact'", notesHistoryDetailView.notesHistoryDetailViewContactFld);
+			commNav.isWebElementPresent(viewName + ",'opportunity'", notesHistoryDetailView.notesHistoryDetailViewOpportunityFld);
+			commNav.isWebElementPresent(viewName + ",'ticket'", notesHistoryDetailView.notesHistoryDetailViewTicketFld);
+			
+			//Step: check each item under the History Detail View, Related Items (bottom) section
+			commNav.isWebElementPresent(viewName + ",'Related Items (bottom)' section header", notesHistoryDetailView.notesHistoryDetailRelatedItems2Hdr);
+			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", notesHistoryDetailView.notesHistoryDetailViewAttachmentsLnk, "History Attachments");
+			
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(3000);
+		}
+		catch (Exception e) {
+			verificationErrors.append(e.toString());
+		}
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test08_SeTestTCNotesHistoryEditView() throws Exception {
+		String methodID = "test08_SeTestTCNotesHistoryEditView";
+		
+		// Test Params:
+		String entityType = "Notes/History";
+		String entityRecord = "Research the prospect";
+		String viewName = "History Detail Edit view";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+		
+		try {
+			//Step: search for Notes/History entity, then open it's Edit view
+			AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
+			
+			NotesHistoryViewsElements notesHistoryEditView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+		
+			//Step: check each input field and if applicable, its related list item selection view			
+			commNav.verifyEntityViewElementClick(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn, "Calendar");			
+			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Notes Description");			
+			commNav.isWebElementPresent(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
+			commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
+			commNav.verifyEntityViewElementClick(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountFldBtn, "Accounts");
+			commNav.verifyEntityViewElementClick(viewName + " contact", notesHistoryEditView.notesHistoryEditViewContactFldBtn, "Contacts");
+			commNav.verifyEntityViewElementClick(viewName + ", opportunity", notesHistoryEditView.notesHistoryEditViewOpportunityFldBtn, "Opportunities");
+			commNav.verifyEntityViewElementClick(viewName + " ticket", notesHistoryEditView.notesHistoryEditViewTicketFldBtn, "Tickets");
+				
+			//end of test
+			headerButton.clickHeaderButton("cancel");
+		
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			verificationErrors.append(e.toString());
+			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
+		}
+		
+		System.out.println(ENDLINE);
+	}
 }

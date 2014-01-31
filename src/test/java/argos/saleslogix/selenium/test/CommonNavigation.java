@@ -1411,9 +1411,23 @@ public class CommonNavigation {
 		
 		//Step: click the Header Add button...
 		headerButton.clickHeaderButton("add");
-		String addEditViewXPath = "//*[@id='" + entityType.toLowerCase() + "_edit']";
+		
+		String entTypeXPath = "";
+		switch (entityType.toLowerCase()) {
+		case "notes/history":
+			entTypeXPath = "history";
+			break;
+		case "opportunities":
+			entTypeXPath = "opportunity";
+			break;
+		default:
+			entTypeXPath = entityType.replace("s", "");
+			break;
+		}
+		
+		String editViewXPath = "//*[@id='" + entTypeXPath.toLowerCase() + "_edit']";
 		try {
-			WebElement entityAddEditView = driver.findElement(By.xpath(addEditViewXPath));
+			WebElement entityAddEditView = driver.findElement(By.xpath(editViewXPath));
 			highlightElement(entityAddEditView);
 			System.out.println(methodID + ": the " + entityType + " Add Edit view was successfully opened.");
 			return true;
@@ -1440,7 +1454,7 @@ public class CommonNavigation {
 		WebElement entityListItem = entityListViewSearch(entityType, entityName);
 		if (!entityListItem.equals(null)) {
 			entityListItem.click();
-			Thread.sleep(7000);
+			Thread.sleep(3000);
 			
 			//Step: check if the detail view is loaded
 			waitForPage(entityName);
@@ -1448,7 +1462,20 @@ public class CommonNavigation {
 			//Step: open record Edit View
 			headerbutton.editButton.click();
 			
-			String editViewXPath = "//*[@id='" + entityType.toLowerCase() + "_edit']";
+			String entTypeXPath = "";
+			switch (entityType.toLowerCase()) {
+			case "notes/history":
+				entTypeXPath = "history";
+				break;
+			case "opportunities":
+				entTypeXPath = "opportunity";
+				break;
+			default:
+				entTypeXPath = entityType.replace("s", "");
+				break;
+			}
+			
+			String editViewXPath = "//*[@id='" + entTypeXPath.toLowerCase() + "_edit']";
 			try {
 				WebElement entityDetailView = driver.findElement(By.xpath(editViewXPath));
 				highlightElement(entityDetailView);

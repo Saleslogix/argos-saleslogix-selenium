@@ -176,183 +176,98 @@ public class NotesHistoryViewsElements extends BrowserSetup {
 	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[2]")
 	WebElement notesHistoryDetailViewNotesHdr;
 	
-	//TODO: Left-off element updates here; continue updates when needed
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[1]")
-	WebElement notesHistoryDetailViewAccountFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[2]")
-	WebElement notesHistoryDetailViewWebFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[3]")
-	WebElement notesHistoryDetailViewFaxFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[4]")
-	WebElement notesHistoryDetailViewTypeFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[5]")
-	WebElement notesHistoryDetailViewSubTypeFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[6]")
-	WebElement notesHistoryDetailViewStatusFld;
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]")
+	WebElement notesHistoryDetailViewNotesFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[3]")
-	WebElement notesHistoryDetailViewMoreDetailsHdr;
-		
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]")
-	WebElement notesHistoryDetailViewMoreDetailsFields;	
+	WebElement notesHistoryDetailRelatedItems1Hdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[1]")
-	WebElement notesHistoryDetailViewIndustryFld;
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[3]/div[1]")
+	WebElement notesHistoryDetailViewAccountFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[2]")
-	WebElement notesHistoryDetailViewBusDescFld;
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[3]/div[2]")
+	WebElement notesHistoryDetailViewContactFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[3]")
-	WebElement notesHistoryDetailViewAcctMgrFld;
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[3]/div[3]")
+	WebElement notesHistoryDetailViewOpportunityFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[4]")
-	WebElement notesHistoryDetailViewOwnerFld;
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[3]/div[4]")
+	WebElement notesHistoryDetailViewTicketFld;
 	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[5]")
-	WebElement notesHistoryDetailViewLeadSourceFld;
-
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[4]")
-	WebElement notesHistoryDetailViewRelatedItemsHdr;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/descendant::*[text() = 'Activities']")
-	WebElement notesHistoryDetailViewActivitiesLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/descendant::*[text() = 'Contacts']")
-	WebElement notesHistoryDetailViewContactsLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/descendant::*[text() = 'Opportunities']")
-	WebElement notesHistoryDetailViewOpportunitiesLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/descendant::*[text() = 'Tickets']")
-	WebElement notesHistoryDetailViewTicketsLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/descendant::*[text() = 'Notes/History']")
-	WebElement notesHistoryDetailViewNotesHistoryLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/descendant::*[text() = 'Addresses']")
-	WebElement notesHistoryDetailViewAddressesLnk;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/descendant::*[text() = 'Attachments']")
-	WebElement notesHistoryDetailViewAttachmentsLnk;
+	WebElement notesHistoryDetailRelatedItems2Hdr;
 		
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/ul/li/a")
+	WebElement notesHistoryDetailViewAttachmentsLnk;	
+			
 	//Edit View elements
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='history_edit']")
 	WebElement notesHistoryEditView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_14']/input")
-	WebElement notesHistoryEditViewAccountInputFld;
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/input")
+	WebElement notesHistoryEditViewTimeInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_15']/input")
-	WebElement notesHistoryEditViewWebInputFld;
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/button")
+	WebElement notesHistoryEditViewTimeFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_5']/input")
-	WebElement notesHistoryEditViewPhoneInputFld;
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
+	WebElement notesHistoryEditViewRegardingInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_2']/div")
-	WebElement notesHistoryEditViewAddressFld;
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
+	WebElement notesHistoryEditViewRegardingFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_2']/button")
-	WebElement notesHistoryEditViewAddressFldBtn;
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_0']/textarea")
+	WebElement notesHistoryEditViewNotesInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_6']/input")
-	WebElement notesHistoryEditViewFaxInputFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_11']/input")
-	WebElement notesHistoryEditViewTypeFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_11']/button")
-	WebElement notesHistoryEditViewTypeFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_12']/input")
-	WebElement notesHistoryEditViewSubTypeFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_12']/button")
-	WebElement notesHistoryEditViewSubTypeFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_13']/input")
-	WebElement notesHistoryEditViewStatusFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_13']/button")
-	WebElement notesHistoryEditViewStatusFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_14']/input")
-	WebElement notesHistoryEditViewIndustryFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_14']/button")
-	WebElement notesHistoryEditViewIndustryFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/div")
-	WebElement notesHistoryEditViewBusDescFld;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/button")
-	WebElement notesHistoryEditViewBusDescFldBtn;
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_BooleanField_1']/div/span[1]")
+	WebElement notesHistoryEditViewForLeadToggleBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
-	WebElement notesHistoryEditViewAcctMgrFld;
+	WebElement notesHistoryEditViewAccountInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
-	WebElement notesHistoryEditViewAcctMgrFldBtn;
+	WebElement notesHistoryEditViewAccountFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
-	WebElement notesHistoryEditViewOwnerFld;
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
+	WebElement notesHistoryEditViewContactInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
-	WebElement notesHistoryEditViewOwnerFldBtn;
+	WebElement notesHistoryEditViewContactFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
-	WebElement notesHistoryEditViewLeadSourceFld;
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
+	WebElement notesHistoryEditViewOpportunityInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
-	WebElement notesHistoryEditViewLeadSourceFldBtn;
+	WebElement notesHistoryEditViewOpportunityFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/input")
+	WebElement notesHistoryEditViewTicketInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/button")
+	WebElement notesHistoryEditViewTicketFldBtn;
 	
 	
 	//Methods
