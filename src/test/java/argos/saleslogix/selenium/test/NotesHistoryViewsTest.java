@@ -3,6 +3,9 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -353,6 +356,232 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 			verificationErrors.append(e.toString());
 			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
 		}
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test09_SeTestTCNotesHistoryAddEditView() throws Exception {
+		String methodID = "test09_SeTestTCNotesHistoryAddEditView";
+		
+		// Test Params:
+		String entityType = "Notes/History";
+		String viewName = "Notes Add Edit view";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
+		
+		try {
+			//Step: enter the Notes Add Edit view...
+			commNav.entityRecordAdd(entityType);
+			
+			NotesHistoryViewsElements notesHistoryEditView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+			
+			//Step: check each input field and if applicable, its related list item selection view
+			commNav.verifyEntityViewElementClick(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn, "Calendar");			
+			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Notes Description");			
+			commNav.isWebElementPresent(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
+			commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
+			commNav.isWebElementPresent(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountInputFld);			
+			commNav.isWebElementPresent(viewName + " contact", notesHistoryEditView.notesHistoryEditViewContactInputFld);
+			commNav.isWebElementPresent(viewName + ", opportunity", notesHistoryEditView.notesHistoryEditViewOpportunityInputFld);
+			commNav.isWebElementPresent(viewName + " ticket", notesHistoryEditView.notesHistoryEditViewTicketInputFld);
+			
+			//end of test
+			headerButton.clickHeaderButton("cancel");
+		
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(2000);
+					
+			//Step: go back to previous screens
+			headerButton.clickHeaderButton("cancel");
+			headerButton.goBack();
+			Thread.sleep(2000);
+		}
+		catch (Exception e) {
+			verificationErrors.append(e.toString());
+			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
+		}
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test10_SeTestTCNotesHistoryListViewHashTags() throws Exception {
+		String methodID = "test10_SeTestTCOpportunityListViewHashTags";
+		
+		// Test Params:
+		String entityType = "Notes/History";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Notes/History list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		NotesHistoryViewsElements noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		
+	    //Step: test the Hash Tags header
+		//expand the Hash Tags sub-panel if it's currently collapsed
+		if (!noteshistoryListView.notesHistoryHashTagsPnl.isDisplayed()) {
+			noteshistoryListView.notesHistoryHashTagsHdr.click();
+			
+			//confirm the the panel was indeed expanded
+			try {
+				AssertJUnit.assertTrue(noteshistoryListView.notesHistoryHashTagsPnl.isDisplayed());
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
+				return;
+			}
+		}
+		//collapse the Hash Tags sub-panel
+		noteshistoryListView.notesHistoryHashTagsHdr.click();
+		try {
+			AssertJUnit.assertFalse(noteshistoryListView.notesHistoryHashTagsPnl.isDisplayed());
+			System.out.println("VP: Hash Tags sub-panel collapse check - Passed");
+			
+			//re-expand the Hash Tags sub-panel
+			noteshistoryListView.notesHistoryHashTagsHdr.click();
+			try {
+				AssertJUnit.assertTrue(noteshistoryListView.notesHistoryHashTagsPnl.isDisplayed());
+				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println("VP: Hash Tags sub-panel expand check - FAILED");
+			}
+		}
+		catch (Error e) {
+			verificationErrors.append(e.toString());
+			System.out.println("VP: Hash Tags sub-panel collapse check - FAILED");
+		}
+		
+		//Step: test each of the pre-set Hash Tag items
+		commNav.rightClickContextMenuItem("my-history");
+		commNav.rightClickContextMenuItem("note");
+		commNav.rightClickContextMenuItem("phonecall");
+		commNav.rightClickContextMenuItem("meeting");
+		commNav.rightClickContextMenuItem("personal");
+		commNav.rightClickContextMenuItem("email");
+		
+		//Step: go back to previous screen
+		headerButton.goBack();
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test11_SeTestTCNotesHistoryListViewKPI() throws Exception {
+		String methodID = "test11_SeTestTCNotesHistoryListViewKPI";
+		
+		// Test Params:
+		String entityType = "Notes/History";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Notes/History list view...
+		commNav.clickGlobalMenuItem(entityType);
+		
+		NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+		
+		//Step: reveal Right Context Menu panel
+		headerButton.showRightContextMenu();
+		
+	    //Step: test the KPI header
+		//expand the KPI sub-panel if it's currently collapsed
+		if (!notesHistoryListView.notesHistoryKPIPnl.isDisplayed()) {
+			notesHistoryListView.notesHistoryKPIHdr.click();
+			
+			//confirm the the panel was indeed expanded
+			try {
+				AssertJUnit.assertTrue(notesHistoryListView.notesHistoryKPIPnl.isDisplayed());
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
+				return;
+			}
+		}
+		
+		//collapse KPI Tags sub-panel check
+		notesHistoryListView.notesHistoryKPIHdr.click();
+		try {
+			AssertJUnit.assertFalse(notesHistoryListView.notesHistoryKPIPnl.isDisplayed());
+			System.out.println("VP: KPI sub-panel collapse check - Passed");
+			
+			//re-expand the KPI Tags sub-panel
+			notesHistoryListView.notesHistoryKPIHdr.click();
+			try {
+				AssertJUnit.assertTrue(notesHistoryListView.notesHistoryKPIPnl.isDisplayed());
+				System.out.println("VP: KPI sub-panel expand check - Passed");
+			}
+			catch (Error e) {
+				verificationErrors.append(e.toString());
+				System.out.println("VP: KPI sub-panel e check - FAILED");
+			}
+		}
+		catch (Error e) {
+			verificationErrors.append(e.toString());
+			System.out.println("VP: KPI sub-panel collapse check - FAILED");
+		}
+		
+		//Step: test each of the pre-set KPI items		
+		commNav.scrollDownPage();
+		commNav.rightClickContextMenuItem("Total History");
+		commNav.rightClickContextMenuItem("Total Duration");
+		
+		//Step: go back to previous screen
+		headerButton.closeRightContextMenu();
+		headerButton.goBack();
+		Thread.sleep(3000);
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
+	public void test12_SeTestTCNotesHistoryListViewAddNote() throws Exception {
+		String methodID = "test12_SeTestTCNotesHistoryListViewAddNote";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		//HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+				
+		NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+		
+		//Step: add a random test Note/History record
+		String newNoteName = "AutoTestNote-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+		String strRegardingVal = "Technical notes";
+		notesHistoryListView.doAddRandTestNote(strRegardingVal, newNoteName, false, "AECOM");
+		
+		//Step: find the newly-added test Note record
+		String strResultsMsg = "VP: recently added test Note '" + newNoteName + "' was found.";
+		if (notesHistoryListView.doSearchNote(strRegardingVal)) {
+			System.out.println(strResultsMsg + " - Passed");
+		}
+		else {
+			System.out.println(strResultsMsg + " - FAILED");
+		}
+		
+		//Step: go back to My Activities view
+		commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
