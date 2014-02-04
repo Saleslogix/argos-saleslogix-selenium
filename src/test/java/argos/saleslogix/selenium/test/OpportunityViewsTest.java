@@ -22,6 +22,8 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class OpportunityViewsTest extends BrowserSetup {
 	
+	public String TEST_OPPORTUNITY_RECORD = "Regions Financial Corporation - Phase 1";
+	
 	//Login & Logout
 	//==============
 	@Test(enabled = true)
@@ -58,7 +60,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Opportunities";
 		String expEntityPgTitle = "Opportunities";
-		String oppRecord = "Regions Financial Corporation - Phase 1";
+		String oppRecord = TEST_OPPORTUNITY_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
@@ -178,7 +180,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Opportunity";
-		String entityRecord = "Regions Financial Corporation - Phase 1";
+		String entityRecord = TEST_OPPORTUNITY_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
@@ -189,8 +191,6 @@ public class OpportunityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
-	
-	
 	
 	
 	@Test(enabled = true)
@@ -214,7 +214,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Opportunities";
-		String entityRecord = "Regions Financial Corporation - Phase 1";
+		String entityRecord = TEST_OPPORTUNITY_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -256,7 +256,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Opportunities";
-		String entityRecord = "Regions Financial Corporation - Phase 1";
+		String entityRecord = TEST_OPPORTUNITY_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -282,7 +282,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Opportunity";
-		String entityRecord = "Regions Financial Corporation - Phase 1";
+		String entityRecord = TEST_OPPORTUNITY_RECORD;
 		String viewName = "Opportunity Detail view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -301,16 +301,16 @@ public class OpportunityViewsTest extends BrowserSetup {
 			
 			//Step: check each item under the Opportunity Detail View, Details section
 			commNav.isWebElementPresent(viewName + ",'Details' section header", opportunityDetailView.opportunityDetailViewDetailsHdr);
-			commNav.isWebElementPresent(viewName + ",'opportunity'", opportunityDetailView.opportunityDetailViewOpportunityFld);			
-			commNav.isWebElementPresent(viewName + ",'acct'", opportunityDetailView.opportunityDetailViewAcctFld);			
-			commNav.isWebElementPresent(viewName + ",'reseller'", opportunityDetailView.opportunityDetailViewResellerFld);			
-			commNav.isWebElementPresent(viewName + ",'est close'", opportunityDetailView.opportunityDetailViewEstCloseFld);			
-			commNav.isWebElementPresent(viewName + ",'status'", opportunityDetailView.opportunityDetailViewStatusFld);			
-			commNav.isWebElementPresent(viewName + ",'type'", opportunityDetailView.opportunityDetailViewTypeFld);			
-			commNav.isWebElementPresent(viewName + ",'close prob'", opportunityDetailView.opportunityDetailViewCloseProbFld);
-			commNav.isWebElementPresent(viewName + ",'sales potential (base rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialBaseRateFld);
-			commNav.isWebElementPresent(viewName + ",'sales potential (my rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialMyRateFld);
-			commNav.isWebElementPresent(viewName + ",'sales potential (opp rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialOppRateFld);
+			commNav.isFieldValueEmpty(viewName + ",'opportunity'", opportunityDetailView.opportunityDetailViewOpportunityFld);			
+			commNav.isFieldValueEmpty(viewName + ",'acct'", opportunityDetailView.opportunityDetailViewAcctFld);			
+			commNav.isFieldValueEmpty(viewName + ",'reseller'", opportunityDetailView.opportunityDetailViewResellerFld);			
+			commNav.isFieldValueEmpty(viewName + ",'est close'", opportunityDetailView.opportunityDetailViewEstCloseFld);			
+			commNav.isFieldValueEmpty(viewName + ",'status'", opportunityDetailView.opportunityDetailViewStatusFld);			
+			commNav.isFieldValueEmpty(viewName + ",'type'", opportunityDetailView.opportunityDetailViewTypeFld);			
+			commNav.isFieldValueEmpty(viewName + ",'close prob'", opportunityDetailView.opportunityDetailViewCloseProbFld);
+			commNav.isFieldValueEmpty(viewName + ",'sales potential (base rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialBaseRateFld);
+			commNav.isFieldValueEmpty(viewName + ",'sales potential (my rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialMyRateFld);
+			commNav.isFieldValueEmpty(viewName + ",'sales potential (opp rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialOppRateFld);
 	
 			//Step: check each item under the Opportunity Detail View, Multi Currency section
 			commNav.isWebElementPresent(viewName + ",'Multi Currency' section header", opportunityDetailView.opportunityDetailViewMultiCurrencyHdr);
@@ -319,10 +319,10 @@ public class OpportunityViewsTest extends BrowserSetup {
 				opportunityDetailView.opportunityDetailViewMultiCurrencyHdr.click();
 				Thread.sleep(1000);
 			}
-			commNav.isWebElementPresent(viewName + ",'exchange rate'", opportunityDetailView.opportunityDetailViewExchangeRateFld);
-			commNav.isWebElementPresent(viewName + ",'code'", opportunityDetailView.opportunityDetailViewCodeFld);
-			commNav.isWebElementPresent(viewName + ",'rate date'", opportunityDetailView.opportunityDetailViewRateDateFld);
-			commNav.isWebElementPresent(viewName + ",'rate locked'", opportunityDetailView.opportunityDetailViewRateLockedFld);
+			commNav.isFieldValueEmpty(viewName + ",'exchange rate'", opportunityDetailView.opportunityDetailViewExchangeRateFld);
+			commNav.isFieldValueEmpty(viewName + ",'code'", opportunityDetailView.opportunityDetailViewCodeFld);
+			commNav.isFieldValueEmpty(viewName + ",'rate date'", opportunityDetailView.opportunityDetailViewRateDateFld);
+			commNav.isFieldValueEmpty(viewName + ",'rate locked'", opportunityDetailView.opportunityDetailViewRateLockedFld);
 	
 			//Step: check each item under the Opportunity Detail View, More Details section
 			commNav.isWebElementPresent(viewName + ",'More Details' section header", opportunityDetailView.opportunityDetailViewMoreDetailsHdr);
@@ -331,8 +331,8 @@ public class OpportunityViewsTest extends BrowserSetup {
 				opportunityDetailView.opportunityDetailViewMoreDetailsHdr.click();
 				Thread.sleep(1000);
 			}
-			commNav.isWebElementPresent(viewName + ",'acct mgr'", opportunityDetailView.opportunityDetailViewAcctMgrFld);
-			commNav.isWebElementPresent(viewName + ",'lead source'", opportunityDetailView.opportunityDetailViewLeadSourceFld);
+			commNav.isFieldValueEmpty(viewName + ",'acct mgr'", opportunityDetailView.opportunityDetailViewAcctMgrFld);
+			commNav.isFieldValueEmpty(viewName + ",'lead source'", opportunityDetailView.opportunityDetailViewLeadSourceFld);
 			
 			//Step: check each item under the Opportunity Detail View, Related Items section
 			commNav.isWebElementPresent(viewName + ",'Related Items' section header", opportunityDetailView.opportunityDetailViewRelatedItemsHdr);
@@ -360,7 +360,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Opportunity";
-		String entityRecord = "Regions Financial Corporation - Phase 1";
+		String entityRecord = TEST_OPPORTUNITY_RECORD;
 		String viewName = "Opportunity Detail Edit view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -378,12 +378,12 @@ public class OpportunityViewsTest extends BrowserSetup {
 			OpportunityViewsElements opportunityEditView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
 			//Step: check each input field and if applicable, its related list item selection view
-			commNav.isWebElementPresent(viewName + ",'opportunity'", opportunityEditView.opportunityEditViewOpportunityInputFld);			
+			commNav.isFieldValueEmpty(viewName + ",'opportunity'", opportunityEditView.opportunityEditViewOpportunityInputFld);			
 			commNav.verifyEntityViewElementClick(viewName + ", acct", opportunityEditView.opportunityEditViewAcctFldBtn, "Accounts");			
 			commNav.verifyEntityViewElementClick(viewName + ",acct mgr", opportunityEditView.opportunityEditViewAcctMgrFldBtn, "Users");			
 			commNav.verifyEntityViewElementClick(viewName + ",reseller", opportunityEditView.opportunityEditViewResellerFldBtn, "Accounts");
 			commNav.verifyEntityViewElementClick(viewName + ",est close", opportunityEditView.opportunityEditViewEstCloseFldBtn, "Calendar");
-			commNav.isWebElementPresent(viewName + ",'sales potential", opportunityEditView.opportunityEditViewSalesPotentialInputFld);
+			commNav.isFieldValueEmpty(viewName + ",'sales potential", opportunityEditView.opportunityEditViewSalesPotentialInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",type", opportunityEditView.opportunityEditViewTypeFldBtn, "Opportunity Type");
 			commNav.verifyEntityViewElementClick(viewName + ",status", opportunityEditView.opportunityEditViewStatusFldBtn, "Opportunity Status");
 			commNav.verifyEntityViewElementClick(viewName + ",lead source", opportunityEditView.opportunityEditViewLeadSourceFldBtn, "Lead Sources");
@@ -434,13 +434,13 @@ public class OpportunityViewsTest extends BrowserSetup {
 			commNav.verifyEntityViewElementClick(viewName + ",acct mgr", opportunityEditView.opportunityEditViewAcctMgrFldBtn, "Users");			
 			commNav.verifyEntityViewElementClick(viewName + ",reseller", opportunityEditView.opportunityEditViewResellerFldBtn, "Accounts");
 			commNav.verifyEntityViewElementClick(viewName + ",est close", opportunityEditView.opportunityEditViewEstCloseFldBtn, "Calendar");
-			commNav.isWebElementPresent(viewName + ",'sales potential", opportunityEditView.opportunityEditViewSalesPotentialInputFld);
+			commNav.isFieldValueEmpty(viewName + ",'sales potential", opportunityEditView.opportunityEditViewSalesPotentialInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",type", opportunityEditView.opportunityEditViewTypeFldBtn, "Opportunity Type");
 			commNav.verifyEntityViewElementClick(viewName + ",status", opportunityEditView.opportunityEditViewStatusFldBtn, "Opportunity Status");
 			commNav.verifyEntityViewElementClick(viewName + ",lead source", opportunityEditView.opportunityEditViewLeadSourceFldBtn, "Lead Sources");
 			commNav.verifyEntityViewElementClick(viewName + ",owner", opportunityEditView.opportunityEditViewOwnerFldBtn, "Owners");
 			commNav.verifyEntityViewElementClick(viewName + ",close prob", opportunityEditView.opportunityEditViewCloseProbFldBtn, "Opportunity Probability");
-			commNav.isWebElementPresent(viewName + ",exchange rate", opportunityEditView.opportunityEditViewExchangeRateFld);
+			commNav.isFieldValueEmpty(viewName + ",exchange rate", opportunityEditView.opportunityEditViewExchangeRateFld);
 			commNav.verifyEntityViewElementClick(viewName + ",code", opportunityEditView.opportunityEditViewCodeFldBtn, "Exchange Rates");
 			commNav.isWebElementPresent(viewName + ",rate locked", opportunityEditView.opportunityEditViewRateLockedFld);
 			commNav.isWebElementPresent(viewName + ",rate date", opportunityEditView.opportunityEditViewRateDateFld);

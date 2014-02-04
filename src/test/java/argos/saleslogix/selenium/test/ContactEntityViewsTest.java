@@ -17,6 +17,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ContactEntityViewsTest extends BrowserSetup {
 	
+	public String TEST_CONTACT_RECORD = "Barbosa, Angelo";
+	
 	//Test Methods Set
 	//================
 	@Test(enabled = true)
@@ -25,7 +27,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Contacts";
-		String entityRecord = "Barbosa, Angelo";
+		String entityRecord = TEST_CONTACT_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
@@ -119,8 +121,6 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 	    //Step: load more results (click on 'x remaining records' item)
 		for (int count = 1; count<3; count++) {			
-			//driver.findElement(By.xpath("//*[@id='account_list']")).sendKeys(Keys.PAGE_DOWN);
-			//Thread.sleep(3000);
 			JavascriptExecutor jsx = (JavascriptExecutor)driver;
 			jsx.executeScript("window.scrollBy(0,450)", "");
 		}
@@ -149,7 +149,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Contacts";
-		String entityRecord = "Barbosa, Angelo";
+		String entityRecord = TEST_CONTACT_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
@@ -183,7 +183,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Contacts";
-		String entityRecord = "Barbosa, Angelo";
+		String entityRecord = TEST_CONTACT_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -225,7 +225,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Contacts";
-		String entityRecord = "Barbosa, Angelo";
+		String entityRecord = TEST_CONTACT_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -249,7 +249,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		//Test Parameters:
 		String entityType = "Contacts";
-		String contactRecord = "Barbosa, Angelo";
+		String contactRecord = TEST_CONTACT_RECORD;
 		String viewName = "Contact Detail view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -274,10 +274,10 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			
 			//Step: check each item under the Contact Detail View, Details section
 			commNav.isWebElementPresent(viewName + ", 'Details' section header", contactDetailView.contactsDetailViewDetailsHdr);
-			commNav.isWebElementPresent(viewName + ", 'contact'", contactDetailView.contactsDetailViewContactFld);
-			commNav.isWebElementPresent(viewName + ", 'account'", contactDetailView.contactsDetailViewAccountFld);
-			commNav.isWebElementPresent(viewName + ", 'web'", contactDetailView.contactsDetailViewWebFld);
-			commNav.isWebElementPresent(viewName + ", 'title'", contactDetailView.contactsDetailViewTitleFld);
+			commNav.isFieldValueEmpty(viewName + ", 'contact'", contactDetailView.contactsDetailViewContactFld);
+			commNav.isFieldValueEmpty(viewName + ", 'account'", contactDetailView.contactsDetailViewAccountFld);
+			commNav.isFieldValueEmpty(viewName + ", 'web'", contactDetailView.contactsDetailViewWebFld);
+			commNav.isFieldValueEmpty(viewName + ", 'title'", contactDetailView.contactsDetailViewTitleFld);
 	
 			//Step: check each item under the Contact Detail View, More Details section
 			commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
@@ -286,11 +286,11 @@ public class ContactEntityViewsTest extends BrowserSetup {
 				contactDetailView.contactsDetailViewMoreDetailsHdr.click();
 				Thread.sleep(1000);
 			}
-			commNav.isWebElementPresent(viewName + ", 'home phone'", contactDetailView.contactsDetailViewHomePhoneFld);
-			commNav.isWebElementPresent(viewName + ", 'fax'", contactDetailView.contactsDetailViewFaxFld);
-			commNav.isWebElementPresent(viewName + ", 'acct mgr'", contactDetailView.contactsDetailViewAcctMgrFld);
-			commNav.isWebElementPresent(viewName + ", 'owner'", contactDetailView.contactsDetailViewOwnerFld);
-			commNav.isWebElementPresent(viewName + ", 'cuisine'", contactDetailView.contactsDetailViewCuisineFld);
+			commNav.isFieldValueEmpty(viewName + ", 'home phone'", contactDetailView.contactsDetailViewHomePhoneFld);
+			commNav.isFieldValueEmpty(viewName + ", 'fax'", contactDetailView.contactsDetailViewFaxFld);
+			commNav.isFieldValueEmpty(viewName + ", 'acct mgr'", contactDetailView.contactsDetailViewAcctMgrFld);
+			commNav.isFieldValueEmpty(viewName + ", 'owner'", contactDetailView.contactsDetailViewOwnerFld);
+			commNav.isFieldValueEmpty(viewName + ", 'cuisine'", contactDetailView.contactsDetailViewCuisineFld);
 	
 			//Step: check each item under the Contact Detail View, Related Items section
 			commNav.isWebElementPresent(viewName + ", 'Related Items' section header", contactDetailView.contactsDetailViewRelatedItemsHdr);
@@ -320,7 +320,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		//Test Parameters:
 		String entityType = "Contact";
-		String contactRecord = "Barbosa, Angelo";
+		String contactRecord = TEST_CONTACT_RECORD;
 		String viewName = "Contact Edit view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -337,17 +337,18 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			
 			//Step: check each input field and if applicable, its related list item selection view
 			commNav.isWebElementPresent(viewName + ", 'Details' section header", contactEditView.contactsEditViewDetailsHdr);
-			commNav.isWebElementPresent(viewName + ", name field", contactEditView.contactsEditViewNameInputFld);
-			commNav.isWebElementPresent(viewName + ", account field", contactEditView.contactsEditViewAccountInputFld);
-			commNav.isWebElementPresent(viewName + ", web field", contactEditView.contactsEditViewWebInputFld);
-			commNav.isWebElementPresent(viewName + ", phone field", contactEditView.contactsEditViewPhoneInputFld);
-			commNav.isWebElementPresent(viewName + ", email field", contactEditView.contactsEditViewEmailInputFld);
-			commNav.isWebElementPresent(viewName + ", title field", contactEditView.contactsEditViewTitleInputFld);
+			commNav.isFieldValueEmpty(viewName + ", name field", contactEditView.contactsEditViewNameInputFld);
+			commNav.isFieldValueEmpty(viewName + ", account field", contactEditView.contactsEditViewAccountInputFld);
+			commNav.isFieldValueEmpty(viewName + ", web field", contactEditView.contactsEditViewWebInputFld);
+			commNav.isFieldValueEmpty(viewName + ", phone field", contactEditView.contactsEditViewPhoneInputFld);
+			commNav.isFieldValueEmpty(viewName + ", email field", contactEditView.contactsEditViewEmailInputFld);
+			commNav.isFieldValueEmpty(viewName + ", title field", contactEditView.contactsEditViewTitleInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'address field'", contactEditView.contactsEditViewAddressInputFldBtn, "Address");
-			commNav.isWebElementPresent(viewName + ", home phone field", contactEditView.contactsEditViewHomePhoneInputFld);
-			commNav.isWebElementPresent(viewName + ", mobile field", contactEditView.contactsEditViewMobileInputFld);
-			commNav.isWebElementPresent(viewName + ", fax field", contactEditView.contactsEditViewFaxInputFld);
+			commNav.isFieldValueEmpty(viewName + ", home phone field", contactEditView.contactsEditViewHomePhoneInputFld);
+			commNav.isFieldValueEmpty(viewName + ", mobile field", contactEditView.contactsEditViewMobileInputFld);
+			commNav.isFieldValueEmpty(viewName + ", fax field", contactEditView.contactsEditViewFaxInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", contactEditView.contactsEditViewAcctMgrInputFld, "Users");
+			contactEditView = PageFactory.initElements(driver, ContactViewsElements.class);
 			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", contactEditView.contactsEditViewOwnerInputFldBtn, "Owners");
 			commNav.verifyEntityViewElementClick(viewName + ",'cuisine field'", contactEditView.contactsEditViewCuisineInputFldBtn, "Lead Sources");
 			
@@ -574,7 +575,6 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		String methodID = "test12_SeTestTCContactListViewAddContact";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		//HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		

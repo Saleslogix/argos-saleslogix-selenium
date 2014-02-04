@@ -289,9 +289,7 @@ public class BrowserSetup {
 
 	/**
 	 * This method perform a verification check on the SLX Mobile Client Login page.  The verification values
-	 * are defined in the app.properties file.  
-	 * <p>
-	 * After the verification check, this method will perform an login using the username an password members 
+	 * are defined in the app.properties file. After the verification check, this method will perform an login using the username an password members 
 	 * defined in the BrowserSetup class.
 	 * 
 	 * @version	1.0

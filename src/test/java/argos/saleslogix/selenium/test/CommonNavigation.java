@@ -849,23 +849,31 @@ public class CommonNavigation {
 	
 	
 	/**
-	 * This method will determine if webelement's value attribute is empty or not.
+	 * This method will determine if webelement's value attribute is empty or not. For non-empty webelements
+	 * the value is displayed in the log.
 	 * 
 	 * @version	1.0
-	 * @param	WebElement	WebElement object
-	 * @return	boolean		true - if WebElement's value is empty; 
-	 * 						false - otherwise
+	 * @param sDesc		description of the WebElement
+	 * @param WebElement	WebElement object
+	 * @return boolean	true - if WebElement's value is empty; 
+	 * 					false - otherwise
 	 */
 	public boolean isFieldValueEmpty(String sDesc, WebElement wElement) {
 		String methodID = "isFieldValueEmpty";
 		
-		String fieldVal = wElement.getAttribute("value");
-		if (fieldVal.contentEquals("")) {
-			System.out.println(methodID + ": " + sDesc + " field value is empty.");
-			return true;
+		try {
+			String fieldVal = wElement.getAttribute("value");
+			if (fieldVal.contentEquals("")) {
+				System.out.println(methodID + ": " + sDesc + " field value present but empty.");
+				return true;
+			}
+			else {
+				System.out.println(methodID + ": " + sDesc + " field has a value of '" + fieldVal + "'");
+				return false;
+			}
 		}
-		else {
-			System.out.println(methodID + ": " + sDesc + " field has a value of '" + fieldVal + "'");
+		catch (Exception e) {
+			System.out.println(methodID + ": value attribute for WebElement '" + sDesc + "' is not available.");
 			return false;
 		}
 	}

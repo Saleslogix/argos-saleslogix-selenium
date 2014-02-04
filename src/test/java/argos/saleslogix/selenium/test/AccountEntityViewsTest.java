@@ -23,6 +23,8 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class AccountEntityViewsTest extends BrowserSetup {
 	
+	public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
+	
 	//Test Methods Set
 	//================
 	@Test(enabled = true)
@@ -33,7 +35,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Accounts";
 		String expEntityPgTitle = "Accounts";
-		String entityRecord = "Abbott Ltd.";
+		String entityRecord = TEST_ACCOUNT_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
@@ -155,7 +157,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Accounts";
-		String entityRecord = "Abbott Ltd.";	
+		String entityRecord = TEST_ACCOUNT_RECORD;	
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 				
@@ -192,7 +194,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Accounts";
-		String entityRecord = "Big Systems";
+		String entityRecord = TEST_ACCOUNT_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -235,7 +237,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Accounts";
-		String entityRecord = "Big Systems";
+		String entityRecord = TEST_ACCOUNT_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -264,7 +266,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Accounts";
-		String entityRecord = "A1 Enterprises";
+		String entityRecord = TEST_ACCOUNT_RECORD;
 		String viewName = "Account Detail view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -286,18 +288,18 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			commNav.isWebElementPresent(viewName + ",'Call main number'", accountDetailView.accountDetailViewCallMainNumberLnk);			
 			commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", accountDetailView.accountDetailViewScheduleActivityLnk, "Schedule...");
 			commNav.isWebElementPresent(viewName + ",'Add note'", accountDetailView.accountDetailViewAddNoteLnk);
-			//TODO: figure out why there is a failure for this step; reverting to 
+			//TODO: figure out why there is a failure for this step; reverting to field validation instead
 			//commNav.verifyEntityViewElementClick(viewName + ",'Add note'", accountDetailView.accountDetailViewAddNoteLnk, "Note");
 			commNav.isWebElementPresent(viewName + ",'View address'", accountDetailView.accountDetailViewViewAddressLnk);
 			
 			//Step: check each item under the Account Detail View, Details section
 			commNav.isWebElementPresent(viewName + ",'Details' section header", accountDetailView.accountDetailViewDetailsHdr);
-			commNav.isWebElementPresent(viewName + ",'account'", accountDetailView.accountDetailViewAccountFld);
-			commNav.isWebElementPresent(viewName + ",'web'", accountDetailView.accountDetailViewWebFld);
-			commNav.isWebElementPresent(viewName + ",'fax'", accountDetailView.accountDetailViewFaxFld);
-			commNav.isWebElementPresent(viewName + ",'type'", accountDetailView.accountDetailViewTypeFld);
-			commNav.isWebElementPresent(viewName + ",'subtype'", accountDetailView.accountDetailViewSubTypeFld);
-			commNav.isWebElementPresent(viewName + ",'status'", accountDetailView.accountDetailViewStatusFld);
+			commNav.isFieldValueEmpty(viewName + ",'account'", accountDetailView.accountDetailViewAccountFld);
+			commNav.isFieldValueEmpty(viewName + ",'web'", accountDetailView.accountDetailViewWebFld);
+			commNav.isFieldValueEmpty(viewName + ",'fax'", accountDetailView.accountDetailViewFaxFld);
+			commNav.isFieldValueEmpty(viewName + ",'type'", accountDetailView.accountDetailViewTypeFld);
+			commNav.isFieldValueEmpty(viewName + ",'subtype'", accountDetailView.accountDetailViewSubTypeFld);
+			commNav.isFieldValueEmpty(viewName + ",'status'", accountDetailView.accountDetailViewStatusFld);
 
 			//Step: check each item under the Account Detail View, More Details section
 			commNav.isWebElementPresent(viewName + ",'More Details' section header", accountDetailView.accountDetailViewMoreDetailsHdr);
@@ -306,11 +308,11 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				accountDetailView.accountDetailViewMoreDetailsHdr.click();
 				Thread.sleep(1000);
 			}
-			commNav.isWebElementPresent(viewName + ",'industry'", accountDetailView.accountDetailViewIndustryFld);
-			commNav.isWebElementPresent(viewName + ",'bus desc'", accountDetailView.accountDetailViewBusDescFld);
-			commNav.isWebElementPresent(viewName + ",'acct mgr'", accountDetailView.accountDetailViewAcctMgrFld);
-			commNav.isWebElementPresent(viewName + ",'owner'", accountDetailView.accountDetailViewOwnerFld);
-			commNav.isWebElementPresent(viewName + ",'lead source'", accountDetailView.accountDetailViewLeadSourceFld);
+			commNav.isFieldValueEmpty(viewName + ",'industry'", accountDetailView.accountDetailViewIndustryFld);
+			commNav.isFieldValueEmpty(viewName + ",'bus desc'", accountDetailView.accountDetailViewBusDescFld);
+			commNav.isFieldValueEmpty(viewName + ",'acct mgr'", accountDetailView.accountDetailViewAcctMgrFld);
+			commNav.isFieldValueEmpty(viewName + ",'owner'", accountDetailView.accountDetailViewOwnerFld);
+			commNav.isFieldValueEmpty(viewName + ",'lead source'", accountDetailView.accountDetailViewLeadSourceFld);
 
 			//Step: check each item under the Account Detail View, Related Items section
 			commNav.isWebElementPresent(viewName + ",'Related Items' section header", accountDetailView.accountDetailViewRelatedItemsHdr);
@@ -341,7 +343,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Account";
-		String entityRecord = "A1 Enterprises";
+		String entityRecord = TEST_ACCOUNT_RECORD;
 		String viewName = "Account Edit view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -360,16 +362,16 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			
 			//Step: check each input field and if applicable, its related list item selection view
 			commNav.isWebElementPresent(viewName + ", 'Details' section header", accountEditView.accountEditViewDetailsHdr);
-			commNav.isWebElementPresent(viewName + ", account field", accountEditView.accountEditViewAccountInputFld);
-			commNav.isWebElementPresent(viewName + ", web field", accountEditView.accountEditViewWebInputFld);
-			commNav.isWebElementPresent(viewName + ", phone field", accountEditView.accountEditViewPhoneInputFld);
+			commNav.isFieldValueEmpty(viewName + ", account field", accountEditView.accountEditViewAccountInputFld);
+			commNav.isFieldValueEmpty(viewName + ", web field", accountEditView.accountEditViewWebInputFld);
+			commNav.isFieldValueEmpty(viewName + ", phone field", accountEditView.accountEditViewPhoneInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'address field'", accountEditView.accountEditViewAddressFldBtn, "Address");
-			commNav.isWebElementPresent(viewName + ", fax field", accountEditView.accountEditViewFaxInputFld);
+			commNav.isFieldValueEmpty(viewName + ", fax field", accountEditView.accountEditViewFaxInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'type field'", accountEditView.accountEditViewTypeFldBtn, "Account Type");
 			commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Subtype");
 			commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Status");
 			commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewIndustryFldBtn, "Industry");
-			commNav.isWebElementPresent(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
+			commNav.isFieldValueEmpty(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
 			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
 			commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
@@ -422,6 +424,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Subtype");
 			commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Status");
 			commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewIndustryFldBtn, "Industry");
+			accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
 			commNav.isWebElementPresent(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
 			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
@@ -584,7 +587,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		//Step: re-enabled each of the KPI items		
 		commNav.rightClickContextMenuItem("Total Revenue");
-		//TODO: see why this next step fails on Jenkins; disabling for now...
 		commNav.scrollDownPage();
 		commNav.rightClickContextMenuItem("Avg Time as Customer");
 		commNav.scrollDownPage();
@@ -599,7 +601,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	//TODO: need to update the Account Edit field selector ids' in AccountViewsElements.java
 	@Test(enabled = true)
 	public void test12_SeTestTCAccountListViewAddAccount() throws Exception {
 		String methodID = "test12_SeTestTCAccountListViewAddAccount";
@@ -641,7 +642,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Accounts";
 		String expEntityPgTitle = "Accounts";
-		String entityRecord = "Abbott Ltd.";
+		String entityRecord = TEST_ACCOUNT_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);

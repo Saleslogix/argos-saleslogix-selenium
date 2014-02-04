@@ -17,10 +17,12 @@ import org.openqa.selenium.support.PageFactory;
 
 /**
  * @author mllena
- * Class: AccountEntityViewsTest
- * Desc.: Test class for the Account entity views
+ * Class: NotesHistoryViewsTest
+ * Desc.: Test class for the Notes/History views
  */
 public class NotesHistoryViewsTest extends BrowserSetup {
+	
+	public String TEST_NOTE_RECORD = "Research the prospect";
 	
 	//Test Methods Set
 	//================
@@ -32,7 +34,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Notes/History";
 		String expEntityPgTitle = "Notes/History";
-		String regardingRecord = "Research";
+		String regardingRecord = TEST_NOTE_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
@@ -163,6 +165,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 
 	@Test(enabled = true)
 	public void test03_SeTestTCNotesHistoryViewSearch() throws Exception {
@@ -170,7 +173,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Notes/History";
-		String entityRecord = "Research the prospect";
+		String entityRecord = TEST_NOTE_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
@@ -181,6 +184,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 
 	@Test(enabled = true)
 	public void test04_SeTestTCNotesHistoryListViewNegativeSearch() throws Exception {
@@ -195,6 +199,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 
 	@Test(enabled = true)
 	public void test05_SeTestTCNotesHistoryListViewClearSearch() throws Exception {
@@ -202,7 +207,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Notes/History";
-		String entityRecord = "Research the prospect";
+		String entityRecord = TEST_NOTE_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -236,6 +241,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		System.out.println(methodID + ": clear previous Notes/History search results action was successful");
 		System.out.println(ENDLINE);
 	}
+	
 
 	@Test(enabled = true)
 	public void test06_SeTestTCNotesHistoryListViewOpenRecord() throws Exception {
@@ -243,7 +249,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Notes/History";
-		String entityRecord = "Research the prospect";
+		String entityRecord = TEST_NOTE_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -259,6 +265,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 
 	@Test(enabled = true)
 	public void test07_SeTestTCNotesHistoryDetailView() throws Exception {
@@ -268,7 +275,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 		// Test Params:
 		String entityType = "Notes/History";
-		String entityRecord = "Research the prospect";
+		String entityRecord = TEST_NOTE_RECORD;
 		String viewName = "History Detail view";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -282,21 +289,21 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 			
 			//Step: check each item under the History Detail View, Quick Actions section
 			commNav.isWebElementPresent(viewName + ",'Details' section header", notesHistoryDetailView.notesHistoryDetailViewDetailsHdr);
-			commNav.isWebElementPresent(viewName + ",'scheduled'", notesHistoryDetailView.notesHistoryDetailViewScheduledFld);
-			commNav.isWebElementPresent(viewName + ",'completed'", notesHistoryDetailView.notesHistoryDetailViewCompletedFld);
-			commNav.isWebElementPresent(viewName + ",'regarding'", notesHistoryDetailView.notesHistoryDetailViewRegardingFld);
-			commNav.isWebElementPresent(viewName + ",'completed by'", notesHistoryDetailView.notesHistoryDetailViewCompletedByFld);
+			commNav.isFieldValueEmpty(viewName + ",'scheduled'", notesHistoryDetailView.notesHistoryDetailViewScheduledFld);
+			commNav.isFieldValueEmpty(viewName + ",'completed'", notesHistoryDetailView.notesHistoryDetailViewCompletedFld);
+			commNav.isFieldValueEmpty(viewName + ",'regarding'", notesHistoryDetailView.notesHistoryDetailViewRegardingFld);
+			commNav.isFieldValueEmpty(viewName + ",'completed by'", notesHistoryDetailView.notesHistoryDetailViewCompletedByFld);
 			
 			//Step: check each item under the History Detail View, Details section
 			commNav.isWebElementPresent(viewName + ",'Notes' section header", notesHistoryDetailView.notesHistoryDetailViewNotesHdr);
-			commNav.isWebElementPresent(viewName + ",'notes field'", notesHistoryDetailView.notesHistoryDetailViewNotesFld);
+			commNav.isFieldValueEmpty(viewName + ",'notes field'", notesHistoryDetailView.notesHistoryDetailViewNotesFld);
 			
 			//Step: check each item under the History Detail View, Related Items (top) section
 			commNav.isWebElementPresent(viewName + ",'Related Items (top)' section header", notesHistoryDetailView.notesHistoryDetailRelatedItems1Hdr);
-			commNav.isWebElementPresent(viewName + ",'account'", notesHistoryDetailView.notesHistoryDetailViewAccountFld);
-			commNav.isWebElementPresent(viewName + ",'contact'", notesHistoryDetailView.notesHistoryDetailViewContactFld);
-			commNav.isWebElementPresent(viewName + ",'opportunity'", notesHistoryDetailView.notesHistoryDetailViewOpportunityFld);
-			commNav.isWebElementPresent(viewName + ",'ticket'", notesHistoryDetailView.notesHistoryDetailViewTicketFld);
+			commNav.isFieldValueEmpty(viewName + ",'account'", notesHistoryDetailView.notesHistoryDetailViewAccountFld);
+			commNav.isFieldValueEmpty(viewName + ",'contact'", notesHistoryDetailView.notesHistoryDetailViewContactFld);
+			commNav.isFieldValueEmpty(viewName + ",'opportunity'", notesHistoryDetailView.notesHistoryDetailViewOpportunityFld);
+			commNav.isFieldValueEmpty(viewName + ",'ticket'", notesHistoryDetailView.notesHistoryDetailViewTicketFld);
 			
 			//Step: check each item under the History Detail View, Related Items (bottom) section
 			commNav.isWebElementPresent(viewName + ",'Related Items (bottom)' section header", notesHistoryDetailView.notesHistoryDetailRelatedItems2Hdr);
@@ -339,7 +346,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 			//Step: check each input field and if applicable, its related list item selection view			
 			commNav.verifyEntityViewElementClick(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn, "Calendar");			
 			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Notes Description");			
-			commNav.isWebElementPresent(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
+			commNav.isFieldValueEmpty(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
 			commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
 			commNav.verifyEntityViewElementClick(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountFldBtn, "Accounts");
 			commNav.verifyEntityViewElementClick(viewName + " contact", notesHistoryEditView.notesHistoryEditViewContactFldBtn, "Contacts");
@@ -359,6 +366,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 
 	@Test(enabled = true)
 	public void test09_SeTestTCNotesHistoryAddEditView() throws Exception {
@@ -380,12 +388,12 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 			NotesHistoryViewsElements notesHistoryEditView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 			
 			//Step: check each input field and if applicable, its related list item selection view
-			commNav.verifyEntityViewElementClick(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn, "Calendar");			
+			commNav.isFieldValueEmpty(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn);			
 			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Notes Description");			
 			commNav.isWebElementPresent(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
 			commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
-			commNav.isWebElementPresent(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountInputFld);			
-			commNav.isWebElementPresent(viewName + " contact", notesHistoryEditView.notesHistoryEditViewContactInputFld);
+			commNav.isFieldValueEmpty(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountInputFld);			
+			commNav.isFieldValueEmpty(viewName + " contact", notesHistoryEditView.notesHistoryEditViewContactInputFld);
 			commNav.isWebElementPresent(viewName + ", opportunity", notesHistoryEditView.notesHistoryEditViewOpportunityInputFld);
 			commNav.isWebElementPresent(viewName + " ticket", notesHistoryEditView.notesHistoryEditViewTicketInputFld);
 			

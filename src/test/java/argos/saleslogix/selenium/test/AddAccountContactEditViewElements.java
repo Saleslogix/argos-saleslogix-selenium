@@ -44,21 +44,20 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	WebElement addAcctCntctNameInputBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_62']/input")
+	@FindBy(css = "input[name='AccountName']")
 	WebElement addAcctCntctAccountInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_63']/input")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_3']/input")
 	WebElement addAcctCntctEMailInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_64']/input")
+	@FindBy(css = "input[name='WebAddress']")
 	WebElement addAcctCntctWebInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_0']/input")
+	@FindBy(css = "input[name='MainPhone']")
 	WebElement addAcctCntctWorkPhoneInputFld;
-	
 	
 	//Contact Info section
 	@CacheLookup
@@ -93,10 +92,9 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_0']/button")
 	WebElement addAcctCntctAddressInputBtn;
 	
-	
 	//Account Info section
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_4']/input")
+	@FindBy(css = "input[name='Fax']")
 	WebElement addAcctCntctAcctFaxInputFld;
 	
 	@CacheLookup
@@ -117,7 +115,7 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_3']/input")
-	WebElement addAcctCntctStatusFldInput;
+	WebElement addAcctCntctStatusInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_3']/button")
@@ -125,39 +123,299 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_4']/input")
-	WebElement addAcctCntctIndustryFldInput;
+	WebElement addAcctCntctIndustryInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_4']/button")
 	WebElement addAcctCntctIndustryFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_65']/input")
-	WebElement addAcctCntctDescFldInput;
+	@FindBy(css = "input[name='BusinessDescription']")
+	WebElement addAcctCntctDescInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_20']/input")
-	WebElement addAcctCntctAcctMgrFldInput;
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	WebElement addAcctCntctAcctMgrInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_20']/button")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
 	WebElement addAcctCntctAcctMgrFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
-	WebElement addAcctCntctOwnerFldInput;
+	WebElement addAcctCntctOwnerInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
 	WebElement addAcctCntctOwnerFldBtn;		
 	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_1']/div")
+	WebElement addAcctCntctAcctAddressInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_1']/button")
+	WebElement addAcctCntctAcctAddressInputBtn;
 	
 	//Methods
 	//-------
-	//TODO: complete this method
-	public void doAddAccountContact() throws InterruptedException, IOException {
-		String methodID = "doAddAccountContact";
+	public void doAddRandAccountContact(String strNewName, String strNewAccount) throws InterruptedException, IOException {
+		String methodID = "doAddRandAccountContact";
 		
-		//under construction
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Accounts list view
+		commNav.clickGlobalMenuItem("Add Account/Contact");
+		
+		try {
+			//Setup the Contact/Account Info section fields:
+			//set the name field
+			addAcctCntctNameInputBtn.click();
+				commView.namePrefixInputFldBtn.click();
+				commView.selectFieldValListItem("prefix", "Mr.");
+				commView.nameFirstInputFld.sendKeys("A.");
+				commView.nameMiddleInputFld.sendKeys("Neo");
+				commView.nameLastInputFld.sendKeys(strNewName);
+				commView.nameSuffixInputFld.sendKeys("Sr.");
+				headerButton.clickHeaderButton("check");
+			
+			//set the account field
+			addAcctCntctAccountInputFld.sendKeys(strNewAccount);
+			
+			//set the email field
+			addAcctCntctEMailInputFld.sendKeys("add.account.contact.test@boguscompany.com");
+			
+			//set the web field
+			addAcctCntctWebInputFld.sendKeys("www.saleslogix.com");
+			
+			//set the work phone field
+			addAcctCntctWorkPhoneInputFld.sendKeys("800-867-5309");
+			
+			//Setup the Contact Info section:
+			//set the title field
+			addAcctCntctTitleInputFld.sendKeys("Assistant");
+			
+			//set the home phone field
+			addAcctCntctHomePhoneInputFld.sendKeys("602.867.5309");
+			
+			//set the mobile field
+			addAcctCntctMobileInputFld.sendKeys("(480)867-5309");
+			
+			//set the fax field
+			addAcctCntctFaxInputFld.sendKeys("888-867-5309");
+			
+			//set the address field
+			addAcctCntctAddressInputBtn.click();
+				commView.addressDescriptionInputFldBtn.click();
+				commView.selectFieldValListItem("description", "Mailing");
+				commView.addressPrimaryTgl.click();
+				commView.addressShippingTgl.click();
+				commView.addressLine1.sendKeys("8800 Mobile St.");
+				commView.addressLine2.sendKeys("Corporate Campus");
+				commView.addressLine3.sendKeys("Suite 100");
+				commView.addressCityInputFld.sendKeys("Phoenix");				
+				commView.addressStateInputFld.sendKeys("AZ");				
+				commView.addressPostalInputFld.sendKeys("85048");
+				commView.addressCountryInputFld.sendKeys("USA");				
+				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
+				headerButton.clickHeaderButton("check");
+			
+			//Setup the Account Info section:
+			//set the fax field (skip - already set)
+			
+			//set the type field (leave as-is - Prospect)
+				
+			//set the sub-type field
+			addAcctCntctSubTypeInputFld.sendKeys("Software");
+			
+			//set the status field (leave as-is - Active)
+			
+			//set the industry field
+			addAcctCntctIndustryInputFld.sendKeys("Computers/Electronics/High Tech");
+			
+			//set the description field
+			addAcctCntctDescInputFld.sendKeys("auto-test new Account & Contact");
+			
+			//set the acct mgr field (leave as-is)
+			
+			//set the owner field (leave as-is)
+			
+			//set the address field (skip - address already set earlier)			
+		}
+		catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		//Step: save the new Account/Contact field values
+		headerButton.clickHeaderButton("save");
+		commNav.waitForNotPage("Add Account / Contact");
+		
+		System.out.println(methodID + ": Auto-test new Account - " +  strNewAccount + " with new Contact - " + strNewName + "records were created.");
+	}
+
+
+	public void doAddRandAccountOnly(String strNewName, String strNewAccount) throws InterruptedException, IOException {
+		String methodID = "doAddRandAccountOnly";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Accounts list view
+		commNav.clickGlobalMenuItem("Add Account/Contact");
+		
+		try {
+			//Setup the Contact/Account Info section fields:
+			//set the name field
+			addAcctCntctNameInputBtn.click();
+				commView.namePrefixInputFldBtn.click();
+				commView.selectFieldValListItem("prefix", "Mr.");
+				commView.nameFirstInputFld.sendKeys("A.");
+				commView.nameMiddleInputFld.sendKeys("Neo");
+				commView.nameLastInputFld.sendKeys(strNewName);
+				commView.nameSuffixInputFld.sendKeys("Sr.");
+				headerButton.clickHeaderButton("check");
+			
+			//set the account field
+			addAcctCntctAccountInputFld.sendKeys(strNewAccount);
+			
+			//set the email field
+			addAcctCntctEMailInputFld.sendKeys("add.account.contact.test@boguscompany.com");
+			
+			//set the web field
+			addAcctCntctWebInputFld.sendKeys("www.saleslogix.com");
+			
+			//set the work phone field
+			addAcctCntctWorkPhoneInputFld.sendKeys("800-867-5309");
+						
+			//Setup the Account Info section:
+			//set the fax field
+			addAcctCntctAcctFaxInputFld.sendKeys("888-867-5309");
+			
+			//set the type field (leave as-is - Prospect)
+				
+			//set the sub-type field
+			addAcctCntctSubTypeInputFld.sendKeys("Software");
+			
+			//set the status field (leave as-is - Active)
+			
+			//set the industry field
+			addAcctCntctIndustryInputFld.sendKeys("Computers/Electronics/High Tech");
+			
+			//set the description field
+			addAcctCntctDescInputFld.sendKeys("auto-test new Account & Contact");
+			
+			//set the acct mgr field (leave as-is)
+			
+			//set the owner field (leave as-is)
+			
+			//set the address field
+			addAcctCntctAcctAddressInputBtn.click();
+				commView.addressDescriptionInputFldBtn.click();
+				commView.selectFieldValListItem("description", "Mailing");
+				commView.addressPrimaryTgl.click();
+				commView.addressShippingTgl.click();
+				commView.addressLine1.sendKeys("8800 Mobile St.");
+				commView.addressLine2.sendKeys("Corporate Campus");
+				commView.addressLine3.sendKeys("Suite 100");
+				commView.addressCityInputFld.sendKeys("Phoenix");				
+				commView.addressStateInputFld.sendKeys("AZ");				
+				commView.addressPostalInputFld.sendKeys("85048");
+				commView.addressCountryInputFld.sendKeys("USA");				
+				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
+				headerButton.clickHeaderButton("check");		
+		}
+		catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		//Step: save the new Account/Contact field values
+		headerButton.clickHeaderButton("save");
+		commNav.waitForNotPage("Add Account / Contact");
+		
+		System.out.println(methodID + ": Auto-test new Account - " +  strNewAccount + " with new Contact - " + strNewName + "records were created.");
+	}
+
+
+	public void doAddRandContactOnly(String strNewName, String strNewAccount) throws InterruptedException, IOException {
+		String methodID = "doAddRandContactOnly";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Accounts list view
+		commNav.clickGlobalMenuItem("Add Account/Contact");
+		
+		try {
+			//Setup the Contact/Account Info section fields:
+			//set the name field
+			addAcctCntctNameInputBtn.click();
+				commView.namePrefixInputFldBtn.click();
+				commView.selectFieldValListItem("prefix", "Mr.");
+				commView.nameFirstInputFld.sendKeys("A.");
+				commView.nameMiddleInputFld.sendKeys("Neo");
+				commView.nameLastInputFld.sendKeys(strNewName);
+				commView.nameSuffixInputFld.sendKeys("Sr.");
+				headerButton.clickHeaderButton("check");
+			
+			//set the account field
+			addAcctCntctAccountInputFld.sendKeys(strNewAccount);
+			
+			//set the email field
+			addAcctCntctEMailInputFld.sendKeys("add.account.contact.test@boguscompany.com");
+			
+			//set the web field
+			addAcctCntctWebInputFld.sendKeys("www.saleslogix.com");
+			
+			//set the work phone field
+			addAcctCntctWorkPhoneInputFld.sendKeys("800-867-5309");
+			
+			//Setup the Contact Info section:
+			//set the title field
+			addAcctCntctTitleInputFld.sendKeys("Assistant");
+			
+			//set the home phone field
+			addAcctCntctHomePhoneInputFld.sendKeys("602.867.5309");
+			
+			//set the mobile field
+			addAcctCntctMobileInputFld.sendKeys("(480)867-5309");
+			
+			//set the fax field
+			addAcctCntctFaxInputFld.sendKeys("888-867-5309");
+			
+			//set the address field
+			addAcctCntctAddressInputBtn.click();
+				commView.addressDescriptionInputFld.sendKeys("Mailing");
+				commView.addressPrimaryTgl.click();
+				commView.addressShippingTgl.click();
+				commView.addressLine1.sendKeys("8800 Mobile St.");
+				commView.addressLine2.sendKeys("Corporate Campus");
+				commView.addressLine3.sendKeys("Suite 100");
+				commView.addressCityInputFld.sendKeys("Phoenix");				
+				commView.addressStateInputFld.sendKeys("AZ");				
+				commView.addressPostalInputFld.sendKeys("85048");
+				commView.addressCountryInputFld.sendKeys("USA");				
+				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
+				headerButton.clickHeaderButton("check");
+						
+		}
+		catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		//Step: save the new Account/Contact field values
+		headerButton.clickHeaderButton("save");
+		commNav.waitForNotPage("Add Account / Contact");
+		
+		System.out.println(methodID + ": Auto-test new Contact only - " +  strNewName + " with new Account - " + strNewAccount + "records were created.");
 	}
 }

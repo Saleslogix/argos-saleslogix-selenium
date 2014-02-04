@@ -40,11 +40,11 @@ public class CommonViewsElements extends BrowserSetup {
 	//==================
 	//Address input fields:
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_4']/input")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_7']/input")
 	WebElement addressDescriptionInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_4']/button")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_7']/button")
 	WebElement addressDescriptionInputFldBtn;
 	
 	@CacheLookup
@@ -68,19 +68,19 @@ public class CommonViewsElements extends BrowserSetup {
 	WebElement addressLine3;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_5']/input")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_8']/input")
 	WebElement addressCityInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_5']/button")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_8']/button")
 	WebElement addressCityInputFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_6']/input")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_9']/input")
 	WebElement addressStateInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_6']/button")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_9']/button")
 	WebElement addressStateInputFldBtn;
 	
 	@CacheLookup
@@ -88,25 +88,25 @@ public class CommonViewsElements extends BrowserSetup {
 	WebElement addressPostalInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_7']/input")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_10']/input")
 	WebElement addressCountryInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_7']/button")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_10']/button")
 	WebElement addressCountryInputFldBtn;
 	
 	@CacheLookup
-	@FindBy(css = "input[name='Salutation']")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_13']/input")
 	WebElement addressAttentionInputFld;		
 	
 	//Edit Name input fields:
 	//=======================
 	@CacheLookup
-	@FindBy(css = "input[type='text']")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_5']/input")
 	WebElement namePrefixInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_10']/button")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_5']/button")
 	WebElement namePrefixInputFldBtn;
 	
 	@CacheLookup
@@ -122,11 +122,11 @@ public class CommonViewsElements extends BrowserSetup {
 	WebElement nameLastInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "(//input[@type='text'])[5]")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/input")
 	WebElement nameSuffixInputFld;
 	
 	@CacheLookup
-	@FindBy(css = "#Mobile_SalesLogix_Fields_PicklistField_11 > button.button.simpleSubHeaderButton")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/button")
 	WebElement nameSuffixInputFldBtn;
 	
 	//List View selection elements
