@@ -40,11 +40,11 @@ public class CommonViewsElements extends BrowserSetup {
 	//==================
 	//Address input fields:
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_7']/input")
+	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][1]")
 	WebElement addressDescriptionInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_7']/button")
+	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][1]")
 	WebElement addressDescriptionInputFldBtn;
 	
 	@CacheLookup
@@ -68,19 +68,19 @@ public class CommonViewsElements extends BrowserSetup {
 	WebElement addressLine3;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_8']/input")
+	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][5]")
 	WebElement addressCityInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_8']/button")
+	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][5]")
 	WebElement addressCityInputFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_9']/input")
+	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][6]")
 	WebElement addressStateInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_9']/button")
+	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][6]")
 	WebElement addressStateInputFldBtn;
 	
 	@CacheLookup
@@ -88,25 +88,25 @@ public class CommonViewsElements extends BrowserSetup {
 	WebElement addressPostalInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_10']/input")
+	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][8]")
 	WebElement addressCountryInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_10']/button")
+	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][8]")
 	WebElement addressCountryInputFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_13']/input")
+	@FindBy(css = "input[name='Salutation']")
 	WebElement addressAttentionInputFld;		
 	
 	//Edit Name input fields:
 	//=======================
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_5']/input")
+	@FindBy(xpath = "//*[@id='name_edit']/descendant::*[@type='text'][1]")
 	WebElement namePrefixInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_5']/button")
+	@FindBy(xpath = "//*[@id='name_edit']/descendant::*[@class='button simpleSubHeaderButton'][1]")
 	WebElement namePrefixInputFldBtn;
 	
 	@CacheLookup
@@ -122,11 +122,11 @@ public class CommonViewsElements extends BrowserSetup {
 	WebElement nameLastInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/input")
+	@FindBy(xpath = "//*[@id='name_edit']/descendant::*[@type='text'][5]")
 	WebElement nameSuffixInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/button")
+	@FindBy(xpath = "//*[@id='name_edit']/descendant::*[@class='button simpleSubHeaderButton'][2]")
 	WebElement nameSuffixInputFldBtn;
 	
 	//List View selection elements
@@ -204,6 +204,11 @@ public class CommonViewsElements extends BrowserSetup {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_6']/div[2]/button")
 	WebElement industrySelectNoneBtn;
+	
+	//General List View search field:
+	@CacheLookup
+	@FindBy(css = "input[name='query']")
+	WebElement listViewSearchInputFld;
 	
 	//Lead Source selection:
 	@CacheLookup
@@ -386,7 +391,7 @@ public class CommonViewsElements extends BrowserSetup {
 		//initialize/setup common elements
 		String pageTitle = "";
 		String pickListID = "";
-		WebElement lookupFld = null;
+		WebElement lookupFld = listViewSearchInputFld;
 		WebElement lookupBtn = null;
 		String hdrCancelBtnXPath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]";
 		
@@ -394,91 +399,76 @@ public class CommonViewsElements extends BrowserSetup {
 		switch (strFieldName.toLowerCase()) {
 		case "account type": case "type":
 			pageTitle = "Account Type";
-			lookupFld = accountTypeLookupInputFld;
 			lookupBtn = accountTypeLookupBtn;
 			pickListID = "pick_list_4";
 			break;
 		case "account subtype": case "subtype": case "sub type":
 			pageTitle = "Account Subtype";
-			lookupFld = subtypeLookupInputFld;
 			lookupBtn = subtypeLookupBtn;			
 			pickListID = "pick_list_0";
 			break;
 		case "city":
 			pageTitle = "City";
-			lookupFld = cityLookupInputFld;
 			lookupBtn = cityLookupBtn;			
 			pickListID = "pick_list_0";
 			break;
 		case "country":
 			pageTitle = "Country";
-			lookupFld = countryLookupInputFld;
 			lookupBtn = countryLookupBtn;			
 			pickListID = "pick_list_3";
 			break;	
 		case "cuisine":
 			pageTitle = "Cuisine";
-			lookupFld = cuisineLookupInputFld;
 			lookupBtn = cuisineLookupBtn;			
 			pickListID = "pick_list_3";
 			break;			
 		case "description":
 			pageTitle = "Description";
-			lookupFld = descriptionLookupInputFld;
 			lookupBtn = descriptionLookupBtn;			
 			pickListID = "pick_list_0";
 			break;
 		case "industry":
 			pageTitle = "Industry";
-			lookupFld = industryLookupInputFld;
 			lookupBtn = industryLookupBtn;			
 			pickListID = "pick_list_6";
 			break;
 		case "lead source":
-			pageTitle = "Lead Source";
-			lookupFld = leadSourceLookupInputFld;
+			pageTitle = "Lead Sources";
 			lookupBtn = leadSourceLookupBtn;			
 			pickListID = "leadsource_list";
 			break;
 		case "name prefix": case "prefix":
 			pageTitle = "Name Prefix";
-			lookupFld = namePrefixLookupInputFld;
 			lookupBtn = namePrefixLookupBtn;			
 			pickListID = "pick_list_0";
 			break;		
 		case "name suffix": case "suffix":
 			pageTitle = "Name Suffix";
-			lookupFld = nameSuffixLookupInputFld;
 			lookupBtn = nameSuffixLookupBtn;			
-			pickListID = "pick_list_1";
+			pickListID = "pick_list_0";
 			break;			
 		case "owner":
 			pageTitle = "Owner";
-			lookupFld = ownerLookupInputFld;
 			lookupBtn = ownerLookupBtn;			
 			pickListID = "owner_list";
 			break;			
 		case "state":
 			pageTitle = "State";
-			lookupFld = stateLookupInputFld;
 			lookupBtn = stateLookupBtn;			
 			pickListID = "pick_list_2";
 			break;
 		case "status":
 			pageTitle = "Account Status";
-			lookupFld = statusLookupInputFld;
 			lookupBtn = statusLookupBtn;			
 			pickListID = "pick_list_5";
 			break;
 		case "title":
 			pageTitle = "Title";
-			lookupFld = titleLookupInputFld;
 			lookupBtn = titleLookupBtn;			
 			pickListID = "pick_list_2";
 			break;			
 		case "user": case "users": case "acct mgr":
 			pageTitle = "Users";
-			lookupFld = userLookupInputFld;
 			lookupBtn = userLookupBtn;			
 			pickListID = "user_list";
 			break;			
@@ -535,7 +525,7 @@ public class CommonViewsElements extends BrowserSetup {
 		if (commNav.isPageDisplayed("Account Type")) { 		
 			//make Type selection
 			if (strAccType.toUpperCase().equals("NONE")) {
-				driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+				driver.findElement(By.xpath("//*[@id='pick_list_0']/div[2]/button]")).click();
 			}
 			else {
 				accountTypeLookupInputFld.sendKeys(strAccType);

@@ -14,10 +14,12 @@ import org.openqa.selenium.support.PageFactory;
 
 /**
  * @author mllena
- * Class: AccountEntityViewsTest
- * Desc.: Test class for the Account entity views
+ * Class: TicketViewsTest
+ * Desc.: Test class for the Ticket record views
  */
 public class TicketViewsTest extends BrowserSetup {
+	
+	public String TEST_TICKET_RECORD = "001-00-000693";
 	
 	//Test Methods Set
 	//================
@@ -29,12 +31,13 @@ public class TicketViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Tickets";
 		String expEntityPgTitle = "Tickets";
-		String ticketRecord = "001-00-000693";
+		String ticketRecord = TEST_TICKET_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
@@ -100,7 +103,7 @@ public class TicketViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Tickets";
 		String expEntityPgTitle = "Tickets";
-		String entityRecord = "001-00-000693";
+		String entityRecord = TEST_TICKET_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);

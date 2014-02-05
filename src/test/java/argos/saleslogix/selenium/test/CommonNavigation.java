@@ -1347,6 +1347,7 @@ public class CommonNavigation {
 		searchListView(entityType, entityName);		
 		
 		//Step: check if there is a 'no records' result
+		Thread.sleep(3000);
 		try {
 			//AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 			AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().contains("no records"));

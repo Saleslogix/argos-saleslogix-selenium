@@ -175,13 +175,19 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 			//Setup the Contact/Account Info section fields:
 			//set the name field
 			addAcctCntctNameInputBtn.click();
+			try {
 				commView.namePrefixInputFldBtn.click();
 				commView.selectFieldValListItem("prefix", "Mr.");
 				commView.nameFirstInputFld.sendKeys("A.");
 				commView.nameMiddleInputFld.sendKeys("Neo");
 				commView.nameLastInputFld.sendKeys(strNewName);
-				commView.nameSuffixInputFld.sendKeys("Sr.");
+				commView.nameSuffixInputFldBtn.sendKeys("Sr.");
 				headerButton.clickHeaderButton("check");
+			}
+			catch (Exception e1) {
+				System.out.println(e1.toString());
+				headerButton.goBack();
+			}
 			
 			//set the account field
 			addAcctCntctAccountInputFld.sendKeys(strNewAccount);
@@ -210,8 +216,10 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 			
 			//set the address field
 			addAcctCntctAddressInputBtn.click();
-				commView.addressDescriptionInputFldBtn.click();
-				commView.selectFieldValListItem("description", "Mailing");
+			commView = PageFactory.initElements(driver, CommonViewsElements.class);
+			try {
+				commView.addressDescriptionInputFld.click();
+				commView.addressDescriptionInputFld.sendKeys("Mailing");
 				commView.addressPrimaryTgl.click();
 				commView.addressShippingTgl.click();
 				commView.addressLine1.sendKeys("8800 Mobile St.");
@@ -223,6 +231,11 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 				commView.addressCountryInputFld.sendKeys("USA");				
 				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
 				headerButton.clickHeaderButton("check");
+			}
+			catch (Exception e2) {
+				System.out.println(e2.toString());
+				headerButton.goBack();
+			}
 			
 			//Setup the Account Info section:
 			//set the fax field (skip - already set)
@@ -274,6 +287,7 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 			//Setup the Contact/Account Info section fields:
 			//set the name field
 			addAcctCntctNameInputBtn.click();
+			try {
 				commView.namePrefixInputFldBtn.click();
 				commView.selectFieldValListItem("prefix", "Mr.");
 				commView.nameFirstInputFld.sendKeys("A.");
@@ -281,6 +295,11 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 				commView.nameLastInputFld.sendKeys(strNewName);
 				commView.nameSuffixInputFld.sendKeys("Sr.");
 				headerButton.clickHeaderButton("check");
+			}
+			catch (Exception e1) {
+				System.out.println(e1.toString());
+				headerButton.goBack();
+			}
 			
 			//set the account field
 			addAcctCntctAccountInputFld.sendKeys(strNewAccount);
@@ -317,6 +336,7 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 			
 			//set the address field
 			addAcctCntctAcctAddressInputBtn.click();
+			try {
 				commView.addressDescriptionInputFldBtn.click();
 				commView.selectFieldValListItem("description", "Mailing");
 				commView.addressPrimaryTgl.click();
@@ -329,7 +349,12 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 				commView.addressPostalInputFld.sendKeys("85048");
 				commView.addressCountryInputFld.sendKeys("USA");				
 				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
-				headerButton.clickHeaderButton("check");		
+				headerButton.clickHeaderButton("check");
+			}
+			catch (Exception e2) {
+				System.out.println(e2.toString());
+				headerButton.goBack();
+			}
 		}
 		catch (Exception e) {
 			System.out.println(e.toString());
@@ -359,13 +384,19 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 			//Setup the Contact/Account Info section fields:
 			//set the name field
 			addAcctCntctNameInputBtn.click();
+			try {
 				commView.namePrefixInputFldBtn.click();
 				commView.selectFieldValListItem("prefix", "Mr.");
 				commView.nameFirstInputFld.sendKeys("A.");
 				commView.nameMiddleInputFld.sendKeys("Neo");
 				commView.nameLastInputFld.sendKeys(strNewName);
-				commView.nameSuffixInputFld.sendKeys("Sr.");
+				//commView.nameSuffixInputFld.sendKeys("Sr.");
 				headerButton.clickHeaderButton("check");
+			}
+			catch (Exception e1) {
+				System.out.println(e1.toString());
+				headerButton.goBack();
+			}
 			
 			//set the account field
 			addAcctCntctAccountInputFld.sendKeys(strNewAccount);
@@ -394,6 +425,7 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 			
 			//set the address field
 			addAcctCntctAddressInputBtn.click();
+			try {
 				commView.addressDescriptionInputFld.sendKeys("Mailing");
 				commView.addressPrimaryTgl.click();
 				commView.addressShippingTgl.click();
@@ -406,6 +438,11 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 				commView.addressCountryInputFld.sendKeys("USA");				
 				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
 				headerButton.clickHeaderButton("check");
+			}
+			catch (Exception e2) {
+				System.out.println(e2.toString());
+				headerButton.goBack();
+			}
 						
 		}
 		catch (Exception e) {

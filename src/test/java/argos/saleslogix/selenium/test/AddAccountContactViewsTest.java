@@ -48,7 +48,7 @@ public class AddAccountContactViewsTest extends BrowserSetup {
 	}
 
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test01_SeTestTCAddAccountContact() throws Exception {
 		String methodID = "test01_SeTestTCAddAccountContact";
 		
@@ -128,7 +128,7 @@ public class AddAccountContactViewsTest extends BrowserSetup {
 	}
 
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test03_SeTestTCAddContactOnly() throws Exception {
 		String methodID = "test03_SeTestTCAddContactOnly";
 		

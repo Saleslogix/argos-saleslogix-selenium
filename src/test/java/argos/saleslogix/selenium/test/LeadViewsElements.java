@@ -462,13 +462,19 @@ public class LeadViewsElements extends BrowserSetup {
 		//Step: setup new Lead field values
 		//setup name fields		
 		leadsEditViewNameFldBtn.click();
+		try {
 			//TEMP: disable Name Prefix selection in favor of direct input field value setting
 			commView.namePrefixInputFld.sendKeys("Mr.");
 			commView.nameFirstInputFld.sendKeys(strLeadFirstName);
 			commView.nameMiddleInputFld.sendKeys("Neo");
 			commView.nameLastInputFld.sendKeys(strLeadLastName);
-			commView.nameSuffixInputFld.sendKeys("Jr.");
+			//commView.nameSuffixInputFld.sendKeys("Jr.");
 			headerButton.clickHeaderButton("check");
+		}
+		catch (Exception e0) {
+			System.out.println(e0.toString());
+			headerButton.goBack();
+		}
 			
 		//setup company field
 		leadsEditViewCompanyInputFld.sendKeys(strLeadCompany);
@@ -494,19 +500,25 @@ public class LeadViewsElements extends BrowserSetup {
 		//conditionally setup address fields
 		if (leadsEditViewAddressInputFld.getText().equals("")) {
 			leadsEditViewAddressFldBtn.click();
-			//TEMP disable selection views (doesn't work on Jenkins server)
-			commView.addressDescriptionInputFld.sendKeys("Mailing");
-			commView.addressPrimaryTgl.click();
-			commView.addressShippingTgl.click();
-			commView.addressLine1.sendKeys("8800 Mobile St.");
-			commView.addressLine2.sendKeys("Corporate Campus");
-			commView.addressLine3.sendKeys("Suite 200");
-			commView.addressCityInputFld.sendKeys("Phoenix");				
-			commView.addressStateInputFld.sendKeys("AZ");				
-			commView.addressPostalInputFld.sendKeys("85048");
-			commView.addressCountryInputFld.sendKeys("USA");				
-			commView.addressAttentionInputFld.sendKeys("Mrs. Rogers");
-			headerButton.clickHeaderButton("check");
+			try {
+				//TEMP disable selection views (doesn't work on Jenkins server)
+				commView.addressDescriptionInputFld.sendKeys("Mailing");
+				commView.addressPrimaryTgl.click();
+				commView.addressShippingTgl.click();
+				commView.addressLine1.sendKeys("8800 Mobile St.");
+				commView.addressLine2.sendKeys("Corporate Campus");
+				commView.addressLine3.sendKeys("Suite 200");
+				commView.addressCityInputFld.sendKeys("Phoenix");				
+				commView.addressStateInputFld.sendKeys("AZ");				
+				commView.addressPostalInputFld.sendKeys("85048");
+				commView.addressCountryInputFld.sendKeys("USA");				
+				commView.addressAttentionInputFld.sendKeys("Mrs. Rogers");
+				headerButton.clickHeaderButton("check");
+			}
+			catch (Exception e1) {
+				System.out.println(e1.toString());
+				headerButton.goBack();
+			}
 		}				
 		
 		//setup lead source field

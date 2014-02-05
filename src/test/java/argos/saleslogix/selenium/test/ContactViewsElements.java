@@ -451,14 +451,20 @@ public class ContactViewsElements extends BrowserSetup {
 			//Step: setup new Contact field values
 			//setup name fields		
 			contactsEditViewNameInputFldBtn.click();
+			try {
 				//TEMP: disable Name Prefix selection in favor of direct input field value setting
 				commView.namePrefixInputFld.sendKeys("Mr.");
 				commView.nameFirstInputFld.sendKeys(strContactFirstName);
 				commView.nameMiddleInputFld.sendKeys("Neo");
 				commView.nameLastInputFld.sendKeys(strContactLastName);
-				commView.nameSuffixInputFld.sendKeys("Sr.");
+				//commView.nameSuffixInputFld.sendKeys("Sr.");
 				headerButton.clickHeaderButton("check");
-				
+			}
+			catch (Exception e0) {
+				System.out.println(e0.toString());
+				headerButton.goBack();
+			}
+			
 			//setup account field
 			contactsEditViewAccountInputFldBtn.click();
 				commNav.highlightNClick(commNav.entityListViewSelect("Accounts", strContactAccount));
@@ -482,6 +488,7 @@ public class ContactViewsElements extends BrowserSetup {
 			//conditionally setup address fields
 			if (contactsEditViewAddressInputFld.getText().equals("")) {
 				contactsEditViewAddressInputFldBtn.click();
+				try {
 				//TEMP disable selection views (doesn't work on Jenkins server)				
 				commView.addressPrimaryTgl.click();
 				commView.addressShippingTgl.click();
@@ -494,6 +501,11 @@ public class ContactViewsElements extends BrowserSetup {
 				commView.addressCountryInputFld.sendKeys("USA");				
 				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
 				headerButton.clickHeaderButton("check");
+				}
+				catch (Exception e1) {
+					System.out.println(e1.toString());
+					headerButton.goBack();
+				}
 			}				
 			
 			//setup home phone field
