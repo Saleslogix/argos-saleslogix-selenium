@@ -863,9 +863,18 @@ public class CommonNavigation {
 		
 		try {
 			String fieldVal = wElement.getAttribute("value");
-			if (fieldVal.contentEquals("")) {
-				System.out.println(methodID + ": " + sDesc + " field value present but empty.");
-				return true;
+			//TODO: may need to add additional code to strip-out the field label that might be returned in the getText() call
+			if (fieldVal.equals(null)) {
+				//try to get the value attribute
+				String fieldVal1 = wElement.getText();
+				if (fieldVal1.contentEquals("")) {
+					System.out.println(methodID + ": " + sDesc + " field value present but empty.");
+					return true;
+				}
+				else {
+					System.out.println(methodID + ": " + sDesc + " field has a value of '" + fieldVal1 + "'");
+					return false;
+				}
 			}
 			else {
 				System.out.println(methodID + ": " + sDesc + " field has a value of '" + fieldVal + "'");
@@ -873,8 +882,18 @@ public class CommonNavigation {
 			}
 		}
 		catch (Exception e) {
-			System.out.println(methodID + ": value attribute for WebElement '" + sDesc + "' is not available.");
-			return false;
+			//try to get the value attribute
+			String fieldVal2 = wElement.getText();
+			if (fieldVal2.contentEquals("")) {
+				System.out.println(methodID + ": " + sDesc + " field value present but empty.");
+				return true;
+			}
+			else {
+				System.out.println(methodID + ": " + sDesc + " field has a value of '" + fieldVal2 + "'");
+				return false;
+			}
+			//System.out.println(methodID + ": value/text attribute for WebElement '" + sDesc + "' is not available.");
+			//return false;
 		}
 	}
 	
