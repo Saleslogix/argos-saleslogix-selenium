@@ -176,8 +176,8 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 			//set the name field
 			addAcctCntctNameInputBtn.click();
 			try {
-				commView.namePrefixInputFldBtn.click();
-				commView.selectFieldValListItem("prefix", "Mr.");
+				//commView.namePrefixInputFldBtn.click();
+				//commView.selectFieldValListItem("prefix", "Mr.");
 				commView.nameFirstInputFld.sendKeys("A.");
 				commView.nameMiddleInputFld.sendKeys("Neo");
 				commView.nameLastInputFld.sendKeys(strNewName);
@@ -288,8 +288,8 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 			//set the name field
 			addAcctCntctNameInputBtn.click();
 			try {
-				commView.namePrefixInputFldBtn.click();
-				commView.selectFieldValListItem("prefix", "Mr.");
+				//commView.namePrefixInputFldBtn.click();
+				//commView.selectFieldValListItem("prefix", "Mr.");
 				commView.nameFirstInputFld.sendKeys("A.");
 				commView.nameMiddleInputFld.sendKeys("Neo");
 				commView.nameLastInputFld.sendKeys(strNewName);
@@ -385,8 +385,8 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 			//set the name field
 			addAcctCntctNameInputBtn.click();
 			try {
-				commView.namePrefixInputFldBtn.click();
-				commView.selectFieldValListItem("prefix", "Mr.");
+				//commView.namePrefixInputFldBtn.click();
+				//commView.selectFieldValListItem("prefix", "Mr.");
 				commView.nameFirstInputFld.sendKeys("A.");
 				commView.nameMiddleInputFld.sendKeys("Neo");
 				commView.nameLastInputFld.sendKeys(strNewName);
