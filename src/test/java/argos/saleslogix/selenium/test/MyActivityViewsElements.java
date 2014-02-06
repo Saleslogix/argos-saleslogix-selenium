@@ -387,12 +387,6 @@ public class MyActivityViewsElements extends BrowserSetup {
 	
 	//Methods
 	//-------
-	/**
-	 * This method will return a string that consists of all the activity items displayed on the first
-	 * page of the My Activities List view.
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
-	 */
 	public String getMyActivitiesListViewTxt() {
 		String methodID = "getMyActivitiesListViewTxt";
 		
@@ -493,7 +487,7 @@ public class MyActivityViewsElements extends BrowserSetup {
 		activitiesListView.relatedActivitiesSearchLookupBtn.click();
 		Thread.sleep(3000);
 	}
-	
+		
 	
 	/**
 	 * This method will search for an activity record (using the regarding field value) from the 

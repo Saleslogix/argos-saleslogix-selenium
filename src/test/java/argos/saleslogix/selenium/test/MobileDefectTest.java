@@ -34,7 +34,7 @@ public class MobileDefectTest extends BrowserSetup {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String attachmentName = "tulips";
+		String attachmentName = "saleslogix";
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		// Step: click the Top-Left, Global Menu button...
@@ -300,7 +300,7 @@ public class MobileDefectTest extends BrowserSetup {
 	}
 
 	//TODO: test45_MobileDefect13092219 mysteriously fails on Jenkins server
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test45_MobileDefect13092219()  throws InterruptedException {				
 		String methodID = "test45_MobileDefect13092219";
 		
@@ -348,7 +348,7 @@ public class MobileDefectTest extends BrowserSetup {
 		}
 		
 		// Step: click the top-search results item to go to the Detail view
-		driver.findElement(By.xpath("//*[@id='speedsearch_list']/ul/li[1]/h3")).click();
+		driver.findElement(By.xpath("//*[@id='speedsearch_list']/ul/li[1]/div[3]/h4")).click();
 		for (int second = 0;; second++) {
 			if (second >= 30) Assert.fail("timeout");
 			try { if (!"SpeedSearch".equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}

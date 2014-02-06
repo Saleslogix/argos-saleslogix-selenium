@@ -407,7 +407,7 @@ public class TicketViewsElements extends BrowserSetup {
 		String listViewTxt = "";
 		
 		try {
-			WebElement ticketsListViewInfo = driver.findElement(By.xpath("//*[@id='ticket_list/ul']"));
+			WebElement ticketsListViewInfo = driver.findElement(By.xpath("//*[@id='ticket_list']/ul"));
 			listViewTxt = ticketsListViewInfo.getText();
 		}
 		catch (Exception excptn) {
