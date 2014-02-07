@@ -419,7 +419,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 
 	@Test(enabled = true)
 	public void test10_SeTestTCNotesHistoryListViewHashTags() throws Exception {
-		String methodID = "test10_SeTestTCOpportunityListViewHashTags";
+		String methodID = "test10_SeTestTCNotesHistoryListViewHashTags";
 		
 		// Test Params:
 		String entityType = "Notes/History";

@@ -451,15 +451,10 @@ public class OpportunityViewsTest extends BrowserSetup {
 			//Step: go back to previous screen
 			headerButton.goBack();
 			Thread.sleep(2000);
-					
-			//Step: go back to previous screens
-			headerButton.clickHeaderButton("cancel");
-			headerButton.goBack();
-			Thread.sleep(2000);
 		}
 		catch (Exception e) {
 			verificationErrors.append(e.toString());
-			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
+			System.out.println(methodID + ": unable to open the Opportunity Add Edit view.");
 		}
 		
 		System.out.println(ENDLINE);
