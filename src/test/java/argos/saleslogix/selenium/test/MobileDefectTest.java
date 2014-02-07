@@ -744,56 +744,59 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//TODO: test50_MobileDefect13092146 needs for 2.3
-	@Test(enabled = false)
-	public void test50_MobileDefect13092146()  throws InterruptedException {				
-		String methodID = "test50_MobileDefect13092146";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+	@Test(enabled = true)
+	public void test50_MobileDefect13092146()  throws Exception {				
+		String methodID = "test50_MobileDefect13092146";		
 		
 		// test params
+		String entityType = "Contacts";
 		String contactSrch = "Alexander";
 		String contactName = "Alexander, Mark";
 		String actType = "To-Do";
 		String regardingVal = "Send quote";
 		String repeatVal = "Daily";
 		
-		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
 	
 		// Step: click the Contacts link
-		commNav.clickGlobalMenuItem("Contacts");
+		commNav.clickGlobalMenuItem(entityType);
 	
 		// Step: perform search for Contact record
-		commNav.searchListView("contact", contactSrch);
+		commNav.searchListView("contact", contactName);
 		Thread.sleep(3000);
 		try {
 			AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ contactName +"[\\s\\S]*$"));
 			System.out.println("Step: '" + contactName + "' check on Contacts, List View - Passed");
 			
-			//Step: open the Contact record's Detail View...
-			driver.findElement(By.xpath("//*[@id='contact_list']/descendant::*[text() = '" + contactName + "']")).click();
-			commNav.waitForPage(contactName);		    
+			//Step: open the Contact record's Detail View...			
+			commNav.entityRecordOpenDetailView(entityType, contactName);
+			
+			ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
 		    		    
 		    //Step: click the Schedule Activity link...
-			driver.findElement(By.xpath("//*[@id='contact_detail']/descendant::*[text() = 'Schedule activity']")).click();
+			contactDetailView.contactsDetailViewScheduleActivityLnk.click();
 			commNav.waitForPage("Schedule...");
 			
 			//TODO: create a separate class for scheduling activities...
 			//SubStep: set the To-Do Activity Type...(do not select, just enter the value in the input field)
 			driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = '" + actType + "']")).click();
 			commNav.waitForPage(actType);
+			
+			MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
 		    
 			//SubStep: setup and confirm the Regarding field val...
 			//NOTE: here we just set the value of the input text field; selecting a Regarding value is not supported by Se WebDriver
-			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).clear();
-			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys(regardingVal);		    
+			activityEditView.activityEditViewRegardingFld.clear();
+			activityEditView.activityEditViewRegardingFld.sendKeys(regardingVal);		    
 		    //VP: check the modified Regarding field val...
 		    try {
-		    	  AssertJUnit.assertEquals(actType, driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).getAttribute("value"));
+		    	  AssertJUnit.assertEquals(actType, activityEditView.activityEditViewRegardingFld.getAttribute("value"));
 		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - Passed");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - FAILED");
@@ -801,16 +804,18 @@ public class MobileDefectTest extends BrowserSetup {
 		    }
 		    
 		    //SubStep: setup and confirm the Start Time field val...
-		    String oldStartTime = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_8']/input")).getAttribute("value");
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_8']/button")).click();
+		    String oldStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+		    activityEditView.activityEditViewStartTimeFldBtn.click();
 			commNav.waitForPage("Calendar");
 			//TODO: create a separate class for the Calendar Date view
 			//set Start Time = +1 Month
 			driver.findElement(By.xpath("//*[@id='datetime-picker-date']/tbody/tr[1]/td[1]/button")).click();
 			headerbutton.clickHeaderButton("check");
 			commNav.waitForPage(actType);
+			
 		    //VP: check the modified Start Time field val...
-			String newStartTime = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_8']/input")).getAttribute("value");
+			activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+			String newStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
 		    try {
 		    	  AssertJUnit.assertNotSame(oldStartTime, newStartTime);
 		    	  System.out.println("VP: Start Time field value set to '" + newStartTime + "' - Passed");
@@ -820,12 +825,12 @@ public class MobileDefectTest extends BrowserSetup {
 		    }
 		    
 		    //SubStep: setup and confirm the Repeats field val...
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_SelectField_1']/button")).click();
+		    activityEditView.activityEditViewRepeatsFldBtn.click();
 			commNav.waitForPage("Recurring");		    
 			driver.findElement(By.xpath("//*[@id='select_list']/descendant::*[text() = '" + repeatVal + "']")).click();
 			commNav.waitForPage(actType);
 		    try {
-		    	  AssertJUnit.assertEquals(repeatVal, driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_SelectField_1']/input")).getAttribute("value"));
+		    	  AssertJUnit.assertEquals(repeatVal, activityEditView.activityEditViewRepeatsFld.getAttribute("value"));
 		    	  System.out.println("VP: Repeats field value set to '" + repeatVal + "' - Passed");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Repeats field value set to '" + repeatVal + "' - FAILED");
@@ -833,7 +838,8 @@ public class MobileDefectTest extends BrowserSetup {
 		    }
 		    
 		    //SubStep: setup and confirm the Recurring Until field val...
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_RecurrencesField_0']/button")).click();
+		    activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+		    activityEditView.activityEditViewRecurringFldBtn.click();
 			commNav.waitForPage("Recurrence");
 			//Note: here we just open the Recurrence page, then click the Header, Check button (no changes)
 			headerbutton.clickHeaderButton("check");
@@ -843,30 +849,27 @@ public class MobileDefectTest extends BrowserSetup {
 		    commNav.waitForPage(contactName);
 		    
 		    //Step: click the Attachments link from the Contact detail view...
-			driver.findElement(By.xpath("//*[@id='contact_detail']/div[2]/ul[2]/li[6]/a/span")).click();
-			commNav.waitForPage("Recurrence");
+		    contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
+		    contactDetailView.contactsDetailViewAttachmentsLnk.click();
+			commNav.waitForPage("Contact Attachments");
 			
 			// Step: click the top Add buton...
-		    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
-		    for (int second = 0;; second++) {
-		    	if (second >= 60) AssertJUnit.fail("timeout");
-		    	try { if ("Add Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-		    	Thread.sleep(1000);
-		    }
+		    headerbutton.addButton.click();
+		    commNav.waitForPage("Add Attachments");
 		
 		    // VP: confirm the elements of the Add Attachments screen...
 		    try {
-		      assertTrue(isElementPresent(By.cssSelector("input[type=\"file\"]")));
+		      AssertJUnit.assertTrue(isElementPresent(By.cssSelector("input[type=\"file\"]")));
 		    } catch (Error e) {
 		      verificationErrors.append(e.toString());
 		    }
 		    try {
-		      assertTrue(isElementPresent(By.cssSelector("button.button.inline")));
+		    	AssertJUnit.assertTrue(isElementPresent(By.cssSelector("button.button.inline")));
 		    } catch (Error e) {
 		      verificationErrors.append(e.toString());
 		    }
 		    try {
-		      assertTrue(isElementPresent(By.xpath("//div[@id='attachment_Add']/div[2]/div/button[2]")));
+		    	AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='attachment_Add']/div[2]/div/button[2]")));
 		    } catch (Error e) {
 		      verificationErrors.append(e.toString());
 		    }
@@ -878,26 +881,29 @@ public class MobileDefectTest extends BrowserSetup {
 		    
 		    // Step: setup a unique, time-based file name for the uploaded file...
 		    String newfilename = "upload." + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime()) + ".txt";
-		    driver.findElement(By.id("File_0")).clear();
-		    Thread.sleep(1000);
-		    driver.findElement(By.id("File_0")).sendKeys(newfilename);
-		    Thread.sleep(1000);
-		    
-		    // Step: proceed with file upload...
-		    driver.findElement(By.id("fileSelect-btn-upload")).click();
-		    
-		    // Step: verify that new attachment appears in the Contact Attachments list view...
-		    for (int second = 0;; second++) {
-		    	if (second >= 60) AssertJUnit.fail("timeout");
-		    	try { if ("Contact Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
-		    	Thread.sleep(1000);
-		    }
 		    try {
-		      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
-		      System.out.println("VP: the '" + newfilename + "' attachmment upload check - Passed");
-		    } catch (Error e) {
-		      System.out.println("VP: the '" + newfilename + "' attachmment upload check - FAILED");
-		      verificationErrors.append(e.toString());
+			    driver.findElement(By.id("File_0")).clear();
+			    Thread.sleep(1000);
+			    driver.findElement(By.id("File_0")).sendKeys(newfilename);
+			    Thread.sleep(1000);
+			    
+			    // Step: proceed with file upload...
+			    driver.findElement(By.id("fileSelect-btn-upload")).click();
+			    
+			    // Step: verify that new attachment appears in the Contact Attachments list view...
+			    commNav.waitForPage("Contact Attachments");
+			    try {
+			    	AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
+			    	System.out.println("VP: the '" + newfilename + "' attachmment upload check - Passed");
+			    } 
+			    catch (Error e) {
+			    	System.out.println("VP: the '" + newfilename + "' attachmment upload check - FAILED");
+			    	verificationErrors.append(e.toString());
+			    }
+		    }
+		    catch (Exception e) {
+		    	System.out.println(e.toString());
+		    	System.out.println(methodID + ": unable to upload the file due to a system issue; step skipped");
 		    }
 		    
 		} catch (Error e) {
@@ -912,7 +918,6 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);		
 	}
-
 	@Test(enabled = true)
 	public void test51_MobileDefect13092282()  throws InterruptedException {				
 		String methodID = "test51_MobileDefect13092282";
