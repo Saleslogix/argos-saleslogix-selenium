@@ -743,6 +743,7 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+	
 
 	@Test(enabled = true)
 	public void test50_MobileDefect13092146()  throws Exception {				
@@ -750,7 +751,6 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		// test params
 		String entityType = "Contacts";
-		String contactSrch = "Alexander";
 		String contactName = "Alexander, Mark";
 		String actType = "To-Do";
 		String regardingVal = "Send quote";
@@ -846,7 +846,10 @@ public class MobileDefectTest extends BrowserSetup {
 			
 		    //Step: click the Header, Save button to return to Contact detail view...
 		    headerbutton.clickHeaderButton("save");
-		    commNav.waitForPage(contactName);
+		    Thread.sleep(3000);
+		    if (commNav.waitForPage(contactName)) {
+			    System.out.println(methodID + ": successfully scheduled an '" + actType + " - " + regardingVal + "' activity for " + entityType + " - " + contactName);
+		    }
 		    
 		    //Step: click the Attachments link from the Contact detail view...
 		    contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
@@ -902,7 +905,7 @@ public class MobileDefectTest extends BrowserSetup {
 			    }
 		    }
 		    catch (Exception e) {
-		    	System.out.println(e.toString());
+		    	//System.out.println(e.toString());
 		    	System.out.println(methodID + ": unable to upload the file due to a system issue; step skipped");
 		    }
 		    
@@ -918,6 +921,8 @@ public class MobileDefectTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);		
 	}
+	
+	
 	@Test(enabled = true)
 	public void test51_MobileDefect13092282()  throws InterruptedException {				
 		String methodID = "test51_MobileDefect13092282";
