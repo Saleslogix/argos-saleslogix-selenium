@@ -367,7 +367,7 @@ public class CommonViewsElements extends BrowserSetup {
 			Thread.sleep(3000);
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 		}
 		
 	}
@@ -498,8 +498,8 @@ public class CommonViewsElements extends BrowserSetup {
 					System.out.println(methodID + ": " + strFieldName + " - " + strSelectItem + " was selected.");
 				}
 				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
-					System.out.println(methodID + ": " + strFieldName + " - " + strSelectItem + " was NOT found; selection skipped.");
+					System.out.println(methodID + "():" + e.toString());
+					System.out.println(methodID + "(): " + strFieldName + " - " + strSelectItem + " was NOT found; selection skipped.");
 					driver.findElement(By.xpath(hdrCancelBtnXPath)).click();
 				}
 			}
@@ -535,7 +535,7 @@ public class CommonViewsElements extends BrowserSetup {
 					commNav.clickListViewGridItem(By.xpath(".//*[@id='pick_list_4']/descendant::*[text() = '" + strAccType + "']"));
 				}
 				catch (Exception e){
-					System.out.println(methodID + ":" + e.toString());
+					System.out.println(methodID + "():" + e.toString());
 					driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
 				}
 			}

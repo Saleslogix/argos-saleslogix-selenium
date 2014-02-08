@@ -84,7 +84,7 @@ public class MyActivityViewsTest extends BrowserSetup {
 				myActivitiesListView.topMyActivitiesListItemQuickActionsBtn.click();
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());				
+				System.out.println(methodID + "(): " + e.toString());				
 			}
 			
 			//Step: check the "X records remaining" item box at the bottom of the list view

@@ -15,13 +15,15 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
 	public void checkGlobalMenuStatus(String resultMsg) {
+		String methodID = "checkGlobalMenuStatus";
+		
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 	    try {
 	    	AssertJUnit.assertTrue(headerButton.globalMenuButton.isDisplayed());
 	    	System.out.println(resultMsg + " - Passed");
 	    } catch (Error e) {
-	    	verificationErrors.append(e.toString());
+	    	verificationErrors.append(methodID + "(): " + e.toString());
 	    	System.out.println(resultMsg + " - Failed");
 	    }
 	}
@@ -256,7 +258,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click the Regarding edit button...
@@ -271,7 +273,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Complete Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -293,7 +295,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Complete Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -315,7 +317,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -337,7 +339,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -359,7 +361,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -381,7 +383,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -403,7 +405,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -425,7 +427,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -447,7 +449,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Address edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -469,7 +471,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Address edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -491,7 +493,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Address edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -513,7 +515,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Address edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -535,7 +537,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Address edit screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -578,12 +580,12 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > label")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the SpeedSearch menu item...
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'SpeedSearch']")).click();
@@ -616,7 +618,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertEquals("Won the deal", driver.findElement(By.xpath("//div[@id='history_detail']/div[2]/div/div[3]/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click Top Blue Arrow button to navigate back...
@@ -689,7 +691,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Edit button...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
@@ -713,7 +715,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Account screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -735,7 +737,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Account screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -757,7 +759,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Account screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -830,7 +832,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the Regarding edit button...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_PicklistField_31']/button")).click();
@@ -844,7 +846,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -866,7 +868,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -888,7 +890,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -910,7 +912,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -932,7 +934,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -954,7 +956,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -976,7 +978,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -998,7 +1000,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1020,7 +1022,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1042,7 +1044,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='account_related']/ul/li[1]/div/h3")).click();
@@ -1064,7 +1066,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1086,7 +1088,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1108,7 +1110,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1182,7 +1184,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click the top Edit button...
@@ -1190,7 +1192,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='contact_edit']/div[2]/fieldset/div[2]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    Thread.sleep(1000);
 	    
@@ -1207,7 +1209,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: navigate back to Contact screen...
@@ -1289,7 +1291,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    Thread.sleep(1000);
 	    
@@ -1298,7 +1300,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='lead_edit']/div[2]/fieldset/div[2]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    Thread.sleep(1000);
 	    
@@ -1314,7 +1316,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: navigate back to Lead screen...
@@ -1403,7 +1405,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Edit button...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
@@ -1428,7 +1430,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    	try {
 	    		AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    	} catch (Error e) {
-	    		verificationErrors.append(e.toString());
+	    		verificationErrors.append(methodID + "(): " + e.toString());
 	    	}
 	    	// Step: navigate back to Note screen...
 	    	driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1453,7 +1455,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Note screen...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1539,7 +1541,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click the Opportunity Contacts link...
@@ -1564,7 +1566,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click the top Contact record...
@@ -1579,7 +1581,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click the Role edit button...
@@ -1595,7 +1597,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click and select the None button...
@@ -1619,7 +1621,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click and select the None button...
@@ -1643,7 +1645,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click and select the top Competitor item...
@@ -1738,7 +1740,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Edit button...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
@@ -1760,7 +1762,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1782,7 +1784,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1804,7 +1806,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1826,7 +1828,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1848,7 +1850,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1870,7 +1872,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1892,7 +1894,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1914,7 +1916,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -1999,7 +2001,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the Products link...
 	    driver.findElement(By.xpath("//div[@id='opportunity_detail']/div[2]/ul[2]/li/a/span")).click();
@@ -2021,7 +2023,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the Product edit button...
 	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_14']/button")).click();
@@ -2035,7 +2037,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click and select the top Product item...
 	    driver.findElement(By.xpath("//*[@id='product_related']/ul/li[1]/div/h3")).click();
@@ -2057,7 +2059,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Cancel button...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2149,7 +2151,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Edit button...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
@@ -2171,7 +2173,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2193,7 +2195,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: select the top list item to return to the Ticket view...
 	    driver.findElement(By.xpath("//*[@id='areacategoryissue_lookup']/ul/li[1]/div/h3")).click();
@@ -2215,7 +2217,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: select the top list item to return to the Ticket view...
 	    driver.findElement(By.xpath("//*[@id='areacategoryissue_lookup']/ul/li/div/h3")).click();
@@ -2237,7 +2239,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2259,7 +2261,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2281,7 +2283,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2303,7 +2305,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2325,7 +2327,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2347,7 +2349,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2369,7 +2371,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2454,7 +2456,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	
 	    // Step: click the Ticket Activities...
@@ -2469,7 +2471,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Ticket Activity list item...
 	    driver.findElement(By.xpath("//*[@id='ticketactivity_related']/ul/li[1]/div/h3")).click();
@@ -2491,7 +2493,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the Type edit button...
 	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_26']/button")).click();
@@ -2505,7 +2507,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Edit Ticket Activity view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2527,7 +2529,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Edit Ticket Activity view...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -2589,184 +2591,184 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertEquals("Quick Actions", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/h2[1]")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/h2[1]/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[1]/li/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Add Account/Contact", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[1]/li/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // VP: check the Go To section and items...
 	    try {
 	      AssertJUnit.assertEquals("Go To", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/h2[2]")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/h2[2]/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[1]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("SpeedSearch", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[2]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("My Activities", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[2]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[3]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Calendar", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[3]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[4]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Notes/History", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[4]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[5]/div[1]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Accounts", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[5]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[6]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Contacts", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[6]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[7]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Leads", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[7]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[8]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Opportunities", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[8]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[9]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Tickets", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[9]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[10]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("My Attachments", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[2]/li[10]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // VP: check the Other section and items...
 	    try {
 	      AssertJUnit.assertEquals("Other", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/h2[3]")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/h2[3]/button")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[3]/li[1]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Configure Menu", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[3]/li[1]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[3]/li[2]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Settings", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[3]/li[2]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[3]/li[3]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Help", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[3]/li[3]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[3]/li[4]/div[1]/img")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertEquals("Log Out", driver.findElement(By.xpath("//*[@id='left_drawer']/div[3]/ul[3]/li[4]/div[2]/h3")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the Top-Left button to close the Global Menu...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
@@ -2815,7 +2817,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    try {
 	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Plate[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();

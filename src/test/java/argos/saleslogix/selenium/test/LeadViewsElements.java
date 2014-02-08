@@ -419,8 +419,8 @@ public class LeadViewsElements extends BrowserSetup {
 			WebElement leadsLisViewInfo = driver.findElement(By.xpath("//*[@id='lead_list']/ul"));
 			listViewTxt = leadsLisViewInfo.getText();
 		}
-		catch (Exception excptn) {
-			System.out.println(excptn.toString());
+		catch (Exception e) {
+			System.out.println(methodID + "(): " + e.toString());
 		}
 		
 		return listViewTxt;		
@@ -472,7 +472,7 @@ public class LeadViewsElements extends BrowserSetup {
 			headerButton.clickHeaderButton("check");
 		}
 		catch (Exception e0) {
-			System.out.println(e0.toString());
+			System.out.println(methodID + "(): " + e0.toString());
 			headerButton.goBack();
 		}
 			
@@ -516,7 +516,7 @@ public class LeadViewsElements extends BrowserSetup {
 				headerButton.clickHeaderButton("check");
 			}
 			catch (Exception e1) {
-				System.out.println(e1.toString());
+				System.out.println(methodID + "(): " + e1.toString());
 				headerButton.goBack();
 			}
 		}				

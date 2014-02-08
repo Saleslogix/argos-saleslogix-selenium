@@ -50,7 +50,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -64,7 +64,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
 		}
 		
@@ -81,7 +81,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultMsg + "' - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + "' - FAILED");
 		}
 	}
@@ -124,7 +124,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -138,7 +138,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
 		}
 		
@@ -155,7 +155,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultMsg + "' - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + "' - FAILED");
 		}
 	}
@@ -198,7 +198,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -212,7 +212,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + leadSearchVal + "'");
 		}
 		
@@ -229,7 +229,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultMsg + "' - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + "' - FAILED");
 		}
 	}
@@ -271,7 +271,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -285,7 +285,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + notesHistorySearchVal + "'");
 		}
 		
@@ -302,7 +302,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultMsg + "' - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + "' - FAILED");
 		}
 	}
@@ -344,7 +344,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -358,7 +358,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + opportunitySearchVal + "'");
 		}
 		
@@ -375,7 +375,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resultMsg + "' - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + "' - FAILED");
 		}
 	}
@@ -396,7 +396,7 @@ public class HashTagsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(commNav.rmenu_HashTagsSubPnl.isDisplayed());
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -448,12 +448,12 @@ public class HashTagsTest extends BrowserSetup {
 				System.out.println(resultsMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -470,7 +470,7 @@ public class HashTagsTest extends BrowserSetup {
 			AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
 			System.out.println(resultsMsg + " - Passed");
 		} catch (Error e) {     
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -594,7 +594,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + notesHistorySearchVal + "'");
 		}
 		
@@ -624,7 +624,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + notesHistorySearchVal + "'");
 		}
 		headerButton.rightCntxtMnuButton.click();
@@ -661,7 +661,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + notesHistorySearchVal + "'");
 		}
 		
@@ -743,12 +743,12 @@ public class HashTagsTest extends BrowserSetup {
 				System.out.println(resultsMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -764,7 +764,7 @@ public class HashTagsTest extends BrowserSetup {
 			AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
 			System.out.println(resultsMsg + " - Passed");
 		} catch (Error e) {     
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -974,7 +974,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + opportunitySearchVal + "'");
 		}
 		
@@ -1002,7 +1002,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + opportunitySearchVal + "'");
 		}
 		headerButton.rightCntxtMnuButton.click();
@@ -1038,7 +1038,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + opportunitySearchVal + "'");
 		}
 		
@@ -1141,7 +1141,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + opportunitySearchVal + "'");
 		}
 		
@@ -1233,7 +1233,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + opportunitySearchVal + "'");
 		}
 		
@@ -1325,7 +1325,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + opportunitySearchVal + "'");
 		}
 		
@@ -1417,7 +1417,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + opportunitySearchVal + "'");
 		}
 		
@@ -1521,12 +1521,12 @@ public class HashTagsTest extends BrowserSetup {
 				System.out.println(resultsMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -1543,7 +1543,7 @@ public class HashTagsTest extends BrowserSetup {
 			AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
 			System.out.println(resultsMsg + " - Passed");
 		} catch (Error e) {     
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -1743,7 +1743,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
 		}
 		
@@ -1771,7 +1771,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
 		}
 		headerButton.rightCntxtMnuButton.click();
@@ -1807,7 +1807,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
 		}
 		
@@ -1857,7 +1857,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
 		}
 		System.out.println(" ");
@@ -2009,7 +2009,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
 		}
 		System.out.println(" ");
@@ -2028,7 +2028,7 @@ public class HashTagsTest extends BrowserSetup {
 				System.out.println(resultsMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - FAILED");
 			}
 		}
@@ -2068,7 +2068,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
 		}
 		System.out.println(" ");
@@ -2087,7 +2087,7 @@ public class HashTagsTest extends BrowserSetup {
 				System.out.println(resultsMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - FAILED");
 			}
 		}
@@ -2136,12 +2136,12 @@ public class HashTagsTest extends BrowserSetup {
 				System.out.println(resultsMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -2157,7 +2157,7 @@ public class HashTagsTest extends BrowserSetup {
 			AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
 			System.out.println(resultsMsg + " - Passed");
 		} catch (Error e) {     
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -2311,7 +2311,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
 		}
 		
@@ -2339,7 +2339,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
 		}
 		headerButton.rightCntxtMnuButton.click();
@@ -2375,7 +2375,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
 		}
 		
@@ -2425,7 +2425,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
 		}
 		System.out.println(" ");
@@ -2444,7 +2444,7 @@ public class HashTagsTest extends BrowserSetup {
 				System.out.println(resultsMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - FAILED");
 			}
 		}
@@ -2484,7 +2484,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
 		}
 		System.out.println(" ");
@@ -2503,7 +2503,7 @@ public class HashTagsTest extends BrowserSetup {
 				System.out.println(resultsMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - FAILED");
 			}
 		}
@@ -2552,12 +2552,12 @@ public class HashTagsTest extends BrowserSetup {
 				System.out.println(resultsMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -2573,7 +2573,7 @@ public class HashTagsTest extends BrowserSetup {
 			AssertJUnit.assertFalse(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
 			System.out.println(resultsMsg + " - Passed");
 		} catch (Error e) {     
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - FAILED");
 		}
 		
@@ -2695,7 +2695,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
 		}
 		
@@ -2723,7 +2723,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
 		}
 		headerButton.rightCntxtMnuButton.click();
@@ -2760,7 +2760,7 @@ public class HashTagsTest extends BrowserSetup {
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + leadSearchVal + "'");
 		}
 		System.out.println(" ");

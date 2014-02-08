@@ -60,7 +60,7 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultMsg + " - Passed");
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - FAILED");
 			}
 		} 
@@ -84,7 +84,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println(" - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - FAILED");
 		}
 		
@@ -124,7 +124,7 @@ public class MobileDefectTest extends BrowserSetup {
 		try {
 			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li")).click();
 		} catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
 		};
 		Thread.sleep(7000);
@@ -136,7 +136,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - FAILED");
 		}
 		
@@ -154,7 +154,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - FAILED");
 		}
 		
@@ -196,7 +196,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 	
 		// VP: confirm that "F: null" is not present in the Accounts, List View		
@@ -205,7 +205,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 	
 		// Section 2: check Accounts, List View for "~Doctors List" account record
@@ -218,7 +218,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 	
 		// VP: confirm that "F: null" is not present in the Accounts, List View		
@@ -227,7 +227,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}		
 	
 		// Section 3: check Accounts, List View for "Acmaoe Mfg" account record
@@ -240,7 +240,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 	
 		// VP: confirm that "F: null" is not present in the Accounts, List View		
@@ -249,7 +249,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		// End Section
@@ -288,7 +288,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		// End Tests
@@ -324,7 +324,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println("Verify: '" + strCheck1 + "' check on SpeedSearch, List View - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck1 + "' check on SpeedSearch, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		// Step: perform page-down scroll (2x) to load more results
@@ -342,7 +342,7 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - Passed");
 			} catch (Error e) {
 				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - FAILED");
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				break;
 			}
 		}
@@ -378,7 +378,7 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - Passed");
 			} catch (Error e) {
 				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - FAILED");
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				break;
 			}
 			Thread.sleep(1000);
@@ -483,7 +483,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println("Verify: '" + strCheck + "' fix check on Leads, List View - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck + "' fix check on Leads, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		// End Tests
@@ -554,7 +554,7 @@ public class MobileDefectTest extends BrowserSetup {
 		    try {
 		      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
 		    } catch (Error e) {
-		      verificationErrors.append(e.toString());
+		      verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 		    
 		    //Section 2 - 
@@ -586,11 +586,11 @@ public class MobileDefectTest extends BrowserSetup {
 		    try {
 		      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
 		    } catch (Error e) {
-		      verificationErrors.append(e.toString());
+		      verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}		
 		
@@ -693,7 +693,7 @@ public class MobileDefectTest extends BrowserSetup {
 		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + "' - Passed");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + "' - FAILED");
-		    	  verificationErrors.append(e.toString());
+		    	  verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 		    
 		    //Step: make 2nd Cuisine selection...
@@ -720,7 +720,7 @@ public class MobileDefectTest extends BrowserSetup {
 		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + ", " + cuisineSel2 + "' - Passed");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + ", " + cuisineSel2 + "' - FAILED");
-		    	  verificationErrors.append(e.toString());
+		    	  verificationErrors.append(methodID + "(): " + e.toString());
 		    }		    
 			
 		    //Step: click the Header, Cancel button...
@@ -733,7 +733,7 @@ public class MobileDefectTest extends BrowserSetup {
 		    
 		} catch (Error e) {
 			System.out.println("Step: '" + contactCheck + "' check on Contacts, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		// End Tests
@@ -800,7 +800,7 @@ public class MobileDefectTest extends BrowserSetup {
 		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - Passed");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - FAILED");
-		    	  verificationErrors.append(e.toString());
+		    	  verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 		    
 		    //SubStep: setup and confirm the Start Time field val...
@@ -821,7 +821,7 @@ public class MobileDefectTest extends BrowserSetup {
 		    	  System.out.println("VP: Start Time field value set to '" + newStartTime + "' - Passed");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Regarding field value set to '" + newStartTime + "' - FAILED");
-		    	  verificationErrors.append(e.toString());
+		    	  verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 		    
 		    //SubStep: setup and confirm the Repeats field val...
@@ -834,7 +834,7 @@ public class MobileDefectTest extends BrowserSetup {
 		    	  System.out.println("VP: Repeats field value set to '" + repeatVal + "' - Passed");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Repeats field value set to '" + repeatVal + "' - FAILED");
-		    	  verificationErrors.append(e.toString());
+		    	  verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 		    
 		    //SubStep: setup and confirm the Recurring Until field val...
@@ -864,17 +864,17 @@ public class MobileDefectTest extends BrowserSetup {
 		    try {
 		      AssertJUnit.assertTrue(isElementPresent(By.cssSelector("input[type=\"file\"]")));
 		    } catch (Error e) {
-		      verificationErrors.append(e.toString());
+		      verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 		    try {
 		    	AssertJUnit.assertTrue(isElementPresent(By.cssSelector("button.button.inline")));
 		    } catch (Error e) {
-		      verificationErrors.append(e.toString());
+		      verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 		    try {
 		    	AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='attachment_Add']/div[2]/div/button[2]")));
 		    } catch (Error e) {
-		      verificationErrors.append(e.toString());
+		      verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 		    
 		    // Step: click the 'add a file' section of the screen...
@@ -901,17 +901,17 @@ public class MobileDefectTest extends BrowserSetup {
 			    } 
 			    catch (Error e) {
 			    	System.out.println("VP: the '" + newfilename + "' attachmment upload check - FAILED");
-			    	verificationErrors.append(e.toString());
+			    	verificationErrors.append(methodID + "(): " + e.toString());
 			    }
 		    }
 		    catch (Exception e) {
-		    	//System.out.println(e.toString());
+		    	//System.out.println(methodID + "(): " + e.toString());
 		    	System.out.println(methodID + ": unable to upload the file due to a system issue; step skipped");
 		    }
 		    
 		} catch (Error e) {
 			System.out.println("Step: '" + contactName + "' check on Contacts, List View - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		// End Tests
@@ -972,7 +972,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Aaron, John[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: navigate to top Lead record...
@@ -1023,7 +1023,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // -- End Section
 	    
@@ -1059,7 +1059,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // -- End Section
 	    
@@ -1096,7 +1096,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Achew, Pete[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: navigate to top Lead record...
@@ -1145,7 +1145,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // -- End Section    
 	    
@@ -1206,7 +1206,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Ballard, Matt[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: navigate to top Lead record...
@@ -1273,7 +1273,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // -- End Section
 	    
@@ -1309,7 +1309,7 @@ public class MobileDefectTest extends BrowserSetup {
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: navigate back to My Activities view...
@@ -1374,7 +1374,7 @@ public class MobileDefectTest extends BrowserSetup {
 					Thread.sleep(1000);
 				}
 				catch (Error e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					return;
 				}
 			}
@@ -1387,12 +1387,12 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultsMsg + "Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + "FAILED");
 			}			
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}
 		
@@ -1454,12 +1454,12 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}
 		
@@ -1504,12 +1504,12 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}
 		
@@ -1533,12 +1533,12 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}
 		
@@ -1583,7 +1583,7 @@ public class MobileDefectTest extends BrowserSetup {
 			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 		}
 				
 		// Step: navigate back to the My Activities list view
@@ -1664,7 +1664,7 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - FAILED");
 			}
 						
@@ -1691,7 +1691,7 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultsMsg + "- Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + "- FAILED");
 			}
 			headerButton.clickHeaderButton("cancel");
@@ -1708,13 +1708,13 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultsMsg + "- Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + "- FAILED");
 			}
 			headerButton.clickHeaderButton("cancel");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}		
 		
@@ -1763,7 +1763,7 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - FAILED");
 			}
 			
@@ -1816,7 +1816,7 @@ public class MobileDefectTest extends BrowserSetup {
 					System.out.println(resultMsg + " - Passed");
 				}
 				catch (Error e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultMsg + " - FAILED");
 				}
 				
@@ -1824,12 +1824,12 @@ public class MobileDefectTest extends BrowserSetup {
 				commNav.waitForNotPage("Ticket Activities");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}		
 		
@@ -1917,7 +1917,7 @@ public class MobileDefectTest extends BrowserSetup {
 					System.out.println(resultMsg + " - Passed");
 				}
 				catch (Error e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultMsg + " - FAILED");
 				}
 				
@@ -1929,7 +1929,7 @@ public class MobileDefectTest extends BrowserSetup {
 					System.out.println(resultMsg + " - Passed");
 				}
 				catch (Error e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultMsg + " - FAILED");
 				}
 				
@@ -1937,12 +1937,12 @@ public class MobileDefectTest extends BrowserSetup {
 				commNav.waitForNotPage("Ticket Activities");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}		
 		
@@ -2011,12 +2011,12 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - FAILED");
 			}
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}		
 		
@@ -2071,12 +2071,12 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - Failed");
 			}			
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}		
 		
@@ -2142,12 +2142,12 @@ public class MobileDefectTest extends BrowserSetup {
 				System.out.println(resultMsg + " - Passed");
 			}
 			catch (Error e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultMsg + " - Failed");
 			}			
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return;
 		}		
 		
@@ -2179,7 +2179,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 		
@@ -2195,7 +2195,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}		
 		
@@ -2235,7 +2235,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 			
@@ -2264,7 +2264,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 			
@@ -2307,7 +2307,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 			
@@ -2343,7 +2343,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 			
@@ -2382,7 +2382,7 @@ public class MobileDefectTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 			
@@ -2433,7 +2433,7 @@ public class MobileDefectTest extends BrowserSetup {
 			closeModal();
 			//assertEquals("The user name or password is invalid.", closeAlertAndGetItsText());
 			System.out.println("Error: Unable to login to Mobile Client.");
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 		}		
 		
 		// End Tests

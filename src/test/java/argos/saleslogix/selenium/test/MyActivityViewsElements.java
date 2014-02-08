@@ -573,7 +573,7 @@ public class MyActivityViewsElements extends BrowserSetup {
 			commNav.waitForNotPage("Activities");
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to find the '" + regarding + "' My Activities List item");
 		}
 			
@@ -601,7 +601,7 @@ public class MyActivityViewsElements extends BrowserSetup {
 			commNav.waitForNotPage("Activities");
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to find the '" + regarding + "' related Activity List item");
 		}
 			

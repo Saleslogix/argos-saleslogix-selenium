@@ -258,11 +258,11 @@ public class AccountViewsElements extends BrowserSetup {
 	WebElement accountDetailViewDetailsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[1]/div[1]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[1]/div[1]/span")
 	WebElement accountDetailViewAccountFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[1]/div[2]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[1]/div[2]/span")
 	WebElement accountDetailViewWebFld;
 	
 	@CacheLookup
@@ -549,7 +549,7 @@ public class AccountViewsElements extends BrowserSetup {
 			headerbutton.clickHeaderButton("check");
 		}
 		catch (Exception e0) {
-			System.out.println(e0.toString());
+			System.out.println(methodID + "(): " + e0.toString());			
 			headerbutton.goBack();
 		}
 		
@@ -629,7 +629,7 @@ public class AccountViewsElements extends BrowserSetup {
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return false;
 		}
 	}

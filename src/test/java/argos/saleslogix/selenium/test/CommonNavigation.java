@@ -216,7 +216,7 @@ public class CommonNavigation {
 			} Thread.sleep(3000); {}
 		}
 		catch (Exception e) {
-			  System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 		}
 		return this;
 	}
@@ -244,7 +244,7 @@ public class CommonNavigation {
 				AssertJUnit.assertTrue(commNav.rmenu_panel.isDisplayed());
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + ": " + e.toString());
 				return false;
 			}					
 		}
@@ -256,7 +256,7 @@ public class CommonNavigation {
 			Thread.sleep(2000);		
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 		}
 		return true;
 	}
@@ -279,7 +279,7 @@ public class CommonNavigation {
 			return true;
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			System.out.println(methodID + ": " + sDesc + " is NOT displayed on the current page/screen.");
 			return false;
 		}
@@ -301,6 +301,7 @@ public class CommonNavigation {
 		try {
 			highlightElement(wElement);
 			wElement.click();
+			Thread.sleep(3000);
 			boolean pgOpened = waitForPage(expPageTitle);
 			if (pgOpened) {
 				System.out.println(methodID + ": clicking the " + sDesc + " page element successfully opened the '" + expPageTitle + "' page/screen.");
@@ -311,7 +312,7 @@ public class CommonNavigation {
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			return false;
 		}
 	}
@@ -325,13 +326,16 @@ public class CommonNavigation {
 	 * @param inputValue	field value to set
 	 */
 	public void setupInputFieldValue(WebElement inputFld, String inputValue) {
+		
+		String methodID = "setupInputFieldValue";
+		
 		try {
 			inputFld.click();
 			inputFld.sendKeys(inputValue);
 			inputFld.sendKeys(Keys.RETURN);
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 		}
 	}
 
@@ -357,7 +361,7 @@ public class CommonNavigation {
 			highlightElement(wElement);
 			System.out.println(strResultsMsg + " - Passed");
 		} catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			System.out.println(strResultsMsg + " - FAILED");
 		}		
 	}
@@ -384,7 +388,7 @@ public class CommonNavigation {
 			highlightElement(wElement);
 			System.out.println(strResultsMsg + " - Passed");
 		} catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			System.out.println(strResultsMsg + " - FAILED");
 		}		
 	}
@@ -411,7 +415,7 @@ public class CommonNavigation {
 			highlightElement(wElement);
 			System.out.println(strResultsMsg + " - Passed");
 		} catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			System.out.println(strResultsMsg + " - FAILED");
 		}
 	}
@@ -441,7 +445,7 @@ public class CommonNavigation {
 			headerButton.goBack();
 			return true;
 		} catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + e.toString());
 			return false;
 		}
 		
@@ -457,6 +461,8 @@ public class CommonNavigation {
 	 * @exception InterruptedException
 	 */
 	public CommonNavigation waitForListView(String listName) throws InterruptedException {
+		
+		String methodID = "waitForListView";
 	    
 		String itemList = "";
 		
@@ -501,7 +507,7 @@ public class CommonNavigation {
 		    }
 		}
 		catch (Exception e) {
-			  System.out.println(e.toString());
+			  System.out.println(methodID + ": " + e.toString());
 		}	    
 		return this;
 	}
@@ -607,7 +613,7 @@ public class CommonNavigation {
 		    waitForListView(searchType);
 		}
 		catch (Exception e) {
-			  System.out.println(e.toString());
+			  System.out.println(methodID + ": " + e.toString());
 		}
 		return this;
 	}
@@ -724,7 +730,7 @@ public class CommonNavigation {
 			System.out.println(methodID + ": clicking '" + itemIndex + "th item ' from the " + listName + " List View...");
 		} catch (Exception e) {
 			System.out.println("Error: Unable to click the '" + itemIndex + "th' item from the " + listName + " List View.");
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 		}	    
 		return this;
 	}
@@ -837,12 +843,14 @@ public class CommonNavigation {
 	 */	
 	protected boolean isElementDisplayed(By by) {
 		
+		String methodID = "isElementDisplayed";
+		
 	    try {
 	    	AssertJUnit.assertTrue(driver.findElement(by).isDisplayed());
 	    	return true;
 	    } 
 	    catch (NoSuchElementException e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + ": " + e.toString());
 	    	return false;
 	    }
 	}
@@ -917,7 +925,7 @@ public class CommonNavigation {
 			return true;
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			System.out.println(methodID + ": Unable to locate '" + sDesc + "' on the current page/screen.");
 			return false;
 		}
@@ -971,7 +979,7 @@ public class CommonNavigation {
 					break;
 				}
 				catch (Error e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + ": " + e.toString());
 				}	
 			}
 		return checkResult;
@@ -1003,7 +1011,7 @@ public class CommonNavigation {
 					break;
 				}
 				catch (Error e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + ": " + e.toString());
 				}	
 			}
 		return checkResult;
@@ -1110,7 +1118,7 @@ public class CommonNavigation {
 			return targetEntRecord;
 		} 
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			System.out.println(methodID + ": un-expected 'no records' search result for '" + entityName + "' " + entityType + "; test aborted.");
 			return null;
 		}
@@ -1215,7 +1223,7 @@ public class CommonNavigation {
 			System.out.println(methodID + ": " + entityType + " record search for '" + entityName + "' was successful");
 			return targetEntRecord;
 		} catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			System.out.println(methodID + ": un-expected 'no records' search result for '" + entityName + "' " + entityType + "; test aborted.");
 			return null;
 		}
@@ -1318,7 +1326,7 @@ public class CommonNavigation {
 			System.out.println(methodID + ": " + entityType + " record search for '" + entityName + "' was successful");
 			return targetEntRecord;
 		} catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			System.out.println(methodID + ": un-expected 'no records' search result for '" + entityName + "' " + entityType + "; test aborted.");
 			return null;
 		}
@@ -1373,7 +1381,7 @@ public class CommonNavigation {
 			System.out.println(methodID + ": negative  " + entityType + " record List View search was successful; 'no records' results was displayed for non-existent " + entityType);
 			return true;
 		} catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			System.out.println(methodID + ": negative " + entityType + " record List View search failed; 'no records' results was NOT displayed for non-existent " + entityType);
 			return false;
 		}		
@@ -1411,7 +1419,7 @@ public class CommonNavigation {
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + ": " + e.toString());
 			System.out.println(methodID + ": Unable to open the " + entityType + " - " + entityName + " detail view");
 			return false;
 		}
@@ -1557,9 +1565,11 @@ public class CommonNavigation {
 	 */	
 	public void highlightElement(WebElement wElement) throws InterruptedException {
 		
-		try {
-			AssertJUnit.assertTrue(wElement.isDisplayed());
-			Thread.sleep(250);
+		String methodID = "highlightElement";
+		
+		//try {
+			//AssertJUnit.assertTrue(wElement.isDisplayed());
+			//Thread.sleep(250);
 			for (int i = 0; i <= 2; i++) { 
 				JavascriptExecutor js = (JavascriptExecutor) driver;
 				try {
@@ -1570,14 +1580,14 @@ public class CommonNavigation {
 					js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "");
 				}
 				catch (Exception e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + ": " + e.toString());
 					break;
 				}
 			} 
-		}
-		catch (Error e){
-			System.out.println(e.toString());
-		}
+		//}
+		//catch (Error e){
+		//	System.out.println(methodID + ": " + e.toString());
+		//}
 	}
 	
 	

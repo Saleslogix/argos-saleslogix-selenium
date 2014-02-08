@@ -87,7 +87,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				accountListView.topAccountsListItemQuickActionsBtn.click();
 			}
 			catch (Exception e) {
-				verificationErrors.append(e.toString());				
+				verificationErrors.append(methodID + "(): " + e.toString());				
 			}
 			
 			//Step: check the "X records remaining" item box at the bottom of the list view
@@ -143,7 +143,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 		
@@ -223,7 +223,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			AssertJUnit.assertEquals(topAccountListItemName, currTopAccountsListViewName);
 			System.out.println(methodID + ": clear previous Accounts search results action was successful");
 		} catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": clear previous Accounts search results action failed");
 		}
 		
@@ -253,7 +253,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			Thread.sleep(3000);
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		System.out.println(ENDLINE);
@@ -322,10 +322,10 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			commNav.verifyEntityViewElementClick(viewName + ",'Tickets'", accountDetailView.accountDetailViewTicketsLnk, "Tickets");
 			commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", accountDetailView.accountDetailViewNotesHistoryLnk, "Notes/History");
 			commNav.verifyEntityViewElementClick(viewName + ",'Addresses'", accountDetailView.accountDetailViewAddressesLnk, "Addresses");
-			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Attachments");
+			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Account Attachments");
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": the Account Detail view for the '" + entityRecord + "' Account record; test aborted.");
 		}
 				
@@ -383,7 +383,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			headerButton.goBack();
 			Thread.sleep(2000);
 		} catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
 		}
 		
@@ -438,7 +438,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			Thread.sleep(2000);
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open the Account Edit Add view.");			
 		}
 		
@@ -479,7 +479,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(accountsListView.accountHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -497,12 +497,12 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println("VP: Hash Tags sub-panel expand check - FAILED");
 			}
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println("VP: Hash Tags sub-panel collapse check - FAILED");
 		}
 		
@@ -558,7 +558,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(accountsListView.accountHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -576,12 +576,12 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				System.out.println("VP: KPI sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println("VP: KPI sub-panel e check - FAILED");
 			}
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println("VP: KPI sub-panel collapse check - FAILED");
 		}
 		
@@ -687,7 +687,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				
 			}
 			catch (Exception e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -708,7 +708,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 				
 			}
 			catch (Exception e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 		}

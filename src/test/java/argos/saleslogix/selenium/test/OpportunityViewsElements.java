@@ -523,8 +523,8 @@ public class OpportunityViewsElements extends BrowserSetup {
 			WebElement oppsLisViewInfo = driver.findElement(By.xpath("//*[@id='opportunity_list']/ul"));
 			listViewTxt = oppsLisViewInfo.getText();
 		}
-		catch (Exception excptn) {
-			System.out.println(excptn.toString());
+		catch (Exception e) {
+			System.out.println(methodID + "(): " + e.toString());
 		}
 		
 		return listViewTxt;		

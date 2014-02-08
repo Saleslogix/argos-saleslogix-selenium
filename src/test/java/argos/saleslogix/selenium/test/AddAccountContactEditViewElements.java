@@ -184,8 +184,8 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 				commView.nameSuffixInputFldBtn.sendKeys("Sr.");
 				headerButton.clickHeaderButton("check");
 			}
-			catch (Exception e1) {
-				System.out.println(e1.toString());
+			catch (Exception e0) {
+				System.out.println(methodID + "(): " + e0.toString());
 				headerButton.goBack();
 			}
 			
@@ -232,8 +232,8 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
 				headerButton.clickHeaderButton("check");
 			}
-			catch (Exception e2) {
-				System.out.println(e2.toString());
+			catch (Exception e1) {
+				System.out.println(methodID + "(): " + e1.toString());
 				headerButton.goBack();
 			}
 			
@@ -260,7 +260,7 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 			//set the address field (skip - address already set earlier)			
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 		}
 		
 		//Step: save the new Account/Contact field values
@@ -296,8 +296,8 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 				commView.nameSuffixInputFld.sendKeys("Sr.");
 				headerButton.clickHeaderButton("check");
 			}
-			catch (Exception e1) {
-				System.out.println(e1.toString());
+			catch (Exception e0) {
+				System.out.println(methodID + "(): " + e0.toString());
 				headerButton.goBack();
 			}
 			
@@ -351,13 +351,13 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
 				headerButton.clickHeaderButton("check");
 			}
-			catch (Exception e2) {
-				System.out.println(e2.toString());
+			catch (Exception e1) {
+				System.out.println(methodID + "(): " + e1.toString());
 				headerButton.goBack();
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 		}
 		
 		//Step: save the new Account/Contact field values
@@ -393,8 +393,8 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 				//commView.nameSuffixInputFld.sendKeys("Sr.");
 				headerButton.clickHeaderButton("check");
 			}
-			catch (Exception e1) {
-				System.out.println(e1.toString());
+			catch (Exception e0) {
+				System.out.println(methodID + "(): " + e0.toString());
 				headerButton.goBack();
 			}
 			
@@ -439,14 +439,14 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
 				headerButton.clickHeaderButton("check");
 			}
-			catch (Exception e2) {
-				System.out.println(e2.toString());
+			catch (Exception e1) {
+				System.out.println(methodID + "(): " + e1.toString());
 				headerButton.goBack();
 			}
 						
 		}
 		catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 		}
 		
 		//Step: save the new Account/Contact field values

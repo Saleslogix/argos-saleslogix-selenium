@@ -109,7 +109,7 @@ public class SLXMobileLogin {
 			closeModal();
 			//assertEquals("The user name or password is invalid.", closeAlertAndGetItsText());
 			System.out.println("Error: Unable to login to Mobile Client.");
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 		}
 		
 		return true;

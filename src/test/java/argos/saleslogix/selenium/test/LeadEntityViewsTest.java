@@ -75,7 +75,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 				LeadListView.topLeadsListItemQuickActionsBtn.click();
 			}
 			catch (Exception e) {
-				verificationErrors.append(e.toString());				
+				verificationErrors.append(methodID + "(): " + e.toString());				
 			}			
 		}
 		else {
@@ -200,7 +200,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 			String leadsListSearchExpression = driver.findElement(By.xpath("//*[@id='lead_list_search-expression']/div")).getText();
 			AssertJUnit.assertEquals(leadsListSearchExpression, "no search applied");
 		} catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": clear previous Leads search results action failed");
 			return;
 		}
@@ -299,7 +299,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 			Thread.sleep(3000);
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		System.out.println(ENDLINE);
@@ -354,7 +354,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 			headerButton.goBack();
 			Thread.sleep(2000);
 		} catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
 		}
 		
@@ -411,7 +411,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 			Thread.sleep(2000);
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
 		}
 		
@@ -455,12 +455,12 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	    try {
 	      assertTrue(isElementPresent(By.xpath("(//img[@alt='icon'])[11]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      assertEquals("Attachments", driver.findElement(By.xpath("//div[@id='Lead_detail']/div[2]/ul[2]/li[7]/a/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the Attachments link...
 	    driver.findElement(By.xpath("//div[@id='Lead_detail']/div[2]/ul[2]/li[7]/a/span")).click();
@@ -474,7 +474,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	    try {
 	      assertTrue(isElementPresent(By.xpath(".//*[@id='Lead_attachment_related']/ul/li[1]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: search for a specific attachment item
@@ -485,7 +485,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	    try {
 		      assertTrue(isElementPresent(By.linkText("Test123")));
 		    } catch (Error e) {
-		      verificationErrors.append(e.toString());
+		      verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 	    driver.findElement(By.linkText("Test123")).click();
 	    
@@ -501,17 +501,17 @@ public class LeadEntityViewsTest extends BrowserSetup {
 	    try {
 	      assertTrue(isElementPresent(By.cssSelector("input[type=\"file\"]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      assertTrue(isElementPresent(By.cssSelector("button.button.inline")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      assertTrue(isElementPresent(By.xpath("//div[@id='attachment_Add']/div[2]/div/button[2]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Lead screen...
 	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
@@ -576,7 +576,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -594,12 +594,12 @@ public class LeadEntityViewsTest extends BrowserSetup {
 				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println("VP: Hash Tags sub-panel expand check - FAILED");
 			}
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println("VP: Hash Tags sub-panel collapse check - FAILED");
 		}
 		
@@ -649,7 +649,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -667,12 +667,12 @@ public class LeadEntityViewsTest extends BrowserSetup {
 				System.out.println("VP: KPI sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println("VP: KPI sub-panel e check - FAILED");
 			}
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println("VP: KPI sub-panel collapse check - FAILED");
 		}
 		
@@ -772,7 +772,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 				
 			}
 			catch (Exception e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -793,7 +793,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 				
 			}
 			catch (Exception e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 		}

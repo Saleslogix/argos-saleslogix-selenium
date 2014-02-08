@@ -44,7 +44,8 @@ public class MobileSprint233Test extends BrowserSetup {
 		String entityType = "accounts";
 		
 	    //Step: navigate to Accounts list view...
-		commNav.clickGlobalMenuItem(entityType);		
+		commNav.clickGlobalMenuItem(entityType);	
+		
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
 		//Step: select Total Revenue KPI
@@ -59,7 +60,7 @@ public class MobileSprint233Test extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e){
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 		*/
@@ -75,7 +76,7 @@ public class MobileSprint233Test extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e){
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 		*/
@@ -98,7 +99,7 @@ public class MobileSprint233Test extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e){
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 		*/
@@ -110,7 +111,7 @@ public class MobileSprint233Test extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e){
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 		
@@ -188,7 +189,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		} 
 		catch (Error e) {
 			System.out.println("Error: Login Page Name check - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		//VP: product logo
@@ -198,7 +199,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		}
 		catch (Error e) {
 			System.out.println("Error: product logo check - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}		
 		
 		// Step: Enter username and password then click the logon button		
@@ -356,7 +357,7 @@ public class MobileSprint233Test extends BrowserSetup {
 				headerButton.clickHeaderButton("back");
 			}
 			catch (NoSuchElementException e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -464,7 +465,7 @@ public class MobileSprint233Test extends BrowserSetup {
 					}
 				}
 				catch (NoSuchElementException e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultsMsg + " - Failed");
 				}
 			}
@@ -634,7 +635,7 @@ public class MobileSprint233Test extends BrowserSetup {
 				headerButton.clickHeaderButton("back");
 			}
 			catch (NoSuchElementException e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -733,7 +734,7 @@ public class MobileSprint233Test extends BrowserSetup {
 					}
 				}
 				catch (NoSuchElementException e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultsMsg + " - Failed");
 				}
 			}
@@ -906,7 +907,7 @@ public class MobileSprint233Test extends BrowserSetup {
 				headerButton.clickHeaderButton("back");
 			}
 			catch (NoSuchElementException e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -1012,7 +1013,7 @@ public class MobileSprint233Test extends BrowserSetup {
 					}
 				}
 				catch (NoSuchElementException e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultsMsg + " - Failed");
 				}
 			}
@@ -1177,7 +1178,7 @@ public class MobileSprint233Test extends BrowserSetup {
 				headerButton.clickHeaderButton("back");
 			}
 			catch (NoSuchElementException e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -1275,7 +1276,7 @@ public class MobileSprint233Test extends BrowserSetup {
 					}
 				}
 				catch (NoSuchElementException e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultsMsg + " - Failed");
 				}
 			}
@@ -1444,7 +1445,7 @@ public class MobileSprint233Test extends BrowserSetup {
 				headerButton.clickHeaderButton("back");
 			}
 			catch (NoSuchElementException e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -1546,7 +1547,7 @@ public class MobileSprint233Test extends BrowserSetup {
 					}
 				}
 				catch (NoSuchElementException e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultsMsg + " - Failed");
 				}
 			}
@@ -1714,7 +1715,7 @@ public class MobileSprint233Test extends BrowserSetup {
 				headerButton.clickHeaderButton("back");
 			}
 			catch (NoSuchElementException e) {
-				System.out.println(e.toString());
+				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -1813,7 +1814,7 @@ public class MobileSprint233Test extends BrowserSetup {
 					}
 				}
 				catch (NoSuchElementException e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultsMsg + " - Failed");
 				}
 			}

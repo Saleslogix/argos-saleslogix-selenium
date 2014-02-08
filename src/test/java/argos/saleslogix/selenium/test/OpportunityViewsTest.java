@@ -112,7 +112,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 				opportunitiesListView.topOpportunityListItemQuickActionsBtn.click();
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());				
+				System.out.println(methodID + "(): " + e.toString());				
 			}
 			
 			//Step: check the "X records remaining" item box at the bottom of the list view
@@ -166,7 +166,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 		
@@ -240,7 +240,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 		try {
 			AssertJUnit.assertEquals(topEntityListItemName, currTopOpportunitiesListViewName);
 		} catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": clear previous Opportunities search results action failed");
 			return;
 		}
@@ -347,7 +347,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 			Thread.sleep(3000);
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		System.out.println(ENDLINE);
@@ -401,7 +401,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 			headerButton.goBack();
 			Thread.sleep(2000);
 		} catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
 		}
 		
@@ -453,7 +453,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 			Thread.sleep(2000);
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open the Opportunity Add Edit view.");
 		}
 		
@@ -491,7 +491,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(oppsListView.opportunityHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -509,12 +509,12 @@ public class OpportunityViewsTest extends BrowserSetup {
 				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println("VP: Hash Tags sub-panel expand check - FAILED");
 			}
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println("VP: Hash Tags sub-panel collapse check - FAILED");
 		}
 		
@@ -569,7 +569,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(oppsListView.opportunityKPIPnl.isDisplayed());
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -588,12 +588,12 @@ public class OpportunityViewsTest extends BrowserSetup {
 				System.out.println("VP: KPI sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println("VP: KPI sub-panel e check - FAILED");
 			}
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println("VP: KPI sub-panel collapse check - FAILED");
 		}
 		
@@ -695,7 +695,7 @@ public class OpportunityViewsTest extends BrowserSetup {
 					
 				}
 				catch (Exception e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultsMsg + " - Failed");
 				}
 				
@@ -716,12 +716,12 @@ public class OpportunityViewsTest extends BrowserSetup {
 					
 				}
 				catch (Exception e) {
-					System.out.println(e.toString());
+					System.out.println(methodID + "(): " + e.toString());
 					System.out.println(resultsMsg + " - Failed");
 				}
 			}
 			catch (Exception e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 			}
 		}
 		else {

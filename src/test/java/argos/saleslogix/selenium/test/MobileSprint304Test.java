@@ -141,8 +141,8 @@ public class MobileSprint304Test extends BrowserSetup {
 				AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Retrieve More Records[\\s\\S]*$"));
 				System.out.println(resultsMsg + " - Passed");
 			} 
-			catch (Error er) {
-				verificationErrors.append(er.toString());
+			catch (Error e) {
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 		}
@@ -267,7 +267,7 @@ public class MobileSprint304Test extends BrowserSetup {
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - False");
 		}
 		finally {
@@ -290,7 +290,7 @@ public class MobileSprint304Test extends BrowserSetup {
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - Failed");
 		}
 		
@@ -323,7 +323,7 @@ public class MobileSprint304Test extends BrowserSetup {
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resultsMsg + " - Failed");
 		}
 		
@@ -364,7 +364,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -386,7 +386,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -413,7 +413,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -435,7 +435,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -457,7 +457,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 		
@@ -499,7 +499,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -521,7 +521,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -543,7 +543,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -565,7 +565,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }	    
 		
@@ -606,7 +606,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -628,7 +628,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -660,7 +660,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -717,12 +717,12 @@ public class MobileSprint304Test extends BrowserSetup {
 		    	System.out.println(resultsMsg + " - Passed");
 		    }
 		    catch (Exception e) {
-		    	System.out.println(e.toString());
+		    	System.out.println(methodID + "(): " + e.toString());
 		    	System.out.println(resultsMsg + " - Failed");
 		    }
 	    }
 	    catch (Exception e) {
-	    	verificationErrors.append(e.toString());
+	    	verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 		//END
@@ -770,7 +770,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Exception e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -782,7 +782,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Exception e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -833,7 +833,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Exception e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -870,7 +870,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Exception e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -979,7 +979,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
 	    
@@ -990,7 +990,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	System.out.println(resultsMsg + " - Passed");
 	    }
 	    catch (Error e) {
-	    	System.out.println(e.toString());
+	    	System.out.println(methodID + "(): " + e.toString());
 	    	System.out.println(resultsMsg + " - Failed");
 	    }	    
 	    

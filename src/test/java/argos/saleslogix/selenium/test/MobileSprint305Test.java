@@ -63,7 +63,7 @@ public class MobileSprint305Test extends BrowserSetup {
 		    	} 
 		    catch (Error e) {
 		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - FAILED");
-		    	  verificationErrors.append(e.toString());
+		    	  verificationErrors.append(methodID + "(): " + e.toString());
 		    }
 		    
 		    //VP: check that the For Lead button is set to OFF (default)
@@ -245,8 +245,8 @@ public class MobileSprint305Test extends BrowserSetup {
 				AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Retrieve More Records[\\s\\S]*$"));
 				System.out.println(resultsMsg + " - Passed");
 			} 
-			catch (Error er) {
-				verificationErrors.append(er.toString());
+			catch (Error e) {
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 		}
@@ -262,8 +262,8 @@ public class MobileSprint305Test extends BrowserSetup {
 					AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Retrieve More Records[\\s\\S]*$"));
 					System.out.println(resultsMsg + " - Passed");
 				} 
-				catch (Error er) {
-					verificationErrors.append(er.toString());
+				catch (Error e) {
+					verificationErrors.append(methodID + "(): " + e.toString());
 					System.out.println(resultsMsg + " - Failed");
 				}
 			}				
@@ -329,7 +329,7 @@ public class MobileSprint305Test extends BrowserSetup {
 			}
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 			
 		//END

@@ -80,14 +80,14 @@ public class ContactEntityViewsTest extends BrowserSetup {
 				contactsListView.topContactsListItemQuickActionsBtn.click();
 			}
 			catch (Exception e) {
-				verificationErrors.append(e.toString());			
+				verificationErrors.append(methodID + "(): " + e.toString());			
 			}
 				
 			//Step: check the "X records remaining" item box at the bottom of the list view
 			//commNav.checkIfWebElementPresent("Contacts List View, 'x remaining records' item", contactsListView.recordsRemainingListItem);
 		}
 		catch (Error e){
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": required '" + entityType + "' not loaded; test aborted");
 		}
 		System.out.println(ENDLINE);
@@ -135,7 +135,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 		
@@ -209,7 +209,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		try {
 			AssertJUnit.assertEquals(topContactListItemName, currTopContactsListViewName);
 		} catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": clear previous Contacts search results action failed");
 			return;
 		}
@@ -302,7 +302,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			commNav.verifyEntityViewElementClick(viewName + ", 'Attachments'", contactDetailView.contactsDetailViewAttachmentsLnk, "Attachments");
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": the Contact Detail view for the '" + contactRecord + "' Contact record; test aborted.");
 		}
 				
@@ -360,7 +360,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			Thread.sleep(2000);
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		System.out.println(ENDLINE);
@@ -415,7 +415,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			Thread.sleep(2000);
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
 		}
 		
@@ -453,7 +453,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(contactsListView.contactsHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -471,12 +471,12 @@ public class ContactEntityViewsTest extends BrowserSetup {
 				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println("VP: Hash Tags sub-panel expand check - FAILED");
 			}
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println("VP: Hash Tags sub-panel collapse check - FAILED");
 		}
 		
@@ -530,7 +530,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(contactsListView.contactsHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -548,12 +548,12 @@ public class ContactEntityViewsTest extends BrowserSetup {
 				System.out.println("VP: KPI sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println("VP: KPI sub-panel e check - FAILED");
 			}
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println("VP: KPI sub-panel collapse check - FAILED");
 		}
 		
@@ -653,7 +653,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 				
 			}
 			catch (Exception e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 			
@@ -674,7 +674,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 				
 			}
 			catch (Exception e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + " - Failed");
 			}
 		}

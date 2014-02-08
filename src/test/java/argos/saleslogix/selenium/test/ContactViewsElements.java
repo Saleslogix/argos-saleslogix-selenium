@@ -406,8 +406,8 @@ public class ContactViewsElements extends BrowserSetup {
 			WebElement contactsLisViewInfo = driver.findElement(By.xpath("//*[@id='contact_list']/ul"));
 			listViewTxt = contactsLisViewInfo.getText();
 		}
-		catch (Exception excptn) {
-			System.out.println(excptn.toString());
+		catch (Exception e) {
+			System.out.println(methodID + "(): " + e.toString());
 		}
 		
 		return listViewTxt;		
@@ -461,7 +461,7 @@ public class ContactViewsElements extends BrowserSetup {
 				headerButton.clickHeaderButton("check");
 			}
 			catch (Exception e0) {
-				System.out.println(e0.toString());
+				System.out.println(methodID + "(): " + e0.toString());
 				headerButton.goBack();
 			}
 			
@@ -503,7 +503,7 @@ public class ContactViewsElements extends BrowserSetup {
 				headerButton.clickHeaderButton("check");
 				}
 				catch (Exception e1) {
-					System.out.println(e1.toString());
+					System.out.println(methodID + "(): " + e1.toString());
 					headerButton.goBack();
 				}
 			}				

@@ -92,7 +92,7 @@ public class HeaderButton {
 			System.out.println("VP: Global Menu was accessed successfully on header button click.");
 		} catch (Error e) {     
 			System.out.println("Error: Global Menu failed to display on header button click.");
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 		}
 		Thread.sleep(1000);
 		return this;
@@ -111,7 +111,7 @@ public class HeaderButton {
 			return true;
 		} catch (Error e) {     
 			System.out.println(methodID + ": Right-Context Menu failed to display on header button click.");
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 			return false;
 		}
 	}
@@ -128,12 +128,13 @@ public class HeaderButton {
 		try {
 			//click the Header Back button
 			backButton.click();
-			Thread.sleep(1000);
+			Thread.sleep(1500);
 		}
 		catch (Exception e) {
 			//revert to Backspace key-press if Back button click fails
 			pgTitleBar.click();
 			pgTitleBar.sendKeys(Keys.BACK_SPACE);
+			Thread.sleep(1500);
 		}
 		
 		String newPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();
@@ -141,8 +142,9 @@ public class HeaderButton {
 		// Verify that previous page is displayed (new title not equal to old)
 		try {
 			AssertJUnit.assertFalse(oldPgTitle == newPgTitle);
-		} catch (Error e) {     
-			System.out.println(e.toString());
+		} 
+		catch (Error e) {     
+			System.out.println(methodID + "(): " + e.toString());
 		}
 		return this;
 	}

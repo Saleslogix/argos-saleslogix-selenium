@@ -82,7 +82,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 				notesHistoryListView.topNotesHistoryListItemQuickActionsBtn.click();
 			}
 			catch (Exception e) {
-				System.out.println(e.toString());				
+				System.out.println(methodID + "(): " + e.toString());				
 			}
 			
 			//Step: check the "X records remaining" item box at the bottom of the list view
@@ -159,7 +159,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(resultMsg + " - Failed");
 		}
 		
@@ -233,7 +233,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		try {
 			AssertJUnit.assertEquals(topNotesHistListItemName, currTopNotesHistListViewName);
 		} catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": clear previous Notes/History search results action failed");
 			return;
 		}
@@ -314,7 +314,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 			Thread.sleep(3000);
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		System.out.println(ENDLINE);
@@ -360,7 +360,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 			headerButton.goBack();
 			Thread.sleep(2000);
 		} catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
 		}
 		
@@ -410,7 +410,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 			Thread.sleep(2000);
 		}
 		catch (Exception e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
 		}
 		
@@ -447,7 +447,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(noteshistoryListView.notesHistoryHashTagsPnl.isDisplayed());
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -465,12 +465,12 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 				System.out.println("VP: Hash Tags sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println("VP: Hash Tags sub-panel expand check - FAILED");
 			}
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println("VP: Hash Tags sub-panel collapse check - FAILED");
 		}
 		
@@ -519,7 +519,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 				AssertJUnit.assertTrue(notesHistoryListView.notesHistoryKPIPnl.isDisplayed());
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
 				return;
 			}
@@ -538,12 +538,12 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 				System.out.println("VP: KPI sub-panel expand check - Passed");
 			}
 			catch (Error e) {
-				verificationErrors.append(e.toString());
+				verificationErrors.append(methodID + "(): " + e.toString());
 				System.out.println("VP: KPI sub-panel e check - FAILED");
 			}
 		}
 		catch (Error e) {
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println("VP: KPI sub-panel collapse check - FAILED");
 		}
 		

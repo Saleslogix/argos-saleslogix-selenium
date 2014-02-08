@@ -50,12 +50,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + firstSearchItem + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    //Step: click to open the top Search Results link...
@@ -77,12 +77,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + secondSearchItem + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    //Step: click to open the top Search Results link...
@@ -104,12 +104,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + thirdSearchItem + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    //Step: click to open the top Search Results link...
@@ -131,12 +131,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + fourthSearchItem + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    //Step: click to open the top Search Results link...
@@ -158,12 +158,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + fifthSearchItem + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    //Step: click to open the top Search Results link...
@@ -185,12 +185,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + sixthSearchItem + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    //Step: click to open the top Search Results link...
@@ -212,12 +212,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + seventhSearchItem + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    //Step: click to open the top Search Results link...
@@ -239,12 +239,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + eigthSearchItem + "[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    //Step: click to open the top Search Results link...
@@ -282,12 +282,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // -- Section: Execute some global searches in the mobile client
 	    // Step: perform 1st SpeedSearch on Leads...
@@ -306,13 +306,13 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Warning: verifyTextPresent may require manual changes
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*James Sibr[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click to open the 1st matching Account link...
 	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]/h3")).click();
@@ -326,7 +326,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertEquals("Pacific Bearing Corp", driver.findElement(By.xpath(".//*[@id='account_detail']/div[2]/div[1]/div[1]/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
@@ -370,12 +370,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // -- Section: Accounts
 	    // Step: perform 1st SpeedSearch on Accounts...
@@ -394,7 +394,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Warning: assertTextPresent may require manual changes
 	    assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Abbott Ltd\\.[\\s\\S]*$"));
@@ -410,7 +410,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertEquals("Abbott Ltd.", driver.findElement(By.xpath(".//*[@id='account_detail']/div[2]/div[1]/div[1]/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
@@ -433,7 +433,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertEquals("Abbott WorldWide", driver.findElement(By.xpath(".//*[@id='account_detail']/div[2]/div[1]/div[1]/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
@@ -449,7 +449,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*John Abbott \\(Abbott Ltd\\.\\)[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[3]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
@@ -462,7 +462,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertEquals("Abbott, John", driver.findElement(By.xpath(".//*[@id='contact_detail']/div[2]/div[1]/div[1]/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
@@ -479,12 +479,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertEquals("Contact", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      assertEquals("Wurst, Hans", driver.findElement(By.xpath(".//*[@id='contact_detail']/div[2]/div[1]/div[1]/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
@@ -503,12 +503,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertEquals("Activity", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      assertEquals("Referred from Abbott Ltd.", driver.findElement(By.xpath(".//*[@id='activity_detail']/div[2]/div[1]/div[2]/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
@@ -524,7 +524,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Abbott Ltd\\.-Phase[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[20]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
@@ -537,7 +537,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertEquals("Abbott Ltd.-Phase-9", driver.findElement(By.xpath(".//*[@id='opportunity_detail']/div[2]/div[1]/div[1]/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
@@ -553,7 +553,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Proposal for Abbott Ltd\\.[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[5]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
@@ -566,7 +566,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertEquals("Proposal for Abbott Ltd.", driver.findElement(By.xpath(".//*[@id='history_detail']/div[2]/div[1]/div[3]/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
@@ -611,12 +611,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: perform 1st SpeedSearch on Tickets...
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).click();
@@ -634,7 +634,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Warning: waitForTextPresent may require manual changes
 	    for (int second = 0;; second++) {
@@ -649,12 +649,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    try {
 	      assertEquals("Ticket", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
 	      assertEquals("001-00-000004", driver.findElement(By.xpath(".//*[@id='ticket_detail']/div[2]/ul[1]/li/a/span")).getText());
 	    } catch (Error e) {
-	      verificationErrors.append(e.toString());
+	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {

@@ -311,7 +311,7 @@ public class BrowserSetup {
 		} 
 		catch (Error e) {
 			System.out.println("Error: Login Screen Title check - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		//VP: Login Page Name
@@ -322,7 +322,7 @@ public class BrowserSetup {
 		} 
 		catch (Error e) {
 			System.out.println("Error: Login Page Name check - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		//VP: product logo
@@ -332,7 +332,7 @@ public class BrowserSetup {
 		}
 		catch (Error e) {
 			System.out.println("Error: product logo check - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}		
 		
 		//VP: Copyright Info
@@ -342,7 +342,7 @@ public class BrowserSetup {
 		} 
 		catch (Error e) {
 			System.out.println("Error: Copyright check - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		try {
 			AssertJUnit.assertEquals(versionLabel, driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText());
@@ -350,7 +350,7 @@ public class BrowserSetup {
 		} 
 		catch (Error e) {
 			System.out.println("Error: Version Label check - FAILED");
-			verificationErrors.append(e.toString());
+			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		
 		// Step: Enter username and password then click the logon button
@@ -366,7 +366,7 @@ public class BrowserSetup {
 			closeModal();
 			//assertEquals("The user name or password is invalid.", closeAlertAndGetItsText());
 			System.out.println("Error: Unable to login to Mobile Client.");
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 		}
 	}
 	
@@ -395,7 +395,7 @@ public class BrowserSetup {
 			System.out.println("VP: Mobile Client Logout Check - Passed");
 		} catch (Error e) {     
 			System.out.println("Error: Mobile Client Logout Check - FAILED");
-			System.out.println(e.toString());
+			System.out.println(methodID + "(): " + e.toString());
 		}
 	}
 }
