@@ -25,7 +25,7 @@ public class MobileDefectTest extends BrowserSetup {
 	//Test Methods		
 	//============
 	//TODO: test41_MobileDefect13092144 mysteriously fails to run on Jenkins server
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test41_MobileDefect13092144()  throws InterruptedException {
 		//tags: download attachment, jpg image
 		String methodID = "test41_MobileDefect13092144";
