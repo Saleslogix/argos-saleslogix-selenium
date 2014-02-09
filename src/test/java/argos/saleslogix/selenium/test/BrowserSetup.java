@@ -67,10 +67,11 @@ public class BrowserSetup {
 	 * 
 	 * @version	1.0
 	 * @param	browser		identifier of browser app to launch; specify: 'chrome' for Chrome, 'ff' for FireFox, other values specify IE
+	 * @throws InterruptedException 
 	 */
 	@BeforeClass
 	@Parameters("browser")
-	public void launchBrowser(@Optional("ff") String browser) throws IOException {
+	public void launchBrowser(@Optional("cr") String browser) throws IOException, InterruptedException {
 		
 		System.out.println("Running SLXMobile3x WebDriver Tests on SLX 8.1 Mobile Client");
 		System.out.println("************************************************************");
@@ -83,10 +84,14 @@ public class BrowserSetup {
 			File file = new File("C:\\Selenium\\chromedriver.exe");
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			driver = new ChromeDriver();
-		}else {
+		} else if(browser.equalsIgnoreCase("IE")){
 			File file = new File("C:\\Selenium\\IEDriverServer.exe");
 	        System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
-			driver = new InternetExplorerDriver();		
+			driver = new InternetExplorerDriver();
+			Thread.sleep(5000);
+		}
+		else {
+			driver = new FirefoxDriver();
 		}
 		browsername = browser;
 			
@@ -107,8 +112,13 @@ public class BrowserSetup {
 		scriptuser = p.getProperty("script_user");
 		
 		driver.get(baseUrl + mobileUrl + startPage);
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+		if (browser.equalsIgnoreCase("IE")) {
+			Thread.sleep(7000);
+		}
+		else {
+			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			driver.manage().window().maximize();
+		}
 		
 		System.out.println("Testing Build Version: " + versionLabel);
 		System.out.println("Testing Site URL: " + baseUrl + mobileUrl);
