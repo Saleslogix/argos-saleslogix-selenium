@@ -71,7 +71,7 @@ public class BrowserSetup {
 	 */
 	@BeforeClass
 	@Parameters("browser")
-	public void launchBrowser(@Optional("ff") String browser) throws IOException, InterruptedException {
+	public void launchBrowser(@Optional("cr") String browser) throws IOException, InterruptedException {
 		
 		System.out.println("Running SLXMobile3x WebDriver Tests on SLX 8.1 Mobile Client");
 		System.out.println("************************************************************");

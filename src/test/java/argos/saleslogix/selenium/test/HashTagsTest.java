@@ -970,7 +970,7 @@ public class HashTagsTest extends BrowserSetup {
 		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
 		String opportunitySearchVal = opportunityListView.opportunitySearchTxtBox.getAttribute("value");
 		try {
-			AssertJUnit.assertEquals(hashTag, opportunitySearchVal);
+			AssertJUnit.assertEquals("#" + hashTag, opportunitySearchVal);
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -1739,7 +1739,7 @@ public class HashTagsTest extends BrowserSetup {
 		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
 		String accountSearchVal = accountListView.accountsSearchTxtBox.getAttribute("value");
 		try {
-			AssertJUnit.assertEquals(hashTag, accountSearchVal);
+			AssertJUnit.assertEquals("#" + hashTag, accountSearchVal);
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -2307,7 +2307,7 @@ public class HashTagsTest extends BrowserSetup {
 		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
 		String contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
 		try {
-			AssertJUnit.assertEquals(hashTag, contactSearchVal);
+			AssertJUnit.assertEquals("#" + hashTag, contactSearchVal);
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -2679,19 +2679,19 @@ public class HashTagsTest extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-	    //Step: navigate to Contacts list view...
+	    //Step: navigate to Lead list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
 		ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
 		
-	    //Step: select the 'negotiation' hash tag
+	    //Step: select the hash tag
 		commNav.rightClickContextMenuItem(hashTag);
 		
 		//Step: check the filled-in search input field value
 		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
 		String contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
 		try {
-			AssertJUnit.assertEquals(hashTag, contactSearchVal);
+			AssertJUnit.assertTrue(contactSearchVal.contains(hashTag));
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {

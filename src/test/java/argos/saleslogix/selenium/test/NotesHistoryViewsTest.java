@@ -345,7 +345,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		
 			//Step: check each input field and if applicable, its related list item selection view			
 			commNav.verifyEntityViewElementClick(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn, "Calendar");			
-			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Notes Description");			
+			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Note Description");			
 			commNav.isFieldValueEmpty(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
 			commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
 			commNav.verifyEntityViewElementClick(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountFldBtn, "Accounts");
@@ -389,7 +389,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 			
 			//Step: check each input field and if applicable, its related list item selection view
 			commNav.isFieldValueEmpty(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn);			
-			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Notes Description");			
+			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Note Description");			
 			commNav.isWebElementPresent(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
 			commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
 			commNav.isFieldValueEmpty(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountInputFld);			

@@ -292,7 +292,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 			commNav.isWebElementPresent(viewName + ",'Related Items' section header", leadDetailView.leadsDetailViewRelatedItemsHdr);
 			commNav.verifyEntityViewElementClick(viewName + ",'Activities'", leadDetailView.leadsDetailViewActivitiesLnk, "Activities");
 			commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", leadDetailView.leadsDetailViewNotesHistoryLnk, "Notes/History");
-			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", leadDetailView.leadsDetailViewAttachmentsLnk, "Attachments");
+			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", leadDetailView.leadsDetailViewAttachmentsLnk, "Lead Attachments");
 			
 			//Step: go back to previous screen
 			headerButton.goBack();
