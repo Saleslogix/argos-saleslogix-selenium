@@ -253,7 +253,8 @@ public class CommonNavigation {
 		try {
 			WebElement contxtMnuItem = driver.findElement(By.xpath("//*[@id='right_drawer']/descendant::*[text() = '" + menuItem + "']"));
 			highlightNClick(contxtMnuItem);
-			Thread.sleep(2000);		
+			Thread.sleep(2000);
+			System.out.println(methodID + ": the '" + menuItem + "' Right-context Menu item was clicked.");
 		}
 		catch (Exception e) {
 			System.out.println(methodID + ": " + e.toString());
@@ -272,6 +273,7 @@ public class CommonNavigation {
 	public boolean checkIfWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
 		String methodID = "checkIfWebElementPresent";
 		
+		Thread.sleep(1000);
 		try {
 			AssertJUnit.assertTrue(wElement.isDisplayed());
 			highlightElement(wElement);
@@ -298,6 +300,7 @@ public class CommonNavigation {
 	public boolean clickWebElementToPage(String sDesc, WebElement wElement, String expPageTitle) throws InterruptedException {
 		String methodID = "clickWebElementToPage";
 		
+		Thread.sleep(1000);
 		try {
 			highlightElement(wElement);
 			wElement.click();
@@ -440,12 +443,14 @@ public class CommonNavigation {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
+		Thread.sleep(1000);
 		try { 
 			commNav.clickWebElementToPage(elementDesc, wElement, expPgTitle);
-			headerButton.goBack();
+			headerButton.cancelButton.click();
 			return true;
 		} catch (Exception e) {
-			System.out.println(methodID + e.toString());
+			System.out.println(e.toString());
+			headerButton.goBack();
 			return false;
 		}
 		
@@ -939,10 +944,12 @@ public class CommonNavigation {
 	 * @param	pageTitle	exact pagetitle text for expected page
 	 * @return	boolean		true - if page with matching pagetitle is displayed; 
 	 * 						false - otherwise
+	 * @throws InterruptedException 
 	 */	
-	public boolean isPageDisplayed(String pageTitle) {		
+	public boolean isPageDisplayed(String pageTitle) throws InterruptedException {		
 		String methodID = "isPageDisplayed";
 		
+		Thread.sleep(1000);
     	if (pageTitle.equals(driver.findElement(By.id("pageTitle")).getText())) {
     		System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
     		return true; 
@@ -1567,6 +1574,7 @@ public class CommonNavigation {
 		
 		String methodID = "highlightElement";
 		
+		Thread.sleep(1000);
 		//try {
 			//AssertJUnit.assertTrue(wElement.isDisplayed());
 			//Thread.sleep(250);
