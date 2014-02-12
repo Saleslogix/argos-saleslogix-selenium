@@ -469,7 +469,8 @@ public class ContactViewsElements extends BrowserSetup {
 			contactsEditViewAccountInputFldBtn.click();
 				commNav.highlightNClick(commNav.entityListViewSelect("Accounts", strContactAccount));
 			
-			//conditionaly setup web field	
+			//conditionaly setup web field
+			Thread.sleep(2000);
 			if (commNav.isFieldValueEmpty("Web", contactsEditViewWebInputFld)) {
 				contactsEditViewWebInputFld.sendKeys("www.saleslogix.com");
 			}
