@@ -223,7 +223,8 @@ public class CommonNavigation {
 	
 	
 	/**
-	 * This method will select a menu item from the Right-context menu on the current list view.
+	 * This method will conditionally open the Right-context menu (in case it's currently closed) then  it will
+	 * select a menu item from the current list view.
 	 * 
 	 * @version	1.0
 	 * @param	menuItem	menu item from the Right-context menu to select
@@ -237,13 +238,13 @@ public class CommonNavigation {
 		//conditionally click the RightContext Menu button to reveal panel
 		if (!commNav.rmenu_panel.isDisplayed()) {
 			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
-			System.out.println(methodID + ": the '" + menuItem + "' Right-context Menu item was clicked.");
+			System.out.println(methodID + ": the show Right-context Menu button was clicked.");
 			Thread.sleep(1000);
 			
 			try {
 				AssertJUnit.assertTrue(commNav.rmenu_panel.isDisplayed());
 			}
-			catch (Exception e) {
+			catch (Error e) {
 				System.out.println(methodID + ": " + e.toString());
 				return false;
 			}					
@@ -255,11 +256,12 @@ public class CommonNavigation {
 			highlightNClick(contxtMnuItem);
 			Thread.sleep(2000);
 			System.out.println(methodID + ": the '" + menuItem + "' Right-context Menu item was clicked.");
+			return true;
 		}
 		catch (Exception e) {
 			System.out.println(methodID + ": " + e.toString());
+			return false;
 		}
-		return true;
 	}
 	
 	
@@ -443,14 +445,18 @@ public class CommonNavigation {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		Thread.sleep(1000);
 		try { 
 			commNav.clickWebElementToPage(elementDesc, wElement, expPgTitle);
-			headerButton.cancelButton.click();
+			try {
+				headerButton.backButton.click();
+			}
+			catch (Exception e) {
+				headerButton.cancelButton.click();
+			}
+			Thread.sleep(1000);
 			return true;
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			headerButton.goBack();
 			return false;
 		}
 		
