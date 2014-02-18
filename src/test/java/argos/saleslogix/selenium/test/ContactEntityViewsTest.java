@@ -299,7 +299,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			commNav.verifyEntityViewElementClick(viewName + ", 'Tickets'", contactDetailView.contactsDetailViewTicketsLnk, "Tickets");
 			commNav.verifyEntityViewElementClick(viewName + ", 'Notes/History'", contactDetailView.contactsDetailViewNotesHistoryLnk, "Notes/History");
 			commNav.verifyEntityViewElementClick(viewName + ", 'Addresses'", contactDetailView.contactsDetailViewAddressesLnk, "Addresses");
-			commNav.verifyEntityViewElementClick(viewName + ", 'Attachments'", contactDetailView.contactsDetailViewAttachmentsLnk, "Attachments");
+			commNav.verifyEntityViewElementClick(viewName + ", 'Attachments'", contactDetailView.contactsDetailViewAttachmentsLnk, "Contact Attachments");
 		}
 		catch (Exception e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
@@ -350,7 +350,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", contactEditView.contactsEditViewAcctMgrInputFld, "Users");
 			contactEditView = PageFactory.initElements(driver, ContactViewsElements.class);
 			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", contactEditView.contactsEditViewOwnerInputFldBtn, "Owners");
-			commNav.verifyEntityViewElementClick(viewName + ",'cuisine field'", contactEditView.contactsEditViewCuisineInputFldBtn, "Lead Sources");
+			commNav.verifyEntityViewElementClick(viewName + ",'cuisine field'", contactEditView.contactsEditViewCuisineInputFldBtn, "Cuisine");
 			
 			//end of test
 			headerButton.clickHeaderButton("cancel");
@@ -400,7 +400,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			commNav.isWebElementPresent(viewName + ", fax field", contactEditView.contactsEditViewFaxInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", contactEditView.contactsEditViewAcctMgrInputFld, "Users");
 			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", contactEditView.contactsEditViewOwnerInputFldBtn, "Owners");
-			commNav.verifyEntityViewElementClick(viewName + ",'cuisine field'", contactEditView.contactsEditViewCuisineInputFldBtn, "Lead Sources");
+			commNav.verifyEntityViewElementClick(viewName + ",'cuisine field'", contactEditView.contactsEditViewCuisineInputFldBtn, "Cuisine");
 			
 			//end of test
 			headerButton.clickHeaderButton("cancel");
@@ -423,7 +423,7 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	}
 	
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test10_SeTestTCContactListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCContactListViewHashTags";
 		
@@ -481,16 +481,14 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		}
 		
 		//Step: test each of the pre-set Hash Tag items
-		commNav.rightClickContextMenuItem("active");
-		commNav.rightClickContextMenuItem("inactive");
-		commNav.rightClickContextMenuItem("suspect");
-		commNav.rightClickContextMenuItem("lead");
-		commNav.rightClickContextMenuItem("prospect");
-		commNav.rightClickContextMenuItem("customer");
-		commNav.rightClickContextMenuItem("partner");
-		commNav.rightClickContextMenuItem("vendor");
-		commNav.rightClickContextMenuItem("influencer");
-		commNav.rightClickContextMenuItem("competitor");
+		commNav.rightClickContextMenuItem("my-contacts");
+		commNav.rightClickContextMenuItem("primary");
+		commNav.rightClickContextMenuItem("not-primary");
+		commNav.rightClickContextMenuItem("can-email");
+		commNav.rightClickContextMenuItem("can-phone");
+		commNav.rightClickContextMenuItem("can-fax");
+		commNav.rightClickContextMenuItem("can-phone");
+		commNav.rightClickContextMenuItem("can-mail");
 		
 		//Step: go back to previous screen
 		headerButton.goBack();

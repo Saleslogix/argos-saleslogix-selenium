@@ -238,7 +238,6 @@ public class CommonNavigation {
 		//conditionally click the RightContext Menu button to reveal panel
 		if (!commNav.rmenu_panel.isDisplayed()) {
 			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
-			System.out.println(methodID + ": the show Right-context Menu button was clicked.");
 			Thread.sleep(1000);
 			
 			try {
@@ -1506,7 +1505,12 @@ public class CommonNavigation {
 			Thread.sleep(3000);
 			
 			//Step: check if the detail view is loaded
-			waitForPage(entityName);
+			if (!entityType.contains("ote")) {
+				waitForPage(entityName);
+			}
+			else {
+				waitForNotPage("Notes/History");
+			}
 			
 			//Step: open record Edit View
 			headerbutton.editButton.click();
