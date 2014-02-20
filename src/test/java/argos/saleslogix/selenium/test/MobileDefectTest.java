@@ -2225,7 +2225,8 @@ public class MobileDefectTest extends BrowserSetup {
 		//VP: check that old Lookup control is not displayed in the Accounts List view... 	
 		String resultMsg = "VP: previous-version Lookup control is not displayed in the Accounts List view";
 		try {
-			AssertJUnit.assertFalse(commNav.isElementPresent(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_3']")));
+			WebElement oldLookupFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_3']"));
+			AssertJUnit.assertFalse(oldLookupFld.isDisplayed());
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {

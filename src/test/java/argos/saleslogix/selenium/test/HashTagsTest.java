@@ -590,7 +590,7 @@ public class HashTagsTest extends BrowserSetup {
 		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
 		String notesHistorySearchVal = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
 		try {
-			AssertJUnit.assertEquals(hashTag, notesHistorySearchVal);
+			AssertJUnit.assertEquals("#" + hashTag, notesHistorySearchVal);
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -620,7 +620,7 @@ public class HashTagsTest extends BrowserSetup {
 		resulstMsg = "VP: right-context menu search field persistent value set to " + hashTag;		
 		notesHistorySearchVal = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
 		try {
-			AssertJUnit.assertEquals(hashTag, notesHistorySearchVal);
+			AssertJUnit.assertEquals("#" + hashTag, notesHistorySearchVal);
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -2682,54 +2682,52 @@ public class HashTagsTest extends BrowserSetup {
 	    //Step: navigate to Lead list view...
 		commNav.clickGlobalMenuItem(entityType);
 		
-		ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 		
 	    //Step: select the hash tag
 		commNav.rightClickContextMenuItem(hashTag);
 		
 		//Step: check the filled-in search input field value
 		String resulstMsg = "VP: right-context menu search field value set to " + hashTag;		
-		String contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
+		String leadSearchVal = leadsListView.leadsSearchTxtBox.getAttribute("value");
 		try {
-			AssertJUnit.assertTrue(contactSearchVal.contains(hashTag));
+			AssertJUnit.assertTrue(leadSearchVal.contains(hashTag));
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + leadSearchVal + "'");
 		}
 		
 		//Step: navigate back to the My Activities List view
 		headerButton.goBack();
 		
-		//Step: navigate to Accounts List view...
-		commNav.clickGlobalMenuItem("Accounts");
-		
-	    //Step: navigate back to Contacts list view...
-		headerButton.showGlobalMenu();
-		WebElement opportunityItem = driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'Contacts']"));
-		commNav.highlightNClick(opportunityItem);
-				
+		//Step: navigate to Leads List view...
+		commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		commNav.clickGlobalMenuItem("Leads");
+						
 		//Step: re-open the Right-Context Menu
+		//headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		headerButton.showRightContextMenu();
 		
-		contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 		
 		//Step: check the filled-in search input field value
 		resulstMsg = "VP: right-context menu search field persistent value set to " + hashTag;		
-		contactSearchVal = contactListView.contactsSearchTxtBox.getAttribute("value");
+		leadSearchVal = leadsListView.leadsSearchTxtBox.getAttribute("value");
 		try {
-			AssertJUnit.assertEquals("#" + hashTag, contactSearchVal);
+			AssertJUnit.assertEquals("#" + hashTag, leadSearchVal);
 			System.out.println(resulstMsg + " - Passed");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
+			System.out.println(resulstMsg + " - FAILED; the actual value is '" + leadSearchVal + "'");
 		}
 		headerButton.rightCntxtMnuButton.click();
 		
 		System.out.println(ENDLINE);
 	}
+
 
 	@Test(enabled = true)
 	public void test62_SeTestTCHashTagsLeadCombos() throws Exception {
