@@ -1,17 +1,17 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines WebElements and methods for Opportunity entity based tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class OpportunityViewsElements extends BrowserSetup {
 	
 	private WebDriver driver;
@@ -434,29 +434,34 @@ public class OpportunityViewsElements extends BrowserSetup {
 	@FindBy(xpath = "//*[@id='opportunity_edit']/div[2]/fieldset[2]/div[4]")
 	WebElement opportunityEditViewRateDateFld;
 	
+	
 	//Methods
-	//-------
+	//=======
+	/**
+	 * This method will return a String that represents the contents of the Opportunity list view. 
+	 * 
+	 * @param N/A
+	 * @throws InterruptedException, Exception 
+	 */
 	public String getOpportunityListViewTxt() {
 		String methodID = "getOpportunityListViewTxt";
 		
-		WebElement OpportunityLisViewInfo = driver.findElement(By.xpath("//*[@id='opportunity_list']/ul"));
-		
-		return OpportunityLisViewInfo.getText();		
-	}
-	
-	
-	public boolean NoRecordsFound() {
-		boolean result = false;
-		
-		return result;
+		try {
+			WebElement OpportunityLisViewInfo = driver.findElement(By.xpath("//*[@id='opportunity_list']/ul"));
+			
+			return OpportunityLisViewInfo.getText();
+		}
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+			return "";
+		}
 	}
 
 
 	/**
 	 * This method will add an auto-generated test Opportunity record by filling-in the Opportunity Edit input fields.
 	 * The Opportunity will have a unique string appended to the Opportunity Name in order to ensure uniqueness.
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
+	 * 
 	 * @param	strOppName	lead last name to set
 	 * @param	strOppAccount	lead first name to set
 	 * @throws Exception 
@@ -466,7 +471,6 @@ public class OpportunityViewsElements extends BrowserSetup {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -494,14 +498,19 @@ public class OpportunityViewsElements extends BrowserSetup {
 	}
 
 
+	/**
+	 * This method will return a boolean value if a search for a specific Opportunity record.
+	 * 
+	 * @param strOppName	opportunity name to search for
+	 * @throws InterruptedException, Exception 
+	 */
 	public boolean doSearchOpportunity(String strOppName) throws InterruptedException, Exception {
 		String methodID = "doSearchOpportunity";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 			
 	    //Step: search for then click to open Opportunity record detail view
+		try {
 		commNav.highlightNClick(commNav.entityListViewSearch("Opportunities", strOppName));
 		
 		//Step: confirm Opportunity record detail view is displayed
@@ -511,10 +520,19 @@ public class OpportunityViewsElements extends BrowserSetup {
 		else {		
 			return false;
 		}
+		}
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+			return false;
+		}
 	}
 
 
-	//Methods
+	/**
+	 * This method will return a String that represents the contents of the Opportunities list view. 
+	 * 
+	 * @param N/A
+	 */
 	public String getOpportunitiesListViewTxt() {
 		String methodID = "getOpportunitiesListViewTxt";
 		String listViewTxt = "";

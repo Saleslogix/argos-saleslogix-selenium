@@ -1,23 +1,48 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines test methods for the Account entity views on the Mobile Client.
+ * *
+ * @author mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class ContactEntityViewsTest extends BrowserSetup {
 	
 	public String TEST_CONTACT_RECORD = "Barbosa, Angelo";
+	
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
+
+	
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}
+	
 	
 	//Test Methods Set
 	//================
@@ -682,31 +707,4 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
-	
-
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-	
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
-
 }

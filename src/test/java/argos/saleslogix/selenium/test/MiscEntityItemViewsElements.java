@@ -1,17 +1,17 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines WebElements and methods for Misc. field tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class MiscEntityItemViewsElements extends BrowserSetup {
 	
 	private WebDriver driver;

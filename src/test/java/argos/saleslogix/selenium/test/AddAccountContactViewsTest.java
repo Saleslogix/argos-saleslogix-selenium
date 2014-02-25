@@ -1,24 +1,18 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-
 import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+
 /**
- * @author mllena
- * Class: AccountEntityViewsTest
- * Desc.: Test class for the Account entity views
+ * Test class that defines WebElements and methods for the Add Account/Contact page based tests against the 
+ * SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
  */
 public class AddAccountContactViewsTest extends BrowserSetup {
 	

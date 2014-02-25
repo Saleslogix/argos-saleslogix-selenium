@@ -25,47 +25,7 @@ import argos.saleslogix.selenium.test.BrowserSetup;
 public class UnitTestX extends BrowserSetup {
 	
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
 	
-
-	@Test(enabled = false)
-	public void test99_Mobile_LogOutOLD()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-	
-		// Click the Log Off button
-		commNav.clickGlobalMenuItem("log out");
-		Thread.sleep(2000);
-		closeAlert();
-		Thread.sleep(1000);
-					
-		// Verify the Mobile Login screen displays
-		try {
-			AssertJUnit.assertEquals(fullProdName, driver.findElement(By.id("pageTitle")).getText());
-			System.out.println("VP: Mobile Client Logout Check - Passed");
-		} catch (Error e) {     
-			System.out.println("Error: Mobile Client Logout Check - FAILED");
-			System.out.println(e.toString());
-		}
-		System.out.println(ENDLINE);
-	}
-
-
 	public String getKPICardValue(String fullKPICardVal) {
 		
 		String[] segStrArray = fullKPICardVal.split("\n");
@@ -88,147 +48,19 @@ public class UnitTestX extends BrowserSetup {
 	}
 
 
-	@Test(enabled = false)
-	public void test11_MobileDefect_MBL10172() throws Exception {
-		//MBL-10172: Mobile - Ticket Activities : elapsed hours not displaying as it does in web client (16 dec positions versus 2) [DTS 13091638]
-		String methodID = "test11_MobileDefect_MBL10172";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);	
-			
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-					
-	    //Step: open the Ticket Detail view
-	    String entityType = "Tickets";
-	    String tktItem = "001-00-000017";
-	    String entityDetailViewLink = "Ticket Activities";
-		commNav.entityRecordOpenDetailView(entityType, tktItem);
-	    
-	    //Step: open the Ticket Activities view
-	    String tktDetVwActivitiesXPath = "//*[@id='ticket_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
-	    driver.findElement(By.xpath(tktDetVwActivitiesXPath)).click();
-	    commNav.waitForPage(entityDetailViewLink);
-	    
-	    //Step: perform a Ticket Activity search
-	    String searchItem = "Customer follow up to check on new units";
-	    WebElement searchFld = driver.findElement(By.name("query"));
-	    WebElement lookupBtn = driver.findElement(By.xpath("//div[3]/button"));
-	    searchFld.clear();
-	    searchFld.sendKeys(searchItem);
-	    lookupBtn.click();
-	    Thread.sleep(2000);
-	    
-	    //Step: click to open the Ticket Activity record
-	    WebElement tktListItem = driver.findElement(By.xpath("//*[@id='ticketactivity_related']/ul/li"));
-	    tktListItem.click();
-	    commNav.waitForNotPage(entityDetailViewLink);
-	    
-	    //Step: expand the More Details link
-	    WebElement moreDetailsLnk = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/descendant::*[text() = 'More Details']"));
-	    moreDetailsLnk.click();
-	    
-	    //VP: check to see that the Elapsed Hours field is not equal to 0.0333333333333333
-	    String txt2Chk = "0.0333333333333333";
-	    String resultsMsg = "VP: The Elapsed Hours field value is not equal to " + txt2Chk;
-	    try {
-		    WebElement elapsedHrsFld = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/div[2]/div[2]/div[2]"));
-		    String elapsedHrsVal = elapsedHrsFld.getText();
-	    	AssertJUnit.assertFalse(elapsedHrsVal.equals("elapsed hours" + txt2Chk));
-	    	System.out.println(resultsMsg + " - Passed");
-	    }
-	    catch (Exception e) {
-	    	System.out.println(e.toString());
-	    	System.out.println(resultsMsg + " - Failed");
-	    }
-	    
-		//END
-	    commNav.clickGlobalMenuItem("My Activities");
-		System.out.println(ENDLINE);
-	}
-
-
 	//Login & Logout
 	//==============
-	@Test(enabled = false)
-	public void test00_MobileClient_LoginOLD() throws InterruptedException {
-		//TODO: need to setup a method for Login() under CommonNavigation
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
 		String methodID = "test00_MobileClient_Login";
-		
-		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//VP: the Mobile Login screen is loaded from base URL
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		commNav.waitForPage(fullProdName);
+		doVerificationLogin();
 		
-		//VP: Page Title (header text - not pagetitle property)
-		Thread.sleep(1000);
-		try { 
-			AssertJUnit.assertEquals(shortProdName, driver.getTitle());
-			System.out.println("VP: Login Screen Title check - Passed");
-		} 
-		catch (Error e) {
-			System.out.println("Error: Login Screen Title check - FAILED");
-			verificationErrors.append(e.toString());
-		}
-		
-		//VP: Login Page Name
-		Thread.sleep(1000);	
-		try {
-			AssertJUnit.assertTrue(commNav.isPageDisplayed(fullProdName));
-			System.out.println("VP: Login Page Name check - Passed");
-		} 
-		catch (Error e) {
-			System.out.println("Error: Login Page Name check - FAILED");
-			verificationErrors.append(e.toString());
-		}
-		
-		//VP: product logo
-		try {
-			AssertJUnit.assertTrue(commNav.isElementDisplayed(By.xpath(".//*[@id='login']/p/img")));
-			System.out.println("VP: 'saleslog!x' logo check  - Passed");
-		}
-		catch (Error e) {
-			System.out.println("Error: product logo check - FAILED");
-			verificationErrors.append(e.toString());
-		}		
-		
-		//VP: Copyright Info
-		try {
-			AssertJUnit.assertEquals(copyrightLabel, driver.findElement(By.xpath(".//*[@id='login']/span[1]")).getText());
-			System.out.println("VP: Copyright check - Passed");
-		} 
-		catch (Error e) {
-			System.out.println("Error: Copyright check - FAILED");
-			verificationErrors.append(e.toString());
-		}
-		try {
-			AssertJUnit.assertEquals(versionLabel, driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText());
-			System.out.println("VP: Version Label check - Passed");
-		} 
-		catch (Error e) {
-			System.out.println("Error: Version Label check - FAILED");
-			verificationErrors.append(e.toString());
-		}
-		
-		// Step: Enter username and password then click the logon button		
-		slxmobilelogin.doLogin(userName, userPwd, true);
-		
-		// VP: confirm that the 'My Activities' screen displays after login
-		Thread.sleep(3000);
-		try {
-			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
-			System.out.println("VP: Successfully logged in to Mobile Client.");
-		} catch (UnhandledAlertException e) {
-			//closeAlert();
-			closeModal();
-			//assertEquals("The user name or password is invalid.", closeAlertAndGetItsText());
-			System.out.println("Error: Unable to login to Mobile Client.");
-			System.out.println(e.toString());
-		}
 		System.out.println(ENDLINE);	
 	}
-
+	
 
 	@Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
@@ -240,5 +72,169 @@ public class UnitTestX extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
+
+
+	//TODO: need to update test53_MobileDefect13092153() needs an update for 2.3
+	@Test (enabled = false)
+	public void test53_MobileDefect13092153() throws Exception {
+		String methodID = "test53_MobileDefect13092153";
 	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    // - Start Section
+	    // Step: click Top-Left button to reveal Global Menu...
+	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if (isElementPresent(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    Thread.sleep(1000);
+	
+	    // Step: navigate to Leads list view...
+	    driver.findElement(By.xpath("//*[@id='left_drawer']/descendant::*[text() = 'Leads']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if (isElementPresent(By.xpath("//*[@id='lead_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: perform search for the 1st-Lead record...
+	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[1]/input")).clear();
+	    Thread.sleep(500);
+	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[1]/input")).sendKeys("Ballard");
+	    Thread.sleep(1000);
+	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[3]/button")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if (isElementPresent(By.xpath("//*[@id='lead_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    try {
+	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Ballard, Matt[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(methodID + "(): " + e.toString());
+	    }
+	    
+	    // Step: navigate to top Lead record...
+	    driver.findElement(By.xpath("//*[@id='lead_list']/ul/li/div/h3")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if ("Ballard, Matt".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    
+	    // Step: click the Activities link...
+	    driver.findElement(By.xpath("//*[@id='lead_detail']/descendant::*[text() = 'Activities']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if ("Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    
+	    // Step: click to open the top Activities item...
+	    driver.findElement(By.xpath("//*[@id='activity_related']/ul/li/div[2]/h3/span")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if (!"Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }	    
+	    
+	    // Step: click the Attachments link...
+	    driver.findElement(By.xpath("//*[@id='activity_detail']/div[2]/ul[2]/li/a/span")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if ("Activity Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    	
+	    // Step: click the top Add button...
+	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if ("Add Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    
+	    // Step: click the 'add a file' section of the screen...
+	    String filepath = "C://uploadtest.txt";
+	    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).sendKeys(filepath);
+	    Thread.sleep(2000);	    
+	    
+	    // Step: setup a unique, time-based file name for the uploaded file...
+	    String newfilename = "upload." + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime()) + ".txt";
+	    driver.findElement(By.id("File_0")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.id("File_0")).sendKeys(newfilename);
+	    Thread.sleep(1000);
+	    
+	    // Step: proceed with file upload...
+	    driver.findElement(By.id("fileSelect-btn-upload")).click();
+	    
+	    // Step: verify that new attachment appears in the Lead Attachments list view...
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if ("Activity Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(methodID + "(): " + e.toString());
+	    }
+	    // -- End Section
+	    
+	    // Step: navigate back to Lead detail view...
+	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if (!"Activity Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if ("Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if ("Ballard, Matt".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	
+	    // Step: navigate to the Lead Attachments list view...
+	    driver.findElement(By.xpath("//*[@id='lead_detail']/descendant::*[text() = 'Attachments']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if ("Lead Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    
+	    // VP: verify that the Attachment item is found
+	    try {
+	    	AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
+	    } catch (Error e) {
+	      verificationErrors.append(methodID + "(): " + e.toString());
+	    }
+	    
+	    // Step: navigate back to My Activities view...
+	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")).click();
+	    for (int second = 0;; second++) {
+	    	if (second >= 60) AssertJUnit.fail("timeout");
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	Thread.sleep(1000);
+	    }
+	    System.out.println(ENDLINE);	
+	    // - End Section
+	    // -- END
+	}
+
 }

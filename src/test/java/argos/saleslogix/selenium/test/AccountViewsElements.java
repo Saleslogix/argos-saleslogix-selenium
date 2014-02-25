@@ -1,26 +1,16 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-import java.util.Properties;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
 /**
- * Class that defines WebElements and methods for the Account entity views on the Mobile Client.
+ * Test class that defines WebElements and methods for Account entity based tests against the SLX Mobile Client.
  * 
+ * @author	mike.llena@swiftpage.com
  * @version	1.0
  */
 public class AccountViewsElements extends BrowserSetup {
@@ -445,40 +435,48 @@ public class AccountViewsElements extends BrowserSetup {
 	 * This method will select and apply a hash-tag on the Accounts List view.  The assumption is that the
 	 * hash-tag must exist and be applicable to the Accounts List view.
 	 * 
-	 * @version	1.0
 	 * @param	hashTag		Account hash-tag to select; do not pre-pend a "#" symbol in the parameter string
-	 * @exception InterruptedException
+	 * @throws InterruptedException
 	 */
 	public void applyHashTagFilter(String hashTag) throws InterruptedException {
 		String methodID = "applyHashTagFilter";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-				
+
 		//Step: select the Account hash-tag from the context-menu
-		commNav.rightClickContextMenuItem(hashTag);
-		Thread.sleep(3000);
+		try {
+			commNav.rightClickContextMenuItem(hashTag);
+			Thread.sleep(3000);
+		}
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+		}
 	}
+	
 	
 	/**
 	 * This method will select and apply a KPI metric on the Accounts List view.  The assumption is that the
 	 * KPI metric must exist and be applicable to the Accounts List view.
 	 * 
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
 	 * @param	kpiMetric	Account KPI metric to select
-	 * @exception InterruptedException
+	 * @throws InterruptedException
 	 */
 	public void applyKPIMetric(String kpiMetric) throws InterruptedException {
 		String methodID = "applyKPIMetric";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-				
-		//Step: select the Account hash-tag from the context-menu
-		commNav.rightClickContextMenuItem(kpiMetric);
-		Thread.sleep(500);
-		headerButton.closeRightContextMenu();
-		Thread.sleep(3000);
+		
+		try {
+			//Step: select the Account hash-tag from the context-menu
+			commNav.rightClickContextMenuItem(kpiMetric);
+			Thread.sleep(500);
+			headerButton.closeRightContextMenu();
+			Thread.sleep(3000);
+		}
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+		}
 	}
 	
 	
@@ -486,10 +484,8 @@ public class AccountViewsElements extends BrowserSetup {
 	 * This method will add an auto-generated test Account record by filling-in the Account Edit input fields
 	 * then saving the field values.
 	 * 
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
 	 * @param	strAccountName	account name to set
-	 * @exception InterruptedException
+	 * @throws InterruptedException, IOException
 	 */
 	public void doAddRandTestAccount(String strAccountName) throws InterruptedException, IOException {
 		String methodID = "doAddRandTestAccount";
@@ -606,10 +602,9 @@ public class AccountViewsElements extends BrowserSetup {
 	 * This method will search for then click a target Account record from the Accounts List view in order
 	 * to open the Account record's Detail view. 
 	 * 
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
-	 * @param	strAcctName		name of a target Account record to find and open
-	 * @return	void
+	 * @param strAcctName	name of a target Account record to find and open
+	 * @return boolean	whether or not a specific Account record is displayed in the list view
+	 * @throws	InterruptedException, Exception
 	 */	
 	public boolean doSearchAccount(String strAcctName) throws InterruptedException, Exception {
 		String methodID = "doSearchAccount";
@@ -638,17 +633,21 @@ public class AccountViewsElements extends BrowserSetup {
 	/**
 	 * This method captures the contents of the Accounts List view and return the same contents in a string. 
 	 * 
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
-	 * @param	strAcctName		name of a target Account record to find and open
-	 * @return	void
+	 * @param N/A
+	 * @return String Accounts list view info
 	 */	
 	public String getAccountsListViewTxt() {
 		String methodID = "getAccountsListViewTxt";
 		
-		WebElement accountsLisViewInfo = driver.findElement(By.xpath("//*[@id='account_list']/ul"));
-		
-		return accountsLisViewInfo.getText();		
+		try {
+			WebElement accountsLisViewInfo = driver.findElement(By.xpath("//*[@id='account_list']/ul"));
+			
+			return accountsLisViewInfo.getText();
+		}
+		catch (Exception e) {
+			System.out.println(methodID + ": "  + e.toString());
+			return null;
+		}
 	}
 	
 	
@@ -656,10 +655,9 @@ public class AccountViewsElements extends BrowserSetup {
 	 * This method returns a boolean value to determine if the 'no record' result is displayed on the Accounts
 	 * List view. 
 	 * 
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
-	 * @param	strAcctName		name of a target Account record to find and open
-	 * @return	void
+	 * @param strAcctName		name of a target Account record to find and open
+	 * @return boolean		whether or not the 'no record' result it displayed in the Accounts list view
+	 * @throws InterruptedException 
 	 */	
 	public boolean noRecordsFoundCheck() throws InterruptedException {
 		String methodID = "noRecordsFoundCheck";
@@ -669,13 +667,19 @@ public class AccountViewsElements extends BrowserSetup {
 		boolean result = false;
 		String noRecsTxt = "no records";
 		
-		if (commNav.isTextPresentOnPage(noRecsTxt)) { 
-			result = true;
+		try {
+			if (commNav.isTextPresentOnPage(noRecsTxt)) { 
+				result = true;
+			}
+			else {
+				result = false;
+			}
+			return result;
 		}
-		else {
-			result = false;
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+			return false;
 		}
-		return result;
 	}
 
 
@@ -683,9 +687,8 @@ public class AccountViewsElements extends BrowserSetup {
 	 * This method will perform a "filter-less" search (no hash-tag & no search string) on the Accounts 
 	 * List view.  The resulting Activities search is displayed in the List view.
 	 * 
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
-	 * @exception InterruptedException
+	 * @param N/A
+	 * @throws InterruptedException
 	 */
 	public void performNoFilterSearch() throws InterruptedException {
 		String methodID = "performNoFilterSearch";
@@ -694,6 +697,7 @@ public class AccountViewsElements extends BrowserSetup {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class); 
 				
 		//Step: execute a filter-free search
+		try {
 		headerButton.showRightContextMenu();
 		accountsListView.accountsSearchTxtBox.click();
 		Thread.sleep(500);
@@ -701,16 +705,19 @@ public class AccountViewsElements extends BrowserSetup {
 		Thread.sleep(1000);
 		accountsListView.accountsSearchLookupBtn.click();
 		Thread.sleep(3000);
+		}
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+		} 
 	}
 
 
 	/**
 	 * This method will perform a search for an activity record (using the regarding field value) from the 
 	 * Activities (related) List view.  The resulting activity search is displayed.
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
+	 * 
 	 * @param	regarding	the target Activity's regarding field value
-	 * @exception InterruptedException
+	 * @throws InterruptedException
 	 */
 	public void performRelActivitiesSearch(String regarding) throws InterruptedException {
 		String methodID = "performRelActivitiesSearch";
@@ -719,14 +726,19 @@ public class AccountViewsElements extends BrowserSetup {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class); 
 				
 		//Step: execute a Related Activities search
-		headerButton.showRightContextMenu();
-		activitiesListView.relatedActivitiesSearchTxtBox.click();
-		Thread.sleep(500);
-		activitiesListView.relatedActivitiesSearchClearBtn.click();
-		Thread.sleep(1000);
-		activitiesListView.relatedActivitiesSearchTxtBox.sendKeys(regarding);
-		Thread.sleep(500);
-		activitiesListView.relatedActivitiesSearchLookupBtn.click();
-		Thread.sleep(3000);
+		try {
+			headerButton.showRightContextMenu();
+			activitiesListView.relatedActivitiesSearchTxtBox.click();
+			Thread.sleep(500);
+			activitiesListView.relatedActivitiesSearchClearBtn.click();
+			Thread.sleep(1000);
+			activitiesListView.relatedActivitiesSearchTxtBox.sendKeys(regarding);
+			Thread.sleep(500);
+			activitiesListView.relatedActivitiesSearchLookupBtn.click();
+			Thread.sleep(3000);
+		}
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+		}
 	}
 }

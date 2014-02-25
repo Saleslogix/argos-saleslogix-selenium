@@ -1,17 +1,16 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines WebElements and methods for Attachment view based tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class MyAttachmentsViewsElements extends BrowserSetup {
 	
 	private WebDriver driver;
@@ -101,21 +100,26 @@ public class MyAttachmentsViewsElements extends BrowserSetup {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul")
 	WebElement myAttachmentsTagsPnl;
-				
+			
+	
 	//Methods
-	//-------
+	//=======
+	/**
+	 * This method will return a String that represents the contents of the Attachments list view. 
+	 * 
+	 * @param N/A
+	 */
 	public String getMyAttachmentsListViewTxt() {
 		String methodID = "getMyAttachmentsListViewTxt";
 		
-		WebElement myAttachmentsLisViewInfo = driver.findElement(By.xpath("//*[@id='myattachment_list']/ul"));
-		
-		return myAttachmentsLisViewInfo.getText();		
-	}
-	
-	
-	public boolean NoRecordsFound() {
-		boolean result = false;
-		
-		return result;
+		try {
+			WebElement myAttachmentsLisViewInfo = driver.findElement(By.xpath("//*[@id='myattachment_list']/ul"));
+			
+			return myAttachmentsLisViewInfo.getText();
+		}
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+			return "";
+		}
 	}
 }

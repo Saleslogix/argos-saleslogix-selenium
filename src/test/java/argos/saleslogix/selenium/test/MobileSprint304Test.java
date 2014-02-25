@@ -1,27 +1,27 @@
-/**
- * .
- */
 package argos.saleslogix.selenium.test;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * @author mllena
- *
+ * Test class that defines test methods for the SLX Mobile Defect (v3.04) fixes.
+ * 
+ * @author mike.llena@swiftpage.com
+ * @version	1.0
  */
 public class MobileSprint304Test extends BrowserSetup {
 
+	//Methods
+	//=======
+	/**
+	 * This method will return a String that represents the current KPI Card value which is the 1st section
+	 * of the full KPI Card value string. 
+	 * 
+	 * @param fullKPICardVal	KPI Card value
+	 */
 	public String getKPICardValue(String fullKPICardVal) {
 		
 		String[] segStrArray = fullKPICardVal.split("\n");
@@ -29,7 +29,35 @@ public class MobileSprint304Test extends BrowserSetup {
 
 		return cardValue;
 	}
+	
+	
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
 
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}
+	
+	
+	//Test Methods
+	//============
 	@Test(enabled = true)
 	public void test01_MobileDefect_MBL10191() throws InterruptedException {
 		//MBL-10191: Remove configure option
@@ -798,7 +826,6 @@ public class MobileSprint304Test extends BrowserSetup {
 		String methodID = "test13_MobileDefect_MBL10186";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 			
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -846,8 +873,8 @@ public class MobileSprint304Test extends BrowserSetup {
 		commNav.entityRecordOpenDetailView(entityType, searchItem);
 		
 		//Step: capture the phone number from the Contact Detail view
-		String cntctDetVwPhoneFldXPath = "//*[@id='contact_detail']/div[2]/ul[1]/li[1]/a/span";
-		String cntctDetVwPhoneNum = driver.findElement(By.xpath(acctDetVwPhoneFldXPath)).getText();
+		//String cntctDetVwPhoneFldXPath = "//*[@id='contact_detail']/div[2]/ul[1]/li[1]/a/span";
+		//String cntctDetVwPhoneNum = driver.findElement(By.xpath(acctDetVwPhoneFldXPath)).getText();
 		
 	    //Step: schedule an activity from an Account Detail view
 		entityDetailViewLink = "Schedule activity";
@@ -998,30 +1025,6 @@ public class MobileSprint304Test extends BrowserSetup {
 	    	    
 		//END
 	    commNav.clickGlobalMenuItem("My Activities");
-		System.out.println(ENDLINE);
-	}
-
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
 		System.out.println(ENDLINE);
 	}
 }

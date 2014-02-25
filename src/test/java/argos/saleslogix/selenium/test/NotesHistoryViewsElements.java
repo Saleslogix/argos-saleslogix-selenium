@@ -1,17 +1,17 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines WebElements and methods for Notes/History based tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class NotesHistoryViewsElements extends BrowserSetup {
 	
 	private WebDriver driver;
@@ -283,27 +283,31 @@ public class NotesHistoryViewsElements extends BrowserSetup {
 	
 	//Methods
 	//-------
+	/**
+	 * This method will return a String that represents the contents of the Notes/History list view. 
+	 * 
+	 * @param N/A
+	 * @throws InterruptedException, Exception 
+	 */
 	public String getNotesHistoryListViewTxt() {
 		String methodID = "getNotesHistoryListViewTxt";
 		
-		WebElement notesHistoryLisViewInfo = driver.findElement(By.xpath("//*[@id='history_list']/ul"));
-		
-		return notesHistoryLisViewInfo.getText();		
+		try {
+			WebElement notesHistoryLisViewInfo = driver.findElement(By.xpath("//*[@id='history_list']/ul"));
+			
+			return notesHistoryLisViewInfo.getText();
+		}
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+			return "";
+		}
 	}
 	
-	
-	public boolean NoRecordsFound() {
-		boolean result = false;
-		
-		return result;
-	}
-
 
 	/**
 	 * This method will add an auto-generated test Note record by filling-in the Note Edit input fields.
 	 * The Note will have a unique string appended to the Note Regarding field in order to ensure uniqueness.
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
+	 *
 	 * @param strRegarding	regarding value
 	 * @param strNotes	notes to identify the record
 	 * @param blnForLead	if true then for lead, false otherwise
@@ -315,7 +319,6 @@ public class NotesHistoryViewsElements extends BrowserSetup {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -355,21 +358,32 @@ public class NotesHistoryViewsElements extends BrowserSetup {
 	}
 
 
+	/**
+	 * This method will return a boolean value if a search for a specific Note record from the Notes/History 
+	 * list view.  
+	 * 
+	 * @param strNoteInfo	note info to search for
+	 * @throws InterruptedException, Exception 
+	 */
 	public boolean doSearchNote(String strNoteInfo) throws InterruptedException, Exception {
 		String methodID = "doSearchNote";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 			
 	    //Step: search for then click to open Opportunity record detail view
-		commNav.highlightNClick(commNav.entityListViewSearch("Notes/History", strNoteInfo));
+		try {
+			commNav.highlightNClick(commNav.entityListViewSearch("Notes/History", strNoteInfo));
 		
-		//Step: confirm Note record detail view is displayed
-		if (commNav.waitForNotPage("Notes/History")) {
-			return true;
+			//Step: confirm Note record detail view is displayed
+			if (commNav.waitForNotPage("Notes/History")) {
+				return true;
+			}
+			else {		
+				return false;
+			}
 		}
-		else {		
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
 			return false;
 		}
 	}

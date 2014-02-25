@@ -7,6 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.AssertJUnit;
 
+
+/**
+ * HeaderButton class defines WebElements and methods for the Mobile header buttons.  An instance of
+ * this class is almost often created and used in every test method.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class HeaderButton {
 
 	private WebDriver driver;
@@ -15,6 +23,8 @@ public class HeaderButton {
 		this.driver = driver;		
 	}
 		
+	//Web Elements
+	//============
 	//@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='toggleLeftDrawer']")
 	WebElement globalMenuButton;
@@ -50,31 +60,13 @@ public class HeaderButton {
 	//@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='back']")
 	WebElement backButton;
-		
-	public WebElement getSafeElement(By locator) throws InterruptedException {
-		int i = 0;
-		WebElement element = null;
-		while (i < 5) {
-			try {
-				element = driver.findElement(locator);
-				element.click();
-				break;
-			} catch (Exception e) {
-				Thread.sleep(1000);
-				element = driver.findElement(locator);
-				element.click();
-			}
-		}
-		return element;
-		}
 	
 	
 	/**
 	 * This method will click the header Global Menu button to display the Global Menu items.
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
+	 * 
 	 * @param	N/A
-	 * @exception InterruptedException
+	 * @throws InterruptedException
 	 */
 	public HeaderButton showGlobalMenu() throws InterruptedException {
 		String methodID = "showGlobalMenu";
@@ -91,13 +83,20 @@ public class HeaderButton {
 			AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='left_drawer']")).isDisplayed());
 			System.out.println("VP: Global Menu was accessed successfully on header button click.");
 		} catch (Error e) {     
-			System.out.println("Error: Global Menu failed to display on header button click.");
 			System.out.println(methodID + "(): " + e.toString());
+			System.out.println("Error: Global Menu failed to display on header button click.");
 		}
 		Thread.sleep(1000);
 		return this;
 	}
 	
+	
+	/**
+	 * This method will click the Right-Context Menu button from the header to display the context menu items.
+	 * 
+	 * @param	N/A
+	 * @throws InterruptedException
+	 */
 	public boolean showRightContextMenu() throws InterruptedException {
 		String methodID = "showRightContextMenu";
 		
@@ -116,6 +115,14 @@ public class HeaderButton {
 		}
 	}
 	
+	
+	/**
+	 * This method will force a navigation back to the previous page.  When this method is called, previously referenced
+	 * classes may need to be re-instantiated.
+	 * 
+	 * @param	N/A
+	 * @throws InterruptedException
+	 */
 	public HeaderButton goBack() throws InterruptedException {
 		String methodID = "goBack";
 		
@@ -149,53 +156,82 @@ public class HeaderButton {
 		return this;
 	}
 	
+	
+	/**
+	 * This method will click a specific named button from the header.
+	 * 
+	 * @param buttonName	name of the header button to click
+	 * @throws InterruptedException
+	 */
 	public HeaderButton clickHeaderButton(String buttonName) throws InterruptedException {
 		String methodID = "clickHeaderButton";
 		
-		Thread.sleep(1000);
-		switch (buttonName.toLowerCase()) {
-		case "global menu": case "global":
-			globalMenuButton.click();
-			break;
-		case "right context menu": case "right menu": case "right":
-			rightCntxtMnuButton.click();
-			break;
-		case "back": case "go back":
-			backButton.click();
-			break;
-		case "cancel":
-			cancelButton.click();
-			break;
-		case "add": case "add new": 
-			addButton.click();
-			break;
-		case "edit":
-			editButton.click();
-			break;
-		case "check": case "accept":
-			checkButton.click();
-			break;
-		case "delete":
-			deleteButton.click();
-			break;
-		case "save":
-			saveButton.click();
-			break;
+		try {
+			Thread.sleep(1000);
+			switch (buttonName.toLowerCase()) {
+			case "global menu": case "global":
+				globalMenuButton.click();
+				break;
+			case "right context menu": case "right menu": case "right":
+				rightCntxtMnuButton.click();
+				break;
+			case "back": case "go back":
+				backButton.click();
+				break;
+			case "cancel":
+				cancelButton.click();
+				break;
+			case "add": case "add new": 
+				addButton.click();
+				break;
+			case "edit":
+				editButton.click();
+				break;
+			case "check": case "accept":
+				checkButton.click();
+				break;
+			case "delete":
+				deleteButton.click();
+				break;
+			case "save":
+				saveButton.click();
+				break;
+			}
+			
+			System.out.println(methodID + ": header button - '" + buttonName + "' was clicked.");
+			Thread.sleep(1500);
 		}
-		
-		System.out.println(methodID + ": header button - '" + buttonName + "' was clicked.");
-		Thread.sleep(1500);
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+		}
 		return this;
 	}
 	
+	
+	/**
+	 * This method will conditionally close the Right-Context menu.  This method should be called after selecting
+	 * a context menu item and if the Right-Context menu fails to close after menu selection.
+	 * 
+	 * @param N/A
+	 * @throws InterruptedException
+	 */
 	public boolean closeRightContextMenu() throws InterruptedException {
 		String methodID = "closeRightContextMenu";
 				
 		//conditionally close the Right-Context menu...
-		if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
-			// Click Header Right-Context Menu button...
-			clickHeaderButton("right context menu");
+		try {
+			if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
+				// Click Header Right-Context Menu button...
+				clickHeaderButton("right context menu");
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
-		return true;
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+			return false;
+		}
 	}
 }

@@ -4,17 +4,49 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
-
 import argos.saleslogix.selenium.test.CommonNavigation;
 import argos.saleslogix.selenium.test.HeaderButton;
-import argos.saleslogix.selenium.test.SLXMobileLogin;
 import argos.saleslogix.selenium.test.BrowserSetup;
 
+
+/**
+ * Test class that defines WebElements and methods for SpeedSearch based tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class SpeedSearchTest extends BrowserSetup {
 	
-CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
+	
+	
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}
 
+	
+	//Test Methods
+	//============
 	@Test(enabled = true)
 	public void test01_SeTestTCSpeedSearchGeneral() throws Exception {
 		// SE Test: SETest-TC-SpeedSearch-General
@@ -713,35 +745,5 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 		System.out.println(ENDLINE);
 */
 	}
-
-
-
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-
-
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
-	
-  
   
 }

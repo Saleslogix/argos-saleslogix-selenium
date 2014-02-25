@@ -3,7 +3,6 @@ package argos.saleslogix.selenium.test;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +12,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
 
+
+/**
+ * SLXMobileLogin class defines members and methods for logging into the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class SLXMobileLogin {
 	
 	private WebDriver driver;
@@ -40,24 +46,51 @@ public class SLXMobileLogin {
 	WebElement loginButton;
 	
 	
+	/**
+	 * This method will clear then populate the user name field of the SLX Mobile Login screen.
+	 *
+	 * @param	userName	username to login as
+	 * @throws  InterruptedException
+	 */	
 	public SLXMobileLogin enterUserName(String userName) throws InterruptedException {
 		userNameTextbox.clear();
 		userNameTextbox.sendKeys(userName);
 		return this;
 	}
 	
+	
+	/**
+	 * This method will clear then populate the password field of the SLX Mobile Login screen.
+	 *
+	 * @param	password	password associated to the user name
+	 * @throws  InterruptedException
+	 */		
 	public SLXMobileLogin enterPassword(String password) {
 		passwordTextbox.clear();
 		passwordTextbox.sendKeys(password);
 		return this;
 	}
 	
+	
+	/**
+	 * This method will click the remember me toggle switch on the SLX Mobile Login screen.
+	 *
+	 * @param	N/A
+	 * @throws  InterruptedException
+	 */	
 	public SLXMobileLogin toggleRemember() throws InterruptedException {
 		rememberToggle.click();
 		Thread.sleep(1000);
 		return this;
 	}
 	
+	
+	/**
+	 * This method will click the Logon button on the SLX Mobile Login screen.
+	 *
+	 * @param	N/A
+	 * @throws  InterruptedException
+	 */	
 	public SLXMobileLogin logonButton() throws InterruptedException {
 		loginButton.click();
 		Thread.sleep(10000);
@@ -68,8 +101,7 @@ public class SLXMobileLogin {
 	/**
 	 * Assuming that the Mobile Client login page is displayed, this method will enter a username,
 	 * password and optionally check the Remember Me box then click the Login button.
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
+	 *
 	 * @param	userName	username to login as
 	 * @param	passWord	password of username to use for login
 	 * @param	rememberMe	if true, then the Remember Me check box will be checked; if false, then
@@ -115,6 +147,13 @@ public class SLXMobileLogin {
 		return true;
 	}
 	
+	
+	/**
+	 * The closeModal method will close any pop-up modal window that may be on-screen.  This method is primarily used
+	 * during the logoff process to handle any confirmation pop-ups.
+	 * 
+	 * @parameter N/A
+	 */
 	public void closeModal() {
 		Set<String> windowids = driver.getWindowHandles();
 		Iterator<String> iter= windowids.iterator();

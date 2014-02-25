@@ -1,19 +1,17 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
 
-import java.io.IOException;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
+/**
+ * Test class that defines WebElements and methods for Account entity based tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class ContactViewsElements extends BrowserSetup {
 	
 	private WebDriver driver;
@@ -25,7 +23,7 @@ public class ContactViewsElements extends BrowserSetup {
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
 	//List View elements
-	//------------------
+	//==================
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_6']/div/div[1]/input")
 	WebElement contactsSearchTxtBox;
@@ -396,10 +394,19 @@ public class ContactViewsElements extends BrowserSetup {
 	@FindBy(css = "#Mobile_SalesLogix_Fields_PicklistField_1 > button.button.simpleSubHeaderButton")
 	WebElement contactsEditViewCuisineInputFldBtn;
 	
+	
 	//Methods
-	//-------
+	//=======
+	/**
+	 * This method will return a String that represents the contents of the Contacts list view. 
+	 * list view.  
+	 * 
+	 * @param N/A
+	 * @throws InterruptedException, Exception 
+	 */
 	public String getContactsListViewTxt() {
 		String methodID = "getContactsListViewTxt";
+		
 		String listViewTxt = "";
 		
 		try {
@@ -413,149 +420,144 @@ public class ContactViewsElements extends BrowserSetup {
 		return listViewTxt;		
 	}
 	
-	
-	public boolean NoRecordsFound() {
-		boolean result = false;
+
+	/**
+	 * This method will add an auto-generated test Contact record by filling-in the Contact Edit input fields.
+	 * The Contact will have a unique string appended to the Last Name in order to ensure uniqueness.
+	 * 
+	 * @param strContactLastName	contact last name to set
+	 * @param strContactFirstName	contact first name to set
+	 * @param strContactAccount	account record to associate this contact with
+	 * @throws Exception 
+	 */
+	public void doAddRandTestContact(String strContactLastName, String strContactFirstName, String strContactAccount) throws Exception {
+		String methodID = "doAddRandTestContact";
 		
-		return result;
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+	    //Step: navigate to Contacts list view
+		commNav.clickGlobalMenuItem("Contacts");
+		
+		//Step: click the Add header button to enter Contact edit view
+		headerButton.clickHeaderButton("Add");
+		
+		//Step: setup new Contact field values
+		//setup name fields		
+		contactsEditViewNameInputFldBtn.click();
+		try {
+			//TEMP: disable Name Prefix selection in favor of direct input field value setting
+			commView.namePrefixInputFld.sendKeys("Mr.");
+			commView.nameFirstInputFld.sendKeys(strContactFirstName);
+			commView.nameMiddleInputFld.sendKeys("Neo");
+			commView.nameLastInputFld.sendKeys(strContactLastName);
+			//commView.nameSuffixInputFld.sendKeys("Sr.");
+			headerButton.clickHeaderButton("check");
+		}
+		catch (Exception e0) {
+			System.out.println(methodID + "(): " + e0.toString());
+			headerButton.goBack();
+		}
+		
+		//setup account field
+		contactsEditViewAccountInputFldBtn.click();
+			commNav.highlightNClick(commNav.entityListViewSelect("Accounts", strContactAccount));
+		
+		//conditionaly setup web field
+		Thread.sleep(2000);
+		if (commNav.isFieldValueEmpty("Web", contactsEditViewWebInputFld)) {
+			contactsEditViewWebInputFld.sendKeys("www.saleslogix.com");
+		}
+		
+		//conditionally setup phone field
+		if (commNav.isFieldValueEmpty("Phone", contactsEditViewPhoneInputFld)) {
+			contactsEditViewPhoneInputFld.sendKeys("888-867-5309");
+		}
+		
+		//setup email field
+		contactsEditViewEmailInputFld.sendKeys("theone@boguscompany.com");
+		
+		//setup title field
+		contactsEditViewTitleInputFld.sendKeys("Principal");
+		
+		//conditionally setup address fields
+		if (contactsEditViewAddressInputFld.getText().equals("")) {
+			contactsEditViewAddressInputFldBtn.click();
+			try {
+			//TEMP disable selection views (doesn't work on Jenkins server)				
+			commView.addressPrimaryTgl.click();
+			commView.addressShippingTgl.click();
+			commView.addressLine1.sendKeys("8800 Mobile St.");
+			commView.addressLine2.sendKeys("Corporate Campus");
+			commView.addressLine3.sendKeys("Suite 100");
+			commView.addressCityInputFld.sendKeys("Phoenix");				
+			commView.addressStateInputFld.sendKeys("AZ");				
+			commView.addressPostalInputFld.sendKeys("85048");
+			commView.addressCountryInputFld.sendKeys("USA");				
+			commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
+			headerButton.clickHeaderButton("check");
+			}
+			catch (Exception e1) {
+				System.out.println(methodID + "(): " + e1.toString());
+				headerButton.goBack();
+			}
+		}				
+		
+		//setup home phone field
+		contactsEditViewHomePhoneInputFld.sendKeys("(480)-867-5309");
+		
+		//setup mobile field
+		contactsEditViewMobileInputFld.sendKeys("(602)-867-5309");
+
+		//setup fax field
+		contactsEditViewFaxInputFld.sendKeys("(866)-867-5309");
+		
+		//conditionally setup acct mgr field
+		if (commNav.isFieldValueEmpty("Acct Mgr", contactsEditViewAcctMgrInputFld)) {
+			contactsEditViewAcctMgrInputFldBtn.click();
+			commNav.highlightNClick(commNav.entityListViewSearch("Users", "Hogan"));				
+		}
+		
+		//conditionally setup owner field
+		if (commNav.isFieldValueEmpty("Owner", contactsEditViewOwnerInputFld)) {
+			//TEMP disable - doesn't work for Trinity DB
+			contactsEditViewOwnerInputFld.sendKeys("Midwest");
+		}
+		
+		//setup cuisine field
+		contactsEditViewCuisineInputFldBtn.click();
+			commView.selectFieldValListItem("Cuisine", "Chinese");
+			headerButton.clickHeaderButton("check");
+		
+		//Step: save the new Contact field values
+		commNav.waitForPage("Contact");
+		headerButton.clickHeaderButton("save");
+		commNav.waitForNotPage("Contact");
+		
+		System.out.println(methodID + ": Auto-test Contact - " +  strContactLastName + ", " + strContactLastName + " record was created under the '" + strContactAccount + "' Account.");
 	}
 
 
-	//Methods
-		//=======
-		/**
-		 * This method will add an auto-generated test Contact record by filling-in the Contact Edit input fields.
-		 * The Contact will have a unique string appended to the Last Name in order to ensure uniqueness.
-		 * @author	mike.llena@swiftpage.com
-		 * @version	1.0
-		 * @param	strContactLastName	contact last name to set
-		 * @param	strContactFirstName	contact first name to set
-		 * @param	strContactAccount	account record to associate this contact with
-		 * @throws Exception 
-		 */
-		public void doAddRandTestContact(String strContactLastName, String strContactFirstName, String strContactAccount) throws Exception {
-			String methodID = "doAddRandTestContact";
+	/**
+	 * This method will return a boolean value if a search for a specific Contact record from the Contacts 
+	 * list view.  
+	 * 
+	 * @param strContactName	contact name to search for
+	 * @throws InterruptedException, Exception 
+	 */
+	public boolean doSearchContact(String strContactName) throws InterruptedException, Exception {
+		String methodID = "doSearchContact";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 			
-			CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-			HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-			CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
-			
-			System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-			
-		    //Step: navigate to Contacts list view
-			commNav.clickGlobalMenuItem("Contacts");
-			
-			//Step: click the Add header button to enter Contact edit view
-			headerButton.clickHeaderButton("Add");
-			
-			//Step: setup new Contact field values
-			//setup name fields		
-			contactsEditViewNameInputFldBtn.click();
-			try {
-				//TEMP: disable Name Prefix selection in favor of direct input field value setting
-				commView.namePrefixInputFld.sendKeys("Mr.");
-				commView.nameFirstInputFld.sendKeys(strContactFirstName);
-				commView.nameMiddleInputFld.sendKeys("Neo");
-				commView.nameLastInputFld.sendKeys(strContactLastName);
-				//commView.nameSuffixInputFld.sendKeys("Sr.");
-				headerButton.clickHeaderButton("check");
-			}
-			catch (Exception e0) {
-				System.out.println(methodID + "(): " + e0.toString());
-				headerButton.goBack();
-			}
-			
-			//setup account field
-			contactsEditViewAccountInputFldBtn.click();
-				commNav.highlightNClick(commNav.entityListViewSelect("Accounts", strContactAccount));
-			
-			//conditionaly setup web field
-			Thread.sleep(2000);
-			if (commNav.isFieldValueEmpty("Web", contactsEditViewWebInputFld)) {
-				contactsEditViewWebInputFld.sendKeys("www.saleslogix.com");
-			}
-			
-			//conditionally setup phone field
-			if (commNav.isFieldValueEmpty("Phone", contactsEditViewPhoneInputFld)) {
-				contactsEditViewPhoneInputFld.sendKeys("888-867-5309");
-			}
-			
-			//setup email field
-			contactsEditViewEmailInputFld.sendKeys("theone@boguscompany.com");
-			
-			//setup title field
-			contactsEditViewTitleInputFld.sendKeys("Principal");
-			
-			//conditionally setup address fields
-			if (contactsEditViewAddressInputFld.getText().equals("")) {
-				contactsEditViewAddressInputFldBtn.click();
-				try {
-				//TEMP disable selection views (doesn't work on Jenkins server)				
-				commView.addressPrimaryTgl.click();
-				commView.addressShippingTgl.click();
-				commView.addressLine1.sendKeys("8800 Mobile St.");
-				commView.addressLine2.sendKeys("Corporate Campus");
-				commView.addressLine3.sendKeys("Suite 100");
-				commView.addressCityInputFld.sendKeys("Phoenix");				
-				commView.addressStateInputFld.sendKeys("AZ");				
-				commView.addressPostalInputFld.sendKeys("85048");
-				commView.addressCountryInputFld.sendKeys("USA");				
-				commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
-				headerButton.clickHeaderButton("check");
-				}
-				catch (Exception e1) {
-					System.out.println(methodID + "(): " + e1.toString());
-					headerButton.goBack();
-				}
-			}				
-			
-			//setup home phone field
-			contactsEditViewHomePhoneInputFld.sendKeys("(480)-867-5309");
-			
-			//setup mobile field
-			contactsEditViewMobileInputFld.sendKeys("(602)-867-5309");
-
-			//setup fax field
-			contactsEditViewFaxInputFld.sendKeys("(866)-867-5309");
-			
-			//conditionally setup acct mgr field
-			if (commNav.isFieldValueEmpty("Acct Mgr", contactsEditViewAcctMgrInputFld)) {
-				contactsEditViewAcctMgrInputFldBtn.click();
-				commNav.highlightNClick(commNav.entityListViewSearch("Users", "Hogan"));				
-			}
-			
-			//conditionally setup owner field
-			if (commNav.isFieldValueEmpty("Owner", contactsEditViewOwnerInputFld)) {
-				//TEMP disable - doesn't work for Trinity DB
-				contactsEditViewOwnerInputFld.sendKeys("Midwest");
-			}
-			
-			//setup cuisine field
-			contactsEditViewCuisineInputFldBtn.click();
-				commView.selectFieldValListItem("Cuisine", "Chinese");
-				headerButton.clickHeaderButton("check");
-			
-			//Step: save the new Contact field values
-			commNav.waitForPage("Contact");
-			headerButton.clickHeaderButton("save");
-			commNav.waitForNotPage("Contact");
-			
-			System.out.println(methodID + ": Auto-test Contact - " +  strContactLastName + ", " + strContactLastName + " record was created under the '" + strContactAccount + "' Account.");
-		}
-
-
-		//TODO: finish doSearchAccount() method
-		public boolean doSearchContact(String strContactName) throws InterruptedException, Exception {
-			String methodID = "doSearchContact";
-			
-			CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-			HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-			CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
-				
-		    //Step: search for then click to open Contact record detail view
+	    //Step: search for then click to open Contact record detail view
+		try {
 			commNav.highlightNClick(commNav.entityListViewSearch("Contacts", strContactName));
 			
-			//Step: confirm Account record detail view is displayed
+			//Step: confirm Contact record detail view is displayed
 			if (commNav.waitForNotPage("Contacts")) {
 				return true;
 			}
@@ -563,4 +565,9 @@ public class ContactViewsElements extends BrowserSetup {
 				return false;
 			}
 		}
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
+			return false;
+		}
+	}
 }

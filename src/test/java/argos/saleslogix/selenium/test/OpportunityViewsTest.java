@@ -1,24 +1,18 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * @author mllena
- * Class: AccountEntityViewsTest
- * Desc.: Test class for the Opportunity entity views
+ * Test class that defines test methods for the Opportunity entity views on the Mobile Client.
+ * *
+ * @author mike.llena@swiftpage.com
+ * @version	1.0
  */
 public class OpportunityViewsTest extends BrowserSetup {
 	

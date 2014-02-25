@@ -1,17 +1,17 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines WebElements and methods for Lead entity based tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class LeadViewsElements extends BrowserSetup {
 	
 	private WebDriver driver;
@@ -83,7 +83,6 @@ public class LeadViewsElements extends BrowserSetup {
 	@FindBy(xpath = "//*[@id='lead_list_search-expression']/div")
 	WebElement leadsListView1stHashTagFilter;
 
-	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_list']/ul/li[1]")
 	WebElement topLeadsListItem;
@@ -411,6 +410,13 @@ public class LeadViewsElements extends BrowserSetup {
 	
 		
 	//Methods
+	//=======
+	/**
+	 * This method will return a String that represents the contents of the Leads list view. 
+	 * 
+	 * @param N/A
+	 * @throws InterruptedException, Exception 
+	 */
 	public String getLeadsListViewTxt() {
 		String methodID = "getLeadsListViewTxt";
 		String listViewTxt = "";
@@ -425,20 +431,12 @@ public class LeadViewsElements extends BrowserSetup {
 		
 		return listViewTxt;		
 	}
-	
-	
-	public boolean NoRecordsFound() {
-		boolean result = false;
-		
-		return result;
-	}
 
 	
 	/**
 	 * This method will add an auto-generated test Lead record by filling-in the Lead Edit input fields.
 	 * The Lead will have a unique string appended to the Last Name in order to ensure uniqueness.
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
+	 * 
 	 * @param	strLeadLastName	lead last name to set
 	 * @param	strLeadFirstName	lead first name to set
 	 * @param	strLeadCompany	company name for lead
@@ -556,21 +554,32 @@ public class LeadViewsElements extends BrowserSetup {
 	}
 
 
+	/**
+	 * This method will return a boolean value if a search for a specific Lead record from the Leads 
+	 * list view.  
+	 * 
+	 * @param strLeadName	lead name to search for
+	 * @throws InterruptedException, Exception 
+	 */
 	public boolean doSearchLead(String strLeadName) throws InterruptedException, Exception {
 		String methodID = "doSearchLead";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 			
 	    //Step: search for then click to open Lead record detail view
-		commNav.highlightNClick(commNav.entityListViewSearch("Leads", strLeadName));
-		
-		//Step: confirm Lead record detail view is displayed
-		if (commNav.waitForNotPage("Leads")) {
-			return true;
+		try {
+			commNav.highlightNClick(commNav.entityListViewSearch("Leads", strLeadName));
+			
+			//Step: confirm Lead record detail view is displayed
+			if (commNav.waitForNotPage("Leads")) {
+				return true;
+			}
+			else {		
+				return false;
+			}
 		}
-		else {		
+		catch (Exception e) {
+			System.out.println(methodID + ": " + e.toString());
 			return false;
 		}
 	}

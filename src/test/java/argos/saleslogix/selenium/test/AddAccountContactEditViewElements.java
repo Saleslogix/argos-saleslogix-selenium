@@ -1,19 +1,18 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import java.io.IOException;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines WebElements and methods for the Add Account/Contact based tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class AddAccountContactEditViewElements extends BrowserSetup {
 	
 	private WebDriver driver;
@@ -25,7 +24,7 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 	
 	//WebElements
-	//-----------
+	//===========
 	//Contact/Account Info section
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='add_account_contact']")
@@ -157,8 +156,17 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_1']/button")
 	WebElement addAcctCntctAcctAddressInputBtn;
 	
+	
 	//Methods
-	//-------
+	//=======
+	/**
+	 * This method will add both an Account and Contact from the Add Account/Contact view.  In exception to the
+	 * Account and Contact name, all other input fields are pre-set to hard-coded test values.  
+	 * 
+	 * @param strNewName	Contact name (last) field value
+	 * @param strNewAccount		Account name field value
+	 * @throws InterruptedException, IOException
+	 */
 	public void doAddRandAccountContact(String strNewName, String strNewAccount) throws InterruptedException, IOException {
 		String methodID = "doAddRandAccountContact";
 		
@@ -168,7 +176,7 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-	    //Step: navigate to Accounts list view
+	    //Step: navigate to Add Account/Contact detail view
 		commNav.clickGlobalMenuItem("Add Account/Contact");
 		
 		try {
@@ -271,6 +279,14 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	}
 
 
+	/**
+	 * This method will add an Account from the Add Account/Contact view.  In exception to the
+	 * Contact name and associated Account, all other input fields are pre-set to hard-coded test values.  
+	 * 
+	 * @param strNewName	Contact name (last) field value
+	 * @param strNewAccount		associated Account name field value
+	 * @throws InterruptedException, IOException
+	 */
 	public void doAddRandAccountOnly(String strNewName, String strNewAccount) throws InterruptedException, IOException {
 		String methodID = "doAddRandAccountOnly";
 		
@@ -280,7 +296,7 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-	    //Step: navigate to Accounts list view
+	    //Step: navigate to Add Account/Contact detail view
 		commNav.clickGlobalMenuItem("Add Account/Contact");
 		
 		try {
@@ -368,6 +384,14 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 	}
 
 
+	/**
+	 * This method will add an Contact from the Add Account/Contact view.  In exception to the
+	 * Contact name and associated Account, all other input fields are pre-set to hard-coded test values.  
+	 * 
+	 * @param strNewName	Contact name (last) field value
+	 * @param strNewAccount		associated Account name field value
+	 * @throws InterruptedException, IOException
+	 */
 	public void doAddRandContactOnly(String strNewName, String strNewAccount) throws InterruptedException, IOException {
 		String methodID = "doAddRandContactOnly";
 		
@@ -377,7 +401,7 @@ public class AddAccountContactEditViewElements extends BrowserSetup {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-	    //Step: navigate to Accounts list view
+	    //Step: navigate to Add Account/Contact detail view
 		commNav.clickGlobalMenuItem("Add Account/Contact");
 		
 		try {

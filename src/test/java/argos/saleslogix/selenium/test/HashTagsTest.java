@@ -1,19 +1,30 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines test methods for the HashTags tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class HashTagsTest extends BrowserSetup {
 	
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-
+	
+	//Method Set
+	//==========
+	/**
+	 * This is a helper method for the Accounts-based Hash Tags test methods.
+	 * 
+	 * @param hashTagName	name of hash tag to test
+	 * @param searchVal		test value to search for
+	 * @throws Exception
+	 */
 	public void accountHashTagSelectNSearchCheck(String hashTagName, String searchVal) throws Exception {
 		String methodID = "accountHashTagSelectNSearchCheck";
 		
@@ -87,6 +98,13 @@ public class HashTagsTest extends BrowserSetup {
 	}
 
 	
+	/**
+	 * This is a helper method for the Contacts-based Hash Tags test methods.
+	 * 
+	 * @param hashTagName	name of hash tag to test
+	 * @param searchVal		test value to search for
+	 * @throws Exception
+	 */
 	public void contactHashTagSelectNSearchCheck(String hashTagName, String searchVal) throws Exception {
 		String methodID = "contactHashTagSelectNSearchCheck";
 		
@@ -161,6 +179,13 @@ public class HashTagsTest extends BrowserSetup {
 	}
 	
 	
+	/**
+	 * This is a helper method for the Leads-based Hash Tags test methods.
+	 * 
+	 * @param hashTagName	name of hash tag to test
+	 * @param searchVal		test value to search for
+	 * @throws Exception
+	 */
 	public void leadHashTagSelectNSearchCheck(String hashTagName, String searchVal) throws Exception {
 		String methodID = "leadHashTagSelectNSearchCheck";
 		
@@ -234,7 +259,14 @@ public class HashTagsTest extends BrowserSetup {
 		}
 	}
 
-		
+	
+	/**
+	 * This is a helper method for the NotesHistory-based Hash Tags test methods.
+	 * 
+	 * @param hashTagName	name of hash tag to test
+	 * @param searchVal		test value to search for
+	 * @throws Exception
+	 */
 	public void notesHistoryHashTagSelectNSearchCheck(String hashTagName, String searchVal) throws Exception {
 		String methodID = "notesHistoryHashTagSelectNSearchCheck";
 		
@@ -308,6 +340,13 @@ public class HashTagsTest extends BrowserSetup {
 	}
 
 	
+	/**
+	 * This is a helper method for the Opportunity-based Hash Tags test methods.
+	 * 
+	 * @param hashTagName	name of hash tag to test
+	 * @param searchVal		test value to search for
+	 * @throws Exception
+	 */
 	public void opportunityHashTagSelectNSearchCheck(String hashTagName, String searchVal) throws Exception {
 		String methodID = "opportunityHashTagSelectNSearchCheck";
 		
@@ -381,6 +420,11 @@ public class HashTagsTest extends BrowserSetup {
 	}
 
 	
+	/**
+	 * This is a general helper method for the Hash Tags test methods.
+	 * 
+	 * @param N/A
+	 */
 	public void prepHashTagsSubPanel() {
 		String methodID = "prepHashTagsSubPanel";
 		
@@ -402,8 +446,32 @@ public class HashTagsTest extends BrowserSetup {
 			}
 		}
 	}
-
 	
+
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
+
+
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}	
 	
 	//Test Methods
 	//============
@@ -2854,32 +2922,5 @@ public class HashTagsTest extends BrowserSetup {
 		System.out.println(" ");
 				
 		System.out.println(ENDLINE);
-	}
-
-
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
-	
+	}	
 }

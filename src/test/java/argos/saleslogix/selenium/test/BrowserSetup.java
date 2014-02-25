@@ -33,7 +33,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
-import com.google.common.io.Files;
 
 /**
  * BrowserSetup class defines the most basic properties and methods that are necessary for all Mobile Client 
@@ -66,7 +65,7 @@ public class BrowserSetup {
 	 * This method will launch the test browser (default - FireFox) before any Mobile Client tests are run.
 	 * Test properties specified in the app.properties file are read and used to setup global test variables. 
 	 * 
-	 * @version	1.0
+
 	 * @param	browser		identifier of browser app to launch; specify: 'chrome' for Chrome, 'ff' for FireFox, other values specify IE
 	 * @throws InterruptedException 
 	 */
@@ -132,8 +131,8 @@ public class BrowserSetup {
 	/**
 	 * This method will generate test result reports and screen shots under the \test-output project folder.
 	 * 
-	 * @version	1.0
 	 * @param	result		test results object
+	 * @throws IOException
 	 */
 	@AfterMethod
 	public void checkVP(ITestResult result) throws IOException {
@@ -155,7 +154,6 @@ public class BrowserSetup {
 	/**
 	 * This method will return a boolean value that indicates if a specific WebElement is present. 
 	 * 
-	 * @version	1.0
 	 * @param	by		element locator
 	 */
 	protected boolean isElementPresent(By by) {
@@ -171,9 +169,8 @@ public class BrowserSetup {
 	/**
 	 * This method will return a boolean value that indicates if an Alert is present. 
 	 * 
-	 * @version	1.0
 	 */
-	private boolean isAlertPresent() {
+	protected boolean isAlertPresent() {
 	    try {
 	      driver.switchTo().alert();
 	      return true;
@@ -186,7 +183,6 @@ public class BrowserSetup {
 	/**
 	 * This method will capture an expected Alert and return the Alert text in a string.
 	 * 
-	 * @version	1.0
 	 */
 	public String closeAlertAndGetItsText() {
 	    try {
@@ -207,7 +203,6 @@ public class BrowserSetup {
 	/**
 	 * This method will capture and close an expected Alert.
 	 * 
-	 * @version	1.0
 	 */
 	public String closeAlert() {
 		try {
@@ -224,7 +219,6 @@ public class BrowserSetup {
 	/**
 	 * This method will close an on-screen modal dialog/window.
 	 * 
-	 * @version	1.0
 	 */
 	public void closeModal() {
 		Set<String> windowids = driver.getWindowHandles();
@@ -240,10 +234,9 @@ public class BrowserSetup {
 	 * specified in the input parameters.  This method can be used if a scenario requires a different user
 	 * login session.
 	 * 
-	 * @author mllena
-	 * @version	1.0
 	 * @param userName		SLX username
 	 * @param passWord		password of SLX username
+	 * @throws InterruptedException
 	 */
 	public void LogOutThenLogBackIn(String userName, String passWord) throws InterruptedException {
 		String methodID = "LogOutThenLogBackIn";
@@ -269,8 +262,6 @@ public class BrowserSetup {
 	/**
 	 * This method will close and quit the WebDriver.
 	 * 
-	 * @author mllena
-	 * @version	1.0
 	 */
 	@AfterClass
 	public void closeBrowser() {
@@ -282,8 +273,6 @@ public class BrowserSetup {
 	/**
 	 * This method will copy the test report to a specific folder.
 	 * 
-	 * @author mllena
-	 * @version	1.0
 	 */
 	@AfterSuite
 	public void copyReport() {
@@ -305,7 +294,7 @@ public class BrowserSetup {
 	 * are defined in the app.properties file. After the verification check, this method will perform an login using the username an password members 
 	 * defined in the BrowserSetup class.
 	 * 
-	 * @version	1.0
+	 * @throws InterruptedException
 	 */	
 	public void doVerificationLogin() throws InterruptedException {
 		String methodID = "doVerificationLogin";
@@ -358,7 +347,8 @@ public class BrowserSetup {
 			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 		try {
-			AssertJUnit.assertEquals(versionLabel, driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText());
+			String actualVersionLbl = driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText();
+			AssertJUnit.assertEquals(versionLabel, actualVersionLbl);
 			System.out.println("VP: Version Label check - Passed");
 		} 
 		catch (Error e) {
@@ -389,7 +379,7 @@ public class BrowserSetup {
 	 * SLX Mobile Client Logoff page is performed.  The verification values are defined in the app.properties 
 	 * file.
 	 * 
-	 * @version	1.0
+	 * @throws InterruptedException
 	 */	
 	public void doVerificationLogout() throws InterruptedException {
 		String methodID = "doVerificationLogout";

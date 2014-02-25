@@ -3,17 +3,27 @@ package argos.saleslogix.selenium.test;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines test methods for the GlobalMenuNavigation tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class GlobalMenuNavigationTest extends BrowserSetup {
 
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
+	//Methods Set
+	//===========
+	/**
+	 * This method will log a message if the Global Menu is visible or not.
+	 * 
+	 * @param resultMsg  input message for logging
+	 */
 	public void checkGlobalMenuStatus(String resultMsg) {
 		String methodID = "checkGlobalMenuStatus";
 		
@@ -28,6 +38,32 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    }
 	}
 
+	
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
+
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}
+	
+	
 	@Test (enabled = true)
 	public void test01_SeTestTCGlobalMenuAddAccountContactScreens() throws Exception {
 		// SE Test: SETest-GlobalMenu-AddAccountContact_Screens
@@ -2828,32 +2864,5 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 	    }	
 	    // -- END
 	    System.out.println(ENDLINE);
-	  }
-
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
-
-
-  
+	  }  
 }

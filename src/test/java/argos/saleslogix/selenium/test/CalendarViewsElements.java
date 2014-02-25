@@ -1,17 +1,16 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-//TODO: partially completed; need to finalize
+
+//TODO: incomplete; need to finalize when needed for a requested test
+/**
+ * Test class that defines WebElements and methods for the Calendar view based tests against the SLX Mobile Client.
+ * 
+ * @author	mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class CalendarViewsElements extends BrowserSetup {
 	
 	private WebDriver driver;

@@ -1,26 +1,47 @@
-/**
- * 
- */
 package argos.saleslogix.selenium.test;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
-import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * @author mllena
- *
+ * Test class that defines test methods for the SLX Mobile Defect (pre-v2.3) fixes.
+ * 
+ * @author mike.llena@swiftpage.com
+ * @version	1.0
  */
 public class MobileDefectTest extends BrowserSetup {
+	
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
+
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}
+	
 
 	//Test Methods		
 	//============
@@ -2360,30 +2381,6 @@ public class MobileDefectTest extends BrowserSetup {
 		}		
 		
 		// End Tests
-		System.out.println(ENDLINE);
-	}
-
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
 		System.out.println(ENDLINE);
 	}
 }
