@@ -1,7 +1,10 @@
 chromedriver.log
-*.class
+**/*.class
 *.jar
 *.war
 *.ear
 *.png
 target/**
+.idea/workspace.xml
+.idea/tasks.xml
+*.iws
