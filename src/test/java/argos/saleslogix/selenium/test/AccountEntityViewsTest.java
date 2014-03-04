@@ -521,7 +521,7 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		//Step: go back to previous screen
 		headerButton.goBack();
 		Thread.sleep(3000);
-		
+
 		System.out.println(ENDLINE);
 	}
 

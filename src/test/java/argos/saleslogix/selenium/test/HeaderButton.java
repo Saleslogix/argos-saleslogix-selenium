@@ -5,7 +5,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
+import sun.org.mozilla.javascript.internal.ast.ConditionalExpression;
 
 public class HeaderButton {
 
@@ -71,9 +74,7 @@ public class HeaderButton {
 	
 	/**
 	 * This method will click the header Global Menu button to display the Global Menu items.
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
-	 * @param	N/A
+
 	 * @exception InterruptedException
 	 */
 	public HeaderButton showGlobalMenu() throws InterruptedException {
@@ -151,7 +152,7 @@ public class HeaderButton {
 	
 	public HeaderButton clickHeaderButton(String buttonName) throws InterruptedException {
 		String methodID = "clickHeaderButton";
-		
+
 		Thread.sleep(1000);
 		switch (buttonName.toLowerCase()) {
 		case "global menu": case "global":

@@ -11,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
 
 public class SLXMobileLogin {
@@ -54,13 +56,11 @@ public class SLXMobileLogin {
 	
 	public SLXMobileLogin toggleRemember() throws InterruptedException {
 		rememberToggle.click();
-		Thread.sleep(1000);
 		return this;
 	}
 	
 	public SLXMobileLogin logonButton() throws InterruptedException {
 		loginButton.click();
-		Thread.sleep(10000);
 		return this;
 	}
 
@@ -82,12 +82,10 @@ public class SLXMobileLogin {
 		
 		//Setp: enter username
 		enterUserName(userName);
-		Thread.sleep(1000);
-		
+
 		//Step: enter password
 		enterPassword(passWord);
-		Thread.sleep(1000);
-		
+
 		//Step: conditionally set the remember option
 		if (rememberMe) {
 			toggleRemember();
@@ -95,12 +93,11 @@ public class SLXMobileLogin {
 		
 		//Step: click the Log On button
 		logonButton();
-		Thread.sleep(5000);		
- 		
 		System.out.println(methodID + ": username = " + userName + ", password = " + passWord + ", remember? = " + rememberMe);
 
 		// VP: confirm that the 'My Activities' screen displays after login
-		Thread.sleep(3000);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='myactivity_list']")));
 		try {
 			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
 			System.out.println("VP: Successfully logged in to Mobile Client.");

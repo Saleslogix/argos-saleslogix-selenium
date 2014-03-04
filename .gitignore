@@ -9,3 +9,5 @@ target/**
 .idea/tasks.xml
 *.iws
 docs/**
+.idea/dictionaries/
+.idea/uiDesigner.xml

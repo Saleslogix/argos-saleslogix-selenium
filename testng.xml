@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SLX8Mobile2x Full-Test Suite" verbose="3" parallel="classes">
+<suite name="SLXMobile Full-Test Suite" verbose="3" parallel="false">
+    <test name="Chrome Tests" preserve-order="true">
+        <parameter name="browser" value="cr"></parameter>
+        <classes>
+            <class name="argos.saleslogix.selenium.test.AccountEntityViewsTest" />
+        </classes>
+    </test>
 
-	<test name="MobileSprint233 Tests - FF">
+	<test name="FireFox Tests" preserve-order="true">
   		<parameter name="browser" value="ff"></parameter>
-    		<classes>
-      			<class name="argos.saleslogix.selenium.test.MobileSprint233Test"/>
-    		</classes>
-  	</test> <!-- Default test -->
-    
+        <classes>
+            <class name="argos.saleslogix.selenium.test.AccountEntityViewsTest" />
+        </classes>
+  	</test>
+
+    <test name="IE Tests" preserve-order="true">
+        <parameter name="browser" value="ie"></parameter>
+        <classes>
+            <class name="argos.saleslogix.selenium.test.AccountEntityViewsTest" />
+        </classes>
+    </test>
 </suite>
