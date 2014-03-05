@@ -15,7 +15,7 @@ import org.openqa.selenium.support.PageFactory;
  * Class: MyAttachmentsViewsTest
  * Desc.: Test class for the My Attachments views
  */
-public class MyAttachmentsViewsTest extends BrowserSetup {
+public class MyAttachmentsViewsTest extends BaseTest {
 	
 	//Test Methods Set
 	//================

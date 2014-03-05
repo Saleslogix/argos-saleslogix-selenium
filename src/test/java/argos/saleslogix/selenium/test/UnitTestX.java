@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import argos.saleslogix.selenium.SLXMobileLogin;
 
-public class UnitTestX extends BrowserSetup {
+public class UnitTestX extends BaseTest {
 	
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 

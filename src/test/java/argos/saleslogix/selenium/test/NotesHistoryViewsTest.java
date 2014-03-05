@@ -20,7 +20,7 @@ import org.openqa.selenium.support.PageFactory;
  * Class: NotesHistoryViewsTest
  * Desc.: Test class for the Notes/History views
  */
-public class NotesHistoryViewsTest extends BrowserSetup {
+public class NotesHistoryViewsTest extends BaseTest {
 	
 	public String TEST_NOTE_RECORD = "Research the prospect";
 	

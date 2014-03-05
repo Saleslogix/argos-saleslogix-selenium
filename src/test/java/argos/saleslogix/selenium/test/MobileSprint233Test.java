@@ -17,7 +17,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author mllena
  *
  */
-public class MobileSprint233Test extends BrowserSetup {
+public class MobileSprint233Test extends BaseTest {
 
 	public String getKPICardValue(String fullKPICardVal) {
 		

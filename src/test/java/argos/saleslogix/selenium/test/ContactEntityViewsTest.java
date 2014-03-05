@@ -15,7 +15,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class ContactEntityViewsTest extends BrowserSetup {
+public class ContactEntityViewsTest extends BaseTest {
 	
 	public String TEST_CONTACT_RECORD = "Barbosa, Angelo";
 	

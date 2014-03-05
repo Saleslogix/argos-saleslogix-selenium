@@ -24,13 +24,10 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * BrowserSetup class defines the most basic properties and methods that are necessary for all Mobile Client
+ * BaseTest class defines the most basic properties and methods that are necessary for all Mobile Client
  * test classes.  All test classes are required to extend this class.
- *
- * @author mike.llena@swiftpage.com
- * @version 1.0
  */
-public class BrowserSetup {
+public class BaseTest {
 
     public WebDriver driver;
     public String browsername = "";
@@ -50,10 +47,10 @@ public class BrowserSetup {
     protected StringBuffer verificationErrors = new StringBuffer();
     private boolean acceptNextAlert = true;
 
-    public BrowserSetup() {
+    public BaseTest() {
     }
 
-    public BrowserSetup(String browser) {
+    public BaseTest(String browser) {
     }
     /**
      * @param browser identifier of browser app to launch; specify: 'cr' for Chrome, 'ff' for Firefox, 'ie' for Internet Explorer, 'sf' for Safari
@@ -298,7 +295,7 @@ public class BrowserSetup {
     /**
      * This method perform a verification check on the SLX Mobile Client Login page.  The verification values
      * are defined in the app.properties file. After the verification check, this method will perform an login using the username an password members
-     * defined in the BrowserSetup class.
+     * defined in the BaseTest class.
      */
     public void doVerificationLogin() throws InterruptedException {
         String methodID = "doVerificationLogin";

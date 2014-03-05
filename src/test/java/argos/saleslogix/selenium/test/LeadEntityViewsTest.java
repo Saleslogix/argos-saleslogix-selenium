@@ -16,7 +16,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class LeadEntityViewsTest extends BrowserSetup {
+public class LeadEntityViewsTest extends BaseTest {
 	
 	public String TEST_LEAD_RECORD = "Adams, Adelaide";
 	

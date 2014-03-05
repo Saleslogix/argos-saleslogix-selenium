@@ -7,7 +7,7 @@ import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
-public class SpeedSearchTest extends BrowserSetup {
+public class SpeedSearchTest extends BaseTest {
 	
 CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 

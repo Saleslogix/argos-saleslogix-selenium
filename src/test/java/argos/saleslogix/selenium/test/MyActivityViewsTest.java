@@ -15,7 +15,7 @@ import org.openqa.selenium.support.PageFactory;
  * Class: AccountEntityViewsTest
  * Desc.: Test class for the Account entity views
  */
-public class MyActivityViewsTest extends BrowserSetup {
+public class MyActivityViewsTest extends BaseTest {
 	
 	//Test Methods Set
 	//================

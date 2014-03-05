@@ -24,7 +24,7 @@ Capabilities [{platform=WINDOWS, elementScrollBehavior=0, javascriptEnabled=true
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
 	at org.openqa.selenium.ie.InternetExplorerDriver.getScreenshotAs(InternetExplorerDriver.java:88)
-	at argos.saleslogix.selenium.test.BrowserSetup.checkVP(BrowserSetup.java:96)
+	at argos.saleslogix.selenium.test.BaseTest.checkVP(BrowserSetup.java:96)
 	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)

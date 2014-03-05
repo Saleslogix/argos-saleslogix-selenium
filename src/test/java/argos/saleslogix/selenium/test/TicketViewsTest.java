@@ -17,7 +17,7 @@ import org.openqa.selenium.support.PageFactory;
  * Class: TicketViewsTest
  * Desc.: Test class for the Ticket record views
  */
-public class TicketViewsTest extends BrowserSetup {
+public class TicketViewsTest extends BaseTest {
 	
 	public String TEST_TICKET_RECORD = "001-00-000693";
 	

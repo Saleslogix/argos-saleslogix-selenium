@@ -23,7 +23,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author mike.llena@swiftpage.com
  * @version	1.0
  */
-public class AccountEntityViewsTest extends BrowserSetup {
+public class AccountEntityViewsTest extends BaseTest {
 	
 	public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
 	

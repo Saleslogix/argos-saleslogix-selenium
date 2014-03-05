@@ -20,7 +20,7 @@ import org.openqa.selenium.support.PageFactory;
  * Class: AccountEntityViewsTest
  * Desc.: Test class for the Opportunity entity views
  */
-public class OpportunityViewsTest extends BrowserSetup {
+public class OpportunityViewsTest extends BaseTest {
 	
 	public String TEST_OPPORTUNITY_RECORD = "Regions Financial Corporation - Phase 1";
 	

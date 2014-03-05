@@ -19,7 +19,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author mllena
  *
  */
-public class MobileSprint305Test extends BrowserSetup {
+public class MobileSprint305Test extends BaseTest {
 
 	@Test(enabled = true)
 	public void test01_MobileDefect_MBL10267()  throws InterruptedException {

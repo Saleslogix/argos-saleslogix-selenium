@@ -21,7 +21,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author mllena
  *
  */
-public class MobileDefectTest extends BrowserSetup {
+public class MobileDefectTest extends BaseTest {
 
 	//Test Methods		
 	//============
