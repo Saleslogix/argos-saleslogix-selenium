@@ -123,9 +123,7 @@ public class AccountEntityViewsTest extends BaseTest {
 		String initAccountsListInfo = accountsListView.getAccountsListViewTxt();
 		
 	    //Step: load more results (click on 'x remaining records' item)
-		for (int count = 1; count<3; count++) {			
-			//driver.findElement(By.xpath("//*[@id='account_list']")).sendKeys(Keys.PAGE_DOWN);
-			//Thread.sleep(3000);
+		for (int count = 1; count<3; count++) {
 			JavascriptExecutor jsx = (JavascriptExecutor)driver;
 			jsx.executeScript("window.scrollBy(0,450)", "");
 		}
@@ -304,7 +302,7 @@ public class AccountEntityViewsTest extends BaseTest {
 			//SubStep: conditionally expand the More Details section
 			if (accountDetailView.accountDetailViewMoreDetailsFields.getSize().height < 1) {
 				accountDetailView.accountDetailViewMoreDetailsHdr.click();
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			}
 			commNav.isFieldValueEmpty(viewName + ",'industry'", accountDetailView.accountDetailViewIndustryFld);
 			commNav.isFieldValueEmpty(viewName + ",'bus desc'", accountDetailView.accountDetailViewBusDescFld);
@@ -379,7 +377,6 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 			//Step: go back to previous screen
 			headerButton.goBack();
-			Thread.sleep(2000);
 		} catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
@@ -433,7 +430,6 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 			//Step: go back to previous screen
 			headerButton.goBack();
-			Thread.sleep(2000);
 		}
 		catch (Exception e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
@@ -518,7 +514,6 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
-		Thread.sleep(3000);
 
 		System.out.println(ENDLINE);
 	}
@@ -590,11 +585,9 @@ public class AccountEntityViewsTest extends BaseTest {
 		commNav.scrollDownPage();
 		commNav.rightClickContextMenuItem("Total Accounts");
 		headerButton.closeRightContextMenu();
-		Thread.sleep(500);
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
-		Thread.sleep(5000);
 		
 		System.out.println(ENDLINE);
 	}
@@ -676,11 +669,9 @@ public class AccountEntityViewsTest extends BaseTest {
 			try {
 				//click the 1st Notes Box item
 				accountListView.accountsListViewNotesBox1stItem.click();
-				Thread.sleep(5000);
 				commNav.isPageDisplayed(expPgTitle);
 				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_detail']")).isDisplayed());
 				headerButton.goBack();
-				Thread.sleep(2000);
 				System.out.println(resultsMsg + " - Passed");
 				
 			}
@@ -697,11 +688,9 @@ public class AccountEntityViewsTest extends BaseTest {
 			try {
 				//click the Notes Box 'see list' link
 				accountListView.accountsListViewNotesBoxSeeListLink.click();
-				Thread.sleep(5000);
 				commNav.isPageDisplayed(expPgTitle);
 				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_related']")).isDisplayed());
 				headerButton.goBack();
-				Thread.sleep(2000);
 				System.out.println(resultsMsg + " - Passed");
 				
 			}

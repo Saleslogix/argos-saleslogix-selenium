@@ -460,7 +460,6 @@ public class AccountViewsElements {
 
         //setup bus desc field
         accountEditViewBusDescFld.sendKeys("Business Description - Random Automated Test Account");
-        Thread.sleep(3000);
         //commView.setBusDescription("Business Description - Random Automated Test Account");
 
         //setup acct mgr field
@@ -573,11 +572,10 @@ public class AccountViewsElements {
         //Step: execute a filter-free search
         headerButton.showRightContextMenu();
         accountsListView.accountsSearchTxtBox.click();
-        Thread.sleep(500);
+        Thread.sleep(100);
         accountsListView.accountsSearchClearBtn.click();
-        Thread.sleep(1000);
+        Thread.sleep(100);
         accountsListView.accountsSearchLookupBtn.click();
-        Thread.sleep(3000);
     }
 
 
@@ -599,12 +597,11 @@ public class AccountViewsElements {
         //Step: execute a Related Activities search
         headerButton.showRightContextMenu();
         activitiesListView.relatedActivitiesSearchTxtBox.click();
-        Thread.sleep(500);
+        Thread.sleep(100);
         activitiesListView.relatedActivitiesSearchClearBtn.click();
-        Thread.sleep(1000);
+        Thread.sleep(100);
         activitiesListView.relatedActivitiesSearchTxtBox.sendKeys(regarding);
-        Thread.sleep(500);
+        Thread.sleep(100);
         activitiesListView.relatedActivitiesSearchLookupBtn.click();
-        Thread.sleep(3000);
     }
 }

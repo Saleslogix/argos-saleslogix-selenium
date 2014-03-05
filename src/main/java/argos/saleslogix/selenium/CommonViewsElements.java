@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import sun.reflect.annotation.ExceptionProxy;
 
 
 /**
@@ -285,12 +288,12 @@ public class CommonViewsElements {
 
             //click the Lookup button to find the item
             lookupBtn.click();
-            Thread.sleep(3000);
 
             //click to select the lookup item
             listItemXPath = listXPathSubStr + "//descendant::*[text()='" + strSelectItem + "']";
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(listItemXPath)));
             driver.findElement(By.xpath(listItemXPath)).click();
-            Thread.sleep(3000);
         } catch (Exception e) {
             System.out.println(methodID + "(): " + e.toString());
         }
@@ -315,9 +318,7 @@ public class CommonViewsElements {
 
         //initialize/setup common elements
         String pageTitle = "";
-        String pickListID = "";
         WebElement lookupFld = listViewSearchInputFld;
-        WebElement lookupBtn = null;
         String hdrCancelBtnXPath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]";
 
         //setup common elements based on field name to set
@@ -325,84 +326,54 @@ public class CommonViewsElements {
             case "account type":
             case "type":
                 pageTitle = "Account Type";
-                lookupBtn = accountTypeLookupBtn;
-                pickListID = "pick_list_4";
                 break;
             case "account subtype":
             case "subtype":
             case "sub type":
                 pageTitle = "Account Subtype";
-                lookupBtn = subtypeLookupBtn;
-                pickListID = "pick_list_0";
                 break;
             case "city":
                 pageTitle = "City";
-                lookupBtn = cityLookupBtn;
-                pickListID = "pick_list_0";
                 break;
             case "country":
                 pageTitle = "Country";
-                lookupBtn = countryLookupBtn;
-                pickListID = "pick_list_3";
                 break;
             case "cuisine":
                 pageTitle = "Cuisine";
-                lookupBtn = cuisineLookupBtn;
-                pickListID = "pick_list_3";
                 break;
             case "description":
                 pageTitle = "Description";
-                lookupBtn = descriptionLookupBtn;
-                pickListID = "pick_list_0";
                 break;
             case "industry":
                 pageTitle = "Industry";
-                lookupBtn = industryLookupBtn;
-                pickListID = "pick_list_6";
                 break;
             case "lead source":
                 pageTitle = "Lead Sources";
-                lookupBtn = leadSourceLookupBtn;
-                pickListID = "leadsource_list";
                 break;
             case "name prefix":
             case "prefix":
                 pageTitle = "Name Prefix";
-                lookupBtn = namePrefixLookupBtn;
-                pickListID = "pick_list_0";
                 break;
             case "name suffix":
             case "suffix":
                 pageTitle = "Name Suffix";
-                lookupBtn = nameSuffixLookupBtn;
-                pickListID = "pick_list_0";
                 break;
             case "owner":
                 pageTitle = "Owner";
-                lookupBtn = ownerLookupBtn;
-                pickListID = "owner_list";
                 break;
             case "state":
                 pageTitle = "State";
-                lookupBtn = stateLookupBtn;
-                pickListID = "pick_list_2";
                 break;
             case "status":
                 pageTitle = "Account Status";
-                lookupBtn = statusLookupBtn;
-                pickListID = "pick_list_5";
                 break;
             case "title":
                 pageTitle = "Title";
-                lookupBtn = titleLookupBtn;
-                pickListID = "pick_list_2";
                 break;
             case "user":
             case "users":
             case "acct mgr":
                 pageTitle = "Users";
-                lookupBtn = userLookupBtn;
-                pickListID = "user_list";
                 break;
         }
 
@@ -418,12 +389,13 @@ public class CommonViewsElements {
                 lookupFld.sendKeys(strSelectItem);
                 Thread.sleep(100);
                 lookupFld.sendKeys(Keys.ENTER);
-                Thread.sleep(3000);
                 try {
+                    WebDriverWait wait = new WebDriverWait(driver, 3);
                     if (pageTitle.toLowerCase().equals("users")) {
-                        //commNav.clickListViewGridItem(By.xpath(".//*[@id='" + pickListID + "']/descendant::*[text() = '" + strSelectItem + "']"));
+                        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='user_list']/ul/li/div[1]/h3")));
                         commNav.clickListViewGridItem(By.xpath(".//*[@id='user_list']/ul/li/div[1]/h3"));
                     } else {
+                        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[1]/div/h3")));
                         commNav.clickListViewGridItem(By.xpath("//li[1]/div/h3"));
                     }
                     System.out.println(methodID + ": " + strFieldName + " - " + strSelectItem + " was selected.");
@@ -433,8 +405,6 @@ public class CommonViewsElements {
                     driver.findElement(By.xpath(hdrCancelBtnXPath)).click();
                 }
             }
-
-            Thread.sleep(1000);
             commNav.waitForNotPage(pageTitle);
         } else {
             System.out.println(methodID + ": " + strFieldName + " list view was not displayed; selection step skipped.");
@@ -458,9 +428,11 @@ public class CommonViewsElements {
             } else {
                 accountTypeLookupInputFld.sendKeys(strAccType);
                 accountTypeLookupBtn.click();
-                Thread.sleep(2000);
                 try {
-                    commNav.clickListViewGridItem(By.xpath(".//*[@id='pick_list_4']/descendant::*[text() = '" + strAccType + "']"));
+                    String xpath = ".//*[@id='pick_list_4']/descendant::*[text() = '" + strAccType + "']";
+                    WebDriverWait wait = new WebDriverWait(driver, 10);
+                    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+                    commNav.clickListViewGridItem(By.xpath(xpath));
                 } catch (Exception e) {
                     System.out.println(methodID + "():" + e.toString());
                     driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
@@ -495,7 +467,6 @@ public class CommonViewsElements {
 
             System.out.println(methodID + ":" + "Business Description - " + strBusDesc + " was set.");
             commNav.waitForNotPage("Business Description");
-            Thread.sleep(1000);
         } else {
             System.out.println(methodID + ": Business Description text area was not displayed; step skipped.");
         }

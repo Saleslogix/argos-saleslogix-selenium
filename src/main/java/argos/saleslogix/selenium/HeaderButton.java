@@ -48,24 +48,6 @@ public class HeaderButton {
         this.driver = driver;
     }
 
-    public WebElement getSafeElement(By locator) throws InterruptedException {
-        int i = 0;
-        WebElement element = null;
-        while (i < 5) {
-            try {
-                element = driver.findElement(locator);
-                element.click();
-                break;
-            } catch (Exception e) {
-                Thread.sleep(1000);
-                element = driver.findElement(locator);
-                element.click();
-            }
-        }
-        return element;
-    }
-
-
     /**
      * This method will click the header Global Menu button to display the Global Menu items.
      *
@@ -114,9 +96,10 @@ public class HeaderButton {
 
     public HeaderButton goBack() throws InterruptedException {
         String methodID = "goBack";
+        String xpath = ".//*[@id='pageTitle']";
 
-        WebElement pgTitleBar = driver.findElement(By.xpath(".//*[@id='pageTitle']"));
-        String oldPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();
+        WebElement pgTitleBar = driver.findElement(By.xpath(xpath));
+        String oldPgTitle = driver.findElement(By.xpath(xpath)).getText();
 
         //conditionally close the Right Context Menu panel (if blocking the Global Menu button)
         closeRightContextMenu();
@@ -124,15 +107,15 @@ public class HeaderButton {
         try {
             //click the Header Back button
             backButton.click();
-            Thread.sleep(1500);
         } catch (Exception e) {
             //revert to Backspace key-press if Back button click fails
             pgTitleBar.click();
             pgTitleBar.sendKeys(Keys.BACK_SPACE);
-            Thread.sleep(1500);
         }
 
-        String newPgTitle = driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xpath), oldPgTitle)));
+        String newPgTitle = driver.findElement(By.xpath(xpath)).getText();
 
         // Verify that previous page is displayed (new title not equal to old)
         try {

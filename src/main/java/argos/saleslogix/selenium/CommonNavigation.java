@@ -288,11 +288,9 @@ public class CommonNavigation {
     public boolean clickWebElementToPage(String sDesc, WebElement wElement, String expPageTitle) throws InterruptedException {
         String methodID = "clickWebElementToPage";
 
-        Thread.sleep(1000);
         try {
             highlightElement(wElement);
             wElement.click();
-            Thread.sleep(3000);
             boolean pgOpened = waitForPage(expPageTitle);
             if (pgOpened) {
                 System.out.println(methodID + ": clicking the " + sDesc + " page element successfully opened the '" + expPageTitle + "' page/screen.");
@@ -431,7 +429,7 @@ public class CommonNavigation {
             } catch (Exception e) {
                 headerButton.cancelButton.click();
             }
-            Thread.sleep(1000);
+
             return true;
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -814,7 +812,6 @@ public class CommonNavigation {
      *
      * @param locator WebElement locator
      * @throws InterruptedException
-     * @version 1.0
      */
     public WebElement clickListViewGridItem(By locator) throws InterruptedException {
         int i = 0;
@@ -825,12 +822,12 @@ public class CommonNavigation {
                 highlightNClick(element);
                 break;
             } catch (Exception e) {
-                Thread.sleep(1000);
+                WebDriverWait wait = new WebDriverWait(driver, 10);
+                wait.until(ExpectedConditions.presenceOfElementLocated(locator));
                 element = driver.findElement(locator);
                 highlightNClick(element);
             }
         }
-        Thread.sleep(3000);
         return element;
     }
 
@@ -884,7 +881,6 @@ public class CommonNavigation {
      * @param wElement WebElement object
      * @return boolean    true - if WebElement's value is empty;
      * false - otherwise
-     * @version 1.0
      */
     public boolean isFieldValueEmpty(String sDesc, WebElement wElement) {
         String methodID = "isFieldValueEmpty";
@@ -1408,7 +1404,6 @@ public class CommonNavigation {
         searchListView(entityType, entityName);
 
         //Step: check if there is a 'no records' result
-        Thread.sleep(3000);
         try {
             //AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
             AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().contains("no records"));
@@ -1603,9 +1598,7 @@ public class CommonNavigation {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             try {
                 js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: yellow; border: 2px solid yellow;");
-                Thread.sleep(10);
                 js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: red; border: 2px solid red;");
-                Thread.sleep(10);
                 js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "");
             } catch (Exception e) {
                 System.out.println(methodID + ": " + e.toString());
