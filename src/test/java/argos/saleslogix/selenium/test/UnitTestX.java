@@ -1,26 +1,16 @@
 package argos.saleslogix.selenium.test;
 
 import static org.testng.AssertJUnit.assertEquals;
-import org.testng.annotations.AfterMethod;
+
+import argos.saleslogix.selenium.CommonNavigation;
+import argos.saleslogix.selenium.HeaderButton;
 import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
-import argos.saleslogix.selenium.test.CommonNavigation;
-import argos.saleslogix.selenium.test.HeaderButton;
-import argos.saleslogix.selenium.test.SLXMobileLogin;
-import argos.saleslogix.selenium.test.BrowserSetup;
+import argos.saleslogix.selenium.SLXMobileLogin;
 
 public class UnitTestX extends BrowserSetup {
 	

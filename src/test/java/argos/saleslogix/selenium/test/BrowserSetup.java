@@ -1,5 +1,7 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.CommonNavigation;
+import argos.saleslogix.selenium.SLXMobileLogin;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -297,8 +299,6 @@ public class BrowserSetup {
      * This method perform a verification check on the SLX Mobile Client Login page.  The verification values
      * are defined in the app.properties file. After the verification check, this method will perform an login using the username an password members
      * defined in the BrowserSetup class.
-     *
-     * @version 1.0
      */
     public void doVerificationLogin() throws InterruptedException {
         String methodID = "doVerificationLogin";
@@ -331,7 +331,7 @@ public class BrowserSetup {
 
         //VP: product logo
         try {
-            AssertJUnit.assertTrue(commNav.isElementDisplayed(By.xpath(".//*[@id='login']/p/img")));
+            AssertJUnit.assertTrue(slxMobileLogin.isLogoDisplayed());
             System.out.println("VP: 'saleslog!x' logo check  - Passed");
         } catch (Error e) {
             System.out.println("Error: product logo check - FAILED");
@@ -340,7 +340,7 @@ public class BrowserSetup {
 
         //VP: Copyright Info
         try {
-            String text = driver.findElement(By.xpath(".//*[@id='login']/span[1]")).getText();
+            String text = slxMobileLogin.getCopyright();
             text = new String(text.getBytes("ISO-8859-1"), "UTF-8");
             String label = new String(copyrightLabel.getBytes(), "UTF-8");
             AssertJUnit.assertEquals(label, text);
@@ -352,7 +352,7 @@ public class BrowserSetup {
             e.printStackTrace();
         }
         try {
-            AssertJUnit.assertEquals(versionLabel, driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText());
+            AssertJUnit.assertEquals(versionLabel, slxMobileLogin.getAppVersion());
             System.out.println("VP: Version Label check - Passed");
         } catch (Error e) {
             System.out.println("Error: Version Label check - FAILED");
@@ -360,7 +360,7 @@ public class BrowserSetup {
         }
 
         // Step: Enter username and password then click the logon button
-        slxMobileLogin.doLogin(userName, userPwd, true);
+        AssertJUnit.assertTrue(slxMobileLogin.doLogin(userName, userPwd, true));
     }
 
 

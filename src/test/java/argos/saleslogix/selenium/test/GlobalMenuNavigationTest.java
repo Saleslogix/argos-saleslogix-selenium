@@ -1,5 +1,8 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.CommonNavigation;
+import argos.saleslogix.selenium.HeaderButton;
+import argos.saleslogix.selenium.MiscEntityItemViewsElements;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -46,7 +49,7 @@ public class GlobalMenuNavigationTest extends BrowserSetup {
 		
 	    // Step: navigate to the Add Account/Contact Edit view...
 		commNav.clickGlobalMenuItem("Add Account/Contact");
-		AddAccountContactEditViewElements addAccConEditView = PageFactory.initElements(driver, AddAccountContactEditViewElements.class);
+		HeaderButton.AddAccountContactEditViewElements addAccConEditView = PageFactory.initElements(driver, HeaderButton.AddAccountContactEditViewElements.class);
 		
 	    // VP: confirm that Global Menu button is available...
 		String pageName = "Add Account / Contact";

@@ -3,12 +3,12 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import argos.saleslogix.selenium.CommonNavigation;
+import argos.saleslogix.selenium.HeaderButton;
+import argos.saleslogix.selenium.TicketViewsElements;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 

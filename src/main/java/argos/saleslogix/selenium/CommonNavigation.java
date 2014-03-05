@@ -1,16 +1,6 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium;
 
-//import static org.junit.Assert.fail;
-
-import java.util.List;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -19,91 +9,90 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
 
+import java.util.List;
+
 /**
  * CommonNavigation class defines WebElements and methods for any commonly accessed items (e.g. Global Menu).
  * This class also defines a collection of methods for commonly-used verifications.
- *
- * @author mike.llena@swiftpage.com
- * @version 1.0
  */
 public class CommonNavigation {
     //Global Menu Items
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']")
-    WebElement gmenu_panel;
+    public WebElement gmenu_panel;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Add Account/Contact']")
-    WebElement gmenu_addAccountContact;
+    public WebElement gmenu_addAccountContact;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'SpeedSearch']")
-    WebElement gmenu_speedSearch;
+    public WebElement gmenu_speedSearch;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")
-    WebElement gmenu_speedSearchLookupFld;
+    public WebElement gmenu_speedSearchLookupFld;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")
-    WebElement gmenu_speedSearchLookupBtn;
+    public WebElement gmenu_speedSearchLookupBtn;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[2]/button")
-    WebElement gmenu_speedSearchLookupClearBtn;
+    public WebElement gmenu_speedSearchLookupClearBtn;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")
-    WebElement gmenu_myActivities;
+    public WebElement gmenu_myActivities;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Calendar']")
-    WebElement gmenu_calendar;
+    public WebElement gmenu_calendar;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Notes/History']")
-    WebElement gmenu_notesHistory;
+    public WebElement gmenu_notesHistory;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Accounts']")
-    WebElement gmenu_accounts;
+    public WebElement gmenu_accounts;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Contacts']")
-    WebElement gmenu_contacts;
+    public WebElement gmenu_contacts;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Leads']")
-    WebElement gmenu_leads;
+    public WebElement gmenu_leads;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Opportunities']")
-    WebElement gmenu_opportunities;
+    public WebElement gmenu_opportunities;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Tickets']")
-    WebElement gmenu_tickets;
+    public WebElement gmenu_tickets;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'My Attachments']")
-    WebElement gmenu_myAttachments;
+    public WebElement gmenu_myAttachments;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Configure Menu']")
-    WebElement gmenu_configureMenu;
+    public WebElement gmenu_configureMenu;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Settings']")
-    WebElement gmenu_settings;
+    public WebElement gmenu_settings;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Help']")
-    WebElement gmenu_help;
+    public WebElement gmenu_help;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Log Out']")
-    WebElement gmenu_logOff;
+    public WebElement gmenu_logOff;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Log Out']")
-    WebElement gmenu_logOut;
+    public WebElement gmenu_logOut;
     //Right Context Menu Items
     @CacheLookup
     @FindBy(xpath = ".//*[@id='right_drawer']")
-    WebElement rmenu_panel;
+    public WebElement rmenu_panel;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='right_drawer']/div[4]/h2[1]")
-    WebElement rmenu_HashTagsHdr;
+    public WebElement rmenu_HashTagsHdr;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='right_drawer']/div[4]/ul[1]")
-    WebElement rmenu_HashTagsSubPnl;
+    public WebElement rmenu_HashTagsSubPnl;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='right_drawer']/div[4]/h2[2]")
-    WebElement rmenu_KPIHdr;
+    public WebElement rmenu_KPIHdr;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='right_drawer']/div[4]/ul[2]")
-    WebElement rmenu_KPISubPnl;
+    public WebElement rmenu_KPISubPnl;
     private WebDriver driver;
 
     public CommonNavigation(WebDriver driver) {
@@ -223,9 +212,9 @@ public class CommonNavigation {
      * This method will conditionally open the Right-context menu (in case it's currently closed) then  it will
      * select a menu item from the current list view.
      *
+     * @param menuItem menu item from the Right-context menu to select
      * @throws InterruptedException
      * @version 1.0
-     * @param    menuItem    menu item from the Right-context menu to select
      */
     public boolean rightClickContextMenuItem(String menuItem) throws InterruptedException {
         String methodID = "rightClickContextMenuItem";
@@ -341,12 +330,12 @@ public class CommonNavigation {
      * This method will compare the attribute value of an on-screen WebElement.
      * The comparison result will be tracked in the console log.
      *
+     * @param elementDesc  description of the WebElement item
+     * @param wElement     WebElement object
+     * @param strAttribute attribute type to check
+     * @param expAttrVal   attribute value of the type to check against
      * @throws InterruptedException
      * @version 1.0
-     * @param    elementDesc        description of the WebElement item
-     * @param    wElement        WebElement object
-     * @param    strAttribute    attribute type to check
-     * @param    expAttrVal        attribute value of the type to check against
      */
     public void verifyWebElementAttributeVal(String elementDesc, WebElement wElement, String strAttribute, String expAttrVal) throws InterruptedException {
         String methodID = "verifyWebElementAttributeVal";
@@ -368,11 +357,11 @@ public class CommonNavigation {
      * This method will compare the text value of an on-screen WebElement.
      * The comparison result will be tracked in the console log.
      *
+     * @param elementDesc description of the WebElement item
+     * @param wElement    WebElement object
+     * @param expText     text value of the WebElement to check against
      * @throws InterruptedException
      * @version 1.0
-     * @param    elementDesc    description of the WebElement item
-     * @param    wElement    WebElement object
-     * @param    expText        text value of the WebElement to check against
      */
     public void verifyWebElementText(String elementDesc, WebElement wElement, String expText) throws InterruptedException {
         String methodID = "verifyWebElementText";
@@ -394,11 +383,11 @@ public class CommonNavigation {
      * This method will compare the attribute value of an on-screen WebElement.
      * The comparison result will be tracked in the console log.
      *
+     * @param elementDesc description of the WebElement item
+     * @param wElement    WebElement object
+     * @param expValue    value of the WebElement to check against
      * @throws InterruptedException
      * @version 1.0
-     * @param    elementDesc    description of the WebElement item
-     * @param    wElement    WebElement object
-     * @param    expValue    value of the WebElement to check against
      */
     public void verifyWebElementValue(String elementDesc, WebElement wElement, String expValue) throws InterruptedException {
         String methodID = "verifyWebElementValue";
@@ -420,14 +409,14 @@ public class CommonNavigation {
      * This method will click an on-screen WebElement and verify that the expected page is successfully
      * navigated to.
      *
-     * @throws InterruptedException
-     * @param    elementDesc    description of the WebElement item to click
-     * @param    wElement    WebElement object to click
-     * @param    expPgTitle    title of the expected page
-     * @return    <code>True</code> if the title of the loaded page matches the expected page title
+     * @param elementDesc description of the WebElement item to click
+     * @param wElement    WebElement object to click
+     * @param expPgTitle  title of the expected page
+     * @return <code>True</code> if the title of the loaded page matches the expected page title
      * <code>False</code> otherwise
+     * @throws InterruptedException
      */
-    protected boolean verifyEntityViewElementClick(String elementDesc, WebElement wElement, String expPgTitle) throws InterruptedException {
+    public boolean verifyEntityViewElementClick(String elementDesc, WebElement wElement, String expPgTitle) throws InterruptedException {
         String methodID = "verifyEntityViewElementClick";
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -506,12 +495,12 @@ public class CommonNavigation {
             WebDriverWait wait = new WebDriverWait(driver, 10);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='" + itemList + "']/ul/li[1]")));
 
-                try {
-                    if (isElementPresent(By.xpath(".//*[@id='" + itemList + "']/ul/li[1]")))
-                        System.out.println("VP: " + listName + " List View was successfully loaded.");
-                } catch (Exception e) {
-                    System.out.println("Error: " + listName + " List View was NOT successfully loaded.");
-                }
+            try {
+                if (isElementPresent(By.xpath(".//*[@id='" + itemList + "']/ul/li[1]")))
+                    System.out.println("VP: " + listName + " List View was successfully loaded.");
+            } catch (Exception e) {
+                System.out.println("Error: " + listName + " List View was NOT successfully loaded.");
+            }
         } catch (Exception e) {
             System.out.println(methodID + ": " + e.toString());
         }
@@ -544,10 +533,10 @@ public class CommonNavigation {
      * This method will perform SpeedSearch (from Global Menu) or entity record lookup (from the
      * Right-Context menu).
      *
+     * @param searchType     specify 'SpeedSearch' or the entity record type
+     * @param searchItemName item or entity record to search for
      * @throws InterruptedException
      * @version 1.0
-     * @param    searchType specify 'SpeedSearch' or the entity record type
-     * @param    searchItemName    item or entity record to search for
      */
     public CommonNavigation searchListView(String searchType, String searchItemName) throws InterruptedException {
         String methodID = "searchListView";
@@ -641,10 +630,10 @@ public class CommonNavigation {
      * This method will perform entity record lookup (from the Right-Context
      * menu) for record selection from another entity Edit view.
      *
+     * @param searchType     specify 'SpeedSearch' or the entity record type
+     * @param searchItemName item or entity record to search for
      * @throws InterruptedException
      * @version 1.0
-     * @param    searchType specify 'SpeedSearch' or the entity record type
-     * @param    searchItemName    item or entity record to search for
      */
     public CommonNavigation searchNSelectListView(String searchType, String searchItemName) throws InterruptedException {
         String methodID = "searchListView";
@@ -773,9 +762,9 @@ public class CommonNavigation {
     /**
      * This method will wait up to 60s. for an expected page to load.
      *
+     * @param pageTitle exact page title of expected page
      * @throws InterruptedException
      * @version 1.0
-     * @param    pageTitle exact page title of expected page
      */
     public boolean waitForPage(String pageTitle) throws InterruptedException {
         String methodID = "waitForPage";
@@ -797,9 +786,9 @@ public class CommonNavigation {
     /**
      * This method will wait up to 60s. for a page transition from a given start page.
      *
+     * @param pageTitle exact title of transition from page
      * @throws InterruptedException
      * @version 1.0
-     * @param    pageTitle exact title of transition from page
      */
     public boolean waitForNotPage(String pageTitle) throws InterruptedException {
         String methodID = "waitForNotPage";
@@ -848,11 +837,11 @@ public class CommonNavigation {
      * This method will return a boolean value that determines whether a specific WebElement is present
      * (not necessarily displayed) on the page.
      *
-     * @param    by            by locator string for target WebElement
+     * @param by by locator string for target WebElement
      * @return boolean        true - if WebElement with matching by locator is displayed;
      * false - otherwise
      */
-    protected boolean isElementPresent(By by) {
+    public boolean isElementPresent(By by) {
 
         try {
             driver.findElement(by);
@@ -867,12 +856,11 @@ public class CommonNavigation {
      * This method will return a boolean value that determines whether a specific WebElement is displayed
      * on the page.
      *
-     * @version 1.0
-     * @param    by            by locator string for target WebElement
+     * @param by by locator string for target WebElement
      * @return boolean        true - if WebElement with matching by locator is displayed;
      * false - otherwise
      */
-    protected boolean isElementDisplayed(By by) {
+    public boolean isElementDisplayed(By by) {
 
         String methodID = "isElementDisplayed";
 
@@ -935,12 +923,12 @@ public class CommonNavigation {
     /**
      * This method will determine if a WebelEment is present or not.
      *
-     * @version 1.0
-     * @param    sDesc        description of webelement (for logging purposes)
-     * @param    wElement    WebElement object
+     * @param sDesc    description of webelement (for logging purposes)
+     * @param wElement WebElement object
      * @return boolean        true - if WebElement is present
      * false - otherwise
      * @throws InterruptedException
+     * @version 1.0
      */
     public boolean isWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
         String methodID = "isWebElementPresent";
@@ -960,11 +948,11 @@ public class CommonNavigation {
     /**
      * This method will determine whether a page with a specific pagetitle is displayed.
      *
-     * @throws InterruptedException
-     * @version 1.0
-     * @param    pageTitle    exact pagetitle text for expected page
+     * @param pageTitle exact pagetitle text for expected page
      * @return boolean        true - if page with matching pagetitle is displayed;
      * false - otherwise
+     * @throws InterruptedException
+     * @version 1.0
      */
     public boolean isPageDisplayed(String pageTitle) throws InterruptedException {
         String methodID = "isPageDisplayed";
@@ -986,11 +974,11 @@ public class CommonNavigation {
      * This method will return a boolean value that determines whether a specific text string is NOT present
      * on the page.  This method can be used for negative verification.
      *
-     * @throws InterruptedException
-     * @version 1.0
-     * @param    pageText            by locator string for target WebElement
+     * @param pageText by locator string for target WebElement
      * @return boolean        true - if WebElement with matching by locator is displayed;
      * false - otherwise
+     * @throws InterruptedException
+     * @version 1.0
      */
     public boolean isTextNotPresentOnPage(String pageText) throws InterruptedException {
         String methodID = "isTextNotPresentOnPage";
@@ -1018,11 +1006,11 @@ public class CommonNavigation {
      * This method will return a boolean value that determines whether a specific text string is present
      * on the page.
      *
-     * @throws InterruptedException
-     * @version 1.0
-     * @param    pageText    text to check for
+     * @param pageText text to check for
      * @return boolean        true - if WebElement with matching by locator is displayed;
      * false - otherwise
+     * @throws InterruptedException
+     * @version 1.0
      */
     public boolean isTextPresentOnPage(String pageText) throws InterruptedException {
         String methodID = "isTextPresentOnPage";
@@ -1049,10 +1037,10 @@ public class CommonNavigation {
     /**
      * This method will search for a given entity record.
      *
+     * @param entityType entity type to search for
+     * @param entityName entity record name to search for
      * @throws Exception
      * @version 1.0
-     * @param    entityType    entity type to search for
-     * @param    entityName    entity record name to search for
      */
     public WebElement entityListViewSearch(String entityType, String entityName) throws Exception {
         String methodID = "entityListViewSearch";
@@ -1158,10 +1146,10 @@ public class CommonNavigation {
     /**
      * This method will return a WebElement object from an entity List view that matches a partial description.
      *
+     * @param entityType type of entity list view to search
+     * @param entityName item to search for
      * @throws Exception
      * @version 1.0
-     * @param    entityType    type of entity list view to search
-     * @param    entityName    item to search for
      */
     public WebElement entityListViewSearchContains(String entityType, String entityName) throws Exception {
         String methodID = "entityListViewSearchContains";
@@ -1268,10 +1256,10 @@ public class CommonNavigation {
     /**
      * This method will return a WebElement object from an entity List view that matches an exact description.
      *
+     * @param entityType type of entity list view to search
+     * @param entityName item to search for
      * @throws Exception
      * @version 1.0
-     * @param    entityType    type of entity list view to search
-     * @param    entityName    item to search for
      */
     public WebElement entityListViewSelect(String entityType, String entityName) throws Exception {
         String methodID = "entityListViewSelect";
@@ -1377,9 +1365,9 @@ public class CommonNavigation {
      * This method will perform a SpeedSearch for a given search item string.
      * This method is a wrapper method for searchListView().
      *
+     * @param searchItem item to search for
      * @throws InterruptedException
      * @version 1.0
-     * @param    searchItem    item to search for
      */
     public void doSpeedSearch(String searchItem) throws InterruptedException {
         String methodID = "doSpeedSearch";
@@ -1394,10 +1382,10 @@ public class CommonNavigation {
      * This method will return a boolean value that indicates whether or not a specific item is displayed
      * in an entity List view.
      *
+     * @param entityType type of entity list view to search
+     * @param entityName item to search for
      * @throws Exception
      * @version 1.0
-     * @param    entityType    type of entity list view to search
-     * @param    entityName    item to search for
      */
     public boolean entityListViewNegativeSearch(String entityType, String entityName) throws Exception {
         String methodID = "entityListViewNegativeSearch";
@@ -1431,10 +1419,10 @@ public class CommonNavigation {
      * This method will search for then open the entity Detail view of a given record.
      * This method first calls the entityListViewSearch() method to find the target WebElement.
      *
+     * @param entityType entity type to search for
+     * @param entityName item to search for
      * @throws Exception
      * @version 1.0
-     * @param    entityType    entity type to search for
-     * @param    entityName    item to search for
      */
     public boolean entityRecordOpenDetailView(String entityType, String entityName) throws Exception {
         String methodID = "entityRecordOpenDetailView";
@@ -1466,9 +1454,9 @@ public class CommonNavigation {
     /**
      * This method will click the Header Add button from a given entity List view.
      *
+     * @param entityType type of entity list view to search
      * @throws Exception
      * @version 1.0
-     * @param    entityType    type of entity list view to search
      */
     public boolean entityRecordAdd(String entityType) throws Exception {
         String methodID = "entityRecordAdd";
@@ -1514,9 +1502,9 @@ public class CommonNavigation {
     /**
      * This method will locate and then click an item from an entity list view to open the item's edit view.
      *
+     * @param entityType type of entity list view to search
      * @throws Exception
      * @version 1.0
-     * @param    entityType    type of entity list view to search
      */
     public boolean entityRecordEditView(String entityType, String entityName) throws Exception {
         String methodID = "entityRecordEditView";
@@ -1572,10 +1560,10 @@ public class CommonNavigation {
      * This method will perform a SpeedSearch for a given term, then select to open a specific results item's
      * detail view.
      *
+     * @param searchItem   item to search for
+     * @param recordToOpen speedsearch results item to open
      * @throws Exception
      * @version 1.0
-     * @param    searchItem        item to search for
-     * @param    recordToOpen    speedsearch results item to open
      */
     public void goToSpeedSearchResultDetailView(String searchItem, String recordToOpen) throws InterruptedException {
         String methodID = "goToSpeedSearchResultDetailView";
@@ -1597,7 +1585,7 @@ public class CommonNavigation {
      * The assumption is that the given WebElement is displayed on the page.  This method is
      * useful for debugging by providing a visual confirmation of target WebElement objects.
      *
-     * @param    wElement    a WebElement object on the page
+     * @param wElement a WebElement object on the page
      * @return void
      */
     public void highlightElement(WebElement wElement) throws InterruptedException {
@@ -1626,9 +1614,9 @@ public class CommonNavigation {
     /**
      * This method will first highlight a target WebElement then click the same object.
      *
-     * @version 1.0
-     * @param    wElement    a WebElement object on the page
+     * @param wElement a WebElement object on the page
      * @return void
+     * @version 1.0
      */
     public void highlightNClick(WebElement wElement) throws InterruptedException {
 

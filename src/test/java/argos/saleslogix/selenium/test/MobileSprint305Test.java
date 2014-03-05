@@ -3,11 +3,10 @@
  */
 package argos.saleslogix.selenium.test;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-
+import argos.saleslogix.selenium.CommonNavigation;
+import argos.saleslogix.selenium.HeaderButton;
+import argos.saleslogix.selenium.MyActivityViewsElements;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
@@ -294,7 +293,7 @@ public class MobileSprint305Test extends BrowserSetup {
 		//Step: navigate to My Activities list view
 		commNav.clickGlobalMenuItem(entityType2);
 		
-		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);	
+		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
 		
 		//Step: execute a filter-free search
 		headerButton.showRightContextMenu();

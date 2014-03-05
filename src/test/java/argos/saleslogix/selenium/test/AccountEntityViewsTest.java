@@ -6,14 +6,14 @@ import static org.testng.AssertJUnit.assertTrue;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
+import argos.saleslogix.selenium.AccountViewsElements;
+import argos.saleslogix.selenium.CommonNavigation;
+import argos.saleslogix.selenium.HeaderButton;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 

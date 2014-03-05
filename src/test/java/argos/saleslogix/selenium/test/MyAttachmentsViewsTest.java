@@ -3,12 +3,10 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import argos.saleslogix.selenium.CommonNavigation;
+import argos.saleslogix.selenium.HeaderButton;
+import argos.saleslogix.selenium.MyAttachmentsViewsElements;
 import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -46,7 +44,7 @@ public class MyAttachmentsViewsTest extends BrowserSetup {
 		// SubStep: check the Page Title
 		if (commNav.isPageDisplayed(entityType)) {
 			
-			MyAttachmentsViewsElements myAttachmentsListView = PageFactory.initElements(driver, MyAttachmentsViewsElements.class);			
+			MyAttachmentsViewsElements myAttachmentsListView = PageFactory.initElements(driver, MyAttachmentsViewsElements.class);
 			
 			//Step: check the My Attachments List view, Card Layout
 			commNav.checkIfWebElementPresent("My Attachments List View, Card Layout", myAttachmentsListView.myAttachmentsListView);

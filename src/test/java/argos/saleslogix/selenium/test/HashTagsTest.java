@@ -3,8 +3,8 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import argos.saleslogix.selenium.*;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
@@ -97,7 +97,7 @@ public class HashTagsTest extends BrowserSetup {
 	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem("Contacts");
 		
-		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);		
+		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 		
 		//Step: reveal Right Context Menu panel
 		headerButton.showRightContextMenu();

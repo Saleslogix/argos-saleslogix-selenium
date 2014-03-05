@@ -6,12 +6,13 @@ import static org.testng.AssertJUnit.assertTrue;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
+import argos.saleslogix.selenium.CommonNavigation;
+import argos.saleslogix.selenium.HeaderButton;
+import argos.saleslogix.selenium.LeadViewsElements;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -744,7 +745,7 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		// SubStep: check the Page Title
 		if (commNav.isPageDisplayed(entityType)) {
 			
-			LeadViewsElements leadListView = PageFactory.initElements(driver, LeadViewsElements.class);			
+			LeadViewsElements leadListView = PageFactory.initElements(driver, LeadViewsElements.class);
 			
 			//Step: check the Leads list view format
 			commNav.checkIfWebElementPresent("Leads List View", leadListView.leadsListView);

@@ -3,11 +3,8 @@
  */
 package argos.saleslogix.selenium.test;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-
+import argos.saleslogix.selenium.*;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
@@ -166,7 +163,7 @@ public class MobileSprint233Test extends BrowserSetup {
 	public void test03_MBL10222() throws InterruptedException {
 		String methodID = "test03_MBL10222";
 		
-		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
+		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);		
 		
@@ -935,7 +932,7 @@ public class MobileSprint233Test extends BrowserSetup {
 		String methodID = "test09_MBL10112_Contacts_Filtering";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		

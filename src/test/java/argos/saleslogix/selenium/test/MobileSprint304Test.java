@@ -3,11 +3,10 @@
  */
 package argos.saleslogix.selenium.test;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-
+import argos.saleslogix.selenium.CommonNavigation;
+import argos.saleslogix.selenium.HeaderButton;
+import argos.saleslogix.selenium.MyActivityViewsElements;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
@@ -305,7 +304,7 @@ public class MobileSprint304Test extends BrowserSetup {
 		String methodID = "test06_MobileDefect_MBL10139";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		//Test Params:
 	    String searchItem = "abbott";
@@ -939,7 +938,7 @@ public class MobileSprint304Test extends BrowserSetup {
 	    
 		//Section 2:
 		//Step: capture the current Activities List view text
-		MyActivityViewsElements activitiesList = PageFactory.initElements(driver, MyActivityViewsElements.class);		
+		MyActivityViewsElements activitiesList = PageFactory.initElements(driver, MyActivityViewsElements.class);
 		
 		String initActivityListViewTxt = activitiesList.getRelatedActivitiesListViewTxt();
 		

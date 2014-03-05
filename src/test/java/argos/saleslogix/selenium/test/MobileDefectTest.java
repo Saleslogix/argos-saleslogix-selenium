@@ -6,6 +6,7 @@ package argos.saleslogix.selenium.test;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
+import argos.saleslogix.selenium.*;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -2245,7 +2246,7 @@ public class MobileDefectTest extends BrowserSetup {
 		String methodID = "test67_MobileDefect13092497";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -2323,7 +2324,7 @@ public class MobileDefectTest extends BrowserSetup {
 		String userName = "Lou";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
+		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
