@@ -52,12 +52,18 @@ public class BaseTest {
 
     public BaseTest(String browser) {
     }
+
     /**
+     * This method will launch the test browser (default - FireFox) before any Mobile Client tests are run.
+     * Test properties specified in the app.properties file are read and used to setup global test variables.
+     *
      * @param browser identifier of browser app to launch; specify: 'cr' for Chrome, 'ff' for Firefox, 'ie' for Internet Explorer, 'sf' for Safari
+     *
+     * @throws InterruptedException
      */
-    @BeforeTest
+    @BeforeClass
     @Parameters({"browser"})
-    public void setupBrowsers(@Optional("ff")String browser) {
+    public void launchBrowser(@Optional("ff")String browser) throws InterruptedException {
         // Run Locally
         System.out.println(browser);
 
@@ -101,16 +107,7 @@ public class BaseTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
-    /**
-     * This method will launch the test browser (default - FireFox) before any Mobile Client tests are run.
-     * Test properties specified in the app.properties file are read and used to setup global test variables.
-     *
-     * @throws InterruptedException
-     */
-    @BeforeClass
-    public void launchBrowser() throws InterruptedException {
         System.out.println("Running SLXMobile3x WebDriver Tests on SLX 8.1 Mobile Client");
         System.out.println("************************************************************");
         System.out.println("launching " + browsername + " WebDriver browser...");

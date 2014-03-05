@@ -120,7 +120,9 @@ public class CommonNavigation {
         //conditionally click the GlobalMenu button to reveal panel
         WebElement glblMenuPnl = driver.findElement(By.xpath(".//*[@id='left_drawer']"));
         if (!glblMenuPnl.isDisplayed()) {
-            driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+            String xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]";
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+            driver.findElement(By.xpath(xpath)).click();
         }
 
         Boolean hasListview = true;
@@ -611,11 +613,11 @@ public class CommonNavigation {
                 headerbutton.clickHeaderButton("right context menu");
 
                 driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
-                Thread.sleep(100);
+                Thread.sleep(500);
                 driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
-                Thread.sleep(100);
+                Thread.sleep(500);
                 driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
-                Thread.sleep(100);
+                Thread.sleep(500);
                 driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();
             }
             System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
@@ -794,7 +796,7 @@ public class CommonNavigation {
         String methodID = "waitForNotPage";
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='pageTitle']"), pageTitle)));
+        wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElementLocated(By.id("pageTitle"), pageTitle)));
 
         try {
             if (!pageTitle.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText()))
@@ -1110,6 +1112,8 @@ public class CommonNavigation {
             List<WebElement> targetEntRecords = driver.findElements(By.xpath(targetEntRecXPath));
             WebElement targetEntRecord = null;
 
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+
             if (targetEntRecords.size() > 1) {
                 //specify the actual record name so that the search label is not clicked
                 if (entityType.toLowerCase().equals("my activities")) {
@@ -1119,8 +1123,10 @@ public class CommonNavigation {
                 }
             } else {
                 if (entityType.toLowerCase().contains("notes")) {
+                    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(entListNameXPth + "/ul/li[1]")));
                     targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li[1]"));
                 } else {
+                    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(targetEntRecXPath)));
                     targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
                 }
             }
@@ -1430,8 +1436,6 @@ public class CommonNavigation {
         try {
             WebElement entityListItem = entityListViewSearch(entityType, entityName);
             highlightNClick(entityListItem);
-            //entityListItem.click();
-            Thread.sleep(3000);
 
             //Step: check if the detail view is loaded
             if (!entityType.toLowerCase().contains("notes")) {

@@ -3,22 +3,22 @@
 <suite name="SLXMobile Full-Test Suite" verbose="3" parallel="false">
     <test name="Chrome Tests" preserve-order="true">
         <parameter name="browser" value="cr"></parameter>
-        <classes>
-            <class name="argos.saleslogix.selenium.test.AccountEntityViewsTest" />
-        </classes>
+        <packages>
+            <package name="argos.saleslogix.selenium.test" />
+        </packages>
     </test>
 
 	<test name="FireFox Tests" preserve-order="true">
   		<parameter name="browser" value="ff"></parameter>
-        <classes>
-            <class name="argos.saleslogix.selenium.test.AccountEntityViewsTest" />
-        </classes>
+        <packages>
+            <package name="argos.saleslogix.selenium.test" />
+        </packages>
   	</test>
 
     <test name="IE Tests" preserve-order="true">
         <parameter name="browser" value="ie"></parameter>
-        <classes>
-            <class name="argos.saleslogix.selenium.test.AccountEntityViewsTest" />
-        </classes>
+        <packages>
+            <package name="argos.saleslogix.selenium.test" />
+        </packages>
     </test>
 </suite>
