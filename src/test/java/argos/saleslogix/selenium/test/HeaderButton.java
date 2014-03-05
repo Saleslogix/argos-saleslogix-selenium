@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
-import sun.org.mozilla.javascript.internal.ast.ConditionalExpression;
 
 public class HeaderButton {
 
