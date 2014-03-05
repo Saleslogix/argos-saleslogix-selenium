@@ -82,7 +82,8 @@ public class HeaderButton {
 		
 		//click the Page Title (forces closure of any blocking panels)
 		driver.findElement(By.id("pageTitle")).click();
-		Thread.sleep(1000);
+        WebDriverWait wait = new WebDriverWait(driver, 1);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='left_drawer']")));
 		
 		// Click Header Global Menu button...
 		clickHeaderButton("global");
@@ -95,7 +96,7 @@ public class HeaderButton {
 			System.out.println("Error: Global Menu failed to display on header button click.");
 			System.out.println(methodID + "(): " + e.toString());
 		}
-		Thread.sleep(1000);
+
 		return this;
 	}
 	
@@ -153,7 +154,6 @@ public class HeaderButton {
 	public HeaderButton clickHeaderButton(String buttonName) throws InterruptedException {
 		String methodID = "clickHeaderButton";
 
-		Thread.sleep(1000);
 		switch (buttonName.toLowerCase()) {
 		case "global menu": case "global":
 			globalMenuButton.click();
@@ -185,7 +185,6 @@ public class HeaderButton {
 		}
 		
 		System.out.println(methodID + ": header button - '" + buttonName + "' was clicked.");
-		Thread.sleep(1500);
 		return this;
 	}
 	

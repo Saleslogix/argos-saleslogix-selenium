@@ -118,20 +118,20 @@ public class CommonNavigation {
      *
      * @param gMenuItem global menu item to select
      * @throws InterruptedException
-     * @version 1.0
      */
     public CommonNavigation clickGlobalMenuItem(String gMenuItem) throws InterruptedException {
         String methodID = "clickGlobalMenuItem";
 
         //click the Page Title (forces closure of any blocking panels)
         driver.findElement(By.id("pageTitle")).click();
-        Thread.sleep(1000);
+        WebDriverWait wait = new WebDriverWait(driver, 1);
+
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(".//*[@id='left_drawer']")));
 
         //conditionally click the GlobalMenu button to reveal panel
         WebElement glblMenuPnl = driver.findElement(By.xpath(".//*[@id='left_drawer']"));
         if (!glblMenuPnl.isDisplayed()) {
             driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
-            Thread.sleep(1000);
         }
 
         Boolean hasListview = true;
@@ -502,17 +502,16 @@ public class CommonNavigation {
                     break;
                 //TODO: continue to expand this switch case list for additional list views
             }
-            for (int second = 0; ; second++) {
-                if (second >= 60) AssertJUnit.fail("timeout");
+
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='" + itemList + "']/ul/li[1]")));
+
                 try {
                     if (isElementPresent(By.xpath(".//*[@id='" + itemList + "']/ul/li[1]")))
                         System.out.println("VP: " + listName + " List View was successfully loaded.");
-                    break;
                 } catch (Exception e) {
                     System.out.println("Error: " + listName + " List View was NOT successfully loaded.");
                 }
-                Thread.sleep(1000);
-            }
         } catch (Exception e) {
             System.out.println(methodID + ": " + e.toString());
         }
@@ -612,22 +611,22 @@ public class CommonNavigation {
                 headerbutton.showGlobalMenu();
 
                 gmenu_speedSearchLookupFld.clear();
-                Thread.sleep(500);
+                Thread.sleep(100);
                 gmenu_speedSearchLookupClearBtn.click();
-                Thread.sleep(500);
+                Thread.sleep(100);
                 gmenu_speedSearchLookupFld.sendKeys(searchItemName);
-                Thread.sleep(500);
+                Thread.sleep(100);
                 gmenu_speedSearchLookupBtn.click();
             } else {
                 //invoke the Right Context menu
                 headerbutton.clickHeaderButton("right context menu");
 
                 driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
-                Thread.sleep(500);
+                Thread.sleep(100);
                 driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
-                Thread.sleep(500);
+                Thread.sleep(100);
                 driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
-                Thread.sleep(500);
+                Thread.sleep(100);
                 driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();
             }
             System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
@@ -781,17 +780,16 @@ public class CommonNavigation {
     public boolean waitForPage(String pageTitle) throws InterruptedException {
         String methodID = "waitForPage";
 
-        for (int second = 0; ; second++) {
-            Thread.sleep(1000);
-            if (second >= 60) AssertJUnit.fail("timeout");
-            try {
-                AssertJUnit.assertEquals(pageTitle, driver.findElement(By.id("pageTitle")).getText());
-                System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
-                return true;
-            } catch (Error e) {
-                System.out.println(methodID + " " + e.toString());
-                return false;
-            }
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("pageTitle"), pageTitle));
+
+        try {
+            AssertJUnit.assertEquals(pageTitle, driver.findElement(By.id("pageTitle")).getText());
+            System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
+            return true;
+        } catch (Error e) {
+            System.out.println(methodID + " " + e.toString());
+            return false;
         }
     }
 
@@ -806,17 +804,16 @@ public class CommonNavigation {
     public boolean waitForNotPage(String pageTitle) throws InterruptedException {
         String methodID = "waitForNotPage";
 
-        for (int second = 0; ; second++) {
-            Thread.sleep(1000);
-            if (second >= 60) AssertJUnit.fail("timeout");
-            try {
-                if (!pageTitle.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText()))
-                    System.out.println(methodID + ": '" + pageTitle + "' page was successfully navigated away from");
-                return true;
-            } catch (Exception e) {
-                System.out.println(methodID + ": '" + pageTitle + "' page failed to navigate away from prior to timeout");
-                return false;
-            }
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id='pageTitle']"), pageTitle)));
+
+        try {
+            if (!pageTitle.equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText()))
+                System.out.println(methodID + ": '" + pageTitle + "' page was successfully navigated away from");
+            return true;
+        } catch (Exception e) {
+            System.out.println(methodID + ": '" + pageTitle + "' page failed to navigate away from prior to timeout");
+            return false;
         }
     }
 
@@ -972,7 +969,9 @@ public class CommonNavigation {
     public boolean isPageDisplayed(String pageTitle) throws InterruptedException {
         String methodID = "isPageDisplayed";
 
-        Thread.sleep(1000);
+        WebDriverWait wait = new WebDriverWait(driver, 1);
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("pageTitle"), pageTitle));
+
         if (pageTitle.equals(driver.findElement(By.id("pageTitle")).getText())) {
             System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
             return true;
@@ -1059,9 +1058,6 @@ public class CommonNavigation {
         String methodID = "entityListViewSearch";
 
         HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-
-        //Step: click Top-Left button to reveal Global Menu...
-        headerbutton.showGlobalMenu();
 
         //Step: navigate to entity list view...
         clickGlobalMenuItem(entityType);

@@ -248,9 +248,7 @@ public class BrowserSetup {
 
         //Step: Log out of Mobile Client
         commNav.clickGlobalMenuItem("log out");
-        Thread.sleep(2000);
         closeAlert();
-        Thread.sleep(1000);
         System.out.println("invoking " + methodID + " method...");
 
         //Step: Clear cookies
@@ -380,9 +378,10 @@ public class BrowserSetup {
 
         // Click the Log Off button
         commNav.clickGlobalMenuItem("log out");
-        Thread.sleep(2000);
         closeAlert();
-        Thread.sleep(1000);
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("pageTitle"), fullProdName));
 
         // Verify the Mobile Login screen displays
         try {

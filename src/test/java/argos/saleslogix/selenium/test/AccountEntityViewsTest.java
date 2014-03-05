@@ -6,6 +6,8 @@ import static org.testng.AssertJUnit.assertTrue;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -41,8 +43,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-	    //Step: click Top-Left button to reveal Global Menu...
-		headerbutton.showGlobalMenu();
 	
 	    //Step: navigate to Accounts list view...
 		commNav.entityListViewSearch(entityType, entityRecord);
@@ -114,9 +114,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 		
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
-		
-	    //Step: click Top-Left button to reveal Global Menu...
-		headerbutton.showGlobalMenu();
 	
 	    //Step: navigate to Accounts list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -205,16 +202,18 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			
 		//Step: check for matching results...
 		AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
-		String topAccountListItemName = accountListView.topAccountsListItemName.getText();
+		String topAccountListItemName;
 				
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
-		accountListView.accountsSearchClearBtn.click();
+		accountListView.accountsSearchTxtBox.clear();
 				
 		//Step: click the Lookup button to reload the full Accounts list
 		accountListView.accountsSearchLookupBtn.click();
-		Thread.sleep(7000);
-				
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='account_list']/ul/li[1]/div/h3")));
+
 		//Step: check if the previous search results were cleared
 		String currTopAccountsListViewName = driver.findElement(By.xpath("//*[@id='account_list']/ul/li[1]/div/h3")).getText();
 		accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
@@ -250,7 +249,6 @@ public class AccountEntityViewsTest extends BrowserSetup {
 			
 			//Step: go back to previous screen
 			headerButton.goBack();
-			Thread.sleep(3000);
 		}
 		catch (Exception e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
