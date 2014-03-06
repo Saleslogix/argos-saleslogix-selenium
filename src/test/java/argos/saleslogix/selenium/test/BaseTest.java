@@ -123,7 +123,6 @@ public class BaseTest {
     /**
      * This method will generate test result reports and screen shots under the \test-output project folder.
      *
-     * @version 1.0
      * @param    result        test results object
      */
     @AfterMethod
@@ -131,11 +130,14 @@ public class BaseTest {
         if (!result.isSuccess()) {
             File imageFile = ((TakesScreenshot) driver)
                     .getScreenshotAs(OutputType.FILE);
-            String failureImageFileName = browsername + "_" + result.getMethod().getMethodName() + new SimpleDateFormat("MM-dd-yyyy_HH-ss").format(new GregorianCalendar().getTime())
+            String failureImageFileName = browsername + "_" + result.getMethod().getMethodName() + new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss-SSS").format(new GregorianCalendar().getTime())
                     + ".png";
             failureImageFileName = ".\\test-output\\" + failureImageFileName;
             File failureImageFile = new File(failureImageFileName);
-            FileUtils.moveFile(imageFile, failureImageFile);
+
+            if (!failureImageFile.exists()) {
+                FileUtils.moveFile(imageFile, failureImageFile);
+            }
         }
         //driver.close();
         //driver.quit();
