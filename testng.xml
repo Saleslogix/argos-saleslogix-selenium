@@ -15,10 +15,12 @@
         </packages>
   	</test>
 
+    <!--
     <test name="IE Tests" preserve-order="true">
         <parameter name="browser" value="ie"></parameter>
         <packages>
             <package name="argos.saleslogix.selenium.test" />
         </packages>
     </test>
+    -->
 </suite>
