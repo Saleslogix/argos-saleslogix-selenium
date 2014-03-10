@@ -110,20 +110,8 @@ public class CommonNavigation {
      */
     public CommonNavigation clickGlobalMenuItem(String gMenuItem) throws InterruptedException {
         String methodID = "clickGlobalMenuItem";
-
-        //click the Page Title (forces closure of any blocking panels)
-        driver.findElement(By.id("pageTitle")).click();
-        WebDriverWait wait = new WebDriverWait(driver, 1);
-
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(".//*[@id='left_drawer']")));
-
-        //conditionally click the GlobalMenu button to reveal panel
-        WebElement glblMenuPnl = driver.findElement(By.xpath(".//*[@id='left_drawer']"));
-        if (!glblMenuPnl.isDisplayed()) {
-            String xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]";
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
-            driver.findElement(By.xpath(xpath)).click();
-        }
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        headerButton.showGlobalMenu();
 
         Boolean hasListview = true;
         try {
@@ -275,7 +263,11 @@ public class CommonNavigation {
 
         try {
             highlightElement(wElement);
+
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.elementToBeClickable(wElement));
             wElement.click();
+
             boolean pgOpened = waitForPage(expPageTitle);
             if (pgOpened) {
                 System.out.println(methodID + ": clicking the " + sDesc + " page element successfully opened the '" + expPageTitle + "' page/screen.");
@@ -586,7 +578,8 @@ public class CommonNavigation {
                 gmenu_speedSearchLookupBtn.click();
             } else {
                 //invoke the Right Context menu
-                headerbutton.clickHeaderButton("right context menu");
+                headerbutton.showRightContextMenu();
+
 
                 driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
                 Thread.sleep(500);
@@ -596,6 +589,10 @@ public class CommonNavigation {
                 Thread.sleep(500);
                 driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();
             }
+
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.not(ExpectedConditions.presenceOfElementLocated(By.className("list-loading-indicator"))));
+
             System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
             waitForListView(searchType);
         } catch (Exception e) {
@@ -1022,7 +1019,6 @@ public class CommonNavigation {
             searchListView(entityType, lastName);
         } else {
             searchListView(entityType, entityName);
-            Thread.sleep(3000);
         }
 
         //SubStep: singularize the entityType parameter
@@ -1136,7 +1132,6 @@ public class CommonNavigation {
             searchListView(entityType, lastName);
         } else {
             searchListView(entityType, entityName);
-            Thread.sleep(3000);
         }
 
         //SubStep: singularize the entityType parameter
@@ -1390,6 +1385,8 @@ public class CommonNavigation {
 
         try {
             WebElement entityListItem = entityListViewSearch(entityType, entityName);
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.visibilityOf(entityListItem));
             highlightNClick(entityListItem);
 
             //Step: check if the detail view is loaded

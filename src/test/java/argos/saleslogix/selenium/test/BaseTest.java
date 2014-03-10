@@ -51,7 +51,7 @@ public class BaseTest {
     }
 
     /**
-     * This method will launch the test browser (default - FireFox) before any Mobile Client tests are run.
+     * This method will launch the test browser (default - Chrome) before any Mobile Client tests are run.
      * Test properties specified in the app.properties file are read and used to setup global test variables.
      *
      * @param browser identifier of browser app to launch; specify: 'cr' for Chrome, 'ff' for Firefox, 'ie' for Internet Explorer, 'sf' for Safari
@@ -60,7 +60,7 @@ public class BaseTest {
      */
     @BeforeClass
     @Parameters({"browser"})
-    public void launchBrowser(@Optional("ff")String browser) throws InterruptedException {
+    public void launchBrowser(@Optional("cr")String browser) throws InterruptedException {
         // Run Locally
         System.out.println(browser);
 

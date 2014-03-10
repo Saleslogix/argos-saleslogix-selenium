@@ -203,6 +203,7 @@ public class AccountEntityViewsTest extends BaseTest {
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
 		accountListView.accountsSearchTxtBox.clear();
+        Thread.sleep(100);
 				
 		//Step: click the Lookup button to reload the full Accounts list
 		accountListView.accountsSearchLookupBtn.click();

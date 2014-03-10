@@ -54,14 +54,19 @@ public class HeaderButton {
      */
     public HeaderButton showGlobalMenu() throws InterruptedException {
         String methodID = "showGlobalMenu";
+        String leftDrawerId = "left_drawer";
 
-        //click the Page Title (forces closure of any blocking panels)
-        driver.findElement(By.id("pageTitle")).click();
-        WebDriverWait wait = new WebDriverWait(driver, 1);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='left_drawer']")));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
 
-        // Click Header Global Menu button...
-        clickHeaderButton("global");
+        //conditionally click the GlobalMenu button to reveal panel
+        WebElement glblMenuPnl = driver.findElement(By.id(leftDrawerId));
+
+        if (!glblMenuPnl.isDisplayed()) {
+            wait.until(ExpectedConditions.elementToBeClickable(globalMenuButton));
+            globalMenuButton.click();
+        }
+
+        wait.until(ExpectedConditions.visibilityOf(glblMenuPnl));
 
         // Verify the 'Global Menu' left-screen displays...
         try {
@@ -77,11 +82,14 @@ public class HeaderButton {
     public boolean showRightContextMenu() throws InterruptedException {
         String methodID = "showRightContextMenu";
 
-        // Click Header Right-Context Menu button...
-        clickHeaderButton("right context menu");
-
         // Verify the 'Right-Context Menu' left-screen displays...
         try {
+            // Click Header Right-Context Menu button...
+            WebDriverWait wait = new WebDriverWait(driver, 2);
+            wait.until(ExpectedConditions.visibilityOf(rightCntxtMnuButton));
+            rightCntxtMnuButton.click();
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("right_drawer")));
             System.out.println(methodID + ": Right-Context Menu was accessed successfully on header button click.");
             return true;
         } catch (Error e) {
@@ -119,44 +127,50 @@ public class HeaderButton {
 
     public HeaderButton clickHeaderButton(String buttonName) throws InterruptedException {
         String methodID = "clickHeaderButton";
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        WebElement buttonToClick = null;
 
         switch (buttonName.toLowerCase()) {
             case "global menu":
             case "global":
-                globalMenuButton.click();
+                buttonToClick = globalMenuButton;
                 break;
             case "right context menu":
             case "right menu":
             case "right":
-                rightCntxtMnuButton.click();
+                buttonToClick = rightCntxtMnuButton;
                 break;
             case "back":
             case "go back":
-                backButton.click();
+                buttonToClick = backButton;
                 break;
             case "cancel":
-                cancelButton.click();
+                buttonToClick = cancelButton;
                 break;
             case "add":
             case "add new":
-                addButton.click();
+                buttonToClick = addButton;
                 break;
             case "edit":
-                editButton.click();
+                buttonToClick = editButton;
                 break;
             case "check":
             case "accept":
-                checkButton.click();
+                buttonToClick = checkButton;
                 break;
             case "delete":
-                deleteButton.click();
+                buttonToClick = deleteButton;
                 break;
             case "save":
-                saveButton.click();
+                buttonToClick = saveButton;
                 break;
         }
 
-        System.out.println(methodID + ": header button - '" + buttonName + "' was clicked.");
+        if (buttonToClick != null) {
+            wait.until(ExpectedConditions.elementToBeClickable(buttonToClick));
+            System.out.println(methodID + ": header button - '" + buttonName + "' was clicked.");
+        }
+
         return this;
     }
 
@@ -275,7 +289,6 @@ public class HeaderButton {
         @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_1']/button")
         public WebElement addAcctCntctAcctAddressInputBtn;
         private WebDriver driver;
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
         public AddAccountContactEditViewElements(WebDriver driver) {
             this.driver = driver;
