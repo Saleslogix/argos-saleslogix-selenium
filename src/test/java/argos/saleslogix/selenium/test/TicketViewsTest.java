@@ -13,7 +13,6 @@ import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * @author mllena
  * Class: TicketViewsTest
  * Desc.: Test class for the Ticket record views
  */

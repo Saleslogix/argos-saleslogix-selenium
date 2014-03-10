@@ -255,7 +255,6 @@ public class CommonViewsElements {
      * immediately after clicking an input field button that invokes a list view selection.
      *
      * @throws InterruptedException
-     * @version 1.0
      * @param    strFieldName field value label name that invokes this list view selection
      * @param    strSelectItem    target list item to search and select
      */
@@ -307,7 +306,6 @@ public class CommonViewsElements {
      * immediately after clicking an input field button that invokes a list view selection.
      *
      * @throws InterruptedException
-     * @version 1.0
      * @param    strFieldName field value label name that invokes this list view selection
      * @param    strSelectItem    target list item to search and select
      */
@@ -451,7 +449,6 @@ public class CommonViewsElements {
      * This method will enter text for the Business Description.
      *
      * @throws InterruptedException
-     * @version 1.0
      * @param    strBusDesc text for the Business Description
      */
     public void setBusDescription(String strBusDesc) throws InterruptedException {

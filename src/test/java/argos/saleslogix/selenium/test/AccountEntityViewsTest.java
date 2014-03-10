@@ -20,8 +20,6 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Test class that defines test methods for the Account entity views on the Mobile Client.
  * *
- * @author mike.llena@swiftpage.com
- * @version	1.0
  */
 public class AccountEntityViewsTest extends BaseTest {
 	

@@ -350,8 +350,6 @@ public class OpportunityViewsElements {
      * The Opportunity will have a unique string appended to the Opportunity Name in order to ensure uniqueness.
      *
      * @throws Exception
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      * @param    strOppName    lead last name to set
      * @param    strOppAccount    lead first name to set
      */

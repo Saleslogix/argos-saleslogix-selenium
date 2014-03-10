@@ -11,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * @author mllena
  * Class: MyAttachmentsViewsTest
  * Desc.: Test class for the My Attachments views
  */

@@ -2,267 +2,266 @@ package argos.saleslogix.selenium.test;
 
 import argos.saleslogix.selenium.CommonNavigation;
 import argos.saleslogix.selenium.HeaderButton;
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
 public class SpeedSearchTest extends BaseTest {
-	
-CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+
+    CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
 
-	@Test(enabled = true)
-	public void test01_SeTestTCSpeedSearchGeneral() throws Exception {
-		// SE Test: SETest-TC-SpeedSearch-General
-	    // Version: 2.3
-	    // Desc: performs general searches to validate Global Search functionality
-	    // Required Entity: TYPE - NAME
-	    // ====================================
-		String methodID = "test01_SeTestTCSpeedSearchGeneral";
-		
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-				
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-	    //Step: click Top-Left button to reveal Global Menu...
-		headerButton.showGlobalMenu();
-		
-	    //Step: UI element check
-	    AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
-	    AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
-	    
-		//click the Page Title (forces closure of any blocking panels)
-		driver.findElement(By.id("pageTitle")).click();
-		Thread.sleep(1000);
-	    
-	    //-- Section: Execute some global searches in the mobile client
-	    //Step: perform 1st global search...
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-	    String firstSearchItem = "blackberry";
-	    
-	    commNav.searchListView("speedsearch", firstSearchItem);
-	
-	    //Step: check search results... 
-	    try {
-	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    try {
-	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + firstSearchItem + "[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    
-	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
-	    Thread.sleep(3000);
-	    commNav.waitForNotPage("SpeedSearch");	    
-	    
-	    //Step: navigate back...
-	    headerButton.goBack();
-	    
-	    
-	    //Step: perform 2nd global search...
-		commNav = PageFactory.initElements(driver, CommonNavigation.class);
-	    String secondSearchItem = "blackberri";
-	    
-	    commNav.searchListView("speedsearch", secondSearchItem);
-	
-	    //Step: check search results... 
-	    try {
-	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    try {
-	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + secondSearchItem + "[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    
-	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
-	    Thread.sleep(3000);
-	    commNav.waitForNotPage("SpeedSearch");	    
-	    
-	    //Step: navigate back...
-	    headerButton.goBack();
-	    
-	    
-	    // Step: perform 3rd global search...
-		commNav = PageFactory.initElements(driver, CommonNavigation.class);
-	    String thirdSearchItem = "blackbarry";
-	    
-	    commNav.searchListView("speedsearch", thirdSearchItem);
-	
-	    //Step: check search results... 
-	    try {
-	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    try {
-	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + thirdSearchItem + "[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    
-	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
-	    Thread.sleep(3000);
-	    commNav.waitForNotPage("SpeedSearch");	    
-	    
-	    //Step: navigate back...
-	    headerButton.goBack();
-	
-	    
-	    // Step: perform 4th global search...
-		commNav = PageFactory.initElements(driver, CommonNavigation.class);
-	    String fourthSearchItem = "black berry";
-	    
-	    commNav.searchListView("speedsearch", fourthSearchItem);
-	
-	    //Step: check search results... 
-	    try {
-	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    try {
-	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + fourthSearchItem + "[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    
-	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
-	    Thread.sleep(3000);
-	    commNav.waitForNotPage("SpeedSearch");	    
-	    
-	    //Step: navigate back...
-	    headerButton.goBack();
-	    
-	    
-	    // Step: perform 5th global search...
-		commNav = PageFactory.initElements(driver, CommonNavigation.class);
-	    String fifthSearchItem = "advisinh";
-	    
-	    commNav.searchListView("speedsearch", fifthSearchItem);
-	
-	    //Step: check search results... 
-	    try {
-	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    try {
-	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + fifthSearchItem + "[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    
-	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
-	    Thread.sleep(3000);
-	    commNav.waitForNotPage("SpeedSearch");	    
-	    
-	    //Step: navigate back...
-	    headerButton.goBack();
-	    
-	    
-	    // Step: perform 6th global search...
-		commNav = PageFactory.initElements(driver, CommonNavigation.class);
-	    String sixthSearchItem = "world";
-	    
-	    commNav.searchListView("speedsearch", sixthSearchItem);
-	
-	    //Step: check search results... 
-	    try {
-	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    try {
-	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + sixthSearchItem + "[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    
-	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
-	    Thread.sleep(3000);
-	    commNav.waitForNotPage("SpeedSearch");	    
-	    
-	    //Step: navigate back...
-	    headerButton.goBack();
-	    
-	    
-	    // Step: perform 7th global search...
-		commNav = PageFactory.initElements(driver, CommonNavigation.class);
-	    String seventhSearchItem = "sophia";
-	    
-	    commNav.searchListView("speedsearch", seventhSearchItem);
-	
-	    //Step: check search results... 
-	    try {
-	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    try {
-	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + seventhSearchItem + "[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    
-	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
-	    Thread.sleep(3000);
-	    commNav.waitForNotPage("SpeedSearch");	    
-	    
-	    //Step: navigate back...
-	    headerButton.goBack();
-	    
-	    
-	    // Step: perform 8th global search...
-		commNav = PageFactory.initElements(driver, CommonNavigation.class);
-	    String eigthSearchItem = "sophia perez";
-	    
-	    commNav.searchListView("speedsearch", eigthSearchItem);
-	
-	    //Step: check search results... 
-	    try {
-	      AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    try {
-	      AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + eigthSearchItem + "[\\s\\S]*$"));
-	    } catch (Error e) {
-	      verificationErrors.append(methodID + "(): " + e.toString());
-	    }
-	    
-	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
-	    Thread.sleep(3000);
-	    commNav.waitForNotPage("SpeedSearch");	    
-	    
-	    //Step: navigate back...
-	    headerButton.goBack();	    
-	    // -- End Section
-	    
-		System.out.println(ENDLINE);
-	}
+    @Test(enabled = true)
+    public void test01_SeTestTCSpeedSearchGeneral() throws Exception {
+        // SE Test: SETest-TC-SpeedSearch-General
+        // Version: 2.3
+        // Desc: performs general searches to validate Global Search functionality
+        // Required Entity: TYPE - NAME
+        // ====================================
+        String methodID = "test01_SeTestTCSpeedSearchGeneral";
 
-	
-	
-	//TODO: complete re-factoring test02_SeTestTCSpeedSearchLeads()
-	@Test(enabled = false)
-	public void test02_SeTestTCSpeedSearchLeads() throws Exception {
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: click Top-Left button to reveal Global Menu...
+        headerButton.showGlobalMenu();
+
+        //Step: UI element check
+        AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
+        AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
+
+        //click the Page Title (forces closure of any blocking panels)
+        driver.findElement(By.id("pageTitle")).click();
+        Thread.sleep(1000);
+
+        //-- Section: Execute some global searches in the mobile client
+        //Step: perform 1st global search...
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        String firstSearchItem = "blackberry";
+
+        commNav.searchListView("speedsearch", firstSearchItem);
+
+        //Step: check search results...
+        try {
+            AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+        try {
+            AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + firstSearchItem + "[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        //Step: click to open the top Search Results link...
+        driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+        Thread.sleep(3000);
+        commNav.waitForNotPage("SpeedSearch");
+
+        //Step: navigate back...
+        headerButton.goBack();
+
+
+        //Step: perform 2nd global search...
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        String secondSearchItem = "blackberri";
+
+        commNav.searchListView("speedsearch", secondSearchItem);
+
+        //Step: check search results...
+        try {
+            AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+        try {
+            AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + secondSearchItem + "[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        //Step: click to open the top Search Results link...
+        driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+        Thread.sleep(3000);
+        commNav.waitForNotPage("SpeedSearch");
+
+        //Step: navigate back...
+        headerButton.goBack();
+
+
+        // Step: perform 3rd global search...
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        String thirdSearchItem = "blackbarry";
+
+        commNav.searchListView("speedsearch", thirdSearchItem);
+
+        //Step: check search results...
+        try {
+            AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+        try {
+            AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + thirdSearchItem + "[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        //Step: click to open the top Search Results link...
+        driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+        Thread.sleep(3000);
+        commNav.waitForNotPage("SpeedSearch");
+
+        //Step: navigate back...
+        headerButton.goBack();
+
+
+        // Step: perform 4th global search...
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        String fourthSearchItem = "black berry";
+
+        commNav.searchListView("speedsearch", fourthSearchItem);
+
+        //Step: check search results...
+        try {
+            AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+        try {
+            AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + fourthSearchItem + "[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        //Step: click to open the top Search Results link...
+        driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+        Thread.sleep(3000);
+        commNav.waitForNotPage("SpeedSearch");
+
+        //Step: navigate back...
+        headerButton.goBack();
+
+
+        // Step: perform 5th global search...
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        String fifthSearchItem = "advisinh";
+
+        commNav.searchListView("speedsearch", fifthSearchItem);
+
+        //Step: check search results...
+        try {
+            AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+        try {
+            AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + fifthSearchItem + "[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        //Step: click to open the top Search Results link...
+        driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+        Thread.sleep(3000);
+        commNav.waitForNotPage("SpeedSearch");
+
+        //Step: navigate back...
+        headerButton.goBack();
+
+
+        // Step: perform 6th global search...
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        String sixthSearchItem = "world";
+
+        commNav.searchListView("speedsearch", sixthSearchItem);
+
+        //Step: check search results...
+        try {
+            AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+        try {
+            AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + sixthSearchItem + "[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        //Step: click to open the top Search Results link...
+        driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+        Thread.sleep(3000);
+        commNav.waitForNotPage("SpeedSearch");
+
+        //Step: navigate back...
+        headerButton.goBack();
+
+
+        // Step: perform 7th global search...
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        String seventhSearchItem = "sophia";
+
+        commNav.searchListView("speedsearch", seventhSearchItem);
+
+        //Step: check search results...
+        try {
+            AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+        try {
+            AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + seventhSearchItem + "[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        //Step: click to open the top Search Results link...
+        driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+        Thread.sleep(3000);
+        commNav.waitForNotPage("SpeedSearch");
+
+        //Step: navigate back...
+        headerButton.goBack();
+
+
+        // Step: perform 8th global search...
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        String eigthSearchItem = "sophia perez";
+
+        commNav.searchListView("speedsearch", eigthSearchItem);
+
+        //Step: check search results...
+        try {
+            AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+        try {
+            AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + eigthSearchItem + "[\\s\\S]*$"));
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        //Step: click to open the top Search Results link...
+        driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+        Thread.sleep(3000);
+        commNav.waitForNotPage("SpeedSearch");
+
+        //Step: navigate back...
+        headerButton.goBack();
+        // -- End Section
+
+        System.out.println(ENDLINE);
+    }
+
+
+    //TODO: complete re-factoring test02_SeTestTCSpeedSearchLeads()
+    @Test(enabled = false)
+    public void test02_SeTestTCSpeedSearchLeads() throws Exception {
 /*		
-	    // SE Test: SETest-TC-SpeedSearch-Leads
+        // SE Test: SETest-TC-SpeedSearch-Leads
 	    // Version: 2.2
 	    // Desc: Search on Leads
 	    // Required Entity: TYPE - NAME
@@ -343,12 +342,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    // -- END
 	     * 
 */
-	}
-	
-	
-	//TODO: complete re-factoring test03_SeTestTCSpeedSearchAccConActOppNtsHis()	
-	@Test(enabled = false)
-	public void test03_SeTestTCSpeedSearchAccConActOppNtsHis() throws Exception {
+    }
+
+
+    //TODO: complete re-factoring test03_SeTestTCSpeedSearchAccConActOppNtsHis()
+    @Test(enabled = false)
+    public void test03_SeTestTCSpeedSearchAccConActOppNtsHis() throws Exception {
 /*		
 	    // SE Test: SETest-TC-SpeedSearch-AccConActOppNtsHis
 	    // Version: 2.2
@@ -584,12 +583,12 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    // -- END
 	     *
 */
-	}
-	
+    }
 
-	//TODO: complete re-factoring test04_SeTestTCSpeedSearchTickets()
-	@Test(enabled = false)
-	public void test04_SeTestTCSpeedSearchTickets() throws Exception {
+
+    //TODO: complete re-factoring test04_SeTestTCSpeedSearchTickets()
+    @Test(enabled = false)
+    public void test04_SeTestTCSpeedSearchTickets() throws Exception {
 /*		
 	    // SE Test: SETest-TC-SpeedSearch-Leads
 	    // Version: 2.2
@@ -709,36 +708,33 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 		
 		System.out.println(ENDLINE);
 */
-	}
+    }
 
 
+    //Login & Logout
+    //==============
+    @Test(enabled = true)
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
 
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
-	
-  
-  
+    @Test(enabled = true)
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
+
+
 }

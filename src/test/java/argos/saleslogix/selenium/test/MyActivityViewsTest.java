@@ -11,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * @author mllena
  * Class: AccountEntityViewsTest
  * Desc.: Test class for the Account entity views
  */

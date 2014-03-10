@@ -16,11 +16,6 @@ import static org.testng.AssertJUnit.assertTrue;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
-
-/**
- * @author mllena
- *
- */
 public class MobileDefectTest extends BaseTest {
 
 	//Test Methods		

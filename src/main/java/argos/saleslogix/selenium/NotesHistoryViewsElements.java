@@ -241,8 +241,6 @@ public class NotesHistoryViewsElements {
      * @param blnForLead       if true then for lead, false otherwise
      * @param strLeadOrAccount lead or account record
      * @throws Exception
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      */
     public void doAddRandTestNote(String strRegarding, String strNotes, boolean blnForLead, String strLeadOrAccount) throws Exception {
         String methodID = "doAddRandTestNote";

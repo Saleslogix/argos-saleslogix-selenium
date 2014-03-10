@@ -329,8 +329,6 @@ public class ContactViewsElements {
      * The Contact will have a unique string appended to the Last Name in order to ensure uniqueness.
      *
      * @throws Exception
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      * @param    strContactLastName    contact last name to set
      * @param    strContactFirstName    contact first name to set
      * @param    strContactAccount    account record to associate this contact with
@@ -370,7 +368,6 @@ public class ContactViewsElements {
         commNav.highlightNClick(commNav.entityListViewSelect("Accounts", strContactAccount));
 
         //conditionaly setup web field
-        Thread.sleep(2000);
         if (commNav.isFieldValueEmpty("Web", contactsEditViewWebInputFld)) {
             contactsEditViewWebInputFld.sendKeys("www.saleslogix.com");
         }

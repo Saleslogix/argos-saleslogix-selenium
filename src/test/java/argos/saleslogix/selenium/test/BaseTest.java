@@ -50,9 +50,6 @@ public class BaseTest {
     public BaseTest() {
     }
 
-    public BaseTest(String browser) {
-    }
-
     /**
      * This method will launch the test browser (default - FireFox) before any Mobile Client tests are run.
      * Test properties specified in the app.properties file are read and used to setup global test variables.
@@ -126,29 +123,30 @@ public class BaseTest {
      * @param    result        test results object
      */
     @AfterMethod
-    public void checkVP(ITestResult result) throws IOException {
-        if (!result.isSuccess()) {
-            File imageFile = ((TakesScreenshot) driver)
-                    .getScreenshotAs(OutputType.FILE);
-            String failureImageFileName = browsername + "_" + result.getMethod().getMethodName() + new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss-SSS").format(new GregorianCalendar().getTime())
-                    + ".png";
-            failureImageFileName = ".\\test-output\\" + failureImageFileName;
-            File failureImageFile = new File(failureImageFileName);
+    public void checkTestFailure(ITestResult result) {
+        try {
+            if (!result.isSuccess()) {
+                File imageFile = ((TakesScreenshot) driver)
+                        .getScreenshotAs(OutputType.FILE);
+                String failureImageFileName = browsername + "_" + result.getMethod().getMethodName() + new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss-SSS").format(new GregorianCalendar().getTime())
+                        + ".png";
+                failureImageFileName = ".\\test-output\\" + failureImageFileName;
+                File failureImageFile = new File(failureImageFileName);
 
-            if (!failureImageFile.exists()) {
-                FileUtils.moveFile(imageFile, failureImageFile);
+                if (!failureImageFile.exists()) {
+                    FileUtils.moveFile(imageFile, failureImageFile);
+                }
             }
         }
-        //driver.close();
-        //driver.quit();
-        System.out.println("");
+        catch(IOException iex) {
+            iex.printStackTrace();
+        }
     }
 
 
     /**
      * This method will return a boolean value that indicates if a specific WebElement is present.
      *
-     * @version 1.0
      * @param    by        element locator
      */
     protected boolean isElementPresent(By by) {
@@ -164,7 +162,6 @@ public class BaseTest {
     /**
      * This method will return a boolean value that indicates if an Alert is present.
      *
-     * @version 1.0
      */
     private boolean isAlertPresent() {
         try {
@@ -179,7 +176,6 @@ public class BaseTest {
     /**
      * This method will capture an expected Alert and return the Alert text in a string.
      *
-     * @version 1.0
      */
     public String closeAlertAndGetItsText() {
         try {
@@ -200,7 +196,6 @@ public class BaseTest {
     /**
      * This method will capture and close an expected Alert.
      *
-     * @version 1.0
      */
     public String closeAlert() {
         try {
@@ -217,7 +212,6 @@ public class BaseTest {
     /**
      * This method will close an on-screen modal dialog/window.
      *
-     * @version 1.0
      */
     public void closeModal() {
         Set<String> windowids = driver.getWindowHandles();
@@ -235,8 +229,6 @@ public class BaseTest {
      *
      * @param userName SLX username
      * @param passWord password of SLX username
-     * @author mllena
-     * @version 1.0
      */
     public void LogOutThenLogBackIn(String userName, String passWord) throws InterruptedException {
         String methodID = "LogOutThenLogBackIn";
@@ -260,12 +252,9 @@ public class BaseTest {
     /**
      * This method will close and quit the WebDriver.
      *
-     * @author mllena
-     * @version 1.0
      */
     @AfterClass
     public void closeBrowser() {
-        driver.close();
         driver.quit();
     }
 
@@ -273,8 +262,6 @@ public class BaseTest {
     /**
      * This method will copy the test report to a specific folder.
      *
-     * @author mllena
-     * @version 1.0
      */
     @AfterSuite
     public void copyReport() {
@@ -365,7 +352,6 @@ public class BaseTest {
      * SLX Mobile Client Logoff page is performed.  The verification values are defined in the app.properties
      * file.
      *
-     * @version 1.0
      */
     public void doVerificationLogout() throws InterruptedException {
         String methodID = "doVerificationLogout";

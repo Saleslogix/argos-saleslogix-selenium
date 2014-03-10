@@ -16,7 +16,6 @@ import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * @author mllena
  * Class: NotesHistoryViewsTest
  * Desc.: Test class for the Notes/History views
  */

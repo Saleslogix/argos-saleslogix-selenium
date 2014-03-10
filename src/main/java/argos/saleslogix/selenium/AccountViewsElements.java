@@ -330,54 +330,12 @@ public class AccountViewsElements {
     //Methods
     //=======
 
-    /**
-     * This method will select and apply a hash-tag on the Accounts List view.  The assumption is that the
-     * hash-tag must exist and be applicable to the Accounts List view.
-     *
-     * @throws InterruptedException
-     * @version 1.0
-     * @param    hashTag        Account hash-tag to select; do not pre-pend a "#" symbol in the parameter string
-     */
-    public void applyHashTagFilter(String hashTag) throws InterruptedException {
-        String methodID = "applyHashTagFilter";
-
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-
-        //Step: select the Account hash-tag from the context-menu
-        commNav.rightClickContextMenuItem(hashTag);
-        Thread.sleep(3000);
-    }
-
-    /**
-     * This method will select and apply a KPI metric on the Accounts List view.  The assumption is that the
-     * KPI metric must exist and be applicable to the Accounts List view.
-     *
-     * @throws InterruptedException
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
-     * @param    kpiMetric    Account KPI metric to select
-     */
-    public void applyKPIMetric(String kpiMetric) throws InterruptedException {
-        String methodID = "applyKPIMetric";
-
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-
-        //Step: select the Account hash-tag from the context-menu
-        commNav.rightClickContextMenuItem(kpiMetric);
-        Thread.sleep(500);
-        headerButton.closeRightContextMenu();
-        Thread.sleep(3000);
-    }
-
 
     /**
      * This method will add an auto-generated test Account record by filling-in the Account Edit input fields
      * then saving the field values.
      *
      * @throws InterruptedException
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      * @param    strAccountName    account name to set
      */
     public void doAddRandTestAccount(String strAccountName) throws InterruptedException, IOException {
@@ -491,8 +449,6 @@ public class AccountViewsElements {
      * This method will search for then click a target Account record from the Accounts List view in order
      * to open the Account record's Detail view.
      *
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      * @param    strAcctName        name of a target Account record to find and open
      * @return void
      */
@@ -560,8 +516,6 @@ public class AccountViewsElements {
      * List view.  The resulting Activities search is displayed in the List view.
      *
      * @throws InterruptedException
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      */
     public void performNoFilterSearch() throws InterruptedException {
         String methodID = "performNoFilterSearch";
@@ -584,8 +538,6 @@ public class AccountViewsElements {
      * Activities (related) List view.  The resulting activity search is displayed.
      *
      * @throws InterruptedException
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      * @param    regarding    the target Activity's regarding field value
      */
     public void performRelActivitiesSearch(String regarding) throws InterruptedException {

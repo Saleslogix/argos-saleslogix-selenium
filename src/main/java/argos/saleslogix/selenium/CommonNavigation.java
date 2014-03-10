@@ -196,12 +196,8 @@ public class CommonNavigation {
             }
 
             System.out.println(methodID + ": global menu link - '" + gMenuItem + "' was clicked.");
-            Thread.sleep(1000);
             if (hasListview) {
                 waitForListView(gMenuItem);
-            }
-            Thread.sleep(3000);
-            {
             }
         } catch (Exception e) {
             System.out.println(methodID + ": " + e.toString());
@@ -216,7 +212,6 @@ public class CommonNavigation {
      *
      * @param menuItem menu item from the Right-context menu to select
      * @throws InterruptedException
-     * @version 1.0
      */
     public boolean rightClickContextMenuItem(String menuItem) throws InterruptedException {
         String methodID = "rightClickContextMenuItem";
@@ -226,21 +221,14 @@ public class CommonNavigation {
         //conditionally click the RightContext Menu button to reveal panel
         if (!commNav.rmenu_panel.isDisplayed()) {
             driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
-            Thread.sleep(1000);
-
-            try {
-                AssertJUnit.assertTrue(commNav.rmenu_panel.isDisplayed());
-            } catch (Error e) {
-                System.out.println(methodID + ": " + e.toString());
-                return false;
-            }
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.id("right_drawer")));
         }
 
         //Step: perform context menu item selection
         try {
             WebElement contxtMnuItem = driver.findElement(By.xpath("//*[@id='right_drawer']/descendant::*[text() = '" + menuItem + "']"));
             highlightNClick(contxtMnuItem);
-            Thread.sleep(2000);
             System.out.println(methodID + ": the '" + menuItem + "' Right-context Menu item was clicked.");
             return true;
         } catch (Exception e) {
@@ -255,16 +243,14 @@ public class CommonNavigation {
      *
      * @param sDesc    description of the WebElement; for logging purposes
      * @param wElement WebElement object
-     * @version 1.0
      */
     public boolean checkIfWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
         String methodID = "checkIfWebElementPresent";
 
-        WebDriverWait wait = new WebDriverWait(driver, 1);
-        wait.until(ExpectedConditions.visibilityOf(wElement));
-
         try {
-            AssertJUnit.assertTrue(wElement.isDisplayed());
+            WebDriverWait wait = new WebDriverWait(driver, 1);
+            wait.until(ExpectedConditions.visibilityOf(wElement));
+
             highlightElement(wElement);
             System.out.println(methodID + ": " + sDesc + " is displayed on the current page/screen.");
             return true;
@@ -283,7 +269,6 @@ public class CommonNavigation {
      * @param wElement     WebElement object
      * @param expPageTitle title of the expected page to open
      * @throws InterruptedException
-     * @version 1.0
      */
     public boolean clickWebElementToPage(String sDesc, WebElement wElement, String expPageTitle) throws InterruptedException {
         String methodID = "clickWebElementToPage";
@@ -310,7 +295,6 @@ public class CommonNavigation {
      *
      * @param inputFld   WebElement object of the input field
      * @param inputValue field value to set
-     * @version 1.0
      */
     public void setupInputFieldValue(WebElement inputFld, String inputValue) {
 
@@ -335,7 +319,6 @@ public class CommonNavigation {
      * @param strAttribute attribute type to check
      * @param expAttrVal   attribute value of the type to check against
      * @throws InterruptedException
-     * @version 1.0
      */
     public void verifyWebElementAttributeVal(String elementDesc, WebElement wElement, String strAttribute, String expAttrVal) throws InterruptedException {
         String methodID = "verifyWebElementAttributeVal";
@@ -361,7 +344,6 @@ public class CommonNavigation {
      * @param wElement    WebElement object
      * @param expText     text value of the WebElement to check against
      * @throws InterruptedException
-     * @version 1.0
      */
     public void verifyWebElementText(String elementDesc, WebElement wElement, String expText) throws InterruptedException {
         String methodID = "verifyWebElementText";
@@ -387,7 +369,6 @@ public class CommonNavigation {
      * @param wElement    WebElement object
      * @param expValue    value of the WebElement to check against
      * @throws InterruptedException
-     * @version 1.0
      */
     public void verifyWebElementValue(String elementDesc, WebElement wElement, String expValue) throws InterruptedException {
         String methodID = "verifyWebElementValue";
@@ -445,7 +426,6 @@ public class CommonNavigation {
      *
      * @param listName description of the WebElement; for logging purposes
      * @throws InterruptedException
-     * @version 1.0
      */
     public CommonNavigation waitForListView(String listName) throws InterruptedException {
 
@@ -512,7 +492,6 @@ public class CommonNavigation {
      * This method will perform page scroll-down action.
      *
      * @throws InterruptedException
-     * @version 1.0
      */
     public void scrollDownPage() throws InterruptedException {
 
@@ -536,7 +515,6 @@ public class CommonNavigation {
      * @param searchType     specify 'SpeedSearch' or the entity record type
      * @param searchItemName item or entity record to search for
      * @throws InterruptedException
-     * @version 1.0
      */
     public CommonNavigation searchListView(String searchType, String searchItemName) throws InterruptedException {
         String methodID = "searchListView";
@@ -633,7 +611,6 @@ public class CommonNavigation {
      * @param searchType     specify 'SpeedSearch' or the entity record type
      * @param searchItemName item or entity record to search for
      * @throws InterruptedException
-     * @version 1.0
      */
     public CommonNavigation searchNSelectListView(String searchType, String searchItemName) throws InterruptedException {
         String methodID = "searchListView";
@@ -691,7 +668,6 @@ public class CommonNavigation {
      * @param listName  name of entity list view
      * @param itemIndex index of list item to click
      * @throws InterruptedException
-     * @version 1.0
      */
     public CommonNavigation clickListViewItemN(String listName, Integer itemIndex) throws InterruptedException {
         String methodID = "clickListViewItemN";
@@ -764,16 +740,15 @@ public class CommonNavigation {
      *
      * @param pageTitle exact page title of expected page
      * @throws InterruptedException
-     * @version 1.0
      */
     public boolean waitForPage(String pageTitle) throws InterruptedException {
         String methodID = "waitForPage";
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("pageTitle"), pageTitle));
-
         try {
-            AssertJUnit.assertEquals(pageTitle, driver.findElement(By.id("pageTitle")).getText());
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("pageTitle"), pageTitle));
+
+            driver.findElement(By.id("pageTitle"));
             System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
             return true;
         } catch (Error e) {
@@ -788,7 +763,6 @@ public class CommonNavigation {
      *
      * @param pageTitle exact title of transition from page
      * @throws InterruptedException
-     * @version 1.0
      */
     public boolean waitForNotPage(String pageTitle) throws InterruptedException {
         String methodID = "waitForNotPage";
@@ -860,12 +834,10 @@ public class CommonNavigation {
      * false - otherwise
      */
     public boolean isElementDisplayed(By by) {
-
         String methodID = "isElementDisplayed";
 
         try {
-            AssertJUnit.assertTrue(driver.findElement(by).isDisplayed());
-            return true;
+            return driver.findElement(by).isDisplayed();
         } catch (NoSuchElementException e) {
             System.out.println(methodID + ": " + e.toString());
             return false;
@@ -926,7 +898,6 @@ public class CommonNavigation {
      * @return boolean        true - if WebElement is present
      * false - otherwise
      * @throws InterruptedException
-     * @version 1.0
      */
     public boolean isWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
         String methodID = "isWebElementPresent";
@@ -950,7 +921,6 @@ public class CommonNavigation {
      * @return boolean        true - if page with matching pagetitle is displayed;
      * false - otherwise
      * @throws InterruptedException
-     * @version 1.0
      */
     public boolean isPageDisplayed(String pageTitle) throws InterruptedException {
         String methodID = "isPageDisplayed";
@@ -976,7 +946,6 @@ public class CommonNavigation {
      * @return boolean        true - if WebElement with matching by locator is displayed;
      * false - otherwise
      * @throws InterruptedException
-     * @version 1.0
      */
     public boolean isTextNotPresentOnPage(String pageText) throws InterruptedException {
         String methodID = "isTextNotPresentOnPage";
@@ -1008,7 +977,6 @@ public class CommonNavigation {
      * @return boolean        true - if WebElement with matching by locator is displayed;
      * false - otherwise
      * @throws InterruptedException
-     * @version 1.0
      */
     public boolean isTextPresentOnPage(String pageText) throws InterruptedException {
         String methodID = "isTextPresentOnPage";
@@ -1038,7 +1006,6 @@ public class CommonNavigation {
      * @param entityType entity type to search for
      * @param entityName entity record name to search for
      * @throws Exception
-     * @version 1.0
      */
     public WebElement entityListViewSearch(String entityType, String entityName) throws Exception {
         String methodID = "entityListViewSearch";
@@ -1100,7 +1067,6 @@ public class CommonNavigation {
 
         //Step: check if there is a 'no records' result
         try {
-            //AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
             AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().contains("no records"));
 
             //Step: check for matching results...
@@ -1151,7 +1117,6 @@ public class CommonNavigation {
      * @param entityType type of entity list view to search
      * @param entityName item to search for
      * @throws Exception
-     * @version 1.0
      */
     public WebElement entityListViewSearchContains(String entityType, String entityName) throws Exception {
         String methodID = "entityListViewSearchContains";
@@ -1261,7 +1226,6 @@ public class CommonNavigation {
      * @param entityType type of entity list view to search
      * @param entityName item to search for
      * @throws Exception
-     * @version 1.0
      */
     public WebElement entityListViewSelect(String entityType, String entityName) throws Exception {
         String methodID = "entityListViewSelect";
@@ -1369,7 +1333,6 @@ public class CommonNavigation {
      *
      * @param searchItem item to search for
      * @throws InterruptedException
-     * @version 1.0
      */
     public void doSpeedSearch(String searchItem) throws InterruptedException {
         String methodID = "doSpeedSearch";
@@ -1387,7 +1350,6 @@ public class CommonNavigation {
      * @param entityType type of entity list view to search
      * @param entityName item to search for
      * @throws Exception
-     * @version 1.0
      */
     public boolean entityListViewNegativeSearch(String entityType, String entityName) throws Exception {
         String methodID = "entityListViewNegativeSearch";
@@ -1405,7 +1367,6 @@ public class CommonNavigation {
 
         //Step: check if there is a 'no records' result
         try {
-            //AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*no records[\\s\\S]*$"));
             AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().contains("no records"));
             System.out.println(methodID + ": negative  " + entityType + " record List View search was successful; 'no records' results was displayed for non-existent " + entityType);
             return true;
@@ -1423,7 +1384,6 @@ public class CommonNavigation {
      * @param entityType entity type to search for
      * @param entityName item to search for
      * @throws Exception
-     * @version 1.0
      */
     public boolean entityRecordOpenDetailView(String entityType, String entityName) throws Exception {
         String methodID = "entityRecordOpenDetailView";
@@ -1455,7 +1415,6 @@ public class CommonNavigation {
      *
      * @param entityType type of entity list view to search
      * @throws Exception
-     * @version 1.0
      */
     public boolean entityRecordAdd(String entityType) throws Exception {
         String methodID = "entityRecordAdd";
@@ -1503,7 +1462,6 @@ public class CommonNavigation {
      *
      * @param entityType type of entity list view to search
      * @throws Exception
-     * @version 1.0
      */
     public boolean entityRecordEditView(String entityType, String entityName) throws Exception {
         String methodID = "entityRecordEditView";
@@ -1562,7 +1520,6 @@ public class CommonNavigation {
      * @param searchItem   item to search for
      * @param recordToOpen speedsearch results item to open
      * @throws Exception
-     * @version 1.0
      */
     public void goToSpeedSearchResultDetailView(String searchItem, String recordToOpen) throws InterruptedException {
         String methodID = "goToSpeedSearchResultDetailView";
@@ -1613,7 +1570,6 @@ public class CommonNavigation {
      *
      * @param wElement a WebElement object on the page
      * @return void
-     * @version 1.0
      */
     public void highlightNClick(WebElement wElement) throws InterruptedException {
 

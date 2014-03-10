@@ -15,10 +15,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
 
-/**
- * @author mllena
- *
- */
 public class MobileSprint304Test extends BaseTest {
 
 	public String getKPICardValue(String fullKPICardVal) {

@@ -353,8 +353,6 @@ public class MyActivityViewsElements {
      * This method will return a string that consists of all the activity items displayed on the first
      * page of the Activities (related) List view.
      *
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      */
     public String getRelatedActivitiesListViewTxt() {
         String methodID = "getRelatedActivitiesListViewTxt";
@@ -366,40 +364,10 @@ public class MyActivityViewsElements {
 
 
     /**
-     * This method will perform a search for an activity record (using the regarding field value) from the
-     * My Activities List view.  The resulting activity search is displayed.
-     *
-     * @throws InterruptedException
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
-     * @param    regarding    the target Activity's regarding field value
-     */
-    public void performMyActivitiesSearch(String regarding) throws InterruptedException {
-        String methodID = "performMyActivitiesSearch";
-
-        MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-
-        //Step: execute a filter-free search
-        headerButton.showRightContextMenu();
-        activitiesListView.myActivitiesSearchTxtBox.click();
-        Thread.sleep(500);
-        activitiesListView.myActivitiesSearchClearBtn.click();
-        Thread.sleep(1000);
-        activitiesListView.myActivitiesSearchTxtBox.sendKeys(regarding);
-        Thread.sleep(500);
-        activitiesListView.myActivitiesSearchLookupBtn.click();
-        Thread.sleep(3000);
-    }
-
-
-    /**
      * This method will perform a "filter-less" search (no hash-tag & no search string) on the My Activities
      * List view.  The resulting activity search is displayed.
      *
      * @throws InterruptedException
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      */
     public void performNoFilterSearch() throws InterruptedException {
         String methodID = "performNoFilterSearch";
@@ -423,8 +391,6 @@ public class MyActivityViewsElements {
      * Activities (related) List view.  The resulting activity search is displayed.
      *
      * @throws InterruptedException
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      * @param    regarding    the target Activity's regarding field value
      */
     public void performRelActivitiesSearch(String regarding) throws InterruptedException {
@@ -452,8 +418,6 @@ public class MyActivityViewsElements {
      * the Activity Detail view is opened.
      *
      * @throws InterruptedException
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      * @param    regarding    the target Activity's regarding field value
      */
     public void selectNOpenMyActivitiesListItem(String regarding) {
@@ -480,8 +444,6 @@ public class MyActivityViewsElements {
      * the Activity Detail view is opened.
      *
      * @throws InterruptedException
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      * @param    regarding    the target Activity's regarding field value
      */
     public void selectNOpenRelatedActivityListItem(String regarding) {

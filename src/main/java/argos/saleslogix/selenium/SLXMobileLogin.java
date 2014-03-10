@@ -90,8 +90,6 @@ public class SLXMobileLogin {
      * Assuming that the Mobile Client login page is displayed, this method will enter a username,
      * password and optionally check the Remember Me box then click the Login button.
      *
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
      * @param    userName    username to login as
      * @param    passWord    password of username to use for login
      * @param    rememberMe    if true, then the Remember Me check box will be checked; if false, then

@@ -528,8 +528,6 @@ public class LeadViewsElements {
 	/**
 	 * This method will add an auto-generated test Lead record by filling-in the Lead Edit input fields.
 	 * The Lead will have a unique string appended to the Last Name in order to ensure uniqueness.
-	 * @author	mike.llena@swiftpage.com
-	 * @version	1.0
 	 * @param	strLeadLastName	lead last name to set
 	 * @param	strLeadFirstName	lead first name to set
 	 * @param	strLeadCompany	company name for lead
