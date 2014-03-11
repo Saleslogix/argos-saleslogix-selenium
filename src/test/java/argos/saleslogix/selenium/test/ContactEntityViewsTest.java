@@ -433,11 +433,6 @@ public class ContactEntityViewsTest extends BrowserSetup {
 			//Step: go back to previous screen
 			headerButton.goBack();
 			Thread.sleep(2000);
-					
-			//Step: go back to previous screens
-			headerButton.clickHeaderButton("cancel");
-			headerButton.goBack();
-			Thread.sleep(2000);
 		}
 		catch (Exception e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
