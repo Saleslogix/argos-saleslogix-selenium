@@ -2,25 +2,20 @@ package argos.saleslogix.selenium.test;
 
 import argos.saleslogix.selenium.CommonNavigation;
 import argos.saleslogix.selenium.SLXMobileLogin;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
-import java.util.Properties;
-import java.util.Set;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -33,6 +28,7 @@ public class BaseTest {
     public String browsername = "";
     public String baseUrl;
     public String mobileUrl;
+    public String webDriverUrl;
     public String startPage;
     public String homePage;
     public String userName;
@@ -41,7 +37,6 @@ public class BaseTest {
     public String shortProdName;
     public String copyrightLabel;
     public String versionLabel;
-    public String scriptuser;
     public String STARTLINE = "==========";
     public String ENDLINE = "---------- end of test ----------";
     protected StringBuffer verificationErrors = new StringBuffer();
@@ -54,56 +49,32 @@ public class BaseTest {
      * This method will launch the test browser (default - Chrome) before any Mobile Client tests are run.
      * Test properties specified in the app.properties file are read and used to setup global test variables.
      *
-     * @param browser identifier of browser app to launch; specify: 'cr' for Chrome, 'ff' for Firefox, 'ie' for Internet Explorer, 'sf' for Safari
+     * @param browser identifier of browser app to launch; specify: 'chrome' for Chrome, 'firefox' for Firefox
      *
      * @throws InterruptedException
      */
     @BeforeClass
     @Parameters({"browser"})
-    public void launchBrowser(@Optional("cr")String browser) throws InterruptedException {
-        // Run Locally
+    public void launchBrowser(@Optional("chrome")String browser) throws InterruptedException, MalformedURLException {
+        // Run in grid
         System.out.println(browser);
-
-        if (browser.equalsIgnoreCase("FF")) {
-            driver = new FirefoxDriver();
-        } else if (browser.equalsIgnoreCase("CR")) {
-            File file = new File("drivers/chromedriver.exe");
-            System.out.println(file.getAbsolutePath());
-            System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-            driver = new ChromeDriver();
-        } else if (browser.equalsIgnoreCase("IE")) {
-            File file = new File("drivers/IEDriverServer.exe");
-            System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
-            driver = new InternetExplorerDriver();
-        } else if (browser.equalsIgnoreCase("SF")) {
-            driver = new SafariDriver();
-        }
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+        loadProperties();
         browsername = browser;
 
-        try {
-            Properties p = new Properties();
-            FileReader reader = new FileReader("app.properties");
-            p.load(reader);
-            reader.close();
-            baseUrl = p.getProperty("base_url");
-            mobileUrl = p.getProperty("mobile_url");
-            startPage = p.getProperty("start_page");
-            homePage = p.getProperty("home_page");
-            userName = p.getProperty("user_name");
-            userPwd = p.getProperty("user_pwd");
-            fullProdName = p.getProperty("full_prod_name");
-            shortProdName = p.getProperty("short_prod_name");
-            copyrightLabel = p.getProperty("copyright_lbl");
-            versionLabel = p.getProperty("version_lbl");
-            scriptuser = p.getProperty("script_user");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+
+        if (browser.equalsIgnoreCase("firefox")) {
+            capabilities = DesiredCapabilities.firefox();
+        } else if (browser.equalsIgnoreCase("chrome")) {
+            capabilities = DesiredCapabilities.chrome();
+        } else if (browser.equalsIgnoreCase("internetExplorer")) {
+            capabilities = DesiredCapabilities.internetExplorer();
+        } else if (browser.equalsIgnoreCase("android")) {
+            capabilities = DesiredCapabilities.android();
         }
+
+        driver = new RemoteWebDriver(new URL(webDriverUrl), capabilities);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         System.out.println("Running SLXMobile3x WebDriver Tests on SLX 8.1 Mobile Client");
         System.out.println("************************************************************");
@@ -116,30 +87,38 @@ public class BaseTest {
         System.out.println("");
     }
 
-
-    /**
-     * This method will generate test result reports and screen shots under the \test-output project folder.
-     *
-     * @param    result        test results object
-     */
-    @AfterMethod
-    public void checkTestFailure(ITestResult result) {
+    private void loadProperties() {
         try {
-            if (!result.isSuccess()) {
-                File imageFile = ((TakesScreenshot) driver)
-                        .getScreenshotAs(OutputType.FILE);
-                String failureImageFileName = browsername + "_" + result.getMethod().getMethodName() + new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss-SSS").format(new GregorianCalendar().getTime())
-                        + ".png";
-                failureImageFileName = ".\\test-output\\" + failureImageFileName;
-                File failureImageFile = new File(failureImageFileName);
+            Properties p = new Properties();
+            FileReader reader = new FileReader("app.properties");
+            p.load(reader);
+            reader.close();
 
-                if (!failureImageFile.exists()) {
-                    FileUtils.moveFile(imageFile, failureImageFile);
+            Enumeration<?> enumeration = p.propertyNames();
+            while(enumeration.hasMoreElements())
+            {
+                String key = (String) enumeration.nextElement();
+                if (System.getProperty(key) == null) {
+                    System.setProperty(key, p.getProperty(key));
                 }
             }
-        }
-        catch(IOException iex) {
-            iex.printStackTrace();
+
+            baseUrl = System.getProperty("base_url");
+            mobileUrl = System.getProperty("mobile_url");
+            webDriverUrl = System.getProperty("webdriver_url");
+            startPage = System.getProperty("start_page");
+            homePage = System.getProperty("home_page");
+            userName = System.getProperty("user_name");
+            userPwd = System.getProperty("user_pwd");
+            fullProdName = System.getProperty("full_prod_name");
+            shortProdName = System.getProperty("short_prod_name");
+            copyrightLabel = System.getProperty("copyright_lbl");
+            versionLabel = System.getProperty("version_lbl");
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -154,20 +133,6 @@ public class BaseTest {
             driver.findElement(by);
             return true;
         } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-
-    /**
-     * This method will return a boolean value that indicates if an Alert is present.
-     *
-     */
-    private boolean isAlertPresent() {
-        try {
-            driver.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
             return false;
         }
     }
@@ -257,26 +222,6 @@ public class BaseTest {
     public void closeBrowser() {
         driver.quit();
     }
-
-
-    /**
-     * This method will copy the test report to a specific folder.
-     *
-     */
-    @AfterSuite
-    public void copyReport() {
-        /*
-		File sourceFile = new File("C:\\Users\\" + scriptuser + "\\Documents\\SEWebDriver\\SLX8Mobile2x\\test-output\\emailable-report.html");
-		File targetFile = new File("\\\\ML02W7U\\TestReports\\Mobile2x SmokeTest Report - " + new SimpleDateFormat("MM-dd-yyyy hh-mm-ss aaa").format(new GregorianCalendar().getTime()) + ".html");
-		try {
-			Files.copy(sourceFile, targetFile);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
-    }
-
 
     /**
      * This method perform a verification check on the SLX Mobile Client Login page.  The verification values
