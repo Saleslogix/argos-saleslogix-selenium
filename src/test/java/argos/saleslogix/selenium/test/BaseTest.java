@@ -49,7 +49,6 @@ public class BaseTest {
      * This method will launch the test browser (default - Chrome) before any Mobile Client tests are run.
      * Test properties specified in the app.properties file are read and used to setup global test variables.
      *
-     * @param browser identifier of browser app to launch; specify: 'chrome' for Chrome, 'firefox' for Firefox
      *
      * @throws InterruptedException
      */
