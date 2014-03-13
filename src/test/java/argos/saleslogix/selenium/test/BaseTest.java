@@ -71,6 +71,8 @@ public class BaseTest {
             capabilities = DesiredCapabilities.internetExplorer();
         } else if (browser.equalsIgnoreCase("android")) {
             capabilities = DesiredCapabilities.android();
+        } else if (browser.equalsIgnoreCase("phantomjs")) {
+            capabilities = DesiredCapabilities.phantomjs();
         }
 
         driver = new RemoteWebDriver(new URL(webDriverUrl), capabilities);
