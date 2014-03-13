@@ -54,24 +54,22 @@ public class BaseTest {
      * @throws InterruptedException
      */
     @BeforeClass
-    @Parameters({"browser"})
-    public void launchBrowser(@Optional("chrome")String browser) throws InterruptedException, MalformedURLException {
+    public void launchBrowser() throws InterruptedException, MalformedURLException {
         // Run in grid
-        System.out.println(browser);
         loadProperties();
-        browsername = browser;
+        System.out.println(browsername);
 
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 
-        if (browser.equalsIgnoreCase("firefox")) {
+        if (browsername.equalsIgnoreCase("firefox")) {
             capabilities = DesiredCapabilities.firefox();
-        } else if (browser.equalsIgnoreCase("chrome")) {
+        } else if (browsername.equalsIgnoreCase("chrome")) {
             capabilities = DesiredCapabilities.chrome();
-        } else if (browser.equalsIgnoreCase("internetExplorer")) {
+        } else if (browsername.equalsIgnoreCase("internetExplorer")) {
             capabilities = DesiredCapabilities.internetExplorer();
-        } else if (browser.equalsIgnoreCase("android")) {
+        } else if (browsername.equalsIgnoreCase("android")) {
             capabilities = DesiredCapabilities.android();
-        } else if (browser.equalsIgnoreCase("phantomjs")) {
+        } else if (browsername.equalsIgnoreCase("phantomjs")) {
             capabilities = DesiredCapabilities.phantomjs();
         }
 
@@ -105,6 +103,7 @@ public class BaseTest {
                 }
             }
 
+            browsername = System.getProperty("browser");
             baseUrl = System.getProperty("base_url");
             mobileUrl = System.getProperty("mobile_url");
             webDriverUrl = System.getProperty("webdriver_url");
