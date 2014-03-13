@@ -26,6 +26,7 @@ public class BaseTest {
 
     public WebDriver driver;
     public String browsername = "";
+    public String browserVersion = "";
     public String baseUrl;
     public String mobileUrl;
     public String webDriverUrl;
@@ -48,7 +49,15 @@ public class BaseTest {
     /**
      * This method will launch the test browser (default - Chrome) before any Mobile Client tests are run.
      * Test properties specified in the app.properties file are read and used to setup global test variables.
+     * To configure a different browser, you can change your app.properties browser line or pass in a
+     * system property to maven: "maven -Dbrowser=firefox test". Note: all of the app.properties can be override this way.
      *
+     * The browsers property can be any of the following:
+     *  firefox
+     *  chrome
+     *  internetExplorer
+     *  android
+     *  phantomjs
      *
      * @throws InterruptedException
      */
@@ -57,6 +66,7 @@ public class BaseTest {
         // Run in grid
         loadProperties();
         System.out.println(browsername);
+        System.out.println(webDriverUrl);
 
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 
@@ -68,11 +78,22 @@ public class BaseTest {
             capabilities = DesiredCapabilities.internetExplorer();
         } else if (browsername.equalsIgnoreCase("android")) {
             capabilities = DesiredCapabilities.android();
+        } else if (browsername.equalsIgnoreCase("ipad")) {
+            capabilities = DesiredCapabilities.ipad();
+            capabilities.setCapability("simulatorVersion", "7.1");
+            capabilities.setCapability("sdkVersion", "7.1");
+        } else if (browsername.equalsIgnoreCase("iphone")) {
+            capabilities = DesiredCapabilities.iphone();
         } else if (browsername.equalsIgnoreCase("phantomjs")) {
             capabilities = DesiredCapabilities.phantomjs();
         }
 
+        if (!browserVersion.isEmpty()) {
+            capabilities.setVersion(browserVersion);
+        }
+
         driver = new RemoteWebDriver(new URL(webDriverUrl), capabilities);
+        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.MINUTES);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         System.out.println("Running SLXMobile3x WebDriver Tests on SLX 8.1 Mobile Client");
@@ -103,6 +124,7 @@ public class BaseTest {
             }
 
             browsername = System.getProperty("browser");
+            browserVersion = System.getProperty("browser_version");
             baseUrl = System.getProperty("base_url");
             mobileUrl = System.getProperty("mobile_url");
             webDriverUrl = System.getProperty("webdriver_url");
