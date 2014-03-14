@@ -18,7 +18,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class TicketViewsTest extends BaseTest {
 	
-	public String TEST_TICKET_RECORD = "001-00-000693";
+	public String TEST_TICKET_RECORD = "000-00-000011";
 	
 	//Test Methods Set
 	//================
@@ -135,11 +135,9 @@ public class TicketViewsTest extends BaseTest {
 			try {
 				//click the 1st Notes Box item
 				ticketsListView.ticketsListViewNotesBox1stItem.click();
-				Thread.sleep(5000);
 				commNav.isPageDisplayed(expPgTitle);
 				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_detail']")).isDisplayed());
 				headerButton.goBack();
-				Thread.sleep(2000);
 				System.out.println(resultsMsg + " - Passed");
 				
 			}
@@ -156,11 +154,9 @@ public class TicketViewsTest extends BaseTest {
 			try {
 				//click the Notes Box 'see list' link
 				ticketsListView.ticketsListViewNotesBoxSeeListLink.click();
-				Thread.sleep(5000);
 				commNav.isPageDisplayed(expPgTitle);
 				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='history_related']")).isDisplayed());
 				headerButton.goBack();
-				Thread.sleep(2000);
 				System.out.println(resultsMsg + " - Passed");
 				
 			}
@@ -238,9 +234,7 @@ public class TicketViewsTest extends BaseTest {
 		String initTicketsListInfo = ticketsListView.getTicketsListViewTxt();
 		
 	    //Step: load more results (click on 'x remaining records' item)
-		for (int count = 1; count<3; count++) {			
-			//driver.findElement(By.xpath("//*[@id='account_list']")).sendKeys(Keys.PAGE_DOWN);
-			//Thread.sleep(3000);
+		for (int count = 1; count<3; count++) {
 			JavascriptExecutor jsx = (JavascriptExecutor)driver;
 			jsx.executeScript("window.scrollBy(0,450)", "");
 		}
@@ -362,7 +356,6 @@ public class TicketViewsTest extends BaseTest {
 			
 			//Step: go back to previous screen
 			headerButton.goBack();
-			Thread.sleep(3000);
 		}
 		catch (Exception e) {
 			verificationErrors.append(e.toString());
@@ -497,7 +490,6 @@ public class TicketViewsTest extends BaseTest {
 		
 			//Step: go back to previous screen
 			headerButton.goBack();
-			Thread.sleep(2000);
 		} catch (Error e) {
 			verificationErrors.append(e.toString());
 			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
@@ -565,7 +557,6 @@ public class TicketViewsTest extends BaseTest {
 		
 			//Step: go back to previous screen
 			headerButton.goBack();
-			Thread.sleep(2000);
 		}
 		catch (Exception e) {
 			verificationErrors.append(e.toString());
@@ -643,7 +634,6 @@ public class TicketViewsTest extends BaseTest {
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
-		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
 	}
@@ -714,11 +704,9 @@ public class TicketViewsTest extends BaseTest {
 		commNav.scrollDownPage();
 		commNav.rightClickContextMenuItem("Open Age Average");
 		headerButton.closeRightContextMenu();
-		Thread.sleep(500);
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
-		Thread.sleep(5000);
 		
 		System.out.println(ENDLINE);
 	}
