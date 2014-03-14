@@ -135,13 +135,10 @@ public class AddAccountContactEditViewElements {
             //set the name field
             addAcctCntctNameInputBtn.click();
             try {
-                //commView.namePrefixInputFldBtn.click();
-                //commView.selectFieldValListItem("prefix", "Mr.");
                 commView.nameFirstInputFld.sendKeys("A.");
                 commView.nameMiddleInputFld.sendKeys("Neo");
                 commView.nameLastInputFld.sendKeys(strNewName);
-
-                Thread.sleep(100);
+                commView.nameSuffixInputFldBtn.sendKeys("Sr.");
                 headerButton.clickCheck();
             } catch (Exception e0) {
                 System.out.println(methodID + "(): " + e0.toString());
