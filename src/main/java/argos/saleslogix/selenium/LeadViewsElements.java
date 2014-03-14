@@ -544,7 +544,7 @@ public class LeadViewsElements {
 		commNav.clickGlobalMenuItem("Leads");
 		
 		//Step: click the Add header button to enter Lead edit view
-		headerButton.clickHeaderButton("Add");
+		headerButton.clickAdd();
 		
 		//Step: setup new Lead field values
 		//setup name fields		
@@ -556,7 +556,7 @@ public class LeadViewsElements {
 			commView.nameMiddleInputFld.sendKeys("Neo");
 			commView.nameLastInputFld.sendKeys(strLeadLastName);
 			//commView.nameSuffixInputFld.sendKeys("Jr.");
-			headerButton.clickHeaderButton("check");
+			headerButton.clickCheck();
 		}
 		catch (Exception e0) {
 			System.out.println(methodID + "(): " + e0.toString());
@@ -600,7 +600,7 @@ public class LeadViewsElements {
 				commView.addressPostalInputFld.sendKeys("85048");
 				commView.addressCountryInputFld.sendKeys("USA");				
 				commView.addressAttentionInputFld.sendKeys("Mrs. Rogers");
-				headerButton.clickHeaderButton("check");
+				headerButton.clickCheck();
 			}
 			catch (Exception e1) {
 				System.out.println(methodID + "(): " + e1.toString());
@@ -619,7 +619,7 @@ public class LeadViewsElements {
 		leadsEditViewIndustryInputFld.sendKeys("Computers/Electronics/High Tech");
 		//leadsEditViewIndustryFldBtn.click();
 		//	commView.selectFieldValListItem("Industry", "Computers/Electronics/High Tech");
-		//	headerButton.clickHeaderButton("check");
+		//	headerButton.clickCheck();
 		
 		//setup sic code field
 		leadsEditViewSicCodeInputFld.sendKeys("51CC0D3");			
@@ -636,7 +636,7 @@ public class LeadViewsElements {
 		
 		//Step: save the new Lead field values
 		commNav.waitForPage("Lead");
-		headerButton.clickHeaderButton("save");
+		headerButton.clickSave();
 		commNav.waitForNotPage("Lead");
 		
 		System.out.println(methodID + ": Auto-test Lead - " +  strLeadLastName + ", " + strLeadLastName + " record was created.");

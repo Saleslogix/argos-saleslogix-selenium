@@ -345,7 +345,7 @@ public class ContactViewsElements {
         commNav.clickGlobalMenuItem("Contacts");
 
         //Step: click the Add header button to enter Contact edit view
-        headerButton.clickHeaderButton("Add");
+        headerButton.clickAdd();
 
         //Step: setup new Contact field values
         //setup name fields
@@ -357,7 +357,7 @@ public class ContactViewsElements {
             commView.nameMiddleInputFld.sendKeys("Neo");
             commView.nameLastInputFld.sendKeys(strContactLastName);
             //commView.nameSuffixInputFld.sendKeys("Sr.");
-            headerButton.clickHeaderButton("check");
+            headerButton.clickCheck();
         } catch (Exception e0) {
             System.out.println(methodID + "(): " + e0.toString());
             headerButton.goBack();
@@ -398,7 +398,7 @@ public class ContactViewsElements {
                 commView.addressPostalInputFld.sendKeys("85048");
                 commView.addressCountryInputFld.sendKeys("USA");
                 commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
-                headerButton.clickHeaderButton("check");
+                headerButton.clickCheck();
             } catch (Exception e1) {
                 System.out.println(methodID + "(): " + e1.toString());
                 headerButton.goBack();
@@ -429,11 +429,11 @@ public class ContactViewsElements {
         //setup cuisine field
         contactsEditViewCuisineInputFldBtn.click();
         commView.selectFieldValListItem("Cuisine", "Chinese");
-        headerButton.clickHeaderButton("check");
+        headerButton.clickCheck();
 
         //Step: save the new Contact field values
         commNav.waitForPage("Contact");
-        headerButton.clickHeaderButton("save");
+        headerButton.clickSave();
         commNav.waitForNotPage("Contact");
 
         System.out.println(methodID + ": Auto-test Contact - " + strContactLastName + ", " + strContactLastName + " record was created under the '" + strContactAccount + "' Account.");

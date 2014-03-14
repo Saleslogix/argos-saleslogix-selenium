@@ -253,7 +253,7 @@ public class NotesHistoryViewsElements {
         commNav.clickGlobalMenuItem("Notes/History");
 
         //Step: click the Add header button to enter Notes/History edit view
-        headerButton.clickHeaderButton("Add");
+        headerButton.clickAdd();
 
         //Step: setup new Note field values
         //setup Time field (leave as-is)
@@ -277,7 +277,7 @@ public class NotesHistoryViewsElements {
         //TO-DO: complete selection of remaining non-required fields
 
         //Step: save the new Note field values
-        headerButton.clickHeaderButton("save");
+        headerButton.clickSave();
         commNav.waitForNotPage("Note");
 
         System.out.println(methodID + ": Auto-test Note/History - " + strNotes + " record was created.");

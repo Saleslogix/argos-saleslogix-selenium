@@ -6,10 +6,7 @@ import static org.testng.AssertJUnit.assertTrue;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
-import argos.saleslogix.selenium.AccountViewsElements;
-import argos.saleslogix.selenium.CommonNavigation;
-import argos.saleslogix.selenium.ContactViewsElements;
-import argos.saleslogix.selenium.HeaderButton;
+import argos.saleslogix.selenium.*;
 import org.testng.annotations.Test;
 import org.openqa.selenium.support.PageFactory;
 
@@ -53,11 +50,8 @@ public class AddAccountContactViewsTest extends BaseTest {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		//Step: login & log back in (to clear cookies)
-		LogOutThenLogBackIn(userName, userPwd);
 				
-		HeaderButton.AddAccountContactEditViewElements addAcctCntctView = PageFactory.initElements(driver, HeaderButton.AddAccountContactEditViewElements.class);
+		AddAccountContactEditViewElements addAcctCntctView = PageFactory.initElements(driver, AddAccountContactEditViewElements.class);
 		
 		//Step: add a random test Account & Contact records
 		String newAcctName = "SeAutoTestAddAcctCntct-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
@@ -102,7 +96,7 @@ public class AddAccountContactViewsTest extends BaseTest {
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
 				
-		HeaderButton.AddAccountContactEditViewElements addAcctCntctView = PageFactory.initElements(driver, HeaderButton.AddAccountContactEditViewElements.class);
+		AddAccountContactEditViewElements addAcctCntctView = PageFactory.initElements(driver, AddAccountContactEditViewElements.class);
 		
 		//Step: add a random test Account & Contact records
 		String newAcctName = "SeAutoTestAddAcctOnly-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
@@ -137,7 +131,7 @@ public class AddAccountContactViewsTest extends BaseTest {
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
 				
-		HeaderButton.AddAccountContactEditViewElements addAcctCntctView = PageFactory.initElements(driver, HeaderButton.AddAccountContactEditViewElements.class);
+		AddAccountContactEditViewElements addAcctCntctView = PageFactory.initElements(driver, AddAccountContactEditViewElements.class);
 		
 		//Step: add a random test Account & Contact records
 		String newAcctName = "SeAutoTestCntctOnly-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());

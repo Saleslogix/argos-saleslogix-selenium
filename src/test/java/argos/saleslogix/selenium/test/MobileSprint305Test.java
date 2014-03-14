@@ -37,7 +37,7 @@ public class MobileSprint305Test extends BaseTest {
 		commNav.clickGlobalMenuItem("My Activities");
 		
 		//Section 1: click the top-right + button to schedule a new activity
-		headerButton.clickHeaderButton("add");
+		headerButton.clickAdd();
 		try {
 			AssertJUnit.assertTrue(commNav.waitForPage("Schedule..."));
 			
@@ -88,7 +88,7 @@ public class MobileSprint305Test extends BaseTest {
 		    //SubStep: leave all other Activity fields set to their defaults...
 			
 		    //Step: click the Header, Save button to return to Contact detail view...
-		    headerButton.clickHeaderButton("save");
+		    headerButton.clickSave();
 		    Thread.sleep(5000);
 		    commNav.waitForPage("My Activities");
 		}
@@ -107,7 +107,7 @@ public class MobileSprint305Test extends BaseTest {
 	    String completeActyIconXPath = "//*[@id='activity_detail']/div[2]/ul[1]";
 	    driver.findElement(By.xpath(completeActyIconXPath)).click();
 	    commNav.waitForPage("Complete Activity");
-		headerButton.clickHeaderButton("save");
+		headerButton.clickSave();
 	    Thread.sleep(5000);
 	    commNav.waitForPage("My Activities");
 	    
@@ -121,7 +121,7 @@ public class MobileSprint305Test extends BaseTest {
 		commNav.waitForPage(actType);
 		
 		//Step: modify the Notes field
-		headerButton.clickHeaderButton("edit");
+		headerButton.clickEdit();
 		commNav.waitForPage("Note");
 		
 		String notesFldCSS = "textarea[name='Text']";
@@ -130,7 +130,7 @@ public class MobileSprint305Test extends BaseTest {
 	    notesFld.clear();
 	    notesFld.sendKeys("Modified activity note.");
 	    
-	    headerButton.clickHeaderButton("save");
+	    headerButton.clickSave();
 	    Thread.sleep(5000);
 	    String resultsMsg = "VP: No un-expected error message on Activity edit save";
 	    try {
@@ -140,7 +140,7 @@ public class MobileSprint305Test extends BaseTest {
 	    catch (Error e) {
 	    	System.out.println(resultsMsg + " - Failed");
 	    }
-	    headerButton.clickHeaderButton("back");
+	    headerButton.clickBack();
 	    
 	    //VP: 
 		
@@ -178,7 +178,7 @@ public class MobileSprint305Test extends BaseTest {
 		commNav.waitForPage("Ticket Activities");
 		
 		//Step: click header Add button 
-		headerButton.clickHeaderButton("add");
+		headerButton.clickAdd();
 		commNav.waitForPage("Edit Ticket Activity");
 		
 		//VP: check that User field default value is not empty 
@@ -196,11 +196,11 @@ public class MobileSprint305Test extends BaseTest {
 		finally {
 			// End Tests
 			// Step: navigate back to the default startup view
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 			commNav.waitForPage("Ticket Activities");
-			headerButton.clickHeaderButton("back");
+			headerButton.clickBack();
 			commNav.waitForNotPage("Ticket Activities");
-			headerButton.clickHeaderButton("back");
+			headerButton.clickBack();
 			commNav.waitForPage("Tickets");
 			
 			System.out.println(ENDLINE);	

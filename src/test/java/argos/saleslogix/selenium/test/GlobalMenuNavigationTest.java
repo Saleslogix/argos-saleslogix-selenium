@@ -1,5 +1,6 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.AddAccountContactEditViewElements;
 import argos.saleslogix.selenium.CommonNavigation;
 import argos.saleslogix.selenium.HeaderButton;
 import argos.saleslogix.selenium.MiscEntityItemViewsElements;
@@ -46,7 +47,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 
         // Step: navigate to the Add Account/Contact Edit view...
         commNav.clickGlobalMenuItem("Add Account/Contact");
-        HeaderButton.AddAccountContactEditViewElements addAccConEditView = PageFactory.initElements(driver, HeaderButton.AddAccountContactEditViewElements.class);
+        AddAccountContactEditViewElements addAccConEditView = PageFactory.initElements(driver, AddAccountContactEditViewElements.class);
 
         // VP: confirm that Global Menu button is available...
         String pageName = "Add Account / Contact";
@@ -70,7 +71,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Edit Name");
 
         //click Name - Suffix edit button...
@@ -80,11 +81,11 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Edit Name");
 
         //navigate back to the Add Account / Contact edit screen...
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Add Account / Contact");
 
         // Step: click the Title edit button...
@@ -94,7 +95,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...	    
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Add Account / Contact");
 
         // Step: click the Address edit button...
@@ -114,7 +115,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Address");
 
         //click the Address - City edit button...
@@ -124,7 +125,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Address");
 
         //click the Address - State edit button...
@@ -134,7 +135,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Address");
 
         //click the Address - Country edit button...
@@ -144,11 +145,11 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Address");
 
         //navigate back to the Add Account / Contact edit screen...
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Add Account / Contact");
 
         //Step: click the Type edit button to open the Account Type screen...
@@ -158,7 +159,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...	    
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Add Account / Contact");
 
         //Step: click the Sub-Type edit button to open the Account Sub-Type screen...
@@ -168,7 +169,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...	    
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Add Account / Contact");
 
         //Step: click the Status edit button to open the Account Status screen...
@@ -178,7 +179,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...	    
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Add Account / Contact");
 
         //Step: click the Industry edit button to open the Industry screen...
@@ -188,7 +189,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...	    
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Add Account / Contact");
 
         //Step: click the Owner edit button to open the Owners screen...
@@ -198,11 +199,11 @@ public class GlobalMenuNavigationTest extends BaseTest {
         resultMsg = "Global Menu button is available in the '" + pageName + "' view";
         // VP: confirm that Global Menu button is available...	    
         checkGlobalMenuStatus(resultMsg);
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("Add Account / Contact");
 
         //Step: click the Top Cancel button...
-        headerButton.clickHeaderButton("cancel");
+        headerButton.clickCancel();
         commNav.waitForPage("My Activities");
 
         // -- END

@@ -372,7 +372,7 @@ public class AccountEntityViewsTest extends BaseTest {
 			commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
 			
 			//end of test
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 		
 			//Step: go back to previous screen
 			headerButton.goBack();
@@ -425,7 +425,7 @@ public class AccountEntityViewsTest extends BaseTest {
 			commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
 			
 			//end of test
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 		
 			//Step: go back to previous screen
 			headerButton.goBack();

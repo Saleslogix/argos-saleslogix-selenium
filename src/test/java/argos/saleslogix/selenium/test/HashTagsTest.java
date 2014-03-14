@@ -439,7 +439,7 @@ public class HashTagsTest extends BaseTest {
 
         //SECTION 2:
         //Step: close Right-Context Menu
-        headerButton.clickHeaderButton("right");
+        headerButton.clickRightMenu();
 
         //check to see that the Right-Context Menu is indeed closed
         // Verify the 'Right-Context Menu' left-screen displays...
@@ -726,7 +726,7 @@ public class HashTagsTest extends BaseTest {
 
         //SECTION 2:
         //Step: close Right-Context Menu
-        headerButton.clickHeaderButton("right");
+        headerButton.clickRightMenu();
 
         //check to see that the Right-Context Menu is indeed closed
         // Verify the 'Right-Context Menu' left-screen displays...
@@ -1469,7 +1469,7 @@ public class HashTagsTest extends BaseTest {
 
         //SECTION 2:
         //Step: close Right-Context Menu
-        headerButton.clickHeaderButton("right");
+        headerButton.clickRightMenu();
 
         //check to see that the Right-Context Menu is indeed closed
         // Verify the 'Right-Context Menu' left-screen displays...
@@ -2066,7 +2066,7 @@ public class HashTagsTest extends BaseTest {
 
         //SECTION 2:
         //Step: close Right-Context Menu
-        headerButton.clickHeaderButton("right");
+        headerButton.clickRightMenu();
 
         //check to see that the Right-Context Menu is indeed closed
         // Verify the 'Right-Context Menu' left-screen displays...
@@ -2472,7 +2472,7 @@ public class HashTagsTest extends BaseTest {
 
         //SECTION 2:
         //Step: close Right-Context Menu
-        headerButton.clickHeaderButton("right");
+        headerButton.clickRightMenu();
 
         //check to see that the Right-Context Menu is indeed closed
         // Verify the 'Right-Context Menu' left-screen displays...

@@ -347,7 +347,7 @@ public class MobileSprint233Test extends BaseTest {
 				catch (NoSuchElementException e) {
 					System.out.println(resultsMsg + " - Failed");
 				}
-				headerButton.clickHeaderButton("back");
+				headerButton.clickBack();
 			}
 			catch (NoSuchElementException e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -625,7 +625,7 @@ public class MobileSprint233Test extends BaseTest {
 				catch (NoSuchElementException e) {
 					System.out.println(resultsMsg + " - Failed");
 				}
-				headerButton.clickHeaderButton("back");
+				headerButton.clickBack();
 			}
 			catch (NoSuchElementException e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -897,7 +897,7 @@ public class MobileSprint233Test extends BaseTest {
 				catch (NoSuchElementException e) {
 					System.out.println(resultsMsg + " - Failed");
 				}
-				headerButton.clickHeaderButton("back");
+				headerButton.clickBack();
 			}
 			catch (NoSuchElementException e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1168,7 +1168,7 @@ public class MobileSprint233Test extends BaseTest {
 				catch (NoSuchElementException e) {
 					System.out.println(resultsMsg + " - Failed");
 				}
-				headerButton.clickHeaderButton("back");
+				headerButton.clickBack();
 			}
 			catch (NoSuchElementException e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1435,7 +1435,7 @@ public class MobileSprint233Test extends BaseTest {
 				catch (NoSuchElementException e) {
 					System.out.println(resultsMsg + " - Failed");
 				}
-				headerButton.clickHeaderButton("back");
+				headerButton.clickBack();
 			}
 			catch (NoSuchElementException e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1705,7 +1705,7 @@ public class MobileSprint233Test extends BaseTest {
 				catch (NoSuchElementException e) {
 					System.out.println(resultsMsg + " - Failed");
 				}
-				headerButton.clickHeaderButton("back");
+				headerButton.clickBack();
 			}
 			catch (NoSuchElementException e) {
 				System.out.println(methodID + "(): " + e.toString());

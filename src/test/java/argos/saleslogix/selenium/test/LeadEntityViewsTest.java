@@ -347,7 +347,7 @@ public class LeadEntityViewsTest extends BaseTest {
             commNav.verifyEntityViewElementClick(viewName + ", owner field", leadEditView.leadsEditViewOwnerFldBtn, "Owners");
 
             //end of test
-            headerButton.clickHeaderButton("cancel");
+            headerButton.clickCancel();
 
             //Step: go back to previous screen
             headerButton.goBack();
@@ -398,14 +398,14 @@ public class LeadEntityViewsTest extends BaseTest {
             commNav.verifyEntityViewElementClick(viewName + ", owner field", leadEditView.leadsEditViewOwnerFldBtn, "Owners");
 
             //end of test
-            headerButton.clickHeaderButton("cancel");
+            headerButton.clickCancel();
 
             //Step: go back to previous screen
             headerButton.goBack();
             Thread.sleep(2000);
 
             //Step: go back to previous screens
-            headerButton.clickHeaderButton("cancel");
+            headerButton.clickCancel();
             headerButton.goBack();
             Thread.sleep(2000);
         } catch (Exception e) {

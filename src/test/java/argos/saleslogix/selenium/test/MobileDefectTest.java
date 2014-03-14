@@ -69,7 +69,7 @@ public class MobileDefectTest extends BaseTest {
 		Thread.sleep(2000);
 		
 		// Step: click the Top-Left, Global Menu button again to close...
-		headerbutton.clickHeaderButton("global");
+		headerbutton.clickGlobalMenu();
 		Thread.sleep(2000);
 		
 		// VP: confirm that attachment is still displayed correctly after Global Menu display/non-display
@@ -352,7 +352,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 		
 		// Step: click the Header, Back button to return to the SpeedSearch List View...
-		headerbutton.clickHeaderButton("back");
+		headerbutton.clickBack();
 		for (int second = 0;; second++) {
 			if (second >= 30) Assert.fail("timeout");
 			try { if ("SpeedSearch".equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -525,7 +525,7 @@ public class MobileDefectTest extends BaseTest {
 			    commNav.waitForPage("History Attachments");
 			
 			    // Step: click the top Add buton...
-			    headerButton.clickHeaderButton("add");
+			    headerButton.clickAdd();
 			    commNav.waitForPage("Add Attachments");
 			    
 			    // Step: click the 'add a file' section of the screen...
@@ -641,7 +641,7 @@ public class MobileDefectTest extends BaseTest {
 		    }
 		    
 		    //Step: click the Header, Edit button...
-		    headerbutton.clickHeaderButton("edit");
+		    headerbutton.clickEdit();
 		    for (int second = 0;; second++) {
 		    	if (second >= 60) AssertJUnit.fail("timeout");
 		    	try { if ("Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -680,7 +680,7 @@ public class MobileDefectTest extends BaseTest {
 		    //Step: from Cuisine list, make 1st selection then click Header, Check button
 		    driver.findElement(By.xpath("//*[@id='pick_list_0']/descendant::*[text() = '" + cuisineSel1 + "']")).click();
 		    Thread.sleep(1000);
-		    headerbutton.clickHeaderButton("check");
+		    headerbutton.clickCheck();
 		    for (int second = 0;; second++) {
 		    	if (second >= 60) AssertJUnit.fail("timeout");
 		    	try { if ("Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -707,7 +707,7 @@ public class MobileDefectTest extends BaseTest {
 		    //Step: from Cuisine list, make 2nd selection then click Header, Check button
 		    driver.findElement(By.xpath("//*[@id='pick_list_0']/descendant::*[text() = '" + cuisineSel2 + "']")).click();
 		    Thread.sleep(1000);
-		    headerbutton.clickHeaderButton("check");
+		    headerbutton.clickCheck();
 		    for (int second = 0;; second++) {
 		    	if (second >= 60) AssertJUnit.fail("timeout");
 		    	try { if ("Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -724,7 +724,7 @@ public class MobileDefectTest extends BaseTest {
 		    }		    
 			
 		    //Step: click the Header, Cancel button...
-		    headerbutton.clickHeaderButton("cancel");
+		    headerbutton.clickCancel();
 		    for (int second = 0;; second++) {
 		    	if (second >= 60) AssertJUnit.fail("timeout");
 		    	try { if (contactCheck.equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -810,7 +810,7 @@ public class MobileDefectTest extends BaseTest {
 			//TODO: create a separate class for the Calendar Date view
 			//set Start Time = +1 Month
 			driver.findElement(By.xpath("//*[@id='datetime-picker-date']/tbody/tr[1]/td[1]/button")).click();
-			headerbutton.clickHeaderButton("check");
+			headerbutton.clickCheck();
 			commNav.waitForPage(actType);
 			
 		    //VP: check the modified Start Time field val...
@@ -842,10 +842,10 @@ public class MobileDefectTest extends BaseTest {
 		    activityEditView.activityEditViewRecurringFldBtn.click();
 			commNav.waitForPage("Recurrence");
 			//Note: here we just open the Recurrence page, then click the Header, Check button (no changes)
-			headerbutton.clickHeaderButton("check");
+			headerbutton.clickCheck();
 			
 		    //Step: click the Header, Save button to return to Contact detail view...
-		    headerbutton.clickHeaderButton("save");
+		    headerbutton.clickSave();
 		    Thread.sleep(3000);
 		    if (commNav.waitForPage(contactName)) {
 			    System.out.println(methodID + ": successfully scheduled an '" + actType + " - " + regardingVal + "' activity for " + entityType + " - " + contactName);
@@ -1269,7 +1269,7 @@ public class MobileDefectTest extends BaseTest {
 			String regardingFldVal = "Test To-Do Activity - ";
 			for (int iCount = 0;iCount<22;iCount++ ) {
 			// click the Add Header button to setup a new Activity
-				headerButton.clickHeaderButton("add");
+				headerButton.clickAdd();
 				try {
 					AssertJUnit.assertTrue(commNav.waitForPage("Schedule..."));
 					
@@ -1286,7 +1286,7 @@ public class MobileDefectTest extends BaseTest {
 					Thread.sleep(500);
 					
 					// click the top Save button
-					headerButton.clickHeaderButton("save");
+					headerButton.clickSave();
 					AssertJUnit.assertTrue(commNav.waitForPage("Calendar"));
 					System.out.println(methodID + ": '" + regardingFldVal + "' was scheduled");
 					Thread.sleep(1000);
@@ -1348,7 +1348,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Activities");
 				
 			//schedule a new Activity
-			headerButton.clickHeaderButton("add");
+			headerButton.clickAdd();
 			commNav.waitForPage("Schedule...");
 			
 			//select Meeting type
@@ -1362,7 +1362,7 @@ public class MobileDefectTest extends BaseTest {
 			Thread.sleep(1000);
 			
 			//keep remaining default field vals then save the activity
-			headerButton.clickHeaderButton("save");
+			headerButton.clickSave();
 			commNav.waitForPage("Activities");
 			
 			//VP: check to see the Contact's scheduled activity is listed
@@ -1398,7 +1398,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Activities");
 				
 			//schedule a new Activity
-			headerButton.clickHeaderButton("add");
+			headerButton.clickAdd();
 			commNav.waitForPage("Schedule...");
 			
 			//select Meeting type
@@ -1412,7 +1412,7 @@ public class MobileDefectTest extends BaseTest {
 			Thread.sleep(1000);
 			
 			//keep remaining default field vals then save the activity
-			headerButton.clickHeaderButton("save");
+			headerButton.clickSave();
 			commNav.waitForPage("Activities");
 			
 			//VP: check to see the Lead's scheduled activity is listed
@@ -1539,7 +1539,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Activities");
 				
 			//schedule a new Activity
-			headerButton.clickHeaderButton("add");
+			headerButton.clickAdd();
 			commNav.waitForPage("Schedule...");
 			
 			//select Meeting type
@@ -1557,7 +1557,7 @@ public class MobileDefectTest extends BaseTest {
 			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/button")).click();
 			commNav.waitForPage("Activity Description");
 			String activityDescListInitTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 			
 			//setup Category field
 			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/input")).click();
@@ -1569,10 +1569,10 @@ public class MobileDefectTest extends BaseTest {
 			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/button")).click();
 			commNav.waitForPage("Activity Category");
 			String activityCatListInitTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 			
 			//keep remaining default field vals then save the activity
-			headerButton.clickHeaderButton("save");
+			headerButton.clickSave();
 			commNav.waitForPage("Activities");
 			
 			//VP: check to see the Contact's scheduled activity is listed
@@ -1589,7 +1589,7 @@ public class MobileDefectTest extends BaseTest {
 			//Section 2 - schedule another activity under the same Contact
 			//------------------------------------------------------------
 			//start to schedule a new Activity
-			headerButton.clickHeaderButton("add");
+			headerButton.clickAdd();
 			commNav.waitForPage("Schedule...");
 			
 			//select Meeting type
@@ -1612,7 +1612,7 @@ public class MobileDefectTest extends BaseTest {
 				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + "- FAILED");
 			}
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 			
 			//click Category field selection button
 			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/button")).click();
@@ -1629,7 +1629,7 @@ public class MobileDefectTest extends BaseTest {
 				System.out.println(methodID + "(): " + e.toString());
 				System.out.println(resultsMsg + "- FAILED");
 			}
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
@@ -1637,7 +1637,7 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		headerButton.clickHeaderButton("cancel");
+		headerButton.clickCancel();
 		commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
@@ -1669,7 +1669,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Ticket Activities");
 				
 			//schedule a new Activity
-			headerButton.clickHeaderButton("add");
+			headerButton.clickAdd();
 			commNav.waitForPage("Edit Ticket Activity");
 			
 			//VP: check the default value of the Public Access field
@@ -1695,14 +1695,14 @@ public class MobileDefectTest extends BaseTest {
 			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_6']/button")).click();
 			commNav.waitForPage("Calendar");
 			Thread.sleep(1000);
-			headerButton.clickHeaderButton("check");
+			headerButton.clickCheck();
 			commNav.waitForPage("Edit Ticket Activity");
 			
 			//set End Date (use default)
 			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_7']/button")).click();
 			commNav.waitForPage("Calendar");
 			Thread.sleep(1000);
-			headerButton.clickHeaderButton("check");
+			headerButton.clickCheck();
 			commNav.waitForPage("Edit Ticket Activity");
 			
 			//set Comments text (for record identification)
@@ -1713,7 +1713,7 @@ public class MobileDefectTest extends BaseTest {
 			Thread.sleep(1000);
 			
 			//keep remaining default field vals then save the activity
-			headerButton.clickHeaderButton("save");
+			headerButton.clickSave();
 			commNav.waitForPage("Ticket Activities");
 			
 			//VP: check to see that the scheduled Ticket Activity is listed
@@ -1783,7 +1783,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Ticket Activities");
 				
 			//schedule a new Activity
-			headerButton.clickHeaderButton("add");
+			headerButton.clickAdd();
 			commNav.waitForPage("Edit Ticket Activity");			
 			
 			//set User field value
@@ -1796,14 +1796,14 @@ public class MobileDefectTest extends BaseTest {
 			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_6']/button")).click();
 			commNav.waitForPage("Calendar");
 			Thread.sleep(1000);
-			headerButton.clickHeaderButton("check");
+			headerButton.clickCheck();
 			commNav.waitForPage("Edit Ticket Activity");
 			
 			//set End Date (use default)
 			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_7']/button")).click();
 			commNav.waitForPage("Calendar");
 			Thread.sleep(1000);
-			headerButton.clickHeaderButton("check");
+			headerButton.clickCheck();
 			commNav.waitForPage("Edit Ticket Activity");
 			
 			//set Comments text (for record identification)
@@ -1814,7 +1814,7 @@ public class MobileDefectTest extends BaseTest {
 			Thread.sleep(1000);
 			
 			//keep remaining default field vals then save the activity
-			headerButton.clickHeaderButton("save");
+			headerButton.clickSave();
 			commNav.waitForPage("Ticket Activities");
 			
 			//VP: check to see that the scheduled Ticket Activity is listed
@@ -1899,7 +1899,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.setupInputFieldValue(firstNameFld, firstNameTestVal);
 			WebElement lastNameFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextField_68']/input"));
 			commNav.setupInputFieldValue(lastNameFld, lastNameTestVal);
-			headerButton.clickHeaderButton("check");
+			headerButton.clickCheck();
 			commNav.waitForPage("Add Account / Contact");
 			
 			//setup Account field
@@ -1910,17 +1910,17 @@ public class MobileDefectTest extends BaseTest {
 			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_20']/input")).click();
 			commNav.waitForPage("Users");
 			//driver.findElement(By.xpath("//*[@id='user_list']/descendant::*[text() = 'Administrator, ']")).click();
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 			commNav.waitForPage("Add Account / Contact");
 			
 			//setup the Owner field
 			driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_LookupField_21']/input")).click();
 			commNav.waitForPage("Owners");
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 			commNav.waitForPage("Add Account / Contact");
 			
 			//save the new Account/Contact record
-			headerButton.clickHeaderButton("save");
+			headerButton.clickSave();
 	
 			//VP: check to see that new Account/Contact record is saved
 			String resultMsg = "VP: Account/Contact record successfully added";
@@ -1973,7 +1973,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForNotPage("Opportunities");			
 			
 			//click top Edit button
-			headerButton.clickHeaderButton("edit");
+			headerButton.clickEdit();
 			commNav.waitForPage("Opportunity");
 			
 			OpportunityViewsElements opportunityDetailView = PageFactory.initElements(driver, OpportunityViewsElements.class);
@@ -1999,9 +1999,9 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		headerButton.clickHeaderButton("cancel");
-		headerButton.clickHeaderButton("cancel");
-		headerButton.clickHeaderButton("back");
+		headerButton.clickCancel();
+		headerButton.clickCancel();
+		headerButton.clickBack();
 		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}
@@ -2038,12 +2038,12 @@ public class MobileDefectTest extends BaseTest {
 			WebElement noteNotesFld = driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_5']/textarea"));
 			commNav.setupInputFieldValue(noteNotesFld, "Test Notes for Defect Fix 13092375");
 			
-			headerButton.clickHeaderButton("save");
+			headerButton.clickSave();
 			commNav.waitForNotPage("Note");
 			
 			//Step 2: edit and save the Account record
 			//----------------------------------------
-			headerButton.clickHeaderButton("edit");
+			headerButton.clickEdit();
 			commNav.waitForNotPage("Account");
 			
 			//edit the Account Phone number (800) 944-5709
@@ -2051,7 +2051,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.setupInputFieldValue(accountPhoneFld, "800-944-5709");
 			
 			//save the changes
-			headerButton.clickHeaderButton("save");
+			headerButton.clickSave();
 			
 			//VP: confirm that accessible Account records are listed
 			String resultMsg = "VP: Account changes successfully saved after add note and field value edit";
@@ -2070,7 +2070,7 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		headerButton.clickHeaderButton("back");
+		headerButton.clickBack();
 		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}
@@ -2118,7 +2118,7 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		headerButton.clickHeaderButton("back");
+		headerButton.clickBack();
 		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}
@@ -2158,7 +2158,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 			
 		// End Tests
-		headerButton.clickHeaderButton("back");
+		headerButton.clickBack();
 		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}
@@ -2215,7 +2215,7 @@ public class MobileDefectTest extends BaseTest {
 		commNav.entityRecordOpenDetailView("Accounts", accountRecord);
 		
 		//Step: click top Back button to return to the Acounts List view
-		headerButton.clickHeaderButton("back");
+		headerButton.clickBack();
 		commNav.waitForPage("Accounts");
 		
 		//VP: check that old Lookup control is not displayed in the Accounts List view... 	

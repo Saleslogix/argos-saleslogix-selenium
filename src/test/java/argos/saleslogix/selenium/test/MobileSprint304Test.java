@@ -91,7 +91,7 @@ public class MobileSprint304Test extends BaseTest {
 		}
 	    catch (Error e) {
 			// Click Header Right-Context Menu button...
-	    	headerButton.clickHeaderButton("right context menu");
+	    	headerButton.clickRightMenu();
 	    	System.out.println(resultsMsg + "- False");
 	    }
 	    
@@ -196,7 +196,7 @@ public class MobileSprint304Test extends BaseTest {
 		}
 		
 		//Step: navigate to Lead Edit view
-		headerButton.clickHeaderButton("edit");
+		headerButton.clickEdit();
 		commNav.waitForPage("Lead");
 		
 		//VP: check to see that the Mobile Phone field is available in the Edit view
@@ -247,7 +247,7 @@ public class MobileSprint304Test extends BaseTest {
 		commNav.waitForPage("Activity");
 		
 		//Step: navigate back to the Activities List view
-		headerButton.clickHeaderButton("back");
+		headerButton.clickBack();
 		commNav.waitForPage(entityType);
 		
 		//Step: open the Right-context menu
@@ -754,7 +754,7 @@ public class MobileSprint304Test extends BaseTest {
 	    commNav.waitForNotPage(entityDetailViewLink);
 	    
 	    //Step: enter the Edit view of the Ticket Activity record
-	    headerButton.clickHeaderButton("Edit");
+	    headerButton.clickEdit();
 	    commNav.waitForPage("Edit Ticket Activity");
 	    
 	    //VP: check to see that 'yyyy' does not appear as a value for Year labels in the Start/End Date fields
@@ -905,7 +905,7 @@ public class MobileSprint304Test extends BaseTest {
 	    commNav.waitForPage(entityDetailViewLink);
 	    
 	    //Step: add an Account Activity item
-	    headerButton.clickHeaderButton("add");
+	    headerButton.clickAdd();
 		try {
 			AssertJUnit.assertTrue(commNav.waitForPage("Schedule..."));
 			
@@ -924,7 +924,7 @@ public class MobileSprint304Test extends BaseTest {
 		    //SubStep: leave all other Activity fields set to their defaults...
 			
 		    //Step: click the Header, Save button to return to Contact detail view...
-		    headerButton.clickHeaderButton("save");
+		    headerButton.clickSave();
 		    Thread.sleep(5000);
 		    commNav.waitForPage(entityDetailViewLink);
 		}
@@ -943,7 +943,7 @@ public class MobileSprint304Test extends BaseTest {
 		activitiesList.selectNOpenRelatedActivityListItem(regardingVal);
 		
 		//Step: edit the Activity record
-		headerButton.clickHeaderButton("edit");
+		headerButton.clickEdit();
 		commNav.waitForPage("Activity");
 		
 		//Step: modify and save the Activity
@@ -952,12 +952,12 @@ public class MobileSprint304Test extends BaseTest {
 		actyEditLocationFld.click();
 		actyEditLocationFld.sendKeys(modLocVal);
 		
-		headerButton.clickHeaderButton("save");
+		headerButton.clickSave();
 		commNav.waitForNotPage("Activity");
 		
 		//Section 3:
 		//Step: navigate back to the Activities List view
-		headerButton.clickHeaderButton("back");
+		headerButton.clickBack();
 		commNav.waitForPage("Activities");
 		
 		//Step: capture the current Activities List view text

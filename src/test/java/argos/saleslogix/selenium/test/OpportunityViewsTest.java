@@ -394,7 +394,7 @@ public class OpportunityViewsTest extends BaseTest {
 			commNav.isWebElementPresent(viewName + ",rate date", opportunityEditView.opportunityEditViewRateDateFld);
 				
 			//end of test
-			headerButton.clickHeaderButton("cancel");
+            headerButton.clickCancel();
 		
 			//Step: go back to previous screen
 			headerButton.goBack();
@@ -445,7 +445,7 @@ public class OpportunityViewsTest extends BaseTest {
 			commNav.isWebElementPresent(viewName + ",rate date", opportunityEditView.opportunityEditViewRateDateFld);
 			
 			//end of test
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 		
 			//Step: go back to previous screen
 			headerButton.goBack();

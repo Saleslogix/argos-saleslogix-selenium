@@ -347,7 +347,7 @@ public class ContactEntityViewsTest extends BaseTest {
             commNav.verifyEntityViewElementClick(viewName + ",'cuisine field'", contactEditView.contactsEditViewCuisineInputFldBtn, "Cuisine");
 
             //end of test
-            headerButton.clickHeaderButton("cancel");
+            headerButton.clickCancel();
 
             //Step: go back to previous screen
             headerButton.goBack();
@@ -396,14 +396,14 @@ public class ContactEntityViewsTest extends BaseTest {
             commNav.verifyEntityViewElementClick(viewName + ",'cuisine field'", contactEditView.contactsEditViewCuisineInputFldBtn, "Cuisine");
 
             //end of test
-            headerButton.clickHeaderButton("cancel");
+            headerButton.clickCancel();
 
             //Step: go back to previous screen
             headerButton.goBack();
             Thread.sleep(2000);
 
             //Step: go back to previous screens
-            headerButton.clickHeaderButton("cancel");
+            headerButton.clickCancel();
             headerButton.goBack();
             Thread.sleep(2000);
         } catch (Exception e) {

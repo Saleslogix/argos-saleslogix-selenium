@@ -642,7 +642,7 @@ public class CommonNavigation {
         }
 
         //invoke the Right Context menu
-        headerbutton.clickHeaderButton("right context menu");
+        headerbutton.clickRightMenu();
 
         driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
         Thread.sleep(500);
@@ -1426,7 +1426,7 @@ public class CommonNavigation {
         commNav.clickGlobalMenuItem(entityType);
 
         //Step: click the Header Add button...
-        headerButton.clickHeaderButton("add");
+        headerButton.clickAdd();
 
         String entTypeXPath = "";
         switch (entityType.toLowerCase()) {

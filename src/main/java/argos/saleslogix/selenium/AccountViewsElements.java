@@ -349,7 +349,7 @@ public class AccountViewsElements {
         commNav.clickGlobalMenuItem("Accounts");
 
         //Step: click the Add header button to enter Account edit view
-        headerbutton.clickHeaderButton("Add");
+        headerbutton.clickAdd();
 
         //Step: setup new Account field values
         //setup account field
@@ -391,7 +391,7 @@ public class AccountViewsElements {
             commView.addressCountryInputFld.sendKeys("USA");
 
             commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
-            headerbutton.clickHeaderButton("check");
+            headerbutton.clickCheck();
         } catch (Exception e0) {
             System.out.println(methodID + "(): " + e0.toString());
             headerbutton.goBack();
@@ -438,7 +438,7 @@ public class AccountViewsElements {
 //		commView.selectLeadSource("None");		
 
         //Step: save the new Account field values
-        headerbutton.clickHeaderButton("save");
+        headerbutton.clickSave();
         commNav.waitForNotPage("Account");
 
         System.out.println(methodID + ": Auto-test Account - " + strAccountName + " record was created.");

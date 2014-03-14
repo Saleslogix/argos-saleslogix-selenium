@@ -364,7 +364,7 @@ public class OpportunityViewsElements {
         commNav.clickGlobalMenuItem("Opportunities");
 
         //Step: click the Add header button to enter Opportunity edit view
-        headerButton.clickHeaderButton("Add");
+        headerButton.clickAdd();
 
         //Step: setup new Opportunity field values
         //setup Opportunity fields
@@ -377,7 +377,7 @@ public class OpportunityViewsElements {
         //TO-DO: complete selection of remaining non-required fields
 
         //Step: save the new Opportunity field values
-        headerButton.clickHeaderButton("save");
+        headerButton.clickSave();
         commNav.waitForNotPage("Opportunity");
 
         System.out.println(methodID + ": Auto-test Opportunity - " + strOppName + " record was created.");

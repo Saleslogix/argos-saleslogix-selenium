@@ -477,18 +477,16 @@ public class TicketViewsTest extends BaseTest {
 			commNav.verifyEntityViewElementClick(viewName + ",'needed date field'", ticketEditView.ticketsEditViewNeededDateFldBtn, "Calendar");
 			commNav.verifyEntityViewElementClick(viewName + ",'assigned date field'", ticketEditView.ticketsEditViewAssignedDateFldBtn, "Calendar");
 			commNav.verifyEntityViewElementClick(viewName + ",'assigned to field'", ticketEditView.ticketsEditViewAssignedToFldBtn, "Owners");
-			
-			
+
 			commNav.isFieldValueEmpty(viewName + ", subject ", ticketEditView.ticketsEditViewSubjectInputFld);
 			commNav.isFieldValueEmpty(viewName + ", description ", ticketEditView.ticketsEditViewDescInputFld);
 			commNav.isFieldValueEmpty(viewName + ", resolution ", ticketEditView.ticketsEditViewResolutionInputFld);
 			commNav.isFieldValueEmpty(viewName + ", comments ", ticketEditView.ticketsEditViewCommentsInputFld);
-			
-			
-			//end of test
-			headerButton.clickHeaderButton("cancel");
-		
-			//Step: go back to previous screen
+
+            //end of test
+            headerButton.clickCancel();
+
+            //Step: go back to previous screen
 			headerButton.goBack();
 		} catch (Error e) {
 			verificationErrors.append(e.toString());
@@ -553,7 +551,7 @@ public class TicketViewsTest extends BaseTest {
 	
 			
 			//end of test
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 		
 			//Step: go back to previous screen
 			headerButton.goBack();

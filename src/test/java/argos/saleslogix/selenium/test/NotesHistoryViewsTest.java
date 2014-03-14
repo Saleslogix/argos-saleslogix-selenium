@@ -353,7 +353,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 			commNav.verifyEntityViewElementClick(viewName + " ticket", notesHistoryEditView.notesHistoryEditViewTicketFldBtn, "Tickets");
 				
 			//end of test
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 		
 			//Step: go back to previous screen
 			headerButton.goBack();
@@ -397,14 +397,14 @@ public class NotesHistoryViewsTest extends BaseTest {
 			commNav.isWebElementPresent(viewName + " ticket", notesHistoryEditView.notesHistoryEditViewTicketInputFld);
 			
 			//end of test
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 		
 			//Step: go back to previous screen
 			headerButton.goBack();
 			Thread.sleep(2000);
 					
 			//Step: go back to previous screens
-			headerButton.clickHeaderButton("cancel");
+			headerButton.clickCancel();
 			headerButton.goBack();
 			Thread.sleep(2000);
 		}
