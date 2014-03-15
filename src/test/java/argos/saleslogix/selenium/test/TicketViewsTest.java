@@ -203,9 +203,6 @@ public class TicketViewsTest extends BaseTest {
 	public void test02_SeTestTCTicketListViewLoadMoreResults() throws Exception {
 		String methodID = "test02_SeTestTCTickettListViewLoadMoreResults";
 		
-		//Test Params:
-		String entityType = "tickets";
-		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		TicketViewsElements ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
@@ -219,7 +216,7 @@ public class TicketViewsTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 	    //Step: navigate to Tickets list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemTickets();
 	
 		//Step: click the clear Search input field button	
 		headerbutton.showRightContextMenu();
@@ -569,9 +566,6 @@ public class TicketViewsTest extends BaseTest {
 	public void test10_SeTestTCTicketListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCTicketListViewHashTags";
 		
-		// Test Params:
-		String entityType = "tickets";
-		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
@@ -581,7 +575,7 @@ public class TicketViewsTest extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Tickets list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemTickets();
 		
 		TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 		
@@ -640,10 +634,7 @@ public class TicketViewsTest extends BaseTest {
 	@Test(enabled = true)
 	public void test11_SeTestTCTicketListViewKPI() throws Exception {
 		String methodID = "test11_SeTestTCTicketListViewKPI";
-		
-		// Test Params:
-		String entityType = "tickets";
-		
+
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
@@ -653,7 +644,7 @@ public class TicketViewsTest extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Tickets list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemTickets();
 		
 		TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 		

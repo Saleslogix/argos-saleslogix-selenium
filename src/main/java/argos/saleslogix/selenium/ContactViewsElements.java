@@ -342,7 +342,7 @@ public class ContactViewsElements {
 
 
         //Step: navigate to Contacts list view
-        commNav.clickGlobalMenuItem("Contacts");
+        commNav.clickGlobalMenuItemContacts();
 
         //Step: click the Add header button to enter Contact edit view
         headerButton.clickAdd();
@@ -449,7 +449,8 @@ public class ContactViewsElements {
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
         //Step: search for then click to open Contact record detail view
-        commNav.highlightNClick(commNav.entityListViewSearch("Contacts", strContactName));
+        WebElement element = commNav.entityListViewSearch("Contacts", strContactName);
+        commNav.highlightNClick(element);
 
         //Step: confirm Account record detail view is displayed
         if (commNav.waitForNotPage("Contacts")) {

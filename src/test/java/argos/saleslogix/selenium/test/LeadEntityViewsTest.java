@@ -82,7 +82,7 @@ public class LeadEntityViewsTest extends BaseTest {
             System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
         }
 
-        commNav.clickGlobalMenuItem("My Activities");
+        commNav.clickGlobalMenuItemMyActivities();
         System.out.println(ENDLINE);
     }
 
@@ -106,7 +106,7 @@ public class LeadEntityViewsTest extends BaseTest {
         headerbutton.showGlobalMenu();
 
         //Step: navigate to Leads list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemLeads();
 
         //Step: reveal Right Context Menu panel
         headerbutton.showRightContextMenu();
@@ -439,7 +439,7 @@ public class LeadEntityViewsTest extends BaseTest {
         headerbutton.showGlobalMenu();
 
         // Step: navigate to Leads list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemLeads();
 
         // Step: perform search for Lead items...
         commNav.searchListView(entityType, entityRecordName);
@@ -575,7 +575,7 @@ public class LeadEntityViewsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemLeads();
 
         LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
@@ -645,7 +645,7 @@ public class LeadEntityViewsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemLeads();
 
         LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
@@ -725,7 +725,7 @@ public class LeadEntityViewsTest extends BaseTest {
         }
 
         //Step: go back to My Activities view
-        commNav.clickGlobalMenuItem("My Activities");
+        commNav.clickGlobalMenuItemMyActivities();
 
         System.out.println(ENDLINE);
     }

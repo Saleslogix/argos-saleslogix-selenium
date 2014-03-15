@@ -224,7 +224,7 @@ public class BaseTest {
         SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);
 
         //Step: Log out of Mobile Client
-        commNav.clickGlobalMenuItem("log out");
+        commNav.clickGlobalMenuItemLogOff();
         closeAlert();
         System.out.println("invoking " + methodID + " method...");
 
@@ -326,7 +326,7 @@ public class BaseTest {
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
         // Click the Log Off button
-        commNav.clickGlobalMenuItem("log out");
+        commNav.clickGlobalMenuItemLogOff();
         closeAlert();
 
         WebDriverWait wait = new WebDriverWait(driver, 10);

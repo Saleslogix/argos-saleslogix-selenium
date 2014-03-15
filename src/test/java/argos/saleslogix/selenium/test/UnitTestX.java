@@ -37,10 +37,8 @@ public class UnitTestX extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         // Click the Log Off button
-        commNav.clickGlobalMenuItem("log out");
-        Thread.sleep(2000);
+        commNav.clickGlobalMenuItemLogOff();
         closeAlert();
-        Thread.sleep(1000);
 
         // Verify the Mobile Login screen displays
         try {
@@ -128,7 +126,7 @@ public class UnitTestX extends BaseTest {
         }
 
         //END
-        commNav.clickGlobalMenuItem("My Activities");
+        commNav.clickGlobalMenuItemMyActivities();
         System.out.println(ENDLINE);
     }
 

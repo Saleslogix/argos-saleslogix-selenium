@@ -60,7 +60,7 @@ public class MobileSprint304Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -98,7 +98,7 @@ public class MobileSprint304Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -118,7 +118,7 @@ public class MobileSprint304Test extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
 	
 	    //Step: navigate to My Activities list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		//Step: select the alarm hash-tag filter item
 		commNav.rightClickContextMenuItem(hashTag);
@@ -178,7 +178,7 @@ public class MobileSprint304Test extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
 	
 	    //Step: navigate to the Leads list view
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemLeads();
 		
 		//Step: click and open the top Leads record
 		commNav.clickListViewItemN(entityType, 1);
@@ -211,7 +211,7 @@ public class MobileSprint304Test extends BaseTest {
 		}
 			
 		//END
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -229,7 +229,7 @@ public class MobileSprint304Test extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
 	
 	    //Step: navigate to the My Activities list view
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
 		
@@ -391,7 +391,7 @@ public class MobileSprint304Test extends BaseTest {
 	    String leadSearch = "Anderson";	//Anderson, Aaron
 	    String leadName = "Anderson, Aaron";
 	    headerButton.showGlobalMenu();
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemLeads();
 		commNav.searchListView(entityType, leadSearch);
 		commNav.clickListViewItemN(entityType, 1);
 		commNav.waitForPage(leadName);
@@ -457,7 +457,7 @@ public class MobileSprint304Test extends BaseTest {
 	    }
 		
 		//END
-	    commNav.clickGlobalMenuItem("My Activities");
+	    commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -721,7 +721,7 @@ public class MobileSprint304Test extends BaseTest {
 	    }
 	    
 		//END
-	    commNav.clickGlobalMenuItem("My Activities");
+	    commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -782,7 +782,7 @@ public class MobileSprint304Test extends BaseTest {
 	    }
 	    
 		//END
-	    commNav.clickGlobalMenuItem("My Activities");
+	    commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -870,7 +870,7 @@ public class MobileSprint304Test extends BaseTest {
 	    }
 	    
 		//END
-	    commNav.clickGlobalMenuItem("My Activities");
+	    commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -992,7 +992,7 @@ public class MobileSprint304Test extends BaseTest {
 	    System.out.println("");
 	    	    
 		//END
-	    commNav.clickGlobalMenuItem("My Activities");
+	    commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 

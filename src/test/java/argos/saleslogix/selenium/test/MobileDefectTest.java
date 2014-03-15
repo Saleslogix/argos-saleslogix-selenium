@@ -37,7 +37,7 @@ public class MobileDefectTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 		// Step: click the My Attachments link
-		commNav.clickGlobalMenuItem("My Attachments");
+		commNav.clickGlobalMenuItemMyAttachments();
 		
 		// Step: perform search for Attachment record
 		commNav.searchListView("attachment", attachmentName);
@@ -87,7 +87,7 @@ public class MobileDefectTest extends BaseTest {
 		// Step: navigate back to the My Activities list view
 		headerbutton.goBack();
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		// End Tests
 		System.out.println(ENDLINE);
@@ -111,7 +111,7 @@ public class MobileDefectTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 		// Step: click the My Attachments link
-		commNav.clickGlobalMenuItem("My Attachments");
+		commNav.clickGlobalMenuItemMyAttachments();
 		
 		// Step: perform search for Attachment record
 		commNav.searchListView("attachment", attachmentName);
@@ -157,7 +157,7 @@ public class MobileDefectTest extends BaseTest {
 		// Step: navigate back to the My Activities list view
 		headerbutton.goBack();
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		// End Tests
 		System.out.println(ENDLINE);
@@ -184,7 +184,7 @@ public class MobileDefectTest extends BaseTest {
 	
 		// Section 1: check Accounts, List View
 		// Step: click the Accounts link
-		commNav.clickGlobalMenuItem("Accounts");
+		commNav.clickGlobalMenuItemAccounts();
 	
 		// VP: confirm that "P: null" is not present in the Accounts, List View		
 		try {
@@ -251,7 +251,7 @@ public class MobileDefectTest extends BaseTest {
 		// End Section
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -273,7 +273,7 @@ public class MobileDefectTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 		// Step: click the Accounts link
-		commNav.clickGlobalMenuItem("Accounts");
+		commNav.clickGlobalMenuItemAccounts();
 	
 		// Step: perform search for Account record
 		commNav.searchListView("account", accountName1);
@@ -290,7 +290,7 @@ public class MobileDefectTest extends BaseTest {
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -383,7 +383,7 @@ public class MobileDefectTest extends BaseTest {
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -405,7 +405,7 @@ public class MobileDefectTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 		// Step: click the My Attachments link
-		commNav.clickGlobalMenuItem("My Attachments");
+		commNav.clickGlobalMenuItemMyAttachments();
 		
 		// Step: perform search for Attachment record
 		commNav.searchListView("attachment", attachmentName);
@@ -445,7 +445,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// Step: navigate back to the My Activities list view
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		// End Tests
 		System.out.println(ENDLINE);
@@ -468,7 +468,7 @@ public class MobileDefectTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 		// Step: click the Leads link
-		commNav.clickGlobalMenuItem("Leads");
+		commNav.clickGlobalMenuItemLeads();
 	
 		// Step: perform search for Lead record
 		commNav.searchListView("lead", leadName);
@@ -485,7 +485,7 @@ public class MobileDefectTest extends BaseTest {
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -595,7 +595,7 @@ public class MobileDefectTest extends BaseTest {
 		    Thread.sleep(1000);
 		    headerButton.goBack();
 		    Thread.sleep(1000); 
-			commNav.clickGlobalMenuItem("My Activities");
+			commNav.clickGlobalMenuItemMyActivities();
 		}		
 		else {
 			System.out.println(methodID + ": this test can only be run on the Chromedriver browser; skipping...");
@@ -623,7 +623,7 @@ public class MobileDefectTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 		// Step: click the Contacts link
-		commNav.clickGlobalMenuItem("Contacts");
+		commNav.clickGlobalMenuItemContacts();
 	
 		// Step: perform search for required Contact record...
 		commNav.searchListView("contact", contactName);
@@ -739,7 +739,7 @@ public class MobileDefectTest extends BaseTest {
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -765,7 +765,7 @@ public class MobileDefectTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 		// Step: click the Contacts link
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemContacts();
 	
 		// Step: perform search for Contact record
 		commNav.searchListView("contact", contactName);
@@ -917,7 +917,7 @@ public class MobileDefectTest extends BaseTest {
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);		
 	}
@@ -1261,7 +1261,7 @@ public class MobileDefectTest extends BaseTest {
 		headerButton.showGlobalMenu();
 	
 		// Step: click the Calendar link
-		commNav.clickGlobalMenuItem("Calendar");		
+		commNav.clickGlobalMenuItemCalendar();
 		try {
 			AssertJUnit.assertTrue(commNav.isPageDisplayed("Calendar"));
 			
@@ -1317,7 +1317,7 @@ public class MobileDefectTest extends BaseTest {
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
 		headerButton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -1462,7 +1462,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -1483,7 +1483,7 @@ public class MobileDefectTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 		// Step: click the My Attachments link
-		commNav.clickGlobalMenuItem("My Attachments");
+		commNav.clickGlobalMenuItemMyAttachments();
 		
 		// Step: perform search for Attachment record
 		commNav.searchListView("attachment", attachmentName);
@@ -1506,7 +1506,7 @@ public class MobileDefectTest extends BaseTest {
 				
 		// Step: navigate back to the My Activities list view
 		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		commNav.waitForPage("My Activities");
 		
 		// End Tests
@@ -1638,7 +1638,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// End Tests
 		headerButton.clickCancel();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -1752,7 +1752,7 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -1865,7 +1865,7 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -1888,7 +1888,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		
 		//Step: click and open the the Ticket record
-		commNav.clickGlobalMenuItem("add account/contact");		
+		commNav.clickGlobalMenuItemAddAccountContact();
 		try {
 			AssertJUnit.assertTrue(commNav.waitForPage("Add Account / Contact"));
 						
@@ -1939,7 +1939,7 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");		
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -2002,7 +2002,7 @@ public class MobileDefectTest extends BaseTest {
 		headerButton.clickCancel();
 		headerButton.clickCancel();
 		headerButton.clickBack();
-		commNav.clickGlobalMenuItem("My Activities");		
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -2071,7 +2071,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// End Tests
 		headerButton.clickBack();
-		commNav.clickGlobalMenuItem("My Activities");		
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -2086,7 +2086,7 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//navigate to the Notes/History List view then click the phonecall hashtag
-		commNav.clickGlobalMenuItem("Notes/History");
+		commNav.clickGlobalMenuItemNotes();
 		commNav.rightClickContextMenuItem("phonecall");
 		
 		//VP: check that Regarding field value of top record is not null
@@ -2119,7 +2119,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// End Tests
 		headerButton.clickBack();
-		commNav.clickGlobalMenuItem("My Activities");		
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 	//TODO: test64_MobileDefect13092410 needs a bug fix
@@ -2159,7 +2159,7 @@ public class MobileDefectTest extends BaseTest {
 			
 		// End Tests
 		headerButton.clickBack();
-		commNav.clickGlobalMenuItem("My Activities");		
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -2173,7 +2173,7 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 				
 		//Step: click and open the the My Activities List view
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		//VP: check that 'no records' is displayed if there are no Activities listed 	
 		String resultMsg = "VP: 'Unknown' is not displayed as a grouping within the My Activities list view";
@@ -2187,7 +2187,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 			
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");		
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -2206,7 +2206,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		
 		//Step: click and open the the Accounts List view
-		commNav.clickGlobalMenuItem("Accounts");
+		commNav.clickGlobalMenuItemAccounts();
 		
 		//Step: select the #active hashtag
 		commNav.rightClickContextMenuItem("active");
@@ -2231,7 +2231,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 			
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");		
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -2246,7 +2246,7 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: click and open the the Accounts List view
-		commNav.clickGlobalMenuItem("Accounts");
+		commNav.clickGlobalMenuItemAccounts();
 		
 		//Step: reveal the Right-Context menu
 		headerButton.showRightContextMenu();
@@ -2267,7 +2267,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 			
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");		
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -2282,7 +2282,7 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: click and open the the Accounts List view
-		commNav.clickGlobalMenuItem("Accounts");
+		commNav.clickGlobalMenuItemAccounts();
 		
 		//Step: select the 'Avg Time as Customer' KPI item
 		commNav.rightClickContextMenuItem("Avg Time as Customer");
@@ -2306,7 +2306,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 			
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");		
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 
@@ -2324,12 +2324,11 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: Log out of Mobile Client
-		commNav.clickGlobalMenuItem("log out");
-		Thread.sleep(2000);
+		commNav.clickGlobalMenuItemLogOff();
 		closeAlert();
-		Thread.sleep(1000);
 		
-		//Step: Attempt invalid login 
+		//Step: Attempt invalid login
+        // TODO: Fix
 		slxmobilelogin.enterUserName(userName);
 		Thread.sleep(1000);
 		slxmobilelogin.enterPassword("bogus");

@@ -95,12 +95,93 @@ public class CommonNavigation {
     public WebElement rmenu_KPISubPnl;
     private WebDriver driver;
 
+    public final String rightDrawerId = "right_drawer";
+
     public CommonNavigation(WebDriver driver) {
         this.driver = driver;
     }
 
-    //Methods
-    //-------
+
+    public CommonNavigation clickGlobalMenuItemAddAccountContact(){
+        return clickGlobalMenuItem(gmenu_addAccountContact);
+    }
+
+    public CommonNavigation clickGlobalMenuItemAccounts(){
+        return clickGlobalMenuItem(gmenu_accounts);
+    }
+
+    public CommonNavigation clickGlobalMenuItemMyActivities() {
+        return clickGlobalMenuItem(gmenu_myActivities);
+    }
+
+    public CommonNavigation clickGlobalMenuItemCalendar() {
+        return clickGlobalMenuItem(gmenu_calendar);
+    }
+
+    public CommonNavigation clickGlobalMenuItemNotes() {
+        return clickGlobalMenuItem(gmenu_notesHistory);
+    }
+
+    public CommonNavigation clickGlobalMenuItemContacts() {
+        return clickGlobalMenuItem(gmenu_contacts);
+    }
+
+    public CommonNavigation clickGlobalMenuItemLeads() {
+        return clickGlobalMenuItem(gmenu_leads);
+    }
+
+    public CommonNavigation clickGlobalMenuItemOpportunities() {
+        return clickGlobalMenuItem(gmenu_opportunities);
+    }
+
+    public CommonNavigation clickGlobalMenuItemTickets() {
+        return clickGlobalMenuItem(gmenu_tickets);
+    }
+
+    public CommonNavigation clickGlobalMenuItemMyAttachments() {
+        return clickGlobalMenuItem(gmenu_myActivities);
+    }
+
+    public CommonNavigation clickGlobalMenuItemConfigure() {
+        return clickGlobalMenuItem(gmenu_configureMenu);
+    }
+
+    public CommonNavigation clickGlobalMenuItemSettings() {
+        return clickGlobalMenuItem(gmenu_settings);
+    }
+
+    public CommonNavigation clickGlobalMenuItemHelp() {
+        return clickGlobalMenuItem(gmenu_help);
+    }
+
+    public void clickGlobalMenuItemLogOff() {
+        showGlobalMenu();
+        highlightNClick(gmenu_logOff);
+    }
+
+    private void showGlobalMenu() {
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        headerButton.showGlobalMenu();
+    }
+
+    /**
+     * This method will open and select an item from the Global menu.
+     *
+     * @param elementToClick global menu item to select
+     * @throws InterruptedException
+     */
+    public CommonNavigation clickGlobalMenuItem(WebElement elementToClick) {
+        String methodID = "clickGlobalMenuItem";
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        headerButton.showGlobalMenu();
+
+        highlightNClick(elementToClick);
+
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(rightDrawerId)));
+
+        return this;
+    }
 
     /**
      * This method will open and select an item from the Global menu.
@@ -108,90 +189,77 @@ public class CommonNavigation {
      * @param gMenuItem global menu item to select
      * @throws InterruptedException
      */
-    public CommonNavigation clickGlobalMenuItem(String gMenuItem) throws InterruptedException {
-        String methodID = "clickGlobalMenuItem";
-        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-        headerButton.showGlobalMenu();
+    public CommonNavigation clickGlobalMenuItem(String gMenuItem) {
+        WebElement element = null;
 
-        Boolean hasListview = true;
-        try {
-            switch (gMenuItem.toLowerCase()) {
-                case "add account/contact":
-                case "add account contact":
-                case "add":
-                    highlightNClick(gmenu_addAccountContact);
-                    break;
-                case "speedsearch":
-                case "search":
-                    highlightNClick(gmenu_speedSearch);
-                    break;
-                case "my activities":
-                case "activities":
-                    highlightNClick(gmenu_myActivities);
-                    break;
-                case "calendar":
-                    highlightNClick(gmenu_calendar);
-                    hasListview = false;
-                    break;
-                case "notes/history":
-                case "notes history":
-                case "notes":
-                    highlightNClick(gmenu_notesHistory);
-                    break;
-                case "accounts":
-                case "account":
-                    highlightNClick(gmenu_accounts);
-                    break;
-                case "contacts":
-                case "contact":
-                    highlightNClick(gmenu_contacts);
-                    break;
-                case "leads":
-                case "lead":
-                    highlightNClick(gmenu_leads);
-                    break;
-                case "opportunities":
-                case "opportunity":
-                    highlightNClick(gmenu_opportunities);
-                    break;
-                case "tickets":
-                case "ticket":
-                    highlightNClick(gmenu_tickets);
-                    break;
-                case "my attachments":
-                case "attachments":
-                case "attachment":
-                    highlightNClick(gmenu_myAttachments);
-                    break;
-                case "configure menu":
-                case "configure":
-                    highlightNClick(gmenu_configureMenu);
-                    break;
-                case "settings":
-                    highlightNClick(gmenu_settings);
-                    hasListview = false;
-                    break;
-                case "help":
-                    highlightNClick(gmenu_help);
-                    break;
-                case "log off":
-                case "log out":
-                case "logout":
-                case "logoff":
-                    highlightNClick(gmenu_logOut);
-                    hasListview = false;
-                    break;
-            }
-
-            System.out.println(methodID + ": global menu link - '" + gMenuItem + "' was clicked.");
-            if (hasListview) {
-                waitForListView(gMenuItem);
-            }
-        } catch (Exception e) {
-            System.out.println(methodID + ": " + e.toString());
+        switch (gMenuItem.toLowerCase()) {
+            case "add account/contact":
+            case "add account contact":
+            case "add":
+                element = gmenu_addAccountContact;
+                break;
+            case "speedsearch":
+            case "search":
+                element = gmenu_speedSearch;
+                break;
+            case "my activities":
+            case "activities":
+                element = gmenu_myActivities;
+                break;
+            case "calendar":
+                element = gmenu_calendar;
+                break;
+            case "notes/history":
+            case "notes history":
+            case "notes":
+                element = gmenu_notesHistory;
+                break;
+            case "accounts":
+            case "account":
+                element = gmenu_accounts;
+                break;
+            case "contacts":
+            case "contact":
+                element = gmenu_contacts;
+                break;
+            case "leads":
+            case "lead":
+                element = gmenu_leads;
+                break;
+            case "opportunities":
+            case "opportunity":
+                element = gmenu_opportunities;
+                break;
+            case "tickets":
+            case "ticket":
+                element = gmenu_tickets;
+                break;
+            case "my attachments":
+            case "attachments":
+            case "attachment":
+                element = gmenu_myAttachments;
+                break;
+            case "configure menu":
+            case "configure":
+                element = gmenu_configureMenu;
+                break;
+            case "settings":
+                element = gmenu_settings;
+                break;
+            case "help":
+                element = gmenu_help;
+                break;
+            case "log off":
+            case "log out":
+            case "logout":
+            case "logoff":
+                clickGlobalMenuItemLogOff();
+                return this;
         }
-        return this;
+
+        return clickGlobalMenuItem(element);
     }
+
 
 
     /**
@@ -1011,6 +1079,7 @@ public class CommonNavigation {
 
         //Step: navigate to entity list view...
         clickGlobalMenuItem(entityType);
+        waitForListView(entityType);
 
         //Step: perform search for entity record items...
         if (entityType.toLowerCase().contains("contact") || entityType.toLowerCase().contains("lead")) {
@@ -1124,6 +1193,7 @@ public class CommonNavigation {
 
         //Step: navigate to entity list view...
         clickGlobalMenuItem(entityType);
+        waitForListView(entityType);
 
         //Step: perform search for entity record items...
         if (entityType.toLowerCase().equals("contacts") || entityType.toLowerCase().equals("leads")) {
@@ -1356,6 +1426,7 @@ public class CommonNavigation {
 
         //Step: navigate to Accounts list view...
         clickGlobalMenuItem(entityType);
+        waitForListView(entityType);
 
         //Step: perform search for Account items...
         searchListView(entityType, entityName);
@@ -1424,6 +1495,7 @@ public class CommonNavigation {
 
         //Step: navigate to entity list view...
         commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForListView(entityType);
 
         //Step: click the Header Add button...
         headerButton.clickAdd();
@@ -1541,7 +1613,7 @@ public class CommonNavigation {
      * @param wElement a WebElement object on the page
      * @return void
      */
-    public void highlightElement(WebElement wElement) throws InterruptedException {
+    public void highlightElement(WebElement wElement) {
 
         String methodID = "highlightElement";
 
@@ -1568,7 +1640,7 @@ public class CommonNavigation {
      * @param wElement a WebElement object on the page
      * @return void
      */
-    public void highlightNClick(WebElement wElement) throws InterruptedException {
+    public void highlightNClick(WebElement wElement) {
 
         highlightElement(wElement);
         wElement.click();

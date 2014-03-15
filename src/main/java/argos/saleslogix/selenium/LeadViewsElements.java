@@ -541,7 +541,7 @@ public class LeadViewsElements {
 		CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 	    //Step: navigate to Leads list view
-		commNav.clickGlobalMenuItem("Leads");
+		commNav.clickGlobalMenuItemLeads();
 		
 		//Step: click the Add header button to enter Lead edit view
 		headerButton.clickAdd();

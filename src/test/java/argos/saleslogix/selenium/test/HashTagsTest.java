@@ -20,7 +20,7 @@ public class HashTagsTest extends BaseTest {
 
 
         //Step: navigate to Opportunity list view...
-        commNav.clickGlobalMenuItem("Accounts");
+        commNav.clickGlobalMenuItemAccounts();
 
         AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
@@ -90,7 +90,7 @@ public class HashTagsTest extends BaseTest {
 
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem("Contacts");
+        commNav.clickGlobalMenuItemContacts();
 
         ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 
@@ -161,7 +161,7 @@ public class HashTagsTest extends BaseTest {
 
 
         //Step: navigate to Lead list view...
-        commNav.clickGlobalMenuItem("Leads");
+        commNav.clickGlobalMenuItemLeads();
 
         LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
@@ -232,7 +232,7 @@ public class HashTagsTest extends BaseTest {
 
 
         //Step: navigate to Notes/History list view...
-        commNav.clickGlobalMenuItem("Notes/History");
+        commNav.clickGlobalMenuItemNotes();
 
         NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 
@@ -302,7 +302,7 @@ public class HashTagsTest extends BaseTest {
 
 
         //Step: navigate to Opportunity list view...
-        commNav.clickGlobalMenuItem("Opportunity");
+        commNav.clickGlobalMenuItemOpportunities();
 
         OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
@@ -401,7 +401,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Notes/History list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemNotes();
 
         NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 
@@ -558,7 +558,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Notes/History list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemNotes();
 
         NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 
@@ -580,7 +580,7 @@ public class HashTagsTest extends BaseTest {
         headerButton.goBack();
 
         //Step: navigate to Contacts List view...
-        commNav.clickGlobalMenuItem("Contacts");
+        commNav.clickGlobalMenuItemContacts();
 
         //Step: navigate back to Notes/History list view...
         //commNav.clickGlobalMenuItem(entityType);
@@ -623,7 +623,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Notes/History list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemNotes();
 
         NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 
@@ -689,7 +689,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Opportunities list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemOpportunities();
 
         OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
@@ -930,7 +930,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Opportunity list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemOpportunities();
 
         OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
@@ -952,7 +952,7 @@ public class HashTagsTest extends BaseTest {
         headerButton.goBack();
 
         //Step: navigate to Contacts List view...
-        commNav.clickGlobalMenuItem("Contacts");
+        commNav.clickGlobalMenuItemContacts();
 
         //Step: navigate back to Opportunity list view...
         headerButton.showGlobalMenu();
@@ -992,7 +992,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Opportunity list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemOpportunities();
 
         OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
@@ -1088,7 +1088,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Opportunity list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemOpportunities();
 
         OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
@@ -1174,7 +1174,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Opportunity list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemOpportunities();
 
         OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
@@ -1260,7 +1260,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Opportunity list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemOpportunities();
 
         OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
@@ -1346,7 +1346,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Opportunity list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemOpportunities();
 
         OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
@@ -1431,7 +1431,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Opportunities list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemAccounts();
 
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
@@ -1664,7 +1664,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Accounts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemAccounts();
 
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
@@ -1686,7 +1686,7 @@ public class HashTagsTest extends BaseTest {
         headerButton.goBack();
 
         //Step: navigate to Contacts List view...
-        commNav.clickGlobalMenuItem("Contacts");
+        commNav.clickGlobalMenuItemContacts();
 
         //Step: navigate back to Accounts list view...
         headerButton.showGlobalMenu();
@@ -1726,7 +1726,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Accounts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemAccounts();
 
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
@@ -1774,7 +1774,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Accounts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemAccounts();
 
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
@@ -1918,7 +1918,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Accounts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemAccounts();
 
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
@@ -1975,7 +1975,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Accounts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemAccounts();
 
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
@@ -2029,7 +2029,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemContacts();
 
         ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
 
@@ -2214,7 +2214,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemContacts();
 
         ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
 
@@ -2236,7 +2236,7 @@ public class HashTagsTest extends BaseTest {
         headerButton.goBack();
 
         //Step: navigate to Accounts List view...
-        commNav.clickGlobalMenuItem("Accounts");
+        commNav.clickGlobalMenuItemAccounts();
 
         //Step: navigate back to Contacts list view...
         headerButton.showGlobalMenu();
@@ -2276,7 +2276,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemContacts();
 
         ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
 
@@ -2324,7 +2324,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemContacts();
 
         ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
 
@@ -2381,7 +2381,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemContacts();
 
         ContactViewsElements contactListView = PageFactory.initElements(driver, ContactViewsElements.class);
 
@@ -2435,7 +2435,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemContacts();
 
         LeadViewsElements leadListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
@@ -2588,7 +2588,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Lead list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemLeads();
 
         LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
@@ -2611,7 +2611,7 @@ public class HashTagsTest extends BaseTest {
 
         //Step: navigate to Leads List view...
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        commNav.clickGlobalMenuItem("Leads");
+        commNav.clickGlobalMenuItemLeads();
 
         //Step: re-open the Right-Context Menu
         //headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -2649,7 +2649,7 @@ public class HashTagsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Leads list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemLeads();
 
         LeadViewsElements leadListView = PageFactory.initElements(driver, LeadViewsElements.class);
 

@@ -250,7 +250,7 @@ public class NotesHistoryViewsElements {
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
         //Step: navigate to Notes/History list view
-        commNav.clickGlobalMenuItem("Notes/History");
+        commNav.clickGlobalMenuItemNotes();
 
         //Step: click the Add header button to enter Notes/History edit view
         headerButton.clickAdd();

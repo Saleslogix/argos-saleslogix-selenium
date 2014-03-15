@@ -122,7 +122,6 @@ public class NotesHistoryViewsTest extends BaseTest {
 		String methodID = "test02_SeTestTCNotesHistoryListViewLoadMoreResults";
 		
 		//Test Params:
-		String entityType = "notes/history";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
@@ -136,7 +135,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 	    //Step: navigate to Notes/History list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemNotes();
 	
 		//capture the initial Notes/History List view info
 		NotesHistoryViewsElements noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
@@ -421,7 +420,6 @@ public class NotesHistoryViewsTest extends BaseTest {
 		String methodID = "test10_SeTestTCNotesHistoryListViewHashTags";
 		
 		// Test Params:
-		String entityType = "Notes/History";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -429,7 +427,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 	    //Step: navigate to Notes/History list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemNotes();
 		
 		NotesHistoryViewsElements noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 		
@@ -493,7 +491,6 @@ public class NotesHistoryViewsTest extends BaseTest {
 		String methodID = "test11_SeTestTCNotesHistoryListViewKPI";
 		
 		// Test Params:
-		String entityType = "Notes/History";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -501,7 +498,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 	    //Step: navigate to Notes/History list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemNotes();
 		
 		NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 		
@@ -588,7 +585,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 		}
 		
 		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}

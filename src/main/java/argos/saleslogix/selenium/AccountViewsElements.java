@@ -346,7 +346,7 @@ public class AccountViewsElements {
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
         //Step: navigate to Accounts list view
-        commNav.clickGlobalMenuItem("Accounts");
+        commNav.clickGlobalMenuItemAccounts();
 
         //Step: click the Add header button to enter Account edit view
         headerbutton.clickAdd();

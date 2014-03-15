@@ -703,7 +703,7 @@ public class SpeedSearchTest extends BaseTest {
 		}
 				
 		//Step: go back to previous screen
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);

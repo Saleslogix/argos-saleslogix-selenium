@@ -34,7 +34,7 @@ public class MobileSprint305Test extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
 		//Step: click the My Activities link
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		//Section 1: click the top-right + button to schedule a new activity
 		headerButton.clickAdd();
@@ -115,7 +115,7 @@ public class MobileSprint305Test extends BaseTest {
 	    
 	    //Step: find and re-open the completed activity
 	    entityView = "Notes/History";	    
-		commNav.clickGlobalMenuItem(entityView);
+		commNav.clickGlobalMenuItemNotes();
 		commNav.searchListView(entityView, regardingVal);
 		commNav.clickListViewItemN(entityView, 1);
 		commNav.waitForPage(actType);
@@ -146,7 +146,7 @@ public class MobileSprint305Test extends BaseTest {
 		
 		// End Tests
 		// Step: navigate back to the default startup view
-		//commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);		
 	}
@@ -166,7 +166,7 @@ public class MobileSprint305Test extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
 		//Step: open the entities List view from the Global Menu
-		commNav.clickGlobalMenuItem(entityView);
+		commNav.clickGlobalMenuItemTickets();
 		commNav.waitForPage(entityView);
 	
 		//Step: open the Ticket Detail view  
@@ -215,13 +215,12 @@ public class MobileSprint305Test extends BaseTest {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
 		//Test Params:
-		String entityType = "My Activities";
 		String hashTag = "alarm";
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
 	
 	    //Step: navigate to My Activities list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		//Step: select the alarm hash-tag filter item
 		commNav.rightClickContextMenuItem(hashTag);
@@ -277,17 +276,16 @@ public class MobileSprint305Test extends BaseTest {
 		
 		//Test Params:
 		String entityType1 = "Accounts";
-		String entityType2 = "My Activities";
 		String recordItem = "A1 Enterprises";
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
 	
 	    //Step: navigate to the Accounts list view then perform record search
-		commNav.clickGlobalMenuItem(entityType1);
+		commNav.clickGlobalMenuItemAccounts();
 		commNav.searchListView(entityType1, recordItem);
 		
 		//Step: navigate to My Activities list view
-		commNav.clickGlobalMenuItem(entityType2);
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
 		
@@ -328,7 +326,7 @@ public class MobileSprint305Test extends BaseTest {
 		}
 			
 		//END
-		commNav.clickGlobalMenuItem(entityType2);
+		commNav.clickGlobalMenuItemMyActivities();
 		System.out.println(ENDLINE);
 	}
 	//Login & Logout

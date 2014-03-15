@@ -361,7 +361,7 @@ public class OpportunityViewsElements {
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
         //Step: navigate to Opportunity list view
-        commNav.clickGlobalMenuItem("Opportunities");
+        commNav.clickGlobalMenuItemOpportunities();
 
         //Step: click the Add header button to enter Opportunity edit view
         headerButton.clickAdd();

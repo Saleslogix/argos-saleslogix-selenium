@@ -48,7 +48,7 @@ public class HeaderButton {
      *
      * @throws InterruptedException
      */
-    public HeaderButton showGlobalMenu() throws InterruptedException {
+    public HeaderButton showGlobalMenu() {
         String methodID = "showGlobalMenu";
         String leftDrawerId = "left_drawer";
 

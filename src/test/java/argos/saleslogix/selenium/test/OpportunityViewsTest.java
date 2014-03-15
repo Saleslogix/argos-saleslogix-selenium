@@ -128,9 +128,6 @@ public class OpportunityViewsTest extends BaseTest {
 	public void test02_SeTestTCOpportunityListViewLoadMoreResults() throws Exception {
 		String methodID = "test02_SeTestTCOpportunityListViewLoadMoreResults";
 		
-		//Test Params:
-		String entityType = "opportunities";
-		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 	
@@ -143,7 +140,7 @@ public class OpportunityViewsTest extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 	    //Step: navigate to Opportunities list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemOpportunities();
 	
 		//capture the initial Opportunities List view info
 		OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
@@ -473,7 +470,7 @@ public class OpportunityViewsTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 	    //Step: navigate to Opportunities list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemOpportunities();
 		
 		OpportunityViewsElements oppsListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
@@ -542,16 +539,13 @@ public class OpportunityViewsTest extends BaseTest {
 	public void test11_SeTestTCOpportunityListViewKPI() throws Exception {
 		String methodID = "test11_SeTestTCOpportunityListViewKPI";
 		
-		// Test Params:
-		String entityType = "Opportunities";
-		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 	    //Step: navigate to Opportunities list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemOpportunities();
 		
 		OpportunityViewsElements oppsListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
@@ -638,7 +632,7 @@ public class OpportunityViewsTest extends BaseTest {
 		}
 		
 		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}

@@ -114,6 +114,9 @@ public class AddAccountContactEditViewElements {
     public WebElement addAcctCntctAcctAddressInputBtn;
     private WebDriver driver;
 
+    public final String firstName = "A.";
+    public final String lastName = "Neo";
+
     public AddAccountContactEditViewElements(WebDriver driver) {
         this.driver = driver;
     }
@@ -128,17 +131,17 @@ public class AddAccountContactEditViewElements {
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
         //Step: navigate to Accounts list view
-        commNav.clickGlobalMenuItem("Add Account/Contact");
+        commNav.clickGlobalMenuItemAddAccountContact();
 
         try {
             //Setup the Contact/Account Info section fields:
             //set the name field
             addAcctCntctNameInputBtn.click();
             try {
-                commView.nameFirstInputFld.sendKeys("A.");
-                commView.nameMiddleInputFld.sendKeys("Neo");
+                commView.nameFirstInputFld.sendKeys(firstName);
+                commView.nameMiddleInputFld.sendKeys(lastName);
                 commView.nameLastInputFld.sendKeys(strNewName);
-                commView.nameSuffixInputFldBtn.sendKeys("Sr.");
+
                 headerButton.clickCheck();
             } catch (Exception e0) {
                 System.out.println(methodID + "(): " + e0.toString());
@@ -233,7 +236,7 @@ public class AddAccountContactEditViewElements {
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
         //Step: navigate to Accounts list view
-        commNav.clickGlobalMenuItem("Add Account/Contact");
+        commNav.clickGlobalMenuItemAddAccountContact();
 
         try {
             //Setup the Contact/Account Info section fields:
@@ -325,7 +328,7 @@ public class AddAccountContactEditViewElements {
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
         //Step: navigate to Accounts list view
-        commNav.clickGlobalMenuItem("Add Account/Contact");
+        commNav.clickGlobalMenuItemAddAccountContact();
 
         try {
             //Setup the Contact/Account Info section fields:

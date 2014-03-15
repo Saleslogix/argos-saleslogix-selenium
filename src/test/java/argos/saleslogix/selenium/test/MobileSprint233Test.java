@@ -37,7 +37,7 @@ public class MobileSprint233Test extends BaseTest {
 		String entityType = "accounts";
 		
 	    //Step: navigate to Accounts list view...
-		commNav.clickGlobalMenuItem(entityType);	
+		commNav.clickGlobalMenuItemAccounts();
 		
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
@@ -75,27 +75,14 @@ public class MobileSprint233Test extends BaseTest {
 		*/
 		
 		//Section 2:
-		entityType = "contacts";
 		
 	    //Step: navigate to Contacts list view...
-		commNav.clickGlobalMenuItem(entityType);
-		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+		commNav.clickGlobalMenuItemContacts();
 	
 		//Step: select Total Contacts KPI
 		String KPI3 = "Total Contacts";
 		commNav.rightClickContextMenuItem(KPI3);
 		headerButton.closeRightContextMenu();
-		/*
-		resultMsg = "VP: Contacts - " + KPI3 + " KPI was selected";
-		try {
-			AssertJUnit.assertEquals(KPI1, driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MetricWidget_3']/button/div[1]")).getText());
-			System.out.println(resultMsg + " - Passed");
-		}
-		catch (Error e){
-			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
-		}
-		*/
 		
 		//Step: confirm that Contacts List view is still displayed
 		String resultMsg = "VP: Contacts List view was displayed";
@@ -109,7 +96,7 @@ public class MobileSprint233Test extends BaseTest {
 		}
 		
 		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -148,7 +135,7 @@ public class MobileSprint233Test extends BaseTest {
 		}
 				
 		//Step: go back to previous screen
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -169,7 +156,7 @@ public class MobileSprint233Test extends BaseTest {
 		headerbutton.showGlobalMenu();
 	
 		// Click the Log Off button
-		commNav.clickGlobalMenuItem("log out");
+		commNav.clickGlobalMenuItemLogOff();
 		Thread.sleep(2000);
 		closeAlert();
 		Thread.sleep(1000);
@@ -219,7 +206,7 @@ public class MobileSprint233Test extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Notes/History list view...
-		commNav.clickGlobalMenuItem(entityType);		
+		commNav.clickGlobalMenuItemNotes();
 		NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 		
 		//VP: confirm that current hash-tag/filter appears above the list view
@@ -365,7 +352,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -389,7 +376,7 @@ public class MobileSprint233Test extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Notes/History list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemNotes();
 	
 		//Section: Tickets List view KPI metric & filters 
 		//--------		
@@ -479,7 +466,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -504,8 +491,8 @@ public class MobileSprint233Test extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Accounts list view...
-		commNav.clickGlobalMenuItem(entityType);		
-		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+		commNav.clickGlobalMenuItemAccounts();
+        AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
 		//VP: confirm that current hash-tag/filter appears above the list view
 		String resultsMsg = "VP: current hash-tag/filter is displayed above the Tickets list view";
@@ -643,7 +630,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -661,13 +648,12 @@ public class MobileSprint233Test extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		// Test Params:
-		String entityType = "Accounts";
-		
+
 		//Step: login & log back in
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Accounts list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemAccounts();
 	
 		//Section: Accounts List view KPI metric & filters 
 		//--------		
@@ -748,7 +734,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -773,7 +759,7 @@ public class MobileSprint233Test extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Contacts list view...
-		commNav.clickGlobalMenuItem(entityType);		
+		commNav.clickGlobalMenuItemContacts();
 		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 		
 		//Step: un-select the KPI item
@@ -915,7 +901,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -939,7 +925,7 @@ public class MobileSprint233Test extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Contacts list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemContacts();
 		
 		//Step: un-select the KPI item
 		headerButton.showRightContextMenu();
@@ -1027,7 +1013,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1051,7 +1037,7 @@ public class MobileSprint233Test extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Leads list view...
-		commNav.clickGlobalMenuItem(entityType);		
+		commNav.clickGlobalMenuItemLeads();
 		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 		
 		//VP: confirm that current hash-tag/filter appears above the list view
@@ -1186,7 +1172,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1209,7 +1195,7 @@ public class MobileSprint233Test extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Leads list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemLeads();
 			
 		//Section: Leads List view KPI metric & filters 
 		//--------		
@@ -1290,7 +1276,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1315,7 +1301,7 @@ public class MobileSprint233Test extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Opportunities list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemOpportunities();
 		
 		OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
@@ -1453,7 +1439,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1471,14 +1457,13 @@ public class MobileSprint233Test extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		// Test Params:
-		String entityType = "Opportunities";
 		int KPIIndex = 5;
 		
 		//Step: login & log back in
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Opportunities list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemOpportunities();
 	
 		//Section: Opportunities List view KPI metric & filters 
 		//--------		
@@ -1561,7 +1546,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1579,14 +1564,13 @@ public class MobileSprint233Test extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		// Test Params:
-		String entityType = "Tickets";
 		int KPIIndex = 4;
 		
 		//Step: login & log back in
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Tickets list view...
-		commNav.clickGlobalMenuItem(entityType);		
+		commNav.clickGlobalMenuItemTickets();
 		TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 		
 		//VP: confirm that current hash-tag/filter appears above the list view
@@ -1723,7 +1707,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1741,13 +1725,12 @@ public class MobileSprint233Test extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		// Test Params:
-		String entityType = "Tickets";
 		
 		//Step: login & log back in
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Tickets list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemTickets();
 	
 		//Section: Tickets List view KPI metric & filters 
 		//--------		
@@ -1828,7 +1811,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);

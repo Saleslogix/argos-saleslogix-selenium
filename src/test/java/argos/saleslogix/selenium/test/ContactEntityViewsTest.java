@@ -109,7 +109,7 @@ public class ContactEntityViewsTest extends BaseTest {
         headerbutton.showGlobalMenu();
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemContacts();
 
         //capture the initial Contacts List view info
         ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
@@ -428,7 +428,7 @@ public class ContactEntityViewsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemContacts();
 
         ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 
@@ -500,7 +500,7 @@ public class ContactEntityViewsTest extends BaseTest {
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: navigate to Contacts list view...
-        commNav.clickGlobalMenuItem(entityType);
+        commNav.clickGlobalMenuItemContacts();
 
         ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 
@@ -580,7 +580,7 @@ public class ContactEntityViewsTest extends BaseTest {
         }
 
         //Step: go back to My Activities view
-        commNav.clickGlobalMenuItem("My Activities");
+        commNav.clickGlobalMenuItemMyActivities();
 
         System.out.println(ENDLINE);
     }

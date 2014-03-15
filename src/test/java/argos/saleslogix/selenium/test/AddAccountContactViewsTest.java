@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 import argos.saleslogix.selenium.*;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.support.PageFactory;
 
@@ -51,12 +52,12 @@ public class AddAccountContactViewsTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 				
-		AddAccountContactEditViewElements addAcctCntctView = PageFactory.initElements(driver, AddAccountContactEditViewElements.class);
+		AddAccountContactEditViewElements addAccountContactEditViewElements = PageFactory.initElements(driver, AddAccountContactEditViewElements.class);
 		
 		//Step: add a random test Account & Contact records
 		String newAcctName = "SeAutoTestAddAcctCntct-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
 		String newConLastName = "Smith-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
-		addAcctCntctView.doAddRandAccountContact(newConLastName, newAcctName);
+		addAccountContactEditViewElements.doAddRandAccountContact(newConLastName, newAcctName);
 		
 		//Step: find the newly-added test Account record
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
@@ -70,16 +71,10 @@ public class AddAccountContactViewsTest extends BaseTest {
 		
 		//Step: find the newly-added test Contact record
 		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-		strResultsMsg = "VP: recently added test Contact '" + newConLastName + "' was found.";
-		if (contactsListView.doSearchContact(newConLastName)) {
-			System.out.println(strResultsMsg + " - Passed");
-		}
-		else {
-			System.out.println(strResultsMsg + " - FAILED");
-		}
+		Assert.assertTrue(contactsListView.doSearchContact(newConLastName + ", " + addAccountContactEditViewElements.firstName));
 		
 		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -114,7 +109,7 @@ public class AddAccountContactViewsTest extends BaseTest {
 		}
 		
 		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
@@ -149,7 +144,7 @@ public class AddAccountContactViewsTest extends BaseTest {
 		}
 		
 		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}

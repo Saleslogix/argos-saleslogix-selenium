@@ -114,7 +114,7 @@ public class AccountEntityViewsTest extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 	
 	    //Step: navigate to Accounts list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemAccounts();
 
 		//capture the initial Accounts List view info
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
@@ -455,7 +455,7 @@ public class AccountEntityViewsTest extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Accounts list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemAccounts();
 		
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
@@ -533,7 +533,7 @@ public class AccountEntityViewsTest extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Accounts list view...
-		commNav.clickGlobalMenuItem(entityType);
+		commNav.clickGlobalMenuItemAccounts();
 		
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
@@ -618,7 +618,7 @@ public class AccountEntityViewsTest extends BaseTest {
 		}
 		
 		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
+		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
