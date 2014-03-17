@@ -1,23 +1,49 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines test methods for the Account entity views on the Mobile Client.
+ * *
+ * @author mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class ContactEntityViewsTest extends BrowserSetup {
 	
-	public String TEST_CONTACT_RECORD = "Barbosa, Angelo";
+	public String TEST_CONTACT_RECORD = "Abbott, John";
+	
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
+
+	
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}
+	
 	
 	//Test Methods Set
 	//================
@@ -368,62 +394,6 @@ public class ContactEntityViewsTest extends BrowserSetup {
 	
 
 	@Test(enabled = true)
-	public void test09_SeTestTCContactAddEditView() throws Exception {
-		String methodID = "test09_SeTestTCContactAddEditView";
-		
-		// Test Params:
-		String entityType = "Contact";
-		String viewName = "Contact Add Edit view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
-		
-		try {
-			//Step: enter the Contact Add Edit view...
-			commNav.entityRecordAdd(entityType);
-			
-			ContactViewsElements contactEditView = PageFactory.initElements(driver, ContactViewsElements.class);
-			
-			//Step: check each input field and if applicable, its related list item selection view
-			commNav.isWebElementPresent(viewName + ", 'Details' section header", contactEditView.contactsEditViewDetailsHdr);
-			commNav.isWebElementPresent(viewName + ", name field", contactEditView.contactsEditViewNameInputFld);
-			commNav.isWebElementPresent(viewName + ", account field", contactEditView.contactsEditViewAccountInputFld);
-			commNav.isWebElementPresent(viewName + ", web field", contactEditView.contactsEditViewWebInputFld);
-			commNav.isWebElementPresent(viewName + ", phone field", contactEditView.contactsEditViewPhoneInputFld);
-			commNav.isWebElementPresent(viewName + ", email field", contactEditView.contactsEditViewEmailInputFld);
-			commNav.isWebElementPresent(viewName + ", title field", contactEditView.contactsEditViewTitleInputFld);
-			commNav.verifyEntityViewElementClick(viewName + ",'address field'", contactEditView.contactsEditViewAddressInputFldBtn, "Address");
-			commNav.isWebElementPresent(viewName + ", home phone field", contactEditView.contactsEditViewHomePhoneInputFld);
-			commNav.isWebElementPresent(viewName + ", mobile field", contactEditView.contactsEditViewMobileInputFld);
-			commNav.isWebElementPresent(viewName + ", fax field", contactEditView.contactsEditViewFaxInputFld);
-			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", contactEditView.contactsEditViewAcctMgrInputFld, "Users");
-			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", contactEditView.contactsEditViewOwnerInputFldBtn, "Owners");
-			commNav.verifyEntityViewElementClick(viewName + ",'cuisine field'", contactEditView.contactsEditViewCuisineInputFldBtn, "Cuisine");
-			
-			//end of test
-			headerButton.clickHeaderButton("cancel");
-		
-			//Step: go back to previous screen
-			headerButton.goBack();
-			Thread.sleep(2000);
-					
-			//Step: go back to previous screens
-			headerButton.clickHeaderButton("cancel");
-			headerButton.goBack();
-			Thread.sleep(2000);
-		}
-		catch (Exception e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
-		}
-		
-		System.out.println(ENDLINE);
-	}
-	
-
-	@Test(enabled = true)
 	public void test10_SeTestTCContactListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCContactListViewHashTags";
 		
@@ -583,7 +553,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		//Step: add a random test Contact record
 		String newConLastName = "Andersen-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
-		contactsListView.doAddRandTestContact(newConLastName, "Thomas", "AECOM");
+		// Kath changed third parameter from "AECOM" to "Above Marine" for eval
+		contactsListView.doAddRandTestContact(newConLastName, "Thomas", "Above Marine");
 		
 		//Step: find the newly-added test Contact record
 		String strResultsMsg = "VP: recently added test Contact '" + newConLastName + "' was found.";
@@ -609,7 +580,8 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		// Test Params:
 		String entityType = "Contacts";
 		String expEntityPgTitle = "Contacts";
-		String entityRecord = "Barbosa, Angelo";
+		// Kath change value below from "Barbosa, Angelo" to "Abbott, John"
+		String entityRecord = "Abbott, John";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -682,31 +654,55 @@ public class ContactEntityViewsTest extends BrowserSetup {
 		
 		System.out.println(ENDLINE);
 	}
-	
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
 
-	
 	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
+	public void test09_SeTestTCContactAddEditView() throws Exception {
+		String methodID = "test09_SeTestTCContactAddEditView";
 		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		// Test Params:
+		String entityType = "Contact";
+		String viewName = "Contact Add Edit view";
 		
-		doVerificationLogout();
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
+		
+		try {
+			//Step: enter the Contact Add Edit view...
+			commNav.entityRecordAdd(entityType);
+			
+			ContactViewsElements contactEditView = PageFactory.initElements(driver, ContactViewsElements.class);
+			
+			//Step: check each input field and if applicable, its related list item selection view
+			commNav.isWebElementPresent(viewName + ", 'Details' section header", contactEditView.contactsEditViewDetailsHdr);
+			commNav.isWebElementPresent(viewName + ", name field", contactEditView.contactsEditViewNameInputFld);
+			commNav.isWebElementPresent(viewName + ", account field", contactEditView.contactsEditViewAccountInputFld);
+			commNav.isWebElementPresent(viewName + ", web field", contactEditView.contactsEditViewWebInputFld);
+			commNav.isWebElementPresent(viewName + ", phone field", contactEditView.contactsEditViewPhoneInputFld);
+			commNav.isWebElementPresent(viewName + ", email field", contactEditView.contactsEditViewEmailInputFld);
+			commNav.isWebElementPresent(viewName + ", title field", contactEditView.contactsEditViewTitleInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ",'address field'", contactEditView.contactsEditViewAddressInputFldBtn, "Address");
+			commNav.isWebElementPresent(viewName + ", home phone field", contactEditView.contactsEditViewHomePhoneInputFld);
+			commNav.isWebElementPresent(viewName + ", mobile field", contactEditView.contactsEditViewMobileInputFld);
+			commNav.isWebElementPresent(viewName + ", fax field", contactEditView.contactsEditViewFaxInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", contactEditView.contactsEditViewAcctMgrInputFld, "Users");
+			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", contactEditView.contactsEditViewOwnerInputFldBtn, "Owners");
+			commNav.verifyEntityViewElementClick(viewName + ",'cuisine field'", contactEditView.contactsEditViewCuisineInputFldBtn, "Cuisine");
+			
+			//end of test
+			headerButton.clickHeaderButton("cancel");
+		
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(2000);
+		}
+		catch (Exception e) {
+			verificationErrors.append(methodID + "(): " + e.toString());
+			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
+		}
 		
 		System.out.println(ENDLINE);
 	}
-
 }

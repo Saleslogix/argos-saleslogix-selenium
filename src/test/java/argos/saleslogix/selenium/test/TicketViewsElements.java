@@ -3,6 +3,8 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import java.io.IOException;
+
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -203,7 +205,7 @@ public class TicketViewsElements extends BrowserSetup {
 	WebElement ticketsDetailViewCallMainNumberLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/ul[1]/li[2]/a")
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/ul[1]/li/a")
 	WebElement ticketsDetailViewScheduleActivityLnk;
 	
 	@CacheLookup
@@ -219,8 +221,28 @@ public class TicketViewsElements extends BrowserSetup {
 	WebElement ticketsDetailViewDetailsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[1]")
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[2]")
 	WebElement ticketsDetailViewContactFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[3]")
+	WebElement ticketsDetailViewAreaFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[4]")
+	WebElement ticketsDetailViewCategoryFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[5]")
+	WebElement ticketsDetailViewIssueFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[6]")
+	WebElement ticketsDetailViewSubjectFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[7]")
+	WebElement ticketsDetailViewDescriptionFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[2]")
@@ -239,8 +261,44 @@ public class TicketViewsElements extends BrowserSetup {
 	WebElement ticketsDetailViewSubTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[6]")
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[8]")
 	WebElement ticketsDetailViewStatusFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[9]")
+	WebElement ticketsDetailViewUrgencyFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[10]")
+	WebElement ticketsDetailViewNeededDateFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[11]")
+	WebElement ticketsDetailViewAssignedToFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[12]")
+	WebElement ticketsDetailViewCompletedByFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[1]")
+	WebElement ticketsDetailViewContractFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[2]")
+	WebElement ticketsDetailViewSourceFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[3]")
+	WebElement ticketsDetailViewAssignedDateFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[4]")
+	WebElement ticketsDetailViewResolutionFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[5]")
+	WebElement ticketsDetailViewCommentsFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/h2[3]")
@@ -257,6 +315,10 @@ public class TicketViewsElements extends BrowserSetup {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[2]")
 	WebElement ticketsDetailViewBusDescFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[1]")
+	WebElement ticketsDetailViewAccountFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[3]")
@@ -313,8 +375,112 @@ public class TicketViewsElements extends BrowserSetup {
 	WebElement ticketsEditView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_14']/input")
-	WebElement ticketsEditViewContactInputFld;
+	@FindBy(xpath = "//*[@id='ticket_edit']/div[2]/h2")
+	WebElement ticketsEditViewDetailsHdr;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	WebElement ticketsEditViewAccountFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
+	WebElement ticketsEditViewAccountFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
+	WebElement ticketsEditViewContactFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
+	WebElement ticketsEditViewContactFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
+	WebElement ticketsEditViewContractFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
+	WebElement ticketsEditViewContractFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/input")
+	WebElement ticketsEditViewAreaFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/button")
+	WebElement ticketsEditViewAreaFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/input")
+	WebElement ticketsEditViewCategoryFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/button")
+	WebElement ticketsEditViewCategoryFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_5']/input")
+	WebElement ticketsEditViewIssueFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_5']/button")
+	WebElement ticketsEditViewIssueFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
+	WebElement ticketsEditViewSourceFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
+	WebElement ticketsEditViewSourceFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_6']/input")
+	WebElement ticketsEditViewUrgencyFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_6']/button")
+	WebElement ticketsEditViewUrgencyFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/input")
+	WebElement ticketsEditViewNeededDateFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/button")
+	WebElement ticketsEditViewNeededDateFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_1']/input")
+	WebElement ticketsEditViewAssignedDateFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_1']/button")
+	WebElement ticketsEditViewAssignedDateFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_7']/input")
+	WebElement ticketsEditViewAssignedToFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_7']/button")
+	WebElement ticketsEditViewAssignedToFldBtn;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_2']/input")
+	WebElement ticketsEditViewSubjectInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/div")
+	WebElement ticketsEditViewDescInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_1']/div")
+	WebElement ticketsEditViewResolutionInputFld;
+	
+	@CacheLookup
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_2']/div")
+	WebElement ticketsEditViewCommentsInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_15']/input")
@@ -353,11 +519,11 @@ public class TicketViewsElements extends BrowserSetup {
 	WebElement ticketsEditViewSubTypeFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_13']/input")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/input")
 	WebElement ticketsEditViewStatusFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_13']/button")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/button")
 	WebElement ticketsEditViewStatusFldBtn;
 	
 	@CacheLookup

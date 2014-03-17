@@ -1,28 +1,23 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * @author mllena
- * Class: AccountEntityViewsTest
- * Desc.: Test class for the Opportunity entity views
+ * Test class that defines test methods for the Opportunity entity views on the Mobile Client.
+ * *
+ * @author mike.llena@swiftpage.com
+ * @version	1.0
  */
 public class OpportunityViewsTest extends BrowserSetup {
 	
-	public String TEST_OPPORTUNITY_RECORD = "Regions Financial Corporation - Phase 1";
+	public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
 	
 	//Login & Logout
 	//==============
@@ -612,40 +607,6 @@ public class OpportunityViewsTest extends BrowserSetup {
 
 
 	@Test(enabled = true)
-	public void test12_SeTestTCOpportunityListViewAddOpportunity() throws Exception {
-		String methodID = "test12_SeTestTCOpportunityListViewAddOpportunity";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		//HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		//Step: login & log back in (to clear cookies)
-		LogOutThenLogBackIn(userName, userPwd);
-				
-		OpportunityViewsElements oppsListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-		
-		//Step: add a random test Opportunity record
-		String newOpportunityName = "AutoTestOpportunity-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
-		oppsListView.doAddRandTestOpportunity(newOpportunityName, "AECOM");
-		
-		//Step: find the newly-added test Opportunity record
-		String strResultsMsg = "VP: recently added test Opportunity '" + newOpportunityName + "' was found.";
-		if (oppsListView.doSearchOpportunity(newOpportunityName)) {
-			System.out.println(strResultsMsg + " - Passed");
-		}
-		else {
-			System.out.println(strResultsMsg + " - FAILED");
-		}
-		
-		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
-		
-		System.out.println(ENDLINE);
-	}
-
-
-	@Test(enabled = true)
 	public void test13_SeTestTCOpportunityListViewNotesBox() throws Exception {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCOpportunityListViewNotesBox";
@@ -727,6 +688,40 @@ public class OpportunityViewsTest extends BrowserSetup {
 		else {
 			System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
 		}
+		
+		System.out.println(ENDLINE);
+	}
+
+
+	@Test(enabled = true)
+	public void test12_SeTestTCOpportunityListViewAddOpportunity() throws Exception {
+		String methodID = "test12_SeTestTCOpportunityListViewAddOpportunity";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		//HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		//Step: login & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
+				
+		OpportunityViewsElements oppsListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+		
+		//Step: add a random test Opportunity record
+		String newOpportunityName = "AutoTestOpportunity-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+		oppsListView.doAddRandTestOpportunity(newOpportunityName, "Above Marine");
+		
+		//Step: find the newly-added test Opportunity record
+		String strResultsMsg = "VP: recently added test Opportunity '" + newOpportunityName + "' was found.";
+		if (oppsListView.doSearchOpportunity(newOpportunityName)) {
+			System.out.println(strResultsMsg + " - Passed");
+		}
+		else {
+			System.out.println(strResultsMsg + " - FAILED");
+		}
+		
+		//Step: go back to My Activities view
+		commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}

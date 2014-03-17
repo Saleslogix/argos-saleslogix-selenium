@@ -369,55 +369,6 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 	
 
 	@Test(enabled = true)
-	public void test09_SeTestTCNotesHistoryAddEditView() throws Exception {
-		String methodID = "test09_SeTestTCNotesHistoryAddEditView";
-		
-		// Test Params:
-		String entityType = "Notes/History";
-		String viewName = "Notes Add Edit view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
-		
-		try {
-			//Step: enter the Notes Add Edit view...
-			commNav.entityRecordAdd(entityType);
-			
-			NotesHistoryViewsElements notesHistoryEditView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
-			
-			//Step: check each input field and if applicable, its related list item selection view
-			commNav.isFieldValueEmpty(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn);			
-			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Note Description");			
-			commNav.isWebElementPresent(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
-			commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
-			commNav.isFieldValueEmpty(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountInputFld);			
-			commNav.isFieldValueEmpty(viewName + " contact", notesHistoryEditView.notesHistoryEditViewContactInputFld);
-			commNav.isWebElementPresent(viewName + ", opportunity", notesHistoryEditView.notesHistoryEditViewOpportunityInputFld);
-			commNav.isWebElementPresent(viewName + " ticket", notesHistoryEditView.notesHistoryEditViewTicketInputFld);
-			
-			//end of test
-			headerButton.clickHeaderButton("cancel");
-		
-			//Step: go back to previous screen
-			headerButton.goBack();
-			Thread.sleep(2000);
-					
-			//Step: go back to previous screens
-			headerButton.clickHeaderButton("cancel");
-			headerButton.goBack();
-			Thread.sleep(2000);
-		}
-		catch (Exception e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
-		}
-		
-		System.out.println(ENDLINE);
-	}
-
-	@Test(enabled = true)
 	public void test10_SeTestTCNotesHistoryListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCNotesHistoryListViewHashTags";
 		
@@ -561,6 +512,52 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 	}
 
 	@Test(enabled = true)
+	public void test09_SeTestTCNotesHistoryAddEditView() throws Exception {
+		String methodID = "test09_SeTestTCNotesHistoryAddEditView";
+		
+		// Test Params:
+		String entityType = "Notes/History";
+		String viewName = "Notes Add Edit view";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
+		
+		try {
+			//Step: enter the Notes Add Edit view...
+			commNav.entityRecordAdd(entityType);
+			
+			NotesHistoryViewsElements notesHistoryEditView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+			
+			//Step: check each input field and if applicable, its related list item selection view
+			commNav.isFieldValueEmpty(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn);			
+			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Note Description");			
+			commNav.isWebElementPresent(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
+			commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
+			commNav.isFieldValueEmpty(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountInputFld);			
+			commNav.isFieldValueEmpty(viewName + " contact", notesHistoryEditView.notesHistoryEditViewContactInputFld);
+			commNav.isWebElementPresent(viewName + ", opportunity", notesHistoryEditView.notesHistoryEditViewOpportunityInputFld);
+			commNav.isWebElementPresent(viewName + " ticket", notesHistoryEditView.notesHistoryEditViewTicketInputFld);
+			
+			//end of test
+			headerButton.clickHeaderButton("cancel");
+		
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(2000);
+					
+			
+		}
+		catch (Exception e) {
+			verificationErrors.append(methodID + "(): " + e.toString());
+			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
+		}
+		
+		System.out.println(ENDLINE);
+	}
+
+	@Test(enabled = true)
 	public void test12_SeTestTCNotesHistoryListViewAddNote() throws Exception {
 		String methodID = "test12_SeTestTCNotesHistoryListViewAddNote";
 		
@@ -577,7 +574,7 @@ public class NotesHistoryViewsTest extends BrowserSetup {
 		//Step: add a random test Note/History record
 		String newNoteName = "AutoTestNote-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
 		String strRegardingVal = "Technical notes";
-		notesHistoryListView.doAddRandTestNote(strRegardingVal, newNoteName, false, "AECOM");
+		notesHistoryListView.doAddRandTestNote(strRegardingVal, newNoteName, false, "Above Marine");
 		
 		//Step: find the newly-added test Note record
 		String strResultsMsg = "VP: recently added test Note '" + newNoteName + "' was found.";
