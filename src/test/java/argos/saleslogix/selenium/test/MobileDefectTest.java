@@ -1,6 +1,3 @@
-/**
- * 
- */
 package argos.saleslogix.selenium.test;
 
 import java.text.SimpleDateFormat;
@@ -9,7 +6,7 @@ import java.util.GregorianCalendar;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
-import static org.testng.AssertJUnit.assertEquals;
+
 import static org.testng.AssertJUnit.assertTrue;
 
 import org.openqa.selenium.*;
@@ -17,10 +14,37 @@ import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * @author mllena
- *
+ * Test class that defines test methods for the SLX Mobile Defect (pre-v2.3) fixes.
+ * 
+ * @author mike.llena@swiftpage.com
+ * @version	1.0
  */
 public class MobileDefectTest extends BrowserSetup {
+	
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
+
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}
+	
 
 	//Test Methods		
 	//============
@@ -2126,47 +2150,6 @@ public class MobileDefectTest extends BrowserSetup {
 		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}
-	//TODO: test64_MobileDefect13092410 needs a bug fix
-	@Test(enabled = true)
-	public void test64_MobileDefect13092410()  throws Exception {
-		//tags: accounts, list view, no records
-		String methodID = "test64_MobileDefect13092410";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		//Test Params
-		String accountRecord = "Agilent Technologies, Inc.";
-		
-		
-		//Step: click and open the the Account record
-		commNav.entityRecordOpenDetailView("Accounts", accountRecord);
-		
-		AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
-		
-		//click the Activities link
-		accountDetailView.accountDetailViewActivitiesLnk.click();
-		commNav.waitForNotPage("Activities");
-		
-		//VP: check that 'no records' is displayed if there are no Activities listed 	
-		String resultMsg = "VP: 'no records' is displayed for empty Activities list view";
-		try {
-			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
-			System.out.println(resultMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
-		}
-			
-		// End Tests
-		headerButton.clickHeaderButton("back");
-		commNav.clickGlobalMenuItem("My Activities");		
-		System.out.println(ENDLINE);
-	}
-
 	@Test (enabled = true)
 	public void test65_MobileDefect13092422()  throws Exception {
 		//tags: My Activities, list view, Unknown
@@ -2363,27 +2346,44 @@ public class MobileDefectTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//Login & Logout
-	//==============
+	//TODO: test64_MobileDefect13092410 needs a bug fix
 	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
+	public void test64_MobileDefect13092410()  throws Exception {
+		//tags: accounts, list view, no records
+		String methodID = "test64_MobileDefect13092410";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);					
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		doVerificationLogin();
+		//Test Params
+		String accountRecord = "Account Graphics";
 		
-		System.out.println(ENDLINE);	
-	}
-
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
 		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		//Step: click and open the the Account record
+		commNav.entityRecordOpenDetailView("Accounts", accountRecord);
 		
-		doVerificationLogout();
+		AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
+		//click the Activities link
+		accountDetailView.accountDetailViewActivitiesLnk.click();
+		commNav.waitForNotPage("Activities");
+		
+		//VP: check that 'no records' is displayed if there are no Activities listed 	
+		String resultMsg = "VP: 'no records' is displayed for empty Activities list view";
+		try {
+			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
+			System.out.println(resultMsg + " - Passed");
+		}
+		catch (Error e) {
+			System.out.println(methodID + "(): " + e.toString());
+			System.out.println(resultMsg + " - Failed");
+		}
+			
+		// End Tests
+		headerButton.clickHeaderButton("back");
+		commNav.clickGlobalMenuItem("My Activities");		
 		System.out.println(ENDLINE);
 	}
 }

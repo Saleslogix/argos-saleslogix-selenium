@@ -10,14 +10,42 @@ import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
+/**
+ * Test class that defines test methods for the Lead entity views on the Mobile Client.
+ * *
+ * @author mike.llena@swiftpage.com
+ * @version	1.0
+ */
 public class LeadEntityViewsTest extends BrowserSetup {
 	
-	public String TEST_LEAD_RECORD = "Adams, Adelaide";
+	public String TEST_LEAD_RECORD = "Beck, John";
+	
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
+
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}
 	
 	//Test Set
 	//========
@@ -361,63 +389,6 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 	
-	@Test(enabled = true)
-	public void test09_SeTestTCLeadAddEditView() throws Exception {
-		String methodID = "test09_SeTestTCLeadAddEditView";
-		
-		// Test Params:
-		String entityType = "Lead";
-		String viewName = "Lead Add Edit view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
-		
-		try {
-			//Step: enter the Contact Add Edit view...
-			commNav.entityRecordAdd(entityType);
-			
-			LeadViewsElements leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
-			
-			//Step: check each input field and if applicable, its related list item selection view
-			commNav.isWebElementPresent(viewName + ", 'Details' section header", leadEditView.leadsEditViewDetailsHdr);
-			commNav.verifyEntityViewElementClick(viewName + ", name field", leadEditView.leadsEditViewNameFldBtn, "Edit Name");			
-			commNav.isWebElementPresent(viewName + ", company field", leadEditView.leadsEditViewCompanyInputFld);			
-			commNav.isWebElementPresent(viewName + ", web field", leadEditView.leadsEditViewWebInputFld);			
-			commNav.isWebElementPresent(viewName + ", work phone field", leadEditView.leadsEditViewWorkPhoneInputFld);			
-			commNav.isWebElementPresent(viewName + ", mobile phone field", leadEditView.leadsEditViewWorkPhoneInputFld);
-			commNav.isWebElementPresent(viewName + ", toll free field", leadEditView.leadsEditViewTollFreeInputFld);
-			commNav.isWebElementPresent(viewName + ", email field", leadEditView.leadsEditViewEmailInputFld);
-			commNav.verifyEntityViewElementClick(viewName + ", title field", leadEditView.leadsEditViewTitleFldBtn, "Title");			
-			commNav.verifyEntityViewElementClick(viewName + ", address field", leadEditView.leadsEditViewAddressFldBtn, "Address");
-			commNav.verifyEntityViewElementClick(viewName + ", lead source field", leadEditView.leadsEditViewLeadSourceFldBtn, "Lead Sources");
-			commNav.isWebElementPresent(viewName + ", interests field", leadEditView.leadsEditViewInterestsInputFld);
-			commNav.verifyEntityViewElementClick(viewName + ", industry field", leadEditView.leadsEditViewIndustryFldBtn, "Industry");			
-			commNav.isWebElementPresent(viewName + ", sic code field", leadEditView.leadsEditViewSicCodeInputFld);
-			commNav.isWebElementPresent(viewName + ", business description text area", leadEditView.leadsEditViewBusDescInputFld);			
-			commNav.verifyEntityViewElementClick(viewName + ", owner field", leadEditView.leadsEditViewOwnerFldBtn, "Owners");
-			
-			//end of test
-			headerButton.clickHeaderButton("cancel");
-		
-			//Step: go back to previous screen
-			headerButton.goBack();
-			Thread.sleep(2000);
-					
-			//Step: go back to previous screens
-			headerButton.clickHeaderButton("cancel");
-			headerButton.goBack();
-			Thread.sleep(2000);
-		}
-		catch (Exception e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
-		}
-		
-		System.out.println(ENDLINE);
-	}
-
 	@Test(enabled = false)
 	public void test98_SeTestTCAttachLeadScreens() throws Exception {
 	    // SETest-Attachments_Lead_Screens
@@ -804,28 +775,56 @@ public class LeadEntityViewsTest extends BrowserSetup {
 		System.out.println(ENDLINE);
 	}
 
-	//Login & Logout
-	//==============
 	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
+	public void test09_SeTestTCLeadAddEditView() throws Exception {
+		String methodID = "test09_SeTestTCLeadAddEditView";
 		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		// Test Params:
+		String entityType = "Lead";
+		String viewName = "Lead Add Edit view";
 		
-		doVerificationLogin();
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(ENDLINE);	
-	}
-
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
 		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		try {
+			//Step: enter the Contact Add Edit view...
+			commNav.entityRecordAdd(entityType);
+			
+			LeadViewsElements leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
+			
+			//Step: check each input field and if applicable, its related list item selection view
+			commNav.isWebElementPresent(viewName + ", 'Details' section header", leadEditView.leadsEditViewDetailsHdr);
+			commNav.verifyEntityViewElementClick(viewName + ", name field", leadEditView.leadsEditViewNameFldBtn, "Edit Name");			
+			commNav.isWebElementPresent(viewName + ", company field", leadEditView.leadsEditViewCompanyInputFld);			
+			commNav.isWebElementPresent(viewName + ", web field", leadEditView.leadsEditViewWebInputFld);			
+			commNav.isWebElementPresent(viewName + ", work phone field", leadEditView.leadsEditViewWorkPhoneInputFld);			
+			commNav.isWebElementPresent(viewName + ", mobile phone field", leadEditView.leadsEditViewWorkPhoneInputFld);
+			commNav.isWebElementPresent(viewName + ", toll free field", leadEditView.leadsEditViewTollFreeInputFld);
+			commNav.isWebElementPresent(viewName + ", email field", leadEditView.leadsEditViewEmailInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ", title field", leadEditView.leadsEditViewTitleFldBtn, "Title");			
+			commNav.verifyEntityViewElementClick(viewName + ", address field", leadEditView.leadsEditViewAddressFldBtn, "Address");
+			commNav.verifyEntityViewElementClick(viewName + ", lead source field", leadEditView.leadsEditViewLeadSourceFldBtn, "Lead Sources");
+			commNav.isWebElementPresent(viewName + ", interests field", leadEditView.leadsEditViewInterestsInputFld);
+			commNav.verifyEntityViewElementClick(viewName + ", industry field", leadEditView.leadsEditViewIndustryFldBtn, "Industry");			
+			commNav.isWebElementPresent(viewName + ", sic code field", leadEditView.leadsEditViewSicCodeInputFld);
+			commNav.isWebElementPresent(viewName + ", business description text area", leadEditView.leadsEditViewBusDescInputFld);			
+			commNav.verifyEntityViewElementClick(viewName + ", owner field", leadEditView.leadsEditViewOwnerFldBtn, "Owners");
+			
+			//end of test
+			headerButton.clickHeaderButton("cancel");
 		
-		doVerificationLogout();
+			//Step: go back to previous screen
+			headerButton.goBack();
+			Thread.sleep(2000);
+					
+		}
+		catch (Exception e) {
+			verificationErrors.append(methodID + "(): " + e.toString());
+			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
+		}
 		
 		System.out.println(ENDLINE);
 	}
-
 }

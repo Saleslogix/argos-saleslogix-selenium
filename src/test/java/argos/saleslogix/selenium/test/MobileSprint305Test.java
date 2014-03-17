@@ -1,27 +1,48 @@
-/**
- * .
- */
 package argos.saleslogix.selenium.test;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * @author mllena
- *
+ * Test class that defines test methods for the SLX Mobile Defect (v3.05) fixes.
+ * 
+ * @author mike.llena@swiftpage.com
+ * @version	1.0
  */
 public class MobileSprint305Test extends BrowserSetup {
+	
+	public String TEST_TICKET_RECORD = "001-00-000014";
 
+	//Login & Logout
+	//==============
+	@Test(enabled = true)
+	public void test00_MobileClient_Login() throws InterruptedException {
+		String methodID = "test00_MobileClient_Login";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogin();
+		
+		System.out.println(ENDLINE);	
+	}
+
+	@Test(enabled = true)
+	public void test99_Mobile_LogOut()  throws InterruptedException {				
+		String methodID = "test99_Mobile_LogOut";
+		
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		
+		doVerificationLogout();
+		
+		System.out.println(ENDLINE);
+	}
+	
+	
+	//Test Methods
+	//============
 	@Test(enabled = true)
 	public void test01_MobileDefect_MBL10267()  throws InterruptedException {
 		//Reference: MBL-10267
@@ -156,63 +177,6 @@ public class MobileSprint305Test extends BrowserSetup {
 		System.out.println(ENDLINE);		
 	}
 
-	@Test(enabled = true)
-	public void test02_MobileDefect_MBL10268()  throws InterruptedException {
-		//Reference: MBL-10268
-		String methodID = "test02_MobileDefect_MBL10268";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		// test params
-		String entityView = "Tickets";
-	
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-	
-		//Step: open the entities List view from the Global Menu
-		commNav.clickGlobalMenuItem(entityView);
-		commNav.waitForPage(entityView);
-	
-		//Step: open the Ticket Detail view  
-		commNav.clickListViewItemN(entityView, 1);
-		
-		//Step: click the Ticket Activities link
-		String tcktActivitiesLnkXPath = "//*[@id='ticket_detail']/descendant::*[text() = 'Ticket Activities']";
-		driver.findElement(By.xpath(tcktActivitiesLnkXPath)).click();
-		commNav.waitForPage("Ticket Activities");
-		
-		//Step: click header Add button 
-		headerButton.clickHeaderButton("add");
-		commNav.waitForPage("Edit Ticket Activity");
-		
-		//VP: check that User field default value is not empty 
-		String userFldXPath = "(//input[@type='text'])[3]";
-		String userFldVal = driver.findElement(By.xpath(userFldXPath)).getAttribute("value");
-		String resultsMsg = "VP: Edit Ticket Activity, User field default value is not blank";
-		try {
-			AssertJUnit.assertTrue(!"".equals(userFldVal));
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Exception e) {
-			System.out.println("VP: The Edit Ticket Activity, User field default value was blank.");
-			System.out.println(resultsMsg + " - Failed");
-		}
-		finally {
-			// End Tests
-			// Step: navigate back to the default startup view
-			headerButton.clickHeaderButton("cancel");
-			commNav.waitForPage("Ticket Activities");
-			headerButton.clickHeaderButton("back");
-			commNav.waitForNotPage("Ticket Activities");
-			headerButton.clickHeaderButton("back");
-			commNav.waitForPage("Tickets");
-			
-			System.out.println(ENDLINE);	
-		}
-						
-	}
-
 	@Test(enabled = false)
 	public void test03_MobileDefect_MBL10269() throws Exception {
 		String methodID = "test03_MobileDefect_MBL10269";
@@ -336,27 +300,67 @@ public class MobileSprint305Test extends BrowserSetup {
 		commNav.clickGlobalMenuItem(entityType2);
 		System.out.println(ENDLINE);
 	}
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
 
 	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
+	public void test02_MobileDefect_MBL10268()  throws Exception {
+		//Reference: MBL-10268
+		String methodID = "test02_MobileDefect_MBL10268";
+		
+		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+		
+		// test params
+		String entityView = "Tickets";
+		// Kath added next 2 lines
+	    String entityType = "Tickets";
+	    String entityRecord = TEST_TICKET_RECORD;
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+	
+		//Step: open the entities List view from the Global Menu
+		commNav.clickGlobalMenuItem(entityView);
+		commNav.waitForPage(entityView);
 		
-		doVerificationLogout();
+		//Kath added next few lines
+	    //Step: search for an existing Ticket record
+	    commNav.entityListViewSearch(entityType, entityRecord);
+	
+		//Step: open the Ticket Detail view  
+		commNav.clickListViewItemN(entityView, 1);
 		
-		System.out.println(ENDLINE);
+		//Step: click the Ticket Activities link
+		String tcktActivitiesLnkXPath = "//*[@id='ticket_detail']/descendant::*[text() = 'Ticket Activities']";
+		driver.findElement(By.xpath(tcktActivitiesLnkXPath)).click();
+		commNav.waitForPage("Ticket Activities");
+		
+		//Step: click header Add button 
+		headerButton.clickHeaderButton("add");
+		commNav.waitForPage("Edit Ticket Activity");
+		
+		//VP: check that User field default value is not empty 
+		String userFldXPath = "(//input[@type='text'])[3]";
+		String userFldVal = driver.findElement(By.xpath(userFldXPath)).getAttribute("value");
+		String resultsMsg = "VP: Edit Ticket Activity, User field default value is not blank";
+		try {
+			AssertJUnit.assertTrue(!"".equals(userFldVal));
+			System.out.println(resultsMsg + " - Passed");
+		}
+		catch (Exception e) {
+			System.out.println("VP: The Edit Ticket Activity, User field default value was blank.");
+			System.out.println(resultsMsg + " - Failed");
+		}
+		finally {
+			// End Tests
+			// Step: navigate back to the default startup view
+			headerButton.clickHeaderButton("cancel");
+			commNav.waitForPage("Ticket Activities");
+			headerButton.clickHeaderButton("back");
+			commNav.waitForNotPage("Ticket Activities");
+			headerButton.clickHeaderButton("back");
+			commNav.waitForPage("Tickets");
+			
+			System.out.println(ENDLINE);	
+		}
+						
 	}
 }
