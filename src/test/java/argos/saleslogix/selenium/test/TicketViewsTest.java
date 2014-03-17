@@ -18,7 +18,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class TicketViewsTest extends BaseTest {
 	
-	public String TEST_TICKET_RECORD = "000-00-000011";
+	public String TEST_TICKET_RECORD = "001-00-000014";
 	
 	//Test Methods Set
 	//================

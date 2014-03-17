@@ -19,7 +19,7 @@ import static org.testng.AssertJUnit.assertTrue;
 
 public class LeadEntityViewsTest extends BaseTest {
 
-    public String TEST_LEAD_RECORD = "Adams, Adelaide";
+    public String TEST_LEAD_RECORD = "Beck, John";
 
     //Test Set
     //========
@@ -401,11 +401,6 @@ public class LeadEntityViewsTest extends BaseTest {
             headerButton.clickCancel();
 
             //Step: go back to previous screen
-            headerButton.goBack();
-            Thread.sleep(2000);
-
-            //Step: go back to previous screens
-            headerButton.clickCancel();
             headerButton.goBack();
             Thread.sleep(2000);
         } catch (Exception e) {

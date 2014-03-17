@@ -401,15 +401,10 @@ public class NotesHistoryViewsTest extends BaseTest {
 			//Step: go back to previous screen
 			headerButton.goBack();
 			Thread.sleep(2000);
-					
-			//Step: go back to previous screens
-			headerButton.clickCancel();
-			headerButton.goBack();
-			Thread.sleep(2000);
 		}
 		catch (Exception e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": unable to open the Contact Add Edit view.");
+			System.out.println(methodID + ": unable to open the notes history view.");
 		}
 		
 		System.out.println(ENDLINE);
@@ -573,7 +568,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 		//Step: add a random test Note/History record
 		String newNoteName = "AutoTestNote-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
 		String strRegardingVal = "Technical notes";
-		notesHistoryListView.doAddRandTestNote(strRegardingVal, newNoteName, false, "AECOM");
+		notesHistoryListView.doAddRandTestNote(strRegardingVal, newNoteName, false, "Above Marine");
 		
 		//Step: find the newly-added test Note record
 		String strResultsMsg = "VP: recently added test Note '" + newNoteName + "' was found.";

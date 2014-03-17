@@ -2134,7 +2134,7 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Test Params
-		String accountRecord = "Agilent Technologies, Inc.";
+		String accountRecord = "Account Graphics";
 		
 		
 		//Step: click and open the the Account record

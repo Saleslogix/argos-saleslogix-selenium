@@ -21,7 +21,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class OpportunityViewsTest extends BaseTest {
 	
-	public String TEST_OPPORTUNITY_RECORD = "Regions Financial Corporation - Phase 1";
+	public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
 	
 	//Login & Logout
 	//==============
@@ -620,7 +620,7 @@ public class OpportunityViewsTest extends BaseTest {
 		
 		//Step: add a random test Opportunity record
 		String newOpportunityName = "AutoTestOpportunity-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
-		oppsListView.doAddRandTestOpportunity(newOpportunityName, "AECOM");
+		oppsListView.doAddRandTestOpportunity(newOpportunityName, "Above Marine");
 		
 		//Step: find the newly-added test Opportunity record
 		String strResultsMsg = "VP: recently added test Opportunity '" + newOpportunityName + "' was found.";

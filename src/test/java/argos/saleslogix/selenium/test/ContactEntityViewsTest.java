@@ -15,7 +15,7 @@ import java.util.GregorianCalendar;
 
 public class ContactEntityViewsTest extends BaseTest {
 
-    public String TEST_CONTACT_RECORD = "Barbosa, Angelo";
+    public String TEST_CONTACT_RECORD = "Abbott, John";
 
     //Test Methods Set
     //================
@@ -401,11 +401,6 @@ public class ContactEntityViewsTest extends BaseTest {
             //Step: go back to previous screen
             headerButton.goBack();
             Thread.sleep(2000);
-
-            //Step: go back to previous screens
-            headerButton.clickCancel();
-            headerButton.goBack();
-            Thread.sleep(2000);
         } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + ": unable to open the Contact Add Edit view.");
@@ -569,7 +564,7 @@ public class ContactEntityViewsTest extends BaseTest {
 
         //Step: add a random test Contact record
         String newConLastName = "Andersen-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
-        contactsListView.doAddRandTestContact(newConLastName, "Thomas", "AECOM");
+        contactsListView.doAddRandTestContact(newConLastName, "Thomas", "Above Marine");
 
         //Step: find the newly-added test Contact record
         String strResultsMsg = "VP: recently added test Contact '" + newConLastName + "' was found.";
@@ -594,7 +589,7 @@ public class ContactEntityViewsTest extends BaseTest {
         // Test Params:
         String entityType = "Contacts";
         String expEntityPgTitle = "Contacts";
-        String entityRecord = "Barbosa, Angelo";
+        String entityRecord = "Abbott, John";
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
