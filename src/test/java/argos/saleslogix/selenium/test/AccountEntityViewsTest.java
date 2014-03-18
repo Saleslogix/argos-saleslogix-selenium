@@ -598,14 +598,8 @@ public class AccountEntityViewsTest extends BaseTest {
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		accountsListView.doAddRandTestAccount(newAcctName);
 		
-		//Step: find the newly-added test Account record
-		String strResultsMsg = "VP: recently added test Account '" + newAcctName + "' was found.";
-		if (accountsListView.doSearchAccount(newAcctName)) {
-			System.out.println(strResultsMsg + " - Passed");
-		}
-		else {
-			System.out.println(strResultsMsg + " - FAILED");
-		}
+		//Step: find the newly-added test Account record and assert it was found
+        AssertJUnit.assertTrue(accountsListView.doSearchAccount(newAcctName));
 		
 		System.out.println(ENDLINE);
 	}
