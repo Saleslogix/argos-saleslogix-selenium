@@ -323,10 +323,6 @@ public class AccountEntityViewsTest extends BaseTest {
 			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": the Account Detail view for the '" + entityRecord + "' Account record; test aborted.");
 		}
-				
-		//Step: go back to previous screen
-		headerButton.goBack();
-		commNav.waitForPage("Accounts");
 		
 		System.out.println(ENDLINE);
 	}
