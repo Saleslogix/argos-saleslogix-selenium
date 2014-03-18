@@ -10,16 +10,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HeaderButton {
 
-    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='toggleLeftDrawer']")
+    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[@data-tool='toggleLeftDrawer']")
     public WebElement globalMenuButton;
 
-    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='toggleRightDrawer']")
+    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[@data-tool='toggleRightDrawer']")
     public WebElement rightCntxtMnuButton;
 
-    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='new']")
+    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[@data-tool='new']")
     public WebElement addButton;
 
-    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='edit']")
+    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[@data-tool='edit']")
     public WebElement editButton;
 
     @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[@data-tool='save']")
@@ -28,13 +28,13 @@ public class HeaderButton {
     @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[@data-tool='complete']")
     public WebElement checkButton;
 
-    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='delete']")
+    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[@data-tool='delete']")
     public WebElement deleteButton;
 
-    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='cancel']")
+    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[@data-tool='cancel']")
     public WebElement cancelButton;
 
-    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='back']")
+    @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[@data-tool='back']")
     public WebElement backButton;
 
     private WebDriver driver;

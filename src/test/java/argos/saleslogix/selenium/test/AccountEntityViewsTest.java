@@ -366,12 +366,6 @@ public class AccountEntityViewsTest extends BaseTest {
 			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
 			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
 			commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
-			
-			//end of test
-			headerButton.clickCancel();
-		
-			//Step: go back to previous screen
-			headerButton.goBack();
 		} catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
 			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
@@ -612,9 +606,6 @@ public class AccountEntityViewsTest extends BaseTest {
 		else {
 			System.out.println(strResultsMsg + " - FAILED");
 		}
-		
-		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItemMyActivities();
 		
 		System.out.println(ENDLINE);
 	}
