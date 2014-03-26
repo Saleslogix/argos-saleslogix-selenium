@@ -362,6 +362,27 @@ public class MyActivityViewsElements {
         return relActivitiesLisViewInfo.getText();
     }
 
+    /**
+     * This method will perform a search for an activity record (using the regarding field value) from the
+     * My Activities List view.  The resulting activity search is displayed.
+     * @param	regarding	the target Activity's regarding field value
+     * @exception InterruptedException
+     */
+    public void performMyActivitiesSearch(String regarding) throws InterruptedException {
+        MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        //Step: execute a filter-free search
+        headerButton.showRightContextMenu();
+        activitiesListView.myActivitiesSearchTxtBox.click();
+        Thread.sleep(500);
+        activitiesListView.myActivitiesSearchClearBtn.click();
+        Thread.sleep(1000);
+        activitiesListView.myActivitiesSearchTxtBox.sendKeys(regarding);
+        Thread.sleep(500);
+        activitiesListView.myActivitiesSearchLookupBtn.click();
+    }
+
 
     /**
      * This method will perform a "filter-less" search (no hash-tag & no search string) on the My Activities
