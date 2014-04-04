@@ -20,7 +20,7 @@ import org.openqa.selenium.support.PageFactory;
  * Class: AccountEntityViewsTest
  * Desc.: Test class for the Account entity views
  */
-public class AddAccountContactViewsTest extends BrowserSetup {
+public class AddAccountContactViewsTest extends BaseTest {
 	
 	//Login & Logout
 	//==============

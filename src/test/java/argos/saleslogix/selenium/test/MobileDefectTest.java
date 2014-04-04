@@ -19,7 +19,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author mike.llena@swiftpage.com
  * @version	1.0
  */
-public class MobileDefectTest extends BrowserSetup {
+public class MobileDefectTest extends BaseTest {
 	
 	//Login & Logout
 	//==============

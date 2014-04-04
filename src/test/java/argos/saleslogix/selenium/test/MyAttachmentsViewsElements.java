@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class MyAttachmentsViewsElements extends BrowserSetup {
+public class MyAttachmentsViewsElements extends BaseTest {
 	
 	private WebDriver driver;
 

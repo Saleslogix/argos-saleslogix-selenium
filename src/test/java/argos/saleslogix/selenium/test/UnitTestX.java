@@ -20,9 +20,9 @@ import org.openqa.selenium.support.ui.Select;
 import argos.saleslogix.selenium.test.CommonNavigation;
 import argos.saleslogix.selenium.test.HeaderButton;
 import argos.saleslogix.selenium.test.SLXMobileLogin;
-import argos.saleslogix.selenium.test.BrowserSetup;
+import argos.saleslogix.selenium.test.BaseTest;
 
-public class UnitTestX extends BrowserSetup {
+public class UnitTestX extends BaseTest {
 	
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 

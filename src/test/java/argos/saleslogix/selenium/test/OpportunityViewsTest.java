@@ -15,7 +15,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author mike.llena@swiftpage.com
  * @version	1.0
  */
-public class OpportunityViewsTest extends BrowserSetup {
+public class OpportunityViewsTest extends BaseTest {
 	
 	public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
 	

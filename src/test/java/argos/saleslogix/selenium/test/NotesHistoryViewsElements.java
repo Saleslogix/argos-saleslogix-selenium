@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class NotesHistoryViewsElements extends BrowserSetup {
+public class NotesHistoryViewsElements extends BaseTest {
 	
 	private WebDriver driver;
 

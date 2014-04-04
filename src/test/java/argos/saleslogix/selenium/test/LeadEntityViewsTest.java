@@ -19,7 +19,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author mike.llena@swiftpage.com
  * @version	1.0
  */
-public class LeadEntityViewsTest extends BrowserSetup {
+public class LeadEntityViewsTest extends BaseTest {
 	
 	public String TEST_LEAD_RECORD = "Beck, John";
 	

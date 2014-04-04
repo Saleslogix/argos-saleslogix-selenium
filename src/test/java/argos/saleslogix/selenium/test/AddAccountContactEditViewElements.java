@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class AddAccountContactEditViewElements extends BrowserSetup {
+public class AddAccountContactEditViewElements extends BaseTest {
 	
 	private WebDriver driver;
 

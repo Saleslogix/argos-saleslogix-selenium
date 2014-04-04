@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class MiscEntityItemViewsElements extends BrowserSetup {
+public class MiscEntityItemViewsElements extends BaseTest {
 	
 	private WebDriver driver;
 

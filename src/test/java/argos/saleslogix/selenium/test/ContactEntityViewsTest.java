@@ -15,7 +15,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author mike.llena@swiftpage.com
  * @version	1.0
  */
-public class ContactEntityViewsTest extends BrowserSetup {
+public class ContactEntityViewsTest extends BaseTest {
 	
 	public String TEST_CONTACT_RECORD = "Abbott, John";
 	

@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class OpportunityViewsElements extends BrowserSetup {
+public class OpportunityViewsElements extends BaseTest {
 	
 	private WebDriver driver;
 

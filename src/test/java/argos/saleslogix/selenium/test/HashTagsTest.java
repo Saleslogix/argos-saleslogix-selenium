@@ -10,7 +10,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class HashTagsTest extends BrowserSetup {
+public class HashTagsTest extends BaseTest {
 	
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 

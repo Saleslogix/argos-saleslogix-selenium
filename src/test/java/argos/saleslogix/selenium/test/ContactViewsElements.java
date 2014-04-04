@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author	mike.llena@swiftpage.com
  * @version	1.0
  */
-public class ContactViewsElements extends BrowserSetup {
+public class ContactViewsElements extends BaseTest {
 	
 	private WebDriver driver;
 

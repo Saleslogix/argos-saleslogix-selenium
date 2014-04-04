@@ -10,7 +10,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class GlobalMenuNavigationTest extends BrowserSetup {
+public class GlobalMenuNavigationTest extends BaseTest {
 
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 

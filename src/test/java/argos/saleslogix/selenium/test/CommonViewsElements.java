@@ -1,18 +1,5 @@
 package argos.saleslogix.selenium.test;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-import java.util.Properties;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -21,12 +8,13 @@ import org.openqa.selenium.support.PageFactory;
 
 /**
  * CommonViewsElements class defines webelements and methods for any common List, Edit and Detail view
- * that can be invoked from any entity-based view (i.e. Address or Name fields).  
+ * that can be invoked from any entity-based view (i.e. Address or Name fields).
+ *   
  * @author	mike.llena@swiftpage.com
  * @version	1.0
- * @see BrowserSetup
+ * @see BaseTest
  */
-public class CommonViewsElements extends BrowserSetup {
+public class CommonViewsElements extends BaseTest {
 	
 	private WebDriver driver;
 
@@ -312,12 +300,7 @@ public class CommonViewsElements extends BrowserSetup {
 	//Business Description
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_0']/textarea")
-	WebElement busdescTxtArea;	
-	
-	
-	//Detail View elements
-	//====================
-	//TODO: complete the common Detail View elements
+	WebElement busdescTxtArea;
 	
 		
 	//Methods
@@ -327,15 +310,12 @@ public class CommonViewsElements extends BrowserSetup {
 	 * view selection list (i.e. Account Type, City, Industry, etc.).  This method should be called
 	 * immediately after clicking an input field button that invokes a list view selection.
 	 * 
-	 * @version	1.0
 	 * @param	strFieldName  	field value label name that invokes this list view selection
 	 * @param	strSelectItem	target list item to search and select
-	 * @exception InterruptedException
+	 * @throws InterruptedException
 	 */
 	public void lookupNSelectListItem(String strFieldName, String strSelectItem) throws InterruptedException {
 		String methodID = "lookupNSelectListItem";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
 		String listXPathSubStr = "";
 		String listItemXPath = "";
@@ -378,10 +358,9 @@ public class CommonViewsElements extends BrowserSetup {
 	 * view selection list (i.e. Account Type, City, Industry, etc.).  This method should be called
 	 * immediately after clicking an input field button that invokes a list view selection.
 	 * 
-	 * @version	1.0
 	 * @param	strFieldName  	field value label name that invokes this list view selection
 	 * @param	strSelectItem	target list item to search and select
-	 * @exception InterruptedException
+	 * @throws InterruptedException
 	 */
 	public void selectFieldValListItem(String strFieldName, String strSelectItem) throws InterruptedException {
 		String methodID = "selectFieldValListItem";
@@ -484,9 +463,10 @@ public class CommonViewsElements extends BrowserSetup {
 			else {
 				lookupFld.click();
 				lookupFld.sendKeys(strSelectItem);
-				Thread.sleep(100);	
-				lookupFld.sendKeys(Keys.ENTER);
-				Thread.sleep(3000);			
+				Thread.sleep(100);
+				//TO DO: define a new framework WebElement for the Lookup button using the xpath below
+				driver.findElement(By.xpath("//*[@id='viewContainer']/descendant::*[@class='subHeaderButton searchButton']")).click();
+				Thread.sleep(2000);			
 				try {
 					if (pageTitle.toLowerCase().equals("users")) {
 						//commNav.clickListViewGridItem(By.xpath(".//*[@id='" + pickListID + "']/descendant::*[text() = '" + strSelectItem + "']"));
@@ -552,9 +532,8 @@ public class CommonViewsElements extends BrowserSetup {
 	/**
 	 * This method will enter text for the Business Description.
 	 * 
-	 * @version	1.0
 	 * @param	strBusDesc  text for the Business Description
-	 * @exception InterruptedException
+	 * @throws InterruptedException
 	 */	
 	public void setBusDescription(String strBusDesc) throws InterruptedException {
 		String methodID = "setBusDescription";

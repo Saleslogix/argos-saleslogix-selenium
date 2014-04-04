@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class TicketViewsElements extends BrowserSetup {
+public class TicketViewsElements extends BaseTest {
 	
 	private WebDriver driver;
 

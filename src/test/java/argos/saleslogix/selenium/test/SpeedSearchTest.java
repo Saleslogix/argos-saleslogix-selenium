@@ -8,9 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 import argos.saleslogix.selenium.test.CommonNavigation;
 import argos.saleslogix.selenium.test.HeaderButton;
 import argos.saleslogix.selenium.test.SLXMobileLogin;
-import argos.saleslogix.selenium.test.BrowserSetup;
+import argos.saleslogix.selenium.test.BaseTest;
 
-public class SpeedSearchTest extends BrowserSetup {
+public class SpeedSearchTest extends BaseTest {
 	
 CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 

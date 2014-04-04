@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author mike.llena@swiftpage.com
  * @version	1.0
  */
-public class MobileSprint305Test extends BrowserSetup {
+public class MobileSprint305Test extends BaseTest {
 	
 	public String TEST_TICKET_RECORD = "001-00-000014";
 
