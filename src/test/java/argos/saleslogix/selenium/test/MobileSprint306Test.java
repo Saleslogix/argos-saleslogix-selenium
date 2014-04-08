@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
@@ -293,7 +294,7 @@ public class MobileSprint306Test extends BaseTest {
 			commNav.waitForPage("Meeting");
 			
 			//Step: add an Activity record with a random value for 'regarding' 
-			String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+			String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
 			System.out.println("Activity regarding field will be - " + newActivityRegarding);
 			
 			activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
@@ -696,4 +697,291 @@ public class MobileSprint306Test extends BaseTest {
 			
 			System.out.println(ENDLINE);
 		}
+
+    @Test(enabled = true)
+    // MBL-10400 ... unexpected Activity values for start date/ time and alarm per three scenarios
+    public void test05_MBL10400() throws Exception {
+        String methodID = "test05_MBL10400";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to "My Activities" view, if not already there ... wait for page My Activities
+            if (!commNav.isPageDisplayed("My Activities"))   {
+                commNav.clickGlobalMenuItem("My Activities");
+                commNav.waitForPage("My Activities");
+            }
+
+            //SCENARIO #1
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            driver.findElement(By.xpath("//*[@id='activity_types_list']/ul/li[1]/div[4]")).click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding' (scenario #1)
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Scenario #1 : Activity regarding field for timeless activity will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+
+            //Step: press the timeless toggle button to ON, then retrieve the value for MM/dd/yy
+            activityEditView.activityEditViewTimelessTgl.click();
+            String newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("Date/time value for Start Date for timeless activity will be : " + newActivityStartDate);
+
+
+            //Step: save activity
+            headerButton.clickHeaderButton("Save");
+
+            //Step: wait for page My Activities
+            commNav.waitForPage("My Activities");
+
+            //Step: search for activity created ... and re-open
+            activityEditView.performMyActivitiesSearch(newActivityRegarding);
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']/ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
+            commNav.highlightNClick(activityItemLnk);
+            commNav.waitForPage("Activity");
+
+
+            //Step: open the activity created in edit mode
+            headerButton.clickHeaderButton("Edit");
+
+            //Step: wait for page Activity
+            commNav.waitForPage("Activity");
+
+            //Step: toggle timeless Off
+            activityEditView.activityEditViewTimelessTgl.click();
+            System.out.println("Edit activity " + newActivityRegarding + " and set timeless to OFF");
+
+            //Step: change the activity's time
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            commNav.waitForPage("Calendar");
+            calendarView.calendarIncrementHourBtn.click();
+            calendarView.calendarIncrementMinuteBtn.click();
+            headerButton.clickHeaderButton("check");
+            commNav.waitForPage("Activity");
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            System.out.println("Activity Date/time value for Start Date is now : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+
+            //Step: verify that activity saves without error
+            headerButton.clickHeaderButton("save");
+            String pageTitle = ("Meeting - Regarding: " + newActivityRegarding);
+            commNav.waitForPage(pageTitle);
+            AssertJUnit.assertEquals("VP: for Scenario #1, Activity appears to not have saved - FAILED", pageTitle, driver.findElement(By.id("pageTitle")).getText());
+            System.out.println("VP: for Scenario #1, Activity has saved successfully " + " - PASSED");
+
+
+            //SCENARIO #2
+
+            //Step: click the back button to go to My Activities
+            headerButton.clickHeaderButton("back");
+
+            //Step: wait for page My Activities to open
+            commNav.waitForPage("My Activities");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            driver.findElement(By.xpath("//*[@id='activity_types_list']/ul/li[1]/div[4]")).click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding' (scenario #2)
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Scenario #2 : Activity regarding field for new activity will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: retrieve the value for start date/time
+            String newActivityStartDate1 = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("Date/time value for Start Date for new activity will be - " + newActivityStartDate1);
+
+            //Step: save activity
+            headerButton.clickHeaderButton("Save");
+
+            //Step: wait for page My Activities
+            commNav.waitForPage("My Activities");
+
+            //Step: search for activity created ... and re-open
+            activityEditView.performMyActivitiesSearch(newActivityRegarding);
+            activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']/ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
+            commNav.highlightNClick(activityItemLnk);
+            commNav.waitForPage("Activity");
+
+            //Step: On activity detail view convert start date from "M/d/yyyy h:mm:ss a" to "M/d/yyyy h:mm a" to allow comparison
+            String newActivityStartDate2Long = activityEditView.activityDetailViewStartTimeFld.getText();
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy h:mm:ss a");
+            Calendar dateExt = Calendar.getInstance();
+            dateExt.setTime(dateFormat.parse(newActivityStartDate2Long));
+
+            dateFormat = new SimpleDateFormat("M/d/yyyy h:mm a");
+            String newActivityStartDate2 = dateFormat.format(dateExt.getTime());
+
+            //Step: validate that activity detail view start date/time has not changed since activity was created
+            AssertJUnit.assertEquals("Date/time value for Start Date for activity has not been retained on the detail view, has changed to - " + newActivityStartDate2, newActivityStartDate1, newActivityStartDate2);
+            System.out.println("Date/time value for Start Date for activity has been correctly retained on the detail view as - " + newActivityStartDate2);
+
+
+            //Step: open the activity created in edit mode
+            headerButton.clickHeaderButton("Edit");
+
+            //Step: wait for page Activity
+            commNav.waitForPage("Activity");
+
+            //Step: validate that activity edit view start date/time has not changed since activity was created
+            String newActivityStartDate3 = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            AssertJUnit.assertEquals("Date/time value for Start Date for activity has not been retained on the edit view, has changed to - " + newActivityStartDate3, newActivityStartDate1, newActivityStartDate3);
+            System.out.println("Date/time value for Start Date for activity has been correctly retained on the edit view as - " + newActivityStartDate3);
+
+            //Step: for activity start time open the Calendar screen
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            commNav.waitForPage("Calendar");
+
+            //Step: set the start time hour to '05', the minutes to '00'
+            new Select(driver.findElement(By.xpath("//*[@id='hour-field']"))).selectByValue("5");
+            new Select(driver.findElement(By.xpath("//*[@id='minute-field']"))).selectByValue("0");
+
+            // toggleOn = AM ... if this is displayed, then click to choose PM
+            if (driver.findElement(By.xpath("//*[@id='datetime-picker-time']//div[@data-action='toggleMeridiem']//span[@class='toggleOn']")).isDisplayed()) {
+                driver.findElement(By.xpath("//*[@id='datetime-picker-time']//div[@data-action='toggleMeridiem']")).click();
+            }
+
+            //Step: check to accept calendar changes
+            headerButton.clickHeaderButton("check");
+
+            //Step: wait for page Activity to open
+            commNav.waitForPage("Activity");
+
+            //Step: retrieve value for start time, with the expected time of 5:00 PM
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            String newActivityStartDate4 = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("Date/time value for Start Date for activity has been changed to - " + newActivityStartDate4);
+
+            //Step: save activity
+            headerButton.clickHeaderButton("Save");
+
+            //Step: wait for page 'Meeting - Regarding: ' newActivityRegarding
+            commNav.waitForPage("Meeting - Regarding: " + newActivityRegarding);
+
+            //Step: open the activity created in edit mode
+            headerButton.clickHeaderButton("Edit");
+
+            //Step: wait for page Activity
+            commNav.waitForPage("Activity");
+
+            //Step: validate that activity edit view start date/time has not changed since it was changed to 5:00 PM
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            String newActivityStartDate5 = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            AssertJUnit.assertEquals("VP: for Scenario #2, changed Date/time value for Start Date for activity has not been retained on the edit view, is now - " + newActivityStartDate5 + " - FAILED", newActivityStartDate4, newActivityStartDate5);
+            System.out.println("VP: for Scenario #2, changed Date/time value for Start Date for activity has been correctly retained on the edit view as - " + newActivityStartDate5 + " - PASSED");
+
+
+            //SCENARIO #3
+
+            //Step: cancel out of previous edit screen and wait for page Activity
+            headerButton.clickHeaderButton("cancel");
+            commNav.waitForPage("Meeting - Regarding: " + newActivityRegarding);
+
+            //Step: press back button and wait for page My Activities
+            headerButton.clickHeaderButton("back");
+            commNav.waitForPage("My Activities");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            driver.findElement(By.xpath("//*[@id='activity_types_list']/ul/li[1]/div[4]")).click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding' (scenario #2)
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Scenario #3 : Activity regarding field for new activity will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+
+            //Step: On activity insert/edit view convert start date from "M/d/yyyy h:mm a" to "M/d/yyyy" to allow comparison to date chosen when activity becomes timeless
+            newActivityStartDate2Long = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+
+            dateFormat = new SimpleDateFormat("M/d/yyyy h:mm a");
+            dateExt = Calendar.getInstance();
+            dateExt.setTime(dateFormat.parse(newActivityStartDate2Long));
+
+            dateFormat = new SimpleDateFormat("M/d/yyyy");
+            newActivityStartDate2 = dateFormat.format(dateExt.getTime());
+
+            System.out.println("Date/time value for Start Date for new activity will be - " + newActivityStartDate2Long);
+            System.out.println("Date value only for Start Date for new activity will be - " +  newActivityStartDate2);
+
+
+            //Step: save activity
+            headerButton.clickHeaderButton("Save");
+
+            //Step: wait for page My Activities
+            commNav.waitForPage("My Activities");
+
+            //Step: search for activity created ... and re-open
+            activityEditView.performMyActivitiesSearch(newActivityRegarding);
+            activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']/ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
+            commNav.highlightNClick(activityItemLnk);
+            commNav.waitForPage("Activity");
+
+            //Step: open activity in edit mode and wait for page Activity
+            headerButton.clickHeaderButton("edit");
+            commNav.waitForPage("Activity");
+
+            //Step: for activity set timeless = ON (it is OFF by default)
+            activityEditView.activityEditViewTimelessTgl.click();
+
+            //Step: retrieve value for activity date set, and validate that it equals the date when the activity was created
+            String finalActivityDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("Date value only for Start Date for now timeless activity is - " +  finalActivityDate);
+            AssertJUnit.assertEquals("VP: for Scenario #3, after changing activity to timeless, the date has incorrectly been changed to - " + finalActivityDate + " - FAILED", newActivityStartDate2, finalActivityDate);
+            System.out.println("VP: for Scenario #3, after changing activity to timeless, the date has correctly been changed to - " + finalActivityDate + " - PASSED");
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: One or more of the three Activity scenarios has failed " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
 }

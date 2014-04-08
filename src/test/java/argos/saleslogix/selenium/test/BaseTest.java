@@ -267,7 +267,7 @@ public class BaseTest {
         }
         catch (Error e) {
             System.out.println("Error: Login Screen Title check - FAILED");
-            verificationErrors.append(methodID + "(): " + e.toString());
+            verificationErrors.append(methodID).append("(): ").append(e.toString());
         }
 
         //VP: Login Page Name
@@ -345,8 +345,8 @@ public class BaseTest {
         Thread.sleep(1000);
 
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("pageTitle"), fullProdName));
+        //WebDriverWait wait = new WebDriverWait(driver, 10);
+        //wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("pageTitle"), fullProdName));
 
         // Verify the Mobile Login screen displays
         try {
