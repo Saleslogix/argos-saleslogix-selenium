@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SLX8Mobile2x Full-Test Suite" verbose="3" parallel="classes">
-
-	<test name="MobileSprint233 Tests - FF">
-  		<parameter name="browser" value="ff"></parameter>
-    		<classes>
-      			<class name="argos.saleslogix.selenium.test.MobileSprint233Test"/>
-    		</classes>
-  	</test> <!-- Default test -->
-    
+<suite name="SLXMobile Full-Test Suite" verbose="3" parallel="false">
+    <test name="All Tests" preserve-order="true">
+        <packages>
+            <package name="argos.saleslogix.selenium.test" />
+        </packages>
+    </test>
 </suite>
