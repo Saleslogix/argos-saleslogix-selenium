@@ -471,15 +471,15 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsEditViewSubjectInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/div")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/textarea")
 	WebElement ticketsEditViewDescInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_1']/div")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_1']/textarea")
 	WebElement ticketsEditViewResolutionInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_2']/div")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_2']/textarea")
 	WebElement ticketsEditViewCommentsInputFld;
 	
 	@CacheLookup

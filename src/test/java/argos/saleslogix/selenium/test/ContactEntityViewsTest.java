@@ -134,12 +134,9 @@ public class ContactEntityViewsTest extends BaseTest {
 		
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
-		
-	    //Step: click Top-Left button to reveal Global Menu...
-		headerbutton.showGlobalMenu();
 	
-	    //Step: navigate to Contacts list view...
-		commNav.clickGlobalMenuItem(entityType);
+	    //Step: navigate to Contacts list view... and search for all #primary records so initial list has data and may scroll
+        commNav.entityListViewSearch(entityType, "#primary");
 	
 		//capture the initial Contacts List view info
 		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
@@ -158,11 +155,11 @@ public class ContactEntityViewsTest extends BaseTest {
 		String resultMsg = "VP: scrolling down the Contacts List view loaded more records";
 		try {
 			AssertJUnit.assertFalse(initListInfo.matches(expandedListInfo));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 		
 		System.out.println(ENDLINE);

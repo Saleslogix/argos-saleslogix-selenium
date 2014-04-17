@@ -22,6 +22,8 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class MobileSprint304Test extends BaseTest {
 
+    public String TEST_LEAD_RECORD = "Beck, John";
+
 	public String getKPICardValue(String fullKPICardVal) {
 		
 		String[] segStrArray = fullKPICardVal.split("\n");
@@ -179,14 +181,12 @@ public class MobileSprint304Test extends BaseTest {
 		
 		//Test Params:
 		String entityType = "Leads";
+        String entityRecord = TEST_LEAD_RECORD;
 	
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);		
-	
-	    //Step: navigate to the Leads list view
-		commNav.clickGlobalMenuItem(entityType);
-		
-		//Step: click and open the top Leads record
-		commNav.clickListViewItemN(entityType, 1);
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: search for Lead entity, then open it's Detail view
+        commNav.entityRecordOpenDetailView(entityType, entityRecord);
 		commNav.waitForNotPage("Leads");
 		
 		//VP: check to see that the Mobile Phone field is available in the Detail view
@@ -638,7 +638,7 @@ public class MobileSprint304Test extends BaseTest {
 
 	@Test(enabled = true)
 	public void test10_MobileDefect_MBL10166() throws Exception {
-		//MBL-10160: Entity Opportunities - where opportunities for multiple entities are viewed, the default opportunities filter for the first entity only is as expected
+		//MBL-10166 : where History item has null value for 'completed by', remove the continual 'loading ...' [DTS defect 13091823]
 		String methodID = "test10_MobileDefect_MBL10166";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);	
@@ -649,7 +649,7 @@ public class MobileSprint304Test extends BaseTest {
 	    //Step: perform SpeedSearch then open a target results record
 		//Note: the target results record to open must have an empty Completed By field
 	    String searchItem = "Sophia Perez";
-	    String recordItem = "Database Change (2012_10_13)";
+	    String recordItem = "Database Change (2013_12_21)";
 	    
 	    commNav.goToSpeedSearchResultDetailView(searchItem, recordItem);
 		
@@ -679,7 +679,7 @@ public class MobileSprint304Test extends BaseTest {
 					
 	    //Step: open the Ticket Detail view
 	    String entityType = "Tickets";
-	    String tktItem = "001-00-000012";
+	    String tktItem = "001-00-000017";
 	    String entityDetailViewLink = "Ticket Activities";
 	    try {
 			commNav.entityRecordOpenDetailView(entityType, tktItem);

@@ -114,12 +114,9 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
-		
-	    //Step: click Top-Left button to reveal Global Menu...
-		headerbutton.showGlobalMenu();
-	
-	    //Step: navigate to Accounts list view...
-		commNav.clickGlobalMenuItem(entityType);
+
+	    //Step: navigate to Accounts list view... and search for all #active records so initial data displays and there will be scrolling
+        commNav.entityListViewSearch(entityType, "#active");
 
 		//capture the initial Accounts List view info
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
@@ -140,11 +137,11 @@ public class AccountEntityViewsTest extends BaseTest {
 		String resultMsg = "VP: scrolling down the Accounts List view loaded more records";
 		try {
 			AssertJUnit.assertFalse(initAccountsListInfo.matches(expandedAccountsListInfo));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 		
 		System.out.println(ENDLINE);

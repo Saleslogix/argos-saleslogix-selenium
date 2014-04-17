@@ -129,6 +129,7 @@ public class OpportunityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -140,9 +141,15 @@ public class OpportunityViewsTest extends BaseTest {
 	
 	    //Step: navigate to Opportunities list view...
 		commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Opportunities");
+
+        //Step: reveal Right Context Menu panel, clear opportunity search, then search for all opportunity records
+        headerbutton.showRightContextMenu();
+        opportunitiesListView.opportunitySearchClearBtn.click();
+        opportunitiesListView.opportunitySearchLookupBtn.click();
+        Thread.sleep(3000);
 	
 		//capture the initial Opportunities List view info
-		OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		String initListInfo = opportunitiesListView.getOpportunityListViewTxt();
 		
 	    //Step: load more results (click on 'x remaining records' item)
@@ -158,11 +165,11 @@ public class OpportunityViewsTest extends BaseTest {
 		String resultMsg = "VP: scrolling down the Opportunities List view loaded more records";
 		try {
 			AssertJUnit.assertFalse(initListInfo.matches(expandedListInfo));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 		
 		System.out.println(ENDLINE);
@@ -349,7 +356,7 @@ public class OpportunityViewsTest extends BaseTest {
 	}
 
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test08_SeTestTCOpportunityEditView() throws Exception {
 		String methodID = "test08_SeTestTCOpportunityEditView";
 		
@@ -384,11 +391,19 @@ public class OpportunityViewsTest extends BaseTest {
 			commNav.verifyEntityViewElementClick(viewName + ",lead source", opportunityEditView.opportunityEditViewLeadSourceFldBtn, "Lead Sources");
 			commNav.verifyEntityViewElementClick(viewName + ",owner", opportunityEditView.opportunityEditViewOwnerFldBtn, "Owners");
 			commNav.verifyEntityViewElementClick(viewName + ",close prob", opportunityEditView.opportunityEditViewCloseProbFldBtn, "Opportunity Probability");
-			commNav.isWebElementPresent(viewName + ",exchange rate", opportunityEditView.opportunityEditViewExchangeRateFld);
-			commNav.isWebElementPresent(viewName + ",code", opportunityEditView.opportunityEditViewCodeFld);
-			commNav.isWebElementPresent(viewName + ",rate locked", opportunityEditView.opportunityEditViewRateLockedFld);
-			commNav.isWebElementPresent(viewName + ",rate date", opportunityEditView.opportunityEditViewRateDateFld);
-				
+
+            //Step: check the following fields only if Multi Currency is enabled
+            if (!driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_MultiCurrencyField_0']/span")).getText().isEmpty()) {
+                System.out.println("Multi currency is enabled ... check the relevant M/C fields");
+			    commNav.isWebElementPresent(viewName + ",exchange rate", opportunityEditView.opportunityEditViewExchangeRateFld);
+			    commNav.isWebElementPresent(viewName + ",code", opportunityEditView.opportunityEditViewCodeFld);
+			    commNav.isWebElementPresent(viewName + ",rate locked", opportunityEditView.opportunityEditViewRateLockedFld);
+			    commNav.isWebElementPresent(viewName + ",rate date", opportunityEditView.opportunityEditViewRateDateFld);
+            }
+            else {
+                System.out.println("Multi currency is not enabled ... do not try to check the M/C fields");
+            }
+
 			//end of test
 			headerButton.clickHeaderButton("cancel");
 		

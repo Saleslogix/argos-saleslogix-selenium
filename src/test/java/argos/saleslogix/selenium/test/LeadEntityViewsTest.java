@@ -115,7 +115,7 @@ public class LeadEntityViewsTest extends BaseTest {
 	}
 	
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test02_SeTestTCLeadListViewLoadMoreResults() throws Exception {
 		String methodID = "test02_SeTestTCLeadListViewLoadMoreResults";
 		
@@ -124,37 +124,48 @@ public class LeadEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Step: login & log back in (to clear cookies)
-		//LogOutThenLogBackIn(userName, userPwd);
+		//Step: logout & log back in (to clear cookies)
+		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
-	    //Step: navigate to Leads list view...
+	    //Step: navigate to Leads list view... wait for page to open
 		commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Leads");
 		
-		//Step: reveal Right Context Menu panel
+		//Step: reveal Right Context Menu panel, clear search button and search on all records
 		headerbutton.showRightContextMenu();
-		
-		//Step: test each of the pre-set KPI items		
-		commNav.scrollDownPage();
-		commNav.rightClickContextMenuItem("can-solicit");
-	
-	    //Step: load more results (click on 'x remaining records' item)
-		Thread.sleep(3000);
-		for (int count = 0; count<=2; count++) {
-			WebElement remainingRecordsItem = driver.findElement(By.xpath("//*[@id='lead_list']/div[4]"));
-			commNav.highlightElement(remainingRecordsItem);
-			remainingRecordsItem.click();
-			Thread.sleep(3000);		
-		}
-		
-		//Step: check if the 31th record item is present
-		WebElement thirtyfirstRecordItem = driver.findElement(By.xpath("//*[@id='lead_list']/ul/li[31]"));
-		commNav.checkIfWebElementPresent("31st Lead List View record available after load more records", thirtyfirstRecordItem);
+        leadsListView.leadsSearchClearBtn.click();
+        leadsListView.leadsSearchLookupBtn.click();
+        Thread.sleep(3000);
+
+        //capture the initial Leads List view info
+        String initLeadsListInfo = leadsListView.getLeadsListViewTxt();
+
+        //Step: load more results (click on 'x remaining records' item)
+        for (int count = 1; count<3; count++) {
+            JavascriptExecutor jsx = (JavascriptExecutor)driver;
+            jsx.executeScript("window.scrollBy(0,450)", "");
+        }
+
+        //capture the expanded Leads List view
+        String expandedLeadsListInfo = leadsListView.getLeadsListViewTxt();
+
+        //VP: confirm that the Leads List view is indeed expanded with more record data
+        String resultMsg = "VP: scrolling down the Leads List view loaded more records";
+        try {
+            AssertJUnit.assertFalse(initLeadsListInfo.matches(expandedLeadsListInfo));
+            System.out.println(resultMsg + " - PASSED");
+        }
+        catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(resultMsg + " - FAILED");
+        }
 		
 		System.out.println(ENDLINE);
 	}

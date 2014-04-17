@@ -14,10 +14,12 @@ import org.openqa.selenium.support.PageFactory;
 
 /**
  * @author mllena
- * Class: AccountEntityViewsTest
- * Desc.: Test class for the Account entity views
+ * Class: ActivityViewsTest
+ * Desc.: Test class for My Activities
  */
 public class MyActivityViewsTest extends BaseTest {
+
+    public String TEST_ACTIVITY_RECORD = "Presentation";
 	
 	//Test Methods Set
 	//================
@@ -29,16 +31,14 @@ public class MyActivityViewsTest extends BaseTest {
 		// Test Params:
 		String entityType = "My Activities";
 		String expEntityPgTitle = "My Activities";
-		String regardingRecord = "Send quote";
+		String regardingRecord = TEST_ACTIVITY_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-	    //Step: click Top-Left button to reveal Global Menu...
-		headerbutton.showGlobalMenu();
-	
-	    //Step: navigate to Opportunity list view...
+
+	    //Step: navigate to My Activities list view...
 		commNav.entityListViewSearch(entityType, regardingRecord);
 		
 		//Step: test the My Activities, List View page elements

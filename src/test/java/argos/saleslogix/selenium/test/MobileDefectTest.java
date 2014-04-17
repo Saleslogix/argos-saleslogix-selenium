@@ -20,6 +20,8 @@ import org.openqa.selenium.support.PageFactory;
  * @version	1.0
  */
 public class MobileDefectTest extends BaseTest {
+
+    public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
 	
 	//Login & Logout
 	//==============
@@ -2189,7 +2191,7 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 				
 		//Test Params
-		String accountRecord = "A1 Enterprises";
+		String accountRecord = TEST_ACCOUNT_RECORD;
 		
 		
 		//Step: click and open the the Accounts List view

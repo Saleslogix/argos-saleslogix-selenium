@@ -223,41 +223,39 @@ public class TicketViewsTest extends BaseTest {
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
-	    //Step: navigate to Tickets list view...
+	    //Step: navigate to Tickets list view... and wait for page to open
 		commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Tickets");
 	
-		//Step: click the clear Search input field button	
+		//Step: reveal Right Context Menu Panel and click the clear Search input field button
 		headerbutton.showRightContextMenu();
 		ticketListView.ticketsSearchClearBtn.click();
 						
 		//Step: click the Lookup button to reload the full Tickets list
 		ticketListView.ticketsSearchLookupBtn.click();
-		Thread.sleep(7000);
+		Thread.sleep(3000);
 		
 		//capture the initial Tickets List view info
-		TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
-		String initTicketsListInfo = ticketsListView.getTicketsListViewTxt();
+		String initTicketsListInfo = ticketListView.getTicketsListViewTxt();
 		
 	    //Step: load more results (click on 'x remaining records' item)
-		for (int count = 1; count<3; count++) {			
-			//driver.findElement(By.xpath("//*[@id='account_list']")).sendKeys(Keys.PAGE_DOWN);
-			//Thread.sleep(3000);
+		for (int count = 1; count<3; count++) {
 			JavascriptExecutor jsx = (JavascriptExecutor)driver;
 			jsx.executeScript("window.scrollBy(0,450)", "");
 		}
 		
 		//capture the expanded Tickets List view
-		String expandedTicketsListInfo = ticketsListView.getTicketsListViewTxt();
+		String expandedTicketsListInfo = ticketListView.getTicketsListViewTxt();
 		
 		//VP: confirm that the Tickets List view is indeed expanded with more record data
 		String resultMsg = "VP: scrolling down the Tickets List view loaded more records";
 		try {
 			AssertJUnit.assertFalse(initTicketsListInfo.matches(expandedTicketsListInfo));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			verificationErrors.append(e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 		
 		System.out.println(ENDLINE);

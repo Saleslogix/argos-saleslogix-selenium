@@ -397,7 +397,7 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountEditViewIndustryFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/div")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/textarea")
 	WebElement accountEditViewBusDescFld;
 	
 	@CacheLookup

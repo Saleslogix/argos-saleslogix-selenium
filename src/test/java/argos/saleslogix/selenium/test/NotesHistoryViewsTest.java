@@ -127,6 +127,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        NotesHistoryViewsElements noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -138,9 +139,15 @@ public class NotesHistoryViewsTest extends BaseTest {
 	
 	    //Step: navigate to Notes/History list view...
 		commNav.clickGlobalMenuItem(entityType);
-	
+        commNav.waitForPage("Notes/History");
+
+        //Step: reveal Right Context Menu panel
+        headerbutton.showRightContextMenu();
+        noteshistoryListView.notesHistorysSearchClearBtn.click();
+        noteshistoryListView.notesHistorysSearchLookupBtn.click();
+        Thread.sleep(3000);
+
 		//capture the initial Notes/History List view info
-		NotesHistoryViewsElements noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 		String initListInfo = noteshistoryListView.getNotesHistoryListViewTxt();
 		
 	    //Step: load more results (click on 'x remaining records' item)
@@ -156,11 +163,11 @@ public class NotesHistoryViewsTest extends BaseTest {
 		String resultMsg = "VP: scrolling down the Notes/History List view loaded more records";
 		try {
 			AssertJUnit.assertFalse(initListInfo.matches(expandedListInfo));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 		
 		System.out.println(ENDLINE);

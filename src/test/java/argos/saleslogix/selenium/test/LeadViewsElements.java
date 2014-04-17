@@ -389,11 +389,11 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsEditViewSicCodeInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/div")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/textarea")
 	WebElement leadsEditViewBusDescInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_1']/div")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_1']/textarea")
 	WebElement leadsEditViewCommentsInputFld;
 	
 	@CacheLookup
