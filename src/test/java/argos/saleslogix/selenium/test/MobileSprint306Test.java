@@ -124,10 +124,11 @@ public class MobileSprint306Test extends BaseTest {
 			commNav.waitForPage("Cuisine");
 			
 			//Step: select 1st 4 cuisine items ... to uncheck items, and press check to accept values
+            //      for the 3rd and 4th cuisine item, specifically click on the button that contains the check mark
 			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[1]/div")).click();
 			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[2]/div")).click();
-			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[3]/div")).click();
-			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[4]/div")).click();
+			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[3]/button")).click();
+			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[4]/button")).click();
 						
 			headerButton.clickHeaderButton("check");
 			
@@ -157,7 +158,7 @@ public class MobileSprint306Test extends BaseTest {
 			}
 			catch (Error e) {
 				System.out.println(e.toString());
-				System.out.println("VP: Not seeing expected no cuisine values - FAILED");
+				System.out.println("VP: Not seeing expected no cuisine values - FAILED (expected in Mobile 3.0.3 and earlier)");
 				AssertJUnit.fail("test failed");
 			}
 			
