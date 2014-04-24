@@ -617,8 +617,9 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 		//Step: find the newly-added test Account record
 		String strResultsMsg = "VP: recently added test Account '" + newAcctName + "' was found.";
-		if (accountsListView.doSearchAccount(newAcctName)) {
-			System.out.println(strResultsMsg + " - Passed");
+        WebElement entityListItem = commNav.entityListViewSearch("Account", newAcctName);
+        if (entityListItem.isDisplayed())  {
+			System.out.println(strResultsMsg + " - PASSED");
 		}
 		else {
 			System.out.println(strResultsMsg + " - FAILED");
