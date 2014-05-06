@@ -23,6 +23,8 @@ import org.openqa.selenium.support.PageFactory;
 public class MobileSprint304Test extends BaseTest {
 
     public String TEST_LEAD_RECORD = "Beck, John";
+    public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
+    public String TEST_CONTACT_RECORD = "Abbott, John";
 
 	public String getKPICardValue(String fullKPICardVal) {
 		
@@ -799,18 +801,18 @@ public class MobileSprint304Test extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
 			
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Section 1: test the Account-based scenario
 	    //Step: open the Account Detail view
 	    String entityType = "Accounts";
-	    String searchItem = "Abbott Ltd.";
+	    String searchItem = TEST_ACCOUNT_RECORD;
 		commNav.entityRecordOpenDetailView(entityType, searchItem);
 		
 		//Step: capture the phone number from the Account Detail view
-		String acctDetVwPhoneFldXPath = "//*[@id='account_detail']/div[2]/ul[1]/li[1]/a/span";
-		String acctDetVwPhoneNum = driver.findElement(By.xpath(acctDetVwPhoneFldXPath)).getText();
+        String acctDetVwPhoneNum = accountDetailView.accountDetailViewCallMainNumberLnk.getText();
 		
 	    //Step: schedule an activity from an Account Detail view
 		String entityDetailViewLink = "Schedule activity";
@@ -826,15 +828,18 @@ public class MobileSprint304Test extends BaseTest {
 	    String actyEditViewPhoneFldCSS = "input[name='PhoneNumber']";
 	    String actyEditViewPhoneFldVal = driver.findElement(By.cssSelector(actyEditViewPhoneFldCSS)).getAttribute("value");
 	    
-	    //VP: check to see that the phone number value in the Activity Insert/Edit matches the assoicated Acccount 
-	    String resultsMsg = "VP: The Phone Number in the Activity Edit view matches that of the accociated Account record";
+	    //VP: check to see that the phone number value in the Activity Insert/Edit matches the associated Acccount
+	    String resultsMsg = "VP: The Phone Number in the Activity Edit view matches that of the associated Account record";
+        System.out.println("Account record phone number is : " + acctDetVwPhoneNum);
+        System.out.println("Account activity phone number is : " + actyEditViewPhoneFldVal);
+
 	    try {
 	    	AssertJUnit.assertTrue(actyEditViewPhoneFldVal.equals(acctDetVwPhoneNum));
-	    	System.out.println(resultsMsg + " - Passed");
+	    	System.out.println(resultsMsg + " - PASSED");
 	    }
 	    catch (Exception e) {
 	    	System.out.println(methodID + "(): " + e.toString());
-	    	System.out.println(resultsMsg + " - Failed");
+	    	System.out.println(resultsMsg + " - FAILED");
 	    }
 	    
 	    System.out.println("");
@@ -842,14 +847,14 @@ public class MobileSprint304Test extends BaseTest {
 		//Section 2: test the Contact-based scenario
 	    //Step: open the Contact Detail view
 	    entityType = "Contacts";
-	    searchItem = "Abbott, John";
+	    searchItem = TEST_CONTACT_RECORD;
 		commNav.entityRecordOpenDetailView(entityType, searchItem);
 		
 		//Step: capture the phone number from the Contact Detail view
 		String cntctDetVwPhoneFldXPath = "//*[@id='contact_detail']/div[2]/ul[1]/li[1]/a/span";
-		String cntctDetVwPhoneNum = driver.findElement(By.xpath(acctDetVwPhoneFldXPath)).getText();
+		String cntctDetVwPhoneNum = driver.findElement(By.xpath(cntctDetVwPhoneFldXPath)).getText();
 		
-	    //Step: schedule an activity from an Account Detail view
+	    //Step: schedule an activity from a Contact Detail view
 		entityDetailViewLink = "Schedule activity";
 	    String cntctDetVwSchedActivityXPath = "//*[@id='contact_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
 	    driver.findElement(By.xpath(cntctDetVwSchedActivityXPath)).click();
@@ -860,18 +865,21 @@ public class MobileSprint304Test extends BaseTest {
 	    driver.findElement(By.xpath(actyTypeLinkXPath)).click();
 	    commNav.waitForPage(actyType);
 	    
-	    //String actyEditViewPhoneFldCSS = "input[name='PhoneNumber']";
-	    //String actyEditViewPhoneFldVal = driver.findElement(By.cssSelector(actyEditViewPhoneFldCSS)).getAttribute("value");
+	    actyEditViewPhoneFldCSS = "input[name='PhoneNumber']";
+	    actyEditViewPhoneFldVal = driver.findElement(By.cssSelector(actyEditViewPhoneFldCSS)).getAttribute("value");
 	    
-	    //VP: check to see that the phone number value in the Activity Insert/Edit matches the assoicated Acccount 
-	    resultsMsg = "VP: The Phone Number in the Activity Edit view matches that of the accociated Contact record";
+	    //VP: check to see that the phone number value in the Activity Insert/Edit matches the associated Contact
+	    resultsMsg = "VP: The Phone Number in the Activity Edit view matches that of the associated Contact record";
+        System.out.println("Contact record phone number is : " + cntctDetVwPhoneNum);
+        System.out.println("Contact activity phone number is : " + actyEditViewPhoneFldVal);
+
 	    try {
-	    	AssertJUnit.assertTrue(actyEditViewPhoneFldVal.equals(acctDetVwPhoneNum));
-	    	System.out.println(resultsMsg + " - Passed");
+	    	AssertJUnit.assertTrue(actyEditViewPhoneFldVal.equals(cntctDetVwPhoneNum));
+	    	System.out.println(resultsMsg + " - PASSED");
 	    }
 	    catch (Exception e) {
 	    	System.out.println(methodID + "(): " + e.toString());
-	    	System.out.println(resultsMsg + " - Failed");
+	    	System.out.println(resultsMsg + " - FAILED");
 	    }
 	    
 		//END

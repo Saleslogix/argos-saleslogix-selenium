@@ -50,7 +50,7 @@ public class AccountViewsElements extends BaseTest {
 	WebElement relatedAccountsSearchLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul")
+	@FindBy(xpath = "//*[@id='account_list']/div/ul")
 	WebElement accountsListView;
 	
 	@CacheLookup
@@ -58,7 +58,7 @@ public class AccountViewsElements extends BaseTest {
 	WebElement relatedAccountsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[8]/div[2]/div/button")
+	@FindBy(xpath = "//div[8]/div[2]/div[1]/div/button")
 	WebElement accountsListView1stKPICard;
 	
 	@CacheLookup
@@ -114,83 +114,85 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountsListViewNotesBoxSeeListLink;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]")
 	WebElement topAccountsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/button")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/button")
 	WebElement topAccountsListItemIcon;	
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h3")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h3")
 	WebElement topAccountsListItemName;
 		
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h4[1]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[1]")
 	WebElement topAccountsListItemLine2;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h4[2]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[2]")
 	WebElement topAccountsListItemLine3;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h4[3]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[3]")
 	WebElement topAccountsListItemLine4;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h4[4]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[4]")
 	WebElement topAccountsListItemLine5;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h4[5]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[5]")
 	WebElement topAccountsListItemLine6;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[1]/div/h4[6]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[6]")
 	WebElement topAccountsListItemLine7;
 	
 	@CacheLookup
-	@FindBy(css = "#account_list > ul.list-content > li > #bottom_item_indicators > span > img")
-	WebElement topAccountsListItemTouch;
+	//@FindBy(css = "#account_list > ul.list-content > li > #bottom_item_indicators > span > img")
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
+    WebElement topAccountsListItemTouch;
 	
 	@CacheLookup
-	@FindBy(css = "#account_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	//@FindBy(css = "#account_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+    @FindBy(xpath = "//*[@id='list-item-footer']/div/button")
 	WebElement topAccountsListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[6]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]/button[6]")
 	WebElement topAccountsListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[5]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]/button[5]")
 	WebElement topAccountsListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]/button[4]")
 	WebElement topAccountsListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]/button[3]")
 	WebElement topAccountsListItemQuickActionsContactsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]/button[2]")
 	WebElement topAccountsListItemQuickActionsCallMainBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]/button[1]")
 	WebElement topAccountsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[11]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[11]")
 	WebElement eleventhAccountsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[21]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[21]")
 	WebElement twentyfirstAccountsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li[31]")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[31]")
 	WebElement thirtyfirstAccountsListItem;
 	
 	@CacheLookup
@@ -198,7 +200,7 @@ public class AccountViewsElements extends BaseTest {
 	WebElement recordsRemainingListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']/ul/li/h3")
+	@FindBy(xpath = "//*[@id='account_list']//ul/li/h3")
 	WebElement noRecordsListItem;
 	
 	//Context Menu elements
@@ -224,27 +226,27 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountDetailView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[1]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[2]")
 	WebElement accountDetailViewQuickActionsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/ul[1]/li[1]/a")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[3]/span/a")
 	WebElement accountDetailViewCallMainNumberLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/ul[1]/li[2]/a")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/ul[1]/li[1]/a")
 	WebElement accountDetailViewScheduleActivityLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/ul[1]/li[3]/a")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/ul[1]/li[2]/a")
 	WebElement accountDetailViewAddNoteLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/ul[1]/li[4]/a")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[4]/span/a")
 	WebElement accountDetailViewViewAddressLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[2]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[1]")
 	WebElement accountDetailViewDetailsHdr;
 	
 	@CacheLookup
@@ -256,19 +258,19 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountDetailViewWebFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[1]/div[3]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[5]/span/a")
 	WebElement accountDetailViewFaxFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[1]/div[4]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[6]/span")
 	WebElement accountDetailViewTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[1]/div[5]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[7]/span")
 	WebElement accountDetailViewSubTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[1]/div[6]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[8]/span")
 	WebElement accountDetailViewStatusFld;
 	
 	@CacheLookup
@@ -280,27 +282,27 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountDetailViewMoreDetailsFields;	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[1]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[9]/span")
 	WebElement accountDetailViewIndustryFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[2]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[10]/span")
 	WebElement accountDetailViewBusDescFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[3]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[11]/span")
 	WebElement accountDetailViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[4]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[12]/span")
 	WebElement accountDetailViewOwnerFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[5]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[13]/span")
 	WebElement accountDetailViewLeadSourceFld;
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[4]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[3]")
 	WebElement accountDetailViewRelatedItemsHdr;
 	
 	@CacheLookup
@@ -640,7 +642,7 @@ public class AccountViewsElements extends BaseTest {
 		String methodID = "getAccountsListViewTxt";
 		
 		try {
-			WebElement accountsLisViewInfo = driver.findElement(By.xpath("//*[@id='account_list']/ul"));
+			WebElement accountsLisViewInfo = driver.findElement(By.xpath("//*[@id='account_list']//ul"));
 			
 			return accountsLisViewInfo.getText();
 		}

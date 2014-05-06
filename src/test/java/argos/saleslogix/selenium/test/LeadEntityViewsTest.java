@@ -139,7 +139,6 @@ public class LeadEntityViewsTest extends BaseTest {
         commNav.waitForPage("Leads");
 		
 		//Step: reveal Right Context Menu panel, clear search button and search on all records
-		headerbutton.showRightContextMenu();
         leadsListView.leadsSearchClearBtn.click();
         leadsListView.leadsSearchLookupBtn.click();
         Thread.sleep(3000);
@@ -220,11 +219,12 @@ public class LeadEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        LeadViewsElements LeadListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
 		commNav.entityListViewSearch(entityType, entityRecord);
 			
 		//Step: check for matching results...
-		LeadViewsElements LeadListView = PageFactory.initElements(driver, LeadViewsElements.class);
+        String initLeadsListInfo = LeadListView.getLeadsListViewTxt();
 				
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
@@ -232,19 +232,18 @@ public class LeadEntityViewsTest extends BaseTest {
 				
 		//Step: click the Lookup button to reload the full Leads list
 		LeadListView.leadsSearchLookupBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
+        String expandedLeadsListInfo = LeadListView.getLeadsListViewTxt();
 		try {
-			String leadsListSearchExpression = driver.findElement(By.xpath("//*[@id='lead_list_search-expression']/div")).getText();
-			AssertJUnit.assertEquals(leadsListSearchExpression, "no search applied");
+            AssertJUnit.assertFalse(initLeadsListInfo.matches(expandedLeadsListInfo));
+            System.out.println(methodID + ": clear previous Leads search results action PASSED");
 		} catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": clear previous Leads search results action failed");
-			return;
+			System.out.println(methodID + ": clear previous Leads search results action FAILED");
 		}
-		
-		System.out.println(methodID + ": clear previous Leads search results action was successful");
+
 		System.out.println(ENDLINE);
 	}
 
@@ -261,13 +260,21 @@ public class LeadEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		//Step: search for Lead entity, then open it's Detail view
-		commNav.entityRecordOpenDetailView(entityType, entityRecord);
-		
-		//Step: go back to previous screen
-		headerButton.goBack();
-		Thread.sleep(3000);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Lead entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, entityRecord);
+
+            //Step: go back to previous screen
+            headerButton.goBack();
+            Thread.sleep(3000);
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
 		
 		System.out.println(ENDLINE);
 	}
@@ -285,6 +292,9 @@ public class LeadEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
 			//Step: search for Lead entity, then open it's Detail view
@@ -539,6 +549,9 @@ public class LeadEntityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -612,6 +625,9 @@ public class LeadEntityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -684,18 +700,21 @@ public class LeadEntityViewsTest extends BaseTest {
 				
 		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 		
-		//Step: add a random test Contact record
+		//Step: add a random test Lead record
 		String newLeadLastName = "Turing-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
 		leadsListView.doAddRandTestLead(newLeadLastName, "Alan", "Turing and Co.");
 		
-		//Step: find the newly-added test Contact record
+		//Step: find the newly-added test Lead record
 		String strResultsMsg = "VP: recently added test Lead '" + newLeadLastName + "' was found.";
-		if (leadsListView.doSearchLead(newLeadLastName)) {
-			System.out.println(strResultsMsg + " - Passed");
-		}
-		else {
-			System.out.println(strResultsMsg + " - FAILED");
-		}
+        String fullName = newLeadLastName + ", Alan";
+        WebElement entityListItem = commNav.entityListViewSearch("Lead", fullName);
+
+        if (entityListItem.isDisplayed())  {
+            System.out.println(strResultsMsg + " - PASSED");
+        }
+        else {
+            System.out.println(strResultsMsg + " - FAILED");
+        }
 		
 		//Step: go back to My Activities view
 		commNav.clickGlobalMenuItem("My Activities");
@@ -718,6 +737,9 @@ public class LeadEntityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)  TODO added logout/in
+        LogOutThenLogBackIn(userName, userPwd);
 	
 	    //Step: navigate to Leads list view...
 		commNav.entityListViewSearch(entityType, entityRecord);
@@ -797,7 +819,10 @@ public class LeadEntityViewsTest extends BaseTest {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)  TODO added logout/in
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
 			//Step: enter the Contact Add Edit view...

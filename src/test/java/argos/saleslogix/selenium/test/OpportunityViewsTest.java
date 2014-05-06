@@ -144,7 +144,6 @@ public class OpportunityViewsTest extends BaseTest {
         commNav.waitForPage("Opportunities");
 
         //Step: reveal Right Context Menu panel, clear opportunity search, then search for all opportunity records
-        headerbutton.showRightContextMenu();
         opportunitiesListView.opportunitySearchClearBtn.click();
         opportunitiesListView.opportunitySearchLookupBtn.click();
         Thread.sleep(3000);
@@ -220,14 +219,14 @@ public class OpportunityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
 		commNav.entityListViewSearch(entityType, entityRecord);
 			
 		//Step: check for matching results...
-		OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-		String topEntityListItemName = opportunitiesListView.topOpportunityListItemName.getText();
+        String initOpportunitiesListInfo = opportunitiesListView.getOpportunitiesListViewTxt();
 				
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
@@ -235,19 +234,19 @@ public class OpportunityViewsTest extends BaseTest {
 				
 		//Step: click the Lookup button to reload the full Opportunities list
 		opportunitiesListView.opportunitySearchLookupBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
-		String currTopOpportunitiesListViewName = driver.findElement(By.xpath("//*[@id='opportunity_list']/ul/li[1]/div/h3")).getText();
-		try {
-			AssertJUnit.assertEquals(topEntityListItemName, currTopOpportunitiesListViewName);
-		} catch (Error e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": clear previous Opportunities search results action failed");
-			return;
-		}
-		
-		System.out.println(methodID + ": clear previous Opportunities search results action was successful");
+        String expandedOpportunitiesListInfo = opportunitiesListView.getOpportunitiesListViewTxt();
+
+        try {
+            AssertJUnit.assertFalse(initOpportunitiesListInfo.matches(expandedOpportunitiesListInfo));
+            System.out.println(methodID + ": clear previous Opportunities search results action PASSED");
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + ": clear previous Opportunities search results action FAILED");
+        }
+
 		System.out.println(ENDLINE);
 	}
 
@@ -264,13 +263,22 @@ public class OpportunityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		//Step: search for Opportunity entity, then open it's Detail view
-		commNav.entityRecordOpenDetailView(entityType, entityRecord);
-		
-		//Step: go back to previous screen
-		headerButton.goBack();
-		Thread.sleep(3000);
+        try {
+            //Step: search for Opportunity entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, entityRecord);
+
+            //Step: go back to previous screen
+            headerButton.goBack();
+            Thread.sleep(3000);
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
 		
 		System.out.println(ENDLINE);
 	}
@@ -289,6 +297,9 @@ public class OpportunityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
 			//Step: search for Opportunity entity, then open it's Detail view
@@ -356,7 +367,7 @@ public class OpportunityViewsTest extends BaseTest {
 	}
 
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test08_SeTestTCOpportunityEditView() throws Exception {
 		String methodID = "test08_SeTestTCOpportunityEditView";
 		
@@ -430,7 +441,10 @@ public class OpportunityViewsTest extends BaseTest {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
 			//Step: enter the Opportunity Add Edit view...
@@ -482,6 +496,9 @@ public class OpportunityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Opportunities list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -560,6 +577,9 @@ public class OpportunityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Opportunities list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -629,12 +649,15 @@ public class OpportunityViewsTest extends BaseTest {
 		// Test Params:
 		String entityType = "Opportunities";
 		String expEntityPgTitle = "Opportunities";
-		String oppRecord = "International Hampton - Phase 3";
+		String oppRecord = TEST_OPPORTUNITY_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 	
 	    //Step: navigate to Opportunities list view...
 		commNav.entityListViewSearch(entityType, oppRecord);
@@ -728,12 +751,14 @@ public class OpportunityViewsTest extends BaseTest {
 		
 		//Step: find the newly-added test Opportunity record
 		String strResultsMsg = "VP: recently added test Opportunity '" + newOpportunityName + "' was found.";
-		if (oppsListView.doSearchOpportunity(newOpportunityName)) {
-			System.out.println(strResultsMsg + " - Passed");
-		}
-		else {
-			System.out.println(strResultsMsg + " - FAILED");
-		}
+        WebElement entityListItem = commNav.entityListViewSearch("Opportunity", newOpportunityName);
+
+        if (entityListItem.isDisplayed())  {
+            System.out.println(strResultsMsg + " - PASSED");
+        }
+        else {
+            System.out.println(strResultsMsg + " - FAILED");
+        }
 		
 		//Step: go back to My Activities view
 		commNav.clickGlobalMenuItem("My Activities");

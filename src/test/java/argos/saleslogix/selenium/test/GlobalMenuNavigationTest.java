@@ -234,11 +234,11 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[3]/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	    
-	    try {driver.findElement(By.xpath(".//*[@id='myactivity_list']/ul/li[1]/div[2]/h3/span")).click(); } catch (Exception e) {}
+	    try {driver.findElement(By.xpath(".//*[@id='myactivity_list']//ul/li[1]/div[2]/h3/span")).click(); } catch (Exception e) {}
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -603,7 +603,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -662,7 +662,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = \"Accounts\"]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='account_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='account_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -674,7 +674,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_3 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='account_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='account_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1154,7 +1154,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = \"Contacts\"]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='contact_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='contact_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1166,13 +1166,13 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_6 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='contact_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='contact_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	    Thread.sleep(1000);
 	
 	    // Step: navigate to top Contact record...
-	    driver.findElement(By.xpath(".//*[@id='contact_list']/ul/li/div/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='contact_list']//ul/li/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Alfred, John".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -1269,7 +1269,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = \"Leads\"]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='lead_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='lead_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1280,7 +1280,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    Thread.sleep(1000);
 	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[3]/button")).click();
 	    Thread.sleep(5000);
-	    driver.findElement(By.xpath(".//*[@id='lead_list']/ul/li/div/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='lead_list']//ul/li/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Day, Bob".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -1376,7 +1376,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = \"Notes/History\"]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='history_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='history_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1388,13 +1388,13 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_27']/div/div[3]/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='history_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='history_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	    Thread.sleep(1000);
 	
 	    // Step: navigate to top Notes/History record...
-	    driver.findElement(By.xpath("//*[@id='history_list']/ul/li[1]/div/h3")).click();
+	    driver.findElement(By.xpath("//*[@id='history_list']//ul/li[1]/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Note".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -1512,7 +1512,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = \"Opportunities\"]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1524,13 +1524,13 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	    Thread.sleep(1000);
 	
 	    // Step: navigate to top Opportunity record...
-	    driver.findElement(By.xpath(".//*[@id='opportunity_list']/ul/li[1]/div/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='opportunity_list']//ul/li[1]/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Opportunities".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -1714,7 +1714,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = \"Opportunities\"]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1724,12 +1724,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
 	    // Step: navigate to top Opportunity record...
-	    driver.findElement(By.xpath("//*[@id='opportunity_list']/ul/li[1]/div/h3")).click();
+	    driver.findElement(By.xpath("//*[@id='opportunity_list']//ul/li[1]/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Opportunities".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -1975,7 +1975,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = \"Opportunities\"]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1985,12 +1985,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
 	    // Step: navigate to top Opportunity record...
-	    driver.findElement(By.xpath("//*[@id='opportunity_list']/ul/li[1]/div/h3")).click();
+	    driver.findElement(By.xpath("//*[@id='opportunity_list']//ul/li[1]/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Opportunities".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -2125,7 +2125,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = \"Tickets\"]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -2135,12 +2135,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_18 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
 	    // Step: navigate to top Ticket record...
-	    driver.findElement(By.xpath("//*[@id='ticket_list']/ul/li/div/h3")).click();
+	    driver.findElement(By.xpath("//*[@id='ticket_list']//ul/li/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Tickets".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -2198,7 +2198,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: select the top list item to return to the Ticket view...
-	    driver.findElement(By.xpath("//*[@id='areacategoryissue_lookup']/ul/li[1]/div/h3")).click();
+	    driver.findElement(By.xpath("//*[@id='areacategoryissue_lookup']//ul/li[1]/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2220,7 +2220,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: select the top list item to return to the Ticket view...
-	    driver.findElement(By.xpath("//*[@id='areacategoryissue_lookup']/ul/li/div/h3")).click();
+	    driver.findElement(By.xpath("//*[@id='areacategoryissue_lookup']//ul/li/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2430,7 +2430,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = \"Tickets\"]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -2440,12 +2440,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_18 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
 	    // Step: navigate to top Ticket record...
-	    driver.findElement(By.xpath("//*[@id='ticket_list']/ul/li/div/h3")).click();
+	    driver.findElement(By.xpath("//*[@id='ticket_list']//ul/li/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Tickets".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -2798,7 +2798,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = \"My Attachments\"]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='myattachment_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myattachment_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -2808,7 +2808,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_35 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='myattachment_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myattachment_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	

@@ -109,6 +109,9 @@ public class TicketViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 	
 	    //Step: navigate to Tickets list view...
 		commNav.entityListViewSearch(entityType, entityRecord);
@@ -228,7 +231,6 @@ public class TicketViewsTest extends BaseTest {
         commNav.waitForPage("Tickets");
 	
 		//Step: reveal Right Context Menu Panel and click the clear Search input field button
-		headerbutton.showRightContextMenu();
 		ticketListView.ticketsSearchClearBtn.click();
 						
 		//Step: click the Lookup button to reload the full Tickets list
@@ -309,14 +311,14 @@ public class TicketViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        TicketViewsElements ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
 		commNav.entityListViewSearch(entityType, entityRecord);
 			
 		//Step: check for matching results...
-		TicketViewsElements ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
-		String topTicketListItemNumber = ticketListView.topTicketsListItemNumber.getText();
+        String initTicketsListInfo = ticketListView.getTicketsListViewTxt();
 				
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
@@ -327,16 +329,15 @@ public class TicketViewsTest extends BaseTest {
 		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
-		String currTopTicketsListViewNumber = driver.findElement(By.xpath("//*[@id='ticket_list']/ul/li[1]/div/h3")).getText();
-		ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
-		topTicketListItemNumber = ticketListView.topTicketsListItemNumber.getText();
-		try {
-			AssertJUnit.assertEquals(topTicketListItemNumber, currTopTicketsListViewNumber);
-			System.out.println(methodID + ": clear previous Tickets search results action was successful");
-		} catch (Error e) {
-			verificationErrors.append(e.toString());
-			System.out.println(methodID + ": clear previous Tickets search results action failed");
-		}
+        String expandedTicketsListInfo = ticketListView.getTicketsListViewTxt();
+
+        try {
+            AssertJUnit.assertFalse(initTicketsListInfo.matches(expandedTicketsListInfo));
+            System.out.println(methodID + ": clear previous Tickets search results action PASSED");
+        } catch (Error e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + ": clear previous Tickets search results action FAILED");
+        }
 		
 		System.out.println(ENDLINE);
 	}
@@ -354,6 +355,9 @@ public class TicketViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
 			//Step: search for Ticket entity, then open it's Detail view

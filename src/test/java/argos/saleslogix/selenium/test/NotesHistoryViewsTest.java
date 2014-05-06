@@ -64,6 +64,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 			commNav.checkIfWebElementPresent("Notes/History List View, item record Regarding", notesHistoryListView.topNotesHistoryListItemRegarding);
 			commNav.checkIfWebElementPresent("Notes/History List View, item record Notes", notesHistoryListView.topNotesHistoryListItemNotes);
 			commNav.checkIfWebElementPresent("Notes/History List View, item record touch widget", notesHistoryListView.topNotesHistoryListItemTouch);
+            commNav.checkIfWebElementPresent("Notes/History List View, item record type widget", notesHistoryListView.topNotesHistoryListItemType);
 			//TODO: add coverage for ToDo icon check after figuring out the css id
 			
 			//Step: check the Quick Action button and items
@@ -142,7 +143,6 @@ public class NotesHistoryViewsTest extends BaseTest {
         commNav.waitForPage("Notes/History");
 
         //Step: reveal Right Context Menu panel
-        headerbutton.showRightContextMenu();
         noteshistoryListView.notesHistorysSearchClearBtn.click();
         noteshistoryListView.notesHistorysSearchLookupBtn.click();
         Thread.sleep(3000);
@@ -196,13 +196,16 @@ public class NotesHistoryViewsTest extends BaseTest {
 	@Test(enabled = true)
 	public void test04_SeTestTCNotesHistoryListViewNegativeSearch() throws Exception {
 		String methodID = "test04_SeTestTCNotesHistoryListViewNegativeSearch";
-		
+
+        // Test Params:
+        String entityType = "Notes/History";
+
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: search for non-existent Notes/History record to confirm it's non-existence
-		commNav.entityListViewNegativeSearch("Notes/History", "Non-Existent Note History Record");		
+		commNav.entityListViewNegativeSearch(entityType, "Non-Existent Note History Record");
 		
 		System.out.println(ENDLINE);
 	}
@@ -218,34 +221,34 @@ public class NotesHistoryViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        NotesHistoryViewsElements noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
 		commNav.entityListViewSearch(entityType, entityRecord);
 			
 		//Step: check for matching results...
-		NotesHistoryViewsElements noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
-		String topNotesHistListItemName = noteshistoryListView.topNotesHistoryListItem.getText();
-				
+        String initNotesHistoryListInfo = noteshistoryListView.getNotesHistoryListViewTxt();
+
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
 		noteshistoryListView.notesHistorysSearchClearBtn.click();
 				
 		//Step: click the Lookup button to reload the full Notes/History list
 		noteshistoryListView.notesHistorysSearchLookupBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
-		String currTopNotesHistListViewName = driver.findElement(By.xpath("//*[@id='history_list']/ul/li[1]/div/h3")).getText();
+        String expandedNotesHistoryListInfo = noteshistoryListView.getNotesHistoryListViewTxt();
+
 		try {
-			AssertJUnit.assertEquals(topNotesHistListItemName, currTopNotesHistListViewName);
+			AssertJUnit.assertFalse(initNotesHistoryListInfo.matches(expandedNotesHistoryListInfo));
+            System.out.println(methodID + ": clear previous Notes/History search results action PASSED");
 		} catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": clear previous Notes/History search results action failed");
-			return;
+			System.out.println(methodID + ": clear previous Notes/History search results action FAILED");
 		}
-		
-		System.out.println(methodID + ": clear previous Notes/History search results action was successful");
+
 		System.out.println(ENDLINE);
 	}
 	
@@ -262,14 +265,21 @@ public class NotesHistoryViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+		   //Step: search for Notes/History record, then open it's Detail view
+		   commNav.entityRecordOpenDetailView(entityType, entityRecord);
 		
-		//Step: search for Notes/History record, then open it's Detail view
-		commNav.entityRecordOpenDetailView(entityType, entityRecord);
-		
-		//Step: go back to previous screen
-		headerButton.goBack();
-		Thread.sleep(3000);
-		
+		   //Step: go back to previous screen
+		   headerButton.goBack();
+		   Thread.sleep(3000);
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
 		System.out.println(ENDLINE);
 	}
 	
@@ -287,7 +297,10 @@ public class NotesHistoryViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
 		try {
 			//Step: search for Notes/History entity, then open it's Detail view
 			commNav.entityRecordOpenDetailView(entityType, entityRecord);
@@ -341,7 +354,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Step: login & log back in (to clear cookies)
+		//Step: logout & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
@@ -386,6 +399,9 @@ public class NotesHistoryViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Notes/History list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -458,6 +474,9 @@ public class NotesHistoryViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Notes/History list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -529,7 +548,10 @@ public class NotesHistoryViewsTest extends BaseTest {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
 			//Step: enter the Notes Add Edit view...
@@ -573,7 +595,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Step: login & log back in (to clear cookies)
+		//Step: logout & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
 				
 		NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
@@ -585,12 +607,13 @@ public class NotesHistoryViewsTest extends BaseTest {
 		
 		//Step: find the newly-added test Note record
 		String strResultsMsg = "VP: recently added test Note '" + newNoteName + "' was found.";
-		if (notesHistoryListView.doSearchNote(strRegardingVal)) {
-			System.out.println(strResultsMsg + " - Passed");
-		}
-		else {
-			System.out.println(strResultsMsg + " - FAILED");
-		}
+        WebElement entityListItem = commNav.entityListViewSearch("Notes/History", strRegardingVal);
+        if (entityListItem.isDisplayed())  {
+            System.out.println(strResultsMsg + " - PASSED");
+        }
+        else {
+            System.out.println(strResultsMsg + " - FAILED");
+        }
 		
 		//Step: go back to My Activities view
 		commNav.clickGlobalMenuItem("My Activities");

@@ -59,7 +59,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 	    
 	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]")).click();
 	    Thread.sleep(3000);
 	    commNav.waitForNotPage("SpeedSearch");	    
 	    
@@ -86,7 +86,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 	    
 	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]")).click();
 	    Thread.sleep(3000);
 	    commNav.waitForNotPage("SpeedSearch");	    
 	    
@@ -113,7 +113,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 	    
 	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]")).click();
 	    Thread.sleep(3000);
 	    commNav.waitForNotPage("SpeedSearch");	    
 	    
@@ -140,7 +140,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 	    
 	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]")).click();
 	    Thread.sleep(3000);
 	    commNav.waitForNotPage("SpeedSearch");	    
 	    
@@ -167,7 +167,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 	    
 	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]")).click();
 	    Thread.sleep(3000);
 	    commNav.waitForNotPage("SpeedSearch");	    
 	    
@@ -194,7 +194,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 	    
 	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]")).click();
 	    Thread.sleep(3000);
 	    commNav.waitForNotPage("SpeedSearch");	    
 	    
@@ -221,7 +221,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 	    
 	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]")).click();
 	    Thread.sleep(3000);
 	    commNav.waitForNotPage("SpeedSearch");	    
 	    
@@ -248,7 +248,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 	    
 	    //Step: click to open the top Search Results link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]")).click();
 	    Thread.sleep(3000);
 	    commNav.waitForNotPage("SpeedSearch");	    
 	    
@@ -297,7 +297,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    assertEquals("Search Results", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 
@@ -315,7 +315,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click to open the 1st matching Account link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Account".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -399,7 +399,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    // Warning: assertTextPresent may require manual changes
 	    assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Abbott Ltd\\.[\\s\\S]*$"));
 	    // Step: click to open the 1st matching Account link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[1]/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
@@ -422,7 +422,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    // Step: click to open the 2nd matching Account link...
 	    // Warning: assertTextPresent may require manual changes
 	    assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Abbott WorldWide[\\s\\S]*$"));
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[2]/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[2]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
@@ -451,7 +451,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[3]/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[3]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
@@ -474,7 +474,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    // Step: click to open a 2nd matching Contact link...
 	    // Warning: assertTextPresent may require manual changes
 	    assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Hans Wurst \\(Abbot\\)[\\s\\S]*$"));
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[11]/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[11]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
 	    try {
 	      assertEquals("Contact", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());
@@ -498,7 +498,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    // Step: click to open a matching Activity link...
 	    // Warning: assertTextPresent may require manual changes
 	    assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Referred from Abbott Ltd\\.[\\s\\S]*$"));
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[4]/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[4]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
 	    try {
 	      assertEquals("Activity", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());
@@ -526,7 +526,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[20]/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[20]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
@@ -555,7 +555,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[5]/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[5]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
@@ -644,7 +644,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 
 	    // Step: click to open the 1st matching Account link...
-	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']/ul/li[18]/h3")).click();
+	    driver.findElement(By.xpath(".//*[@id='speedsearch_list']//ul/li[18]/h3")).click();
 	    // Verify: confirm that the correct Account Detail View was opened...
 	    try {
 	      assertEquals("Ticket", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());

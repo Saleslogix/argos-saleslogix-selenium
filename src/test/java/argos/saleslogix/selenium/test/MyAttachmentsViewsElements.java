@@ -22,35 +22,35 @@ public class MyAttachmentsViewsElements extends BaseTest {
 	
 	//List View elements	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']/ul")
+	@FindBy(xpath = "//*[@id='myattachment_list']//ul")
 	WebElement myAttachmentsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']/ul/li[1]")
+	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[1]")
 	WebElement topMyAttachmentsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']/ul/li[1]/div[1]")
+	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[1]/div[1]")
 	WebElement topMyAttachmentsListItemTab;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']/ul/li[1]/button")
+	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[1]/button")
 	WebElement topMyAttachmentsListItemIcon;
 
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='myattachment_list']/ul/li[1]/div[3]/h3/span")
+	@FindBy(xpath = ".//*[@id='myattachment_list']//ul/li[1]/div[3]/h3/span")
 	WebElement topMyAttachmentsListItemName;
 		
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']/ul/li[1]/div[3]/h4[1]")
+	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[1]/div[3]/h4[1]")
 	WebElement topMyAttachmentsListItemDateAndSize;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']/ul/li[1]/div[3]/h4[2]/span")
+	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[1]/div[3]/h4[2]/span")
 	WebElement topMyAttachmentsListItemFileExtension;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']/ul/li/div[3]/h4[3]")
+	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li/div[3]/h4[3]")
 	WebElement topMyAttachmentsListItemOwner;
 	
 	@CacheLookup
@@ -62,15 +62,15 @@ public class MyAttachmentsViewsElements extends BaseTest {
 	WebElement topMyAttachmentsListItemAttachment;
 		
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']/ul/li[11]")
+	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[11]")
 	WebElement eleventhMyAttachmentsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']/ul/li[21]")
+	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[21]")
 	WebElement twentyfirstMyAttachmentsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']/ul/li[31]")
+	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[31]")
 	WebElement thirtyfirstMyAttachmentsListItem;
 	
 	@CacheLookup
@@ -95,11 +95,11 @@ public class MyAttachmentsViewsElements extends BaseTest {
 	WebElement myAttachmentsSearchLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2")
 	WebElement myAttachmentsHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul")
 	WebElement myAttachmentsTagsPnl;
 				
 	//Methods
@@ -107,7 +107,7 @@ public class MyAttachmentsViewsElements extends BaseTest {
 	public String getMyAttachmentsListViewTxt() {
 		String methodID = "getMyAttachmentsListViewTxt";
 		
-		WebElement myAttachmentsLisViewInfo = driver.findElement(By.xpath("//*[@id='myattachment_list']/ul"));
+		WebElement myAttachmentsLisViewInfo = driver.findElement(By.xpath("//*[@id='myattachment_list']//ul"));
 		
 		return myAttachmentsLisViewInfo.getText();		
 	}

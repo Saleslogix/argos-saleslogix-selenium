@@ -22,6 +22,8 @@ import org.openqa.selenium.support.PageFactory;
 public class MobileDefectTest extends BaseTest {
 
     public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
+    public String TEST_JPG_RECORD = "TestJpg";
+    public String TEST_URL_RECORD = "ibm";
 	
 	//Login & Logout
 	//==============
@@ -60,7 +62,7 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String attachmentName = "saleslogix";
+		String attachmentName = TEST_JPG_RECORD;
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		// Step: click the Top-Left, Global Menu button...
@@ -74,14 +76,15 @@ public class MobileDefectTest extends BaseTest {
 		
 		// Step: click to download and view the attachment
 		try {
-			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li")).click();
+			driver.findElement(By.xpath("//*[@id='myattachment_list']//ul/li")).click();
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("loading..."));
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("Downloading attachment..."));
 			AssertJUnit.assertTrue(commNav.isTextNotPresentOnPage("Downloading attachment..."));
 			Thread.sleep(3000);
 			String resultMsg = "VP: initial successful Attachment downloaded check";
 			try {
-				WebElement attachedImg = driver.findElement(By.xpath("//*[@id='attachment-image']"));
+				//WebElement attachedImg = driver.findElement(By.xpath("//*[@id='attachment-image']"));
+                WebElement attachedImg = driver.findElement(By.xpath("//*[@id='imagePlaceholder']/img"));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("attachment image", attachedImg));
 				System.out.println(resultMsg + " - Passed");
 			}
@@ -105,7 +108,8 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that attachment is still displayed correctly after Global Menu display/non-display
 		String resultMsg = "VP: fix check on Attachments view on Global Menu display/non-display";
 		try {
-			WebElement attachedImg = driver.findElement(By.xpath("//*[@id='attachment-image']"));
+			//WebElement attachedImg = driver.findElement(By.xpath("//*[@id='attachment-image']"));
+            WebElement attachedImg = driver.findElement(By.xpath("//*[@id='imagePlaceholder']/img"));
 			AssertJUnit.assertTrue(commNav.isWebElementPresent("attachment image", attachedImg));
 			System.out.println(" - Passed");
 		}
@@ -133,7 +137,7 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String attachmentName = "ibm";
+		String attachmentName = TEST_URL_RECORD;
 		
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -148,7 +152,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// Step: click to download and view the attachment
 		try {
-			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li")).click();
+			driver.findElement(By.xpath("//*[@id='myattachment_list']//ul/li")).click();
 		} catch (Exception e) {
 			System.out.println(methodID + "(): " + e.toString());
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
@@ -294,7 +298,7 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String accountName1 = "ABC Materials";
+		String accountName1 = "Equity Residential Management Corporation";
 		String strCheck1 = "Customer|";
 		
 		
@@ -374,7 +378,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 		
 		// Step: click the top-search results item to go to the Detail view
-		driver.findElement(By.xpath("//*[@id='speedsearch_list']/ul/li[1]/div[3]/h4")).click();
+		driver.findElement(By.xpath("//*[@id='speedsearch_list']//ul/li[1]/div[3]/h4")).click();
 		for (int second = 0;; second++) {
 			if (second >= 30) Assert.fail("timeout");
 			try { if (!"SpeedSearch".equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -442,7 +446,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// Step: click to download and view the attachment
 		try {
-			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li/div/div[2]/h3/span")).click();
+			driver.findElement(By.xpath("//*[@id='myattachment_list']//ul/li/div/div[2]/h3/span")).click();
 		} catch (Exception e) {
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
 		};
@@ -1136,7 +1140,7 @@ public class MobileDefectTest extends BaseTest {
 	    driver.findElement(By.xpath("//*[@id='left_drawer']/descendant::*[text() = 'Leads']")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath("//*[@id='lead_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath("//*[@id='lead_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1148,7 +1152,7 @@ public class MobileDefectTest extends BaseTest {
 	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[3]/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath("//*[@id='lead_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath("//*[@id='lead_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	    try {
@@ -1158,7 +1162,7 @@ public class MobileDefectTest extends BaseTest {
 	    }
 	    
 	    // Step: navigate to top Lead record...
-	    driver.findElement(By.xpath("//*[@id='lead_list']/ul/li/div/h3")).click();
+	    driver.findElement(By.xpath("//*[@id='lead_list']//ul/li/div/h3")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { if ("Ballard, Matt".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1270,7 +1274,7 @@ public class MobileDefectTest extends BaseTest {
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']/ul/li[1]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']//ul/li[1]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	    System.out.println(ENDLINE);	
@@ -1520,7 +1524,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// Step: click to download and view the attachment
 		try {
-			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li/div/div[2]/h3/span")).click();
+			driver.findElement(By.xpath("//*[@id='myattachment_list']//ul/li/div/div[2]/h3/span")).click();
 		} catch (Exception e) {
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
 		};
@@ -2120,7 +2124,7 @@ public class MobileDefectTest extends BaseTest {
 		commNav.rightClickContextMenuItem("phonecall");
 		
 		//VP: check that Regarding field value of top record is not null
-		WebElement topRegardingFld = driver.findElement(By.xpath("//*[@id='history_list']/ul/li[1]/div[3]/h4[2]"));		
+		WebElement topRegardingFld = driver.findElement(By.xpath("//*[@id='history_list']//ul/li[1]/div[3]/h4[2]"));
 		String resultMsg = "VP: Notes/History List record's Regarding value is non-null";
 		try {
 			AssertJUnit.assertFalse(topRegardingFld.getText().equals(null));
@@ -2207,16 +2211,16 @@ public class MobileDefectTest extends BaseTest {
 		headerButton.clickHeaderButton("back");
 		commNav.waitForPage("Accounts");
 		
-		//VP: check that old Lookup control is not displayed in the Accounts List view... 	
-		String resultMsg = "VP: previous-version Lookup control is not displayed in the Accounts List view";
+		//VP: check that old Lookup control is not displayed in the Accounts List view ... from v3.1 the 'old' lookup is again displayed
+		String resultMsg = "VP: previous-version Lookup control is again displayed in the Accounts List view from Mobile 3.1";
 		try {
 			WebElement oldLookupFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_3']"));
-			AssertJUnit.assertFalse(oldLookupFld.isDisplayed());
-			System.out.println(resultMsg + " - Passed");
+			AssertJUnit.assertTrue(oldLookupFld.isDisplayed());
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 			
 		// End Tests

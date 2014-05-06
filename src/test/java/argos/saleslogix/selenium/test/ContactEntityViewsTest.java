@@ -129,17 +129,27 @@ public class ContactEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
-	
-	    //Step: navigate to Contacts list view... and search for all #primary records so initial list has data and may scroll
-        commNav.entityListViewSearch(entityType, "#primary");
-	
+
+        //Step: click Top-Left button to reveal Global Menu...
+        headerbutton.showGlobalMenu();
+
+        //Step: navigate to Contacts list view... wait for page to open
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Contacts");
+
+        //Step: Clear search button and search on all records
+        contactsListView.contactsSearchClearBtn.click();
+        contactsListView.contactsSearchLookupBtn.click();
+        Thread.sleep(3000);
+
 		//capture the initial Contacts List view info
-		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+
 		String initListInfo = contactsListView.getContactsListViewTxt();
 		
 	    //Step: load more results (click on 'x remaining records' item)
@@ -210,14 +220,14 @@ public class ContactEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
 		commNav.entityListViewSearch(entityType, entityRecord);
 			
 		//Step: check for matching results...
-		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-		String topContactListItemName = contactsListView.topContactsListItemName.getText();
+        String initContactsListInfo = contactsListView.getContactsListViewTxt();
 				
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
@@ -225,19 +235,20 @@ public class ContactEntityViewsTest extends BaseTest {
 				
 		//Step: click the Lookup button to reload the full Contacts list
 		contactsListView.contactsSearchLookupBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
-		String currTopContactsListViewName = driver.findElement(By.xpath("//*[@id='contact_list']/ul/li[1]/div/h3")).getText();
+        String expandedContactsListInfo = contactsListView.getContactsListViewTxt();
+
 		try {
-			AssertJUnit.assertEquals(topContactListItemName, currTopContactsListViewName);
+            AssertJUnit.assertFalse(initContactsListInfo.matches(expandedContactsListInfo));
+            System.out.println(methodID + ": clear previous Contacts search results action PASSED");
 		} catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": clear previous Contacts search results action failed");
+			System.out.println(methodID + ": clear previous Contacts search results action FAILED");
 			return;
 		}
-		
-		System.out.println(methodID + ": clear previous Contacts search results action was successful");
+
 		System.out.println(ENDLINE);
 	}
 
@@ -254,6 +265,9 @@ public class ContactEntityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		//Step: search for Contact entity, then open it's Detail view
 		commNav.entityRecordOpenDetailView(entityType, entityRecord);
@@ -279,6 +293,9 @@ public class ContactEntityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
 			//Step: search for Contact entity, then open it's Detail view
@@ -350,6 +367,9 @@ public class ContactEntityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
 			//Step: search for Contact entity, then open it's Detail view
@@ -360,16 +380,16 @@ public class ContactEntityViewsTest extends BaseTest {
 			
 			//Step: check each input field and if applicable, its related list item selection view
 			commNav.isWebElementPresent(viewName + ", 'Details' section header", contactEditView.contactsEditViewDetailsHdr);
-			commNav.isFieldValueEmpty(viewName + ", name field", contactEditView.contactsEditViewNameInputFld);
-			commNav.isFieldValueEmpty(viewName + ", account field", contactEditView.contactsEditViewAccountInputFld);
-			commNav.isFieldValueEmpty(viewName + ", web field", contactEditView.contactsEditViewWebInputFld);
-			commNav.isFieldValueEmpty(viewName + ", phone field", contactEditView.contactsEditViewPhoneInputFld);
-			commNav.isFieldValueEmpty(viewName + ", email field", contactEditView.contactsEditViewEmailInputFld);
-			commNav.isFieldValueEmpty(viewName + ", title field", contactEditView.contactsEditViewTitleInputFld);
+			commNav.isFieldValueEmpty(viewName + ", name", contactEditView.contactsEditViewNameInputFld);
+			commNav.isFieldValueEmpty(viewName + ", account", contactEditView.contactsEditViewAccountInputFld);
+			commNav.isFieldValueEmpty(viewName + ", web", contactEditView.contactsEditViewWebInputFld);
+			commNav.isFieldValueEmpty(viewName + ", phone", contactEditView.contactsEditViewPhoneInputFld);
+			commNav.isFieldValueEmpty(viewName + ", email", contactEditView.contactsEditViewEmailInputFld);
+			commNav.isFieldValueEmpty(viewName + ", title", contactEditView.contactsEditViewTitleInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'address field'", contactEditView.contactsEditViewAddressInputFldBtn, "Address");
-			commNav.isFieldValueEmpty(viewName + ", home phone field", contactEditView.contactsEditViewHomePhoneInputFld);
-			commNav.isFieldValueEmpty(viewName + ", mobile field", contactEditView.contactsEditViewMobileInputFld);
-			commNav.isFieldValueEmpty(viewName + ", fax field", contactEditView.contactsEditViewFaxInputFld);
+			commNav.isFieldValueEmpty(viewName + ", home phone", contactEditView.contactsEditViewHomePhoneInputFld);
+			commNav.isFieldValueEmpty(viewName + ", mobile", contactEditView.contactsEditViewMobileInputFld);
+			commNav.isFieldValueEmpty(viewName + ", fax", contactEditView.contactsEditViewFaxInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", contactEditView.contactsEditViewAcctMgrInputFld, "Users");
 			contactEditView = PageFactory.initElements(driver, ContactViewsElements.class);
 			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", contactEditView.contactsEditViewOwnerInputFldBtn, "Owners");
@@ -401,6 +421,9 @@ public class ContactEntityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -476,6 +499,9 @@ public class ContactEntityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -555,8 +581,11 @@ public class ContactEntityViewsTest extends BaseTest {
 		
 		//Step: find the newly-added test Contact record
 		String strResultsMsg = "VP: recently added test Contact '" + newConLastName + "' was found.";
-		if (contactsListView.doSearchContact(newConLastName)) {
-			System.out.println(strResultsMsg + " - Passed");
+        String fullName = newConLastName + ", Thomas";
+        WebElement entityListItem = commNav.entityListViewSearch("Contact", fullName);
+
+        if (entityListItem.isDisplayed())  {
+			System.out.println(strResultsMsg + " - PASSED");
 		}
 		else {
 			System.out.println(strResultsMsg + " - FAILED");
@@ -584,6 +613,9 @@ public class ContactEntityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 	
 	    //Step: navigate to Contacts list view...
 		commNav.entityListViewSearch(entityType, entityRecord);
@@ -664,7 +696,10 @@ public class ContactEntityViewsTest extends BaseTest {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
+		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
 			//Step: enter the Contact Add Edit view...

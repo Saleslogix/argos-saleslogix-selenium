@@ -75,10 +75,10 @@ public class MobileSprint306Test extends BaseTest {
 			commNav.waitForPage("Cuisine");
 			
 			//Step: select 1st 4 cuisine items from Cuisine page and press check to accept values
-			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[1]/div")).click();
-			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[2]/div")).click();
-			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[3]/div")).click();
-			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[4]/div")).click();
+			driver.findElement(By.xpath("//div[@id='pick_list_0']//ul/li[1]/div")).click();
+			driver.findElement(By.xpath("//div[@id='pick_list_0']//ul/li[2]/div")).click();
+			driver.findElement(By.xpath("//div[@id='pick_list_0']//ul/li[3]/div")).click();
+			driver.findElement(By.xpath("//div[@id='pick_list_0']//ul/li[4]/div")).click();
 			
 			headerButton.clickHeaderButton("check");
 			
@@ -90,18 +90,18 @@ public class MobileSprint306Test extends BaseTest {
 			//Step: wait for page Contact detail to open
 			commNav.waitForPage(contactRecord);
 			
-			//Step: expand the More Details section if necessary ... in order to see cuisine values
+			//Step: expand the More Details section if necessary ... in order to see cuisine values ... More Details section no longer expanded/contracted in 3.1
 			ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
 			
-			commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
+			//commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
 			//SubStep: conditionally expand the More Details section
-			if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
-				contactDetailView.contactsDetailViewMoreDetailsHdr.click();
-				Thread.sleep(1000);
-			}
+			//if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
+			//	contactDetailView.contactsDetailViewMoreDetailsHdr.click();
+			//	Thread.sleep(1000);
+			//}
 			
-			//Step: save initial values in cuisine field, and verify expected values; if step fails, flags test as failing (red)
-			String cuisineValInitial = contactEditView.contactsDetailViewCuisineFld.getText();
+			//Step: verify expected cuisine values on the contact detail view
+			String cuisineValInitial = contactDetailView.contactsDetailViewCuisineFld.getText();
 			System.out.println("Initial cuisine values are ... " + cuisineValInitial);
 			try {
 				AssertJUnit.assertEquals("Not seeing expected 4 cuisine values ... ", "cuisineAmerican Grill, Chinese, French, German", cuisineValInitial);
@@ -125,10 +125,10 @@ public class MobileSprint306Test extends BaseTest {
 			
 			//Step: select 1st 4 cuisine items ... to uncheck items, and press check to accept values
             //      for the 3rd and 4th cuisine item, specifically click on the button that contains the check mark
-			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[1]/div")).click();
-			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[2]/div")).click();
-			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[3]/button")).click();
-			driver.findElement(By.xpath("//div[@id='pick_list_0']/ul/li[4]/button")).click();
+			driver.findElement(By.xpath("//div[@id='pick_list_0']//ul/li[1]/div")).click();
+			driver.findElement(By.xpath("//div[@id='pick_list_0']//ul/li[2]/div")).click();
+			driver.findElement(By.xpath("//div[@id='pick_list_0']//ul/li[3]/button")).click();
+			driver.findElement(By.xpath("//div[@id='pick_list_0']//ul/li[4]/button")).click();
 						
 			headerButton.clickHeaderButton("check");
 			
@@ -139,18 +139,18 @@ public class MobileSprint306Test extends BaseTest {
 			//Step: wait for page Contact detail to open
 			commNav.waitForPage(contactRecord);
 			
-			//Step: refresh ContactViewsElements class and expand the More Details section if necessary ... in order to see cuisine values
+			//Step: refresh ContactViewsElements class and expand the More Details section if necessary ... in order to see cuisine values (not needed from 3.1)
 			contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
 			
-			commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
+			//commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
 			//SubStep: conditionally expand the More Details section
-			if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
-				contactDetailView.contactsDetailViewMoreDetailsHdr.click();
-				Thread.sleep(1000);
-			}
+			//if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
+			//	contactDetailView.contactsDetailViewMoreDetailsHdr.click();
+			//	Thread.sleep(1000);
+			//}
 			
-			//Step: save modified values in cuisine field, and verify expected values; if step fails, flags test as failing (red)
-			String cuisineValModified = contactEditView.contactsDetailViewCuisineFld.getText();
+			//Step: verify modified cuisine values on contact detail view
+			String cuisineValModified = contactDetailView.contactsDetailViewCuisineFld.getText();
 			System.out.println("Modified cuisine values are ... " + cuisineValModified);
 			try {
 				AssertJUnit.assertEquals("Not seeing expected no cuisine values ... ", "cuisine", cuisineValModified);
@@ -315,7 +315,7 @@ public class MobileSprint306Test extends BaseTest {
 	        
 	        //Step: search for activity created ... and re-open
 	        activityEditView.performMyActivitiesSearch(newActivityRegarding);
-	        WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']/ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
+	        WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
 			commNav.highlightNClick(activityItemLnk);
 			commNav.waitForPage("Activity");
 	        
@@ -760,7 +760,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: search for activity created ... and re-open
             activityEditView.performMyActivitiesSearch(newActivityRegarding);
-            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']/ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
 
@@ -833,7 +833,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: search for activity created ... and re-open
             activityEditView.performMyActivitiesSearch(newActivityRegarding);
-            activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']/ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
+            activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
 
@@ -958,7 +958,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: search for activity created ... and re-open
             activityEditView.performMyActivitiesSearch(newActivityRegarding);
-            activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']/ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
+            activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
 

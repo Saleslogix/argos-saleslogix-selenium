@@ -69,7 +69,7 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsListViewNotesBoxSeeListLink;
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul")
+	@FindBy(xpath = "//*[@id='contact_list']//ul")
 	WebElement contactsListViewHdr;
 	
 	@CacheLookup
@@ -77,11 +77,11 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsListViewMetricsBox1;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul")
+	@FindBy(xpath = "//*[@id='contact_list']//ul")
 	WebElement contactsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[7]/div[2]/div/button")
+	@FindBy(xpath = "//div[7]/div[2]/div[1]/div/button")
 	WebElement contactsListView1stKPICard;
 	
 	@CacheLookup
@@ -90,83 +90,85 @@ public class ContactViewsElements extends BaseTest {
 	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]")
 	WebElement topContactsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/button")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/button")
 	WebElement topContactsListItemIcon;	
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/div[3]/h3")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div[3]/h3")
 	WebElement topContactsListItemName;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/div[3]/h4[1]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div[3]/h4[1]")
 	WebElement topContactsListItemLine2;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/div[3]/h4[3]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div[3]/h4[3]")
 	WebElement topContactsListItemLine3;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/div[3]/h4[4]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div[3]/h4[4]")
 	WebElement topContactsListItemLine4;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[1]/div[3]/h4[5]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div[3]/h4[5]")
 	WebElement topContactsListItemLine5;
 	
 	@CacheLookup
-	@FindBy(css = "#contact_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	//@FindBy(css = "#contact_list > ul.list-content > li > #bottom_item_indicators > span > img")
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
 	WebElement topContactsListItemTouch;
 	
 	@CacheLookup
-	@FindBy(css = "#contact_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	//@FindBy(css = "#contact_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+    @FindBy(xpath = "//*[@id='list-item-footer']/div/button")
 	WebElement topContactsListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[8]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[8]")
 	WebElement topContactsListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[7]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[7]")
 	WebElement topContactsListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[6]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[6]")
 	WebElement topContactsListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[5]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[5]")
 	WebElement topContactsListItemQuickActionsEmailBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[4]")
 	WebElement topContactsListItemQuickActionsAccountBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[3]")
 	WebElement topContactsListItemQuickActionsCallMobileBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[2]")
 	WebElement topContactsListItemQuickActionsCallWorkBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[1]")
 	WebElement topContactsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[11]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul[2]/li[11]")
 	WebElement eleventhContactsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[21]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul[2]/li[21]")
 	WebElement twentyfirstContactsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul[2]/li[31]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul[2]/li[31]")
 	WebElement thirtyfirstContactsListItem;
 	
 	@CacheLookup
@@ -174,25 +176,25 @@ public class ContactViewsElements extends BaseTest {
 	WebElement recordsRemainingListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']/ul/li/h3")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li/h3")
 	WebElement noRecordsListItem;
 	
 	//Context Menu elements
 	//---------------------
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement contactsHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[1]")
 	WebElement contactsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement contactsKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[2]")
 	WebElement contactsKPIPnl;
 	
 	//Detail View elements
@@ -410,7 +412,7 @@ public class ContactViewsElements extends BaseTest {
 		String listViewTxt = "";
 		
 		try {
-			WebElement contactsLisViewInfo = driver.findElement(By.xpath("//*[@id='contact_list']/ul"));
+			WebElement contactsLisViewInfo = driver.findElement(By.xpath("//*[@id='contact_list']//ul"));
 			listViewTxt = contactsLisViewInfo.getText();
 		}
 		catch (Exception e) {

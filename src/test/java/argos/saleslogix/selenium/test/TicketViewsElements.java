@@ -42,15 +42,15 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsListViewPnl;
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul")
 	WebElement ticketsListViewHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul")
 	WebElement ticketsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[4]/div[2]/div/button")
+	@FindBy(xpath = "//div[4]/div[2]/div[1]/div/button")
 	WebElement ticketsListView1stKPICard;
 	
 	@CacheLookup
@@ -86,35 +86,35 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsListViewNotesBoxSeeListLink;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]")
 	WebElement topTicketsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[1]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[1]")
 	WebElement topTicketsListItemTab;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/button")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/button")
 	WebElement topTicketsListItemIcon;	
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[3]/h3")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[3]/h3")
 	WebElement topTicketsListItemNumber;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[3]/h4[2]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[3]/h4[2]")
 	WebElement topTicketsListItemLine2;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[3]/h4[3]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[3]/h4[3]")
 	WebElement topTicketsListItemLine3;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[3]/h4[4]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[3]/h4[4]")
 	WebElement topTicketsListItemLine4;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[1]/div[3]/h4[5]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[3]/h4[5]")
 	WebElement topTicketsListItemLine5;
 	
 	@CacheLookup
@@ -122,47 +122,49 @@ public class TicketViewsElements extends BaseTest {
 	WebElement topTicketsListItemBtmIndicator;
 	
 	@CacheLookup
-	@FindBy(css = "#ticket_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	//@FindBy(css = "#ticket_list > ul.list-content > li > #bottom_item_indicators > span > img")
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
 	WebElement topTicketsListItemTouch;
 	
 	@CacheLookup
-	@FindBy(css = "#ticket_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	//@FindBy(css = "#ticket_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+    @FindBy(xpath = "//*[@id='list-item-footer']/div/button")
 	WebElement topTicketsListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[6]")
+	@FindBy(xpath = "//li[2]/button[6]")
 	WebElement topTicketsListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[5]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]/button[5]")
 	WebElement topTicketsListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]/button[4]")
 	WebElement topTicketsListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]/button[3]")
 	WebElement topTicketsListItemQuickActionsContactBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]/button[2]")
 	WebElement topTicketsListItemQuickActionsAccountBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]/button[1]")
 	WebElement topTicketsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[11]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul[2]/li[11]")
 	WebElement eleventhLeadsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[21]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul[2]/li[21]")
 	WebElement twentyfirstLeadsListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li[31]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul[2]/li[31]")
 	WebElement thirtyfirstLeadsListItem;
 	
 	@CacheLookup
@@ -170,24 +172,24 @@ public class TicketViewsElements extends BaseTest {
 	WebElement recordsRemainingListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']/ul[2]/li/h3")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul[2]/li/h3")
 	WebElement noRecordsListItem;
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement ticketsHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[1]")
 	WebElement ticketsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement ticketsKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[2]")
 	WebElement ticketsKPIPnl;
 	
 	//Detail View elements
@@ -573,7 +575,7 @@ public class TicketViewsElements extends BaseTest {
 		String listViewTxt = "";
 		
 		try {
-			WebElement ticketsListViewInfo = driver.findElement(By.xpath("//*[@id='ticket_list']/ul"));
+			WebElement ticketsListViewInfo = driver.findElement(By.xpath("//*[@id='ticket_list']//ul"));
 			listViewTxt = ticketsListViewInfo.getText();
 		}
 		catch (Exception excptn) {

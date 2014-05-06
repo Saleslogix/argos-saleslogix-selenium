@@ -118,19 +118,19 @@ public class CommonNavigation {
 	WebElement rmenu_panel;
 
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='right_drawer']/div[4]/h2[1]")
+	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement rmenu_HashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='right_drawer']/div[4]/ul[1]")
+	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/ul[1]")
 	WebElement rmenu_HashTagsSubPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='right_drawer']/div[4]/h2[2]")
+	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement rmenu_KPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='right_drawer']/div[4]/ul[2]")
+	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/ul[2]")
 	WebElement rmenu_KPISubPnl;
 	
 	//Methods
@@ -506,7 +506,7 @@ public class CommonNavigation {
 			}
 			for (int second = 0;; second++) {
 		    	if (second >= 60) AssertJUnit.fail("timeout");
-		    	try { if (isElementPresent(By.xpath(".//*[@id='" + itemList + "']/ul/li[1]")))
+		    	try { if (isElementPresent(By.xpath(".//*[@id='" + itemList + "']//ul/li[1]")))
 		    		System.out.println("VP: " + listName + " List View was successfully loaded.");
 		    		break; 
 		    	} 
@@ -729,10 +729,10 @@ public class CommonNavigation {
 		//perform the list view item click
 		String srchItemXPath = "";
 		if (!listName.toLowerCase().contains("speed")) {
-			srchItemXPath = "//*[@id='" + itemList + "']/ul/li[" + itemIndex + "]/div/h3";	
+			srchItemXPath = "//*[@id='" + itemList + "']//ul/li[" + itemIndex + "]/div/h3";
 		}
 		else {
-			srchItemXPath = ".//*[@id='" + itemList + "']/ul/li[" + itemIndex + "]/div[3]/h4";
+			srchItemXPath = ".//*[@id='" + itemList + "']//ul/li[" + itemIndex + "]/div[3]/h4";
 		}
 		
 		try {
@@ -1110,7 +1110,7 @@ public class CommonNavigation {
 			}
 			else {
 				if (entityType.toLowerCase().contains("notes")) {
-					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li[1]"));
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "//ul/li[1]"));
 				}
 				else {
 					targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
@@ -1216,7 +1216,7 @@ public class CommonNavigation {
 			}
 			else {
 				if (entityType.toLowerCase().contains("notes")) {
-					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li[1]"));
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "//ul/li[1]"));
 				}
 				else {
 					targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
@@ -1319,7 +1319,7 @@ public class CommonNavigation {
 			}
 			else {
 				if (entityType.toLowerCase().contains("notes")) {
-					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "/ul/li[1]"));
+					targetEntRecord = driver.findElement(By.xpath(entListNameXPth + "//ul/li[1]"));
 				}
 				else {
 					targetEntRecord = driver.findElement(By.xpath(targetEntRecXPath));
@@ -1420,7 +1420,7 @@ public class CommonNavigation {
 			//Step: check if the detail view is loaded
 			if (!entityType.toLowerCase().contains("notes")) {
 				waitForPage(entityName);
-				return true;
+                return true;
 			}
 			else if (entityType.toLowerCase().contains("notes") && entityType.toLowerCase().contains("history")) {
 				waitForNotPage("Notes/History");

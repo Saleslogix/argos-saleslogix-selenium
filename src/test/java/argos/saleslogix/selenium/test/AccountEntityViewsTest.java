@@ -109,17 +109,27 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 			
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
 
-	    //Step: navigate to Accounts list view... and search for all #active records so initial data displays and there will be scrolling
-        commNav.entityListViewSearch(entityType, "#active");
+        //Step: click Top-Left button to reveal Global Menu...
+        headerbutton.showGlobalMenu();
 
-		//capture the initial Accounts List view info
-		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+        //Step: navigate to Accounts list view... wait for page to open
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Accounts");
+
+        //Step: Clear search button and search on all records
+        accountsListView.accountsSearchClearBtn.click();
+        accountsListView.accountsSearchLookupBtn.click();
+        Thread.sleep(3000);
+
+        //capture the initial Accounts List view info
+
 		String initAccountsListInfo = accountsListView.getAccountsListViewTxt();
 		
 	    //Step: load more results (click on 'x remaining records' item)
@@ -195,14 +205,15 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	
 		commNav.entityListViewSearch(entityType, entityRecord);
 			
 		//Step: check for matching results...
-		AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
-		String topAccountListItemName = accountListView.topAccountsListItemName.getText();
+
+        String initAccountsListInfo = accountListView.getAccountsListViewTxt();
 				
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
@@ -213,15 +224,13 @@ public class AccountEntityViewsTest extends BaseTest {
 		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
-		String currTopAccountsListViewName = driver.findElement(By.xpath("//*[@id='account_list']/ul/li[1]/div/h3")).getText();
-		accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
-		topAccountListItemName = accountListView.topAccountsListItemName.getText();
+        String expandedAccountsListInfo = accountListView.getAccountsListViewTxt();
 		try {
-			AssertJUnit.assertEquals(topAccountListItemName, currTopAccountsListViewName);
-			System.out.println(methodID + ": clear previous Accounts search results action was successful");
+            AssertJUnit.assertFalse(initAccountsListInfo.matches(expandedAccountsListInfo));
+			System.out.println(methodID + ": clear previous Accounts search results action PASSED");
 		} catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": clear previous Accounts search results action failed");
+			System.out.println(methodID + ": clear previous Accounts search results action FAILED");
 		}
 		
 		System.out.println(ENDLINE);
@@ -240,6 +249,9 @@ public class AccountEntityViewsTest extends BaseTest {
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
 			//Step: search for Account entity, then open it's Detail view
@@ -275,51 +287,41 @@ public class AccountEntityViewsTest extends BaseTest {
 		LogOutThenLogBackIn(userName, userPwd);
 		
 		try {
-			//Step: search for Account entity, then open it's Detail view
-			commNav.entityRecordOpenDetailView(entityType, entityRecord);
-			
-			AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
-			
-			//Step: check each item under the Account Detail View, Quick Actions section
-			commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", accountDetailView.accountDetailViewQuickActionsHdr);
-			commNav.isWebElementPresent(viewName + ",'Call main number'", accountDetailView.accountDetailViewCallMainNumberLnk);			
-			commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", accountDetailView.accountDetailViewScheduleActivityLnk, "Schedule...");
-			commNav.isWebElementPresent(viewName + ",'Add note'", accountDetailView.accountDetailViewAddNoteLnk);
-			//TODO: figure out why there is a failure for this step; reverting to field validation instead
-			//commNav.verifyEntityViewElementClick(viewName + ",'Add note'", accountDetailView.accountDetailViewAddNoteLnk, "Note");
-			commNav.isWebElementPresent(viewName + ",'View address'", accountDetailView.accountDetailViewViewAddressLnk);
-			
-			//Step: check each item under the Account Detail View, Details section
-			commNav.isWebElementPresent(viewName + ",'Details' section header", accountDetailView.accountDetailViewDetailsHdr);
-			commNav.isFieldValueEmpty(viewName + ",'account'", accountDetailView.accountDetailViewAccountFld);
-			commNav.isFieldValueEmpty(viewName + ",'web'", accountDetailView.accountDetailViewWebFld);
-			commNav.isFieldValueEmpty(viewName + ",'fax'", accountDetailView.accountDetailViewFaxFld);
-			commNav.isFieldValueEmpty(viewName + ",'type'", accountDetailView.accountDetailViewTypeFld);
-			commNav.isFieldValueEmpty(viewName + ",'subtype'", accountDetailView.accountDetailViewSubTypeFld);
-			commNav.isFieldValueEmpty(viewName + ",'status'", accountDetailView.accountDetailViewStatusFld);
+            //Step: search for Account entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, entityRecord);
 
-			//Step: check each item under the Account Detail View, More Details section
-			commNav.isWebElementPresent(viewName + ",'More Details' section header", accountDetailView.accountDetailViewMoreDetailsHdr);
-			//SubStep: conditionally expand the More Details section
-			if (accountDetailView.accountDetailViewMoreDetailsFields.getSize().height < 1) {
-				accountDetailView.accountDetailViewMoreDetailsHdr.click();
-				Thread.sleep(1000);
-			}
-			commNav.isFieldValueEmpty(viewName + ",'industry'", accountDetailView.accountDetailViewIndustryFld);
-			commNav.isFieldValueEmpty(viewName + ",'bus desc'", accountDetailView.accountDetailViewBusDescFld);
-			commNav.isFieldValueEmpty(viewName + ",'acct mgr'", accountDetailView.accountDetailViewAcctMgrFld);
-			commNav.isFieldValueEmpty(viewName + ",'owner'", accountDetailView.accountDetailViewOwnerFld);
-			commNav.isFieldValueEmpty(viewName + ",'lead source'", accountDetailView.accountDetailViewLeadSourceFld);
+            AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
 
-			//Step: check each item under the Account Detail View, Related Items section
-			commNav.isWebElementPresent(viewName + ",'Related Items' section header", accountDetailView.accountDetailViewRelatedItemsHdr);
-			commNav.verifyEntityViewElementClick(viewName + ",'Activities'", accountDetailView.accountDetailViewActivitiesLnk, "Activities");
-			commNav.verifyEntityViewElementClick(viewName + ",'Contacts'", accountDetailView.accountDetailViewContactsLnk, "Contacts");
-			commNav.verifyEntityViewElementClick(viewName + ",'Opportunities'", accountDetailView.accountDetailViewOpportunitiesLnk, "Opportunities");
-			commNav.verifyEntityViewElementClick(viewName + ",'Tickets'", accountDetailView.accountDetailViewTicketsLnk, "Tickets");
-			commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", accountDetailView.accountDetailViewNotesHistoryLnk, "Notes/History");
-			commNav.verifyEntityViewElementClick(viewName + ",'Addresses'", accountDetailView.accountDetailViewAddressesLnk, "Addresses");
-			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Account Attachments");
+            //Step: check each item under the Account Detail View, Details section
+            commNav.isWebElementPresent(viewName + ",'Details' section header", accountDetailView.accountDetailViewDetailsHdr);
+            commNav.isFieldValueEmpty(viewName + ",'account'", accountDetailView.accountDetailViewAccountFld);
+            commNav.isFieldValueEmpty(viewName + ",'web'", accountDetailView.accountDetailViewWebFld);
+            commNav.isFieldValueEmpty(viewName + ",'phone'", accountDetailView.accountDetailViewCallMainNumberLnk);
+            commNav.isFieldValueEmpty(viewName + ",'address'", accountDetailView.accountDetailViewViewAddressLnk);
+            commNav.isFieldValueEmpty(viewName + ",'fax'", accountDetailView.accountDetailViewFaxFld);
+            commNav.isFieldValueEmpty(viewName + ",'type'", accountDetailView.accountDetailViewTypeFld);
+            commNav.isFieldValueEmpty(viewName + ",'subtype'", accountDetailView.accountDetailViewSubTypeFld);
+            commNav.isFieldValueEmpty(viewName + ",'status'", accountDetailView.accountDetailViewStatusFld);
+            commNav.isFieldValueEmpty(viewName + ",'industry'", accountDetailView.accountDetailViewIndustryFld);
+            commNav.isFieldValueEmpty(viewName + ",'bus desc'", accountDetailView.accountDetailViewBusDescFld);
+            commNav.isFieldValueEmpty(viewName + ",'acct mgr'", accountDetailView.accountDetailViewAcctMgrFld);
+            commNav.isFieldValueEmpty(viewName + ",'owner'", accountDetailView.accountDetailViewOwnerFld);
+            commNav.isFieldValueEmpty(viewName + ",'lead source'", accountDetailView.accountDetailViewLeadSourceFld);
+
+            //Step: check each item under the Account Detail View, Actions section
+            commNav.isWebElementPresent(viewName + ",'Actions' section header", accountDetailView.accountDetailViewQuickActionsHdr);
+            commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", accountDetailView.accountDetailViewScheduleActivityLnk, "Schedule...");
+            commNav.verifyEntityViewElementClick(viewName + ",'Add note'", accountDetailView.accountDetailViewAddNoteLnk, "Note");
+
+            //Step: check each item under the Account Detail View, Related Items section
+            commNav.isWebElementPresent(viewName + ",'Related Items' section header", accountDetailView.accountDetailViewRelatedItemsHdr);
+            commNav.verifyEntityViewElementClick(viewName + ",'Activities'", accountDetailView.accountDetailViewActivitiesLnk, "Activities");
+            commNav.verifyEntityViewElementClick(viewName + ",'Contacts'", accountDetailView.accountDetailViewContactsLnk, "Contacts");
+            commNav.verifyEntityViewElementClick(viewName + ",'Opportunities'", accountDetailView.accountDetailViewOpportunitiesLnk, "Opportunities");
+            commNav.verifyEntityViewElementClick(viewName + ",'Tickets'", accountDetailView.accountDetailViewTicketsLnk, "Tickets");
+            commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", accountDetailView.accountDetailViewNotesHistoryLnk, "Notes/History");
+            commNav.verifyEntityViewElementClick(viewName + ",'Addresses'", accountDetailView.accountDetailViewAddressesLnk, "Addresses");
+            commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Account Attachments");
 		}
 		catch (Exception e) {
 			verificationErrors.append(methodID + "(): " + e.toString());

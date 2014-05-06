@@ -36,15 +36,15 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunitySearchLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul")
 	WebElement opportunityListViewRecords;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]")
 	WebElement topOpportunityListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[5]/div[2]/div/button")
+	@FindBy(xpath = "//div[5]/div[2]/div[1]/div/button")
 	WebElement opportunityListView1stKPICard;
 	
 	@CacheLookup
@@ -52,79 +52,81 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityListView1stHashTagFilter;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[1]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[1]")
 	WebElement topOpportunityListItemTab;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/button")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/button")
 	WebElement topOpportunityListItemIcon;	
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div/h3")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div/h3")
 	WebElement topOpportunityListItemName;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[3]/h4[1]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[3]/h4[1]")
 	WebElement topOpportunityListItemAccount;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[3]/h4[2]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[3]/h4[2]")
 	WebElement topOpportunityListItemAcctMgrInfo;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[3]/h4[3]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[3]/h4[3]")
 	WebElement topOpportunityListItemStatusInfo;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[1]/div[3]/h4[4]/strong")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[3]/h4[4]/strong")
 	WebElement topOpportunityListItemSalesPotOppRate;
 	
 	@CacheLookup
-	@FindBy(css = "#opportunity_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	//@FindBy(css = "#opportunity_list > ul.list-content > li > #bottom_item_indicators > span > img")
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
 	WebElement topOpportunityListItemTouch;
 	
 	@CacheLookup
-	@FindBy(css = "#opportunity_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	//@FindBy(css = "#opportunity_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+    @FindBy(xpath = "//*[@id='list-item-footer']/div/button")
 	WebElement topOpportunityListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[7]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[7]")
 	WebElement topOpportunityListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[6]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[6]")
 	WebElement topOpportunityListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[5]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[5]")
 	WebElement topOpportunityListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[4]")
 	WebElement topOpportunityListItemQuickActionsProductsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[3]")
 	WebElement topOpportunityListItemQuickActionsContactsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[2]")
 	WebElement topOpportunityListItemQuickActionsAccountBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[1]")
 	WebElement topOpportunityListItemQuickActionsEditBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[11]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[11]")
 	WebElement eleventhOpportunityListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[21]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[21]")
 	WebElement twentyfirstOpportunityListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li[31]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[31]")
 	WebElement thirtyfirstOpportunityListItem;
 	
 	@CacheLookup
@@ -132,16 +134,16 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement recordsRemainingListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']/ul/li/h3")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li/h3")
 	WebElement noRecordsListItem;
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement opportunityHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[1]")
 	WebElement opportunityHashTagsPnl;
 	
 	@CacheLookup
@@ -177,11 +179,11 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityListViewNotesBoxSeeListLink;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement opportunityKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[2]")
 	WebElement opportunityKPIPnl;
 	
 	//Detail View elements
@@ -439,7 +441,7 @@ public class OpportunityViewsElements extends BaseTest {
 	public String getOpportunityListViewTxt() {
 		String methodID = "getOpportunityListViewTxt";
 		
-		WebElement OpportunityLisViewInfo = driver.findElement(By.xpath("//*[@id='opportunity_list']/ul"));
+		WebElement OpportunityLisViewInfo = driver.findElement(By.xpath("//*[@id='opportunity_list']//ul"));
 		
 		return OpportunityLisViewInfo.getText();		
 	}
@@ -520,7 +522,7 @@ public class OpportunityViewsElements extends BaseTest {
 		String listViewTxt = "";
 		
 		try {
-			WebElement oppsLisViewInfo = driver.findElement(By.xpath("//*[@id='opportunity_list']/ul"));
+			WebElement oppsLisViewInfo = driver.findElement(By.xpath("//*[@id='opportunity_list']//ul"));
 			listViewTxt = oppsLisViewInfo.getText();
 		}
 		catch (Exception e) {

@@ -36,11 +36,11 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistorysSearchLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul")
+	@FindBy(xpath = "//*[@id='history_list']//ul")
 	WebElement notesHistorysListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[9]/div[2]/div/button")
+	@FindBy(xpath = "//div[9]/div[2]/div[1]/div/button")
 	WebElement notesHistorysListView1stKPICard;
 	
 	@CacheLookup
@@ -52,36 +52,41 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistorysListView1stHashTagFilter;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]")
 	WebElement topNotesHistoryListItem;
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div[1]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div[1]")
 	WebElement topNotesHistoryListItemTab;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/button")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]/button")
 	WebElement topNotesHistoryListItemIcon;	
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div/h3")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div/h3")
 	WebElement topNotesHistoryListItemScheduledTime;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div[3]/h4[1]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div[3]/h4[1]")
 	WebElement topNotesHistoryListItemContactAccount;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div[3]/h4[2]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div[3]/h4[2]")
 	WebElement topNotesHistoryListItemRegarding;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[1]/div[3]/div/div")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div[3]/div/div")
 	WebElement topNotesHistoryListItemNotes;
 	
 	@CacheLookup
-	@FindBy(css = "#history_list > ul.list-content > li > #bottom_item_indicators > span > img")
+	//@FindBy(css = "#history_list > ul.list-content > li > #bottom_item_indicators > span > img")
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span[1]/img")
 	WebElement topNotesHistoryListItemTouch;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span[2]/img")
+    WebElement topNotesHistoryListItemType;
 	
 	//TODO: figure out the css identifier for the ToDo icon that is right of the touch icon
 	/*
@@ -91,35 +96,36 @@ public class NotesHistoryViewsElements extends BaseTest {
 	*/
 	
 	@CacheLookup
-	@FindBy(css = "#history_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+	//@FindBy(css = "#history_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
+    @FindBy(xpath = "//*[@id='list-item-footer']/div/button")
 	WebElement topNotesHistoryListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]/button[4]")
 	WebElement topNotesHistoryListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]/button[3]")
 	WebElement topNotesHistoryListItemQuickActionsContactsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]/button[2]")
 	WebElement topNotesHistoryListItemQuickActionsOpportunityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]/button[1]")
 	WebElement topNotesHistoryListItemQuickActionsAccountBtn;	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[11]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[11]")
 	WebElement eleventhNotesHistoryListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[21]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[21]")
 	WebElement twentyfirstNotesHistoryListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li[31]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[31]")
 	WebElement thirtyfirstNotesHistoryListItem;
 	
 	@CacheLookup
@@ -127,24 +133,24 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement recordsRemainingListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']/ul/li/h3")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li/h3")
 	WebElement noRecordsListItem;
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement notesHistoryHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[1]")
 	WebElement notesHistoryHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement notesHistoryKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[2]")
 	WebElement notesHistoryKPIPnl;
 	
 	//Detail View elements
@@ -286,7 +292,7 @@ public class NotesHistoryViewsElements extends BaseTest {
 	public String getNotesHistoryListViewTxt() {
 		String methodID = "getNotesHistoryListViewTxt";
 		
-		WebElement notesHistoryLisViewInfo = driver.findElement(By.xpath("//*[@id='history_list']/ul"));
+		WebElement notesHistoryLisViewInfo = driver.findElement(By.xpath("//*[@id='history_list']//ul"));
 		
 		return notesHistoryLisViewInfo.getText();		
 	}

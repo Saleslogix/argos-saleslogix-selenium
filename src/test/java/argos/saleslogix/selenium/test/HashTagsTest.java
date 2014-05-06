@@ -508,7 +508,7 @@ public class HashTagsTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 	    //Step: select and search on 'phonecall' hash tag
-		notesHistoryHashTagSelectNSearchCheck("phonecall", "Confirm Meeting");
+		notesHistoryHashTagSelectNSearchCheck("phonecall", "Lead Generation");
 		
 		System.out.println(ENDLINE);
 	}
@@ -520,8 +520,8 @@ public class HashTagsTest extends BaseTest {
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-	    //Step: select and search on 'phonecall' hash tag
-		notesHistoryHashTagSelectNSearchCheck("meeting", "Lunch");
+	    //Step: select and search on 'meeting' hash tag
+		notesHistoryHashTagSelectNSearchCheck("meeting", "Discuss opportunities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -533,8 +533,8 @@ public class HashTagsTest extends BaseTest {
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-	    //Step: select and search on 'phonecall' hash tag
-		notesHistoryHashTagSelectNSearchCheck("meeting", "Lunch");
+	    //Step: select and search on 'meeting' hash tag
+		notesHistoryHashTagSelectNSearchCheck("meeting", "Discuss opportunities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -560,7 +560,7 @@ public class HashTagsTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 	    //Step: select and search on 'personal' hash tag
-		notesHistoryHashTagSelectNSearchCheck("email", "purchase");
+		notesHistoryHashTagSelectNSearchCheck("email", "Introductory Letter");
 		
 		System.out.println(ENDLINE);
 	}
@@ -714,6 +714,9 @@ public class HashTagsTest extends BaseTest {
 		String entityType = "Opportunities";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Opportunities list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -793,7 +796,7 @@ public class HashTagsTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
 	    //Step: select and search on 'open' hash tag for specific Opportunity
-		opportunityHashTagSelectNSearchCheck("open", "Defect Test");
+		opportunityHashTagSelectNSearchCheck("open", "Vegas Vision-Phase1");
 		
 	    //Step: select and search on 'open' hash tag for specific Account
 		opportunityHashTagSelectNSearchCheck("open", "Abbott Ltd.");
@@ -809,7 +812,7 @@ public class HashTagsTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
 	    //Step: select and search on 'won' hash tag for specific Opportunity
-		opportunityHashTagSelectNSearchCheck("won", "Abbott WorldWide-Phase I");
+		opportunityHashTagSelectNSearchCheck("won", "Abbott Ltd.-Phase2");
 		
 	    //Step: select and search on 'won' hash tag for specific Account
 		opportunityHashTagSelectNSearchCheck("won", "Big Systems");
@@ -825,10 +828,10 @@ public class HashTagsTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
 	    //Step: select and search on 'lost' hash tag for specific Opportunity
-		opportunityHashTagSelectNSearchCheck("lost", "Advising Group Test Opp");
+		opportunityHashTagSelectNSearchCheck("lost", "AD Foods-Phase1");
 		
 	    //Step: select and search on 'lost' hash tag for specific Account
-		opportunityHashTagSelectNSearchCheck("lost", "Coca-Cola");
+		opportunityHashTagSelectNSearchCheck("lost", "Douglas Healthcare");
 				
 		System.out.println(ENDLINE);
 	}
@@ -892,7 +895,7 @@ public class HashTagsTest extends BaseTest {
 		opportunityHashTagSelectNSearchCheck("needs-analysis", "Mobile Relief-Phase1");
 		
 	    //Step: select and search on 'needs-analysis' hash tag for specific Account
-		opportunityHashTagSelectNSearchCheck("needs-analysis", "Sage Software");
+		opportunityHashTagSelectNSearchCheck("needs-analysis", "Coca-Cola Company");
 				
 		System.out.println(ENDLINE);
 	}
@@ -921,7 +924,7 @@ public class HashTagsTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
 	    //Step: select and search on 'negotiation' hash tag for specific Opportunity
-		opportunityHashTagSelectNSearchCheck("negotiation", "Nova King Goode-Phase-1");
+		opportunityHashTagSelectNSearchCheck("negotiation", "Vegas Vision-Phase1");
 		
 	    //Step: select and search on 'negotiation' hash tag for specific Account
 		opportunityHashTagSelectNSearchCheck("negotiation", "GMAC Insurance");
@@ -1491,6 +1494,9 @@ public class HashTagsTest extends BaseTest {
 		String entityType = "Accounts";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Opportunities list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -1589,7 +1595,7 @@ public class HashTagsTest extends BaseTest {
 		accountHashTagSelectNSearchCheck("inactive", "");
 		
 	    //Step: select and search on 'inactive' hash tag for specific Account
-		accountHashTagSelectNSearchCheck("inactive", "Alcoa");
+		accountHashTagSelectNSearchCheck("inactive", "American Tours");
 				
 		System.out.println(ENDLINE);
 	}
@@ -1604,7 +1610,7 @@ public class HashTagsTest extends BaseTest {
 		accountHashTagSelectNSearchCheck("suspect", "");
 		
 	    //Step: select and search on 'suspect' hash tag for specific Account
-		accountHashTagSelectNSearchCheck("suspect", "Campbell");
+		accountHashTagSelectNSearchCheck("suspect", "Call Color");
 				
 		System.out.println(ENDLINE);
 	}
@@ -1619,7 +1625,7 @@ public class HashTagsTest extends BaseTest {
 		accountHashTagSelectNSearchCheck("lead", "");
 		
 	    //Step: select and search on 'lead' hash tag for specific Account
-		accountHashTagSelectNSearchCheck("lead", "Big");
+		accountHashTagSelectNSearchCheck("lead", "Alexander Leathers");
 				
 		System.out.println(ENDLINE);
 	}
@@ -1649,7 +1655,7 @@ public class HashTagsTest extends BaseTest {
 		accountHashTagSelectNSearchCheck("customer", "");
 		
 	    //Step: select and search on 'customer' hash tag for specific Account
-		accountHashTagSelectNSearchCheck("customer", "Bell");
+		accountHashTagSelectNSearchCheck("customer", "AD Foods");
 				
 		System.out.println(ENDLINE);
 	}
@@ -1664,7 +1670,7 @@ public class HashTagsTest extends BaseTest {
 		accountHashTagSelectNSearchCheck("partner", "");
 		
 	    //Step: select and search on 'partner' hash tag for specific Account
-		accountHashTagSelectNSearchCheck("partner", "Energy");
+		accountHashTagSelectNSearchCheck("partner", "Big Systems");
 				
 		System.out.println(ENDLINE);
 	}
@@ -1679,7 +1685,7 @@ public class HashTagsTest extends BaseTest {
 		accountHashTagSelectNSearchCheck("vendor", "");
 		
 	    //Step: select and search on 'vendor' hash tag for specific Account
-		accountHashTagSelectNSearchCheck("vendor", "FedEx");
+		accountHashTagSelectNSearchCheck("vendor", "Iomega");
 				
 		System.out.println(ENDLINE);
 	}
@@ -1709,7 +1715,7 @@ public class HashTagsTest extends BaseTest {
 		accountHashTagSelectNSearchCheck("competitor", "");
 		
 	    //Step: select and search on 'competitor' hash tag for specific Account
-		accountHashTagSelectNSearchCheck("competitor", "Johnson");
+		accountHashTagSelectNSearchCheck("competitor", "Mega Computers");
 				
 		System.out.println(ENDLINE);
 	}
@@ -2107,6 +2113,9 @@ public class HashTagsTest extends BaseTest {
 		String entityType = "Contacts";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
@@ -2202,7 +2211,7 @@ public class HashTagsTest extends BaseTest {
 		contactHashTagSelectNSearchCheck("not-primary", "");
 		
 	    //Step: select and search on 'not-primary' hash tag for specific Contact Name
-		contactHashTagSelectNSearchCheck("not-primary", "Blow");
+		contactHashTagSelectNSearchCheck("not-primary", "Allenson");
 				
 		System.out.println(ENDLINE);
 	}
@@ -2232,7 +2241,7 @@ public class HashTagsTest extends BaseTest {
 		contactHashTagSelectNSearchCheck("can-phone", "");
 		
 	    //Step: select and search on 'can-phone' hash tag for specific Contact Name
-		contactHashTagSelectNSearchCheck("can-phone", "Aiken");
+		contactHashTagSelectNSearchCheck("can-phone", "Aberle");
 				
 		System.out.println(ENDLINE);
 	}
@@ -2523,6 +2532,9 @@ public class HashTagsTest extends BaseTest {
 		String entityType = "Leads";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: navigate to Contacts list view...
 		commNav.clickGlobalMenuItem(entityType);
