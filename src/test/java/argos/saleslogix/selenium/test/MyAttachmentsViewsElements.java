@@ -83,15 +83,15 @@ public class MyAttachmentsViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_35']/div/div[1]/input")
+	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
 	WebElement myAttachmentsSearchTxtBox;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_35']/div/div[2]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
 	WebElement myAttachmentsSearchClearBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_35']/div/div[3]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
 	WebElement myAttachmentsSearchLookupBtn;
 	
 	@CacheLookup
@@ -99,7 +99,7 @@ public class MyAttachmentsViewsElements extends BaseTest {
 	WebElement myAttachmentsHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement myAttachmentsTagsPnl;
 				
 	//Methods

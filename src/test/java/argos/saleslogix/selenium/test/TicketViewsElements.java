@@ -26,15 +26,15 @@ public class TicketViewsElements extends BaseTest {
 
 	//List View elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_18']/div/div[1]/input")
+	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
 	WebElement ticketsSearchTxtBox;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_18']/div/div[2]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
 	WebElement ticketsSearchClearBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_18']/div/div[3]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
 	WebElement ticketsSearchLookupBtn;
 
 	@CacheLookup
@@ -177,19 +177,19 @@ public class TicketViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement ticketsHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement ticketsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
 	WebElement ticketsKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
 	WebElement ticketsKPIPnl;
 	
 	//Detail View elements

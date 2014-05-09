@@ -24,15 +24,15 @@ public class OpportunityViewsElements extends BaseTest {
 
 	//List View elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_11']/div/div[1]/input")
+	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
 	WebElement opportunitySearchTxtBox;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_11']/div/div[2]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
 	WebElement opportunitySearchClearBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_11']/div/div[3]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
 	WebElement opportunitySearchLookupBtn;
 	
 	@CacheLookup
@@ -139,11 +139,11 @@ public class OpportunityViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement opportunityHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement opportunityHashTagsPnl;
 	
 	@CacheLookup
@@ -179,11 +179,11 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityListViewNotesBoxSeeListLink;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
 	WebElement opportunityKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
 	WebElement opportunityKPIPnl;
 	
 	//Detail View elements

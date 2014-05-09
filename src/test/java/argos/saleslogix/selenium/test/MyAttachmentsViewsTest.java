@@ -18,6 +18,8 @@ import org.openqa.selenium.support.PageFactory;
  * Desc.: Test class for the My Attachments views
  */
 public class MyAttachmentsViewsTest extends BaseTest {
+
+    public String TEST_JPG_RECORD = "TestJpg";
 	
 	//Test Methods Set
 	//================
@@ -32,7 +34,7 @@ public class MyAttachmentsViewsTest extends BaseTest {
 		// Test Params:
 		String entityType = "My Attachments";
 		String expEntityPgTitle = "My Attachments";
-		String attachmentRecord = "image";
+		String attachmentRecord = TEST_JPG_RECORD;
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		

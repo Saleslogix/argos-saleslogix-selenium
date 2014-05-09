@@ -23,7 +23,9 @@ public class MobileDefectTest extends BaseTest {
 
     public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
     public String TEST_JPG_RECORD = "TestJpg";
-    public String TEST_URL_RECORD = "ibm";
+    public String TEST_URL_RECORD = "cnn";
+    public String TEST_LEAD_RECORD = "Beck, John";
+    public String TEST_PDF_RECORD = "pdf";
 	
 	//Login & Logout
 	//==============
@@ -431,7 +433,7 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String attachmentName = "pdf";
+		String attachmentName = TEST_PDF_RECORD;
 		
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -446,7 +448,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// Step: click to download and view the attachment
 		try {
-			driver.findElement(By.xpath("//*[@id='myattachment_list']//ul/li/div/div[2]/h3/span")).click();
+			driver.findElement(By.xpath("//*[@id='myattachment_list']//ul/li[1]")).click();
 		} catch (Exception e) {
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
 		};
@@ -454,7 +456,7 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that attachment is downloaded and displayed correctly
 		Thread.sleep(5000);
 		try {
-			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='viewer']")));
+			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='view_attachment']")));
 			System.out.println("Verify: non-image attachment downloaded and displayed check - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: non-image attachment downloaded and displayed check - FAILED");
@@ -470,7 +472,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// VP: confirm that attachment is still displayed correctly
 		try {
-			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='viewer']")));
+			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='view_attachment']")));
 			System.out.println("Verify: non-image attachment downloaded and displayed check - Passed");
 		} catch (Error e) {
 			System.out.println("Verify: non-image attachment downloaded and displayed check - FAILED");
@@ -1356,7 +1358,7 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test55_MobileDefect13092411()  throws Exception {				
 		String methodID = "test55_MobileDefect13092411";
 		
@@ -1390,10 +1392,8 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Meeting");
 			
 			//setup Regarding field
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).click();
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys("Dinner meeting");
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys(Keys.RETURN);
-			Thread.sleep(1000);
+            MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityEditViewRegardingFld.sendKeys("Dinner meeting");
 			
 			//keep remaining default field vals then save the activity
 			headerButton.clickHeaderButton("save");
@@ -1418,9 +1418,9 @@ public class MobileDefectTest extends BaseTest {
 		//Section 2 - schedule an activity under a Lead
 		//---------------------------------------------
 		//Test Params
-		String leadFullName1 = "Bass, Stuart";
+		String leadFullName1 = TEST_LEAD_RECORD;
 		
-		//Step: click and open the the Contact record
+		//Step: click and open the the Lead record
 		commNav.entityRecordOpenDetailView("Leads", leadFullName1);
 		try {
 			AssertJUnit.assertTrue(commNav.isPageDisplayed(leadFullName1));
@@ -1440,10 +1440,8 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Personal Activity");
 			
 			//setup Regarding field
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).click();
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys("Buy Gift");
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys(Keys.RETURN);
-			Thread.sleep(1000);
+            MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityEditViewRegardingFld.sendKeys("Buy Gift");
 			
 			//keep remaining default field vals then save the activity
 			headerButton.clickHeaderButton("save");
@@ -1510,7 +1508,7 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String attachmentName = "ibm";
+		String attachmentName = TEST_URL_RECORD;
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		// Step: click the Top-Left, Global Menu button...

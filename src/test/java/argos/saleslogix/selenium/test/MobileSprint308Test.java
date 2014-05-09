@@ -78,7 +78,7 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Schedule...");
 
             //Step: select Meeting for activity type
-            driver.findElement(By.xpath("//*[@id='activity_types_list']/ul/li[1]/div[4]")).click();
+            driver.findElement(By.xpath("//*[@id='activity_types_list']//ul/li[1]/div[4]")).click();
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
@@ -112,7 +112,7 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: search for activity created ... and re-open
             activityEditView.performMyActivitiesSearch(newActivityRegarding);
-            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']/ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
 

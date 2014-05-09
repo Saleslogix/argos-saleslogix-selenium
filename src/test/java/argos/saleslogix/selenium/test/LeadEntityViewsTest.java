@@ -330,7 +330,7 @@ public class LeadEntityViewsTest extends BaseTest {
 				leadDetailView.leadsDetailViewMoreDetailsHdr.click();
 				Thread.sleep(1000);
 			}
-			commNav.isFieldValueEmpty(viewName + ",'interests'", leadDetailView.leadsDetailViewIndustryFld);
+			commNav.isFieldValueEmpty(viewName + ",'interests'", leadDetailView.leadsDetailViewInterestsFld);
 			commNav.isFieldValueEmpty(viewName + ",'industry'", leadDetailView.leadsDetailViewIndustryFld);
 			commNav.isFieldValueEmpty(viewName + ",'sic code'", leadDetailView.leadsDetailViewSicCodeFld);
 			commNav.isFieldValueEmpty(viewName + ",'bus desc'", leadDetailView.leadsDetailViewBusDescFld);
@@ -470,9 +470,9 @@ public class LeadEntityViewsTest extends BaseTest {
 	    }
 	    
 	    // Step: search for a specific attachment item
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input")).clear();
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[1]/input")).sendKeys("Test123");
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_36']/div/div[3]/button")).click();
+	    driver.findElement(By.xpath(".//*[@selected='true']//input[@name='query']")).clear();
+	    driver.findElement(By.xpath(".//*[@selected='true']//input[@name='query']")).sendKeys("Test123");
+	    driver.findElement(By.xpath(".//*[@selected='true']//button[@class='subHeaderButton searchButton']")).click();
 	    Thread.sleep(5000);
 	    try {
 		      assertTrue(isElementPresent(By.linkText("Test123")));

@@ -24,15 +24,15 @@ public class LeadViewsElements extends BaseTest {
 
 	//List View elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[1]/input")
+	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
 	WebElement leadsSearchTxtBox;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[2]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
 	WebElement leadsSearchClearBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[3]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
 	WebElement leadsSearchLookupBtn;
 
 	@CacheLookup
@@ -179,19 +179,19 @@ public class LeadViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement leadsHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement leadsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
 	WebElement leadsKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
 	WebElement leadsKPIPnl;
 	
 	//Detail View elements
@@ -237,27 +237,27 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsDetailViewCompanyFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[2]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[3]")
 	WebElement leadsDetailViewWebFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[3]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[4]")
 	WebElement leadsDetailViewTitleFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[4]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[5]")
 	WebElement leadsDetailViewWorkPhoneFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[5]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[6]")
 	WebElement leadsDetailViewMobilePhoneFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[6]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[7]")
 	WebElement leadsDetailViewTollFreeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[7]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[8]")
 	WebElement leadsDetailViewLeadSourceFld;
 	
 	@CacheLookup

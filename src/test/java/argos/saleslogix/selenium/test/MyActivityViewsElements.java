@@ -145,27 +145,27 @@ public class MyActivityViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[1]/input")
+	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
 	WebElement myActivitiesSearchTxtBox;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[2]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
 	WebElement myActivitiesSearchClearBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[3]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
 	WebElement myActivitiesSearchLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_25']/div/div[1]/input")
+	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
 	WebElement relatedActivitiesSearchTxtBox;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_SearchWidget_25']/div/div[2]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
 	WebElement relatedActivitiesSearchClearBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_25']/div/div[3]/button")
+	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
 	WebElement relatedActivitiesSearchLookupBtn;
 	
 	@CacheLookup
@@ -173,7 +173,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement myActivitiesHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement myActivitiesTagsPnl;
 	
 	//Detail View elements
@@ -454,7 +454,7 @@ public class MyActivityViewsElements extends BaseTest {
 	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='activity_types_list']/ul/li[1]/div[4]")
+	@FindBy(xpath = "//*[@id='activity_types_list']//ul/li[1]/div[4]")
 	WebElement activityScheduleMeetingBtn;
 	
 	//Methods

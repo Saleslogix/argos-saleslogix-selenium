@@ -44,15 +44,15 @@ public class CommonNavigation {
 	WebElement gmenu_speedSearch;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")
+	@FindBy(xpath = "//*[@id='left_drawer']//input[@name='query']")
 	WebElement gmenu_speedSearchLookupFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")
+	@FindBy(xpath = "//*[@id='left_drawer']//button[@class='subHeaderButton searchButton']")
 	WebElement gmenu_speedSearchLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[2]/button")
+	@FindBy(xpath = "//*[@id='left_drawer']//button[@class='clear-button']")
 	WebElement gmenu_speedSearchLookupClearBtn;	
 	
 	@CacheLookup
@@ -118,19 +118,19 @@ public class CommonNavigation {
 	WebElement rmenu_panel;
 
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/h2[1]")
+	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement rmenu_HashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/ul[1]")
+	@FindBy(xpath = ".//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement rmenu_HashTagsSubPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/h2[3]")
 	WebElement rmenu_KPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/ul[2]")
+	@FindBy(xpath = ".//*[@id='right_drawer']//ul[@data-group='kpi']")
 	WebElement rmenu_KPISubPnl;
 	
 	//Methods
@@ -567,10 +567,10 @@ public class CommonNavigation {
 			forSpdSrch = true;
 			break;
 		case "my activities": case "activities": case "activity":
-			searchWgtIDX = "26";
+			searchWgtIDX = "27";
 			break;
 		case "notes/history": case "notes history": case "notes": case "note": case "history":
-			searchWgtIDX = "27";
+			searchWgtIDX = "28";
 			break;
 		case "accounts": case "account":
 			searchWgtIDX = "3";
@@ -579,16 +579,16 @@ public class CommonNavigation {
 			searchWgtIDX = "6";
 			break;
 		case "leads": case "lead":
-			searchWgtIDX = "16";
+			searchWgtIDX = "17";
 			break;			
 		case "opportunities": case "opportunity":
-			searchWgtIDX = "11";
+			searchWgtIDX = "12";
 			break;			
 		case "tickets": case "ticket":
-			searchWgtIDX = "18";
+			searchWgtIDX = "19";
 			break;			
 		case "my attachments": case "attachments": case "attachment":
-			searchWgtIDX = "35";
+			searchWgtIDX = "36";
 			break;	
 		//TODO: continue to expand this switch case list for additional list views
 		}
