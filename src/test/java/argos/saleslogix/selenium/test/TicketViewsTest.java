@@ -223,17 +223,9 @@ public class TicketViewsTest extends BaseTest {
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
-	    //Step: navigate to Tickets list view... and wait for page to open
+	    //Step: navigate to Tickets list view... and wait for page to open : all tickets should display by default
 		commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("Tickets");
-	
-		//Step: reveal Right Context Menu Panel and click the clear Search input field button
-		headerbutton.showRightContextMenu();
-		ticketListView.ticketsSearchClearBtn.click();
-						
-		//Step: click the Lookup button to reload the full Tickets list
-		ticketListView.ticketsSearchLookupBtn.click();
-		Thread.sleep(3000);
 		
 		//capture the initial Tickets List view info
 		String initTicketsListInfo = ticketListView.getTicketsListViewTxt();
@@ -328,14 +320,13 @@ public class TicketViewsTest extends BaseTest {
 				
 		//Step: check if the previous search results were cleared
 		String currTopTicketsListViewNumber = driver.findElement(By.xpath("//*[@id='ticket_list']/ul/li[1]/div/h3")).getText();
-		ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
-		topTicketListItemNumber = ticketListView.topTicketsListItemNumber.getText();
+
 		try {
-			AssertJUnit.assertEquals(topTicketListItemNumber, currTopTicketsListViewNumber);
-			System.out.println(methodID + ": clear previous Tickets search results action was successful");
+			AssertJUnit.assertFalse(topTicketListItemNumber.matches(currTopTicketsListViewNumber));
+			System.out.println(methodID + ": clear previous Tickets search results action PASSED");
 		} catch (Error e) {
 			verificationErrors.append(e.toString());
-			System.out.println(methodID + ": clear previous Tickets search results action failed");
+			System.out.println(methodID + ": clear previous Tickets search results action FAILED");
 		}
 		
 		System.out.println(ENDLINE);

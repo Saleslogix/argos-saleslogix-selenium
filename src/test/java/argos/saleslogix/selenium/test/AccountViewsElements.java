@@ -203,19 +203,19 @@ public class AccountViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement accountHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement accountHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement accountKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
 	WebElement accountKPIPnl;
 	
 	//Detail View elements

@@ -146,4 +146,93 @@ public class MobileSprint308Test extends BaseTest {
     }
 
 
+    @Test(enabled = true)
+    // MBL-10428 ... for default HashTag testing (Lookup control again above listview covered in MobileDefectTest - test66)
+    public void test02_MBL10428() throws Exception {
+        String methodID = "test02_MBL10428";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            commNav.clickGlobalMenuItem("My Activities");
+            MyActivityViewsElements myActivitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            String resultsMsg = "VP: My Activities default hash tag is #this-week";
+
+            String currHashTag = myActivitiesListView.myActivitiesSearchTxtBox.getAttribute("value");
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED","#this-week",currHashTag);
+            System.out.println(resultsMsg + " - PASSED");
+
+            commNav.clickGlobalMenuItem("Notes/History");
+            NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+            resultsMsg = "VP: Notes/History default hash tag is blank";
+
+            currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            System.out.println(resultsMsg + " - PASSED");
+
+            commNav.clickGlobalMenuItem("Accounts");
+            AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+            resultsMsg = "VP: Accounts default hash tag is blank";
+
+            currHashTag = accountsListView.accountsSearchTxtBox.getAttribute("value");
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            System.out.println(resultsMsg + " - PASSED");
+
+            commNav.clickGlobalMenuItem("Contacts");
+            ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+            resultsMsg = "VP: Contacts default hash tag is blank";
+
+            currHashTag = contactsListView.contactsSearchTxtBox.getAttribute("value");
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            System.out.println(resultsMsg + " - PASSED");
+
+            commNav.clickGlobalMenuItem("Leads");
+            LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+            resultsMsg = "VP: Leads default hash tag is blank";
+
+            currHashTag = leadsListView.leadsSearchTxtBox.getAttribute("value");
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            System.out.println(resultsMsg + " - PASSED");
+
+            commNav.clickGlobalMenuItem("Opportunities");
+            OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            resultsMsg = "VP: Opportunities default hash tag is blank";
+
+            currHashTag = opportunityListView.opportunitySearchTxtBox.getAttribute("value");
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            System.out.println(resultsMsg + " - PASSED");
+
+            commNav.clickGlobalMenuItem("Tickets");
+            TicketViewsElements ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
+            resultsMsg = "VP: Tickets default hash tag is blank";
+
+            currHashTag = ticketListView.ticketsSearchTxtBox.getAttribute("value");
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            System.out.println(resultsMsg + " - PASSED");
+
+            commNav.clickGlobalMenuItem("My Attachments");
+            MyAttachmentsViewsElements myAttachmentsListView = PageFactory.initElements(driver, MyAttachmentsViewsElements.class);
+            resultsMsg = "VP: My Attachments default hash tag is blank";
+
+            currHashTag = myAttachmentsListView.myAttachmentsSearchTxtBox.getAttribute("value");
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            System.out.println(resultsMsg + " - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Default hash tags not as expected " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
 }

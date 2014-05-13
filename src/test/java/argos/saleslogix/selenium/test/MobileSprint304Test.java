@@ -23,6 +23,7 @@ import org.openqa.selenium.support.PageFactory;
 public class MobileSprint304Test extends BaseTest {
 
     public String TEST_LEAD_RECORD = "Beck, John";
+    public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
 
 	public String getKPICardValue(String fullKPICardVal) {
 		
@@ -805,7 +806,7 @@ public class MobileSprint304Test extends BaseTest {
 		//Section 1: test the Account-based scenario
 	    //Step: open the Account Detail view
 	    String entityType = "Accounts";
-	    String searchItem = "Abbott Ltd.";
+	    String searchItem = TEST_ACCOUNT_RECORD;
 		commNav.entityRecordOpenDetailView(entityType, searchItem);
 		
 		//Step: capture the phone number from the Account Detail view

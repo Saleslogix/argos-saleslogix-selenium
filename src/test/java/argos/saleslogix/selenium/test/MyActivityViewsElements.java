@@ -169,11 +169,11 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement relatedActivitiesSearchLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement myActivitiesHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement myActivitiesTagsPnl;
 	
 	//Detail View elements

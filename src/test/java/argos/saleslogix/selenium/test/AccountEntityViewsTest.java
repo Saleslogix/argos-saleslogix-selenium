@@ -24,6 +24,7 @@ import org.openqa.selenium.support.PageFactory;
 public class AccountEntityViewsTest extends BaseTest {
 	
 	public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
+    public String TEST_ACCOUNTSEARCH_RECORD = "Bank of the Sun";
 	
 	//Test Methods Set
 	//================
@@ -115,8 +116,12 @@ public class AccountEntityViewsTest extends BaseTest {
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
 
-	    //Step: navigate to Accounts list view... and search for all #active records so initial data displays and there will be scrolling
-        commNav.entityListViewSearch(entityType, "#active");
+        //Step: click Top-Left button to reveal Global Menu...
+        headerbutton.showGlobalMenu();
+
+        //Step: navigate to Accounts list view... wait for page to open : all accounts should display by default
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Accounts");
 
 		//capture the initial Accounts List view info
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
@@ -191,7 +196,7 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 		// Test Params:
 		String entityType = "Accounts";
-		String entityRecord = TEST_ACCOUNT_RECORD;
+		String entityRecord = TEST_ACCOUNTSEARCH_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -214,14 +219,13 @@ public class AccountEntityViewsTest extends BaseTest {
 				
 		//Step: check if the previous search results were cleared
 		String currTopAccountsListViewName = driver.findElement(By.xpath("//*[@id='account_list']/ul/li[1]/div/h3")).getText();
-		accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
-		topAccountListItemName = accountListView.topAccountsListItemName.getText();
+
 		try {
-			AssertJUnit.assertEquals(topAccountListItemName, currTopAccountsListViewName);
-			System.out.println(methodID + ": clear previous Accounts search results action was successful");
+			AssertJUnit.assertFalse(topAccountListItemName.matches(currTopAccountsListViewName));
+			System.out.println(methodID + ": clear previous Accounts search results action PASSED");
 		} catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": clear previous Accounts search results action failed");
+			System.out.println(methodID + ": clear previous Accounts search results action FAILED");
 		}
 		
 		System.out.println(ENDLINE);

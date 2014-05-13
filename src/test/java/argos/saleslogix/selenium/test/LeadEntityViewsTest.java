@@ -22,6 +22,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LeadEntityViewsTest extends BaseTest {
 	
 	public String TEST_LEAD_RECORD = "Beck, John";
+    public String TEST_LEADSEARCH_RECORD = "Cain, Ingrid";
 	
 	//Login & Logout
 	//==============
@@ -137,12 +138,6 @@ public class LeadEntityViewsTest extends BaseTest {
 	    //Step: navigate to Leads list view... wait for page to open
 		commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("Leads");
-		
-		//Step: reveal Right Context Menu panel, clear search button and search on all records
-		headerbutton.showRightContextMenu();
-        leadsListView.leadsSearchClearBtn.click();
-        leadsListView.leadsSearchLookupBtn.click();
-        Thread.sleep(3000);
 
         //capture the initial Leads List view info
         String initLeadsListInfo = leadsListView.getLeadsListViewTxt();
@@ -216,7 +211,7 @@ public class LeadEntityViewsTest extends BaseTest {
 		
 		// Test Params:
 		String entityType = "Leads";
-		String entityRecord = TEST_LEAD_RECORD;
+		String entityRecord = TEST_LEADSEARCH_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -225,6 +220,7 @@ public class LeadEntityViewsTest extends BaseTest {
 			
 		//Step: check for matching results...
 		LeadViewsElements LeadListView = PageFactory.initElements(driver, LeadViewsElements.class);
+        String topLeadListItemName = LeadListView.topLeadsListItemName.getText();
 				
 		//Step: click the clear Search input field button
 		headerButton.showRightContextMenu();
@@ -232,19 +228,19 @@ public class LeadEntityViewsTest extends BaseTest {
 				
 		//Step: click the Lookup button to reload the full Leads list
 		LeadListView.leadsSearchLookupBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
 		try {
-			String leadsListSearchExpression = driver.findElement(By.xpath("//*[@id='lead_list_search-expression']/div")).getText();
-			AssertJUnit.assertEquals(leadsListSearchExpression, "no search applied");
+			String leadsListSearchExpression = driver.findElement(By.xpath("//*[@id='lead_list']/ul/li[1]/div/h3")).getText();
+			AssertJUnit.assertFalse(leadsListSearchExpression.matches(topLeadListItemName));
+            System.out.println(methodID + ": clear previous Leads search results action PASSED");
 		} catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": clear previous Leads search results action failed");
+			System.out.println(methodID + ": clear previous Leads search results action FAILED");
 			return;
 		}
-		
-		System.out.println(methodID + ": clear previous Leads search results action was successful");
+
 		System.out.println(ENDLINE);
 	}
 
@@ -690,8 +686,12 @@ public class LeadEntityViewsTest extends BaseTest {
 		
 		//Step: find the newly-added test Contact record
 		String strResultsMsg = "VP: recently added test Lead '" + newLeadLastName + "' was found.";
-		if (leadsListView.doSearchLead(newLeadLastName)) {
-			System.out.println(strResultsMsg + " - Passed");
+
+        String newLeadName = newLeadLastName + ", Alan";
+        WebElement entityListItem = commNav.entityListViewSearch("Lead", newLeadName);
+
+        if (entityListItem.isDisplayed()) {
+            System.out.println(strResultsMsg + " - PASSED");
 		}
 		else {
 			System.out.println(strResultsMsg + " - FAILED");

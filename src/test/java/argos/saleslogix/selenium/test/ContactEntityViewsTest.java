@@ -18,6 +18,7 @@ import org.openqa.selenium.support.PageFactory;
 public class ContactEntityViewsTest extends BaseTest {
 	
 	public String TEST_CONTACT_RECORD = "Abbott, John";
+    public String TEST_CONTACTSEARCH_RECORD = "Adi, Douglas";
 	
 	//Login & Logout
 	//==============
@@ -134,9 +135,13 @@ public class ContactEntityViewsTest extends BaseTest {
 		
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
-	
-	    //Step: navigate to Contacts list view... and search for all #primary records so initial list has data and may scroll
-        commNav.entityListViewSearch(entityType, "#primary");
+
+        //Step: click Top-Left button to reveal Global Menu...
+        headerbutton.showGlobalMenu();
+
+        //Step: navigate to Contacts list view... wait for page to open
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Contacts");
 	
 		//capture the initial Contacts List view info
 		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
@@ -206,7 +211,7 @@ public class ContactEntityViewsTest extends BaseTest {
 		
 		// Test Params:
 		String entityType = "Contacts";
-		String entityRecord = TEST_CONTACT_RECORD;
+		String entityRecord = TEST_CONTACTSEARCH_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -225,19 +230,19 @@ public class ContactEntityViewsTest extends BaseTest {
 				
 		//Step: click the Lookup button to reload the full Contacts list
 		contactsListView.contactsSearchLookupBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
 		String currTopContactsListViewName = driver.findElement(By.xpath("//*[@id='contact_list']/ul/li[1]/div/h3")).getText();
 		try {
-			AssertJUnit.assertEquals(topContactListItemName, currTopContactsListViewName);
+			AssertJUnit.assertFalse(topContactListItemName.matches(currTopContactsListViewName));
+            System.out.println(methodID + ": clear previous Contacts search results action PASSED");
 		} catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": clear previous Contacts search results action failed");
+			System.out.println(methodID + ": clear previous Contacts search results action FAILED");
 			return;
 		}
-		
-		System.out.println(methodID + ": clear previous Contacts search results action was successful");
+
 		System.out.println(ENDLINE);
 	}
 
@@ -555,8 +560,12 @@ public class ContactEntityViewsTest extends BaseTest {
 		
 		//Step: find the newly-added test Contact record
 		String strResultsMsg = "VP: recently added test Contact '" + newConLastName + "' was found.";
-		if (contactsListView.doSearchContact(newConLastName)) {
-			System.out.println(strResultsMsg + " - Passed");
+
+        String newContactName = newConLastName + ", Thomas";
+        WebElement entityListItem = commNav.entityListViewSearch("Contact", newContactName);
+
+		if (entityListItem.isDisplayed()) {
+			System.out.println(strResultsMsg + " - PASSED");
 		}
 		else {
 			System.out.println(strResultsMsg + " - FAILED");

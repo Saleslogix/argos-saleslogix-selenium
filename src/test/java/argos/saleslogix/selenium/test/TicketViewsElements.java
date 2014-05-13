@@ -175,19 +175,19 @@ public class TicketViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement ticketsHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement ticketsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement ticketsKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
 	WebElement ticketsKPIPnl;
 	
 	//Detail View elements

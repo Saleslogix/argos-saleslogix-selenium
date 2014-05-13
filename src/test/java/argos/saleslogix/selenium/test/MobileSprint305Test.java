@@ -127,7 +127,7 @@ public class MobileSprint305Test extends BaseTest {
 		//Step: find and open the activity Detail view
 		commNav.searchListView(entityView, regardingVal);
 		commNav.clickListViewItemN(entityView, 1);
-		commNav.waitForPage("Activity");
+        commNav.waitForPage("Personal Activity - Regarding: Birthday Reminder");
 		
 		//Step: complete the activity
 	    String completeActyIconXPath = "//*[@id='activity_detail']/div[2]/ul[1]";

@@ -106,7 +106,7 @@ public class HeaderButton {
 		
 		// Verify the 'Right-Context Menu' left-screen displays...
 		try {
-			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='right_drawer']/div")).isDisplayed());
+			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed());
 			System.out.println(methodID + ": Right-Context Menu was accessed successfully on header button click.");
 			return true;
 		} catch (Error e) {     

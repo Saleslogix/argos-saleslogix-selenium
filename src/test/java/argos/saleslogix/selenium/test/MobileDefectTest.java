@@ -22,6 +22,9 @@ import org.openqa.selenium.support.PageFactory;
 public class MobileDefectTest extends BaseTest {
 
     public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
+    public String TEST_JPG_RECORD = "TestJpg";
+    public String TEST_URL_RECORD = "cnn";
+    public String TEST_PDF_RECORD = "pdf";
 	
 	//Login & Logout
 	//==============
@@ -60,7 +63,7 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String attachmentName = "saleslogix";
+		String attachmentName = TEST_JPG_RECORD;
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		// Step: click the Top-Left, Global Menu button...
@@ -81,7 +84,7 @@ public class MobileDefectTest extends BaseTest {
 			Thread.sleep(3000);
 			String resultMsg = "VP: initial successful Attachment downloaded check";
 			try {
-				WebElement attachedImg = driver.findElement(By.xpath("//*[@id='attachment-image']"));
+				WebElement attachedImg = driver.findElement(By.xpath("//*[@id='imagePlaceholder']/img"));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("attachment image", attachedImg));
 				System.out.println(resultMsg + " - Passed");
 			}
@@ -105,7 +108,7 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that attachment is still displayed correctly after Global Menu display/non-display
 		String resultMsg = "VP: fix check on Attachments view on Global Menu display/non-display";
 		try {
-			WebElement attachedImg = driver.findElement(By.xpath("//*[@id='attachment-image']"));
+			WebElement attachedImg = driver.findElement(By.xpath("//*[@id='imagePlaceholder']/img"));
 			AssertJUnit.assertTrue(commNav.isWebElementPresent("attachment image", attachedImg));
 			System.out.println(" - Passed");
 		}
@@ -133,7 +136,7 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String attachmentName = "ibm";
+		String attachmentName = TEST_URL_RECORD;
 		
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -158,8 +161,8 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that URL attachment is loaded and displayed correctly
 		String resultMsg = "VP: initial URL attachment download and display check";
 		try {
-			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
-			System.out.println(resultMsg + " - Passed");
+			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='view_attachment']/div[3]/div[2]")));
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
@@ -176,7 +179,7 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that attachment is still displayed correctly
 		resultMsg = "VP: consistent URL attachment display check";
 		try {
-			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
+			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='view_attachment']/div[3]/div[2]")));
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -294,7 +297,7 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String accountName1 = "ABC Materials";
+		String accountName1 = "Equity Residential Management Corporation";
 		String strCheck1 = "Customer|";
 		
 		
@@ -427,7 +430,7 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String attachmentName = "pdf";
+		String attachmentName = TEST_PDF_RECORD;
 		
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -442,7 +445,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// Step: click to download and view the attachment
 		try {
-			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li/div/div[2]/h3/span")).click();
+			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li/div[3]/h3/span")).click();
 		} catch (Exception e) {
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
 		};
@@ -450,8 +453,8 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that attachment is downloaded and displayed correctly
 		Thread.sleep(5000);
 		try {
-			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='viewer']")));
-			System.out.println("Verify: non-image attachment downloaded and displayed check - Passed");
+			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='view_attachment']/div[3]/div[2]")));
+			System.out.println("Verify: non-image attachment downloaded and displayed check - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: non-image attachment downloaded and displayed check - FAILED");
 			
@@ -466,8 +469,8 @@ public class MobileDefectTest extends BaseTest {
 		
 		// VP: confirm that attachment is still displayed correctly
 		try {
-			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='viewer']")));
-			System.out.println("Verify: non-image attachment downloaded and displayed check - Passed");
+			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='view_attachment']/div[3]/div[2]")));
+			System.out.println("Verify: non-image attachment downloaded and displayed check - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: non-image attachment downloaded and displayed check - FAILED");
 			
@@ -1506,7 +1509,7 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 		
 		// test params
-		String attachmentName = "ibm";
+		String attachmentName = TEST_URL_RECORD;
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		// Step: click the Top-Left, Global Menu button...
@@ -1520,17 +1523,20 @@ public class MobileDefectTest extends BaseTest {
 		
 		// Step: click to download and view the attachment
 		try {
-			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li/div/div[2]/h3/span")).click();
+			driver.findElement(By.xpath("//*[@id='myattachment_list']/ul/li")).click();
 		} catch (Exception e) {
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
 		};
 		Thread.sleep(7000);
 				
 		// VP: confirm that URL attachment is loaded and displayed correctly
+        String resultMsg = "VP: URL attachment is downloaded and displayed";
 		try {
-			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
+            AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='view_attachment']/div[3]/div[2]")));
+            System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
+            System.out.println(resultMsg + " - FAILED");
 			System.out.println(methodID + "(): " + e.toString());
 		}
 				
@@ -2207,16 +2213,16 @@ public class MobileDefectTest extends BaseTest {
 		headerButton.clickHeaderButton("back");
 		commNav.waitForPage("Accounts");
 		
-		//VP: check that old Lookup control is not displayed in the Accounts List view... 	
-		String resultMsg = "VP: previous-version Lookup control is not displayed in the Accounts List view";
+		//VP: check that old Lookup control is again displayed in the Accounts List view...
+		String resultMsg = "VP: previous-version Lookup control above listview is again displayed in the Accounts List view";
 		try {
 			WebElement oldLookupFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_3']"));
-			AssertJUnit.assertFalse(oldLookupFld.isDisplayed());
-			System.out.println(resultMsg + " - Passed");
+			AssertJUnit.assertTrue(oldLookupFld.isDisplayed());
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 			
 		// End Tests

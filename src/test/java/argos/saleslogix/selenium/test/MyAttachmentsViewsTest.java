@@ -32,7 +32,7 @@ public class MyAttachmentsViewsTest extends BaseTest {
 		// Test Params:
 		String entityType = "My Attachments";
 		String expEntityPgTitle = "My Attachments";
-		String attachmentRecord = "image";
+		String attachmentRecord = "TestJpg";
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		

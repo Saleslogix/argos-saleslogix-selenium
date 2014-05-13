@@ -137,11 +137,11 @@ public class OpportunityViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement opportunityHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement opportunityHashTagsPnl;
 	
 	@CacheLookup
@@ -177,11 +177,11 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityListViewNotesBoxSeeListLink;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement opportunityKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
 	WebElement opportunityKPIPnl;
 	
 	//Detail View elements

@@ -132,19 +132,19 @@ public class NotesHistoryViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement notesHistoryHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[1]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement notesHistoryHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement notesHistoryKPIHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
 	WebElement notesHistoryKPIPnl;
 	
 	//Detail View elements

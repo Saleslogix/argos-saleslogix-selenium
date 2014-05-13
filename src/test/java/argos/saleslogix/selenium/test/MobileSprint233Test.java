@@ -225,21 +225,21 @@ public class MobileSprint233Test extends BaseTest {
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
 		
-	    //Step: navigate to Notes/History list view...
-		commNav.clickGlobalMenuItem(entityType);		
+	    //Step: navigate to Notes/History list view...search by #my-history
+		commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Notes/History");
+        commNav.rightClickContextMenuItem("my-history");
+
 		NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 		
-		//VP: confirm that current hash-tag/filter appears above the list view
-		String resultsMsg = "VP: current hash-tag/filter is displayed above the Tickets list view";
-		WebElement currHashTag = notesHistoryListView.notesHistorysListView1stHashTagFilter;
-		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("default '" + entityType + "' hash-tag/filter", currHashTag));
-			System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag.getText() + "'");
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
+		//VP: confirm that current hash-tag/filter appears above the list view in the Lookup
+		String resultsMsg = "VP: current hash-tag/filter is displayed above the Notes/History list view";
+        String currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#my-history",currHashTag);
+        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
+	    System.out.println(resultsMsg + " - PASSED");
+
 		
 		//Section 1: clear the default hash-tag/filter
 		//----------
@@ -261,20 +261,16 @@ public class MobileSprint233Test extends BaseTest {
 		notesHistoryListView.notesHistorysSearchLookupBtn.click();
 		Thread.sleep(1000);
 		
-		//VP: check that the 'no search applied' label is displayed above the list view
+		//VP: check that nothing is displayed in the Lookup above the list view
 		notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
-		resultsMsg = "VP: 'no search applied' label displayed above list view for cleared hash-tags/filters";
-		currHashTag = 	notesHistoryListView.notesHistorysListView1stHashTagFilter;
-		String expLblTxt = currHashTag.getText();
-		try {
-			AssertJUnit.assertTrue(expLblTxt.equals("no search applied"));
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 2: KPI metrics
+		resultsMsg = "VP: nothing is displayed in the Lookup above list view for cleared hash-tags/filters";
+        currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 2: KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
@@ -398,7 +394,7 @@ public class MobileSprint233Test extends BaseTest {
 	    //Step: navigate to Notes/History list view...
 		commNav.clickGlobalMenuItem(entityType);
 	
-		//Section: Tickets List view KPI metric & filters 
+		//Section: Notes/History List view KPI metric & filters
 		//--------		
 		//Step: KPI filter selection loop
 		String selectedKpiMetric = "";
@@ -408,14 +404,14 @@ public class MobileSprint233Test extends BaseTest {
 			
 			NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 			
-			//Step: un-select the KPI item
-			headerButton.showRightContextMenu();
-			commNav.rightClickContextMenuItem("Total History");
-			Thread.sleep(2000);
-			commNav.rightClickContextMenuItem("Total Duration");
-			Thread.sleep(2000);
-			headerButton.closeRightContextMenu();
-			Thread.sleep(5000);
+			//Step: un-select the KPI item ... they should already be unselected
+			//headerButton.showRightContextMenu();
+			//commNav.rightClickContextMenuItem("Total History");
+			//Thread.sleep(2000);
+			//commNav.rightClickContextMenuItem("Total Duration");
+			//Thread.sleep(2000);
+			//headerButton.closeRightContextMenu();
+			//Thread.sleep(5000);
 			
 			commNav.rightClickContextMenuItem(selectedKpiMetric);
 			
@@ -451,17 +447,15 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
 					try {
-						WebElement hTagFilter = notesHistoryListView.notesHistorysListView1stHashTagFilter;
-						AssertJUnit.assertTrue(commNav.isWebElementPresent("Hash-tag filter label", hTagFilter));
-						String selectedHTagFilterLbl = "#" + hTagFilter.getText();
-						String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
-						AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
-						System.out.println(resultsMsg + " - Passed");
-						
-						System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
+                        String selectedHTagFilterLbl = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+                        String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
+                        AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
+                        System.out.println(resultsMsg + " - PASSED");
+
+                        System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
 					}
 					catch (Error e) {
-						System.out.println(resultsMsg + " - Failed");
+						System.out.println(resultsMsg + " - FAILED");
 					}
 				}
 				catch (NoSuchElementException e) {
@@ -473,6 +467,7 @@ public class MobileSprint233Test extends BaseTest {
 			//Step: remove any current hash-tags/filters then perform an empty Lookup
 			headerButton.showRightContextMenu();
 			commNav.rightClickContextMenuItem(selectedKpiMetric);
+
 			notesHistoryListView.notesHistorysSearchTxtBox.click();
 			Thread.sleep(500);
 			notesHistoryListView.notesHistorysSearchClearBtn.click();
@@ -494,7 +489,7 @@ public class MobileSprint233Test extends BaseTest {
 
 	
 	//MBL10112 - KPI widgets need to work for list views under an entity - Accounts (no filtering by hash tags)
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test06_MBL10112_Accounts_NoFiltering() throws InterruptedException {
 		String methodID = "test06_MBL10112_Accounts_NoFiltering";
 		
@@ -514,19 +509,17 @@ public class MobileSprint233Test extends BaseTest {
 		commNav.clickGlobalMenuItem(entityType);		
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
-		//VP: confirm that current hash-tag/filter appears above the list view
+		//VP: confirm that current hash-tag/filter appears above the list view ... in 3.0.4 #my-accounts doesn't display by default
+        commNav.rightClickContextMenuItem("my-accounts");
 		String resultsMsg = "VP: current hash-tag/filter is displayed above the Tickets list view";
-		WebElement currHashTag = accountsListView.accountsListView1stHashTagFilter;
-		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("default " + entityType + " hash-tag/filter", currHashTag));
-			System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag.getText() + "'");
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 1: clear the default hash-tag/filter
+        String currHashTag = accountsListView.accountsSearchTxtBox.getAttribute("value");
+
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#my-accounts",currHashTag);
+        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 1: clear the default hash-tag/filter
 		//----------		
 		//Step: remove any current hash-tags/filters then perform a Lookup		
 		headerButton.showRightContextMenu();
@@ -536,21 +529,17 @@ public class MobileSprint233Test extends BaseTest {
 		Thread.sleep(1000);
 		accountsListView.accountsSearchLookupBtn.click();
 		Thread.sleep(1000);
-		
-		//VP: check that the 'no search applied' label is displayed above the list view
+
+        //VP: check that for an unfiltered search nothing displays in the lookup above the list view
 		accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-		resultsMsg = "VP: 'no search applied' label displayed above list view for cleared hash-tags/filters";
-		currHashTag = 	accountsListView.accountsListView1stHashTagFilter;
-		String expLblTxt = currHashTag.getText();
-		try {
-			AssertJUnit.assertTrue(expLblTxt.equals("no search applied"));
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 2: KPI metrics
+        resultsMsg = "VP: nothing is displayed in the Lookup above list view for cleared hash-tags/filters";
+        currHashTag = accountsListView.accountsSearchTxtBox.getAttribute("value");
+
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 2: KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
@@ -720,14 +709,12 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
 					try {
-						WebElement hTagFilter = accountsListView.accountsListView1stHashTagFilter;
-						AssertJUnit.assertTrue(commNav.isWebElementPresent("Hash-tag filter label", hTagFilter));
-						String selectedHTagFilterLbl = "#" + hTagFilter.getText();
-						String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
-						AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
-						System.out.println(resultsMsg + " - Passed");
-						
-						System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
+                        String selectedHTagFilterLbl = accountsListView.accountsSearchTxtBox.getAttribute("value");
+                        String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
+                        AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
+                        System.out.println(resultsMsg + " - PASSED");
+
+                        System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
 					}
 					catch (Error e) {
 						System.out.println(resultsMsg + " - Failed");
@@ -790,19 +777,17 @@ public class MobileSprint233Test extends BaseTest {
 		headerButton.closeRightContextMenu();
 		Thread.sleep(5000);
 		
-		//VP: confirm that current hash-tag/filter appears above the list view
+		//VP: confirm that current hash-tag/filter appears above the list view ... from 3.0.4 appears in the lookup
+        commNav.rightClickContextMenuItem("my-contacts");
 		String resultsMsg = "VP: current hash-tag/filter is displayed above the Tickets list view";
-		WebElement currHashTag = contactsListView.contactsListView1stHashTagFilter;
-		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("default " + entityType + " hash-tag/filter", currHashTag));
-			System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag.getText() + "'");
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 1: clear the default hash-tag/filter
+        String currHashTag = contactsListView.contactsSearchTxtBox.getAttribute("value");
+
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#my-contacts",currHashTag);
+        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 1: clear the default hash-tag/filter
 		//----------		
 		//Step: remove any current hash-tags/filters then perform a Lookup		
 		headerButton.showRightContextMenu();
@@ -812,21 +797,17 @@ public class MobileSprint233Test extends BaseTest {
 		Thread.sleep(1000);
 		contactsListView.contactsSearchLookupBtn.click();
 		Thread.sleep(1000);
-		
-		//VP: check that the 'no search applied' label is displayed above the list view
+
+        //VP: check that for an unfiltered search nothing displays in the lookup above the list view
 		contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-		resultsMsg = "VP: 'no search applied' label displayed above list view for cleared hash-tags/filters";
-		currHashTag = 	contactsListView.contactsListView1stHashTagFilter;
-		String expLblTxt = currHashTag.getText();
-		try {
-			AssertJUnit.assertTrue(expLblTxt.equals("no search applied"));
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 2: KPI metrics
+        resultsMsg = "VP: nothing is displayed in the Lookup above list view for cleared hash-tags/filters";
+
+        currHashTag = contactsListView.contactsSearchTxtBox.getAttribute("value");
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 2: KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
@@ -856,7 +837,7 @@ public class MobileSprint233Test extends BaseTest {
 		resultsMsg = "VP: KPI metric items are available in right-context menu";
 		WebElement totalContactsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Contacts']"));
 		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Revenu KPI header label", totalContactsKPI));
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Revenue KPI header label", totalContactsKPI));
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -930,7 +911,7 @@ public class MobileSprint233Test extends BaseTest {
 	
 
 	//MBL10112 - KPI widgets need to work for list views under an entity - Contacts (filtering by hash tags)
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void test09_MBL10112_Contacts_Filtering() throws InterruptedException {
 		String methodID = "test09_MBL10112_Contacts_Filtering";
 		
@@ -949,11 +930,11 @@ public class MobileSprint233Test extends BaseTest {
 		commNav.clickGlobalMenuItem(entityType);
 		
 		//Step: un-select the KPI item
-		headerButton.showRightContextMenu();
-		commNav.rightClickContextMenuItem("Total Contacts");
-		Thread.sleep(1000);
-		headerButton.closeRightContextMenu();
-		Thread.sleep(5000);
+		//headerButton.showRightContextMenu();
+		//commNav.rightClickContextMenuItem("Total Contacts");
+		//Thread.sleep(1000);
+		//headerButton.closeRightContextMenu();
+		//Thread.sleep(5000);
 			
 		//Section: Contacts List view KPI metric & filters 
 		//--------		
@@ -999,14 +980,12 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
 					try {
-						WebElement hTagFilter = contactsListView.contactsListView1stHashTagFilter;
-						AssertJUnit.assertTrue(commNav.isWebElementPresent("Hash-tag filter label", hTagFilter));
-						String selectedHTagFilterLbl = "#" + hTagFilter.getText();
-						String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
-						AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
-						System.out.println(resultsMsg + " - Passed");
-						
-						System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
+                        String selectedHTagFilterLbl = contactsListView.contactsSearchTxtBox.getAttribute("value");
+                        String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
+                        AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
+                        System.out.println(resultsMsg + " - PASSED");
+
+                        System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
 					}
 					catch (Error e) {
 						System.out.println(resultsMsg + " - Failed");
@@ -1061,19 +1040,17 @@ public class MobileSprint233Test extends BaseTest {
 		commNav.clickGlobalMenuItem(entityType);		
 		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 		
-		//VP: confirm that current hash-tag/filter appears above the list view
+		//VP: confirm that current hash-tag/filter appears above the list view ... from 3.0.4 #my-leads doesn't display by default
+        commNav.rightClickContextMenuItem("my-leads");
 		String resultsMsg = "VP: current hash-tag/filter is displayed above the Tickets list view";
-		WebElement currHashTag = leadsListView.leadsListView1stHashTagFilter;
-		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("default " + entityType + " hash-tag/filter", currHashTag));
-			System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag.getText() + "'");
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 1: clear the default hash-tag/filter
+        String currHashTag = leadsListView.leadsSearchTxtBox.getAttribute("value");
+
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#my-leads",currHashTag);
+        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 1: clear the default hash-tag/filter
 		//----------		
 		//Step: remove any current hash-tags/filters then perform a Lookup		
 		headerButton.showRightContextMenu();
@@ -1083,21 +1060,17 @@ public class MobileSprint233Test extends BaseTest {
 		Thread.sleep(1000);
 		leadsListView.leadsSearchLookupBtn.click();
 		Thread.sleep(1000);
-		
-		//VP: check that the 'no search applied' label is displayed above the list view
+
+        //VP: check that for an unfiltered search nothing displays in the lookup above the list view
 		leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
-		resultsMsg = "VP: 'no search applied' label displayed above list view for cleared hash-tags/filters";
-		currHashTag = 	leadsListView.leadsListView1stHashTagFilter;
-		String expLblTxt = currHashTag.getText();
-		try {
-			AssertJUnit.assertTrue(expLblTxt.equals("no search applied"));
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 2: KPI metrics
+        resultsMsg = "VP: lookup displays nothing for cleared hash-tags/filters";
+
+        currHashTag = leadsListView.leadsSearchTxtBox.getAttribute("value");
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 2: KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
@@ -1262,14 +1235,12 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
 					try {
-						WebElement hTagFilter = leadsListView.leadsListView1stHashTagFilter;
-						AssertJUnit.assertTrue(commNav.isWebElementPresent("Hash-tag filter label", hTagFilter));
-						String selectedHTagFilterLbl = "#" + hTagFilter.getText();
-						String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
-						AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
-						System.out.println(resultsMsg + " - Passed");
-						
-						System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
+                        String selectedHTagFilterLbl = leadsListView.leadsSearchTxtBox.getAttribute("value");
+                        String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
+                        AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
+                        System.out.println(resultsMsg + " - PASSED");
+
+                        System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
 					}
 					catch (Error e) {
 						System.out.println(resultsMsg + " - Failed");
@@ -1327,18 +1298,16 @@ public class MobileSprint233Test extends BaseTest {
 		OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
 		//VP: confirm that current hash-tag/filter appears above the list view
+        commNav.rightClickContextMenuItem("my-opportunities");
 		String resultsMsg = "VP: current hash-tag/filter is displayed above the Opportunities list view";
-		WebElement currHashTag = opportunitiesListView.opportunityListView1stHashTagFilter;
-		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("default Leads hash-tag/filter", currHashTag));
-			System.out.println("Current Leads hash-tags/filter: '" + currHashTag.getText() + "'");
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 1: clear the default hash-tag/filter
+        String currHashTag = opportunitiesListView.opportunitySearchTxtBox.getAttribute("value");
+
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#my-opportunities",currHashTag);
+        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 1: clear the default hash-tag/filter
 		//----------		
 		//Step: remove any current hash-tags/filters then perform a Lookup		
 		headerButton.showRightContextMenu();
@@ -1348,21 +1317,17 @@ public class MobileSprint233Test extends BaseTest {
 		Thread.sleep(1000);
 		opportunitiesListView.opportunitySearchLookupBtn.click();
 		Thread.sleep(1000);
-		
-		//VP: check that the 'no search applied' label is displayed above the list view
+
+        //VP: check that for an unfiltered search nothing displays in the lookup above the list view
 		opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-		resultsMsg = "VP: 'no search applied' label displayed above list view for cleared hash-tags/filters";
-		currHashTag = 		opportunitiesListView.opportunityListView1stHashTagFilter;
-		String expLblTxt = currHashTag.getText();
-		try {
-			AssertJUnit.assertTrue(expLblTxt.equals("no search applied"));
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 2: KPI metrics
+        resultsMsg = "VP: lookup displays nothing for cleared hash-tags/filters";
+        currHashTag = opportunitiesListView.opportunitySearchTxtBox.getAttribute("value");
+
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 2: KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
@@ -1533,14 +1498,12 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
 					try {
-						WebElement hTagFilter = opportunitiesListView.opportunityListView1stHashTagFilter;
-						AssertJUnit.assertTrue(commNav.isWebElementPresent("Hash-tag filter label", hTagFilter));
-						String selectedHTagFilterLbl = "#" + hTagFilter.getText();
-						String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
-						AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
-						System.out.println(resultsMsg + " - Passed");
-						
-						System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
+                        String selectedHTagFilterLbl = opportunitiesListView.opportunitySearchTxtBox.getAttribute("value");
+                        String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
+                        AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
+                        System.out.println(resultsMsg + " - PASSED");
+
+                        System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
 					}
 					catch (Error e) {
 						System.out.println(resultsMsg + " - Failed");
@@ -1596,19 +1559,17 @@ public class MobileSprint233Test extends BaseTest {
 		commNav.clickGlobalMenuItem(entityType);		
 		TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 		
-		//VP: confirm that current hash-tag/filter appears above the list view
+		//VP: confirm that current hash-tag/filter appears above the list view ... from 3.0.4 #assigned-to-me doesn't display by default
+        commNav.rightClickContextMenuItem("assigned-to-me");
 		String resultsMsg = "VP: current hash-tag/filter is displayed above the Tickets list view";
-		WebElement currHashTag = ticketsListView.ticketsListView1stHashTagFilter;
-		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("default Leads hash-tag/filter", currHashTag));
-			System.out.println("Current Leads hash-tags/filter: '" + currHashTag.getText() + "'");
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 1: clear the default hash-tag/filter
+        String currHashTag = ticketsListView.ticketsSearchTxtBox.getAttribute("value");
+
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#assigned-to-me",currHashTag);
+        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 1: clear the default hash-tag/filter
 		//----------		
 		//Step: remove any current hash-tags/filters then perform a Lookup		
 		headerButton.showRightContextMenu();
@@ -1618,21 +1579,17 @@ public class MobileSprint233Test extends BaseTest {
 		Thread.sleep(1000);
 		ticketsListView.ticketsSearchLookupBtn.click();
 		Thread.sleep(1000);
-		
-		//VP: check that the 'no search applied' label is displayed above the list view
+
+        //VP: check that for an unfiltered search nothing displays in the lookup above the list view
 		ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
-		resultsMsg = "VP: 'no search applied' label displayed above list view for cleared hash-tags/filters";
-		currHashTag = 		ticketsListView.ticketsListView1stHashTagFilter;
-		String expLblTxt = currHashTag.getText();
-		try {
-			AssertJUnit.assertTrue(expLblTxt.equals("no search applied"));
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Section 2: KPI metrics
+        resultsMsg = "VP: lookup displays nothing for cleared hash-tags/filters";
+        currHashTag = ticketsListView.ticketsSearchTxtBox.getAttribute("value");
+
+        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+        System.out.println(resultsMsg + " - PASSED");
+
+
+        //Section 2: KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
@@ -1800,14 +1757,12 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
 					try {
-						WebElement hTagFilter = ticketsListView.ticketsListView1stHashTagFilter;
-						AssertJUnit.assertTrue(commNav.isWebElementPresent("Hash-tag filter label", hTagFilter));
-						String selectedHTagFilterLbl = "#" + hTagFilter.getText();
-						String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
-						AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
-						System.out.println(resultsMsg + " - Passed");
-						
-						System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
+                        String selectedHTagFilterLbl = ticketsListView.ticketsSearchTxtBox.getAttribute("value");
+                        String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
+                        AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
+                        System.out.println(resultsMsg + " - PASSED");
+
+                        System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
 					}
 					catch (Error e) {
 						System.out.println(resultsMsg + " - Failed");

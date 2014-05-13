@@ -95,11 +95,11 @@ public class MyAttachmentsViewsElements extends BaseTest {
 	WebElement myAttachmentsSearchLookupBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/h2")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2")
 	WebElement myAttachmentsHashTagsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[4]/ul")
+	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement myAttachmentsTagsPnl;
 				
 	//Methods

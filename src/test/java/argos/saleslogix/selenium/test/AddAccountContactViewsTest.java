@@ -79,8 +79,12 @@ public class AddAccountContactViewsTest extends BaseTest {
 		//Step: find the newly-added test Contact record
 		ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 		strResultsMsg = "VP: recently added test Contact '" + newConLastName + "' was found.";
-		if (contactsListView.doSearchContact(newConLastName)) {
-			System.out.println(strResultsMsg + " - Passed");
+
+        String newContactName = newConLastName + ", A.";
+        WebElement entityListItem = commNav.entityListViewSearch("Contact", newContactName);
+
+        if (entityListItem.isDisplayed()) {
+            System.out.println(strResultsMsg + " - PASSED");
 		}
 		else {
 			System.out.println(strResultsMsg + " - FAILED");

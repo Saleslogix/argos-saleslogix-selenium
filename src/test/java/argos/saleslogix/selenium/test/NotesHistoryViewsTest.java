@@ -23,6 +23,7 @@ import org.openqa.selenium.support.PageFactory;
 public class NotesHistoryViewsTest extends BaseTest {
 	
 	public String TEST_NOTE_RECORD = "Research the prospect";
+    public String TEST_NOTESEARCH_RECORD = "Lead Conversion Notes";
 	
 	//Test Methods Set
 	//================
@@ -137,15 +138,10 @@ public class NotesHistoryViewsTest extends BaseTest {
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
-	    //Step: navigate to Notes/History list view...
+	    //Step: navigate to Notes/History list view... should display all notes/history items by default
 		commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("Notes/History");
 
-        //Step: reveal Right Context Menu panel
-        headerbutton.showRightContextMenu();
-        noteshistoryListView.notesHistorysSearchClearBtn.click();
-        noteshistoryListView.notesHistorysSearchLookupBtn.click();
-        Thread.sleep(3000);
 
 		//capture the initial Notes/History List view info
 		String initListInfo = noteshistoryListView.getNotesHistoryListViewTxt();
@@ -214,7 +210,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 		
 		// Test Params:
 		String entityType = "Notes/History";
-		String entityRecord = TEST_NOTE_RECORD;
+		String entityRecord = TEST_NOTESEARCH_RECORD;
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
@@ -233,19 +229,20 @@ public class NotesHistoryViewsTest extends BaseTest {
 				
 		//Step: click the Lookup button to reload the full Notes/History list
 		noteshistoryListView.notesHistorysSearchLookupBtn.click();
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
 		String currTopNotesHistListViewName = driver.findElement(By.xpath("//*[@id='history_list']/ul/li[1]/div/h3")).getText();
+
 		try {
-			AssertJUnit.assertEquals(topNotesHistListItemName, currTopNotesHistListViewName);
+			AssertJUnit.assertFalse(topNotesHistListItemName.matches(currTopNotesHistListViewName));
+            System.out.println(methodID + ": clear previous Notes/History search results action PASSED");
 		} catch (Error e) {
 			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": clear previous Notes/History search results action failed");
-			return;
+			System.out.println(methodID + ": clear previous Notes/History search results action FAILED");
 		}
 		
-		System.out.println(methodID + ": clear previous Notes/History search results action was successful");
+
 		System.out.println(ENDLINE);
 	}
 	
@@ -585,8 +582,10 @@ public class NotesHistoryViewsTest extends BaseTest {
 		
 		//Step: find the newly-added test Note record
 		String strResultsMsg = "VP: recently added test Note '" + newNoteName + "' was found.";
-		if (notesHistoryListView.doSearchNote(strRegardingVal)) {
-			System.out.println(strResultsMsg + " - Passed");
+        WebElement entityListItem = commNav.entityListViewSearch("Notes/History", strRegardingVal);
+
+        if (entityListItem.isDisplayed()) {
+            System.out.println(strResultsMsg + " - PASSED");
 		}
 		else {
 			System.out.println(strResultsMsg + " - FAILED");
