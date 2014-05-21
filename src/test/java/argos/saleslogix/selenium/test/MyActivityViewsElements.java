@@ -456,6 +456,26 @@ public class MyActivityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_types_list']/ul/li[1]/div[4]")
 	WebElement activityScheduleMeetingBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_types_list']/ul/li[3]/div[4]")
+    WebElement activitySchedulePhoneCallBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_types_list']/ul/li[4]/div[4]")
+    WebElement activityScheduleToDoBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='select_list']//li[@data-descriptor='Daily']")
+    WebElement activityRecurringDailyFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='select_list']//li[@data-descriptor='Weekly on Sunday']")
+    WebElement activityRecurringWeeklyFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//div/input[@name='RecurIterations']")
+    WebElement activityRecurrenceOccurencesFld;
 	
 	//Methods
 	//=======
