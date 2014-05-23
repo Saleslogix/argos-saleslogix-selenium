@@ -58,7 +58,7 @@ public class AccountViewsElements extends BaseTest {
 	WebElement relatedAccountsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[8]/div[2]/div[1]/div/button")
+	@FindBy(xpath = "//div[8]/div[2]/div[2]/div/button")
 	WebElement accountsListView1stKPICard;
 	
 	@CacheLookup

@@ -131,7 +131,7 @@ public class MobileSprint305Test extends BaseTest {
 		commNav.waitForPage("Personal Activity - Regarding: Birthday Reminder");
 		
 		//Step: complete the activity
-	    String completeActyIconXPath = "//*[@id='activity_detail']/div[2]/ul[1]";
+	    String completeActyIconXPath = "//*[@id='activity_detail']/div[2]/ul[1]/li/a";
 	    driver.findElement(By.xpath(completeActyIconXPath)).click();
 	    commNav.waitForPage("Complete Activity");
 		headerButton.clickHeaderButton("save");

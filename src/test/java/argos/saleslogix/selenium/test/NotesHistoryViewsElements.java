@@ -40,7 +40,7 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistorysListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[9]/div[2]/div[1]/div/button")
+	@FindBy(xpath = "//div[9]/div[2]/div[2]/div/button")
 	WebElement notesHistorysListView1stKPICard;
 	
 	@CacheLookup

@@ -44,7 +44,7 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement topOpportunityListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[5]/div[2]/div[1]/div/button")
+	@FindBy(xpath = "//div[5]/div[2]/div[2]/div/button")
 	WebElement opportunityListView1stKPICard;
 	
 	@CacheLookup

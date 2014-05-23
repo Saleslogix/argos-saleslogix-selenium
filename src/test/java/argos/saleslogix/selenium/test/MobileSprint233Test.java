@@ -319,7 +319,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[1]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -594,7 +594,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[1]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -856,7 +856,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[1]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -1117,7 +1117,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[1]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -1374,7 +1374,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[1]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -1468,7 +1468,7 @@ public class MobileSprint233Test extends BaseTest {
 				commNav.rightClickContextMenuItem(hSelectedFilter);
 				Thread.sleep(5000);		
 				String resultsMsg = "VP: " + selectedKpiMetric + " KPI metric card is displayed above the list view";
-				String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[1]/div/button";
+				String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
 				try {
 					//WebElement selectedKPICard = driver.findElement(By.xpath(kpiCardXpath));
 					WebElement selectedKPICard = opportunitiesListView.opportunityListView1stKPICard; 
@@ -1632,7 +1632,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[1]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));

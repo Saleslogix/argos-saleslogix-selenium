@@ -50,7 +50,7 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[4]/div[2]/div[1]/div/button")
+	@FindBy(xpath = "//div[4]/div[2]/div[2]/div/button")
 	WebElement ticketsListView1stKPICard;
 	
 	@CacheLookup

@@ -88,7 +88,7 @@ public class MobileDefectTest extends BaseTest {
 				//WebElement attachedImg = driver.findElement(By.xpath("//*[@id='attachment-image']"));
                 WebElement attachedImg = driver.findElement(By.xpath("//*[@id='imagePlaceholder']/img"));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("attachment image", attachedImg));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 			}
 			catch (Exception e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -113,7 +113,7 @@ public class MobileDefectTest extends BaseTest {
 			//WebElement attachedImg = driver.findElement(By.xpath("//*[@id='attachment-image']"));
             WebElement attachedImg = driver.findElement(By.xpath("//*[@id='imagePlaceholder']/img"));
 			AssertJUnit.assertTrue(commNav.isWebElementPresent("attachment image", attachedImg));
-			System.out.println(" - Passed");
+			System.out.println(" - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
@@ -165,7 +165,7 @@ public class MobileDefectTest extends BaseTest {
 		String resultMsg = "VP: initial URL attachment download and display check";
 		try {
 			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
@@ -183,7 +183,7 @@ public class MobileDefectTest extends BaseTest {
 		resultMsg = "VP: consistent URL attachment display check";
 		try {
 			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='attachment-Iframe']")));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
@@ -210,8 +210,8 @@ public class MobileDefectTest extends BaseTest {
 		// test params
 		String strCheck1 = "P: null";
 		String strCheck2 = "F: null";
-		String accountName1 = "~Doctor List";
-		String accountName2 = "Acm";	//sub-string
+		String accountName1 = "Zaner Products";      // account with no mainphone or fax
+		String accountName2 = "World Electrical";	 // account with no mainphone or fax
 		
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -225,7 +225,7 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that "P: null" is not present in the Accounts, List View		
 		try {
 			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck1 +"[\\s\\S]*$"));
-			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - Passed");
+			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - FAILED");
 			verificationErrors.append(methodID + "(): " + e.toString());
@@ -234,20 +234,20 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that "F: null" is not present in the Accounts, List View		
 		try {
 			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck2 +"[\\s\\S]*$"));
-			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - Passed");
+			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - FAILED");
 			verificationErrors.append(methodID + "(): " + e.toString());
 		}
 	
-		// Section 2: check Accounts, List View for "~Doctors List" account record
+		// Section 2: check Accounts, List View for "Zaner Products" account record
 		// Step: perform search for Account record
 		commNav.searchListView("account", accountName1);
 		
 		// VP: confirm that "P: null" is not present in the Accounts, List View		
 		try {
 			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck1 +"[\\s\\S]*$"));
-			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - Passed");
+			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - FAILED");
 			verificationErrors.append(methodID + "(): " + e.toString());
@@ -256,20 +256,20 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that "F: null" is not present in the Accounts, List View		
 		try {
 			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck2 +"[\\s\\S]*$"));
-			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - Passed");
+			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - FAILED");
 			verificationErrors.append(methodID + "(): " + e.toString());
 		}		
 	
-		// Section 3: check Accounts, List View for "Acmaoe Mfg" account record
+		// Section 3: check Accounts, List View for "World Electrical" account record
 		// Step: perform search for Account record
 		commNav.searchListView("account", accountName2);
 		
 		// VP: confirm that "P: null" is not present in the Accounts, List View		
 		try {
 			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck1 +"[\\s\\S]*$"));
-			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - Passed");
+			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - FAILED");
 			verificationErrors.append(methodID + "(): " + e.toString());
@@ -278,7 +278,7 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that "F: null" is not present in the Accounts, List View		
 		try {
 			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck2 +"[\\s\\S]*$"));
-			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - Passed");
+			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck2 + "' fix check on Accounts, List View - FAILED");
 			verificationErrors.append(methodID + "(): " + e.toString());
@@ -298,6 +298,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
 		// test params
 		String accountName1 = "Equity Residential Management Corporation";
@@ -315,13 +316,10 @@ public class MobileDefectTest extends BaseTest {
 		commNav.searchListView("account", accountName1);
 		
 		// VP: confirm that "Customer|" is not present in the Accounts, List View		
-		try {
-			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck1 +"[\\s\\S]*$"));
-			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - Passed");
-		} catch (Error e) {
-			System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - FAILED");
-			verificationErrors.append(methodID + "(): " + e.toString());
-		}
+        String actualAccountType = accountListView.topAccountsListItemLine3.getText();
+        System.out.println("AccountType displays as - " + actualAccountType + " ... should not be Customer|");
+        AssertJUnit.assertNotSame("Verify: '" + strCheck1 + "' fix check on Accounts, List View - FAILED", strCheck1, actualAccountType);
+        System.out.println("Verify: '" + strCheck1 + "' fix check on Accounts, List View - PASSED");
 		
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
@@ -353,7 +351,7 @@ public class MobileDefectTest extends BaseTest {
 		// VP: check for 'records remaining' label being displayed
 		try {
 			AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck1 +"[\\s\\S]*$"));
-			System.out.println("Verify: '" + strCheck1 + "' check on SpeedSearch, List View - Passed");
+			System.out.println("Verify: '" + strCheck1 + "' check on SpeedSearch, List View - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck1 + "' check on SpeedSearch, List View - FAILED");
 			verificationErrors.append(methodID + "(): " + e.toString());
@@ -371,7 +369,7 @@ public class MobileDefectTest extends BaseTest {
 			// VP: check for any 'no records' results being displayed
 			try {
 				AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck2 +"[\\s\\S]*$"));
-				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - Passed");
+				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - PASSED");
 			} catch (Error e) {
 				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - FAILED");
 				verificationErrors.append(methodID + "(): " + e.toString());
@@ -407,7 +405,7 @@ public class MobileDefectTest extends BaseTest {
 			// VP: check for any 'no records' results being displayed
 			try {
 				AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck2 +"[\\s\\S]*$"));
-				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - Passed");
+				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - PASSED");
 			} catch (Error e) {
 				System.out.println("Verify: '" + strCheck2 + "' fix check on SpeedSearch, List View - FAILED");
 				verificationErrors.append(methodID + "(): " + e.toString());
@@ -457,7 +455,7 @@ public class MobileDefectTest extends BaseTest {
 		Thread.sleep(5000);
 		try {
 			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='view_attachment']")));
-			System.out.println("Verify: non-image attachment downloaded and displayed check - Passed");
+			System.out.println("Verify: non-image attachment downloaded and displayed check - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: non-image attachment downloaded and displayed check - FAILED");
 			
@@ -473,7 +471,7 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that attachment is still displayed correctly
 		try {
 			AssertJUnit.assertTrue(isElementPresent(By.xpath("//*[@id='view_attachment']")));
-			System.out.println("Verify: non-image attachment downloaded and displayed check - Passed");
+			System.out.println("Verify: non-image attachment downloaded and displayed check - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: non-image attachment downloaded and displayed check - FAILED");
 			
@@ -512,7 +510,7 @@ public class MobileDefectTest extends BaseTest {
 		// VP: confirm that "Ownmer|" is not present in the Leads, List View		
 		try {
 			AssertJUnit.assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ strCheck +"[\\s\\S]*$"));
-			System.out.println("Verify: '" + strCheck + "' fix check on Leads, List View - Passed");
+			System.out.println("Verify: '" + strCheck + "' fix check on Leads, List View - PASSED");
 		} catch (Error e) {
 			System.out.println("Verify: '" + strCheck + "' fix check on Leads, List View - FAILED");
 			verificationErrors.append(methodID + "(): " + e.toString());
@@ -536,7 +534,7 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE); 
 
 		//Test Params
-		String leadRecord = "Aaron, John";
+		String leadRecord = "Beck, John";
 		
 		if (browsername.toLowerCase().equals("cr")) {
 				
@@ -607,11 +605,11 @@ public class MobileDefectTest extends BaseTest {
 			
 			    // Step: perform search of Attachment added from associated Contact detail view...
 			    headerButton.showRightContextMenu();
-			    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_38']/div/div[1]/input")).clear();
+			    driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).clear();
 			    Thread.sleep(1000);
-			    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_38']/div/div[1]/input")).sendKeys(newfilename);
+			    driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).sendKeys(newfilename);
 			    Thread.sleep(1000);
-			    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_38']/div/div[3]/button")).click();
+			    driver.findElement(By.xpath("//*[@selected='true']//button[@class='subHeaderButton searchButton']")).click();
 			    Thread.sleep(3000);
 			    
 			    // VP: verify that the Attachment item is found
@@ -666,7 +664,7 @@ public class MobileDefectTest extends BaseTest {
 		Thread.sleep(3000);
 		try {
 			AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ contactCheck +"[\\s\\S]*$"));
-			System.out.println("Step: '" + contactCheck + "' check on Contacts, List View - Passed");
+			System.out.println("Step: '" + contactCheck + "' check on Contacts, List View - PASSED");
 			
 			//Step: open the Contact record's Detail View...
 			driver.findElement(By.xpath("//*[@id='contact_list']/descendant::*[text() = '" + contactCheck + "']")).click();
@@ -726,7 +724,7 @@ public class MobileDefectTest extends BaseTest {
 		    //VP: check the modified Cuisine field value
 		    try {
 		    	  AssertJUnit.assertEquals(cuisineSel1, driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/input")).getAttribute("value"));
-		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + "' - Passed");
+		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + "' - PASSED");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + "' - FAILED");
 		    	  verificationErrors.append(methodID + "(): " + e.toString());
@@ -753,7 +751,7 @@ public class MobileDefectTest extends BaseTest {
 		    //VP: check the final modified Cuisine field value
 		    try {
 		    	  AssertJUnit.assertEquals(cuisineSel1 + ", " + cuisineSel2, driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/input")).getAttribute("value"));
-		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + ", " + cuisineSel2 + "' - Passed");
+		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + ", " + cuisineSel2 + "' - PASSED");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + ", " + cuisineSel2 + "' - FAILED");
 		    	  verificationErrors.append(methodID + "(): " + e.toString());
@@ -796,20 +794,10 @@ public class MobileDefectTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		// Step: click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
-	
-		// Step: click the Contacts link
-		commNav.clickGlobalMenuItem(entityType);
-	
-		// Step: perform search for Contact record
-		commNav.searchListView("contact", contactName);
-		Thread.sleep(3000);
+
+
 		try {
-			AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*"+ contactName +"[\\s\\S]*$"));
-			System.out.println("Step: '" + contactName + "' check on Contacts, List View - Passed");
-			
+
 			//Step: open the Contact record's Detail View...			
 			commNav.entityRecordOpenDetailView(entityType, contactName);
 			
@@ -832,8 +820,8 @@ public class MobileDefectTest extends BaseTest {
 			activityEditView.activityEditViewRegardingFld.sendKeys(regardingVal);		    
 		    //VP: check the modified Regarding field val...
 		    try {
-		    	  AssertJUnit.assertEquals(actType, activityEditView.activityEditViewRegardingFld.getAttribute("value"));
-		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - Passed");
+		    	  AssertJUnit.assertEquals(regardingVal, activityEditView.activityEditViewRegardingFld.getAttribute("value"));
+		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - PASSED");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - FAILED");
 		    	  verificationErrors.append(methodID + "(): " + e.toString());
@@ -854,7 +842,7 @@ public class MobileDefectTest extends BaseTest {
 			String newStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
 		    try {
 		    	  AssertJUnit.assertNotSame(oldStartTime, newStartTime);
-		    	  System.out.println("VP: Start Time field value set to '" + newStartTime + "' - Passed");
+		    	  System.out.println("VP: Start Time field value set to '" + newStartTime + "' - PASSED");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Regarding field value set to '" + newStartTime + "' - FAILED");
 		    	  verificationErrors.append(methodID + "(): " + e.toString());
@@ -867,7 +855,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage(actType);
 		    try {
 		    	  AssertJUnit.assertEquals(repeatVal, activityEditView.activityEditViewRepeatsFld.getAttribute("value"));
-		    	  System.out.println("VP: Repeats field value set to '" + repeatVal + "' - Passed");
+		    	  System.out.println("VP: Repeats field value set to '" + repeatVal + "' - PASSED");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Repeats field value set to '" + repeatVal + "' - FAILED");
 		    	  verificationErrors.append(methodID + "(): " + e.toString());
@@ -933,7 +921,7 @@ public class MobileDefectTest extends BaseTest {
 			    commNav.waitForPage("Contact Attachments");
 			    try {
 			    	AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
-			    	System.out.println("VP: the '" + newfilename + "' attachmment upload check - Passed");
+			    	System.out.println("VP: the '" + newfilename + "' attachmment upload check - PASSED");
 			    } 
 			    catch (Error e) {
 			    	System.out.println("VP: the '" + newfilename + "' attachmment upload check - FAILED");
@@ -977,8 +965,8 @@ public class MobileDefectTest extends BaseTest {
 	
 		//Test Params:
 		String entityType = "Leads";
-		String leadRecord1 = "Abell, Abbie";
-		String leadRecord2 = "Achew, Pete";
+		String leadRecord1 = "Anderson, Chuck";
+		String leadRecord2 = "Borbely, Mary";
 		String uploadFilePath = "C:\\uploadtest.txt";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -1147,11 +1135,11 @@ public class MobileDefectTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for the 1st-Lead record...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[1]/input")).clear();
+	    driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).clear();
 	    Thread.sleep(500);
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[1]/input")).sendKeys("Ballard");
+	    driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).sendKeys("Ballard");
 	    Thread.sleep(1000);
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[3]/button")).click();
+	    driver.findElement(By.xpath("//*[@selected='true']//button[@class='subHeaderButton searchButton']")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { if (isElementPresent(By.xpath("//*[@id='lead_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -1338,7 +1326,7 @@ public class MobileDefectTest extends BaseTest {
 			try {
 				//TODO: re-factor the following to use CalendarViewsElements def.
 				AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='calendar_daylist']/div[6]/button")).isDisplayed());
-				System.out.println(resultsMsg + "Passed");
+				System.out.println(resultsMsg + "PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1403,7 +1391,7 @@ public class MobileDefectTest extends BaseTest {
 			String resultMsg = "VP: Contact's scheduled activity listed under the Contact's Activities view";
 			try {
 				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("Dinner meeting"));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1451,7 +1439,7 @@ public class MobileDefectTest extends BaseTest {
 			String resultMsg = "VP: Lead's scheduled activity listed under the Lead's Activities view";
 			try {
 				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("Buy Gift"));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1480,7 +1468,7 @@ public class MobileDefectTest extends BaseTest {
 			String resultMsg = "VP: Lead's activity is NOT listed under the Contact record";
 			try {
 				AssertJUnit.assertTrue(commNav.isTextNotPresentOnPage("Buy Gift"));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1611,7 +1599,7 @@ public class MobileDefectTest extends BaseTest {
 			String resultMsg = "VP: Contact's scheduled activity listed under the Contact's Activities view";
 			try {
 				AssertJUnit.assertTrue(commNav.isTextPresentOnPage("Training"));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1638,7 +1626,7 @@ public class MobileDefectTest extends BaseTest {
 			String activityDescListTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
 			try {
 				AssertJUnit.assertFalse(activityDescListTxt.equals(activityDescListInitTxt));
-				System.out.println(resultsMsg + "- Passed");
+				System.out.println(resultsMsg + "- PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1655,7 +1643,7 @@ public class MobileDefectTest extends BaseTest {
 			String activityCatListTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
 			try {
 				AssertJUnit.assertFalse(activityCatListTxt.equals(activityCatListInitTxt));
-				System.out.println(resultsMsg + "- Passed");
+				System.out.println(resultsMsg + "- PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1710,7 +1698,7 @@ public class MobileDefectTest extends BaseTest {
 			String resultMsg = "VP: Default 'public access' field value set to '1-Customer'";
 			try {
 				AssertJUnit.assertTrue(publicAccessFldVal.matches(expectedPublicAccessFldVal));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -1752,7 +1740,7 @@ public class MobileDefectTest extends BaseTest {
 			resultMsg = "VP: Scheduled Ticket Activity is listed under the Ticket Activities view";
 			try {
 				AssertJUnit.assertTrue(commNav.isTextPresentOnPage(commentsTxt));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 				
 				//re-open the Ticket Activity
 				driver.findElement(By.xpath("//*[@id='ticketactivity_related']/descendant::*[text() = '" + ticketRecord + "']")).click();
@@ -1763,7 +1751,7 @@ public class MobileDefectTest extends BaseTest {
 				resultMsg = "VP: Ticket Activity, Public Access field value check";
 				try {
 					AssertJUnit.assertTrue(actualPublicAccessFldVal.matches(expectedPublicAccessFldVal));
-					System.out.println(resultMsg + " - Passed");
+					System.out.println(resultMsg + " - PASSED");
 				}
 				catch (Error e) {
 					System.out.println(methodID + "(): " + e.toString());
@@ -1853,7 +1841,7 @@ public class MobileDefectTest extends BaseTest {
 			String resultMsg = "VP: Scheduled Ticket Activity is listed under the Ticket Activities view";
 			try {
 				AssertJUnit.assertTrue(commNav.isTextPresentOnPage(commentsTxt));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 				
 				//re-open the Ticket Activity
 				driver.findElement(By.xpath("//*[@id='ticketactivity_related']/descendant::*[text() = '" + ticketRecord + "']")).click();
@@ -1864,7 +1852,7 @@ public class MobileDefectTest extends BaseTest {
 				resultMsg = "VP: Ticket Activity, Public Access field non-null value check";
 				try {
 					AssertJUnit.assertFalse(actualTypeFldVal.matches("null"));
-					System.out.println(resultMsg + " - Passed");
+					System.out.println(resultMsg + " - PASSED");
 				}
 				catch (Error e) {
 					System.out.println(methodID + "(): " + e.toString());
@@ -1876,7 +1864,7 @@ public class MobileDefectTest extends BaseTest {
 				resultMsg = "VP: Ticket Activity, Public Access field non-null value check";
 				try {
 					AssertJUnit.assertFalse(actualPublicAccessFldVal.matches("null"));
-					System.out.println(resultMsg + " - Passed");
+					System.out.println(resultMsg + " - PASSED");
 				}
 				catch (Error e) {
 					System.out.println(methodID + "(): " + e.toString());
@@ -1958,7 +1946,7 @@ public class MobileDefectTest extends BaseTest {
 			String resultMsg = "VP: Account/Contact record successfully added";
 			try {
 				AssertJUnit.assertTrue(commNav.waitForPage(accountNameTestVal));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
@@ -2018,11 +2006,11 @@ public class MobileDefectTest extends BaseTest {
 			String resultMsg = "VP: Accounts List view displays accessible Account records";
 			try {
 				AssertJUnit.assertTrue(commNav.isTextNotPresentOnPage("no records"));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
-				System.out.println(resultMsg + " - Failed");
+				System.out.println(resultMsg + " - FAILED");
 			}			
 		}
 		catch (Error e) {
@@ -2049,7 +2037,7 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		//Test Params
-		String accountRecord = "ABM Industries Incorporated";
+		String accountRecord = "Account Graphics";
 		
 		
 		//Step: click and open the the Account record
@@ -2089,11 +2077,11 @@ public class MobileDefectTest extends BaseTest {
 			String resultMsg = "VP: Account changes successfully saved after add note and field value edit";
 			try {
 				AssertJUnit.assertTrue(commNav.isElementPresent(By.xpath("//*[@id='account_detail']")));
-				System.out.println(resultMsg + " - Passed");
+				System.out.println(resultMsg + " - PASSED");
 			}
 			catch (Error e) {
 				System.out.println(methodID + "(): " + e.toString());
-				System.out.println(resultMsg + " - Failed");
+				System.out.println(resultMsg + " - FAILED");
 			}			
 		}
 		catch (Error e) {
@@ -2126,11 +2114,11 @@ public class MobileDefectTest extends BaseTest {
 		String resultMsg = "VP: Notes/History List record's Regarding value is non-null";
 		try {
 			AssertJUnit.assertFalse(topRegardingFld.getText().equals(null));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 		
 		//click the Notes/History record to open the Detail view
@@ -2142,11 +2130,11 @@ public class MobileDefectTest extends BaseTest {
 		resultMsg = "VP: Notes/History record's Detail view Regarding field value is non-null";
 		try {
 			AssertJUnit.assertFalse(regardingFld.getText().equals(null));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}		
 		
 		// End Tests
@@ -2170,11 +2158,11 @@ public class MobileDefectTest extends BaseTest {
 		String resultMsg = "VP: 'Unknown' is not displayed as a grouping within the My Activities list view";
 		try {
 			AssertJUnit.assertTrue(commNav.isTextNotPresentOnPage("Unknown"));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 			
 		// End Tests
@@ -2209,10 +2197,10 @@ public class MobileDefectTest extends BaseTest {
 		headerButton.clickHeaderButton("back");
 		commNav.waitForPage("Accounts");
 		
-		//VP: check that old Lookup control is not displayed in the Accounts List view ... from v3.1 the 'old' lookup is again displayed
-		String resultMsg = "VP: previous-version Lookup control is again displayed in the Accounts List view from Mobile 3.1";
+		//VP: check that old Lookup control is again displayed in the Accounts List view ... from v3.0.4 the 'old' lookup is again displayed
+		String resultMsg = "VP: previous-version Lookup control is again displayed in the Accounts List view from Mobile 3.0.4";
 		try {
-			WebElement oldLookupFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_3']"));
+			WebElement oldLookupFld = driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']"));
 			AssertJUnit.assertTrue(oldLookupFld.isDisplayed());
 			System.out.println(resultMsg + " - PASSED");
 		}
@@ -2250,11 +2238,11 @@ public class MobileDefectTest extends BaseTest {
 		String resultMsg = "VP: Right-Context menu is displayed while navigating back a page";
 		try {
 			AssertJUnit.assertTrue(commNav.rmenu_panel.isDisplayed());
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 			
 		// End Tests
@@ -2289,11 +2277,11 @@ public class MobileDefectTest extends BaseTest {
 			AssertJUnit.assertTrue(accountsListView.accountsListViewKPIBox1.isDisplayed());
 			String kpiVal = accountsListView.accountsListViewKPIBox1.getAttribute("metric-value");
 			AssertJUnit.assertTrue(kpiVal.contains("K"));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 			
 		// End Tests
@@ -2378,11 +2366,11 @@ public class MobileDefectTest extends BaseTest {
 		String resultMsg = "VP: 'no records' is displayed for empty Activities list view";
 		try {
 			AssertJUnit.assertTrue(commNav.isTextPresentOnPage("no records"));
-			System.out.println(resultMsg + " - Passed");
+			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {
 			System.out.println(methodID + "(): " + e.toString());
-			System.out.println(resultMsg + " - Failed");
+			System.out.println(resultMsg + " - FAILED");
 		}
 			
 		// End Tests
