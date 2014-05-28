@@ -57,9 +57,28 @@ public class CalendarViewsElements extends BaseTest {
 	
 	
 	//Month View Elements
-		
-	
-	//Methods
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_monthlist']/div[4]/div[2]/table/tbody/tr[3]/td[1]")
+    WebElement calendarMonthFirstDaySecondRow;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_monthlist']/div[4]/div[2]/table/tbody/tr[5]/td[1]")
+    WebElement calendarMonthFirstDayFourthRow;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_monthlist']//span[@class='p-time']")
+    WebElement calendarMonthFirstActivityTime;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_monthlist']//h3[@class='p-description']")
+    WebElement calendarMonthFirstActivityDescription ;
+
+
+    //Methods
 	//TODO: clickCalendarNavButton() - click a specific nav button by name
 	public boolean clickCalendarNavButton(String buttonName) {
 		String methodID = "clickCalendarNavButton";
