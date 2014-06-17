@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
 
 
 /**
- * Test class that defines test methods for the SLX Mobile Defect (v3.08) fixes.
+ * Test class that defines test methods for the SLX Mobile Defect (v3.0.4 sprint 8) fixes.
  * 
  * @author kathleen.lockyer-bratton@swiftpage.com
  * @version	1.0

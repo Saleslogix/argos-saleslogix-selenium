@@ -128,9 +128,17 @@ public class MiscEntityItemViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/button")
 	WebElement nameEditSuffixInputBtn;
-	
-		
-	//Methods
+
+    //Configure View items
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='configure']/div[2]//ul/li[@data-descriptor='Calendar']//span[@data-action='moveUp']")
+    WebElement configureCalendarMoveUpBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='configure']/div[2]//ul/li[@data-descriptor='Calendar']//span[@data-action='moveDown']")
+    WebElement configureCalendarMoveDownBtn;
+
+    //Methods
 	//TODO: create a setupNameFields() method that sets and saves the Name input fields with given values
 	
 	//TODO: create a new setupAddressFields() method that sets and saves the Address input fields with given values

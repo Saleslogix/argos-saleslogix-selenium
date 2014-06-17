@@ -36,6 +36,26 @@ public class ContactViewsElements extends BaseTest {
 	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
 	WebElement contactsSearchLookupBtn;
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@selected='true']//input[@name='query']")
+    WebElement relatedContactsSearchTxtBox;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
+    WebElement relatedContactsSearchClearBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
+    WebElement relatedContactsSearchLookupBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_related']//ul")
+    WebElement relatedContactsListView;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_related']//ul/li[1]")
+    WebElement relatedContactsListViewTopItem;
+
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']")
 	WebElement contactsListViewPnl;
