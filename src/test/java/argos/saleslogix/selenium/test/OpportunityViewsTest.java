@@ -529,12 +529,6 @@ public class OpportunityViewsTest extends BaseTest {
 		commNav.rightClickContextMenuItem("won");
 		commNav.rightClickContextMenuItem("lost");
 		commNav.rightClickContextMenuItem("inactive");
-		commNav.rightClickContextMenuItem("prospect");
-		commNav.rightClickContextMenuItem("qualification");
-		commNav.rightClickContextMenuItem("needs-analysis");
-		commNav.rightClickContextMenuItem("demonstration");
-		commNav.rightClickContextMenuItem("negotiation");
-		commNav.rightClickContextMenuItem("decision");
 		
 		//Step: go back to previous screen
 		headerButton.goBack();

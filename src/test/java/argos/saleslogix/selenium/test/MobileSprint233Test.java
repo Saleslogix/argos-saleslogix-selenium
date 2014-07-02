@@ -1466,7 +1466,7 @@ public class MobileSprint233Test extends BaseTest {
 			
 			//KPI filter + hashtag filter selection loop
 			String hSelectedFilter = "";
-			String[] hTagFilters = {"my-opportunities", "open", "won", "lost", "inactive", "prospect", "qualification", "needs-analysis", "demonstration", "negotiation", "decision"};
+			String[] hTagFilters = {"my-opportunities", "open", "won", "lost", "inactive"};
 			for (int iCount = 0;iCount<hTagFilters.length;iCount++) {
 				hSelectedFilter = hTagFilters[iCount];
 				
