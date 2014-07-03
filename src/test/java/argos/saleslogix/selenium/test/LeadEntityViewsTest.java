@@ -86,9 +86,8 @@ public class LeadEntityViewsTest extends BaseTest {
 			
 			//Step: check the Quick Action button and items
 			try {
-				//click Quick Action button to reveal Quick Action items
-				commNav.checkIfWebElementPresent("Leads List View, Quick Action button", LeadListView.topLeadsListItemQuickActionsBtn);
-				LeadListView.topLeadsListItemQuickActionsBtn.click();
+				//click list item icon to reveal Quick Action items
+				LeadListView.topLeadsListItemIcon.click();
 				
 				//click the Quick Action button, then check each of the Quick Action items
 				commNav.checkIfWebElementPresent("Leads, Quick Action Add Attachment button", LeadListView.topLeadsListItemQuickActionsAddAttachmentBtn);
@@ -99,8 +98,8 @@ public class LeadEntityViewsTest extends BaseTest {
 				commNav.checkIfWebElementPresent("Leads, Quick Action Accounts button", LeadListView.topLeadsListItemQuickActionsCallWorkBtn);
 				commNav.checkIfWebElementPresent("Leads, Quick Action Edit button", LeadListView.topLeadsListItemQuickActionsEditBtn);
 				
-				//click Quick Action button to hide the Quick Action items
-				LeadListView.topLeadsListItemQuickActionsBtn.click();
+				//click list item icon to hide the Quick Action items
+				LeadListView.topLeadsListItemIcon.click();
 			}
 			catch (Exception e) {
 				verificationErrors.append(methodID + "(): " + e.toString());				

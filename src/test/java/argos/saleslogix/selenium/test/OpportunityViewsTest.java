@@ -90,9 +90,8 @@ public class OpportunityViewsTest extends BaseTest {
 			
 			//Step: check the Quick Action button and items
 			try {
-				//click Quick Action button to reveal Quick Action items
-				commNav.checkIfWebElementPresent("Opportunity List View, Quick Action button", opportunitiesListView.topOpportunityListItemQuickActionsBtn);
-				opportunitiesListView.topOpportunityListItemQuickActionsBtn.click();
+				//click list item icon to reveal Quick Action items
+				opportunitiesListView.topOpportunityListItemIcon.click();
 				
 				//click the Quick Action button, then check each of the Quick Action items
 				commNav.checkIfWebElementPresent("Opportunity, Quick Action Add Attachment button", opportunitiesListView.topOpportunityListItemQuickActionsAddAttachmentBtn);
@@ -103,8 +102,8 @@ public class OpportunityViewsTest extends BaseTest {
 				commNav.checkIfWebElementPresent("Opportunity, Quick Action Accounts button", opportunitiesListView.topOpportunityListItemQuickActionsAccountBtn);
 				commNav.checkIfWebElementPresent("Opportunity, Quick Action Edit button", opportunitiesListView.topOpportunityListItemQuickActionsEditBtn);
 				
-				//click Quick Action button to hide the Quick Action items
-				opportunitiesListView.topOpportunityListItemQuickActionsBtn.click();
+				//click list item icon to hide the Quick Action items
+				opportunitiesListView.topOpportunityListItemIcon.click();
 			}
 			catch (Exception e) {
 				System.out.println(methodID + "(): " + e.toString());				
@@ -551,12 +550,6 @@ public class OpportunityViewsTest extends BaseTest {
 		commNav.rightClickContextMenuItem("won");
 		commNav.rightClickContextMenuItem("lost");
 		commNav.rightClickContextMenuItem("inactive");
-		commNav.rightClickContextMenuItem("prospect");
-		commNav.rightClickContextMenuItem("qualification");
-		commNav.rightClickContextMenuItem("needs-analysis");
-		commNav.rightClickContextMenuItem("demonstration");
-		commNav.rightClickContextMenuItem("negotiation");
-		commNav.rightClickContextMenuItem("decision");
 		
 		//Step: go back to previous screen
 		headerButton.goBack();

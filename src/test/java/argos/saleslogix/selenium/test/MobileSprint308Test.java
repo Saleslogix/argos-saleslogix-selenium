@@ -20,6 +20,8 @@ import java.util.GregorianCalendar;
  */
 public class MobileSprint308Test extends BaseTest {
 
+    public String TEST_CONTACT_RECORD = "Abbott, John";
+    public String TEST_TICKET_RECORD_NULL_CONTACT = "001-00-000002";
 
 	//Login & Logout
 	//==============
@@ -1390,5 +1392,94 @@ public class MobileSprint308Test extends BaseTest {
     }
 
 
+    @Test(enabled = true)
+    // MBL-10473 ... mobile picklists should be ordered by text (check contact Title picklist, not ordered before fixed in 3.0.4)
+    public void test05_MBL10473() throws Exception {
+        String methodID = "test05_MBL10473";
+
+        //Test Parameters:
+        String entityType = "Contact";
+        String contactRecord = TEST_CONTACT_RECORD;
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        ContactViewsElements contactEditView = PageFactory.initElements(driver, ContactViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Contact entity, then open it's Detail view
+            AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, contactRecord));
+
+
+            //Step: open the contact 'title' picklist
+            contactEditView.contactsEditViewTitleInputFldBtn.click();
+            commNav.waitForPage("Title");
+
+            //Step: Verify that the first 5 items on the Title view are sorted by text (prior to this 3.0.4 fix, they were not appearing in this order)
+            AssertJUnit.assertEquals("Title value 1 not as expected ... " + contactEditView.contactsEditViewTitleValue1.getText() + " - FAILED", "Assistant", contactEditView.contactsEditViewTitleValue1.getText());
+            System.out.println("Title value 1 as expected ... " + contactEditView.contactsEditViewTitleValue1.getText() + " - PASSED");
+            AssertJUnit.assertEquals("Title value 2 not as expected ... " + contactEditView.contactsEditViewTitleValue2.getText() + " - FAILED", "CEO", contactEditView.contactsEditViewTitleValue2.getText());
+            System.out.println("Title value 2 as expected ... " + contactEditView.contactsEditViewTitleValue2.getText() + " - PASSED");
+            AssertJUnit.assertEquals("Title value 3 not as expected ... " + contactEditView.contactsEditViewTitleValue3.getText() + " - FAILED", "CFO", contactEditView.contactsEditViewTitleValue3.getText());
+            System.out.println("Title value 3 as expected ... " + contactEditView.contactsEditViewTitleValue3.getText() + " - PASSED");
+            AssertJUnit.assertEquals("Title value 4 not as expected ... " + contactEditView.contactsEditViewTitleValue4.getText() + " - FAILED", "Director of Cust Service", contactEditView.contactsEditViewTitleValue4.getText());
+            System.out.println("Title value 4 as expected ... " + contactEditView.contactsEditViewTitleValue4.getText() + " - PASSED");
+            AssertJUnit.assertEquals("Title value 5 not as expected ... " + contactEditView.contactsEditViewTitleValue5.getText() + " - FAILED", "Director of Finance", contactEditView.contactsEditViewTitleValue5.getText());
+            System.out.println("Title value 5 as expected ... " + contactEditView.contactsEditViewTitleValue5.getText() + " - PASSED");
+
+            System.out.println("VP: Title values in picklist sorted by text " + " - PASSED");
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Title values in picklist sorted by text " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10474 ... in ticket listview should not see 'Error rendering row template' if contactid is null
+    // for 10.4.10.102 (8.1) and 10.4.10.101 (8.0) databases, for ticket 001-00-000002, the contactid has been permanently set to null
+    public void test06_MBL10474() throws Exception {
+        String methodID = "test06_MBL10474";
+
+        // Test Params:
+        String entityType = "Tickets";
+        String entityRecord = TEST_TICKET_RECORD_NULL_CONTACT;
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        TicketViewsElements ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        //Step: click Top-Left button to reveal Global Menu...
+        headerbutton.showGlobalMenu();
+
+        //Step: navigate to entity list view...
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Tickets");
+
+        //Step: search for an existing Ticket record ... 001-00-000002, that has a null value for contact on 10.4.10.210 (8.1) and 10.4.10.242 (8.0) databases
+        ticketListView.ticketsSearchTxtBox.sendKeys("001-00-000002");
+        ticketListView.ticketsSearchLookupBtn.click();
+        Thread.sleep(500);
+
+        AssertJUnit.assertTrue("VP: for ticket 001-00-000002 with null contact, ticket not displaying as expected in listview - FAILED", ticketListView.topTicketsListItemNumber.isDisplayed());
+        System.out.println("VP: for ticket 001-00-000002 with null contact, ticket is displaying as expected in listview - PASSED");
+        AssertJUnit.assertEquals("VP: ticket number 001-00-000002 is not displaying - FAILED", "001-00-000002", ticketListView.topTicketsListItemNumber.getText());
+        System.out.println("VP: ticket number 001-00-000002 is displaying - PASSED");
+
+        System.out.println(ENDLINE);
+    }
 
 }

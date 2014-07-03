@@ -66,9 +66,8 @@ public class MyActivityViewsTest extends BaseTest {
 			
 			//Step: check the Quick Action button and items
 			try {
-				//click Quick Action button to reveal Quick Action items
-				commNav.checkIfWebElementPresent("My Activites List View, Card Layout, Quick Action button", myActivitiesListView.topMyActivitiesListItemQuickActionsBtn);
-				myActivitiesListView.topMyActivitiesListItemQuickActionsBtn.click();
+				//click list item icon to reveal Quick Action item
+				myActivitiesListView.topMyActivitiesListItemIcon.click();
 				
 				//click the Quick Action button, then check each of the Quick Action items
 				commNav.checkIfWebElementPresent("My Activites List View Card Layout, Quick Action Add Attachment button", myActivitiesListView.topMyActivitiesListItemQuickActionsAddAttachmentBtn);
@@ -80,8 +79,8 @@ public class MyActivityViewsTest extends BaseTest {
 				commNav.checkIfWebElementPresent("My Activites List View Card Layout, Quick Action Oportunity button", myActivitiesListView.topMyActivitiesListItemQuickActionsOpportunityBtn);
 				commNav.checkIfWebElementPresent("My Activites List View Card Layout, Quick Action Account button", myActivitiesListView.topMyActivitiesListItemQuickActionsAccountBtn);
 				
-				//click Quick Action button to hide the Quick Action items
-				myActivitiesListView.topMyActivitiesListItemQuickActionsBtn.click();
+				//click list item icon to hide the Quick Action items
+				myActivitiesListView.topMyActivitiesListItemIcon.click();
 			}
 			catch (Exception e) {
 				System.out.println(methodID + "(): " + e.toString());				

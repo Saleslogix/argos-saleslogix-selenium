@@ -289,7 +289,7 @@ public class MobileSprint317Test extends BaseTest {
             System.out.println("*** END OF SCENARIO 1 ... CHANGING ACTIVITY ACCOUNT WITHIN SAME LOGIN SESSION AS CREATED ***");
 
 
-            //Step: Assign a value to the Contact field, ready for scenario 2  TODO SCENARIO 2
+            //Step: Assign a value to the Contact field, ready for scenario 2
             System.out.println("*** START OF SCENARIO 2 ... CHANGING ACTIVITY ACCOUNT WITHIN NEXT LOGIN SESSION AFTER CREATED ***");
             activityEditView.activityEditViewContactBtn.click();
             commNav.waitForPage("Contacts");
@@ -305,7 +305,6 @@ public class MobileSprint317Test extends BaseTest {
             //Step: save activity
             headerButton.clickHeaderButton("Save");
 
-            //TODO ... redefine classes?
             //Step: within a different login session choose a new (third) value for the Account ... verify that the Contact value has been cleared
             LogOutThenLogBackIn(userName, userPwd);
 
@@ -337,7 +336,7 @@ public class MobileSprint317Test extends BaseTest {
             AssertJUnit.assertEquals("VP: Contact field not set to second expected value - FAILED", TEST_CONTACT2_RECORD, activityEditView.activityEditViewContactFld.getAttribute("value"));
             System.out.println("VP: Contact field is set to second expected value - PASSED");
 
-            //Step: TODO within a different login session than the one in which activity was created, choose a new (third) value for the Account ... verify that the Contact value has been cleared
+            //Step: within a different login session than the one in which activity was created, choose a new (third) value for the Account ... verify that the Contact value has been cleared
             activityEditView.activityEditViewAccountBtn.click();
             commNav.waitForPage("Accounts");
             accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);

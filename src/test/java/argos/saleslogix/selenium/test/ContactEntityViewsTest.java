@@ -88,9 +88,8 @@ public class ContactEntityViewsTest extends BaseTest {
 			
 			//Step: check the Quick Action button and items
 			try {
-				//click Quick Action button to reveal Quick Action items
-				commNav.checkIfWebElementPresent("Contacts List View, Quick Action button", contactsListView.topContactsListItemQuickActionsBtn);
-				contactsListView.topContactsListItemQuickActionsBtn.click();
+				//click list item icon button to reveal Quick Action items
+				contactsListView.topContactsListItemIcon.click();
 				
 				//click the Quick Action button, then check each of the Quick Action items
 				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsAddAttachmentBtn);
@@ -102,8 +101,8 @@ public class ContactEntityViewsTest extends BaseTest {
 				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsCallWorkBtn);
 				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsEditBtn);
 				
-				//click Quick Action button to hide the Quick Action items
-				contactsListView.topContactsListItemQuickActionsBtn.click();
+				//click list item icon to hide the Quick Action items
+				contactsListView.topContactsListItemIcon.click();
 			}
 			catch (Exception e) {
 				verificationErrors.append(methodID + "(): " + e.toString());			

@@ -69,9 +69,8 @@ public class NotesHistoryViewsTest extends BaseTest {
 			
 			//Step: check the Quick Action button and items
 			try {
-				//click Quick Action button to reveal Quick Action items
-				commNav.checkIfWebElementPresent("Notes/History List View, Quick Action button", notesHistoryListView.topNotesHistoryListItemQuickActionsBtn);
-				notesHistoryListView.topNotesHistoryListItemQuickActionsBtn.click();
+				//click list item icon to reveal Quick Action items
+				notesHistoryListView.topNotesHistoryListItemIcon.click();
 				
 				//click the Quick Action button, then check each of the Quick Action items
 				commNav.checkIfWebElementPresent("Notes/History, Quick Action Add Attachment button", notesHistoryListView.topNotesHistoryListItemQuickActionsAddAttachmentBtn);
@@ -79,8 +78,8 @@ public class NotesHistoryViewsTest extends BaseTest {
 				commNav.checkIfWebElementPresent("Notes/History, Quick Action Opportunity button", notesHistoryListView.topNotesHistoryListItemQuickActionsOpportunityBtn);
 				commNav.checkIfWebElementPresent("Notes/History, Quick Action Account button", notesHistoryListView.topNotesHistoryListItemQuickActionsAccountBtn);
 				
-				//click Quick Action button to hide the Quick Action items
-				notesHistoryListView.topNotesHistoryListItemQuickActionsBtn.click();
+				//click list item icon to hide the Quick Action items
+				notesHistoryListView.topNotesHistoryListItemIcon.click();
 			}
 			catch (Exception e) {
 				System.out.println(methodID + "(): " + e.toString());				

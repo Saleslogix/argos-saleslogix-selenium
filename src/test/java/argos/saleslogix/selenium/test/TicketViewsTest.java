@@ -66,9 +66,8 @@ public class TicketViewsTest extends BaseTest {
 			
 			//Step: check the Quick Action button and items
 			try {
-				//click Quick Action button to reveal Quick Action items
-				commNav.checkIfWebElementPresent("Ticket List View, Quick Action button", ticketsListView.topTicketsListItemQuickActionsBtn);
-				ticketsListView.topTicketsListItemQuickActionsBtn.click();
+				//click list item icon to reveal Quick Action items
+				ticketsListView.topTicketsListItemIcon.click();
 				
 				//click the Quick Action button, then check each of the Quick Action items
 				commNav.checkIfWebElementPresent("Ticket, Quick Action Add Attachment button", ticketsListView.topTicketsListItemQuickActionsAddAttachmentBtn);
@@ -78,8 +77,8 @@ public class TicketViewsTest extends BaseTest {
 				commNav.checkIfWebElementPresent("Ticket, Quick Action Accounts button", ticketsListView.topTicketsListItemQuickActionsAccountBtn);
 				commNav.checkIfWebElementPresent("Ticket, Quick Action Edit button", ticketsListView.topTicketsListItemQuickActionsEditBtn);
 				
-				//click Quick Action button to hide the Quick Action items
-				ticketsListView.topTicketsListItemQuickActionsBtn.click();
+				//click list item icon to hide the Quick Action items
+				ticketsListView.topTicketsListItemIcon.click();
 			}
 			catch (Exception e) {
 				System.out.println(e.toString());				

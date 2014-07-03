@@ -70,9 +70,8 @@ public class AccountEntityViewsTest extends BaseTest {
 			
 			//Step: check the Quick Action button and items
 			try {
-				//click Quick Action button to reveal Quick Action items
-				commNav.checkIfWebElementPresent("Accounts List View, Quick Action button", accountListView.topAccountsListItemQuickActionsBtn);
-				accountListView.topAccountsListItemQuickActionsBtn.click();
+				//click list item icon to reveal Quick Action items
+				accountListView.topAccountsListItemIcon.click();
 				
 				//click the Quick Action button, then check each of the Quick Action items
 				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsAddAttachmentBtn);
@@ -83,8 +82,8 @@ public class AccountEntityViewsTest extends BaseTest {
 				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsEditBtn);
 				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsEditBtn);
 				
-				//click Quick Action button to hide the Quick Action items
-				accountListView.topAccountsListItemQuickActionsBtn.click();
+				//click list item icon to hide the Quick Action items
+				accountListView.topAccountsListItemIcon.click();
 			}
 			catch (Exception e) {
 				verificationErrors.append(methodID + "(): " + e.toString());				

@@ -415,6 +415,26 @@ public class ContactViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(css = "#Mobile_SalesLogix_Fields_PicklistField_1 > button.button.simpleSubHeaderButton")
 	WebElement contactsEditViewCuisineInputFldBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[1]//h3")
+    WebElement contactsEditViewTitleValue1;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[2]//h3")
+    WebElement contactsEditViewTitleValue2;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[3]//h3")
+    WebElement contactsEditViewTitleValue3;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[4]//h3")
+    WebElement contactsEditViewTitleValue4;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[5]//h3")
+    WebElement contactsEditViewTitleValue5;
 	
 	
 	//Methods
