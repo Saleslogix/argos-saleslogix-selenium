@@ -372,4 +372,172 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
+    @Test(enabled = true)
+    // MBL-10472 ... Using Account listview Edit quick action to edit account should display address on edit view or Address view
+    public void test04_MBL10472() throws Exception {
+        String methodID = "test04_MBL10472";
+
+        // Test Params:
+        String entityType = "Accounts";
+        String entityRecord = TEST_ACCOUNT1_RECORD;
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        //Step: search for an existing Account record
+        commNav.entityListViewSearch(entityType, entityRecord);
+
+        if (commNav.isPageDisplayed(entityType)) {
+
+            AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+            commNav.checkIfWebElementPresent("Accounts List View, item record Icon", accountListView.topAccountsListItemIcon);
+
+            //Step: open the Account quick actions
+            try {
+                //click list item icon to reveal Quick Action items
+                accountListView.topAccountsListItemIcon.click();
+
+                //check the Edit Quick Action item
+                commNav.checkIfWebElementPresent("Account, Quick Action Edit button", accountListView.topAccountsListItemQuickActionsEditBtn);
+
+                //click the Edit Quick Action item
+                accountListView.topAccountsListItemQuickActionsEditBtn.click();
+                commNav.waitForPage("Account");
+                AccountViewsElements accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
+
+                //click the edit address button to open the Address screen
+                accountEditView.accountEditViewAddressFldBtn.click();
+                commNav.waitForPage("Address");
+
+                String addressLine1Data = commView.addressLine1.getAttribute("value");
+                System.out.println("address Line1 is ... " + addressLine1Data);
+                String addressLine1ExpectedData = "4206 W. Grand Avenue";
+                AssertJUnit.assertEquals("VP: edit view is not displaying address line 1 for " + TEST_ACCOUNT1_RECORD + " as ... " + addressLine1ExpectedData + " - FAILED" ,addressLine1ExpectedData, addressLine1Data);
+                System.out.println("VP: edit view is displaying address line 1 for " + TEST_ACCOUNT1_RECORD + " as ... " + addressLine1ExpectedData + " - PASSED");
+
+            }
+            catch (Exception e) {
+                verificationErrors.append(methodID + "(): " + e.toString());
+                AssertJUnit.fail("test failed");
+            }
+
+        }
+        else {
+            System.out.println(methodID + ": required '" + entityType + "' view not loaded; test aborted");
+            AssertJUnit.fail("test failed");
+        }
+        System.out.println(ENDLINE);
+
+
+
+    }
+
+
+    @Test(enabled = true)
+    //MBL-10483 ...   Adding a Note with no account specified should not give a server error
+    public void test05_MBL10483() throws Exception {
+        String methodID = "test05_MBL10483";
+
+        //Test Params:
+        String entityType = "notes/history";
+        String viewName = "Note Insert view";
+        String entityRecord = TEST_ACCOUNT1_RECORD;
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        NotesHistoryViewsElements noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        //Step: click Top-Left button to reveal Global Menu...
+        headerbutton.showGlobalMenu();
+
+        //Step: navigate to Notes/History list view...
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Notes/History");
+
+        //Step: add a new note, with no account specified
+        headerbutton.clickHeaderButton("add");
+        commNav.waitForPage("Note");
+
+        //Step: add a random test Note/History record
+        NotesHistoryViewsElements notesHistoryEditView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+
+        String strRegardingVal = "AutoTestNote-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+        String newNotesData = "Technical notes";
+
+        //Step: setup Regarding and Notes fields, then try to save new note
+        notesHistoryEditView.notesHistoryEditViewRegardingInputFld.sendKeys(strRegardingVal);
+        notesHistoryEditView.notesHistoryEditViewNotesInputFld.sendKeys(newNotesData);
+        headerbutton.clickHeaderButton("save");
+
+        //Step: Verify that one sees a validation summary title at the top of the screen
+        if (commNav.isWebElementPresent(viewName + ",'Validation Summary title'", notesHistoryEditView.notesHistoryEditViewValSummTitle)) {
+            String valSummaryTitleExpected = "Validation Summary";
+            String valSummaryTitleActual = notesHistoryEditView.notesHistoryEditViewValSummTitle.getText();
+            AssertJUnit.assertEquals("VP: Validation Summary title does not have the expected value of " + valSummaryTitleExpected + " - FAILED", valSummaryTitleExpected, valSummaryTitleActual);
+            System.out.println("VP: Validation Summary title does have the expected value of ... " + valSummaryTitleExpected + " - PASSED");
+        }
+        else {
+            System.out.println("VP: expected Validation Summary title not present - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        //Step: Verify that one sees a validation summary message that "The field 'account' must have a value."
+        if (commNav.isWebElementPresent(viewName + ",'Validation Summary message'", notesHistoryEditView.notesHistoryEditViewValSummMessage)) {
+            String valSummaryMessageExpected = "The field 'account' must have a value.";
+            String valSummaryMessageActual = notesHistoryEditView.notesHistoryEditViewValSummMessage.getText();
+            AssertJUnit.assertEquals("VP: Validation Summary message does not have the expected value of " + valSummaryMessageExpected + " - FAILED", valSummaryMessageExpected, valSummaryMessageActual);
+            System.out.println("VP: Validation Summary message does have the expected value of ... " + valSummaryMessageExpected + " - PASSED");
+        }
+        else {
+            System.out.println("VP: expected Validation Summary message not present - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        //Step: Verify that one sees a validation summary field of 'account'
+        if (commNav.isWebElementPresent(viewName + ",'Validation Summary field'", notesHistoryEditView.notesHistoryEditViewValSummField)) {
+            String valSummaryFieldExpected = "account";
+            String valSummaryFieldActual = notesHistoryEditView.notesHistoryEditViewValSummField.getText();
+            AssertJUnit.assertEquals("VP: Validation Summary field does not have the expected value of " + valSummaryFieldExpected + " - FAILED", valSummaryFieldExpected, valSummaryFieldActual);
+            System.out.println("VP: Validation Summary field does have the expected value of ... " + valSummaryFieldExpected + " - PASSED");
+        }
+        else {
+            System.out.println("VP: expected Validation Summary field not present - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+
+        //Step : verify that one may now enter an account, and save the note successfully
+        notesHistoryEditView.notesHistoryEditViewAccountFldBtn.click();
+        commNav.highlightNClick(commNav.entityListViewSelect("Accounts", entityRecord));
+
+        headerbutton.clickHeaderButton("save");
+        commNav.waitForPage("Notes/History");
+        noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+
+        String strResultsMsg = "VP: recently added test Note '" + newNotesData + "' was found";
+        noteshistoryListView.notesHistorysSearchTxtBox.sendKeys(strRegardingVal);
+        noteshistoryListView.notesHistorysSearchLookupBtn.click();
+
+        WebElement entityListItem = noteshistoryListView.topNotesHistoryListItem;
+        if (entityListItem.isDisplayed())  {
+            System.out.println(strResultsMsg + " - PASSED");
+        }
+        else {
+            System.out.println(strResultsMsg + " - FAILED");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
 }

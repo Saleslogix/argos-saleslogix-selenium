@@ -286,6 +286,18 @@ public class NotesHistoryViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_2']/input")
 	WebElement notesHistoryEditViewCompanyInputFld;
+
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='history_edit']/div[1]//h2")
+    WebElement notesHistoryEditViewValSummTitle;
+
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='history_edit']/div[1]//h3")
+    WebElement notesHistoryEditViewValSummMessage;
+
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='history_edit']/div[1]//h4")
+    WebElement notesHistoryEditViewValSummField;
 	
 	//Methods
 	//-------
