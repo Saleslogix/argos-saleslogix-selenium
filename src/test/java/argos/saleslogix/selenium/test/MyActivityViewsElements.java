@@ -480,6 +480,80 @@ public class MyActivityViewsElements extends BaseTest {
     WebElement activityRecurrenceOccurencesFld;
 
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[1]//h3")
+    WebElement activityLeaderViewUser1;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[2]//h3")
+    WebElement activityLeaderViewUser2;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[3]//h3")
+    WebElement activityLeaderViewUser3;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[4]//h3")
+    WebElement activityLeaderViewUser4;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[5]//h3")
+    WebElement activityLeaderViewUser5;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[6]//h3")
+    WebElement activityLeaderViewUser6;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[7]//h3")
+    WebElement activityLeaderViewUser7;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[8]//h3")
+    WebElement activityLeaderViewUser8;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[9]//h3")
+    WebElement activityLeaderViewUser9;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[10]//h3")
+    WebElement activityLeaderViewUser10;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[11]//h3")
+    WebElement activityLeaderViewUser11;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[12]//h3")
+    WebElement activityLeaderViewUser12;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[13]//h3")
+    WebElement activityLeaderViewUser13;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[14]//h3")
+    WebElement activityLeaderViewUser14;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[15]//h3")
+    WebElement activityLeaderViewUser15;
+
     //Methods
 	//=======
 	/**

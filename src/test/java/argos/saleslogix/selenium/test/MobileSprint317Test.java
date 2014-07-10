@@ -19,6 +19,7 @@ import java.util.GregorianCalendar;
  */
 public class MobileSprint317Test extends BaseTest {
 
+    public String TEST_CONTACT_RECORD = "Abbott, John";
     public String TEST_ACCOUNT1_RECORD = "Abbott Ltd.";
     public String TEST_ACCOUNT2_RECORD = "Bank of the Sun";
     public String TEST_ACCOUNT3_RECORD = "Above Marine";
@@ -417,8 +418,8 @@ public class MobileSprint317Test extends BaseTest {
                 String addressLine1Data = commView.addressLine1.getAttribute("value");
                 System.out.println("address Line1 is ... " + addressLine1Data);
                 String addressLine1ExpectedData = "4206 W. Grand Avenue";
-                AssertJUnit.assertEquals("VP: edit view is not displaying address line 1 for " + TEST_ACCOUNT1_RECORD + " as ... " + addressLine1ExpectedData + " - FAILED" ,addressLine1ExpectedData, addressLine1Data);
-                System.out.println("VP: edit view is displaying address line 1 for " + TEST_ACCOUNT1_RECORD + " as ... " + addressLine1ExpectedData + " - PASSED");
+                AssertJUnit.assertEquals("VP: edit view, opened by quick action, is not displaying address line 1 for " + TEST_ACCOUNT1_RECORD + " as ... " + addressLine1ExpectedData + " - FAILED" ,addressLine1ExpectedData, addressLine1Data);
+                System.out.println("VP: edit view, opened by quick action, is displaying address line 1 for " + TEST_ACCOUNT1_RECORD + " as ... " + addressLine1ExpectedData + " - PASSED");
 
             }
             catch (Exception e) {
@@ -534,6 +535,235 @@ public class MobileSprint317Test extends BaseTest {
         }
         else {
             System.out.println(strResultsMsg + " - FAILED");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10486 ... Activity Leader should use calendar security for list of users available (as in web client)
+    //               This is designed to work for user name of 'loup', the user used for all automation
+
+    public void test06_MBL10486() throws Exception {
+        String methodID = "test06_MBL10486";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to "My Activities" view, if not already there ... wait for page My Activities
+            if (!commNav.isPageDisplayed("My Activities"))   {
+                commNav.clickGlobalMenuItem("My Activities");
+                commNav.waitForPage("My Activities");
+            }
+
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: open the Leader lookup, and check that the correct users are displaying for loup
+            activityEditView.activityEditViewLeaderFldBtn.click();
+            commNav.waitForPage("Users");
+
+            String leaderUser1 = activityEditView.activityLeaderViewUser1.getText();
+            AssertJUnit.assertEquals("VP: 1st user on the activity leader users' list is not Dan Barret - FAILED", "Barret, Dan", leaderUser1);
+            System.out.println("VP: 1st user on the activity leader users' list is Dan Barret - PASSED");
+
+            String leaderUser2 = activityEditView.activityLeaderViewUser2.getText();
+            AssertJUnit.assertEquals("VP: 2nd user on the activity leader users' list is not Ken Dryden - FAILED", "Dryden, Ken", leaderUser2);
+            System.out.println("VP: 2nd user on the activity leader users' list is Ken Dryden - PASSED");
+
+            String leaderUser3 = activityEditView.activityLeaderViewUser3.getText();
+            AssertJUnit.assertEquals("VP: 3rd user on the activity leader users' list is not Georgine Ekels - FAILED", "Ekels, Georgine", leaderUser3);
+            System.out.println("VP: 3rd user on the activity leader users' list is Georgine Ekels - PASSED");
+
+            String leaderUser4 = activityEditView.activityLeaderViewUser4.getText();
+            AssertJUnit.assertEquals("VP: 4th user on the activity leader users' list is not Manuel Fuentes - FAILED", "Fuentes, Manuel", leaderUser4);
+            System.out.println("VP: 4th user on the activity leader users' list is Manuel Fuentes - PASSED");
+
+            String leaderUser5 = activityEditView.activityLeaderViewUser5.getText();
+            AssertJUnit.assertEquals("VP: 5th user on the activity leader users' list is not Jean Grant - FAILED", "Grant, Jean", leaderUser5);
+            System.out.println("VP: 5th user on the activity leader users' list is Jean Grant - PASSED");
+
+            String leaderUser6 = activityEditView.activityLeaderViewUser6.getText();
+            AssertJUnit.assertEquals("VP: 6th user on the activity leader users' list is not Lee Hogan - FAILED", "Hogan, Lee", leaderUser6);
+            System.out.println("VP: 6th user on the activity leader users' list is Lee Hogan - PASSED");
+
+            String leaderUser7 = activityEditView.activityLeaderViewUser7.getText();
+            AssertJUnit.assertEquals("VP: 7th user on the activity leader users' list is not Cathy Hughes - FAILED", "Hughes, Cathy", leaderUser7);
+            System.out.println("VP: 7th user on the activity leader users' list is Cathy Hughes - PASSED");
+
+            String leaderUser8 = activityEditView.activityLeaderViewUser8.getText();
+            AssertJUnit.assertEquals("VP: 8th user on the activity leader users' list is not Barb Hutchinson - FAILED", "Hutchinson, Barb", leaderUser8);
+            System.out.println("VP: 8th user on the activity leader users' list is Barb Hutchinson - PASSED");
+
+            String leaderUser9 = activityEditView.activityLeaderViewUser9.getText();
+            AssertJUnit.assertEquals("VP: 9th user on the activity leader users' list is not Jay Johnson - FAILED", "Johnson, Jay", leaderUser9);
+            System.out.println("VP: 9th user on the activity leader users' list is Jay Johnson - PASSED");
+
+            String leaderUser10 = activityEditView.activityLeaderViewUser10.getText();
+            AssertJUnit.assertEquals("VP: 10th user on the activity leader users' list is not Ed Martinez - FAILED", "Martinez, Ed", leaderUser10);
+            System.out.println("VP:10th user on the activity leader users' list is Ed Martinez - PASSED");
+
+            String leaderUser11 = activityEditView.activityLeaderViewUser11.getText();
+            AssertJUnit.assertEquals("VP: 11th user on the activity leader users' list is not Lou McBeal - FAILED", "McBeal, Lou", leaderUser11);
+            System.out.println("VP: 11th user on the activity leader users' list is Lou McBeal - PASSED");
+
+            String leaderUser12 = activityEditView.activityLeaderViewUser12.getText();
+            AssertJUnit.assertEquals("VP: 12th user on the activity leader users' list is not Lou Pizzutti - FAILED", "Pizzutti, Lou", leaderUser12);
+            System.out.println("VP: 12th user on the activity leader users' list is Lou Pizzutti - PASSED");
+
+            String leaderUser13 = activityEditView.activityLeaderViewUser13.getText();
+            AssertJUnit.assertEquals("VP: 13th user on the activity leader users' list is not Tom Scanlon - FAILED", "Scanlon, Tom", leaderUser13);
+            System.out.println("VP: 13th user on the activity leader users' list is Tom Scanlon - PASSED");
+
+            String leaderUser14 = activityEditView.activityLeaderViewUser14.getText();
+            AssertJUnit.assertEquals("VP: 14th user on the activity leader users' list is not Lois Tomlin - FAILED", "Tomlin, Lois", leaderUser14);
+            System.out.println("VP: 14th user on the activity leader users' list is Lois Tomlin - PASSED");
+
+            String leaderUser15 = activityEditView.activityLeaderViewUser15.getText();
+            AssertJUnit.assertEquals("VP: 15th user on the activity leader users' list is not Linda Walsh - FAILED", "Walsh, Linda", leaderUser15);
+            System.out.println("VP: 15th user on the activity leader users' list is Linda Walsh - PASSED");
+
+            System.out.println("VP: Activity Leader should use calendar security for list of users available " + " - PASSED");
+
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Activity Leader should use calendar security for list of users available " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+
+    @Test(enabled = true)
+    // MBL-10454 ... error trying to save an edited address for contacts (and accounts)
+    public void test07_MBL10454() throws Exception {
+        String methodID = "test07_MBL10454";
+
+        //Test Parameters:
+        String entityType = "Contact";
+        String contactRecord = TEST_CONTACT_RECORD;
+        String viewName = "Contact Edit view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Contact entity, then open it's Edit view
+            AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, contactRecord));
+
+            //Step: open the contact's Address view and store current values for the Address
+            ContactViewsElements contactEditView = PageFactory.initElements(driver, ContactViewsElements.class);
+            CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+            contactEditView.contactsEditViewAddressInputFldBtn.click();
+            commNav.waitForPage("Address");
+            String contactAddress1 = commView.addressLine1.getAttribute("value");
+            String contactAddress2 = commView.addressLine2.getAttribute("value");
+            String contactAddress3 = commView.addressLine3.getAttribute("value");
+            String contactCity = commView.addressCityInputFld.getAttribute("value");
+            String contactState = commView.addressStateInputFld.getAttribute("value");
+            String contactPostal = commView.addressPostalInputFld.getAttribute("value");
+            String contactCountry = commView.addressCountryInputFld.getAttribute("value");
+
+            System.out.println("Original address for contact " + TEST_CONTACT_RECORD + " is as follows :");
+            System.out.println("Address1 :  " + contactAddress1);
+            System.out.println("Address2 :  " + contactAddress2);
+            System.out.println("Address3 :  " + contactAddress3);
+            System.out.println("City     :  " + contactCity);
+            System.out.println("State    :  " + contactState);
+            System.out.println("Postal   :  " + contactPostal);
+            System.out.println("Country  :  " + contactCountry);
+
+
+            //Step: clear and change the value of Postal for the contact's address, accept change and save contact
+            commView.addressPostalInputFld.clear();
+            commView.addressPostalInputFld.sendKeys("60688");
+            String contactNewPostal = commView.addressPostalInputFld.getAttribute("value");
+            System.out.println("Postal code for contact " + TEST_CONTACT_RECORD + " has been changed from " + contactPostal + " to : " + contactNewPostal);
+            headerButton.clickHeaderButton("check");
+            commNav.waitForPage("Contact");
+            headerButton.clickHeaderButton("save");
+            commNav.waitForPage(TEST_CONTACT_RECORD);
+            System.out.println("VP: after editing a contact's address, contact saved as expected - PASSED");
+
+
+            //Step: edit the contact again, and verify that the address fields have been retained as expected
+            contactEditView = PageFactory.initElements(driver, ContactViewsElements.class);
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+            headerButton.clickHeaderButton("edit");
+            commNav.waitForPage("Contact");
+            contactEditView.contactsEditViewAddressInputFldBtn.click();
+            commNav.waitForPage("Address");
+
+            String contactAddress1Recheck = commView.addressLine1.getAttribute("value");
+            String contactAddress2Recheck = commView.addressLine2.getAttribute("value");
+            String contactAddress3Recheck = commView.addressLine3.getAttribute("value");
+            String contactCityRecheck = commView.addressCityInputFld.getAttribute("value");
+            String contactStateRecheck = commView.addressStateInputFld.getAttribute("value");
+            String contactPostalRecheck = commView.addressPostalInputFld.getAttribute("value");
+            String contactCountryRecheck = commView.addressCountryInputFld.getAttribute("value");
+
+            AssertJUnit.assertEquals("VP: Address1 has not been retained after saving contact ... it is now    : " + contactAddress1Recheck, contactAddress1,contactAddress1Recheck);
+            System.out.println("VP: Address1 has been retained after saving contact as : " + contactAddress1Recheck);
+
+            AssertJUnit.assertEquals("VP: Address2 has not been retained after saving contact ... it is now    : " + contactAddress2Recheck, contactAddress2,contactAddress2Recheck);
+            System.out.println("VP: Address2 has been retained after saving contact as : " + contactAddress2Recheck);
+
+            AssertJUnit.assertEquals("VP: Address3 has not been retained after saving contact ... it is now    : " + contactAddress3Recheck, contactAddress3,contactAddress3Recheck);
+            System.out.println("VP: Address3 has been retained after saving contact as : " + contactAddress3Recheck);
+
+            AssertJUnit.assertEquals("VP: City has not been retained after saving contact ... it is now        : " + contactCityRecheck, contactCity,contactCityRecheck);
+            System.out.println("VP: City has been retained after saving contact as : " + contactCityRecheck);
+
+            AssertJUnit.assertEquals("VP: State has not been retained after saving contact ... it is now       : " + contactStateRecheck, contactState,contactStateRecheck);
+            System.out.println("VP: State has been retained after saving contact as : " + contactStateRecheck);
+
+            AssertJUnit.assertEquals("VP: Postal code has not been retained after saving contact ... it is now : " + contactPostalRecheck, contactNewPostal,contactPostalRecheck);
+            System.out.println("VP: Postal code has been retained after saving contact as : " + contactPostalRecheck);
+
+            AssertJUnit.assertEquals("VP: Country has not been retained after saving contact ... it is now     : " + contactCountryRecheck, contactCountry,contactCountryRecheck);
+            System.out.println("VP: Country has been retained after saving contact as : " + contactCountryRecheck);
+
+            System.out.println("VP: no error trying to save edited address for contacts, and address data retained - PASSED");
+
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: no error trying to save edited address for contacts - FAILED");
+            AssertJUnit.fail("test failed");
         }
 
         System.out.println(ENDLINE);
