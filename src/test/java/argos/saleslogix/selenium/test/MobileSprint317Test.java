@@ -30,6 +30,8 @@ public class MobileSprint317Test extends BaseTest {
     public String TEST_CONTACT1_LOOKUP = "Balbo";
     public String TEST_CONTACT2_LOOKUP = "Sherman";
 
+    public String TEST_LEAD_RECORD = "Beck, John";
+
 	//Login & Logout
 	//==============
 	@Test(enabled = true)
@@ -763,6 +765,119 @@ public class MobileSprint317Test extends BaseTest {
         catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: no error trying to save edited address for contacts - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10455 ... after editing lead address, most of address is disappearing
+    public void test08_MBL10455() throws Exception {
+        String methodID = "test08_MBL10455";
+
+        //Test Parameters:
+        String entityType = "Lead";
+        String leadRecord = TEST_LEAD_RECORD;
+        String viewName = "Lead Edit view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Lead entity, then open it's Edit view
+            AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, leadRecord));
+
+            //Step: open the lead's Address view and store current values for the Address
+            LeadViewsElements leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
+            CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+            leadEditView.leadsEditViewAddressFldBtn.click();
+            commNav.waitForPage("Address");
+            String leadAddress1 = commView.addressLine1.getAttribute("value");
+            String leadAddress2 = commView.addressLine2.getAttribute("value");
+            String leadAddress3 = commView.addressLine3.getAttribute("value");
+            String leadCity = commView.addressCityInputFld.getAttribute("value");
+            String leadState = commView.addressStateInputFld.getAttribute("value");
+            String leadPostal = commView.addressPostalInputFld.getAttribute("value");
+            String leadCountry = commView.addressCountryInputFld.getAttribute("value");
+
+            System.out.println("Original address for lead " + TEST_LEAD_RECORD + " is as follows :");
+            System.out.println("Address1 :  " + leadAddress1);
+            System.out.println("Address2 :  " + leadAddress2);
+            System.out.println("Address3 :  " + leadAddress3);
+            System.out.println("City     :  " + leadCity);
+            System.out.println("State    :  " + leadState);
+            System.out.println("Postal   :  " + leadPostal);
+            System.out.println("Country  :  " + leadCountry);
+
+
+            //Step: clear and change the value of Postal for the lead's address
+            commView.addressPostalInputFld.clear();
+            commView.addressPostalInputFld.sendKeys("60188-9422");
+            String leadNewPostal = commView.addressPostalInputFld.getAttribute("value");
+            System.out.println("Postal code for lead " + TEST_LEAD_RECORD + " has been changed from " +leadPostal + " to : " + leadNewPostal);
+
+            //Step: set Address description to 'mailing', accept changes and save lead
+            commView.addressDescriptionInputFld.clear();
+            commView.addressDescriptionInputFld.sendKeys("Mailing");
+            headerButton.clickHeaderButton("check");
+            commNav.waitForPage("Lead");
+            headerButton.clickHeaderButton("save");
+            commNav.waitForPage(TEST_LEAD_RECORD);
+            System.out.println("VP: after editing a lead's address, lead saved as expected - PASSED");
+
+
+            //Step: edit the lead again, and verify that the address fields have been retained as expected
+            leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+            headerButton.clickHeaderButton("edit");
+            commNav.waitForPage("Lead");
+            leadEditView.leadsEditViewAddressFldBtn.click();
+            commNav.waitForPage("Address");
+
+            String leadAddress1Recheck = commView.addressLine1.getAttribute("value");
+            String leadAddress2Recheck = commView.addressLine2.getAttribute("value");
+            String leadAddress3Recheck = commView.addressLine3.getAttribute("value");
+            String leadCityRecheck = commView.addressCityInputFld.getAttribute("value");
+            String leadStateRecheck = commView.addressStateInputFld.getAttribute("value");
+            String leadPostalRecheck = commView.addressPostalInputFld.getAttribute("value");
+            String leadCountryRecheck = commView.addressCountryInputFld.getAttribute("value");
+
+            AssertJUnit.assertEquals("VP: Address1 has not been retained after saving lead ... it is now    : " + leadAddress1Recheck, leadAddress1, leadAddress1Recheck);
+            System.out.println("VP: Address1 has been retained after saving lead as : " + leadAddress1Recheck);
+
+            AssertJUnit.assertEquals("VP: Address2 has not been retained after saving lead ... it is now    : " + leadAddress2Recheck, leadAddress2, leadAddress2Recheck);
+            System.out.println("VP: Address2 has been retained after saving lead as : " + leadAddress2Recheck);
+
+            AssertJUnit.assertEquals("VP: Address3 has not been retained after saving lead ... it is now    : " + leadAddress3Recheck, leadAddress3, leadAddress3Recheck);
+            System.out.println("VP: Address3 has been retained after saving lead as : " + leadAddress3Recheck);
+
+            AssertJUnit.assertEquals("VP: City has not been retained after saving lead ... it is now        : " + leadCityRecheck, leadCity, leadCityRecheck);
+            System.out.println("VP: City has been retained after saving lead as : " + leadCityRecheck);
+
+            AssertJUnit.assertEquals("VP: State has not been retained after saving lead ... it is now       : " + leadStateRecheck, leadState, leadStateRecheck);
+            System.out.println("VP: State has been retained after saving lead as : " + leadStateRecheck);
+
+            AssertJUnit.assertEquals("VP: Postal code has not been retained after saving lead ... it is now : " + leadPostalRecheck, leadNewPostal, leadPostalRecheck);
+            System.out.println("VP: Postal code has been retained after saving lead as : " + leadPostalRecheck);
+
+            AssertJUnit.assertEquals("VP: Country has not been retained after saving lead ... it is now     : " + leadCountryRecheck, leadCountry, leadCountryRecheck);
+            System.out.println("VP: Country has been retained after saving lead as : " + leadCountryRecheck);
+
+            System.out.println("VP: no error trying to save edited address for leads, and address data retained - PASSED");
+
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: no error trying to save edited address for leads - FAILED");
             AssertJUnit.fail("test failed");
         }
 
