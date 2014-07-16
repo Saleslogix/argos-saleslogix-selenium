@@ -84,7 +84,6 @@ public class ContactEntityViewsTest extends BaseTest {
 			commNav.checkIfWebElementPresent("Contacts List View, item record Work Phone", contactsListView.topContactsListItemLine3);
 			commNav.checkIfWebElementPresent("Contacts List View, item record Mobile Phone", contactsListView.topContactsListItemLine4);
 			commNav.checkIfWebElementPresent("Contacts List View, item record Email", contactsListView.topContactsListItemLine5);
-			commNav.checkIfWebElementPresent("Contacts List View, item record touch widget", contactsListView.topContactsListItemTouch);
 			
 			//Step: check the Quick Action button and items
 			try {
@@ -92,14 +91,14 @@ public class ContactEntityViewsTest extends BaseTest {
 				contactsListView.topContactsListItemIcon.click();
 				
 				//click the Quick Action button, then check each of the Quick Action items
-				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsAddAttachmentBtn);
-				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsAddActivityBtn);
-				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsAddNoteBtn);
-				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsEmailBtn);
-				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsAccountBtn);
-				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsCallMobileBtn);
-				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsCallWorkBtn);
-				commNav.checkIfWebElementPresent("Contact, Quick Action button", contactsListView.topContactsListItemQuickActionsEditBtn);
+				commNav.checkIfWebElementPresent("Contact, Quick Action Add Attachment button", contactsListView.topContactsListItemQuickActionsAddAttachmentBtn);
+				commNav.checkIfWebElementPresent("Contact, Quick Action Add Activity button", contactsListView.topContactsListItemQuickActionsAddActivityBtn);
+				commNav.checkIfWebElementPresent("Contact, Quick Action Add Note button", contactsListView.topContactsListItemQuickActionsAddNoteBtn);
+				commNav.checkIfWebElementPresent("Contact, Quick Action Email button", contactsListView.topContactsListItemQuickActionsEmailBtn);
+				commNav.checkIfWebElementPresent("Contact, Quick Action Accounts button", contactsListView.topContactsListItemQuickActionsAccountBtn);
+				commNav.checkIfWebElementPresent("Contact, Quick Action Call Mobile button", contactsListView.topContactsListItemQuickActionsCallMobileBtn);
+				commNav.checkIfWebElementPresent("Contact, Quick Action Call Work button", contactsListView.topContactsListItemQuickActionsCallWorkBtn);
+				commNav.checkIfWebElementPresent("Contact, Quick Action Edit button", contactsListView.topContactsListItemQuickActionsEditBtn);
 				
 				//click list item icon to hide the Quick Action items
 				contactsListView.topContactsListItemIcon.click();
@@ -409,7 +408,8 @@ public class ContactEntityViewsTest extends BaseTest {
 	}
 	
 
-	@Test(enabled = true)
+	@Test(enabled = false)
+    // Hash Tags have been removed in Mobile v3.1 ... just disable this method for now
 	public void test10_SeTestTCContactListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCContactListViewHashTags";
 		
@@ -597,7 +597,8 @@ public class ContactEntityViewsTest extends BaseTest {
 	}
 
 
-	@Test(enabled = true)
+	@Test(enabled = false)
+    // Listview notes have been removed in Mobile v3.1 ... just disable this method for now
 	public void test13_SeTestTCContactListViewNotesBox() throws Exception {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCContactListViewNotesBox";

@@ -115,27 +115,27 @@ public class ContactViewsElements extends BaseTest {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/button")
-	WebElement topContactsListItemIcon;	
+	WebElement topContactsListItemIcon;
 
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div[3]/h3")
-	WebElement topContactsListItemName;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div[3]/h4[1]")
-	WebElement topContactsListItemLine2;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div[3]/h4[3]")
-	WebElement topContactsListItemLine3;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div[3]/h4[4]")
-	WebElement topContactsListItemLine4;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div[3]/h4[5]")
-	WebElement topContactsListItemLine5;
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h3[1]")
+    WebElement topContactsListItemName;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h4[1]")
+    WebElement topContactsListItemLine2;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h4[3]")
+    WebElement topContactsListItemLine3;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h4[4]")
+    WebElement topContactsListItemLine4;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h4[5]")
+    WebElement topContactsListItemLine5;
 	
 	@CacheLookup
 	//@FindBy(css = "#contact_list > ul.list-content > li > #bottom_item_indicators > span > img")
@@ -210,7 +210,7 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement contactsKPIHdr;
 	
 	@CacheLookup
@@ -554,8 +554,10 @@ public class ContactViewsElements extends BaseTest {
 		//setup mobile field
 		contactsEditViewMobileInputFld.sendKeys("(602)-867-5309");
 
-		//setup fax field
-		contactsEditViewFaxInputFld.sendKeys("(866)-867-5309");
+		//conditionally setup fax field
+        if (commNav.isFieldValueEmpty("Fax", contactsEditViewFaxInputFld)) {
+            contactsEditViewFaxInputFld.sendKeys("866-867-5309");
+        }
 		
 		//conditionally setup acct mgr field
 		if (commNav.isFieldValueEmpty("Acct Mgr", contactsEditViewAcctMgrInputFld)) {

@@ -52,7 +52,6 @@ public class MyActivityViewsTest extends BaseTest {
 						
 			//Step: check an Opportunity list view item record
 			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record", myActivitiesListView.topMyActivitiesListItem);
-			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Tab", myActivitiesListView.topMyActivitiesListItemTab);
 			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Icon", myActivitiesListView.topMyActivitiesListItemIcon);
 			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Regarding", myActivitiesListView.topMyActivitiesListItemRegarding);
 			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Start Time", myActivitiesListView.topMyActivitiesListItemStartTime);
@@ -76,7 +75,7 @@ public class MyActivityViewsTest extends BaseTest {
 				commNav.checkIfWebElementPresent("My Activites List View Card Layout, Quick Action Accept button", myActivitiesListView.topMyActivitiesListItemQuickActionsAcceptBtn);
 				commNav.checkIfWebElementPresent("My Activites List View Card Layout, Quick Action Complete button", myActivitiesListView.topMyActivitiesListItemQuickActionsCompleteBtn);
 				commNav.checkIfWebElementPresent("My Activites List View Card Layout, Quick Action Contact button", myActivitiesListView.topMyActivitiesListItemQuickActionsContactBtn);
-				commNav.checkIfWebElementPresent("My Activites List View Card Layout, Quick Action Oportunity button", myActivitiesListView.topMyActivitiesListItemQuickActionsOpportunityBtn);
+				commNav.checkIfWebElementPresent("My Activites List View Card Layout, Quick Action Opportunity button", myActivitiesListView.topMyActivitiesListItemQuickActionsOpportunityBtn);
 				commNav.checkIfWebElementPresent("My Activites List View Card Layout, Quick Action Account button", myActivitiesListView.topMyActivitiesListItemQuickActionsAccountBtn);
 				
 				//click list item icon to hide the Quick Action items

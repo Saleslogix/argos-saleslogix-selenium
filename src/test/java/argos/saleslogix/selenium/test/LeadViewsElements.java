@@ -93,27 +93,27 @@ public class LeadViewsElements extends BaseTest {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/button")
-	WebElement topLeadsListItemIcon;	
+	WebElement topLeadsListItemIcon;
 
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h3")
-	WebElement topLeadsListItemName;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div[3]/h4[1]")
-	WebElement topLeadsListItemLine2;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div[3]/h4[2]")
-	WebElement topLeadsListItemLine3;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div[3]/h4[3]")
-	WebElement topLeadsListItemLine4;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div[3]/h4[4]")
-	WebElement topLeadsListItemLine5;
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h3[1]")
+    WebElement topLeadsListItemName;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[1]")
+    WebElement topLeadsListItemLine2;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[2]")
+    WebElement topLeadsListItemLine3;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[3]")
+    WebElement topLeadsListItemLine4;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[4]")
+    WebElement topLeadsListItemLine5;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
@@ -187,7 +187,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement leadsKPIHdr;
 	
 	@CacheLookup
@@ -409,7 +409,8 @@ public class LeadViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
 	WebElement leadsEditViewOwnerFldBtn;
-	
+
+
 		
 	//Methods
 	//=======

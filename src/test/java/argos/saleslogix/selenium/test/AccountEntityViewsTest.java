@@ -66,7 +66,6 @@ public class AccountEntityViewsTest extends BaseTest {
 			commNav.checkIfWebElementPresent("Accounts List View, item record Web", accountListView.topAccountsListItemLine5);
 			commNav.checkIfWebElementPresent("Accounts List View, item record Phone", accountListView.topAccountsListItemLine6);
 			commNav.checkIfWebElementPresent("Accounts List View, item record Fax", accountListView.topAccountsListItemLine7);
-			commNav.checkIfWebElementPresent("Accounts List View, item record touch widget", accountListView.topAccountsListItemTouch);
 			
 			//Step: check the Quick Action button and items
 			try {
@@ -74,13 +73,12 @@ public class AccountEntityViewsTest extends BaseTest {
 				accountListView.topAccountsListItemIcon.click();
 				
 				//click the Quick Action button, then check each of the Quick Action items
-				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsAddAttachmentBtn);
-				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsAddActivityBtn);
-				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsAddNoteBtn);
-				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsContactsBtn);
-				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsCallMainBtn);
-				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsEditBtn);
-				commNav.checkIfWebElementPresent("Account, Quick Action button", accountListView.topAccountsListItemQuickActionsEditBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action Add Attachment button", accountListView.topAccountsListItemQuickActionsAddAttachmentBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action Add Activity button", accountListView.topAccountsListItemQuickActionsAddActivityBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action Add Note button", accountListView.topAccountsListItemQuickActionsAddNoteBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action Contacts button", accountListView.topAccountsListItemQuickActionsContactsBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action Call Main button", accountListView.topAccountsListItemQuickActionsCallMainBtn);
+				commNav.checkIfWebElementPresent("Account, Quick Action Edit button", accountListView.topAccountsListItemQuickActionsEditBtn);
 				
 				//click list item icon to hide the Quick Action items
 				accountListView.topAccountsListItemIcon.click();
@@ -360,11 +358,11 @@ public class AccountEntityViewsTest extends BaseTest {
 			
 			//Step: check each input field and if applicable, its related list item selection view
 			commNav.isWebElementPresent(viewName + ", 'Details' section header", accountEditView.accountEditViewDetailsHdr);
-			commNav.isFieldValueEmpty(viewName + ", account field", accountEditView.accountEditViewAccountInputFld);
-			commNav.isFieldValueEmpty(viewName + ", web field", accountEditView.accountEditViewWebInputFld);
-			commNav.isFieldValueEmpty(viewName + ", phone field", accountEditView.accountEditViewPhoneInputFld);
+			commNav.isFieldValueEmpty(viewName + ", account", accountEditView.accountEditViewAccountInputFld);
+			commNav.isFieldValueEmpty(viewName + ", web", accountEditView.accountEditViewWebInputFld);
+			commNav.isFieldValueEmpty(viewName + ", phone", accountEditView.accountEditViewPhoneInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'address field'", accountEditView.accountEditViewAddressFldBtn, "Address");
-			commNav.isFieldValueEmpty(viewName + ", fax field", accountEditView.accountEditViewFaxInputFld);
+			commNav.isFieldValueEmpty(viewName + ", fax", accountEditView.accountEditViewFaxInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'type field'", accountEditView.accountEditViewTypeFldBtn, "Account Type");
 			commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Subtype");
 			commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Status");
@@ -444,7 +442,8 @@ public class AccountEntityViewsTest extends BaseTest {
 	}
 	
 	
-	@Test(enabled = true)
+	@Test(enabled = false)
+    // Hash Tags have been removed in Mobile v3.1 ... just disable this method for now
 	public void test10_SeTestTCAccountListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCAccountListViewHashTags";
 		
@@ -633,7 +632,8 @@ public class AccountEntityViewsTest extends BaseTest {
 	}
 
 	
-	@Test(enabled = true)
+	@Test(enabled = false)
+    // Listview notes have been removed in Mobile v3.1 ... just disable this method for now
 	public void test13_SeTestTCAccountListViewNotesBox() throws Exception {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCAccountListViewNotesBox";

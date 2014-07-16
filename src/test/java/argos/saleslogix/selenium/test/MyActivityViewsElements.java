@@ -52,39 +52,39 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement topMyActivitiesListItemIcon;
 
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='myactivity_list']//ul/li[1]/div[3]/h3/span")
+	@FindBy(xpath = ".//*[@id='myactivity_list']//ul/li[1]/div[2]/h3/span")
 	WebElement topMyActivitiesListItemRegarding;
 		
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/div[3]/h4[1]/strong")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/div[2]/h4[1]/strong")
 	WebElement topMyActivitiesListItemStartTime;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul[1]/li[1]/div[3]/h4[2]")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul[1]/li[1]/div[2]/h4[2]")
 	WebElement topMyActivitiesListItemContactAccount;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul[1]/li[1]/div[3]/h4[3]")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul[1]/li[1]/div[2]/h4[3]")
 	WebElement topMyActivitiesListItemPhone;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[1]/img")
+	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[1]")
 	WebElement topMyActivitiesListItemAlarm;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[2]/img")
+	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[2]")
 	WebElement topMyActivitiesListItemTouch;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[3]/img")
+	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[3]")
 	WebElement topMyActivitiesListItemBang;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[4]/img")
+	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[4]")
 	WebElement topMyActivitiesListItemRecurring;
 
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[5]/img")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/button")
 	WebElement topMyActivitiesListItemType;
 	
 	@CacheLookup

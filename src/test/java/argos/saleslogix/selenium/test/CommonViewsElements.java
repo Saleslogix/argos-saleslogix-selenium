@@ -94,7 +94,7 @@ public class CommonViewsElements extends BaseTest {
 	WebElement namePrefixInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='name_edit']/descendant::*[@class='button simpleSubHeaderButton'][1]")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_5']/button")
 	WebElement namePrefixInputFldBtn;
 	
 	@CacheLookup
@@ -114,7 +114,7 @@ public class CommonViewsElements extends BaseTest {
 	WebElement nameSuffixInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='name_edit']/descendant::*[@class='button simpleSubHeaderButton'][2]")
+	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/button")
 	WebElement nameSuffixInputFldBtn;
 	
 	//List View selection elements

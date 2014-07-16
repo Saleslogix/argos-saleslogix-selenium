@@ -123,35 +123,35 @@ public class AccountViewsElements extends BaseTest {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/button")
-	WebElement topAccountsListItemIcon;	
+	WebElement topAccountsListItemIcon;
 
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h3")
-	WebElement topAccountsListItemName;
-		
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[1]")
-	WebElement topAccountsListItemLine2;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[2]")
-	WebElement topAccountsListItemLine3;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[3]")
-	WebElement topAccountsListItemLine4;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[4]")
-	WebElement topAccountsListItemLine5;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[5]")
-	WebElement topAccountsListItemLine6;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[6]")
-	WebElement topAccountsListItemLine7;
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h3[1]")
+    WebElement topAccountsListItemName;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[1]")
+    WebElement topAccountsListItemLine2;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[2]")
+    WebElement topAccountsListItemLine3;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[3]")
+    WebElement topAccountsListItemLine4;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[4]")
+    WebElement topAccountsListItemLine5;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[5]")
+    WebElement topAccountsListItemLine6;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[6]")
+    WebElement topAccountsListItemLine7;
 	
 	@CacheLookup
 	//@FindBy(css = "#account_list > ul.list-content > li > #bottom_item_indicators > span > img")
@@ -217,7 +217,7 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement accountKPIHdr;
 	
 	@CacheLookup

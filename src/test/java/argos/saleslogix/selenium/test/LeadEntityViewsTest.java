@@ -76,7 +76,6 @@ public class LeadEntityViewsTest extends BaseTest {
 			
 			//Step: check an Lead list view item record
 			commNav.checkIfWebElementPresent("Leads List View, item record", LeadListView.topLeadsListItem);
-			commNav.checkIfWebElementPresent("Leads List View, item record tab", LeadListView.topLeadsListItemTab);
 			commNav.checkIfWebElementPresent("Leads List View, item record icon", LeadListView.topLeadsListItemIcon);
 			commNav.checkIfWebElementPresent("Leads List View, item record name", LeadListView.topLeadsListItemName);
 			commNav.checkIfWebElementPresent("Leads List View, item record company", LeadListView.topLeadsListItemLine2);
@@ -537,7 +536,7 @@ public class LeadEntityViewsTest extends BaseTest {
 	}
 	
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test10_SeTestTCLeadListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCLeadListViewHashTags";
 		
@@ -722,7 +721,7 @@ public class LeadEntityViewsTest extends BaseTest {
 	}
 
 	
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test13_SeTestTCLeadListViewNotesBox() throws Exception {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCLeadListViewNotesBox";
