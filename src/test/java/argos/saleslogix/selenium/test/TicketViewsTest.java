@@ -54,14 +54,12 @@ public class TicketViewsTest extends BaseTest {
 			
 			//Step: check an Opportunity list view item record
 			commNav.checkIfWebElementPresent("Ticket List View, item record", ticketsListView.topTicketsListItem);
-			commNav.checkIfWebElementPresent("Ticket List View, item record Tab", ticketsListView.topTicketsListItemTab);
 			commNav.checkIfWebElementPresent("Ticket List View, item record Icon", ticketsListView.topTicketsListItemIcon);
 			commNav.checkIfWebElementPresent("Ticket List View, item record Number", ticketsListView.topTicketsListItemNumber);
 			commNav.checkIfWebElementPresent("Ticket List View, item record Contact & Account", ticketsListView.topTicketsListItemLine2);
 			commNav.checkIfWebElementPresent("Ticket List View, item record Assigned To", ticketsListView.topTicketsListItemLine3);
 			commNav.checkIfWebElementPresent("Ticket List View, item record Status Info", ticketsListView.topTicketsListItemLine4);
 			commNav.checkIfWebElementPresent("Ticket List View, item record Area, Cateogry & Issue", ticketsListView.topTicketsListItemLine5);
-			commNav.checkIfWebElementPresent("Ticket List View, item record Touch Icon", ticketsListView.topTicketsListItemTouch);
 			//TODO: add coverage for ToDo icon check after figuring out the css id
 			
 			//Step: check the Quick Action button and items
@@ -94,7 +92,7 @@ public class TicketViewsTest extends BaseTest {
 	}
 
 	
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test13_SeTestTCTicketListViewNotesBox() throws Exception {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCTicketListViewNotesBox";
@@ -578,7 +576,7 @@ public class TicketViewsTest extends BaseTest {
 	}
 
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test10_SeTestTCTicketListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCTicketListViewHashTags";
 		

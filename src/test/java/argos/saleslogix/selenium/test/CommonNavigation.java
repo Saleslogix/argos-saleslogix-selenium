@@ -588,7 +588,7 @@ public class CommonNavigation {
 			searchWgtIDX = "19";
 			break;			
 		case "my attachments": case "attachments": case "attachment":
-			searchWgtIDX = "36";
+			searchWgtIDX = "37";
 			break;	
 		//TODO: continue to expand this switch case list for additional list views
 		}

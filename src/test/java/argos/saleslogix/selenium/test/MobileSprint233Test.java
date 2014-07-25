@@ -122,45 +122,52 @@ public class MobileSprint233Test extends BaseTest {
 		System.out.println(ENDLINE);
 	}
 
-	//MBL10115 - Index filtering Selection in Contextual menu
-	@Test(enabled = true)
-	public void test02_MBL10115() throws Exception {
-		String methodID = "test02_MBL10115";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		// Test Params:
-		String searchItem = "software";
-		String indexFilter = "";
-		String resultsMsg = "";
-		String[] indexFilters = {"Account", "Activity", "Contact", "History", "Lead", "Opportunity", "Ticket"};
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-	    //Step: perform SpeedSearch
-		commNav.searchListView("SpeedSearch", searchItem);
-		
-		//Step: select index filter
-		for (int iCount = 0;iCount<indexFilters.length;iCount++) {
-			indexFilter = indexFilters[iCount];
-			resultsMsg = "VP: Index filter - " + indexFilter + " succesfully filtered the SpeedSearch results";
-			commNav.rightClickContextMenuItem(indexFilter);
-			if (commNav.isTextPresentOnPage(indexFilter)) {
-				System.out.println(resultsMsg + " - Passed");
-				commNav.rightClickContextMenuItem(indexFilter);
-			}
-			else {
-				System.out.println(resultsMsg + " - FAILED");
-			}
-		}
-				
-		//Step: go back to previous screen
-		commNav.clickGlobalMenuItem("My Activities");
-		Thread.sleep(3000);
-		
-		System.out.println(ENDLINE);
-	}
+    //MBL10115 - Index filtering Selection in Contextual menu
+    @Test(enabled = true)
+    public void test02_MBL10115() throws Exception {
+        String methodID = "test02_MBL10115";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        // Test Params:
+        String searchItem = "Abbott";
+        String indexFilter = "";
+        String resultsMsg = "";
+        String[] indexFilters = {"Account", "Activity", "Contact", "History", "Lead", "Opportunity", "Ticket"};
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: perform SpeedSearch
+        commNav.searchListView("SpeedSearch", searchItem);
+
+        //Step: clear all SpeedSearch indexes
+        for (int iCount = 0;iCount<indexFilters.length;iCount++) {
+            indexFilter = indexFilters[iCount];
+            commNav.rightClickContextMenuItem(indexFilter);
+        }
+
+        //Step: select index filter and perform SpeedSearch
+        for (int iCount = 0;iCount<indexFilters.length;iCount++) {
+            indexFilter = indexFilters[iCount];
+            resultsMsg = "VP: Index filter - " + indexFilter + " succesfully filtered the SpeedSearch results";
+            commNav.rightClickContextMenuItem(indexFilter);
+            driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[3]/button")).click();
+            if (commNav.isTextPresentOnPage(indexFilter)) {
+                System.out.println(resultsMsg + " - Passed");
+                commNav.rightClickContextMenuItem(indexFilter);
+            }
+            else {
+                System.out.println(resultsMsg + " - FAILED");
+            }
+        }
+
+        //Step: go back to previous screen
+        commNav.clickGlobalMenuItem("My Activities");
+        Thread.sleep(3000);
+
+        System.out.println(ENDLINE);
+    }
 
 	//MBL10222 - Update Login Screen to include Logo
 	@Test(enabled = true)
@@ -266,7 +273,7 @@ public class MobileSprint233Test extends BaseTest {
         AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
         System.out.println(resultsMsg + " - PASSED");
 		
-		//Section 2: KPI metrics
+		//Section 2: Notes/ History KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
@@ -281,16 +288,7 @@ public class MobileSprint233Test extends BaseTest {
 		catch (Error e) {
 			System.out.println(resultsMsg + " - Failed");
 		}
-		
-		//VP: verify the removal of KPI Configure link
-		resultsMsg = "VP: KPI Configure link is not displayed in right-context menu";
-		try {
-			AssertJUnit.assertTrue(driver.findElements(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Configure']")).size() == 0);			
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
+
 		
 		//VP: verify the KPI metric items
 		resultsMsg = "VP: KPI metric items are available in right-context menu";
@@ -319,7 +317,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -390,7 +388,7 @@ public class MobileSprint233Test extends BaseTest {
 	    //Step: navigate to Notes/History list view...
 		commNav.clickGlobalMenuItem(entityType);
 	
-		//Section: Tickets List view KPI metric & filters 
+		//Section: Notes/ History List view KPI metric & filters
 		//--------		
 		//Step: KPI filter selection loop
 		String selectedKpiMetric = "";
@@ -490,7 +488,7 @@ public class MobileSprint233Test extends BaseTest {
 	}
 
 	
-	//MBL10112 - KPI widgets need to work for list views under an entity - Accounts (no filtering by hash tags)
+	//MBL10112 - KPI widgets need to work for list views under an entity - Accounts (no filtered lookups)
 	@Test(enabled = true)
 	public void test06_MBL10112_Accounts_NoFiltering() throws InterruptedException {
 		String methodID = "test06_MBL10112_Accounts_NoFiltering";
@@ -511,40 +509,19 @@ public class MobileSprint233Test extends BaseTest {
 		commNav.clickGlobalMenuItem(entityType);		
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
-		//VP: confirm that current hash-tag/filter appears above the list view in the lookup ... from 3.1 #my-accounts does not display by default
-        commNav.rightClickContextMenuItem("my-accounts");
-		String resultsMsg = "VP: current hash-tag/filter is displayed above the Accounts list view";
-        String currHashTag = accountsListView.accountsSearchTxtBox.getAttribute("value");
-
-        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#my-accounts",currHashTag);
-        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
-        System.out.println(resultsMsg + " - PASSED");
-		
-		//Section 1: clear the default hash-tag/filter
-		//----------		
-		//Step: remove any current hash-tags/filters then perform a Lookup		
-		headerButton.showRightContextMenu();
-		accountsListView.accountsSearchTxtBox.click();
-		Thread.sleep(500);
+		//Section 1: perform a Lookup with nothing in the lookup value
 		accountsListView.accountsSearchClearBtn.click();
 		Thread.sleep(1000);
 		accountsListView.accountsSearchLookupBtn.click();
 		Thread.sleep(1000);
-		
-		//VP: check that for an unfiltered search nothing displays in the lookup above the list view
-		accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-		resultsMsg = "VP: lookup displays nothing for cleared hash-tags/filters";
-        currHashTag = accountsListView.accountsSearchTxtBox.getAttribute("value");
 
-        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
-        System.out.println(resultsMsg + " - PASSED");
 		
-		//Section 2: KPI metrics
+		//Section 2: Account KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
 		//VP: verify the KPI section header
-		resultsMsg = "VP: KPI header label is displayed in right-context menu";
+		String resultsMsg = "VP: KPI header label is displayed in right-context menu";
 		WebElement KPIHeaderXPath = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'KPI']"));
 		String headerLbl = KPIHeaderXPath.getText();
 		try {
@@ -555,23 +532,13 @@ public class MobileSprint233Test extends BaseTest {
 			System.out.println(resultsMsg + " - Failed");
 		}
 		
-		//VP: verify the removal of KPI Configure link
-		resultsMsg = "VP: KPI Configure link is not displayed in right-context menu";
-		try {
-			AssertJUnit.assertTrue(driver.findElements(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Configure']")).size() == 0);			
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//VP: verify the KPI metric items
+		//VP: verify the Account KPI metric items
 		resultsMsg = "VP: KPI metric items are available in right-context menu";
 		WebElement totalRevenuKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Revenue']"));
 		WebElement avgTimeAsCustKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Avg Time as Customer']"));
 		WebElement totalAccountsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Accounts']"));
 		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Revenu KPI header label", totalRevenuKPI));
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Revenue KPI header label", totalRevenuKPI));
 			AssertJUnit.assertTrue(commNav.isWebElementPresent("Avg Time as Customer KPI header label", avgTimeAsCustKPI));
 			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Accounts KPI header label", totalAccountsKPI));
 			System.out.println(resultsMsg + " - Passed");
@@ -581,7 +548,7 @@ public class MobileSprint233Test extends BaseTest {
 		}
 		headerButton.closeRightContextMenu();
 		
-		//Section 3: Test Tickets KPI metric selections
+		//Section 3: Test Account KPI metric selections
 		//----------
 		String selectedKpiMetric = "";
 		String[] kpiMetrics = {"Total Revenue", "Avg Time as Customer", "Total Accounts"};
@@ -594,7 +561,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -646,8 +613,8 @@ public class MobileSprint233Test extends BaseTest {
 	}
 	
 	
-	//MBL10112 - KPI widgets need to work for list views under an entity - Accounts (filtering by hash tags)
-	@Test(enabled = true)
+	//MBL10112 - KPI widgets need to work for list views under an entity - Accounts (filtering by hash tags) ... hashtags removed in 3.1
+	@Test(enabled = false)
 	public void test07_MBL10112_Accounts_Filtering() throws InterruptedException {
 		String methodID = "test07_MBL10112_Accounts_Filtering";
 		
@@ -749,7 +716,7 @@ public class MobileSprint233Test extends BaseTest {
 	}
 
 	
-	//MBL10112 - KPI widgets need to work for list views under an entity - Contacts (no filtering by hash tags)
+	//MBL10112 - KPI widgets need to work for list views under an entity - Contacts (no filtered lookups)
 	@Test(enabled = true)
 	public void test08_MBL10112_Contacts_NoFiltering() throws InterruptedException {
 		String methodID = "test08_MBL10112_Contacts_NoFiltering";
@@ -776,41 +743,21 @@ public class MobileSprint233Test extends BaseTest {
 		Thread.sleep(1000);
 		headerButton.closeRightContextMenu();
 		Thread.sleep(5000);
-		
-		//VP: confirm that current hash-tag/filter appears above the list view in the lookup ... from 3.1 #my-contacts does not display by default
-        commNav.rightClickContextMenuItem("my-contacts");
-		String resultsMsg = "VP: current hash-tag/filter is displayed above the Contacts list view";
-        String currHashTag = contactsListView.contactsSearchTxtBox.getAttribute("value");
 
-        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#my-contacts",currHashTag);
-        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
-        System.out.println(resultsMsg + " - PASSED");
 		
-		//Section 1: clear the default hash-tag/filter
-		//----------		
-		//Step: remove any current hash-tags/filters then perform a Lookup		
-		headerButton.showRightContextMenu();
-		contactsListView.contactsSearchTxtBox.click();
-		Thread.sleep(500);
+		//Section 1: perform a Lookup with nothing in the lookup value
 		contactsListView.contactsSearchClearBtn.click();
 		Thread.sleep(1000);
 		contactsListView.contactsSearchLookupBtn.click();
 		Thread.sleep(1000);
-		
-		//VP: check that for an unfiltered search nothing displays in the lookup above the list view
-		contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-		resultsMsg = "VP: lookup displays nothing for cleared hash-tags/filters";
 
-        currHashTag = contactsListView.contactsSearchTxtBox.getAttribute("value");
-        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
-        System.out.println(resultsMsg + " - PASSED");
 		
-		//Section 2: KPI metrics
+		//Section 2: Contact KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
 		//VP: verify the KPI section header
-		resultsMsg = "VP: KPI header label is displayed in right-context menu";
+		String resultsMsg = "VP: KPI header label is displayed in right-context menu";
 		WebElement KPIHeaderXPath = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'KPI']"));
 		String headerLbl = KPIHeaderXPath.getText();
 		try {
@@ -821,21 +768,11 @@ public class MobileSprint233Test extends BaseTest {
 			System.out.println(resultsMsg + " - Failed");
 		}
 		
-		//VP: verify the removal of KPI Configure link
-		resultsMsg = "VP: KPI Configure link is not displayed in right-context menu";
-		try {
-			AssertJUnit.assertTrue(driver.findElements(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Configure']")).size() == 0);			
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//VP: verify the KPI metric items
+		//VP: verify the Contact KPI metric items
 		resultsMsg = "VP: KPI metric items are available in right-context menu";
 		WebElement totalContactsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Contacts']"));
 		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Revenu KPI header label", totalContactsKPI));
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Contacts KPI header label", totalContactsKPI));
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -843,7 +780,7 @@ public class MobileSprint233Test extends BaseTest {
 		}
 		headerButton.closeRightContextMenu();
 		
-		//Section 3: Test KPI metric selections
+		//Section 3: Test Contact KPI metric selections
 		//----------
 		String selectedKpiMetric = "";
 		String[] kpiMetrics = {"Total Contacts"};
@@ -856,7 +793,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -908,8 +845,8 @@ public class MobileSprint233Test extends BaseTest {
 	}
 	
 
-	//MBL10112 - KPI widgets need to work for list views under an entity - Contacts (filtering by hash tags)
-	@Test(enabled = true)
+	//MBL10112 - KPI widgets need to work for list views under an entity - Contacts (filtering by hash tags) ... hashtags removed in 3.1
+	@Test(enabled = false)
 	public void test09_MBL10112_Contacts_Filtering() throws InterruptedException {
 		String methodID = "test09_MBL10112_Contacts_Filtering";
 		
@@ -1017,7 +954,7 @@ public class MobileSprint233Test extends BaseTest {
 		System.out.println(ENDLINE);
 	}
 
-	//MBL10112 - KPI widgets need to work for list views under an entity - Leads (no filtering by hash tags)
+	//MBL10112 - KPI widgets need to work for list views under an entity - Leads (no filtered lookups)
 	@Test(enabled = true)
 	public void test10_MBL10112_Leads_NoFiltering() throws InterruptedException {
 		String methodID = "test10_MBL10112_Leads_NoFiltering";
@@ -1037,41 +974,21 @@ public class MobileSprint233Test extends BaseTest {
 	    //Step: navigate to Leads list view...
 		commNav.clickGlobalMenuItem(entityType);		
 		LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
-		
-		//VP: confirm that current hash-tag/filter appears above the list view ... from 3.1 #my-leads does not display by default
-        commNav.rightClickContextMenuItem("my-leads");
-		String resultsMsg = "VP: current hash-tag/filter is displayed above the Leads list view";
-		String currHashTag = leadsListView.leadsSearchTxtBox.getAttribute("value");
-
-        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#my-leads",currHashTag);
-        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
-        System.out.println(resultsMsg + " - PASSED");
 
 		
-		//Section 1: clear the default hash-tag/filter
-		//----------		
-		//Step: remove any current hash-tags/filters then perform a Lookup		
-		headerButton.showRightContextMenu();
-		leadsListView.leadsSearchTxtBox.click();
-		Thread.sleep(500);
+		//Section 1: perform a Lookup with nothing in the lookup value
 		leadsListView.leadsSearchClearBtn.click();
 		Thread.sleep(1000);
 		leadsListView.leadsSearchLookupBtn.click();
 		Thread.sleep(1000);
+
 		
-		//VP: check that for an unfiltered search nothing displays in the lookup above the list view
-		leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
-		resultsMsg = "VP: lookup displays nothing for cleared hash-tags/filters";
-        currHashTag = leadsListView.leadsSearchTxtBox.getAttribute("value");
-        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
-        System.out.println(resultsMsg + " - PASSED");
-		
-		//Section 2: KPI metrics
+		//Section 2: Lead KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
 		//VP: verify the KPI section header
-		resultsMsg = "VP: KPI header label is displayed in right-context menu";
+		String resultsMsg = "VP: KPI header label is displayed in right-context menu";
 		WebElement KPIHeaderXPath = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'KPI']"));
 		String headerLbl = KPIHeaderXPath.getText();
 		try {
@@ -1081,22 +998,13 @@ public class MobileSprint233Test extends BaseTest {
 		catch (Error e) {
 			System.out.println(resultsMsg + " - Failed");
 		}
+
 		
-		//VP: verify the removal of KPI Configure link
-		resultsMsg = "VP: KPI Configure link is not displayed in right-context menu";
-		try {
-			AssertJUnit.assertTrue(driver.findElements(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Configure']")).size() == 0);			
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//VP: verify the KPI metric items
+		//VP: verify the Lead KPI metric items
 		resultsMsg = "VP: KPI metric items are available in right-context menu";
 		WebElement totalLeadsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Leads']"));
 		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Revenu KPI header label", totalLeadsKPI));
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Leads KPI header label", totalLeadsKPI));
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -1104,7 +1012,7 @@ public class MobileSprint233Test extends BaseTest {
 		}
 		headerButton.closeRightContextMenu();
 		
-		//Section 3: Test KPI metric selections
+		//Section 3: Test Lead KPI metric selections
 		//----------
 		String selectedKpiMetric = "";
 		String[] kpiMetrics = {"Total Leads"};
@@ -1117,7 +1025,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -1168,8 +1076,8 @@ public class MobileSprint233Test extends BaseTest {
 		System.out.println(ENDLINE);
 	}
 
-	//MBL10112 - KPI widgets need to work for list views under an entity - Leads (filtering by hash tags)
-	@Test(enabled = true)
+	//MBL10112 - KPI widgets need to work for list views under an entity - Leads (filtering by hash tags) ... hashtags removed in 3.1
+	@Test(enabled = false)
 	public void test11_MBL10112_Leads_Filtering() throws InterruptedException {
 		String methodID = "test11_MBL10112_Leads_Filtering";
 		
@@ -1271,7 +1179,7 @@ public class MobileSprint233Test extends BaseTest {
 	}
 	
 
-	//MBL10112 - KPI widgets need to work for listviews under an entity - Opportunities (no filtering by hash tags)
+	//MBL10112 - KPI widgets need to work for listviews under an entity - Opportunities (no filtered lookups)
 	@Test(enabled = true)
 	public void test12_MBL10112_Opportunities_NoFiltering() throws InterruptedException {
 		String methodID = "test12_MBL10112_Opportunities_NoFiltering";
@@ -1293,40 +1201,19 @@ public class MobileSprint233Test extends BaseTest {
 		
 		OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
-		//VP: confirm that current hash-tag/filter appears above the list view in the Lookup ... from 3.1 #my-opportunities does not display by default
-        commNav.rightClickContextMenuItem("my-opportunities");
-		String resultsMsg = "VP: current hash-tag/filter is displayed above the Opportunities list view";
-		String currHashTag = opportunitiesListView.opportunitySearchTxtBox.getAttribute("value");
-
-        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#my-opportunities",currHashTag);
-        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
-        System.out.println(resultsMsg + " - PASSED");
-		
-		//Section 1: clear the default hash-tag/filter
-		//----------		
-		//Step: remove any current hash-tags/filters then perform a Lookup		
-		headerButton.showRightContextMenu();
-		opportunitiesListView.opportunitySearchTxtBox.click();
-		Thread.sleep(500);
+		//Section 1: perform a Lookup with nothing in the lookup value
 		opportunitiesListView.opportunitySearchClearBtn.click();
 		Thread.sleep(1000);
 		opportunitiesListView.opportunitySearchLookupBtn.click();
 		Thread.sleep(1000);
-		
-		//VP: check that the 'no search applied' label is displayed above the list view
-		opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-		resultsMsg = "VP: lookup displays nothing for cleared hash-tags/filters";
-        currHashTag = opportunitiesListView.opportunitySearchTxtBox.getAttribute("value");
 
-        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
-        System.out.println(resultsMsg + " - PASSED");
 		
-		//Section 2: KPI metrics
+		//Section 2: Opportunity KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
 		//Step: verify the KPI section header
-		resultsMsg = "VP: KPI header label is displayed in right-context menu";
+		String resultsMsg = "VP: KPI header label is displayed in right-context menu";
 		WebElement KPIHeaderXPath = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'KPI']"));
 		String headerLbl = KPIHeaderXPath.getText();
 		try {
@@ -1336,23 +1223,14 @@ public class MobileSprint233Test extends BaseTest {
 		catch (Error e) {
 			System.out.println(resultsMsg + " - Failed");
 		}
+
 		
-		//Step: verify the removal of KPI Configure link
-		resultsMsg = "VP: KPI Configure link is not displayed in right-context menu";
-		try {
-			AssertJUnit.assertTrue(driver.findElements(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Configure']")).size() == 0);			
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//Step: verify the KPI metric items
+		//Step: verify the Opportunity KPI metric items
 		resultsMsg = "VP: KPI metric items are available in right-context menu";
 		WebElement totalOppsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Opportunities']"));
 		WebElement salesPotentialKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Sales Potential']"));
 		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Opportunties KPI header label", totalOppsKPI));
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Opportunities KPI header label", totalOppsKPI));
 			AssertJUnit.assertTrue(commNav.isWebElementPresent("Sales Potential KPI header label", salesPotentialKPI));
 			System.out.println(resultsMsg + " - Passed");
 		}
@@ -1374,7 +1252,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -1426,8 +1304,8 @@ public class MobileSprint233Test extends BaseTest {
 	}
 	
 
-	//MBL10112 - KPI widgets need to work for listviews under an entity - Opportunities (filtering by hash tags)
-	@Test(enabled = true)
+	//MBL10112 - KPI widgets need to work for listviews under an entity - Opportunities (filtering by hash tags) ... hashtags removed in 3.1
+	@Test(enabled = false)
 	public void test13_MBL10112_Opportunities_Filtering() throws InterruptedException {
 		String methodID = "test13_MBL10112_Opportunities_Filtering";
 			
@@ -1468,7 +1346,7 @@ public class MobileSprint233Test extends BaseTest {
 				commNav.rightClickContextMenuItem(hSelectedFilter);
 				Thread.sleep(5000);		
 				String resultsMsg = "VP: " + selectedKpiMetric + " KPI metric card is displayed above the list view";
-				String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
+				String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
 				try {
 					//WebElement selectedKPICard = driver.findElement(By.xpath(kpiCardXpath));
 					WebElement selectedKPICard = opportunitiesListView.opportunityListView1stKPICard; 
@@ -1532,7 +1410,7 @@ public class MobileSprint233Test extends BaseTest {
 	}
 	
 
-	//MBL10112 - KPI widgets need to work for listviews under an entity - Tickets (no filtering by hash tags)
+	//MBL10112 - KPI widgets need to work for listviews under an entity - Tickets (no filtered lookups)
 	@Test(enabled = true)
 	public void test14_MBL10112_Tickets_NoFiltering() throws InterruptedException {
 		String methodID = "test14_MBL10112_Tickets_NoFiltering";
@@ -1553,38 +1431,19 @@ public class MobileSprint233Test extends BaseTest {
 		commNav.clickGlobalMenuItem(entityType);		
 		TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 		
-		//VP: confirm that current hash-tag/filter appears above the list view in the Lookup ... from 3.1 #assigned-to-me does not display by default
-        commNav.rightClickContextMenuItem("assigned-to-me");
-		String resultsMsg = "VP: current hash-tag/filter is displayed above the Tickets list view";
-		String currHashTag = ticketsListView.ticketsSearchTxtBox.getAttribute("value");
-        AssertJUnit.assertEquals(resultsMsg + " - FAILED","#assigned-to-me",currHashTag);
-        System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
-        System.out.println(resultsMsg + " - PASSED");
-		
-		//Section 1: clear the default hash-tag/filter
-		//----------		
-		//Step: remove any current hash-tags/filters then perform a Lookup		
-		headerButton.showRightContextMenu();
-		ticketsListView.ticketsSearchTxtBox.click();
-		Thread.sleep(500);
+		//Section 1: perform a Lookup with nothing in the lookup value
 		ticketsListView.ticketsSearchClearBtn.click();
 		Thread.sleep(1000);
 		ticketsListView.ticketsSearchLookupBtn.click();
 		Thread.sleep(1000);
+
 		
-		//VP: check that for an unfiltered search nothing displays in the lookup above the list view
-		ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
-		resultsMsg = "VP: lookup displays nothing for cleared hash-tags/filters";
-        currHashTag = ticketsListView.ticketsSearchTxtBox.getAttribute("value");
-        AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
-        System.out.println(resultsMsg + " - PASSED");
-		
-		//Section 2: KPI metrics
+		//Section 2: Ticket KPI metrics
 		//----------
 		headerButton.showRightContextMenu();
 		
 		//VP: verify the KPI section header
-		resultsMsg = "VP: KPI header label is displayed in right-context menu";
+		String resultsMsg = "VP: KPI header label is displayed in right-context menu";
 		WebElement KPIHeaderXPath = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'KPI']"));
 		String headerLbl = KPIHeaderXPath.getText();
 		try {
@@ -1594,24 +1453,15 @@ public class MobileSprint233Test extends BaseTest {
 		catch (Error e) {
 			System.out.println(resultsMsg + " - Failed");
 		}
+
 		
-		//VP: verify the removal of KPI Configure link
-		resultsMsg = "VP: KPI Configure link is not displayed in right-context menu";
-		try {
-			AssertJUnit.assertTrue(driver.findElements(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Configure']")).size() == 0);			
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		
-		//VP: verify the KPI metric items
+		//VP: verify the Ticket KPI metric items
 		resultsMsg = "VP: KPI metric items are available in right-context menu";
 		WebElement totalTicktsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Tickets']"));
 		WebElement openAgeAvgKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Open Age Average']"));
 		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Opportunties KPI header label", totalTicktsKPI));
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("Sales Potential KPI header label", openAgeAvgKPI));
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Tickets KPI header label", totalTicktsKPI));
+			AssertJUnit.assertTrue(commNav.isWebElementPresent("Open Age Average KPI header label", openAgeAvgKPI));
 			System.out.println(resultsMsg + " - Passed");
 		}
 		catch (Error e) {
@@ -1632,7 +1482,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div[2]/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
 				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
@@ -1684,8 +1534,8 @@ public class MobileSprint233Test extends BaseTest {
 	}
 	
 
-	//MBL10112 - KPI widgets need to work for listviews under an entity - Tickets (filtering by hash tags)
-	@Test(enabled = true)
+	//MBL10112 - KPI widgets need to work for listviews under an entity - Tickets (filtering by hash tags) ... hashtags removed in 3.1
+	@Test(enabled = false)
 	public void test15_MBL10112_Tickets_Filtering() throws InterruptedException {
 		String methodID = "test15_MBL10112_Tickets_Filtering";
 		

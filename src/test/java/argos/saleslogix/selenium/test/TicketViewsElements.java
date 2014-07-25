@@ -50,7 +50,7 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[4]/div[2]/div[2]/div/button")
+	@FindBy(xpath = "//div[4]/div[2]/div/div/button")
 	WebElement ticketsListView1stKPICard;
 	
 	@CacheLookup
@@ -95,27 +95,27 @@ public class TicketViewsElements extends BaseTest {
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/button")
-	WebElement topTicketsListItemIcon;	
+	WebElement topTicketsListItemIcon;
 
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[3]/h3")
-	WebElement topTicketsListItemNumber;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[3]/h4[2]")
-	WebElement topTicketsListItemLine2;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[3]/h4[3]")
-	WebElement topTicketsListItemLine3;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[3]/h4[4]")
-	WebElement topTicketsListItemLine4;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[3]/h4[5]")
-	WebElement topTicketsListItemLine5;
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[2]/h3")
+    WebElement topTicketsListItemNumber;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[2]/h4[2]")
+    WebElement topTicketsListItemLine2;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[2]/h4[3]")
+    WebElement topTicketsListItemLine3;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[2]/h4[4]")
+    WebElement topTicketsListItemLine4;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[2]/h4[5]")
+    WebElement topTicketsListItemLine5;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
@@ -185,7 +185,7 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement ticketsKPIHdr;
 	
 	@CacheLookup

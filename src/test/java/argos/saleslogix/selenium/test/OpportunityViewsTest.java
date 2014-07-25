@@ -78,14 +78,12 @@ public class OpportunityViewsTest extends BaseTest {
 			
 			//Step: check an Opportunity list view item record
 			commNav.checkIfWebElementPresent("Opportunity List View, item record", opportunitiesListView.topOpportunityListItem);
-			commNav.checkIfWebElementPresent("Opportunity List View, item record Tab", opportunitiesListView.topOpportunityListItemTab);
 			commNav.checkIfWebElementPresent("Opportunity List View, item record Icon", opportunitiesListView.topOpportunityListItemIcon);
 			commNav.checkIfWebElementPresent("Opportunity List View, item record Opportunity Name", opportunitiesListView.topOpportunityListItemName);
 			commNav.checkIfWebElementPresent("Opportunity List View, item record Account", opportunitiesListView.topOpportunityListItemAccount);
 			commNav.checkIfWebElementPresent("Opportunity List View, item record Account Manager Info", opportunitiesListView.topOpportunityListItemAcctMgrInfo);
 			commNav.checkIfWebElementPresent("Opportunity List View, item record Status Info", opportunitiesListView.topOpportunityListItemStatusInfo);
 			commNav.checkIfWebElementPresent("Opportunity List View, item record Sales Potential Opp. Rate", opportunitiesListView.topOpportunityListItemSalesPotOppRate);
-			commNav.checkIfWebElementPresent("Opportunity List View, item record Touch Icon", opportunitiesListView.topOpportunityListItemTouch);
 			//TODO: add coverage for ToDo icon check after figuring out the css id
 			
 			//Step: check the Quick Action button and items
@@ -484,7 +482,7 @@ public class OpportunityViewsTest extends BaseTest {
 	}
 
 	
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test10_SeTestTCOpportunityListViewHashTags() throws Exception {
 		String methodID = "test10_SeTestTCOpportunityListViewHashTags";
 		
@@ -634,7 +632,7 @@ public class OpportunityViewsTest extends BaseTest {
 	}
 
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test13_SeTestTCOpportunityListViewNotesBox() throws Exception {
 		//Reference: MBL-10042
 		String methodID = "test13_SeTestTCOpportunityListViewNotesBox";

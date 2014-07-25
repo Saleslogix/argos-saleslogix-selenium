@@ -34,9 +34,9 @@ public class MobileSprint304Test extends BaseTest {
 		return cardValue;
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test01_MobileDefect_MBL10191() throws InterruptedException {
-		//MBL-10191: Remove configure option
+		//MBL-10191: Remove configure option ... KPI configure option was removed, but there is another 'Configure' option in the right menu now, for Groups
 		String methodID = "test01_MobileDefect_MBL10191";
 			
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -579,6 +579,7 @@ public class MobileSprint304Test extends BaseTest {
 	@Test(enabled = false)
 	public void test09_MobileDefect_MBL10160() throws Exception {
 		//MBL-10160: Entity Opportunities - where opportunities for multiple entities are viewed, the default opportunities filter for the first entity only is as expected
+        //           Filters have been removed for Opportunities in Mobile v3.1
 		String methodID = "test09_MobileDefect_MBL10160";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);

@@ -454,15 +454,15 @@ public class MyActivityViewsElements extends BaseTest {
 	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='activity_types_list']//ul/li[1]/div[4]")
+	@FindBy(xpath = "//*[@id='activity_types_list']//ul/li[1]/div[2]")
 	WebElement activityScheduleMeetingBtn;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='activity_types_list']//ul/li[3]/div[4]")
+    @FindBy(xpath = "//*[@id='activity_types_list']//ul/li[3]/div[2]")
     WebElement activitySchedulePhoneCallBtn;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='activity_types_list']//ul/li[4]/div[4]")
+    @FindBy(xpath = "//*[@id='activity_types_list']//ul/li[4]/div[2]")
     WebElement activityScheduleToDoBtn;
 
     @CacheLookup

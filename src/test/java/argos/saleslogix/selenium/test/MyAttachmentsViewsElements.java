@@ -37,25 +37,25 @@ public class MyAttachmentsViewsElements extends BaseTest {
 	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[1]/button")
 	WebElement topMyAttachmentsListItemIcon;
 
-	@CacheLookup
-	@FindBy(xpath = ".//*[@id='myattachment_list']//ul/li[1]/div[3]/h3/span")
-	WebElement topMyAttachmentsListItemName;
-		
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[1]/div[3]/h4[1]")
-	WebElement topMyAttachmentsListItemDateAndSize;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li[1]/div[3]/h4[2]/span")
-	WebElement topMyAttachmentsListItemFileExtension;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='myattachment_list']//ul/li/div[3]/h4[3]")
-	WebElement topMyAttachmentsListItemOwner;
-	
-	@CacheLookup
-	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[1]/img")
-	WebElement topMyAttachmentsListItemTouch;
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='myattachment_list']//ul/li[1]/div[2]/h3")
+    WebElement topMyAttachmentsListItemName;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='myattachment_list']//ul/li[1]/div[2]/h4[1]")
+    WebElement topMyAttachmentsListItemDateAndSize;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='myattachment_list']//ul/li[1]/div[2]/h4[2]")
+    WebElement topMyAttachmentsListItemFileExtension;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='myattachment_list']//ul/li/div[2]/h4[3]")
+    WebElement topMyAttachmentsListItemOwner;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[@id='bottom_item_indicators']/span")
+    WebElement topMyAttachmentsListItemTouch;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[2]/img")

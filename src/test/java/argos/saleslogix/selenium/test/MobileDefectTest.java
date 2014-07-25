@@ -378,7 +378,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 		
 		// Step: click the top-search results item to go to the Detail view
-		driver.findElement(By.xpath("//*[@id='speedsearch_list']//ul/li[1]/div[3]/h4")).click();
+		driver.findElement(By.xpath("//*[@id='speedsearch_list']//ul/li[1]/div[2]/h4")).click();
 		for (int second = 0;; second++) {
 			if (second >= 30) Assert.fail("timeout");
 			try { if (!"SpeedSearch".equals(driver.findElement(By.xpath("//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -2110,7 +2110,7 @@ public class MobileDefectTest extends BaseTest {
 		commNav.rightClickContextMenuItem("phonecall");
 		
 		//VP: check that Regarding field value of top record is not null
-		WebElement topRegardingFld = driver.findElement(By.xpath("//*[@id='history_list']//ul/li[1]/div[3]/h4[2]"));
+		WebElement topRegardingFld = driver.findElement(By.xpath("//*[@id='history_list']//ul/li[1]/div[2]/h4[2]"));
 		String resultMsg = "VP: Notes/History List record's Regarding value is non-null";
 		try {
 			AssertJUnit.assertFalse(topRegardingFld.getText().equals(null));
@@ -2170,9 +2170,9 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test66_MobileDefect13092494()  throws Exception {
-		//tags: accounts, detail view, lookup, #active hashtag
+		//tags: accounts, detail view, lookup, #active hashtag ... hashtags removed in 3.1
 		String methodID = "test66_MobileDefect13092494";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -2214,7 +2214,7 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test67_MobileDefect13092497()  throws Exception {
 		//tags: accounts, my activities, right context menu, browser back button
 		String methodID = "test67_MobileDefect13092497";

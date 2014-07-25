@@ -44,7 +44,7 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement topOpportunityListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[5]/div[2]/div[2]/div/button")
+	@FindBy(xpath = "//div[5]/div[2]/div/div/button")
 	WebElement opportunityListView1stKPICard;
 	
 	@CacheLookup
@@ -62,24 +62,24 @@ public class OpportunityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div/h3")
 	WebElement topOpportunityListItemName;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[3]/h4[1]")
-	WebElement topOpportunityListItemAccount;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[3]/h4[2]")
-	WebElement topOpportunityListItemAcctMgrInfo;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[3]/h4[3]")
-	WebElement topOpportunityListItemStatusInfo;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[3]/h4[4]/strong")
-	WebElement topOpportunityListItemSalesPotOppRate;
-	
-	@CacheLookup
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[2]/h4[1]")
+    WebElement topOpportunityListItemAccount;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[2]/h4[2]")
+    WebElement topOpportunityListItemAcctMgrInfo;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[2]/h4[3]")
+    WebElement topOpportunityListItemStatusInfo;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[2]/h4[4]")
+    WebElement topOpportunityListItemSalesPotOppRate;
+
+    @CacheLookup
 	//@FindBy(css = "#opportunity_list > ul.list-content > li > #bottom_item_indicators > span > img")
     @FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
 	WebElement topOpportunityListItemTouch;
@@ -179,7 +179,7 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityListViewNotesBoxSeeListLink;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement opportunityKPIHdr;
 	
 	@CacheLookup

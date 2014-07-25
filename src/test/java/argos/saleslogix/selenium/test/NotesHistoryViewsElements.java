@@ -40,7 +40,7 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistorysListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[9]/div[2]/div[2]/div/button")
+	@FindBy(xpath = "//div[9]/div[2]/div/div/button")
 	WebElement notesHistorysListView1stKPICard;
 	
 	@CacheLookup
@@ -66,23 +66,22 @@ public class NotesHistoryViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div/h3")
 	WebElement topNotesHistoryListItemScheduledTime;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div[3]/h4[1]")
-	WebElement topNotesHistoryListItemContactAccount;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div[3]/h4[2]")
-	WebElement topNotesHistoryListItemRegarding;
-	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div[3]/div/div")
-	WebElement topNotesHistoryListItemNotes;
-	
-	@CacheLookup
-	//@FindBy(css = "#history_list > ul.list-content > li > #bottom_item_indicators > span > img")
-    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span[1]/img")
-	WebElement topNotesHistoryListItemTouch;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div[2]/h4[1]")
+    WebElement topNotesHistoryListItemContactAccount;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div[2]/h4[2]")
+    WebElement topNotesHistoryListItemRegarding;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='history_list']//ul/li[1]/div[2]/div/div")
+    WebElement topNotesHistoryListItemNotes;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span[1]")
+    WebElement topNotesHistoryListItemTouch;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='bottom_item_indicators']/span[2]/img")
@@ -146,7 +145,7 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistoryHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
 	WebElement notesHistoryKPIHdr;
 	
 	@CacheLookup

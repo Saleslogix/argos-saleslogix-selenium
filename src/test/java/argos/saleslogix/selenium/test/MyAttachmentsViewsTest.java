@@ -55,14 +55,12 @@ public class MyAttachmentsViewsTest extends BaseTest {
 						
 			//Step: check an My Attachments List view item record
 			commNav.checkIfWebElementPresent("My Attachments List View Card Layout, item record", myAttachmentsListView.topMyAttachmentsListItem);
-			commNav.checkIfWebElementPresent("My Attachments List View Card Layout, item record Tab", myAttachmentsListView.topMyAttachmentsListItemTab);
 			commNav.checkIfWebElementPresent("My Attachments List View Card Layout, item record Icon", myAttachmentsListView.topMyAttachmentsListItemIcon);
 			commNav.checkIfWebElementPresent("My Attachments List View Card Layout, item record Name", myAttachmentsListView.topMyAttachmentsListItemName);
 			commNav.checkIfWebElementPresent("My Attachments List View Card Layout, item record Date & Size", myAttachmentsListView.topMyAttachmentsListItemDateAndSize);
 			commNav.checkIfWebElementPresent("My Attachments List View Card Layout, item record File Extension", myAttachmentsListView.topMyAttachmentsListItemFileExtension);
 			commNav.checkIfWebElementPresent("My Attachments List View Card Layout, item record Item Owner", myAttachmentsListView.topMyAttachmentsListItemOwner);
 			commNav.checkIfWebElementPresent("My Attachments List View Card Layout, item record Touch Icon", myAttachmentsListView.topMyAttachmentsListItemTouch);
-			commNav.checkIfWebElementPresent("My Attachments List View Card Layout, item record Attachment Icon", myAttachmentsListView.topMyAttachmentsListItemAttachment);			
 			
 			//Step: check the "X records remaining" item box at the bottom of the list view
 			//commNav.checkIfWebElementPresent("My Attachments List View, Card Layout, 'x remaining records' item", accountListView.recordsRemainingListItem);

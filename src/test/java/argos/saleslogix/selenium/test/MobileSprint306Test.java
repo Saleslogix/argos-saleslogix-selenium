@@ -289,7 +289,7 @@ public class MobileSprint306Test extends BaseTest {
 			commNav.waitForPage("Schedule...");
 	        
 			//Step: select Meeting for activity type
-			driver.findElement(By.xpath("//*[@id='activity_types_list']//ul/li[1]/div[4]")).click();
+			driver.findElement(By.xpath("//*[@id='activity_types_list']//ul/li[1]/div[2]")).click();
 			
 			//Step: wait for page Meeting to open
 			commNav.waitForPage("Meeting");
@@ -734,7 +734,7 @@ public class MobileSprint306Test extends BaseTest {
             commNav.waitForPage("Schedule...");
 
             //Step: select Meeting for activity type
-            driver.findElement(By.xpath("//*[@id='activity_types_list']//ul/li[1]/div[4]")).click();
+            driver.findElement(By.xpath("//*[@id='activity_types_list']//ul/li[1]/div[2]")).click();
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
@@ -809,7 +809,7 @@ public class MobileSprint306Test extends BaseTest {
             commNav.waitForPage("Schedule...");
 
             //Step: select Meeting for activity type
-            driver.findElement(By.xpath("//*[@id='activity_types_list']//ul/li[1]/div[4]")).click();
+            driver.findElement(By.xpath("//*[@id='activity_types_list']//ul/li[1]/div[2]")).click();
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
@@ -923,7 +923,7 @@ public class MobileSprint306Test extends BaseTest {
             commNav.waitForPage("Schedule...");
 
             //Step: select Meeting for activity type
-            driver.findElement(By.xpath("//*[@id='activity_types_list']//ul/li[1]/div[4]")).click();
+            driver.findElement(By.xpath("//*[@id='activity_types_list']//ul/li[1]/div[2]")).click();
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");

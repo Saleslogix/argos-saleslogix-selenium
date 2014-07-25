@@ -64,7 +64,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 			commNav.checkIfWebElementPresent("Notes/History List View, item record Regarding", notesHistoryListView.topNotesHistoryListItemRegarding);
 			commNav.checkIfWebElementPresent("Notes/History List View, item record Notes", notesHistoryListView.topNotesHistoryListItemNotes);
 			commNav.checkIfWebElementPresent("Notes/History List View, item record touch widget", notesHistoryListView.topNotesHistoryListItemTouch);
-            commNav.checkIfWebElementPresent("Notes/History List View, item record type widget", notesHistoryListView.topNotesHistoryListItemType);
+
 			//TODO: add coverage for ToDo icon check after figuring out the css id
 			
 			//Step: check the Quick Action button and items
