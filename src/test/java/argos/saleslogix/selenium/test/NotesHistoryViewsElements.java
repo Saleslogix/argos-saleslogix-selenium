@@ -137,7 +137,7 @@ public class NotesHistoryViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
 	WebElement notesHistoryHashTagsHdr;
 	
 	@CacheLookup
