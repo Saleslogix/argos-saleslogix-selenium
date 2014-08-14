@@ -567,10 +567,10 @@ public class CommonNavigation {
 			forSpdSrch = true;
 			break;
 		case "my activities": case "activities": case "activity":
-			searchWgtIDX = "27";
+			searchWgtIDX = "26";
 			break;
 		case "notes/history": case "notes history": case "notes": case "note": case "history":
-			searchWgtIDX = "28";
+			searchWgtIDX = "27";
 			break;
 		case "accounts": case "account":
 			searchWgtIDX = "3";
@@ -579,16 +579,16 @@ public class CommonNavigation {
 			searchWgtIDX = "6";
 			break;
 		case "leads": case "lead":
-			searchWgtIDX = "17";
+			searchWgtIDX = "16";
 			break;			
 		case "opportunities": case "opportunity":
-			searchWgtIDX = "12";
+			searchWgtIDX = "11";
 			break;			
 		case "tickets": case "ticket":
-			searchWgtIDX = "19";
+			searchWgtIDX = "18";
 			break;			
 		case "my attachments": case "attachments": case "attachment":
-			searchWgtIDX = "37";
+			searchWgtIDX = "36";
 			break;	
 		//TODO: continue to expand this switch case list for additional list views
 		}

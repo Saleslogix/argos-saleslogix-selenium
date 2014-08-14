@@ -226,6 +226,8 @@ public class BaseTest {
         Thread.sleep(2000);
         closeAlert();
         Thread.sleep(1000);
+        driver.navigate().refresh();
+        Thread.sleep(2000);
         System.out.println("invoking " + methodID + " method...");
 
         //Step: Clear cookies
@@ -343,6 +345,8 @@ public class BaseTest {
         Thread.sleep(2000);
         closeAlert();
         Thread.sleep(1000);
+        driver.navigate().refresh();
+        Thread.sleep(2000);
 
 
         //WebDriverWait wait = new WebDriverWait(driver, 10);

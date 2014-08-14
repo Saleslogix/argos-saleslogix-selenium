@@ -2307,6 +2307,8 @@ public class MobileDefectTest extends BaseTest {
 		Thread.sleep(2000);
 		closeAlert();
 		Thread.sleep(1000);
+        driver.navigate().refresh();
+        Thread.sleep(2000);
 		
 		//Step: Attempt invalid login 
 		slxmobilelogin.enterUserName(userName);
