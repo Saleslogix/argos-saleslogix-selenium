@@ -119,7 +119,7 @@ public class MobileSprint317Test extends BaseTest {
 
 
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     // MBL-10404 ... load home page based on user's preference as defined on Configure View (at present the default home page is 'My Activities')
     public void test02_MBL10404() throws Exception {
         String methodID = "test02_MBL10404";
@@ -170,7 +170,7 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     // MBL-10452 ... While editing an Activity in the Mobile Client, changing the Account doesn't validate the Contact ... Contact field should be cleared out as in web client and LAN
     //               Two Scenarios :
     //               1. adding and editing the activity within the same login session ... changing the account (this was working previously)
@@ -375,7 +375,7 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     // MBL-10472 ... Using Account listview Edit quick action to edit account should display address on edit view or Address view
     public void test04_MBL10472() throws Exception {
         String methodID = "test04_MBL10472";
@@ -478,6 +478,7 @@ public class MobileSprint317Test extends BaseTest {
         String newNotesData = "Technical notes";
 
         //Step: setup Regarding and Notes fields, then try to save new note
+        Thread.sleep(1000);
         notesHistoryEditView.notesHistoryEditViewRegardingInputFld.sendKeys(strRegardingVal);
         notesHistoryEditView.notesHistoryEditViewNotesInputFld.sendKeys(newNotesData);
         headerbutton.clickHeaderButton("save");

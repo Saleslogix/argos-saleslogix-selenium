@@ -650,11 +650,17 @@ public class MobileSprint304Test extends BaseTest {
 		
 			
 	    //Step: perform SpeedSearch then open a target results record
-		//Note: the target results record to open must have an empty Completed By field
+		//Note: the target results record to open must have an empty Completed By field ... "Database Change (2013_12_21)"
 	    String searchItem = "Sophia Perez";
-	    String recordItem = "Database Change (2013_12_21)";
-	    
-	    commNav.goToSpeedSearchResultDetailView(searchItem, recordItem);
+
+        //perform SpeedSearch on the target item
+        commNav.doSpeedSearch(searchItem);
+
+        String targetSpdSearchResultXPath = "//*[@id='speedsearch_list']//li[@data-key='HDEMOA0000HB']";
+
+        //open the top matching search result from the List view
+        commNav.clickListViewGridItem(By.xpath(targetSpdSearchResultXPath));
+        commNav.waitForNotPage("SpeedSearch");
 		
 	    //VP: check to see that the History detail page is successfully loaded (when the Completed By field is empty)
 	    String resultsMsg = "VP: History Detail page was successfully loaded";

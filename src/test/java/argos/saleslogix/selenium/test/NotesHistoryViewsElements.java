@@ -226,15 +226,16 @@ public class NotesHistoryViewsElements extends BaseTest {
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/button")
 	WebElement notesHistoryEditViewTimeFldBtn;
 	
-	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
+	//@CacheLookup
+	//@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
+    @FindBy(xpath = "//*[@data-field='Description']//input")
 	WebElement notesHistoryEditViewRegardingInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
 	WebElement notesHistoryEditViewRegardingFldBtn;
 	
-	@CacheLookup
+	//@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_0']/textarea")
 	WebElement notesHistoryEditViewNotesInputFld;
 	
@@ -247,7 +248,8 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistoryEditViewAccountInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
+	//@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
+    @FindBy(xpath = "//*[@data-field='Account']//button")
 	WebElement notesHistoryEditViewAccountFldBtn;
 	
 	@CacheLookup
