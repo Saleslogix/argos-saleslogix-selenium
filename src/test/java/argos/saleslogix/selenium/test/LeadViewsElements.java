@@ -363,7 +363,8 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsEditViewAddressInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_0']/button")
+	// @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_0']/button")
+    @FindBy(xpath = "//*[@data-field='Address']//button")
 	WebElement leadsEditViewAddressFldBtn;
 	
 	@CacheLookup
