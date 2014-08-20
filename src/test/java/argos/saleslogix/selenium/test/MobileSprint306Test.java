@@ -632,7 +632,7 @@ public class MobileSprint306Test extends BaseTest {
 	        
 	        
 	        //Calendar MONTH VIEW
-	        //Step: switch focus to Month view ... by default, today's activities display
+	        //Step: switch focus to Month view ... by default, today's activities display ... use original calendarMonthBtn
 		    calendarView.calendarMonthBtn.click();
 		    
 		    

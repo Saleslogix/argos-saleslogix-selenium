@@ -291,7 +291,7 @@ public class MobileSprint308Test extends BaseTest {
             //Step: go to Calendar view ... wait for page Calendar, and press 'Month' button
             commNav.clickGlobalMenuItem("Calendar");
             commNav.waitForPage("Calendar");
-            calendarView.calendarMonthBtn.click();
+            calendarView.calendarDayListToMonthBtn.click();
 
 
             //Step: click on the Sunday at the start of the 2nd row of days for the month
@@ -388,7 +388,7 @@ public class MobileSprint308Test extends BaseTest {
             //Step: go to Calendar view ... wait for page Calendar, and press 'Month' button
             commNav.clickGlobalMenuItem("Calendar");
             commNav.waitForPage("Calendar");
-            calendarView.calendarMonthBtn.click();
+            calendarView.calendarDayListToMonthBtn.click();
 
 
             //Step: click on the Sunday at the start of the 4th row of days for the month
