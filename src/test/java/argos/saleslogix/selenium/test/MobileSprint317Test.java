@@ -498,7 +498,7 @@ public class MobileSprint317Test extends BaseTest {
 
         //Step: Verify that one sees a validation summary message that "The field 'account' must have a value."
         if (commNav.isWebElementPresent(viewName + ",'Validation Summary message'", notesHistoryEditView.notesHistoryEditViewValSummMessage)) {
-            String valSummaryMessageExpected = "The field 'account' must have a value.";
+            String valSummaryMessageExpected = "The field 'account' must have a value";
             String valSummaryMessageActual = notesHistoryEditView.notesHistoryEditViewValSummMessage.getText();
             AssertJUnit.assertEquals("VP: Validation Summary message does not have the expected value of " + valSummaryMessageExpected + " - FAILED", valSummaryMessageExpected, valSummaryMessageActual);
             System.out.println("VP: Validation Summary message does have the expected value of ... " + valSummaryMessageExpected + " - PASSED");
