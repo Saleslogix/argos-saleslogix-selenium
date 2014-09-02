@@ -158,31 +158,31 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistoryDetailView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[1]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[2]")
 	WebElement notesHistoryDetailViewDetailsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[1]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[1]/span")
 	WebElement notesHistoryDetailViewScheduledFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[2]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[2]/span")
 	WebElement notesHistoryDetailViewCompletedFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[3]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[3]/span")
 	WebElement notesHistoryDetailViewRegardingFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div[4]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[4]/span")
 	WebElement notesHistoryDetailViewCompletedByFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[2]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[1]")
 	WebElement notesHistoryDetailViewNotesHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div/pre")
 	WebElement notesHistoryDetailViewNotesFld;
 	
 	@CacheLookup
@@ -190,23 +190,23 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistoryDetailRelatedItems1Hdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[3]/div[1]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[5]/span")
 	WebElement notesHistoryDetailViewAccountFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[3]/div[2]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[6]/span")
 	WebElement notesHistoryDetailViewContactFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[3]/div[3]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[7]/span")
 	WebElement notesHistoryDetailViewOpportunityFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[3]/div[4]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[8]/span")
 	WebElement notesHistoryDetailViewTicketFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[4]")
+	@FindBy(xpath = "//*[@id='history_detail']/div[2]/h2[3]")
 	WebElement notesHistoryDetailRelatedItems2Hdr;
 		
 	@CacheLookup

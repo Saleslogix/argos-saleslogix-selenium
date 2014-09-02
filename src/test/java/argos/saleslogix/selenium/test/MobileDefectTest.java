@@ -2126,7 +2126,7 @@ public class MobileDefectTest extends BaseTest {
 		commNav.waitForNotPage("Notes/History");
 		
 		//VP: check the Regarding field value in the Notes/History detail view
-		WebElement regardingFld = driver.findElement(By.xpath("//*[@id='history_detail']/div[2]/div[1]/div[3]/span"));
+		WebElement regardingFld = driver.findElement(By.xpath("//*[@id='history_detail']/div[2]/div[2]/div[3]/span"));
 		resultMsg = "VP: Notes/History record's Detail view Regarding field value is non-null";
 		try {
 			AssertJUnit.assertFalse(regardingFld.getText().equals(null));
