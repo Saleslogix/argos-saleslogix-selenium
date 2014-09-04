@@ -294,6 +294,26 @@ public class OpportunityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Products']")
 	WebElement opportunityDetailViewProductsLnk;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[@data-field='Product']/div/button")
+    WebElement opportunityProductViewProductBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//input[@name='query']")
+    WebElement opportunityProductsSearchValue;
+
+    @CacheLookup
+    @FindBy(xpath = "//button[@class='subHeaderButton searchButton']")
+    WebElement opportunityProductsSearchBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='product_related']//li/div[1]/h3")
+    WebElement opportunityProductsTopProduct;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[@data-field='Program']/div/button")
+    WebElement opportunityProductViewPriceLevelBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_detail']/descendant::*[text() = 'Activities']")

@@ -239,6 +239,10 @@ public class LeadViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[3]")
 	WebElement leadsDetailViewWebFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[3]/span/a")
+    WebElement leadsDetailViewWebFldLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[4]")
@@ -331,7 +335,8 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsEditViewCompanyInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_3']/input")
+	// @FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_3']/input")
+    @FindBy(xpath = "//input[@name='WebAddress']")
 	WebElement leadsEditViewWebInputFld;
 	
 	@CacheLookup
