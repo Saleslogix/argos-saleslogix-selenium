@@ -281,7 +281,9 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
     @Test(enabled = true)
-   // MBL-10505 ... When product name contains quote (10"KSE-100-6T) on Opportunity Product screen, receive error trying to open the 'price level' lookup
+    // MBL-10505 ... When product name contains quote (10"KSE-100-6T) on Opportunity Product screen, receive error trying to open the 'price level' lookup
+    //               Pre-requisite ... product 10"KSE-100-6T has been added in admin's web client as follows ... Administration - New Product
+    //               - Add product 10"KSE-100-6T, and assign it some price levels (MSRP and Wholesale)
 
     public void test05_MBL10505() throws Exception {
         String methodID = "test05_MBL10505";
@@ -330,6 +332,7 @@ public class MobileSprint317BTest extends BaseTest {
         catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: where product name contains double quotes, 'price level' lookup opens - FAILED");
+            AssertJUnit.fail("test failed");
         }
 
         System.out.println(ENDLINE);

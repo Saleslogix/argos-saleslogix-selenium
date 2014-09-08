@@ -435,7 +435,19 @@ public class ContactViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[5]//h3")
     WebElement contactsEditViewTitleValue5;
-	
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_list']//li[1]//h4[9]/span[2]")
+    WebElement authContactsGroupTopAuthValue;
+
+    @CacheLookup
+    // this data-key is specific to user loup for 'Authorized Contacts'
+    @FindBy(xpath = "//*[@id='groups_configure']//li[@data-key='p6UJ9A0005C7']")
+    WebElement groupsConfigureAuthContacts;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='Authorized Contacts']")
+    WebElement rmenu_groupAuthContacts;
 	
 	//Methods
 	//=======

@@ -433,9 +433,28 @@ public class AccountViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
 	WebElement accountEditViewLeadSourceFldBtn;
-	
-	
-	//Methods
+
+    // the data-key given here is for user loup 'My Accounts' group
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='groups_configure']//li[@data-key='p6UJ9A00028V']")
+    WebElement groupsConfigureMyAccounts;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='My Accounts']")
+    WebElement rmenu_groupMyAccounts;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='All Accounts']")
+    WebElement rmenu_groupAllAccounts;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='Customers']")
+    WebElement rmenu_groupCustomers;
+
+
+
+    //Methods
 	//=======
 	/**
 	 * This method will select and apply a hash-tag on the Accounts List view.  The assumption is that the
