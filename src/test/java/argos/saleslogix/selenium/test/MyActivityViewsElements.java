@@ -466,10 +466,15 @@ public class MyActivityViewsElements extends BaseTest {
     WebElement activityScheduleToDoBtn;
 
     @CacheLookup
+    @FindBy(xpath = "//*[@id='select_list']//li[@data-descriptor='Never']")
+    WebElement activityRecurringNeverFld;
+
+    @CacheLookup
     @FindBy(xpath = "//*[@id='select_list']//li[@data-descriptor='Daily']")
     WebElement activityRecurringDailyFld;
 
 
+    // this field is used for an activity created on a Sunday
     @CacheLookup
     @FindBy(xpath = "//*[@id='select_list']//li[@data-descriptor='Weekly on Sunday']")
     WebElement activityRecurringWeeklyFld;

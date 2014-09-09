@@ -243,6 +243,66 @@ public class GroupsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
+
+    @Test(enabled = true)
+    // MBL-10526 ... In 'Follow-Up' ticket group see 'Invalid date' for Completed Date, instead of just blank
+
+    public void test04_MBL10526() throws Exception {
+        String methodID = "test04_MBL10526";
+
+        // Test Params:
+        String entityType = "tickets";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        //Step: navigate to Tickets list view...
+        commNav.clickGlobalMenuItem(entityType);
+
+        TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
+
+        //Step: reveal Right Context Menu panel
+        headerButton.showRightContextMenu();
+
+        //Step: click on Configure button to open 'Groups Lookup' and select 'Follow-Up' for loup
+        commNav.rmenu_GroupConfigure.click();
+        commNav.waitForPage("Groups Lookup");
+        ticketsListView.groupsConfigureFollowUp.click();
+        headerButton.checkButton.click();
+        commNav.waitForPage("My Tickets");
+
+        //Step: open right menu and select 'Follow-Up' group to display
+        headerButton.showRightContextMenu();
+        ticketsListView.rmenu_groupFollowUp.click();
+        commNav.waitForPage("Follow-Up");
+
+        //Step: verify that the Completed Date value for the top ticket does not display 'Invalid date' ... should just be blank
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        String completedDate = ticketsListView.followUpTicketsGroupTopComplDate.getText();
+        System.out.println("VP: 'Top Completed Date' has a value of ... " + completedDate);
+        AssertJUnit.assertEquals("VP: top Completed Date is not displaying as blank  - FAILED", "", completedDate);
+        System.out.println("VP: top Completed Date is displaying as blank, not 'Invalid date' - PASSED");
+
+
+        //Step: open right menu, choose Configure and uncheck 'Follow-Up', so back to single default group of 'My Tickets'
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
+        headerButton.showRightContextMenu();
+        commNav.rmenu_GroupConfigure.click();
+        commNav.waitForPage("Groups Lookup");
+        ticketsListView.groupsConfigureFollowUp.click();
+        headerButton.checkButton.click();
+        commNav.waitForPage("My Tickets");
+
+        System.out.println(ENDLINE);
+    }
+
 	@Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";

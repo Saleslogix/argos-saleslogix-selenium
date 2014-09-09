@@ -567,6 +567,19 @@ public class TicketViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
 	WebElement ticketsEditViewLeadSourceFldBtn;
+
+    @CacheLookup
+    // this data-key is specific to user loup for 'Follow-Up' group
+    @FindBy(xpath = "//*[@id='groups_configure']//li[@data-key='p6UJ9A0004QM']")
+    WebElement groupsConfigureFollowUp;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='Follow-Up']")
+    WebElement rmenu_groupFollowUp;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='ticket_list']//li[1]//h4[8]/span[2]")
+    WebElement followUpTicketsGroupTopComplDate;
 	
 	
 	//Methods
