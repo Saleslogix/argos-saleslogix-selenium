@@ -56,7 +56,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement topMyActivitiesListItemRegarding;
 		
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/div[2]/h4[1]/strong")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/div[2]/h4[1]")
 	WebElement topMyActivitiesListItemStartTime;
 	
 	@CacheLookup
@@ -80,8 +80,12 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement topMyActivitiesListItemBang;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[4]")
-	WebElement topMyActivitiesListItemRecurring;
+    @FindBy(xpath = "//div[@id='bottom_item_indicators']/span[4]")
+    WebElement topMyActivitiesListItemRecurring;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[@id='bottom_item_indicators']/span[5]")
+    WebElement topMyActivitiesListItemOverdueIndicator;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/button")

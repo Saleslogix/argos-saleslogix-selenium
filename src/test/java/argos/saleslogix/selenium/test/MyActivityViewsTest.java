@@ -52,16 +52,16 @@ public class MyActivityViewsTest extends BaseTest {
 						
 			//Step: check an Opportunity list view item record
 			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record", myActivitiesListView.topMyActivitiesListItem);
-			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Icon", myActivitiesListView.topMyActivitiesListItemIcon);
+			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Activity Type", myActivitiesListView.topMyActivitiesListItemIcon);
 			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Regarding", myActivitiesListView.topMyActivitiesListItemRegarding);
 			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Start Time", myActivitiesListView.topMyActivitiesListItemStartTime);
 			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Contact & Account", myActivitiesListView.topMyActivitiesListItemContactAccount);
 			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Phone", myActivitiesListView.topMyActivitiesListItemPhone);
 			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Alarm Icon", myActivitiesListView.topMyActivitiesListItemAlarm);
-			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Touch Icon", myActivitiesListView.topMyActivitiesListItemTouch);
-			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Touch Bang", myActivitiesListView.topMyActivitiesListItemBang);
-			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Touch Recurring", myActivitiesListView.topMyActivitiesListItemRecurring);
-			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Touch Type", myActivitiesListView.topMyActivitiesListItemType);
+			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Touched Icon", myActivitiesListView.topMyActivitiesListItemTouch);
+			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Priority Icon", myActivitiesListView.topMyActivitiesListItemBang);
+			commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Recurring Icon", myActivitiesListView.topMyActivitiesListItemRecurring);
+            commNav.checkIfWebElementPresent("My Activites List View Card Layout, item record Overdue Icon", myActivitiesListView.topMyActivitiesListItemOverdueIndicator);
 			
 			//Step: check the Quick Action button and items
 			try {
