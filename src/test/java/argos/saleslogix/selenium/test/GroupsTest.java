@@ -121,7 +121,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("Customers");
 
         //Step: open right menu and select 'My Accounts' group to display
-        headerButton.showRightContextMenu();
+        //headerButton.showRightContextMenu();
         accountsListView.rmenu_groupMyAccounts.click();
         commNav.waitForPage("My Accounts");
 
@@ -208,7 +208,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("My Contacts");
 
         //Step: open right menu and select 'Authorized Contacts' group to display
-        headerButton.showRightContextMenu();
+        //headerButton.showRightContextMenu();
         contactsListView.rmenu_groupAuthContacts.click();
         commNav.waitForPage("Authorized Contacts");
 
@@ -278,7 +278,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("My Tickets");
 
         //Step: open right menu and select 'Follow-Up' group to display
-        headerButton.showRightContextMenu();
+        //headerButton.showRightContextMenu();
         ticketsListView.rmenu_groupFollowUp.click();
         commNav.waitForPage("Follow-Up");
 

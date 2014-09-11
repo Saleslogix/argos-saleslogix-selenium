@@ -1,6 +1,7 @@
 package argos.saleslogix.selenium.test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
@@ -451,6 +452,7 @@ public class MobileSprint317BTest extends BaseTest {
 
 
     @Test(enabled = true)
+    // MBL-10557 ... Non-Group listview : after lookup specific value, then edit record, on returning to listview see lookup value, but all records are actually
     public void test07_MBL10557() throws Exception {
         String methodID = "test07_MBL10557";
 
@@ -494,6 +496,86 @@ public class MobileSprint317BTest extends BaseTest {
             System.out.println("VP: after an Account lookup, then edit and save of account, filtered lookup not remaining in effect - FAILED");
             AssertJUnit.fail("test failed");
         }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10578 ... Mobile 3.0.x work phone field added via 'Add Account / Contact' does not populate for a contact
+    public void test08_MBL10578() throws Exception {
+        String methodID = "test08_MBL10578";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        AddAccountContactEditViewElements addAcctCntctView = PageFactory.initElements(driver, AddAccountContactEditViewElements.class);
+
+        //Step: add a random test Account & Contact record
+        String newAcctName = "SeAutoTestAddAcctCntct-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+        String newConLastName = "Smith-" + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime());
+
+        //Step: navigate to Add Account/Contact view
+        commNav.clickGlobalMenuItem("Add Account/Contact");
+
+        try {
+            //Setup the Contact/Account Info section fields:
+            //set the name field
+            addAcctCntctView.addAcctCntctNameInputBtn.click();
+            try {
+                commView.nameFirstInputFld.sendKeys("Andrew");
+                commView.nameLastInputFld.sendKeys(newConLastName);
+                headerButton.clickHeaderButton("check");
+            }
+            catch (Exception e0) {
+                System.out.println(methodID + "(): " + e0.toString());
+                headerButton.goBack();
+                AssertJUnit.fail("test failed adding contact name");
+
+            }
+
+            //set the account field
+            addAcctCntctView.addAcctCntctAccountInputFld.sendKeys(newAcctName);
+
+            //Setup the Contact Info section:
+            //set the work phone field
+            addAcctCntctView.addAcctCntContactWorkPhoneInputFld.sendKeys("602.555.1313");
+            System.out.println("VP: contact work phone entered on Add Account / Contact screen is (602)-555-1313");
+
+        }
+        catch (Exception e) {
+            System.out.println(methodID + "(): " + e.toString());
+            AssertJUnit.fail("test failed adding account/ contact");
+        }
+
+        //Step: save the new Account/Contact field values
+        headerButton.clickHeaderButton("save");
+        commNav.waitForNotPage("Add Account / Contact");
+
+        System.out.println(methodID + ": Auto-test new Account - " +  newAcctName + " with new Contact - " + newConLastName + "records were created.");
+
+
+        //Step: find the newly-added test Contact record using Contact NameLF lookup ... MBL-10587
+        ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+        commNav.clickGlobalMenuItem("Contacts");
+        commNav.waitForPage("My Contacts");
+        contactsListView.contactsSearchTxtBox.sendKeys(newConLastName + ", Andrew");
+        contactsListView.contactsSearchTxtBox.sendKeys(Keys.RETURN);
+        commNav.waitForPage("Contacts");
+        System.out.println("VP: able to lookup a contact using lastname, firstname (NameLF) ... defect MBL-10587");
+
+
+        //Step: verify that the work phone entered for the contact on the Add Account / Contact screen is displaying for the contact
+        String contactWorkPhone = contactsListView.topContactsListItemWorkPhone.getText();
+        System.out.println("Work Phone on contact list view has a value of ... " + contactWorkPhone);
+        AssertJUnit.assertEquals("VP: work phone entered for contact on Add Account/ Contact screen has not been retained for the contact - FAILED", "(602)-555-1313", contactWorkPhone);
+        System.out.println("VP: work phone entered for contact on Add Account/ Contact screen has been retained for the contact - PASSED");
 
         System.out.println(ENDLINE);
     }

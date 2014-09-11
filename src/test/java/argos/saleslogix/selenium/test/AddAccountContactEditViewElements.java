@@ -79,9 +79,13 @@ public class AddAccountContactEditViewElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_2']/input")
 	WebElement addAcctCntctMobileInputFld;
-	
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_3']/input")
+    WebElement addAcctCntContactWorkPhoneInputFld;
+
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_3']/input")
+	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_4']/input")
 	WebElement addAcctCntctFaxInputFld;
 	
 	@CacheLookup

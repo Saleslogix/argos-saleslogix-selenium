@@ -130,6 +130,10 @@ public class ContactViewsElements extends BaseTest {
     WebElement topContactsListItemLine3;
 
     @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_list']//span[@data-action='callWork']")
+    WebElement topContactsListItemWorkPhone;
+
+    @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h4[4]")
     WebElement topContactsListItemLine4;
 
