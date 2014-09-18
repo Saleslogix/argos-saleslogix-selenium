@@ -325,7 +325,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityEditViewLocationFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][4]")
+	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][5]")
 	WebElement activityEditViewPriorityFld;
 	
 	@CacheLookup
@@ -333,7 +333,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityEditViewPriorityFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][5]")
+	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][6]")
 	WebElement activityEditViewCategoryFld;
 	
 	@CacheLookup
@@ -341,7 +341,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityEditViewCategoryFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][6]")
+	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][7]")
 	WebElement activityEditViewStartTimeFld;
 	
 	@CacheLookup

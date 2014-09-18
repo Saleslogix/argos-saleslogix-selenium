@@ -118,7 +118,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("Groups Lookup");
         accountsListView.groupsConfigureMyAccounts.click();
         headerButton.checkButton.click();
-        commNav.waitForPage("Customers");
+        commNav.waitForPage("All Accounts");
 
         //Step: open right menu and select 'My Accounts' group to display
         //headerButton.showRightContextMenu();
@@ -143,10 +143,10 @@ public class GroupsTest extends BaseTest {
         AssertJUnit.assertEquals("VP: user is not seeing the last group (My Accounts) used in previous login session  - FAILED","My Accounts", driver.findElement(By.id("pageTitle")).getText());
         System.out.println("VP: user is seeing the last group (My Accounts) used in previous login session  - PASSED");
 
-        //Step: open right menu and select 'Customers' group to display again
+        //Step: open right menu and select 'All Accounts' group to display again
         headerButton.showRightContextMenu();
-        accountsListView.rmenu_groupCustomers.click();
-        commNav.waitForPage("Customers");
+        accountsListView.rmenu_groupAllAccounts.click();
+        commNav.waitForPage("All Accounts");
 
         //Step: logout & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
@@ -156,19 +156,19 @@ public class GroupsTest extends BaseTest {
 
         accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
-        //Step: verify that group 'Customers' is displayed
+        //Step: verify that group 'All Accounts' is displayed
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        AssertJUnit.assertEquals("VP: user is not seeing the last group (Customers) used in previous login session  - FAILED","Customers", driver.findElement(By.id("pageTitle")).getText());
-        System.out.println("VP: user is seeing the last group (Customers) used in previous login session  - PASSED");
+        AssertJUnit.assertEquals("VP: user is not seeing the last group (All Accounts) used in previous login session  - FAILED","All Accounts", driver.findElement(By.id("pageTitle")).getText());
+        System.out.println("VP: user is seeing the last group (All Accounts) used in previous login session  - PASSED");
 
-        //Step: open right menu, choose Configure and uncheck 'My Accounts', so back to single default group of 'Customers'
+        //Step: open right menu, choose Configure and uncheck 'My Accounts', so back to single default group of 'All Accounts'
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         headerButton.showRightContextMenu();
         commNav.rmenu_GroupConfigure.click();
         commNav.waitForPage("Groups Lookup");
         accountsListView.groupsConfigureMyAccounts.click();
         headerButton.checkButton.click();
-        commNav.waitForPage("Customers");
+        commNav.waitForPage("All Accounts");
 
         System.out.println(ENDLINE);
     }
@@ -205,7 +205,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("Groups Lookup");
         contactsListView.groupsConfigureAuthContacts.click();
         headerButton.checkButton.click();
-        commNav.waitForPage("My Contacts");
+        commNav.waitForPage("All Contacts");
 
         //Step: open right menu and select 'Authorized Contacts' group to display
         //headerButton.showRightContextMenu();
@@ -230,7 +230,7 @@ public class GroupsTest extends BaseTest {
         System.out.println("VP: Authorized does not have a value of 'T' or 'F' - PASSED");
 
 
-        //Step: open right menu, choose Configure and uncheck 'Authorized Contacts', so back to single default group of 'My Contacts'
+        //Step: open right menu, choose Configure and uncheck 'Authorized Contacts', so back to single default group of 'All Contacts'
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
         headerButton.showRightContextMenu();
@@ -238,7 +238,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("Groups Lookup");
         contactsListView.groupsConfigureAuthContacts.click();
         headerButton.checkButton.click();
-        commNav.waitForPage("My Contacts");
+        commNav.waitForPage("All Contacts");
 
         System.out.println(ENDLINE);
     }
@@ -275,7 +275,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("Groups Lookup");
         ticketsListView.groupsConfigureFollowUp.click();
         headerButton.checkButton.click();
-        commNav.waitForPage("My Tickets");
+        commNav.waitForPage("All Open");
 
         //Step: open right menu and select 'Follow-Up' group to display
         //headerButton.showRightContextMenu();
@@ -290,7 +290,7 @@ public class GroupsTest extends BaseTest {
         System.out.println("VP: top Completed Date is displaying as blank, not 'Invalid date' - PASSED");
 
 
-        //Step: open right menu, choose Configure and uncheck 'Follow-Up', so back to single default group of 'My Tickets'
+        //Step: open right menu, choose Configure and uncheck 'Follow-Up', so back to single default group of 'All Open'
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
         headerButton.showRightContextMenu();
@@ -298,7 +298,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("Groups Lookup");
         ticketsListView.groupsConfigureFollowUp.click();
         headerButton.checkButton.click();
-        commNav.waitForPage("My Tickets");
+        commNav.waitForPage("All Open");
 
         System.out.println(ENDLINE);
     }

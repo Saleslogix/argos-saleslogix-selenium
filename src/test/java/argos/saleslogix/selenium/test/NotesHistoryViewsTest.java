@@ -340,6 +340,8 @@ public class NotesHistoryViewsTest extends BaseTest {
 	}
 
 	@Test(enabled = true)
+    // This test searches on 'Research the prospect', then edits that item ... now that loup may only edit his own notes, this will fail unless loup adds
+    //  a note for 'Research the prospect' manually : later - automate this note creation
 	public void test08_SeTestTCNotesHistoryEditView() throws Exception {
 		String methodID = "test08_SeTestTCNotesHistoryEditView";
 		
