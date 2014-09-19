@@ -93,12 +93,12 @@ public class MobileSprint306Test extends BaseTest {
 			//Step: expand the More Details section if necessary ... in order to see cuisine values ... More Details section no longer expanded/contracted in 3.1
 			ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
 			
-			//commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
+			commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
 			//SubStep: conditionally expand the More Details section
-			//if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
-			//	contactDetailView.contactsDetailViewMoreDetailsHdr.click();
-			//	Thread.sleep(1000);
-			//}
+			if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
+				contactDetailView.contactsDetailViewMoreDetailsHdr.click();
+				Thread.sleep(1000);
+			}
 			
 			//Step: verify expected cuisine values on the contact detail view
 			String cuisineValInitial = contactDetailView.contactsDetailViewCuisineFld.getText();
@@ -142,12 +142,12 @@ public class MobileSprint306Test extends BaseTest {
 			//Step: refresh ContactViewsElements class and expand the More Details section if necessary ... in order to see cuisine values (not needed from 3.1)
 			contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
 			
-			//commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
+			commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
 			//SubStep: conditionally expand the More Details section
-			//if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
-			//	contactDetailView.contactsDetailViewMoreDetailsHdr.click();
-			//	Thread.sleep(1000);
-			//}
+			if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
+				contactDetailView.contactsDetailViewMoreDetailsHdr.click();
+				Thread.sleep(1000);
+			}
 			
 			//Step: verify modified cuisine values on contact detail view
 			String cuisineValModified = contactDetailView.contactsDetailViewCuisineFld.getText();
