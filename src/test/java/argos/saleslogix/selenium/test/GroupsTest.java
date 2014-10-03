@@ -239,7 +239,7 @@ public class GroupsTest extends BaseTest {
         contactsListView.groupsConfigureAuthContacts.click();
         headerButton.checkButton.click();
         commNav.waitForPage("All Contacts");
-
+        headerButton.closeRightContextMenu();
         System.out.println(ENDLINE);
     }
 
@@ -299,6 +299,7 @@ public class GroupsTest extends BaseTest {
         ticketsListView.groupsConfigureFollowUp.click();
         headerButton.checkButton.click();
         commNav.waitForPage("All Open");
+        headerButton.closeRightContextMenu();
 
         System.out.println(ENDLINE);
     }
