@@ -281,87 +281,87 @@ public class OpportunityViewsTest extends BaseTest {
 	}
 
 
-	@Test(enabled = true)
-	public void test07_SeTestTCOpportunityDetailView() throws Exception {
-		String methodID = "test07_SeTestTCOpportunityDetailView";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		// Test Params:
-		String entityType = "Opportunity";
-		String entityRecord = TEST_OPPORTUNITY_RECORD;
-		String viewName = "Opportunity Detail view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+    @Test(enabled = true)
+    public void test07_SeTestTCOpportunityDetailView() throws Exception {
+        String methodID = "test07_SeTestTCOpportunityDetailView";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        // Test Params:
+        String entityType = "Opportunity";
+        String entityRecord = TEST_OPPORTUNITY_RECORD;
+        String viewName = "Opportunity Detail view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
         //Step: login & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
-		
-		try {
-			//Step: search for Opportunity entity, then open it's Detail view
-			commNav.entityRecordOpenDetailView(entityType, entityRecord);
-			
-			OpportunityViewsElements opportunityDetailView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-			
-			//Step: check each item under the Opportunity Detail View, Quick Actions section
-			commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", opportunityDetailView.opportunityDetailViewQuickActionsHdr);
-			commNav.isWebElementPresent(viewName + ",'Schedule activity'", opportunityDetailView.opportunityDetailViewScheduleActivityLnk);
-			commNav.isWebElementPresent(viewName + ",'Add note'", opportunityDetailView.opportunityDetailViewAddNoteLnk);
-			
-			//Step: check each item under the Opportunity Detail View, Details section
-			commNav.isWebElementPresent(viewName + ",'Details' section header", opportunityDetailView.opportunityDetailViewDetailsHdr);
-			commNav.isFieldValueEmpty(viewName + ",'opportunity'", opportunityDetailView.opportunityDetailViewOpportunityFld);			
-			commNav.isFieldValueEmpty(viewName + ",'acct'", opportunityDetailView.opportunityDetailViewAcctFld);			
-			commNav.isFieldValueEmpty(viewName + ",'reseller'", opportunityDetailView.opportunityDetailViewResellerFld);			
-			commNav.isFieldValueEmpty(viewName + ",'est close'", opportunityDetailView.opportunityDetailViewEstCloseFld);			
-			commNav.isFieldValueEmpty(viewName + ",'status'", opportunityDetailView.opportunityDetailViewStatusFld);			
-			commNav.isFieldValueEmpty(viewName + ",'type'", opportunityDetailView.opportunityDetailViewTypeFld);			
-			commNav.isFieldValueEmpty(viewName + ",'close prob'", opportunityDetailView.opportunityDetailViewCloseProbFld);
-			commNav.isFieldValueEmpty(viewName + ",'sales potential (base rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialBaseRateFld);
-			commNav.isFieldValueEmpty(viewName + ",'sales potential (my rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialMyRateFld);
-			commNav.isFieldValueEmpty(viewName + ",'sales potential (opp rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialOppRateFld);
-	
-			//Step: check each item under the Opportunity Detail View, Multi Currency section
-			commNav.isWebElementPresent(viewName + ",'Multi Currency' section header", opportunityDetailView.opportunityDetailViewMultiCurrencyHdr);
-			//SubStep: conditionally expand the Multi Currency section
-			if (opportunityDetailView.opportunityDetailViewMultiCurrencyFields.getSize().height < 1) {
-				opportunityDetailView.opportunityDetailViewMultiCurrencyHdr.click();
-				Thread.sleep(1000);
-			}
-			commNav.isFieldValueEmpty(viewName + ",'exchange rate'", opportunityDetailView.opportunityDetailViewExchangeRateFld);
-			commNav.isFieldValueEmpty(viewName + ",'code'", opportunityDetailView.opportunityDetailViewCodeFld);
-			commNav.isFieldValueEmpty(viewName + ",'rate date'", opportunityDetailView.opportunityDetailViewRateDateFld);
-			commNav.isFieldValueEmpty(viewName + ",'rate locked'", opportunityDetailView.opportunityDetailViewRateLockedFld);
-	
-			//Step: check each item under the Opportunity Detail View, More Details section
-			commNav.isWebElementPresent(viewName + ",'More Details' section header", opportunityDetailView.opportunityDetailViewMoreDetailsHdr);
-			//SubStep: conditionally expand the More Details section
-			if (opportunityDetailView.opportunityDetailViewMoreDetailsFields.getSize().height < 1) {
-				opportunityDetailView.opportunityDetailViewMoreDetailsHdr.click();
-				Thread.sleep(1000);
-			}
-			commNav.isFieldValueEmpty(viewName + ",'acct mgr'", opportunityDetailView.opportunityDetailViewAcctMgrFld);
-			commNav.isFieldValueEmpty(viewName + ",'lead source'", opportunityDetailView.opportunityDetailViewLeadSourceFld);
-			
-			//Step: check each item under the Opportunity Detail View, Related Items section
-			commNav.isWebElementPresent(viewName + ",'Related Items' section header", opportunityDetailView.opportunityDetailViewRelatedItemsHdr);
-			commNav.verifyEntityViewElementClick(viewName + ",'Products'", opportunityDetailView.opportunityDetailViewProductsLnk, "Products");
-			commNav.verifyEntityViewElementClick(viewName + ",'Activities'", opportunityDetailView.opportunityDetailViewActivitiesLnk, "Activities");
-			commNav.verifyEntityViewElementClick(viewName + ",'Opportunity Contacts'", opportunityDetailView.opportunityDetailViewOpportunityContactsLnk, "Opportunity Contacts");
-			commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", opportunityDetailView.opportunityDetailViewNotesHistoryLnk, "Notes/History");
-			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", opportunityDetailView.opportunityDetailViewAttachmentsLnk, "Opportunity Attachments");
-			
-			//Step: go back to previous screen
-			headerButton.goBack();
-			Thread.sleep(3000);
-		}
-		catch (Exception e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-		}
-		
-		System.out.println(ENDLINE);
-	}
+
+        try {
+            //Step: search for Opportunity entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, entityRecord);
+
+            OpportunityViewsElements opportunityDetailView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+
+            //Step: check each item under the Opportunity Detail View, Quick Actions section
+            commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", opportunityDetailView.opportunityDetailViewQuickActionsHdr);
+            commNav.isWebElementPresent(viewName + ",'Schedule activity'", opportunityDetailView.opportunityDetailViewScheduleActivityLnk);
+            commNav.isWebElementPresent(viewName + ",'Add note'", opportunityDetailView.opportunityDetailViewAddNoteLnk);
+
+            //Step: check each item under the Opportunity Detail View, Details section
+            commNav.isWebElementPresent(viewName + ",'Details' section header", opportunityDetailView.opportunityDetailViewDetailsHdr);
+            commNav.isFieldValueEmpty(viewName + ",'opportunity'", opportunityDetailView.opportunityDetailViewOpportunityFld);
+            commNav.isFieldValueEmpty(viewName + ",'acct'", opportunityDetailView.opportunityDetailViewAcctFld);
+            commNav.isFieldValueEmpty(viewName + ",'reseller'", opportunityDetailView.opportunityDetailViewResellerFld);
+            commNav.isFieldValueEmpty(viewName + ",'est close'", opportunityDetailView.opportunityDetailViewEstCloseFld);
+            commNav.isFieldValueEmpty(viewName + ",'status'", opportunityDetailView.opportunityDetailViewStatusFld);
+            commNav.isFieldValueEmpty(viewName + ",'type'", opportunityDetailView.opportunityDetailViewTypeFld);
+            commNav.isFieldValueEmpty(viewName + ",'close prob'", opportunityDetailView.opportunityDetailViewCloseProbFld);
+            commNav.isFieldValueEmpty(viewName + ",'sales potential (base rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialBaseRateFld);
+            //commNav.isFieldValueEmpty(viewName + ",'sales potential (my rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialMyRateFld);
+            //commNav.isFieldValueEmpty(viewName + ",'sales potential (opp rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialOppRateFld);
+
+            //Step: check each item under the Opportunity Detail View, Multi Currency section
+            //commNav.isWebElementPresent(viewName + ",'Multi Currency' section header", opportunityDetailView.opportunityDetailViewMultiCurrencyHdr);
+            //SubStep: conditionally expand the Multi Currency section
+            // if (opportunityDetailView.opportunityDetailViewMultiCurrencyFields.getSize().height < 1) {
+            //     opportunityDetailView.opportunityDetailViewMultiCurrencyHdr.click();
+            //     Thread.sleep(1000);
+            //}
+            //commNav.isFieldValueEmpty(viewName + ",'exchange rate'", opportunityDetailView.opportunityDetailViewExchangeRateFld);
+            //commNav.isFieldValueEmpty(viewName + ",'code'", opportunityDetailView.opportunityDetailViewCodeFld);
+            //commNav.isFieldValueEmpty(viewName + ",'rate date'", opportunityDetailView.opportunityDetailViewRateDateFld);
+            //commNav.isFieldValueEmpty(viewName + ",'rate locked'", opportunityDetailView.opportunityDetailViewRateLockedFld);
+
+            //Step: check each item under the Opportunity Detail View, More Details section
+            commNav.isWebElementPresent(viewName + ",'More Details' section header", opportunityDetailView.opportunityDetailViewMoreDetailsHdr);
+            //SubStep: conditionally expand the More Details section
+            if (opportunityDetailView.opportunityDetailViewMoreDetailsFields.getSize().height < 1) {
+                opportunityDetailView.opportunityDetailViewMoreDetailsHdr.click();
+                Thread.sleep(1000);
+            }
+            commNav.isFieldValueEmpty(viewName + ",'acct mgr'", opportunityDetailView.opportunityDetailViewAcctMgrFld);
+            commNav.isFieldValueEmpty(viewName + ",'lead source'", opportunityDetailView.opportunityDetailViewLeadSourceFld);
+
+            //Step: check each item under the Opportunity Detail View, Related Items section
+            commNav.isWebElementPresent(viewName + ",'Related Items' section header", opportunityDetailView.opportunityDetailViewRelatedItemsHdr);
+            commNav.verifyEntityViewElementClick(viewName + ",'Products'", opportunityDetailView.opportunityDetailViewProductsLnk, "Products");
+            commNav.verifyEntityViewElementClick(viewName + ",'Activities'", opportunityDetailView.opportunityDetailViewActivitiesLnk, "Activities");
+            commNav.verifyEntityViewElementClick(viewName + ",'Opportunity Contacts'", opportunityDetailView.opportunityDetailViewOpportunityContactsLnk, "Opportunity Contacts");
+            commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", opportunityDetailView.opportunityDetailViewNotesHistoryLnk, "Notes/History");
+            commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", opportunityDetailView.opportunityDetailViewAttachmentsLnk, "Opportunity Attachments");
+
+            //Step: go back to previous screen
+            headerButton.goBack();
+            Thread.sleep(3000);
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        System.out.println(ENDLINE);
+    }
 
 
 	@Test(enabled = true)
