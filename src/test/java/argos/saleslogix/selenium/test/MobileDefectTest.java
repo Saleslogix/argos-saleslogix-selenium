@@ -1510,7 +1510,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// Step: click to download and view the attachment
 		try {
-			driver.findElement(By.xpath("//*[@id='myattachment_list']//ul/li/div/div[2]/h3/span")).click();
+			driver.findElement(By.xpath("//*[@id='myattachment_list']//ul/li")).click();
 		} catch (Exception e) {
 			System.out.println("The '" + attachmentName + "' attachment was not available for the test.");
 		};

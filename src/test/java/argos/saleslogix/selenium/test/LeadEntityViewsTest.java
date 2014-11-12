@@ -93,8 +93,8 @@ public class LeadEntityViewsTest extends BaseTest {
 				commNav.checkIfWebElementPresent("Leads, Quick Action Add Activity button", LeadListView.topLeadsListItemQuickActionsAddActivityBtn);
 				commNav.checkIfWebElementPresent("Leads, Quick Action Add Note button", LeadListView.topLeadsListItemQuickActionsAddNoteBtn);
 				commNav.checkIfWebElementPresent("Leads, Quick Action Email button", LeadListView.topLeadsListItemQuickActionsEmailBtn);
-				commNav.checkIfWebElementPresent("Leads, Quick Action Contacts button", LeadListView.topLeadsListItemQuickActionsCallMobileBtn);
-				commNav.checkIfWebElementPresent("Leads, Quick Action Accounts button", LeadListView.topLeadsListItemQuickActionsCallWorkBtn);
+				commNav.checkIfWebElementPresent("Leads, Quick Action Call Mobile button", LeadListView.topLeadsListItemQuickActionsCallMobileBtn);
+				commNav.checkIfWebElementPresent("Leads, Quick Action Call Work button", LeadListView.topLeadsListItemQuickActionsCallWorkBtn);
 				commNav.checkIfWebElementPresent("Leads, Quick Action Edit button", LeadListView.topLeadsListItemQuickActionsEditBtn);
 				
 				//click list item icon to hide the Quick Action items
