@@ -217,7 +217,10 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    // Note: This test script can be used as a template for completing/editing an Activity.
 	    // Condition(s): Test user is logged in.    
 	    // ==================================================================
-		String methodID = "test02_SeTestTCGlobalMenuCompleteActivityScreens";
+
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+        String methodID = "test02_SeTestTCGlobalMenuCompleteActivityScreens";
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: search for then click an Activity link from the My Activities screen...
@@ -226,12 +229,16 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
-	
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[1]/input")).clear();
+
+        // In Mobile 3.2 the clear and lookup buttons have been removed; use Backspace and Enter instead
+	    //driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[1]/input")).clear();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 	    Thread.sleep(500);
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[1]/input")).sendKeys("demonstration");
+	    //driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[1]/input")).sendKeys("demonstration");
+        commView.lookupTxtBox.sendKeys("demonstration");
 	    Thread.sleep(1000);
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[3]/button")).click();
+	    //driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[3]/button")).click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='myactivity_list']//ul/li[1]"))) break; } catch (Exception e) {}

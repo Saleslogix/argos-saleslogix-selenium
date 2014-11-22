@@ -617,18 +617,23 @@ public class MyActivityViewsElements extends BaseTest {
 		String methodID = "performMyActivitiesSearch";
 		
 		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class); 
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 				
 		//Step: execute a filter-free search
 		try {
-			headerButton.showRightContextMenu();
-			activitiesListView.myActivitiesSearchTxtBox.click();
+			//headerButton.showRightContextMenu();
+			//activitiesListView.myActivitiesSearchTxtBox.click();
+            commView.lookupTxtBox.click();
 			Thread.sleep(500);
-			activitiesListView.myActivitiesSearchClearBtn.click();
+			//activitiesListView.myActivitiesSearchClearBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 			Thread.sleep(1000);
-			activitiesListView.myActivitiesSearchTxtBox.sendKeys(regarding);
+			//activitiesListView.myActivitiesSearchTxtBox.sendKeys(regarding);
+            commView.lookupTxtBox.sendKeys(regarding);
 			Thread.sleep(500);
-			activitiesListView.myActivitiesSearchLookupBtn.click();
+			//activitiesListView.myActivitiesSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
 			Thread.sleep(3000);
 		}
 		catch (Exception e) {
@@ -648,16 +653,19 @@ public class MyActivityViewsElements extends BaseTest {
 		String methodID = "performNoFilterSearch";
 		
 		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class); 
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 				
 		//Step: execute a filter-free search
 		try {
-			headerButton.showRightContextMenu();
-			activitiesListView.myActivitiesSearchTxtBox.click();
+			//headerButton.showRightContextMenu();
+            commView.lookupTxtBox.click();
 			Thread.sleep(500);
-			activitiesListView.myActivitiesSearchClearBtn.click();
+			//activitiesListView.myActivitiesSearchClearBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 			Thread.sleep(1000);
-			activitiesListView.myActivitiesSearchLookupBtn.click();
+			//activitiesListView.myActivitiesSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
 			Thread.sleep(3000);
 		}
 		catch (Exception e) {
@@ -677,18 +685,23 @@ public class MyActivityViewsElements extends BaseTest {
 		String methodID = "performRelActivitiesSearch";
 		
 		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class); 
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 				
 		//Step: execute a Related Activities search
 		try {
-			headerButton.showRightContextMenu();
-			activitiesListView.relatedActivitiesSearchTxtBox.click();
+			//headerButton.showRightContextMenu();
+			//activitiesListView.relatedActivitiesSearchTxtBox.click();
+            commView.lookupTxtBox.click();
 			Thread.sleep(500);
-			activitiesListView.relatedActivitiesSearchClearBtn.click();
+			//activitiesListView.relatedActivitiesSearchClearBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 			Thread.sleep(1000);
-			activitiesListView.relatedActivitiesSearchTxtBox.sendKeys(regarding);
+			//activitiesListView.relatedActivitiesSearchTxtBox.sendKeys(regarding);
+            commView.lookupTxtBox.sendKeys(regarding);
 			Thread.sleep(500);
-			activitiesListView.relatedActivitiesSearchLookupBtn.click();
+			//activitiesListView.relatedActivitiesSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
 			Thread.sleep(3000);
 		}
 		catch (Exception e) {

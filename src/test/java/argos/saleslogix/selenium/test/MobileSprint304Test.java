@@ -228,7 +228,8 @@ public class MobileSprint304Test extends BaseTest {
 		String methodID = "test05_MobileDefect_MBL10137";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		//Test Params:
 		String entityType = "My Activities";
@@ -262,7 +263,8 @@ public class MobileSprint304Test extends BaseTest {
 		
 		//VP: check to see if '#this-week' populates the Lookup input field
 		String filter2Check = "#this-week";
-		String lookupFldVal = activitiesListView.myActivitiesSearchTxtBox.getText();
+		//String lookupFldVal = activitiesListView.myActivitiesSearchTxtBox.getText();
+        String lookupFldVal = commView.lookupTxtBox.getText();
 		String resultsMsg = "VP: Lookup search field is not set to '" + filter2Check + "'";
 		try {
 			AssertJUnit.assertFalse(lookupFldVal.equals(filter2Check));
@@ -701,10 +703,11 @@ public class MobileSprint304Test extends BaseTest {
 		    //Step: perform a Ticket Activity search
 		    String searchItem = "Customer follow up to check on new units";
 		    WebElement searchFld = driver.findElement(By.name("query"));
-		    WebElement lookupBtn = driver.findElement(By.xpath("//div[3]/button"));
+		    //WebElement lookupBtn = driver.findElement(By.xpath("//div[3]/button"));
 		    searchFld.clear();
 		    searchFld.sendKeys(searchItem);
-		    lookupBtn.click();
+            searchFld.sendKeys(Keys.RETURN);
+		    //lookupBtn.click();
 		    Thread.sleep(2000);
 		    
 		    //Step: click to open the Ticket Activity record

@@ -129,6 +129,7 @@ public class MobileSprint233Test extends BaseTest {
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
         // Test Params:
         String searchItem = "Abbott";
@@ -152,7 +153,8 @@ public class MobileSprint233Test extends BaseTest {
             indexFilter = indexFilters[iCount];
             resultsMsg = "VP: Index filter - " + indexFilter + " succesfully filtered the SpeedSearch results";
             commNav.rightClickContextMenuItem(indexFilter);
-            driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[3]/button")).click();
+            //driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[3]/button")).click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
             if (commNav.isTextPresentOnPage(indexFilter)) {
                 System.out.println(resultsMsg + " - Passed");
                 commNav.rightClickContextMenuItem(indexFilter);
@@ -224,9 +226,10 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test04_MBL10112_NotesHistory_NoFiltering";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		// Test Params:
 		String entityType = "Notes/History";
@@ -242,7 +245,8 @@ public class MobileSprint233Test extends BaseTest {
 		//VP: confirm that current hash-tag/filter appears above the list view in the Lookup ... from 3.1 #my-history does not display by default
         commNav.rightClickContextMenuItem("my-history");
 		String resultsMsg = "VP: current hash-tag/filter is displayed above the Notes/History list view";
-        String currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+        //String currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+        String currHashTag = commView.lookupTxtBox.getAttribute("value");
 
         AssertJUnit.assertEquals(resultsMsg + " - FAILED","#my-history",currHashTag);
         System.out.println("Current " + entityType + " hash-tags/filter: '" + currHashTag + "'");
@@ -259,19 +263,24 @@ public class MobileSprint233Test extends BaseTest {
 		headerButton.closeRightContextMenu();
 		Thread.sleep(5000);
 		
-		//Step: remove any current hash-tags/filters then perform a Lookup		
-		headerButton.showRightContextMenu();
-		notesHistoryListView.notesHistorysSearchTxtBox.click();
+		//Step: remove any current hash-tags/filters then perform a Lookup
+        // In Mobile 3.2 the clear and lookup buttons have been removed ... for lookup text box, just backspace and enter instead
+		//headerButton.showRightContextMenu();
+		//notesHistoryListView.notesHistorysSearchTxtBox.click();
+        commView.lookupTxtBox.click();
 		Thread.sleep(500);
-		notesHistoryListView.notesHistorysSearchClearBtn.click();
+		//notesHistoryListView.notesHistorysSearchClearBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 		Thread.sleep(1000);
-		notesHistoryListView.notesHistorysSearchLookupBtn.click();
+		//notesHistoryListView.notesHistorysSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(1000);
 		
 		//VP: check that for an unfiltered search nothing displays in the lookup above the list view
 		notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
         resultsMsg = "VP: lookup displays nothing for cleared hash-tags/filters";
-        currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+        //currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+        currHashTag = commView.lookupTxtBox.getAttribute("value");
         AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
         System.out.println(resultsMsg + " - PASSED");
 		
@@ -378,7 +387,8 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test05_MBL10112_NotesHistory_Filtering";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -444,7 +454,8 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
                     try {
-                        String selectedHTagFilterLbl = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+                        //String selectedHTagFilterLbl = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+                        String selectedHTagFilterLbl = commView.lookupTxtBox.getAttribute("value");
                         String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
                         AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
                         System.out.println(resultsMsg + " - PASSED");
@@ -471,11 +482,15 @@ public class MobileSprint233Test extends BaseTest {
             //commNav.rightClickContextMenuItem("Total Duration");
             //Thread.sleep(2000);
 
-			notesHistoryListView.notesHistorysSearchTxtBox.click();
+            // In Mobile 3.2 the clear and lookup buttons have been removed ... for lookup text box, just backspace and enter instead
+			//notesHistoryListView.notesHistorysSearchTxtBox.click();
+            commView.lookupTxtBox.click();
 			Thread.sleep(500);
-			notesHistoryListView.notesHistorysSearchClearBtn.click();
+			//notesHistoryListView.notesHistorysSearchClearBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 			Thread.sleep(1000);
-			notesHistoryListView.notesHistorysSearchLookupBtn.click();
+			//notesHistoryListView.notesHistorysSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
 			Thread.sleep(3000);
 			
 			System.out.println("");
@@ -497,9 +512,10 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test06_MBL10112_Accounts_NoFiltering";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		// Test Params:
 		String entityType = "Accounts";
@@ -513,9 +529,12 @@ public class MobileSprint233Test extends BaseTest {
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
 		//Section 1: perform a Lookup with nothing in the lookup value
-		accountsListView.accountsSearchClearBtn.click();
+		//accountsListView.accountsSearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 		Thread.sleep(1000);
-		accountsListView.accountsSearchLookupBtn.click();
+		//accountsListView.accountsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(1000);
 
 		
@@ -623,7 +642,8 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test07_MBL10112_Accounts_Filtering";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -680,7 +700,8 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
                     try {
-                        String selectedHTagFilterLbl = accountsListView.accountsSearchTxtBox.getAttribute("value");
+                        //String selectedHTagFilterLbl = accountsListView.accountsSearchTxtBox.getAttribute("value");
+                        String selectedHTagFilterLbl = commView.lookupTxtBox.getAttribute("value");
                         String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
                         AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
                         System.out.println(resultsMsg + " - PASSED");
@@ -700,11 +721,14 @@ public class MobileSprint233Test extends BaseTest {
 			//Step: remove any current hash-tags/filters then perform an empty Lookup
 			headerButton.showRightContextMenu();
 			commNav.rightClickContextMenuItem(selectedKpiMetric);
-			accountsListView.accountsSearchTxtBox.click();
+			//accountsListView.accountsSearchTxtBox.click();
+            commView.lookupTxtBox.click();
 			Thread.sleep(500);
-			accountsListView.accountsSearchClearBtn.click();
+			//accountsListView.accountsSearchClearBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 			Thread.sleep(1000);
-			accountsListView.accountsSearchLookupBtn.click();
+			//accountsListView.accountsSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
 			Thread.sleep(3000);
 			
 			System.out.println("");
@@ -726,7 +750,8 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test08_MBL10112_Contacts_NoFiltering";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -750,9 +775,12 @@ public class MobileSprint233Test extends BaseTest {
 
 		
 		//Section 1: perform a Lookup with nothing in the lookup value
-		contactsListView.contactsSearchClearBtn.click();
+		//contactsListView.contactsSearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 		Thread.sleep(1000);
-		contactsListView.contactsSearchLookupBtn.click();
+		//contactsListView.contactsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(1000);
 
 		
@@ -856,7 +884,8 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test09_MBL10112_Contacts_Filtering";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -920,7 +949,8 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
                     try {
-                        String selectedHTagFilterLbl = contactsListView.contactsSearchTxtBox.getAttribute("value");
+                        //String selectedHTagFilterLbl = contactsListView.contactsSearchTxtBox.getAttribute("value");
+                        String selectedHTagFilterLbl = commView.lookupTxtBox.getAttribute("value");
                         String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
                         AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
                         System.out.println(resultsMsg + " - PASSED");
@@ -940,11 +970,14 @@ public class MobileSprint233Test extends BaseTest {
 			//Step: remove any current hash-tags/filters then perform an empty Lookup
 			headerButton.showRightContextMenu();
 			commNav.rightClickContextMenuItem(selectedKpiMetric);
-			contactsListView.contactsSearchTxtBox.click();
+			//contactsListView.contactsSearchTxtBox.click();
+            commView.lookupTxtBox.click();
 			Thread.sleep(500);
-			contactsListView.contactsSearchClearBtn.click();
+			//contactsListView.contactsSearchClearBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 			Thread.sleep(1000);
-			contactsListView.contactsSearchLookupBtn.click();
+			//contactsListView.contactsSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
 			Thread.sleep(3000);
 			
 			System.out.println("");
@@ -965,7 +998,8 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test10_MBL10112_Leads_NoFiltering";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -982,9 +1016,12 @@ public class MobileSprint233Test extends BaseTest {
 
 		
 		//Section 1: perform a Lookup with nothing in the lookup value
-		leadsListView.leadsSearchClearBtn.click();
+		//leadsListView.leadsSearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 		Thread.sleep(1000);
-		leadsListView.leadsSearchLookupBtn.click();
+		//leadsListView.leadsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(1000);
 
 		
@@ -1088,7 +1125,8 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test11_MBL10112_Leads_Filtering";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -1145,7 +1183,8 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
                     try {
-                        String selectedHTagFilterLbl = leadsListView.leadsSearchTxtBox.getAttribute("value");
+                        //String selectedHTagFilterLbl = leadsListView.leadsSearchTxtBox.getAttribute("value");
+                        String selectedHTagFilterLbl = commView.lookupTxtBox.getAttribute("value");
                         String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
                         AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
                         System.out.println(resultsMsg + " - PASSED");
@@ -1165,11 +1204,14 @@ public class MobileSprint233Test extends BaseTest {
 			//Step: remove any current hash-tags/filters then perform an empty Lookup
 			headerButton.showRightContextMenu();
 			commNav.rightClickContextMenuItem(selectedKpiMetric);
-			leadsListView.leadsSearchTxtBox.click();
+			//leadsListView.leadsSearchTxtBox.click();
+            commView.lookupTxtBox.click();
 			Thread.sleep(500);
-			leadsListView.leadsSearchClearBtn.click();
+			//leadsListView.leadsSearchClearBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 			Thread.sleep(1000);
-			leadsListView.leadsSearchLookupBtn.click();
+			//leadsListView.leadsSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
 			Thread.sleep(3000);
 			
 			System.out.println("");
@@ -1191,7 +1233,8 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test12_MBL10112_Opportunities_NoFiltering";
 			
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -1208,9 +1251,12 @@ public class MobileSprint233Test extends BaseTest {
 		OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 		
 		//Section 1: perform a Lookup with nothing in the lookup value
-		opportunitiesListView.opportunitySearchClearBtn.click();
+		//opportunitiesListView.opportunitySearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 		Thread.sleep(1000);
-		opportunitiesListView.opportunitySearchLookupBtn.click();
+		//opportunitiesListView.opportunitySearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(1000);
 
 		
@@ -1317,7 +1363,8 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test13_MBL10112_Opportunities_Filtering";
 			
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -1378,7 +1425,8 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
                     try {
-                        String selectedHTagFilterLbl = opportunitiesListView.opportunitySearchTxtBox.getAttribute("value");
+                        //String selectedHTagFilterLbl = opportunitiesListView.opportunitySearchTxtBox.getAttribute("value");
+                        String selectedHTagFilterLbl = commView.lookupTxtBox.getAttribute("value");
                         String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
                         AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
                         System.out.println(resultsMsg + " - PASSED");
@@ -1398,11 +1446,14 @@ public class MobileSprint233Test extends BaseTest {
 			//Step: remove any current hash-tags/filters then perform an empty Lookup
 			headerButton.showRightContextMenu();
 			commNav.rightClickContextMenuItem(selectedKpiMetric);
-			opportunitiesListView.opportunitySearchTxtBox.click();
+			//opportunitiesListView.opportunitySearchTxtBox.click();
+            commView.lookupTxtBox.click();
 			Thread.sleep(500);
-			opportunitiesListView.opportunitySearchClearBtn.click();
+			//opportunitiesListView.opportunitySearchClearBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 			Thread.sleep(1000);
-			opportunitiesListView.opportunitySearchLookupBtn.click();
+			//opportunitiesListView.opportunitySearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
 			Thread.sleep(3000);
 			
 			System.out.println("");
@@ -1424,7 +1475,8 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test14_MBL10112_Tickets_NoFiltering";
 			
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -1440,9 +1492,12 @@ public class MobileSprint233Test extends BaseTest {
 		TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 		
 		//Section 1: perform a Lookup with nothing in the lookup value
-		ticketsListView.ticketsSearchClearBtn.click();
+		//ticketsListView.ticketsSearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 		Thread.sleep(1000);
-		ticketsListView.ticketsSearchLookupBtn.click();
+		//ticketsListView.ticketsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(1000);
 
 		
@@ -1549,7 +1604,8 @@ public class MobileSprint233Test extends BaseTest {
 		String methodID = "test15_MBL10112_Tickets_Filtering";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);		
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -1606,7 +1662,8 @@ public class MobileSprint233Test extends BaseTest {
 					
 					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
                     try {
-                        String selectedHTagFilterLbl = ticketsListView.ticketsSearchTxtBox.getAttribute("value");
+                        //String selectedHTagFilterLbl = ticketsListView.ticketsSearchTxtBox.getAttribute("value");
+                        String selectedHTagFilterLbl = commView.lookupTxtBox.getAttribute("value");
                         String regExp = "^[\\s\\S]*" + hSelectedFilter + "[\\s\\S]*$";
                         AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
                         System.out.println(resultsMsg + " - PASSED");
@@ -1626,11 +1683,14 @@ public class MobileSprint233Test extends BaseTest {
 			//Step: remove any current hash-tags/filters then perform an empty Lookup
 			headerButton.showRightContextMenu();
 			commNav.rightClickContextMenuItem(selectedKpiMetric);
-			ticketsListView.ticketsSearchTxtBox.click();
+			//ticketsListView.ticketsSearchTxtBox.click();
+            commView.lookupTxtBox.click();
 			Thread.sleep(500);
-			ticketsListView.ticketsSearchClearBtn.click();
+			//ticketsListView.ticketsSearchClearBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 			Thread.sleep(1000);
-			ticketsListView.ticketsSearchLookupBtn.click();
+			//ticketsListView.ticketsSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
 			Thread.sleep(3000);
 			
 			System.out.println("");

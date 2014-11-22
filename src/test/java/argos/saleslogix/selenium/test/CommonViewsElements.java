@@ -26,6 +26,12 @@ public class CommonViewsElements extends BaseTest {
 
 	//Edit View elements
 	//==================
+
+    //Main lookup field seen at top of screen all throughout Mobile
+    @CacheLookup
+    @FindBy(xpath = "//*[@selected='true']//input[@name='query']")
+    WebElement lookupTxtBox;
+
 	//Address input fields:
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][1]")
@@ -332,13 +338,14 @@ public class CommonViewsElements extends BaseTest {
 		
 		try {
 			WebElement lookupFld = driver.findElement(By.name("query"));
-			WebElement lookupBtn = driver.findElement(By.cssSelector("button.subHeaderButton.searchButton"));
+			//WebElement lookupBtn = driver.findElement(By.cssSelector("button.subHeaderButton.searchButton"));
 			
 			//enter the lookup item into the query field
 			lookupFld.sendKeys(strSelectItem);
 			
-			//click the Lookup button to find the item
-			lookupBtn.click();
+			//click the Lookup button to find the item .... lookup btn has been removed, so just press enter from the lookup field
+			//lookupBtn.click();
+            lookupFld.sendKeys(Keys.RETURN);
 			Thread.sleep(3000);
 			
 			//click to select the lookup item
@@ -464,8 +471,10 @@ public class CommonViewsElements extends BaseTest {
 				lookupFld.click();
 				lookupFld.sendKeys(strSelectItem);
 				Thread.sleep(100);
-				//TO DO: define a new framework WebElement for the Lookup button using the xpath below
-				driver.findElement(By.xpath("//*[@id='viewContainer']/descendant::*[@class='subHeaderButton searchButton']")).click();
+				//TO DO: define a new framework WebElement for the Lookup button using the xpath below ... lookup button removed, just press enter in lookup field
+				//driver.findElement(By.xpath("//*[@id='viewContainer']/descendant::*[@class='subHeaderButton searchButton']")).click();
+                lookupFld.sendKeys(Keys.RETURN);
+
 				Thread.sleep(2000);			
 				try {
 					if (pageTitle.toLowerCase().equals("users")) {

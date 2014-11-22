@@ -122,6 +122,7 @@ public class LeadEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -137,8 +138,13 @@ public class LeadEntityViewsTest extends BaseTest {
         commNav.waitForPage("Leads");
 		
 		//Step: reveal Right Context Menu panel, clear search button and search on all records
-        leadsListView.leadsSearchClearBtn.click();
-        leadsListView.leadsSearchLookupBtn.click();
+        // In Mobile 3.2 the clear and lookup buttons have been removed ... for lookup text box, just backspace and enter instead
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        //leadsListView.leadsSearchClearBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        //leadsListView.leadsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
         Thread.sleep(3000);
 
         //capture the initial Leads List view info
@@ -217,6 +223,7 @@ public class LeadEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         LeadViewsElements LeadListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
 		commNav.entityListViewSearch(entityType, entityRecord);
@@ -225,11 +232,16 @@ public class LeadEntityViewsTest extends BaseTest {
         String initLeadsListInfo = LeadListView.getLeadsListViewTxt();
 				
 		//Step: click the clear Search input field button
-		headerButton.showRightContextMenu();
-		LeadListView.leadsSearchClearBtn.click();
+        // In Mobile 3.2 the clear and lookup buttons have been removed ... for lookup text box, just backspace and enter instead
+		//headerButton.showRightContextMenu();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+		//LeadListView.leadsSearchClearBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 				
 		//Step: click the Lookup button to reload the full Leads list
-		LeadListView.leadsSearchLookupBtn.click();
+		//LeadListView.leadsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
@@ -420,6 +432,7 @@ public class LeadEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		// Test Params:
 		String entityType = "Leads";
@@ -468,9 +481,15 @@ public class LeadEntityViewsTest extends BaseTest {
 	    }
 	    
 	    // Step: search for a specific attachment item
-	    driver.findElement(By.xpath(".//*[@selected='true']//input[@name='query']")).clear();
-	    driver.findElement(By.xpath(".//*[@selected='true']//input[@name='query']")).sendKeys("Test123");
-	    driver.findElement(By.xpath(".//*[@selected='true']//button[@class='subHeaderButton searchButton']")).click();
+        // In Mobile 3.2 the clear and lookup buttons have been removed ... for lookup text box, just backspace and enter instead
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+	    //driver.findElement(By.xpath(".//*[@selected='true']//input[@name='query']")).clear();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+	    //driver.findElement(By.xpath(".//*[@selected='true']//input[@name='query']")).sendKeys("Test123");
+        commView.lookupTxtBox.sendKeys("Test123");
+	    //driver.findElement(By.xpath(".//*[@selected='true']//button[@class='subHeaderButton searchButton']")).click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 	    Thread.sleep(5000);
 	    try {
 		      assertTrue(isElementPresent(By.linkText("Test123")));

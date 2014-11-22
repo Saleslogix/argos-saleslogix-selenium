@@ -1,6 +1,7 @@
 package argos.saleslogix.selenium.test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
@@ -57,9 +58,12 @@ public class GroupsTest extends BaseTest {
         commNav.clickGlobalMenuItem(entityType);
 
         AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
         //Step: perform a lookup for everything in Accounts ... switches to non-group mode
-        accountsListView.accountsSearchLookupBtn.click();
+        // In Mobile 3.2 the lookup and clear buttons have been removed ... use Return and Backspace instead
+        //accountsListView.accountsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 
         //Step: reveal Right Context Menu panel
         headerButton.showRightContextMenu();

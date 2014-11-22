@@ -127,6 +127,7 @@ public class ContactEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -141,9 +142,13 @@ public class ContactEntityViewsTest extends BaseTest {
         commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("Contacts");
 
-        //Step: Clear search button and search on all records
-        contactsListView.contactsSearchClearBtn.click();
-        contactsListView.contactsSearchLookupBtn.click();
+        //Step: Clear search button and search on all records ... clear and search lookup buttons removed in Mobile 3.2
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        //contactsListView.contactsSearchClearBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        //contactsListView.contactsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
         Thread.sleep(3000);
 
 		//capture the initial Contacts List view info
@@ -218,6 +223,7 @@ public class ContactEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -227,12 +233,16 @@ public class ContactEntityViewsTest extends BaseTest {
 		//Step: check for matching results...
         String initContactsListInfo = contactsListView.getContactsListViewTxt();
 				
-		//Step: click the clear Search input field button
-		headerButton.showRightContextMenu();
-		contactsListView.contactsSearchClearBtn.click();
+		//Step: click the clear Search input field button ... clear and search lookup buttons removed in Mobile 3.2
+		//headerButton.showRightContextMenu();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+		//contactsListView.contactsSearchClearBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 				
-		//Step: click the Lookup button to reload the full Contacts list
-		contactsListView.contactsSearchLookupBtn.click();
+		//Step: click the Lookup button to reload the full Contacts list ... clear and search lookup buttons removed in Mobile 3.2
+		//contactsListView.contactsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared

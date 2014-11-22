@@ -89,20 +89,20 @@ public class MobileSprint305Test extends BaseTest {
 		    }
 		    
 		    //VP: check that the For Lead button is set to OFF (default)
-		    String forLeadTglCSS = "#Sage_Platform_Mobile_Fields_BooleanField_4 > div.toggle > span.toggleOff";
-		    String resultsMsg = "VP: the For Lead toggle button was set to default value of 'NO'";
-		    try {
-		    	AssertJUnit.assertEquals("NO", driver.findElement(By.cssSelector(forLeadTglCSS)).getText());
-		    	System.out.println(resultsMsg + " - Passed");
-		    }
-		    catch (Error e) {
-		    	System.out.println(resultsMsg + " - Failed");
-		    }
+		    //String forLeadTglCSS = "#Sage_Platform_Mobile_Fields_BooleanField_4 > div.toggle > span.toggleOff";
+		    //String resultsMsg = "VP: the For Lead toggle button was set to default value of 'NO'";
+		    //try {
+		    //	AssertJUnit.assertEquals("NO", driver.findElement(By.cssSelector(forLeadTglCSS)).getText());
+		    //	System.out.println(resultsMsg + " - Passed");
+		    //}
+		    //catch (Error e) {
+		    //	System.out.println(resultsMsg + " - Failed");
+		    //}
 		    
 		    //VP: check that both the Account & Contact field values are blank (default)
 		    String accountFldCSS = "#Sage_Platform_Mobile_Fields_LookupField_1 > input[type='text']";
 		    String contactFldCSS = "#Sage_Platform_Mobile_Fields_LookupField_2 > input[type='text']";
-		    resultsMsg = "VP: the Account & Contact field values are un-set";
+		    String resultsMsg = "VP: the Account & Contact field values are un-set";
 		    try {
 		    	AssertJUnit.assertEquals("", driver.findElement(By.cssSelector(accountFldCSS)).getText());
 		    	AssertJUnit.assertEquals("", driver.findElement(By.cssSelector(contactFldCSS)).getText());
@@ -243,7 +243,8 @@ public class MobileSprint305Test extends BaseTest {
 		String methodID = "test04_MobileDefect_MBL10086";
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);	
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		//Test Params:
 		String entityType1 = "Accounts";
@@ -262,12 +263,15 @@ public class MobileSprint305Test extends BaseTest {
 		MyActivityViewsElements activitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);	
 		
 		//Step: execute a filter-free search
-		headerButton.showRightContextMenu();
-		activitiesListView.myActivitiesSearchTxtBox.click();
+		//headerButton.showRightContextMenu();
+		//activitiesListView.myActivitiesSearchTxtBox.click();
+        commView.lookupTxtBox.click();
 		Thread.sleep(500);
-		activitiesListView.myActivitiesSearchClearBtn.click();
+		//activitiesListView.myActivitiesSearchClearBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 		Thread.sleep(1000);
-		activitiesListView.myActivitiesSearchLookupBtn.click();
+		//activitiesListView.myActivitiesSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(3000);
 		
 		//Step: retrieve more records loop

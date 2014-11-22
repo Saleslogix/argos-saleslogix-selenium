@@ -106,6 +106,7 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 			
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -120,9 +121,13 @@ public class AccountEntityViewsTest extends BaseTest {
         commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("Accounts");
 
-        //Step: Clear search button and search on all records
-        accountsListView.accountsSearchClearBtn.click();
-        accountsListView.accountsSearchLookupBtn.click();
+        //Step: Clear search button and search on all records ... clear and search buttons have been removed in Mobile 3.2
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        //accountsListView.accountsSearchClearBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        //accountsListView.accountsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
         Thread.sleep(3000);
 
         //capture the initial Accounts List view info
@@ -202,6 +207,7 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -212,12 +218,16 @@ public class AccountEntityViewsTest extends BaseTest {
 
         String initAccountsListInfo = accountListView.getAccountsListViewTxt();
 				
-		//Step: click the clear Search input field button
-		headerButton.showRightContextMenu();
-		accountListView.accountsSearchClearBtn.click();
+		//Step: click the clear Search input field button ... clear button removed in Mobile 3.2, press backspace in lookup text box
+		//headerButton.showRightContextMenu();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+		//accountListView.accountsSearchClearBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 				
-		//Step: click the Lookup button to reload the full Accounts list
-		accountListView.accountsSearchLookupBtn.click();
+		//Step: click the Lookup button to reload the full Accounts list ... lookup button removed in Mobile 3.2, press enter in lookup text box
+		//accountListView.accountsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared

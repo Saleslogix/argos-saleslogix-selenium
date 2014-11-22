@@ -565,39 +565,40 @@ public class CommonNavigation {
 		String methodID = "searchListView";
 		
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		String searchWgtIDX = "";
 		Boolean forSpdSrch = false;
 		
 		switch (searchType.toLowerCase()) {
 		case "speedsearch": case "search": case "speed search":
-			searchWgtIDX = "0";
+		//	searchWgtIDX = "0";
 			forSpdSrch = true;
 			break;
-		case "my activities": case "activities": case "activity":
-			searchWgtIDX = "26";
-			break;
-		case "notes/history": case "notes history": case "notes": case "note": case "history":
-			searchWgtIDX = "27";
-			break;
-		case "accounts": case "account":
-			searchWgtIDX = "3";
-			break;
-		case "contacts": case "contact":
-			searchWgtIDX = "6";
-			break;
-		case "leads": case "lead":
-			searchWgtIDX = "16";
-			break;			
-		case "opportunities": case "opportunity":
-			searchWgtIDX = "11";
-			break;			
-		case "tickets": case "ticket":
-			searchWgtIDX = "18";
-			break;			
-		case "my attachments": case "attachments": case "attachment":
-			searchWgtIDX = "36";
-			break;	
+		//case "my activities": case "activities": case "activity":
+		//	searchWgtIDX = "26";
+		//	break;
+		//case "notes/history": case "notes history": case "notes": case "note": case "history":
+		//	searchWgtIDX = "27";
+		//	break;
+		//case "accounts": case "account":
+		//	searchWgtIDX = "3";
+		//	break;
+		//case "contacts": case "contact":
+		//	searchWgtIDX = "6";
+		//	break;
+		//case "leads": case "lead":
+		//	searchWgtIDX = "16";
+		//	break;
+		//case "opportunities": case "opportunity":
+		//	searchWgtIDX = "11";
+		//	break;
+		//case "tickets": case "ticket":
+		//	searchWgtIDX = "18";
+		//	break;
+		//case "my attachments": case "attachments": case "attachment":
+		//	searchWgtIDX = "36";
+		//	break;
 		//TODO: continue to expand this switch case list for additional list views
 		}
 		
@@ -609,23 +610,32 @@ public class CommonNavigation {
 		    			    	
 		    	gmenu_speedSearchLookupFld.clear();
 		    	Thread.sleep(500);
-		    	gmenu_speedSearchLookupClearBtn.click();
+                gmenu_speedSearchLookupFld.click();
+                Thread.sleep(500);
+		    	//gmenu_speedSearchLookupClearBtn.click();
+                gmenu_speedSearchLookupFld.sendKeys(Keys.BACK_SPACE);
 		    	Thread.sleep(500);
 		    	gmenu_speedSearchLookupFld.sendKeys(searchItemName);
 		    	Thread.sleep(500);
-		    	gmenu_speedSearchLookupBtn.click();
+		    	gmenu_speedSearchLookupFld.sendKeys(Keys.RETURN);
 		    }
 		    else {
-				//invoke the Right Context menu
-				headerbutton.clickHeaderButton("right context menu");
+				//invoke the Right Context menu ... no longer needed, Lookup field is top of screen
+				//headerbutton.clickHeaderButton("right context menu");
 				
-		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
+		    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
+                commView.lookupTxtBox.clear();
 		    	Thread.sleep(500);
-		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
+                commView.lookupTxtBox.click();
+                Thread.sleep(500);
+		    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
+                commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 		    	Thread.sleep(500);
-		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
+		    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
+                commView.lookupTxtBox.sendKeys(searchItemName);
 		    	Thread.sleep(500);
-		    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();	    	
+		    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();
+                commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		    }
 		    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
 		    waitForListView(searchType);
@@ -649,40 +659,47 @@ public class CommonNavigation {
 		String methodID = "searchListView";
 		
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		
 		String searchWgtIDX = "";
 		Boolean forSpdSrch = false;
 		
 		switch (searchType.toLowerCase()) {
-		case "accounts": case "account":
-			searchWgtIDX = "4";
-			break;
-		case "contacts": case "contact":
-			searchWgtIDX = "7";
-			break;
-		case "leads": case "lead":
-			searchWgtIDX = "17";
-			break;			
-		case "opportunities": case "opportunity":
-			searchWgtIDX = "12";
-			break;			
-		case "tickets": case "ticket":
-			searchWgtIDX = "19";
-			break;		
+		//case "accounts": case "account":
+		//	searchWgtIDX = "4";
+		//	break;
+		//case "contacts": case "contact":
+		//	searchWgtIDX = "7";
+		//	break;
+		//case "leads": case "lead":
+		//	searchWgtIDX = "17";
+		//	break;
+		//case "opportunities": case "opportunity":
+		//	searchWgtIDX = "12";
+		//	break;
+		//case "tickets": case "ticket":
+		//	searchWgtIDX = "19";
+		//	break;
 		//TODO: continue to expand this switch case list for additional list views
 		}
 
-		//invoke the Right Context menu
-		headerbutton.clickHeaderButton("right context menu");
+		//invoke the Right Context menu ... no longer needed, Lookup is at the top of the screen
+		//headerbutton.clickHeaderButton("right context menu");
 		
-    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
-    	Thread.sleep(500);
-    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
-    	Thread.sleep(500);
-    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
-    	Thread.sleep(500);
-    	driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();	    	
-	    	
+    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
+        commView.lookupTxtBox.clear();
+        Thread.sleep(500);
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
+    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
+        commView.lookupTxtBox.sendKeys(searchItemName);
+        Thread.sleep(500);
+    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
+
 	    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
 	    waitForListView(searchType);
 	

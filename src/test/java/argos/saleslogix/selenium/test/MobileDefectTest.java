@@ -545,6 +545,7 @@ public class MobileDefectTest extends BaseTest {
 				AssertJUnit.assertTrue(commNav.isPageDisplayed(leadRecord));
 				
 				LeadViewsElements leadDetailView = PageFactory.initElements(driver, LeadViewsElements.class);
+                CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 				
 			    // Step: click the Notes/History link...
 				leadDetailView.leadsDetailViewNotesHistoryLnk.click();
@@ -604,12 +605,18 @@ public class MobileDefectTest extends BaseTest {
 			    commNav.waitForPage("Lead Attachments");
 			
 			    // Step: perform search of Attachment added from associated Contact detail view...
-			    headerButton.showRightContextMenu();
-			    driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).clear();
+                // In Mobile 3.2 the clear and lookup buttons have been removed ... for lookup text box, just backspace and enter instead
+			    //headerButton.showRightContextMenu();
+                commView.lookupTxtBox.click();
+                Thread.sleep(500);
+			    //driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).clear();
+                commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 			    Thread.sleep(1000);
-			    driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).sendKeys(newfilename);
+			    //driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).sendKeys(newfilename);
+                commView.lookupTxtBox.sendKeys(newfilename);
 			    Thread.sleep(1000);
-			    driver.findElement(By.xpath("//*[@selected='true']//button[@class='subHeaderButton searchButton']")).click();
+			    //driver.findElement(By.xpath("//*[@selected='true']//button[@class='subHeaderButton searchButton']")).click();
+                commView.lookupTxtBox.sendKeys(Keys.RETURN);
 			    Thread.sleep(3000);
 			    
 			    // VP: verify that the Attachment item is found
@@ -1114,7 +1121,9 @@ public class MobileDefectTest extends BaseTest {
 	@Test (enabled = false)
 	  public void test53_MobileDefect13092153() throws Exception {
 		String methodID = "test53_MobileDefect13092153";
-	
+
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // - Start Section
 	    // Step: click Top-Left button to reveal Global Menu...
@@ -1135,11 +1144,17 @@ public class MobileDefectTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for the 1st-Lead record...
-	    driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).clear();
+        // In Mobile 3.2 the clear and lookup buttons have been removed ... for lookup text box, just backspace and enter instead
+	    //driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).clear();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 	    Thread.sleep(500);
-	    driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).sendKeys("Ballard");
+	    //driver.findElement(By.xpath("//*[@selected='true']//input[@name='query']")).sendKeys("Ballard");
+        commView.lookupTxtBox.sendKeys("Ballard");
 	    Thread.sleep(1000);
-	    driver.findElement(By.xpath("//*[@selected='true']//button[@class='subHeaderButton searchButton']")).click();
+	    //driver.findElement(By.xpath("//*[@selected='true']//button[@class='subHeaderButton searchButton']")).click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { if (isElementPresent(By.xpath("//*[@id='lead_list']//ul/li[1]"))) break; } catch (Exception e) {}
