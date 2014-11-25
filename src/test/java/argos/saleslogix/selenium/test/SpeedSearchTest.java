@@ -33,7 +33,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 		
 	    //Step: UI element check
 	    AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
-	    AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
+	    //AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    
 		//click the Page Title (forces closure of any blocking panels)
 		driver.findElement(By.id("pageTitle")).click();

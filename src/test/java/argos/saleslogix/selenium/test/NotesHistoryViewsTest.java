@@ -127,11 +127,12 @@ public class NotesHistoryViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         NotesHistoryViewsElements noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
-		//Step: login & log back in (to clear cookies)
+		//Step: logout & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
 		
 	    //Step: click Top-Left button to reveal Global Menu...
@@ -141,9 +142,14 @@ public class NotesHistoryViewsTest extends BaseTest {
 		commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("Notes/History");
 
-        //Step: reveal Right Context Menu panel
-        noteshistoryListView.notesHistorysSearchClearBtn.click();
-        noteshistoryListView.notesHistorysSearchLookupBtn.click();
+        //Step: perform a lookup on all Notes/History records
+        //noteshistoryListView.notesHistorysSearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
+        //noteshistoryListView.notesHistorysSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
         Thread.sleep(3000);
 
 		//capture the initial Notes/History List view info
@@ -220,6 +226,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         NotesHistoryViewsElements noteshistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -230,11 +237,17 @@ public class NotesHistoryViewsTest extends BaseTest {
         String initNotesHistoryListInfo = noteshistoryListView.getNotesHistoryListViewTxt();
 
 		//Step: click the clear Search input field button
-		headerButton.showRightContextMenu();
-		noteshistoryListView.notesHistorysSearchClearBtn.click();
+        //In Mobile 3.2 the clear and lookup buttons have been removed ... for lookup text box, just backspace and enter instead/
+		//headerButton.showRightContextMenu();
+		//noteshistoryListView.notesHistorysSearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
 				
 		//Step: click the Lookup button to reload the full Notes/History list
-		noteshistoryListView.notesHistorysSearchLookupBtn.click();
+		//noteshistoryListView.notesHistorysSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared

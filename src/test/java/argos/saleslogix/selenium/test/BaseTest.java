@@ -286,7 +286,7 @@ public class BaseTest {
         //VP: product logo
         try {
             AssertJUnit.assertTrue(commNav.isElementDisplayed(By.xpath(".//*[@id='login']/p/img")));
-            System.out.println("VP: 'saleslog!x' logo check  - Passed");
+            System.out.println("VP: 'infor' logo check  - Passed");
         }
         catch (Error e) {
             System.out.println("Error: product logo check - FAILED");

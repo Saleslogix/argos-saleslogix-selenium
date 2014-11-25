@@ -213,6 +213,7 @@ public class TicketViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 		TicketViewsElements ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -227,11 +228,16 @@ public class TicketViewsTest extends BaseTest {
 		commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("Tickets");
 	
-		//Step: reveal Right Context Menu Panel and click the clear Search input field button
-		ticketListView.ticketsSearchClearBtn.click();
+		//Step: click the clear Search input field button
+		//ticketListView.ticketsSearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
 						
 		//Step: click the Lookup button to reload the full Tickets list
-		ticketListView.ticketsSearchLookupBtn.click();
+		//ticketListView.ticketsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(3000);
 		
 		//capture the initial Tickets List view info
@@ -308,6 +314,7 @@ public class TicketViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         TicketViewsElements ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -318,11 +325,16 @@ public class TicketViewsTest extends BaseTest {
         String initTicketsListInfo = ticketListView.getTicketsListViewTxt();
 				
 		//Step: click the clear Search input field button
-		headerButton.showRightContextMenu();
-		ticketListView.ticketsSearchClearBtn.click();
+		//headerButton.showRightContextMenu();
+		//ticketListView.ticketsSearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
 				
 		//Step: click the Lookup button to reload the full Tickets list
-		ticketListView.ticketsSearchLookupBtn.click();
+		//ticketListView.ticketsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared

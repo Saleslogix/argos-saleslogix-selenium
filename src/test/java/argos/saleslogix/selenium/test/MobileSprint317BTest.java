@@ -299,6 +299,7 @@ public class MobileSprint317BTest extends BaseTest {
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
         //Step: login & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
@@ -319,8 +320,11 @@ public class MobileSprint317BTest extends BaseTest {
 
             //Step: search and select product that has double quotes in the product name
             String productValtoSelect = "10\"KSE-100-6T";
-            opportunityDetailView.opportunityProductsSearchValue.sendKeys(productValtoSelect);
-            opportunityDetailView.opportunityProductsSearchBtn.click();
+            //opportunityDetailView.opportunityProductsSearchValue.sendKeys(productValtoSelect);
+            commView.lookupTxtBox.sendKeys(productValtoSelect);
+            //opportunityDetailView.opportunityProductsSearchBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
+
             opportunityDetailView.opportunityProductsTopProduct.click();
             commNav.waitForPage("Opportunity Product");
 
@@ -565,8 +569,16 @@ public class MobileSprint317BTest extends BaseTest {
         ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
         commNav.clickGlobalMenuItem("Contacts");
         commNav.waitForPage("My Contacts");
-        contactsListView.contactsSearchTxtBox.sendKeys(newConLastName + ", Andrew");
-        contactsListView.contactsSearchTxtBox.sendKeys(Keys.RETURN);
+
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
+        //contactsListView.contactsSearchTxtBox.sendKeys(newConLastName + ", Andrew");
+        commView.lookupTxtBox.sendKeys(newConLastName + ", Andrew");
+        //contactsListView.contactsSearchTxtBox.sendKeys(Keys.RETURN);
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
+
         commNav.waitForPage("Contacts");
         System.out.println("VP: able to lookup a contact using lastname, firstname (NameLF) ... defect MBL-10587");
 

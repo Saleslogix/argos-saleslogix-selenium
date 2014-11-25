@@ -1,6 +1,7 @@
 package argos.saleslogix.selenium.test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
@@ -180,6 +181,7 @@ public class MobileSprint317Test extends BaseTest {
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
 
 
@@ -222,8 +224,10 @@ public class MobileSprint317Test extends BaseTest {
             activityEditView.activityEditViewAccountBtn.click();
             commNav.waitForPage("Accounts");
             AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-            accountsListView.relatedAccountsSearchTxtBox.sendKeys(TEST_ACCOUNT1_RECORD);
-            accountsListView.relatedAccountsSearchLookupBtn.click();
+            //accountsListView.relatedAccountsSearchTxtBox.sendKeys(TEST_ACCOUNT1_RECORD);
+            commView.lookupTxtBox.sendKeys(TEST_ACCOUNT1_RECORD);
+            //accountsListView.relatedAccountsSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
             Thread.sleep(3000);
             accountsListView.relatedAccountsListViewTopItem.click();
             System.out.println("Initial account chosen was : " + TEST_ACCOUNT1_RECORD);
@@ -233,8 +237,15 @@ public class MobileSprint317Test extends BaseTest {
             activityEditView.activityEditViewContactBtn.click();
             commNav.waitForPage("Contacts");
             ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-            contactsListView.relatedContactsSearchTxtBox.sendKeys(TEST_CONTACT1_LOOKUP);
-            contactsListView.relatedContactsSearchLookupBtn.click();
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
+            commView.lookupTxtBox.click();
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+            Thread.sleep(500);
+            //contactsListView.relatedContactsSearchTxtBox.sendKeys(TEST_CONTACT1_LOOKUP);
+            commView.lookupTxtBox.sendKeys(TEST_CONTACT1_LOOKUP);
+            //contactsListView.relatedContactsSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
             Thread.sleep(3000);
             contactsListView.relatedContactsListViewTopItem.click();
             System.out.println("Initial contact chosen was : " + TEST_CONTACT1_RECORD);
@@ -273,9 +284,16 @@ public class MobileSprint317Test extends BaseTest {
             activityEditView.activityEditViewAccountBtn.click();
             commNav.waitForPage("Accounts");
             accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-            accountsListView.relatedAccountsSearchTxtBox.clear();
-            accountsListView.relatedAccountsSearchTxtBox.sendKeys(TEST_ACCOUNT2_RECORD);
-            accountsListView.relatedAccountsSearchLookupBtn.click();
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
+            //accountsListView.relatedAccountsSearchTxtBox.clear();
+            commView.lookupTxtBox.click();
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+            Thread.sleep(500);
+            //accountsListView.relatedAccountsSearchTxtBox.sendKeys(TEST_ACCOUNT2_RECORD);
+            commView.lookupTxtBox.sendKeys(TEST_ACCOUNT2_RECORD);
+            //accountsListView.relatedAccountsSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
             Thread.sleep(3000);
             accountsListView.relatedAccountsListViewTopItem.click();
             System.out.println("WITHIN SAME LOGIN SESSION ... Second account chosen was : " + TEST_ACCOUNT2_RECORD);
@@ -297,9 +315,17 @@ public class MobileSprint317Test extends BaseTest {
             activityEditView.activityEditViewContactBtn.click();
             commNav.waitForPage("Contacts");
             contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-            contactsListView.relatedContactsSearchTxtBox.clear();
-            contactsListView.relatedContactsSearchTxtBox.sendKeys(TEST_CONTACT2_LOOKUP);
-            contactsListView.relatedContactsSearchLookupBtn.click();
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+            //contactsListView.relatedContactsSearchTxtBox.clear();
+            commView.lookupTxtBox.click();
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+            Thread.sleep(500);
+            //contactsListView.relatedContactsSearchTxtBox.sendKeys(TEST_CONTACT2_LOOKUP);
+            commView.lookupTxtBox.sendKeys(TEST_CONTACT2_LOOKUP);
+            //contactsListView.relatedContactsSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
             Thread.sleep(3000);
             contactsListView.relatedContactsListViewTopItem.click();
             System.out.println("Second contact chosen was : " + TEST_CONTACT2_RECORD);
@@ -343,9 +369,17 @@ public class MobileSprint317Test extends BaseTest {
             activityEditView.activityEditViewAccountBtn.click();
             commNav.waitForPage("Accounts");
             accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-            accountsListView.relatedAccountsSearchTxtBox.clear();
-            accountsListView.relatedAccountsSearchTxtBox.sendKeys(TEST_ACCOUNT3_RECORD);
-            accountsListView.relatedAccountsSearchLookupBtn.click();
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+            //accountsListView.relatedAccountsSearchTxtBox.clear();
+            commView.lookupTxtBox.click();
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+            Thread.sleep(500);
+            //accountsListView.relatedAccountsSearchTxtBox.sendKeys(TEST_ACCOUNT3_RECORD);
+            commView.lookupTxtBox.sendKeys(TEST_ACCOUNT3_RECORD);
+            //accountsListView.relatedAccountsSearchLookupBtn.click();
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
             Thread.sleep(3000);
             accountsListView.relatedAccountsListViewTopItem.click();
             System.out.println("WITHIN DIFFERENT LOGIN SESSION ... Third account chosen was : " + TEST_ACCOUNT3_RECORD);

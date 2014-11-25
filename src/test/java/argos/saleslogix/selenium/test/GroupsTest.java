@@ -63,6 +63,10 @@ public class GroupsTest extends BaseTest {
         //Step: perform a lookup for everything in Accounts ... switches to non-group mode
         // In Mobile 3.2 the lookup and clear buttons have been removed ... use Return and Backspace instead
         //accountsListView.accountsSearchLookupBtn.click();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
         commView.lookupTxtBox.sendKeys(Keys.RETURN);
 
         //Step: reveal Right Context Menu panel

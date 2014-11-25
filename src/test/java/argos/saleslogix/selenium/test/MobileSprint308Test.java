@@ -1,6 +1,7 @@
 package argos.saleslogix.selenium.test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -157,6 +158,7 @@ public class MobileSprint308Test extends BaseTest {
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 
 
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -168,81 +170,96 @@ public class MobileSprint308Test extends BaseTest {
 
 
             commNav.clickGlobalMenuItem("My Activities");
-            MyActivityViewsElements myActivitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            //MyActivityViewsElements myActivitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             String resultsMsg = "VP: My Activities default hash tag is #this-week";
 
 
-            String currHashTag = myActivitiesListView.myActivitiesSearchTxtBox.getAttribute("value");
+            //String currHashTag = myActivitiesListView.myActivitiesSearchTxtBox.getAttribute("value");
+            String currHashTag = commView.lookupTxtBox.getAttribute("value");
             AssertJUnit.assertEquals(resultsMsg + " - FAILED","#this-week",currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
             commNav.clickGlobalMenuItem("Notes/History");
-            NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+            //NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
             resultsMsg = "VP: Notes/History default hash tag is blank";
 
 
-            currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+            //currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
+            currHashTag = commView.lookupTxtBox.getAttribute("value");
             AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
             commNav.clickGlobalMenuItem("Accounts");
-            AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+            //AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
             resultsMsg = "VP: Accounts default hash tag is blank";
 
 
-            currHashTag = accountsListView.accountsSearchTxtBox.getAttribute("value");
+            //currHashTag = accountsListView.accountsSearchTxtBox.getAttribute("value");
+            currHashTag = commView.lookupTxtBox.getAttribute("value");
             AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
             commNav.clickGlobalMenuItem("Contacts");
-            ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+            //ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
             resultsMsg = "VP: Contacts default hash tag is blank";
 
 
-            currHashTag = contactsListView.contactsSearchTxtBox.getAttribute("value");
+            //currHashTag = contactsListView.contactsSearchTxtBox.getAttribute("value");
+            currHashTag = commView.lookupTxtBox.getAttribute("value");
             AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
             commNav.clickGlobalMenuItem("Leads");
-            LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+            //LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
             resultsMsg = "VP: Leads default hash tag is blank";
 
 
-            currHashTag = leadsListView.leadsSearchTxtBox.getAttribute("value");
+            //currHashTag = leadsListView.leadsSearchTxtBox.getAttribute("value");
+            currHashTag = commView.lookupTxtBox.getAttribute("value");
             AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
             commNav.clickGlobalMenuItem("Opportunities");
-            OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            //OpportunityViewsElements opportunityListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
             resultsMsg = "VP: Opportunities default hash tag is blank";
 
 
-            currHashTag = opportunityListView.opportunitySearchTxtBox.getAttribute("value");
+            //currHashTag = opportunityListView.opportunitySearchTxtBox.getAttribute("value");
+            currHashTag = commView.lookupTxtBox.getAttribute("value");
             AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
             commNav.clickGlobalMenuItem("Tickets");
-            TicketViewsElements ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
+            //TicketViewsElements ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
             resultsMsg = "VP: Tickets default hash tag is blank";
 
 
-            currHashTag = ticketListView.ticketsSearchTxtBox.getAttribute("value");
+            //currHashTag = ticketListView.ticketsSearchTxtBox.getAttribute("value");
+            currHashTag = commView.lookupTxtBox.getAttribute("value");
             AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
             commNav.clickGlobalMenuItem("My Attachments");
-            MyAttachmentsViewsElements myAttachmentsListView = PageFactory.initElements(driver, MyAttachmentsViewsElements.class);
+            //MyAttachmentsViewsElements myAttachmentsListView = PageFactory.initElements(driver, MyAttachmentsViewsElements.class);
             resultsMsg = "VP: My Attachments default hash tag is blank";
 
 
-            currHashTag = myAttachmentsListView.myAttachmentsSearchTxtBox.getAttribute("value");
+            //currHashTag = myAttachmentsListView.myAttachmentsSearchTxtBox.getAttribute("value");
+            currHashTag = commView.lookupTxtBox.getAttribute("value");
             AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
@@ -1455,6 +1472,7 @@ public class MobileSprint308Test extends BaseTest {
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         TicketViewsElements ticketListView = PageFactory.initElements(driver, TicketViewsElements.class);
 
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -1470,8 +1488,11 @@ public class MobileSprint308Test extends BaseTest {
         commNav.waitForPage("Tickets");
 
         //Step: search for an existing Ticket record ... 001-00-000002, that has a null value for contact on 10.4.10.210 (8.1) and 10.4.10.242 (8.0) databases
-        ticketListView.ticketsSearchTxtBox.sendKeys("001-00-000002");
-        ticketListView.ticketsSearchLookupBtn.click();
+        // In Mobile 3.2 the clear and lookup buttons have been removed ... for lookup text box, just backspace and enter instead
+        //ticketListView.ticketsSearchTxtBox.sendKeys("001-00-000002");
+        commView.lookupTxtBox.sendKeys("001-00-000002");
+        //ticketListView.ticketsSearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
         Thread.sleep(500);
 
         AssertJUnit.assertTrue("VP: for ticket 001-00-000002 with null contact, ticket not displaying as expected in listview - FAILED", ticketListView.topTicketsListItemNumber.isDisplayed());

@@ -126,6 +126,7 @@ public class OpportunityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -140,9 +141,14 @@ public class OpportunityViewsTest extends BaseTest {
 		commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("Opportunities");
 
-        //Step: reveal Right Context Menu panel, clear opportunity search, then search for all opportunity records
-        opportunitiesListView.opportunitySearchClearBtn.click();
-        opportunitiesListView.opportunitySearchLookupBtn.click();
+        //Step: clear opportunity search, then search for all opportunity records
+        //opportunitiesListView.opportunitySearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
+        //opportunitiesListView.opportunitySearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
         Thread.sleep(3000);
 	
 		//capture the initial Opportunities List view info
@@ -216,6 +222,7 @@ public class OpportunityViewsTest extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -226,11 +233,16 @@ public class OpportunityViewsTest extends BaseTest {
         String initOpportunitiesListInfo = opportunitiesListView.getOpportunitiesListViewTxt();
 				
 		//Step: click the clear Search input field button
-		headerButton.showRightContextMenu();
-		opportunitiesListView.opportunitySearchClearBtn.click();
+		//headerButton.showRightContextMenu();
+		//opportunitiesListView.opportunitySearchClearBtn.click();
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        Thread.sleep(500);
 				
 		//Step: click the Lookup button to reload the full Opportunities list
-		opportunitiesListView.opportunitySearchLookupBtn.click();
+		//opportunitiesListView.opportunitySearchLookupBtn.click();
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		Thread.sleep(7000);
 				
 		//Step: check if the previous search results were cleared
