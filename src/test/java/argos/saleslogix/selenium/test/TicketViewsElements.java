@@ -185,7 +185,7 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
 	WebElement ticketsKPIHdr;
 	
 	@CacheLookup

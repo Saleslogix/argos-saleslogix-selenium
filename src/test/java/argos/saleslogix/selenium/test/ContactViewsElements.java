@@ -214,7 +214,7 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
 	WebElement contactsKPIHdr;
 	
 	@CacheLookup

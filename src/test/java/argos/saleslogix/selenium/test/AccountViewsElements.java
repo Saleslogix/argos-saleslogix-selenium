@@ -18,7 +18,7 @@ public class AccountViewsElements extends BaseTest {
 	private WebDriver driver;
 
 	public AccountViewsElements(WebDriver driver) {
-		this.driver = driver;		
+		this.driver = driver;
 	}
 	
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -217,7 +217,7 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
 	WebElement accountKPIHdr;
 	
 	@CacheLookup

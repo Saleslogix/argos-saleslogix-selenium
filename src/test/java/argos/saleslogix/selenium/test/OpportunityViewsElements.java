@@ -179,7 +179,7 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityListViewNotesBoxSeeListLink;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
 	WebElement opportunityKPIHdr;
 	
 	@CacheLookup

@@ -187,7 +187,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
 	WebElement leadsKPIHdr;
 	
 	@CacheLookup
