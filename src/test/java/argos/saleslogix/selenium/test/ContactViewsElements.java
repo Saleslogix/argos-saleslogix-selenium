@@ -231,7 +231,7 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsDetailViewQuickActionsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Call main number']")
+	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Call work']")
 	WebElement contactsDetailViewCallMainNumberLnk;
 	
 	@CacheLookup
@@ -267,11 +267,11 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsDetailViewAccountFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[3]")
+	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[2]")
 	WebElement contactsDetailViewWebFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[4]")
+	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[3]")
 	WebElement contactsDetailViewTitleFld;
 		
 	@CacheLookup
@@ -287,19 +287,19 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsDetailViewHomePhoneFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[2]")
+	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[4]")
 	WebElement contactsDetailViewFaxFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[3]")
+	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[4]")
 	WebElement contactsDetailViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[4]")
+	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[5]")
 	WebElement contactsDetailViewOwnerFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[5]/span")
+	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[6]/span")
 	WebElement contactsDetailViewCuisineFld;
 
 	@CacheLookup

@@ -230,11 +230,11 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountDetailView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[2]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[1]")
 	WebElement accountDetailViewQuickActionsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[3]/span/a")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[2]/span/a")
 	WebElement accountDetailViewCallMainNumberLnk;
 	
 	@CacheLookup
@@ -246,11 +246,11 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountDetailViewAddNoteLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[4]/span/a")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[2]/span/a")
 	WebElement accountDetailViewViewAddressLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[1]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[2]")
 	WebElement accountDetailViewDetailsHdr;
 	
 	@CacheLookup
@@ -258,23 +258,23 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountDetailViewAccountFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[1]/div[2]/span")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[1]/span")
 	WebElement accountDetailViewWebFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[5]/span/a")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[3]/span/a")
 	WebElement accountDetailViewFaxFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[6]/span")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[4]/span")
 	WebElement accountDetailViewTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[7]/span")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[5]/span")
 	WebElement accountDetailViewSubTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[8]/span")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[3]/span")
 	WebElement accountDetailViewStatusFld;
 	
 	@CacheLookup
@@ -286,27 +286,27 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountDetailViewMoreDetailsFields;	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[9]/span")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[6]/span")
 	WebElement accountDetailViewIndustryFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[10]/span")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[7]/span")
 	WebElement accountDetailViewBusDescFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[11]/span")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[4]/span")
 	WebElement accountDetailViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[12]/span")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[9]/span")
 	WebElement accountDetailViewOwnerFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[13]/span")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[8]/span")
 	WebElement accountDetailViewLeadSourceFld;
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[3]")
+	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[4]")
 	WebElement accountDetailViewRelatedItemsHdr;
 	
 	@CacheLookup
@@ -343,7 +343,7 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountEditView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_edit']/div[2]/h2")
+	@FindBy(xpath = "//*[@id='account_edit']/div[3]/h2")
 	WebElement accountEditViewDetailsHdr;
 	
 	@CacheLookup
