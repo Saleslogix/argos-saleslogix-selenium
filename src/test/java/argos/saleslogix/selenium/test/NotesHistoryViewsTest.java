@@ -318,6 +318,10 @@ public class NotesHistoryViewsTest extends BaseTest {
 			commNav.entityRecordOpenDetailView(entityType, entityRecord);
 			
 			NotesHistoryViewsElements notesHistoryDetailView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+
+            //Step: check each item under the History Detail View, Details section
+            commNav.isWebElementPresent(viewName + ",'Notes' section header", notesHistoryDetailView.notesHistoryDetailViewNotesHdr);
+            commNav.isFieldValueEmpty(viewName + ",'notes field'", notesHistoryDetailView.notesHistoryDetailViewNotesFld);
 			
 			//Step: check each item under the History Detail View, Quick Actions section
 			commNav.isWebElementPresent(viewName + ",'Details' section header", notesHistoryDetailView.notesHistoryDetailViewDetailsHdr);
@@ -325,20 +329,13 @@ public class NotesHistoryViewsTest extends BaseTest {
 			commNav.isFieldValueEmpty(viewName + ",'completed'", notesHistoryDetailView.notesHistoryDetailViewCompletedFld);
 			commNav.isFieldValueEmpty(viewName + ",'regarding'", notesHistoryDetailView.notesHistoryDetailViewRegardingFld);
 			commNav.isFieldValueEmpty(viewName + ",'completed by'", notesHistoryDetailView.notesHistoryDetailViewCompletedByFld);
-			
-			//Step: check each item under the History Detail View, Details section
-			commNav.isWebElementPresent(viewName + ",'Notes' section header", notesHistoryDetailView.notesHistoryDetailViewNotesHdr);
-			commNav.isFieldValueEmpty(viewName + ",'notes field'", notesHistoryDetailView.notesHistoryDetailViewNotesFld);
-			
-			//Step: check each item under the History Detail View, Related Items (top) section
-			commNav.isWebElementPresent(viewName + ",'Related Items (top)' section header", notesHistoryDetailView.notesHistoryDetailRelatedItems1Hdr);
-			commNav.isFieldValueEmpty(viewName + ",'account'", notesHistoryDetailView.notesHistoryDetailViewAccountFld);
-			commNav.isFieldValueEmpty(viewName + ",'contact'", notesHistoryDetailView.notesHistoryDetailViewContactFld);
-			commNav.isFieldValueEmpty(viewName + ",'opportunity'", notesHistoryDetailView.notesHistoryDetailViewOpportunityFld);
-			commNav.isFieldValueEmpty(viewName + ",'ticket'", notesHistoryDetailView.notesHistoryDetailViewTicketFld);
-			
-			//Step: check each item under the History Detail View, Related Items (bottom) section
-			commNav.isWebElementPresent(viewName + ",'Related Items (bottom)' section header", notesHistoryDetailView.notesHistoryDetailRelatedItems2Hdr);
+            commNav.isFieldValueEmpty(viewName + ",'account'", notesHistoryDetailView.notesHistoryDetailViewAccountFld);
+            commNav.isFieldValueEmpty(viewName + ",'contact'", notesHistoryDetailView.notesHistoryDetailViewContactFld);
+            commNav.isFieldValueEmpty(viewName + ",'opportunity'", notesHistoryDetailView.notesHistoryDetailViewOpportunityFld);
+            commNav.isFieldValueEmpty(viewName + ",'ticket'", notesHistoryDetailView.notesHistoryDetailViewTicketFld);
+
+			//Step: check each item under the History Detail View, Related Items section
+			commNav.isWebElementPresent(viewName + ",'Related Items' section header", notesHistoryDetailView.notesHistoryDetailRelatedItems1Hdr);
 			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", notesHistoryDetailView.notesHistoryDetailViewAttachmentsLnk, "History Attachments");
 			
 			//Step: go back to previous screen
@@ -574,9 +571,10 @@ public class NotesHistoryViewsTest extends BaseTest {
 			NotesHistoryViewsElements notesHistoryEditView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 			
 			//Step: check each input field and if applicable, its related list item selection view
-			commNav.isFieldValueEmpty(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn);			
+            commNav.isWebElementPresent(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
+			commNav.isFieldValueEmpty(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Note Description");			
-			commNav.isWebElementPresent(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
+
 			commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
 			commNav.isFieldValueEmpty(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountInputFld);			
 			commNav.isFieldValueEmpty(viewName + " contact", notesHistoryEditView.notesHistoryEditViewContactInputFld);

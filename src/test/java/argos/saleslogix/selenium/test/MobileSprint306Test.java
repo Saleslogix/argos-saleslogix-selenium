@@ -90,7 +90,7 @@ public class MobileSprint306Test extends BaseTest {
 			//Step: wait for page Contact detail to open
 			commNav.waitForPage(contactRecord);
 			
-			//Step: expand the More Details section if necessary ... in order to see cuisine values ... More Details section no longer expanded/contracted in 3.1
+			//Step: expand the More Details section if necessary ... in order to see cuisine values ... More Details section contracted in Mobile 3.2
 			ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
 			
 			commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);

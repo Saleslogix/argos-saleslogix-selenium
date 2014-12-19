@@ -237,7 +237,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsDetailViewCompanyFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[3]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[5]")
 	WebElement leadsDetailViewWebFld;
 
     @CacheLookup
@@ -245,23 +245,23 @@ public class LeadViewsElements extends BaseTest {
     WebElement leadsDetailViewWebFldLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[4]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[3]")
 	WebElement leadsDetailViewTitleFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[5]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[1]")
 	WebElement leadsDetailViewWorkPhoneFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[6]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[2]")
 	WebElement leadsDetailViewMobilePhoneFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[7]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[3]")
 	WebElement leadsDetailViewTollFreeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[8]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[4]")
 	WebElement leadsDetailViewLeadSourceFld;
 	
 	@CacheLookup
@@ -273,27 +273,27 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsDetailViewMoreDetailsFields;	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[1]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[6]")
 	WebElement leadsDetailViewInterestsFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[2]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[7]")
 	WebElement leadsDetailViewIndustryFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[3]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[8]")
 	WebElement leadsDetailViewSicCodeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[4]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[9]")
 	WebElement leadsDetailViewBusDescFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[5]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[10]")
 	WebElement leadsDetailViewCommentsFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[6]")
+	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[11]")
 	WebElement leadsDetailViewOwnerFld;
 	
 	@CacheLookup

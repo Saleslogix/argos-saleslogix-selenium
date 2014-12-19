@@ -128,6 +128,12 @@ public class MobileSprint317BTest extends BaseTest {
             commNav.waitForPage("Beck, John");
             leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
 
+            // Step: expand the More Details section if collapsed ... it will be in Mobile 3.2
+            if (leadEditView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
+                leadEditView.leadsDetailViewMoreDetailsHdr.click();
+                Thread.sleep(1000);
+            }
+
             //Store the current window handle for the mobile window
             String winHandleBefore = driver.getWindowHandle();
 

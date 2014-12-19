@@ -321,16 +321,21 @@ public class OpportunityViewsTest extends BaseTest {
             commNav.isWebElementPresent(viewName + ",'Schedule activity'", opportunityDetailView.opportunityDetailViewScheduleActivityLnk);
             commNav.isWebElementPresent(viewName + ",'Add note'", opportunityDetailView.opportunityDetailViewAddNoteLnk);
 
+            //SubStep: conditionally expand the More Details section
+            if (opportunityDetailView.opportunityDetailViewMoreDetailsFields.getSize().height < 1) {
+                opportunityDetailView.opportunityDetailViewMoreDetailsHdr.click();
+                Thread.sleep(1000);
+            }
+
             //Step: check each item under the Opportunity Detail View, Details section
             commNav.isWebElementPresent(viewName + ",'Details' section header", opportunityDetailView.opportunityDetailViewDetailsHdr);
             commNav.isFieldValueEmpty(viewName + ",'opportunity'", opportunityDetailView.opportunityDetailViewOpportunityFld);
             commNav.isFieldValueEmpty(viewName + ",'acct'", opportunityDetailView.opportunityDetailViewAcctFld);
-            commNav.isFieldValueEmpty(viewName + ",'reseller'", opportunityDetailView.opportunityDetailViewResellerFld);
-            commNav.isFieldValueEmpty(viewName + ",'est close'", opportunityDetailView.opportunityDetailViewEstCloseFld);
             commNav.isFieldValueEmpty(viewName + ",'status'", opportunityDetailView.opportunityDetailViewStatusFld);
-            commNav.isFieldValueEmpty(viewName + ",'type'", opportunityDetailView.opportunityDetailViewTypeFld);
-            commNav.isFieldValueEmpty(viewName + ",'close prob'", opportunityDetailView.opportunityDetailViewCloseProbFld);
+            commNav.isFieldValueEmpty(viewName + ",'est close'", opportunityDetailView.opportunityDetailViewEstCloseFld);
             commNav.isFieldValueEmpty(viewName + ",'sales potential (base rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialBaseRateFld);
+
+
             //commNav.isFieldValueEmpty(viewName + ",'sales potential (my rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialMyRateFld);
             //commNav.isFieldValueEmpty(viewName + ",'sales potential (opp rate)'", opportunityDetailView.opportunityDetailViewSalesPotentialOppRateFld);
 
@@ -348,11 +353,9 @@ public class OpportunityViewsTest extends BaseTest {
 
             //Step: check each item under the Opportunity Detail View, More Details section
             commNav.isWebElementPresent(viewName + ",'More Details' section header", opportunityDetailView.opportunityDetailViewMoreDetailsHdr);
-            //SubStep: conditionally expand the More Details section
-            if (opportunityDetailView.opportunityDetailViewMoreDetailsFields.getSize().height < 1) {
-                opportunityDetailView.opportunityDetailViewMoreDetailsHdr.click();
-                Thread.sleep(1000);
-            }
+            commNav.isFieldValueEmpty(viewName + ",'type'", opportunityDetailView.opportunityDetailViewTypeFld);
+            commNav.isFieldValueEmpty(viewName + ",'reseller'", opportunityDetailView.opportunityDetailViewResellerFld);
+            commNav.isFieldValueEmpty(viewName + ",'close prob'", opportunityDetailView.opportunityDetailViewCloseProbFld);
             commNav.isFieldValueEmpty(viewName + ",'acct mgr'", opportunityDetailView.opportunityDetailViewAcctMgrFld);
             commNav.isFieldValueEmpty(viewName + ",'lead source'", opportunityDetailView.opportunityDetailViewLeadSourceFld);
 

@@ -317,29 +317,31 @@ public class LeadEntityViewsTest extends BaseTest {
 			commNav.isWebElementPresent(viewName + ",'Call main number'", leadDetailView.leadsDetailViewCallMainNumberLnk);
 			commNav.isWebElementPresent(viewName + ",'Send email'", leadDetailView.leadsDetailViewSendEmailLnk);
 			commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", leadDetailView.leadsDetailViewScheduleActivityLnk, "Schedule...");
-			commNav.isWebElementPresent(viewName + ",'Add note'", leadDetailView.leadsDetailViewAddNoteLnk);
+			//commNav.isWebElementPresent(viewName + ",'Add note'", leadDetailView.leadsDetailViewAddNoteLnk);
 			//TODO: figure out why there is a failure for this step; reverting to 
 			commNav.verifyEntityViewElementClick(viewName + ",'Add note'", leadDetailView.leadsDetailViewAddNoteLnk, "Note");
 			commNav.isWebElementPresent(viewName + ",'View address'", leadDetailView.leadsDetailViewViewAddressLnk);
-			
+
+            // Step: expand the More Details section if collapsed
+            if (leadDetailView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
+                leadDetailView.leadsDetailViewMoreDetailsHdr.click();
+                Thread.sleep(1000);
+            }
+
 			//Step: check each item under the Lead Detail View, Details section
 			commNav.isWebElementPresent(viewName + ",'Details' section header", leadDetailView.leadsDetailViewDetailsHdr);
 			commNav.isFieldValueEmpty(viewName + ",'name'", leadDetailView.leadsDetailViewNameFld);
 			commNav.isFieldValueEmpty(viewName + ",'company'", leadDetailView.leadsDetailViewCompanyFld);
-			commNav.isFieldValueEmpty(viewName + ",'web'", leadDetailView.leadsDetailViewWebFld);
-			commNav.isFieldValueEmpty(viewName + ",'title'", leadDetailView.leadsDetailViewTitleFld);
-			commNav.isFieldValueEmpty(viewName + ",'work phone'", leadDetailView.leadsDetailViewWorkPhoneFld);
-			commNav.isFieldValueEmpty(viewName + ",'mobile phone'", leadDetailView.leadsDetailViewMobilePhoneFld);
-			commNav.isFieldValueEmpty(viewName + ",'toll free'", leadDetailView.leadsDetailViewTollFreeFld);
-			commNav.isFieldValueEmpty(viewName + ",'lead source'", leadDetailView.leadsDetailViewLeadSourceFld);
+            commNav.isFieldValueEmpty(viewName + ",'title'", leadDetailView.leadsDetailViewTitleFld);
+
 
 			//Step: check each item under the Lead Detail View, More Details section
 			commNav.isWebElementPresent(viewName + ",'More Details' section header", leadDetailView.leadsDetailViewMoreDetailsHdr);
-			//SubStep: conditionally expand the More Details section
-			if (leadDetailView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
-				leadDetailView.leadsDetailViewMoreDetailsHdr.click();
-				Thread.sleep(1000);
-			}
+            commNav.isFieldValueEmpty(viewName + ",'work phone'", leadDetailView.leadsDetailViewWorkPhoneFld);
+            commNav.isFieldValueEmpty(viewName + ",'mobile phone'", leadDetailView.leadsDetailViewMobilePhoneFld);
+            commNav.isFieldValueEmpty(viewName + ",'toll free'", leadDetailView.leadsDetailViewTollFreeFld);
+            commNav.isFieldValueEmpty(viewName + ",'lead source'", leadDetailView.leadsDetailViewLeadSourceFld);
+            commNav.isFieldValueEmpty(viewName + ",'web'", leadDetailView.leadsDetailViewWebFld);
 			commNav.isFieldValueEmpty(viewName + ",'interests'", leadDetailView.leadsDetailViewInterestsFld);
 			commNav.isFieldValueEmpty(viewName + ",'industry'", leadDetailView.leadsDetailViewIndustryFld);
 			commNav.isFieldValueEmpty(viewName + ",'sic code'", leadDetailView.leadsDetailViewSicCodeFld);

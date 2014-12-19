@@ -190,8 +190,16 @@ public class MobileSprint304Test extends BaseTest {
         //Step: search for Lead entity, then open it's Detail view
         commNav.entityRecordOpenDetailView(entityType, entityRecord);
 		commNav.waitForNotPage("Leads");
-		
-		//VP: check to see that the Mobile Phone field is available in the Detail view
+
+        LeadViewsElements leadDetailView = PageFactory.initElements(driver, LeadViewsElements.class);
+
+        // Step: expand the More Details section if collapsed
+        if (leadDetailView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
+            leadDetailView.leadsDetailViewMoreDetailsHdr.click();
+            Thread.sleep(1000);
+        }
+
+        //VP: check to see that the Mobile Phone field is available in the Detail view
 		String mobilePhoneDtlViewFldXPath = "//*[@id='lead_detail']/descendant::*[text() = 'mobile phone']";
 		String resultsMsg = "VP: the Mobile Phone field is available in the Lead Detail view";
 		try {

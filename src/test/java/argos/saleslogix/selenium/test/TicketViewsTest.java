@@ -410,30 +410,31 @@ public class TicketViewsTest extends BaseTest {
 			//Step: check each item under the Ticket Detail View, Quick Actions section
 			commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", ticketDetailView.ticketsDetailViewQuickActionsHdr);			
 			commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", ticketDetailView.ticketsDetailViewScheduleActivityLnk, "Schedule...");
-			
-	
+
+            //Step: conditionally expand the More Details section
+            if (ticketDetailView.ticketsDetailViewMoreDetailsFields.getSize().height < 1) {
+                ticketDetailView.ticketsDetailViewMoreDetailsHdr.click();
+                Thread.sleep(1000);
+            }
+
 			//Step: check each item under the Ticket Detail View, Details section
 			commNav.isWebElementPresent(viewName + ",'Details' section header", ticketDetailView.ticketsDetailViewDetailsHdr);
 			commNav.isFieldValueEmpty(viewName + ",'account'", ticketDetailView.ticketsDetailViewAccountFld);
 			commNav.isFieldValueEmpty(viewName + ",'contact'", ticketDetailView.ticketsDetailViewContactFld);
-			commNav.isFieldValueEmpty(viewName + ",'area'", ticketDetailView.ticketsDetailViewAreaFld);
-			commNav.isFieldValueEmpty(viewName + ",'category'", ticketDetailView.ticketsDetailViewCategoryFld);
-			commNav.isFieldValueEmpty(viewName + ",'issue'", ticketDetailView.ticketsDetailViewIssueFld);
-			commNav.isFieldValueEmpty(viewName + ",'subject'", ticketDetailView.ticketsDetailViewSubjectFld);
-			commNav.isFieldValueEmpty(viewName + ",'description'", ticketDetailView.ticketsDetailViewDescriptionFld);
-			commNav.isFieldValueEmpty(viewName + ",'status'", ticketDetailView.ticketsDetailViewStatusFld);
-			commNav.isFieldValueEmpty(viewName + ",'urgency'", ticketDetailView.ticketsDetailViewUrgencyFld);
-			commNav.isFieldValueEmpty(viewName + ",'needed date'", ticketDetailView.ticketsDetailViewNeededDateFld);
-			commNav.isFieldValueEmpty(viewName + ",'assigned to'", ticketDetailView.ticketsDetailViewAssignedToFld);
-			commNav.isFieldValueEmpty(viewName + ",'completed by'", ticketDetailView.ticketsDetailViewCompletedByFld);
+            commNav.isFieldValueEmpty(viewName + ",'assigned to'", ticketDetailView.ticketsDetailViewAssignedToFld);
+            commNav.isFieldValueEmpty(viewName + ",'urgency'", ticketDetailView.ticketsDetailViewUrgencyFld);
+            commNav.isFieldValueEmpty(viewName + ",'needed date'", ticketDetailView.ticketsDetailViewNeededDateFld);
+
 	
 			//Step: check each item under the Ticket Detail View, More Details section
 			commNav.isWebElementPresent(viewName + ",'More Details' section header", ticketDetailView.ticketsDetailViewMoreDetailsHdr);
-			//SubStep: conditionally expand the More Details section
-			if (ticketDetailView.ticketsDetailViewMoreDetailsFields.getSize().height < 1) {
-				ticketDetailView.ticketsDetailViewMoreDetailsHdr.click();
-				Thread.sleep(1000);
-			}
+            commNav.isFieldValueEmpty(viewName + ",'area'", ticketDetailView.ticketsDetailViewAreaFld);
+            commNav.isFieldValueEmpty(viewName + ",'category'", ticketDetailView.ticketsDetailViewCategoryFld);
+            commNav.isFieldValueEmpty(viewName + ",'issue'", ticketDetailView.ticketsDetailViewIssueFld);
+            commNav.isFieldValueEmpty(viewName + ",'subject'", ticketDetailView.ticketsDetailViewSubjectFld);
+            commNav.isFieldValueEmpty(viewName + ",'description'", ticketDetailView.ticketsDetailViewDescriptionFld);
+            commNav.isFieldValueEmpty(viewName + ",'status'", ticketDetailView.ticketsDetailViewStatusFld);
+            commNav.isFieldValueEmpty(viewName + ",'completed by'", ticketDetailView.ticketsDetailViewCompletedByFld);
 			commNav.isFieldValueEmpty(viewName + ",'contract'", ticketDetailView.ticketsDetailViewContractFld);
 			commNav.isFieldValueEmpty(viewName + ",'source'", ticketDetailView.ticketsDetailViewSourceFld);
 			commNav.isFieldValueEmpty(viewName + ",'assigned date'", ticketDetailView.ticketsDetailViewAssignedDateFld);

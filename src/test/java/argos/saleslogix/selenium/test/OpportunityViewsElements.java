@@ -216,7 +216,7 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityDetailViewAcctFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[3]")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[2]")
 	WebElement opportunityDetailViewResellerFld;
 	
 	@CacheLookup
@@ -224,27 +224,27 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityDetailViewEstCloseFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[5]")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[3]")
 	WebElement opportunityDetailViewStatusFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[6]")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[1]")
 	WebElement opportunityDetailViewTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[7]")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[3]")
 	WebElement opportunityDetailViewCloseProbFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[8]")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[5]")
 	WebElement opportunityDetailViewSalesPotentialBaseRateFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[9]")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[6]")
 	WebElement opportunityDetailViewSalesPotentialMyRateFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[10]")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[7]")
 	WebElement opportunityDetailViewSalesPotentialOppRateFld;
 	
 	@CacheLookup
@@ -280,11 +280,11 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityDetailViewMoreDetailsFields;	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[1]")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[4]")
 	WebElement opportunityDetailViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[2]")
+	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[5]")
 	WebElement opportunityDetailViewLeadSourceFld;
 
 	@CacheLookup
