@@ -25,7 +25,7 @@ public class MobileSprint233Test extends BaseTest {
 	public String getKPICardValue(String fullKPICardVal) {
 		
 		String[] segStrArray = fullKPICardVal.split("\n");
-		String cardValue = segStrArray[1];
+		String cardValue = segStrArray[0];
 
 		return cardValue;
 	}
@@ -328,7 +328,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
             try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -583,7 +583,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -825,7 +825,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -1067,7 +1067,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -1304,7 +1304,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -1400,7 +1400,7 @@ public class MobileSprint233Test extends BaseTest {
 				commNav.rightClickContextMenuItem(hSelectedFilter);
 				Thread.sleep(5000);		
 				String resultsMsg = "VP: " + selectedKpiMetric + " KPI metric card is displayed above the list view";
-				String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
+				String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 				try {
 					//WebElement selectedKPICard = driver.findElement(By.xpath(kpiCardXpath));
@@ -1545,7 +1545,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));

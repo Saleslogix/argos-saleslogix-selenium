@@ -136,6 +136,14 @@ public class CommonNavigation {
     @CacheLookup
     @FindBy(xpath = ".//*[@id='right_drawer']//li[@data-action='groupConfigureClicked']//h3")
     WebElement rmenu_GroupConfigure;
+
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='right_drawer']//li[@data-name='Summary']//h3")
+    WebElement rmenu_GroupSummary;
+
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='right_drawer']//li[@data-name='Detail']//h3")
+    WebElement rmenu_GroupDetail;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='right_drawer']//ul[@data-group='kpi']")

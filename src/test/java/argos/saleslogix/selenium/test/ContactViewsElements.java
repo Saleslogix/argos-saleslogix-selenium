@@ -101,7 +101,7 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[8]/div[2]/div/div/button")
+	@FindBy(xpath = "//div[8]/div[2]/div/div/div/button")
 	WebElement contactsListView1stKPICard;
 	
 	@CacheLookup
@@ -441,7 +441,7 @@ public class ContactViewsElements extends BaseTest {
     WebElement contactsEditViewTitleValue5;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='contact_list']//li[1]//h4[9]/span[2]")
+    @FindBy(xpath = "//*[@id='contact_list']//li[1]/div[2]/div[1]/div/div[3]/h3[2]/span[2]")
     WebElement authContactsGroupTopAuthValue;
 
     @CacheLookup

@@ -50,7 +50,7 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[5]/div[2]/div/div/button")
+	@FindBy(xpath = "//div[5]/div[2]/div/div/div/button")
 	WebElement ticketsListView1stKPICard;
 	
 	@CacheLookup
@@ -578,7 +578,7 @@ public class TicketViewsElements extends BaseTest {
     WebElement rmenu_groupFollowUp;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='ticket_list']//li[1]//h4[8]/span[2]")
+    @FindBy(xpath = "//*[@id='ticket_list']//li[1]//div[3]/h3/span[2]")
     WebElement followUpTicketsGroupTopComplDate;
 	
 	

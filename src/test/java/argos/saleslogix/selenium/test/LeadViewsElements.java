@@ -76,7 +76,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[7]/div[2]/div/div/button")
+	@FindBy(xpath = "//div[7]/div[2]/div/div/div/button")
 	WebElement leadsListView1stKPICard;
 	
 	@CacheLookup
@@ -241,7 +241,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsDetailViewWebFld;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[3]/span/a")
+    @FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[5]/span/a")
     WebElement leadsDetailViewWebFldLnk;
 	
 	@CacheLookup
