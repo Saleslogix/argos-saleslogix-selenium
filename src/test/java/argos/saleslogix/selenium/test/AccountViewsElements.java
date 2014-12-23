@@ -155,7 +155,7 @@ public class AccountViewsElements extends BaseTest {
 	
 	@CacheLookup
 	//@FindBy(css = "#account_list > ul.list-content > li > #bottom_item_indicators > span > img")
-    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span")
     WebElement topAccountsListItemTouch;
 	
 	@CacheLookup

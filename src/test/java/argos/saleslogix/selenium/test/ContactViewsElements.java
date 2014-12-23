@@ -143,7 +143,7 @@ public class ContactViewsElements extends BaseTest {
 	
 	@CacheLookup
 	//@FindBy(css = "#contact_list > ul.list-content > li > #bottom_item_indicators > span > img")
-    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span")
 	WebElement topContactsListItemTouch;
 	
 	@CacheLookup

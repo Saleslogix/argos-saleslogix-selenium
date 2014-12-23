@@ -63,7 +63,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 			commNav.checkIfWebElementPresent("Notes/History List View, item record Contact & Account", notesHistoryListView.topNotesHistoryListItemContactAccount);
 			commNav.checkIfWebElementPresent("Notes/History List View, item record Regarding", notesHistoryListView.topNotesHistoryListItemRegarding);
 			commNav.checkIfWebElementPresent("Notes/History List View, item record Notes", notesHistoryListView.topNotesHistoryListItemNotes);
-			commNav.checkIfWebElementPresent("Notes/History List View, item record touch widget", notesHistoryListView.topNotesHistoryListItemTouch);
+			commNav.checkIfWebElementPresent("Notes/History List View, item record touch icon", notesHistoryListView.topNotesHistoryListItemTouch);
 
 			//TODO: add coverage for ToDo icon check after figuring out the css id
 			

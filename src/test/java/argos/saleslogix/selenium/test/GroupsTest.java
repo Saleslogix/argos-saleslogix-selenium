@@ -221,6 +221,8 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("Authorized Contacts");
 
         //Step: reveal Right Context Menu panel again, and choose 'Detail' layout
+        Thread.sleep(3000);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
         headerButton.showRightContextMenu();
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("Authorized Contacts");

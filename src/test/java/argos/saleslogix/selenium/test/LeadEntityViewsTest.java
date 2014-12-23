@@ -82,6 +82,7 @@ public class LeadEntityViewsTest extends BaseTest {
 			commNav.checkIfWebElementPresent("Leads List View, item record work", LeadListView.topLeadsListItemLine3);
 			commNav.checkIfWebElementPresent("Leads List View, item record web", LeadListView.topLeadsListItemLine4);
 			commNav.checkIfWebElementPresent("Leads List View, item record email", LeadListView.topLeadsListItemLine5);
+            commNav.checkIfWebElementPresent("Leads List View, item record touch icon", LeadListView.topLeadsListItemTouch);
 			
 			//Step: check the Quick Action button and items
 			try {

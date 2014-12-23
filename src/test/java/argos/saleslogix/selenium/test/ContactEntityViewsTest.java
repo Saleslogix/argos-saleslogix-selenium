@@ -84,6 +84,7 @@ public class ContactEntityViewsTest extends BaseTest {
 			commNav.checkIfWebElementPresent("Contacts List View, item record Work Phone", contactsListView.topContactsListItemLine3);
 			commNav.checkIfWebElementPresent("Contacts List View, item record Mobile Phone", contactsListView.topContactsListItemLine4);
 			commNav.checkIfWebElementPresent("Contacts List View, item record Email", contactsListView.topContactsListItemLine5);
+            commNav.checkIfWebElementPresent("Contacts List View, item record Touch Icon", contactsListView.topContactsListItemTouch);
 			
 			//Step: check the Quick Action button and items
 			try {

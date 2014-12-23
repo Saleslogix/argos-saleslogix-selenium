@@ -66,6 +66,7 @@ public class AccountEntityViewsTest extends BaseTest {
 			commNav.checkIfWebElementPresent("Accounts List View, item record Web", accountListView.topAccountsListItemLine5);
 			commNav.checkIfWebElementPresent("Accounts List View, item record Phone", accountListView.topAccountsListItemLine6);
 			commNav.checkIfWebElementPresent("Accounts List View, item record Fax", accountListView.topAccountsListItemLine7);
+            commNav.checkIfWebElementPresent("Accounts List View, item record Touched Icon", accountListView.topAccountsListItemTouch);
 			
 			//Step: check the Quick Action button and items
 			try {

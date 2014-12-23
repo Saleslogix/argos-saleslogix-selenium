@@ -123,7 +123,7 @@ public class TicketViewsElements extends BaseTest {
 	
 	@CacheLookup
 	//@FindBy(css = "#ticket_list > ul.list-content > li > #bottom_item_indicators > span > img")
-    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span")
 	WebElement topTicketsListItemTouch;
 	
 	@CacheLookup

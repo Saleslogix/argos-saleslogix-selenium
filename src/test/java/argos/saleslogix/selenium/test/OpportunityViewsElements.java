@@ -81,7 +81,7 @@ public class OpportunityViewsElements extends BaseTest {
 
     @CacheLookup
 	//@FindBy(css = "#opportunity_list > ul.list-content > li > #bottom_item_indicators > span > img")
-    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span")
 	WebElement topOpportunityListItemTouch;
 	
 	@CacheLookup

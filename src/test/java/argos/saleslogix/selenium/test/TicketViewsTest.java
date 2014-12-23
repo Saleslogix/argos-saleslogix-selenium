@@ -60,6 +60,7 @@ public class TicketViewsTest extends BaseTest {
 			commNav.checkIfWebElementPresent("Ticket List View, item record Assigned To", ticketsListView.topTicketsListItemLine3);
 			commNav.checkIfWebElementPresent("Ticket List View, item record Status Info", ticketsListView.topTicketsListItemLine4);
 			commNav.checkIfWebElementPresent("Ticket List View, item record Area, Cateogry & Issue", ticketsListView.topTicketsListItemLine5);
+            commNav.checkIfWebElementPresent("Ticket List View, item record Touch Icon", ticketsListView.topTicketsListItemTouch);
 			//TODO: add coverage for ToDo icon check after figuring out the css id
 			
 			//Step: check the Quick Action button and items

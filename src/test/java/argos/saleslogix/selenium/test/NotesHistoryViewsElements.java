@@ -80,7 +80,7 @@ public class NotesHistoryViewsElements extends BaseTest {
     WebElement topNotesHistoryListItemNotes;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span[1]")
+    @FindBy(xpath = "//*[@id='bottom_item_indicators']/span")
     WebElement topNotesHistoryListItemTouch;
 
     @CacheLookup
