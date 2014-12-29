@@ -222,8 +222,9 @@ public class GroupsTest extends BaseTest {
 
         //Step: reveal Right Context Menu panel again, and choose 'Detail' layout
         Thread.sleep(3000);
-        headerButton = PageFactory.initElements(driver, HeaderButton.class);
-        headerButton.showRightContextMenu();
+        //headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        //headerButton.showRightContextMenu();
+        headerButton.rightCntxtMnuButton.click();
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("Authorized Contacts");
 
@@ -248,13 +249,15 @@ public class GroupsTest extends BaseTest {
         //Step: open right menu, choose Configure and uncheck 'Authorized Contacts', so back to single default group of 'All Contacts'
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-        headerButton.showRightContextMenu();
+        //headerButton.showRightContextMenu();
+        headerButton.rightCntxtMnuButton.click();
         commNav.rmenu_GroupConfigure.click();
         commNav.waitForPage("Groups Lookup");
         contactsListView.groupsConfigureAuthContacts.click();
         headerButton.checkButton.click();
         commNav.waitForPage("All Contacts");
-        headerButton.closeRightContextMenu();
+        commNav.rmenu_GroupSummary.click();
+        //headerButton.closeRightContextMenu();
         System.out.println(ENDLINE);
     }
 
@@ -319,7 +322,219 @@ public class GroupsTest extends BaseTest {
         ticketsListView.groupsConfigureFollowUp.click();
         headerButton.checkButton.click();
         commNav.waitForPage("All Open");
-        headerButton.closeRightContextMenu();
+        commNav.rmenu_GroupSummary.click();
+        //headerButton.closeRightContextMenu();
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10727 ... addition of Summary and Detail layout options for groups
+
+    public void test05_MBL10727() throws Exception {
+        String methodID = "test05_MBL10727";
+
+        // Account Groups
+        // Test Params:
+        String entityType = "accounts";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        //Step: navigate to Accounts list view...
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("All Accounts");
+
+        //Step: verify that 'Summary' layout is in effect ... should not see a second column with 'Sub-Type' in group listview
+        AssertJUnit.assertFalse("VP: Account Group List View is not displaying Summary layout by default - FAILED", driver.getPageSource().contains("Sub-Type"));
+        System.out.println("VP: Account Group List View is displaying Summary layout by default - PASSED");
+
+        //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
+        headerButton.showRightContextMenu();
+        AssertJUnit.assertTrue("Accounts : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Accounts ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
+        AssertJUnit.assertTrue("Accounts : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Accounts ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
+
+        //Step: choose 'Detail' layout ... should see a second column with 'Sub-Type' in group listview
+        commNav.rmenu_GroupDetail.click();
+        commNav.waitForPage("All Accounts");
+        AssertJUnit.assertTrue("VP: Account Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("Sub-Type"));
+        System.out.println("VP: Account Group List View is displaying Detail layout when chosen - PASSED");
+
+        //Step: open right menu and choose 'Summary' layout ... should not see a second column with 'Sub-Type' in group listview
+        headerButton.showRightContextMenu();
+        commNav.rmenu_GroupSummary.click();
+        commNav.waitForPage("All Accounts");
+        AssertJUnit.assertFalse("VP: Account Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("Sub-Type"));
+        System.out.println("VP: Account Group List View is displaying Summary layout when chosen - PASSED");
+
+        System.out.println("VP: Account group layouts functioning as expected - PASSED");
+
+
+        // Contact Groups
+        // Test Params:
+        entityType = "contacts";
+
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        //Step: navigate to Contacts list view...
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("All Contacts");
+
+        //Step: verify that 'Summary' layout is in effect ... should not see a second column with 'E-mail' in group listview
+        AssertJUnit.assertFalse("VP: Contact Group List View is not displaying Summary layout by default - FAILED", driver.getPageSource().contains("E-mail"));
+        System.out.println("VP: Contact Group List View is displaying Summary layout by default - PASSED");
+
+        //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
+        headerButton.showRightContextMenu();
+        AssertJUnit.assertTrue("Contacts : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Contacts ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
+        AssertJUnit.assertTrue("Contacts : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Contacts ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
+
+        //Step: choose 'Detail' layout ... should see a second column with 'E-mail' in group listview
+        commNav.rmenu_GroupDetail.click();
+        commNav.waitForPage("All Contacts");
+        AssertJUnit.assertTrue("VP: Contact Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("E-mail"));
+        System.out.println("VP: Contact Group List View is displaying Detail layout when chosen - PASSED");
+
+        //Step: open right menu and choose 'Summary' layout ... should not see a second column with 'E-mail' in group listview
+        headerButton.showRightContextMenu();
+        commNav.rmenu_GroupSummary.click();
+        commNav.waitForPage("All Contacts");
+        AssertJUnit.assertFalse("VP: Contact Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("E-mail"));
+        System.out.println("VP: Contact Group List View is displaying Summary layout when chosen - PASSED");
+
+        System.out.println("VP: Contact group layouts functioning as expected - PASSED");
+
+
+        // Lead Groups
+        // Test Params:
+        entityType = "leads";
+
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        //Step: navigate to Leads list view...
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Leads");
+
+        LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+
+        //Step: reveal Right Context Menu panel
+        headerButton.showRightContextMenu();
+
+        //Step: click on Configure button to open 'Groups Lookup' and select 'All Leads' for loup
+        commNav.rmenu_GroupConfigure.click();
+        commNav.waitForPage("Groups Lookup");
+        leadsListView.groupsConfigureAllLeads.click();
+        headerButton.checkButton.click();
+        commNav.waitForPage("Leads");
+
+
+        //Step: open right menu and select 'All Leads' group to display
+        headerButton.showRightContextMenu();
+        leadsListView.rmenu_groupAllLeads.click();
+        commNav.waitForPage("All Leads");
+
+        //Step: verify that 'Summary' layout is in effect ... should not see a second column with 'Work Phone' in group listview
+        AssertJUnit.assertFalse("VP: Lead Group List View is not displaying Summary layout by default - FAILED", driver.getPageSource().contains("Work Phone"));
+        System.out.println("VP: Lead Group List View is displaying Summary layout by default - PASSED");
+
+        //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
+        AssertJUnit.assertTrue("Leads : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Leads ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
+        AssertJUnit.assertTrue("Leads : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Leads ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
+
+        //Step: choose 'Detail' layout ... should see a second column with 'Work Phone' in group listview
+        commNav.rmenu_GroupDetail.click();
+        commNav.waitForPage("All Leads");
+        AssertJUnit.assertTrue("VP: Lead Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("Work Phone"));
+        System.out.println("VP: Lead Group List View is displaying Detail layout when chosen - PASSED");
+
+        //Step: open right menu and choose 'Summary' layout ... should not see a second column with 'Work Phone' in group listview
+        headerButton.showRightContextMenu();
+        commNav.rmenu_GroupSummary.click();
+        commNav.waitForPage("All Leads");
+        AssertJUnit.assertFalse("VP: Lead Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("Work Phone"));
+        System.out.println("VP: Lead Group List View is displaying Summary layout when chosen - PASSED");
+
+        System.out.println("VP: Lead group layouts functioning as expected - PASSED");
+
+
+        // Opportunity Groups
+        // Test Params:
+        entityType = "opportunities";
+
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        //Step: navigate to Opportunities list view...
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("All Opportunities");
+
+        //Step: verify that 'Summary' layout is in effect ... should not see a second column with 'Weighted' in group listview
+        AssertJUnit.assertFalse("VP: Opportunity Group List View is not displaying Summary layout by default - FAILED", driver.getPageSource().contains("Weighted"));
+        System.out.println("VP: Opportunity Group List View is displaying Summary layout by default - PASSED");
+
+        //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
+        headerButton.showRightContextMenu();
+        AssertJUnit.assertTrue("Opportunities : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Opportunities ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
+        AssertJUnit.assertTrue("Opportunities : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Opportunities ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
+
+        //Step: choose 'Detail' layout ... should see a second column with 'Weighted' in group listview
+        commNav.rmenu_GroupDetail.click();
+        commNav.waitForPage("All Opportunities");
+        AssertJUnit.assertTrue("VP: Opportunity Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("Weighted"));
+        System.out.println("VP: Opportunity Group List View is displaying Detail layout when chosen - PASSED");
+
+        //Step: open right menu and choose 'Summary' layout ... should not see a second column with 'Weighted' in group listview
+        headerButton.showRightContextMenu();
+        commNav.rmenu_GroupSummary.click();
+        commNav.waitForPage("All Opportunities");
+        AssertJUnit.assertFalse("VP: Opportunity Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("Weighted"));
+        System.out.println("VP: Opportunity Group List View is displaying Summary layout when chosen - PASSED");
+
+        System.out.println("VP: Opportunity group layouts functioning as expected - PASSED");
+
+
+        // Ticket Groups
+        // Test Params:
+        entityType = "tickets";
+
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        //Step: navigate to Tickets list view...
+        commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("All Open");
+
+        //Step: verify that 'Summary' layout is in effect ... should not see a second column with 'Received Date' in group listview
+        AssertJUnit.assertFalse("VP: Ticket Group List View is not displaying Summary layout by default - FAILED", driver.getPageSource().contains("Received Date"));
+        System.out.println("VP: Ticket Group List View is displaying Summary layout by default - PASSED");
+
+        //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
+        headerButton.showRightContextMenu();
+        AssertJUnit.assertTrue("Tickets : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Tickets ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
+        AssertJUnit.assertTrue("Tickets : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Tickets ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
+
+        //Step: choose 'Detail' layout ... should see a second column with 'Received Date' in group listview
+        commNav.rmenu_GroupDetail.click();
+        commNav.waitForPage("All Open");
+        AssertJUnit.assertTrue("VP: Ticket Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("Received Date"));
+        System.out.println("VP: Ticket Group List View is displaying Detail layout when chosen - PASSED");
+
+        //Step: open right menu and choose 'Summary' layout ... should not see a second column with 'Received Date' in group listview
+        headerButton.showRightContextMenu();
+        commNav.rmenu_GroupSummary.click();
+        commNav.waitForPage("All Open");
+        AssertJUnit.assertFalse("VP: Ticket Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("Received Date"));
+        System.out.println("VP: Ticket Group List View is displaying Summary layout when chosen - PASSED");
+
+        System.out.println("VP: Ticket group layouts functioning as expected - PASSED");
 
         System.out.println(ENDLINE);
     }

@@ -416,6 +416,15 @@ public class LeadViewsElements extends BaseTest {
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
 	WebElement leadsEditViewOwnerFldBtn;
 
+    @CacheLookup
+    // this data-key is specific to user loup for 'All Leads' group
+    @FindBy(xpath = "//*[@id='groups_configure']//li[@data-key='p6UJ9A0004QH']")
+    WebElement groupsConfigureAllLeads;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='All Leads']")
+    WebElement rmenu_groupAllLeads;
+
 
 		
 	//Methods
