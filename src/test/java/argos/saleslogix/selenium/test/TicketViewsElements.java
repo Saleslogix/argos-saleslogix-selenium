@@ -580,6 +580,10 @@ public class TicketViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_list']//li[1]//div[3]/h3/span[2]")
     WebElement followUpTicketsGroupTopComplDate;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='ticket_list']//span[2][@data-name='callPhone']")
+    WebElement ticketGroupViewWorkPhoneFld;
 	
 	
 	//Methods

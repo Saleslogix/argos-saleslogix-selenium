@@ -452,6 +452,14 @@ public class ContactViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='Authorized Contacts']")
     WebElement rmenu_groupAuthContacts;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_list']//span[2][@data-propertyname='WorkPhone']")
+    WebElement contactGroupViewWorkPhoneFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_list']//span[2][@data-propertyname='Mobile']")
+    WebElement contactGroupViewMobileFld;
 	
 	//Methods
 	//=======

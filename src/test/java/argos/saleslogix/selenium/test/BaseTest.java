@@ -268,7 +268,7 @@ public class BaseTest {
             System.out.println("VP: Login Screen Title check - Passed");
         }
         catch (Error e) {
-            System.out.println("Error: Login Screen Title check - FAILED");
+            System.out.println("Error: Login Screen Title check - Failed");
             verificationErrors.append(methodID).append("(): ").append(e.toString());
         }
 
@@ -279,7 +279,7 @@ public class BaseTest {
             System.out.println("VP: Login Page Name check - Passed");
         }
         catch (Error e) {
-            System.out.println("Error: Login Page Name check - FAILED");
+            System.out.println("Error: Login Page Name check - Failed");
             verificationErrors.append(methodID + "(): " + e.toString());
         }
 
@@ -289,7 +289,7 @@ public class BaseTest {
             System.out.println("VP: 'infor' logo check  - Passed");
         }
         catch (Error e) {
-            System.out.println("Error: product logo check - FAILED");
+            System.out.println("Error: product logo check - Failed");
             verificationErrors.append(methodID + "(): " + e.toString());
         }
 
@@ -299,7 +299,7 @@ public class BaseTest {
             System.out.println("VP: Copyright check - Passed");
         }
         catch (Error e) {
-            System.out.println("Error: Copyright check - FAILED");
+            System.out.println("Error: Copyright check - Failed");
             verificationErrors.append(methodID + "(): " + e.toString());
         }
         try {
@@ -307,7 +307,7 @@ public class BaseTest {
             System.out.println("VP: Version Label check - Passed");
         }
         catch (Error e) {
-            System.out.println("Error: Version Label check - FAILED");
+            System.out.println("Error: Version Label check - Failed");
             verificationErrors.append(methodID + "(): " + e.toString());
         }
 

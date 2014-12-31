@@ -453,6 +453,9 @@ public class AccountViewsElements extends BaseTest {
     WebElement rmenu_groupCustomers;
 
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='account_list']//span[2][@data-propertyname='MainPhone']")
+    WebElement accountGroupViewMainPhoneFld;
 
 
     //Methods

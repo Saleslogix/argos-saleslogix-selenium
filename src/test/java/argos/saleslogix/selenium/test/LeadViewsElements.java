@@ -426,6 +426,10 @@ public class LeadViewsElements extends BaseTest {
     WebElement rmenu_groupAllLeads;
 
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_list']//span[2][@data-propertyname='WorkPhone']")
+    WebElement leadGroupViewWorkPhoneFld;
+
 		
 	//Methods
 	//=======

@@ -363,6 +363,7 @@ public class GroupsTest extends BaseTest {
         //Step: choose 'Detail' layout ... should see a second column with 'Sub-Type' in group listview
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("All Accounts");
+        Thread.sleep(3000);
         AssertJUnit.assertTrue("VP: Account Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("Sub-Type"));
         System.out.println("VP: Account Group List View is displaying Detail layout when chosen - PASSED");
 
@@ -370,6 +371,7 @@ public class GroupsTest extends BaseTest {
         headerButton.showRightContextMenu();
         commNav.rmenu_GroupSummary.click();
         commNav.waitForPage("All Accounts");
+        Thread.sleep(3000);
         AssertJUnit.assertFalse("VP: Account Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("Sub-Type"));
         System.out.println("VP: Account Group List View is displaying Summary layout when chosen - PASSED");
 
@@ -399,6 +401,7 @@ public class GroupsTest extends BaseTest {
         //Step: choose 'Detail' layout ... should see a second column with 'E-mail' in group listview
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("All Contacts");
+        Thread.sleep(3000);
         AssertJUnit.assertTrue("VP: Contact Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("E-mail"));
         System.out.println("VP: Contact Group List View is displaying Detail layout when chosen - PASSED");
 
@@ -406,6 +409,7 @@ public class GroupsTest extends BaseTest {
         headerButton.showRightContextMenu();
         commNav.rmenu_GroupSummary.click();
         commNav.waitForPage("All Contacts");
+        Thread.sleep(3000);
         AssertJUnit.assertFalse("VP: Contact Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("E-mail"));
         System.out.println("VP: Contact Group List View is displaying Summary layout when chosen - PASSED");
 
@@ -440,6 +444,7 @@ public class GroupsTest extends BaseTest {
         headerButton.showRightContextMenu();
         leadsListView.rmenu_groupAllLeads.click();
         commNav.waitForPage("All Leads");
+        Thread.sleep(3000);
 
         //Step: verify that 'Summary' layout is in effect ... should not see a second column with 'Work Phone' in group listview
         AssertJUnit.assertFalse("VP: Lead Group List View is not displaying Summary layout by default - FAILED", driver.getPageSource().contains("Work Phone"));
@@ -452,6 +457,7 @@ public class GroupsTest extends BaseTest {
         //Step: choose 'Detail' layout ... should see a second column with 'Work Phone' in group listview
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("All Leads");
+        Thread.sleep(3000);
         AssertJUnit.assertTrue("VP: Lead Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("Work Phone"));
         System.out.println("VP: Lead Group List View is displaying Detail layout when chosen - PASSED");
 
@@ -459,6 +465,7 @@ public class GroupsTest extends BaseTest {
         headerButton.showRightContextMenu();
         commNav.rmenu_GroupSummary.click();
         commNav.waitForPage("All Leads");
+        Thread.sleep(3000);
         AssertJUnit.assertFalse("VP: Lead Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("Work Phone"));
         System.out.println("VP: Lead Group List View is displaying Summary layout when chosen - PASSED");
 
@@ -488,6 +495,7 @@ public class GroupsTest extends BaseTest {
         //Step: choose 'Detail' layout ... should see a second column with 'Weighted' in group listview
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("All Opportunities");
+        Thread.sleep(3000);
         AssertJUnit.assertTrue("VP: Opportunity Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("Weighted"));
         System.out.println("VP: Opportunity Group List View is displaying Detail layout when chosen - PASSED");
 
@@ -495,6 +503,7 @@ public class GroupsTest extends BaseTest {
         headerButton.showRightContextMenu();
         commNav.rmenu_GroupSummary.click();
         commNav.waitForPage("All Opportunities");
+        Thread.sleep(3000);
         AssertJUnit.assertFalse("VP: Opportunity Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("Weighted"));
         System.out.println("VP: Opportunity Group List View is displaying Summary layout when chosen - PASSED");
 
@@ -524,6 +533,7 @@ public class GroupsTest extends BaseTest {
         //Step: choose 'Detail' layout ... should see a second column with 'Received Date' in group listview
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("All Open");
+        Thread.sleep(3000);
         AssertJUnit.assertTrue("VP: Ticket Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("Received Date"));
         System.out.println("VP: Ticket Group List View is displaying Detail layout when chosen - PASSED");
 
@@ -531,6 +541,7 @@ public class GroupsTest extends BaseTest {
         headerButton.showRightContextMenu();
         commNav.rmenu_GroupSummary.click();
         commNav.waitForPage("All Open");
+        Thread.sleep(3000);
         AssertJUnit.assertFalse("VP: Ticket Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("Received Date"));
         System.out.println("VP: Ticket Group List View is displaying Summary layout when chosen - PASSED");
 
@@ -539,7 +550,229 @@ public class GroupsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-	@Test(enabled = true)
+
+    @Test(enabled = true)
+    // MBL-10785 ... Ticket groups : phone hyperlink is not working
+
+    public void test06_MBL10785() throws Exception {
+        String methodID = "test06_MBL10785";
+
+        // Test Params:
+        String entityType = "tickets";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        //Step: navigate to Tickets list view ...the 'All Open' group should be displaying in Summary layout
+        commNav.clickGlobalMenuItem(entityType);
+
+        //Step: Click on the Work Phone hyperlink ... some action should be taken to call the number
+        String ticketWorkPhone = ticketsListView.ticketGroupViewWorkPhoneFld.getText();
+        String ticketWorkPhoneEdited  = ticketWorkPhone.replace("(","");
+        ticketWorkPhoneEdited = ticketWorkPhoneEdited.replace(")","");
+        ticketWorkPhoneEdited = ticketWorkPhoneEdited.replace("-","");
+        System.out.println("VP: Ticket group view Work Phone value to be clicked is ... " + ticketWorkPhone + " / " + ticketWorkPhoneEdited);
+        ticketsListView.ticketGroupViewWorkPhoneFld.click();
+        commNav.waitForPage("Note");
+        Thread.sleep(3000);
+        String urlTelephone = driver.getCurrentUrl().substring(4);
+        System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
+
+        //Step: verify that the work phone number clicked results in a call attempt to the same number
+        AssertJUnit.assertEquals("VP: clicking the ticket group Work Phone did not try to call that number - FAILED",ticketWorkPhoneEdited,urlTelephone);
+        System.out.println("VP: clicking the ticket group Work Phone did try to call that number - PASSED");
+
+        driver.navigate().back();
+        commNav.waitForPage("Mobile");
+        driver.navigate().refresh();
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10772 ... Need to hyperlink for Phone in group list ... Accounts, Contacts, Leads (Tickets covered in test06_MBL10785)
+
+    public void test07_MBL10772() throws Exception {
+        String methodID = "test07_MBL10772";
+
+        //Accounts group view phone hyperlink
+        // Test Params:
+        String entityType = "accounts";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        //Step: navigate to Accounts list view ...the 'All Accounts' group should be displaying in Summary layout
+        commNav.clickGlobalMenuItem(entityType);
+
+        //Step: Click on the Main Phone hyperlink ... some action should be taken to call the number
+        String accountMainPhone = accountsListView.accountGroupViewMainPhoneFld.getText();
+        String accountMainPhoneEdited  = accountMainPhone.replace("(","");
+        accountMainPhoneEdited = accountMainPhoneEdited.replace(")","");
+        accountMainPhoneEdited = accountMainPhoneEdited.replace("-","");
+        System.out.println("VP: Account group view Main Phone value to be clicked is ... " + accountMainPhone + " / " + accountMainPhoneEdited);
+        accountsListView.accountGroupViewMainPhoneFld.click();
+        commNav.waitForPage("Note");
+        Thread.sleep(3000);
+        String urlTelephone = driver.getCurrentUrl().substring(4);
+        System.out.println("VP: Value of Main Phone in browser address bar (would be called) is ... " + urlTelephone);
+
+        //Step: verify that the main phone number clicked results in a call attempt to the same number
+        AssertJUnit.assertEquals("VP: clicking the Account group Main Phone did not try to call that number - FAILED",accountMainPhoneEdited,urlTelephone);
+        System.out.println("VP: clicking the Account group Main Phone did try to call that number - PASSED");
+
+        driver.navigate().back();
+        commNav.waitForPage("Mobile");
+        driver.navigate().refresh();
+        doVerificationLogin();
+
+
+        //Contacts group view phone hyperlinks
+        // Test Params:
+        entityType = "contacts";
+
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        //Step: navigate to Contacts list view ...the 'All Contacts' group should be displaying in Summary layout, switch to Detail layout
+        commNav.clickGlobalMenuItem(entityType);
+        headerButton.rightCntxtMnuButton.click();
+        commNav.rmenu_GroupDetail.click();
+        commNav.waitForPage("All Contacts");
+        Thread.sleep(3000);
+
+
+        //Step: Click on the Work Phone hyperlink ... some action should be taken to call the number
+        String contactWorkPhone = contactsListView.contactGroupViewWorkPhoneFld.getText();
+        String contactWorkPhoneEdited  = contactWorkPhone.replace("(","");
+        contactWorkPhoneEdited = contactWorkPhoneEdited.replace(")","");
+        contactWorkPhoneEdited = contactWorkPhoneEdited.replace("-","");
+        System.out.println("VP: Contact group view Work Phone value to be clicked is ... " + contactWorkPhone + " / " + contactWorkPhoneEdited);
+        contactsListView.contactGroupViewWorkPhoneFld.click();
+        commNav.waitForPage("Note");
+        Thread.sleep(3000);
+        urlTelephone = driver.getCurrentUrl().substring(4);
+        System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
+
+        //Step: verify that the work phone number clicked results in a call attempt to the same number
+        AssertJUnit.assertEquals("VP: clicking the Contact group Work Phone did not try to call that number - FAILED",contactWorkPhoneEdited,urlTelephone);
+        System.out.println("VP: clicking the Contact group Work Phone did try to call that number - PASSED");
+
+        driver.navigate().back();
+        commNav.waitForPage("Mobile");
+        driver.navigate().refresh();
+        doVerificationLogin();
+
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        //Step: navigate to Contacts list view ...the 'All Contacts' group should still be displaying in Detail layout
+        commNav.clickGlobalMenuItem(entityType);
+
+
+        //Step: Click on the Mobile hyperlink ... some action should be taken to call the number
+        String contactMobilePhone = contactsListView.contactGroupViewMobileFld.getText();
+        String contactMobileEdited  = contactMobilePhone.replace("(","");
+        contactMobileEdited = contactMobileEdited.replace(")","");
+        contactMobileEdited = contactMobileEdited.replace("-","");
+        System.out.println("VP: Contact group view Mobile Phone value to be clicked is ... " + contactMobilePhone + " / " + contactMobileEdited);
+        contactsListView.contactGroupViewMobileFld.click();
+        commNav.waitForPage("Note");
+        Thread.sleep(3000);
+        urlTelephone = driver.getCurrentUrl().substring(4);
+        System.out.println("VP: Value of Mobile Phone in browser address bar (would be called) is ... " + urlTelephone);
+
+        //Step: verify that the mobile phone number clicked results in a call attempt to the same number
+        AssertJUnit.assertEquals("VP: clicking the Contact group Mobile Phone did not try to call that number - FAILED",contactMobileEdited,urlTelephone);
+        System.out.println("VP: clicking the Contact group Mobile Phone did try to call that number - PASSED");
+
+        driver.navigate().back();
+        commNav.waitForPage("Mobile");
+        driver.navigate().refresh();
+        doVerificationLogin();
+
+        //Step: reset the Contact group layout to 'Summary' again
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        commNav.clickGlobalMenuItem(entityType);
+        headerButton.rightCntxtMnuButton.click();
+        commNav.rmenu_GroupSummary.click();
+        commNav.waitForPage("All Contacts");
+        Thread.sleep(3000);
+
+
+        //Leads group view phone hyperlink
+        // Test Params:
+        entityType = "Leads";
+
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        //Step: navigate to Leads list view ...the 'All Leads' group should be displaying in Summary layout, switch to Detail layout
+        commNav.clickGlobalMenuItem(entityType);
+        headerButton.rightCntxtMnuButton.click();
+        commNav.rmenu_GroupDetail.click();
+        commNav.waitForPage("All Leads");
+        Thread.sleep(3000);
+
+
+        //Step: Click on the Work Phone hyperlink ... some action should be taken to call the number
+        String leadWorkPhone = leadsListView.leadGroupViewWorkPhoneFld.getText();
+        String leadWorkPhoneEdited  = leadWorkPhone.replace("(","");
+        leadWorkPhoneEdited = leadWorkPhoneEdited.replace(")","");
+        leadWorkPhoneEdited = leadWorkPhoneEdited.replace("-","");
+        System.out.println("VP: Lead group view Work Phone value to be clicked is ... " + leadWorkPhone + " / " + leadWorkPhoneEdited);
+        leadsListView.leadGroupViewWorkPhoneFld.click();
+        commNav.waitForPage("Note");
+        Thread.sleep(3000);
+        urlTelephone = driver.getCurrentUrl().substring(4);
+        System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
+
+        //Step: verify that the work phone number clicked results in a call attempt to the same number
+        AssertJUnit.assertEquals("VP: clicking the Lead group Work Phone did not try to call that number - FAILED",leadWorkPhoneEdited,urlTelephone);
+        System.out.println("VP: clicking the Lead group Work Phone did try to call that number - PASSED");
+
+        driver.navigate().back();
+        commNav.waitForPage("Mobile");
+        driver.navigate().refresh();
+        doVerificationLogin();
+
+
+        //Step: reset the Lead group layout to 'Summary' again
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        commNav.clickGlobalMenuItem(entityType);
+        headerButton.rightCntxtMnuButton.click();
+        commNav.rmenu_GroupSummary.click();
+        commNav.waitForPage("All Leads");
+        Thread.sleep(3000);
+
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";
 		
