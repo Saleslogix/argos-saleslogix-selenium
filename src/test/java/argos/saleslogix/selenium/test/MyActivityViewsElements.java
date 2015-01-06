@@ -42,6 +42,10 @@ public class MyActivityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]")
 	WebElement topMyActivitiesListItem;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_related']//ul/li[1]")
+    WebElement topRelatedActivitiesListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/div[1]")
@@ -189,7 +193,11 @@ public class MyActivityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/h2[1]")
 	WebElement activityDetailViewQuickActionsHdr;
-	
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Complete Activity']")
+    WebElement activityDetailViewCompleteActivityLnk;
+
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Complete Occurrence']")
 	WebElement activityDetailViewCompleteOccurrenceLnk;
@@ -311,6 +319,10 @@ public class MyActivityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='activity_edit']")
 	WebElement activityEditView;
+
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='activity_edit']/fieldset/div/div")
+    WebElement activityEditViewLoadingMessage;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][2]")
@@ -355,7 +367,15 @@ public class MyActivityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_SelectField_0']/button")
 	WebElement activityEditViewRepeatsFldBtn;
-	
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@data-field='Followup']//input")
+    WebElement activityCompleteViewFollowUpFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@data-field='Followup']//button")
+    WebElement activityCompleteViewFollowUpBtn;
+
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_RecurrencesField_0']/div")
 	WebElement activityEditViewRecurringFld;
@@ -464,6 +484,10 @@ public class MyActivityViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_types_list']//ul/li[3]/div[2]")
     WebElement activitySchedulePhoneCallBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='select_list']//li[2]")
+    WebElement activityFollowUpSchedulePhoneCallBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_types_list']//ul/li[4]/div[2]")

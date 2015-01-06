@@ -20,7 +20,7 @@ import java.util.GregorianCalendar;
  */
 public class MobileSprint320Test extends BaseTest {
 
-
+    public String TEST_CONTACT_RECORD = "Abbott, John";
 	
 	//Test Methods Set
 	//================
@@ -106,6 +106,7 @@ public class MobileSprint320Test extends BaseTest {
         //Step: open the activity, then choose to 'Complete Occurrence'
         activityEditView.topMyActivitiesListItem.click();
         commNav.waitForPage("Activity");
+        Thread.sleep(3000);
         activityEditView.activityDetailViewCompleteOccurrenceLnk.click();
         commNav.waitForPage("Complete Occurrence");
 
@@ -115,6 +116,93 @@ public class MobileSprint320Test extends BaseTest {
         AssertJUnit.assertEquals("VP: the value of Leader on 'Complete Occurrence' dialog is not the same as Leader value on initial activity creation - FAILED",initialLeaderValue,completeOccurrenceLeaderValue);
         System.out.println("VP: the value of Leader on 'Complete Occurrence' dialog is the same as Leader value on initial activity creation - PASSED");
 
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10411 ... Complete activity with follow-up constantly displays 'loading...', and gives error on save
+
+    public void test02_MBL10411() throws Exception {
+        String methodID = "test02_MBL10411";
+
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        String entityType = "Contacts";
+        String contactRecord = TEST_CONTACT_RECORD;
+
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+
+        //Step: search for Contact entity, then open it's Detail view
+        commNav.entityRecordOpenDetailView(entityType, contactRecord);
+
+        //Step: Open the Activities for the Contact
+        contactDetailView.contactsDetailViewActivitiesLnk.click();
+        commNav.waitForPage("Activities");
+
+        //Step: add a simple activity for the contact
+        headerButton.clickHeaderButton("add");
+        commNav.waitForPage("Schedule...");
+        activityEditView.activityScheduleMeetingBtn.click();
+        commNav.waitForPage("Meeting");
+
+        //Step: add an Activity record with a random value for 'regarding'
+        String newActivityRegarding = "SeAutoTestActivity-1-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+        System.out.println("Activity regarding field will be - " + newActivityRegarding);
+        activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+        headerButton.clickHeaderButton("Save");
+        commNav.waitForPage("Activities");
+
+        //Step: search for activity created above
+        commView.lookupTxtBox.click();
+        Thread.sleep(500);
+        commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+        commView.lookupTxtBox.sendKeys(newActivityRegarding);
+        commView.lookupTxtBox.sendKeys(Keys.RETURN);
+        Thread.sleep(3000);
+
+        //Step: open the activity, then choose to Complete
+        activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        activityEditView.topRelatedActivitiesListItem.click();
+        commNav.waitForPage("Activity");
+        activityEditView.activityDetailViewCompleteActivityLnk.click();
+        commNav.waitForPage("Complete Activity");
+
+        //Step: on Complete Activity, choose to 'follow-up' with a phone call activity after completion   ++
+        activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        activityEditView.activityCompleteViewFollowUpBtn.click();
+        commNav.waitForPage("Follow-up type");
+        activityEditView.activityFollowUpSchedulePhoneCallBtn.click();
+        commNav.waitForPage("Complete Activity");
+        headerButton.clickHeaderButton("save");
+
+        //Step: after saving the completed activity, should pop-up the follow-up activity for a phone call
+        activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        commNav.waitForPage("Phone Call");
+        Thread.sleep(3000);
+
+        //Step: checking whether or not 'loading...' is constantly displaying on the 'Phone Call' screen : it should not
+        String loadingMessage = activityEditView.activityEditViewLoadingMessage.getText();
+        if(loadingMessage.contentEquals("loading...")) {
+            System.out.println("VP: Complete activity with follow-up constantly displaying 'loading...' - FAILED");
+            AssertJUnit.fail("VP: test failed");
+        }
+        else {
+            System.out.println("VP: Complete activity with follow-up not constantly displaying 'loading...' - PASSED");
+        }
 
         System.out.println(ENDLINE);
     }
