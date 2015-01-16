@@ -294,6 +294,7 @@ public class BaseTest {
         }
 
         //VP: Copyright Info
+
         try {
             AssertJUnit.assertEquals(copyrightLabel, driver.findElement(By.xpath(".//*[@id='login']/span[1]")).getText());
             System.out.println("VP: Copyright check - Passed");
