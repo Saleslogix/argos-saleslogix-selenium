@@ -357,7 +357,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityEditViewStartTimeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/button")
+	@FindBy(xpath = "//*[@data-field='StartDate']//button")
 	WebElement activityEditViewStartTimeFldBtn;
 	
 	@CacheLookup

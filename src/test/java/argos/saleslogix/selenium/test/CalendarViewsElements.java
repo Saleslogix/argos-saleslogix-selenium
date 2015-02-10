@@ -53,8 +53,13 @@ public class CalendarViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='datetime-picker-time']//button[@data-action='incrementMinute']")
 	WebElement calendarIncrementMinuteBtn;
-	
-	//Day View elements
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='datetime-picker-date']//button[@data-action='decrementMonth']")
+    WebElement calendarDecrementMonthBtn;
+
+
+    //Day View elements
 	
 	
 	//Week View Elements
