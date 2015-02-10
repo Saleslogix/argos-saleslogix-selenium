@@ -19,6 +19,7 @@ import java.util.GregorianCalendar;
 public class MobileSprint330 extends BaseTest {
 
     public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
+    public String TEST_CONTACT_RECORD = "Abbott, John";
 
 	//Login & Logout
 	//==============
@@ -227,6 +228,62 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
+    @Test(enabled = true)
+    // MBL-10659 ... for Firefox, the Contact detail 'View address' quick action does nothing
+
+    public void test03_MBL10659() throws Exception {
+        String methodID = "test03_MBL10659";
+
+        // Test Params:
+        String entityType = "Contact";
+        String entityRecord = TEST_CONTACT_RECORD;
+        String viewName = "Contact Edit view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Contact entity, then open it's Detail view
+            AssertJUnit.assertTrue(commNav.entityRecordOpenDetailView(entityType, entityRecord));
+
+            ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
+
+            commNav.isWebElementPresent(viewName + ", 'View address'", contactDetailView.contactsDetailViewViewAddressLnk);
+
+            //Store the current window handle for the mobile window
+            String winHandleBefore = driver.getWindowHandle();
+
+            //Step: click on the contact detail view 'View Address' link ... should open map with address
+            contactDetailView.contactsDetailViewViewAddressLnk.click();
+            Thread.sleep(7000);
+
+            //Switch to new window opened for the contact address
+            for(String winHandle : driver.getWindowHandles()){
+                driver.switchTo().window(winHandle);
+            }
+
+            AssertJUnit.assertTrue("VP: View Address action for contact has opened a map with address - FAILED", driver.getPageSource().contains("Google Maps"));
+            System.out.println("VP: View Address action for contact has opened a map with address - PASSED");
+
+            //Close the new window (address map)
+            driver.close();
+
+            //Switch back to original browser (first window - mobile)
+            driver.switchTo().window(winHandleBefore);
+
+        } catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: View Address action for contact has opened a map with address - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
 
 
     @Test(enabled = true)

@@ -141,20 +141,21 @@ public class GroupsTest2 extends BaseTest {
         commNav.waitForPage("Groups Lookup");
         leadsListView.groupsConfigureAllLeads.click();
         headerButton.checkButton.click();
-        commNav.waitForPage("Leads");
-
-
-        //Step: open right menu and select 'All Leads' group to display
-        headerButton.showRightContextMenu();
-        leadsListView.rmenu_groupAllLeads.click();
         commNav.waitForPage("All Leads");
         Thread.sleep(3000);
+
+        //Step: open right menu and select 'All Leads' group to display   ... NO LONGER NEEDED
+        //headerButton.showRightContextMenu();
+        //leadsListView.rmenu_groupAllLeads.click();
+        //commNav.waitForPage("All Leads");
+        //Thread.sleep(3000);
 
         //Step: verify that 'Summary' layout is in effect ... should not see a second column with 'Work Phone' in group listview
         AssertJUnit.assertFalse("VP: Lead Group List View is not displaying Summary layout by default - FAILED", driver.getPageSource().contains("Work Phone"));
         System.out.println("VP: Lead Group List View is displaying Summary layout by default - PASSED");
 
         //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
+        headerButton.showRightContextMenu();
         AssertJUnit.assertTrue("Leads : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Leads ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
         AssertJUnit.assertTrue("Leads : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Leads ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
 
