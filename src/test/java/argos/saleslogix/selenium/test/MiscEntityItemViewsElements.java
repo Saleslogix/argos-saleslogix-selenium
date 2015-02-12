@@ -131,11 +131,11 @@ public class MiscEntityItemViewsElements extends BaseTest {
 
     //Configure View items
     @CacheLookup
-    @FindBy(xpath = "//*[@id='configure']/div[2]//ul/li[@data-descriptor='Calendar']//span[@data-action='moveUp']")
+    @FindBy(xpath = "//*[@id='configure']//li[@data-descriptor='Calendar']//span[@data-action='moveUp']")
     WebElement configureCalendarMoveUpBtn;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='configure']/div[2]//ul/li[@data-descriptor='Calendar']//span[@data-action='moveDown']")
+    @FindBy(xpath = "//*[@id='configure']//li[@data-descriptor='Calendar']//span[@data-action='moveDown']")
     WebElement configureCalendarMoveDownBtn;
 
     //Methods

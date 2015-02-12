@@ -328,7 +328,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
 
             try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -583,7 +583,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -825,7 +825,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -1067,7 +1067,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -1225,136 +1225,139 @@ public class MobileSprint233Test extends BaseTest {
 		
 		System.out.println(ENDLINE);
 	}
-	
 
-	//MBL10112 - KPI widgets need to work for listviews under an entity - Opportunities (no filtered lookups)
-	@Test(enabled = true)
-	public void test12_MBL10112_Opportunities_NoFiltering() throws InterruptedException {
-		String methodID = "test12_MBL10112_Opportunities_NoFiltering";
-			
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+    //MBL10112 - KPI widgets need to work for listviews under an entity - Opportunities (no filtered lookups)
+    @Test(enabled = true)
+    public void test12_MBL10112_Opportunities_NoFiltering() throws InterruptedException {
+        String methodID = "test12_MBL10112_Opportunities_NoFiltering";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		// Test Params:
-		String entityType = "Opportunities";
-		int KPIIndex = 6;
-		
-		//Step: login & log back in
-		LogOutThenLogBackIn(userName, userPwd);
-		
-	    //Step: navigate to Opportunities list view...
-		commNav.clickGlobalMenuItem(entityType);
-		
-		OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-		
-		//Section 1: perform a Lookup with nothing in the lookup value
-		//opportunitiesListView.opportunitySearchClearBtn.click();
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        // Test Params:
+        String entityType = "Opportunities";
+        int KPIIndex = 6;
+
+        //Step: login & log back in
+        LogOutThenLogBackIn(userName, userPwd);
+
+        //Step: navigate to Opportunities list view...
+        commNav.clickGlobalMenuItem(entityType);
+
+        OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+
+        //Section 1: perform a Lookup with nothing in the lookup value
+        //opportunitiesListView.opportunitySearchClearBtn.click();
         commView.lookupTxtBox.click();
         commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
-		Thread.sleep(1000);
-		//opportunitiesListView.opportunitySearchLookupBtn.click();
+        Thread.sleep(1000);
+        //opportunitiesListView.opportunitySearchLookupBtn.click();
         commView.lookupTxtBox.sendKeys(Keys.RETURN);
-		Thread.sleep(1000);
+        Thread.sleep(1000);
 
-		
-		//Section 2: Opportunity KPI metrics
-		//----------
-		headerButton.showRightContextMenu();
-		
-		//Step: verify the KPI section header
-		String resultsMsg = "VP: KPI header label is displayed in right-context menu";
-		WebElement KPIHeaderXPath = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'KPI']"));
-		String headerLbl = KPIHeaderXPath.getText();
-		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", KPIHeaderXPath));			
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
 
-		
-		//Step: verify the Opportunity KPI metric items
-		resultsMsg = "VP: KPI metric items are available in right-context menu";
-		WebElement totalOppsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Opportunities']"));
-		WebElement salesPotentialKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Sales Potential']"));
-		try {
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Opportunities KPI header label", totalOppsKPI));
-			AssertJUnit.assertTrue(commNav.isWebElementPresent("Sales Potential KPI header label", salesPotentialKPI));
-			System.out.println(resultsMsg + " - Passed");
-		}
-		catch (Error e) {
-			System.out.println(resultsMsg + " - Failed");
-		}
-		headerButton.closeRightContextMenu();
-		
-		//Section 3: Total Opportunities KPI metric selection
-		//----------
-		String selectedKpiMetric = "";
-		String[] kpiMetrics = {"Total Opportunities", "Sales Potential"};
-		for (int iKPICount = 0;iKPICount<kpiMetrics.length;iKPICount++) {
-			selectedKpiMetric = kpiMetrics[iKPICount];		
-		
-			//Step: select the KPI metric (should be un-selected by default)
-			commNav.rightClickContextMenuItem(selectedKpiMetric);
-			headerButton.closeRightContextMenu();
-			Thread.sleep(5000);
-			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
-			opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
+        //Section 2: Opportunity KPI metrics
+        //----------
+        headerButton.showRightContextMenu();
 
-			try {
-				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
-				AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
-				System.out.println(resultsMsg + " - Passed");
-				
-				resultsMsg = "VP: '" + selectedKpiMetric + "' KPI card title check";
-				try {
-					String kpiCardTitle = kpiCard.getText();
-					String regExp = "^[\\s\\S]*" + selectedKpiMetric + "[\\s\\S]*$";
-					AssertJUnit.assertTrue(kpiCardTitle.matches(regExp));
-					System.out.println(resultsMsg + " - Passed");
-				}
-				catch (Error e) {
-					System.out.println(resultsMsg + " - Failed");
-				}
-				
-				resultsMsg = "VP: '" + selectedKpiMetric + "' KPI Chart page check";
-				commNav.highlightNClick(kpiCard);
-				try {
-					commNav.waitForPage(selectedKpiMetric);
-					WebElement kpiChart = driver.findElement(By.id("chart_generic_bar"));
-					System.out.println(resultsMsg + " - Passed");
-				}
-				catch (NoSuchElementException e) {
-					System.out.println(resultsMsg + " - Failed");
-				}
-				headerButton.clickHeaderButton("back");
-			}
-			catch (NoSuchElementException e) {
-				System.out.println(methodID + "(): " + e.toString());
-				System.out.println(resultsMsg + " - Failed");
-			}
-			
-			//Step: un-select the KPI item
-			headerButton.showRightContextMenu();
-			commNav.rightClickContextMenuItem(selectedKpiMetric);
-			headerButton.closeRightContextMenu();
-			Thread.sleep(5000);
-		}
-		
-		//END
-		//---
-		//Step: go back to start screen
-		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
-		Thread.sleep(3000);
-		
-		System.out.println(ENDLINE);
-	}
+        //Step: verify the KPI section header
+        String resultsMsg = "VP: KPI header label is displayed in right-context menu";
+        WebElement KPIHeaderXPath = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'KPI']"));
+        String headerLbl = KPIHeaderXPath.getText();
+        try {
+            AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", KPIHeaderXPath));
+            System.out.println(resultsMsg + " - Passed");
+        }
+        catch (Error e) {
+            System.out.println(resultsMsg + " - Failed");
+        }
+
+
+        //Step: verify the Opportunity KPI metric items
+        resultsMsg = "VP: KPI metric items are available in right-context menu";
+        WebElement totalOppsKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Opportunities']"));
+        WebElement salesPotentialKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Total Sales Potential']"));
+        WebElement mthlySalesPotentialKPI = driver.findElement(By.xpath(".//*[@id='right_drawer']/descendant::*[text() = 'Average Monthly Sales Potential']"));
+        try {
+            AssertJUnit.assertTrue(commNav.isWebElementPresent("Total Opportunities KPI header label", totalOppsKPI));
+            AssertJUnit.assertTrue(commNav.isWebElementPresent("Sales Potential KPI header label", salesPotentialKPI));
+            AssertJUnit.assertTrue(commNav.isWebElementPresent("Average Monthly Sales Potential KPI header label", mthlySalesPotentialKPI));
+            System.out.println(resultsMsg + " - Passed");
+        }
+        catch (Error e) {
+            System.out.println(resultsMsg + " - Failed");
+        }
+        headerButton.closeRightContextMenu();
+
+        //Section 3: Total Opportunities KPI metric selection
+        //----------
+        String selectedKpiMetric = "";
+        String[] kpiMetrics = {"Total Opportunities", "Total Sales Potential"};
+        for (int iKPICount = 0;iKPICount<kpiMetrics.length;iKPICount++) {
+            selectedKpiMetric = kpiMetrics[iKPICount];
+
+            //Step: select the KPI metric (should be un-selected by default)
+            commNav.rightClickContextMenuItem(selectedKpiMetric);
+            headerButton.closeRightContextMenu();
+            Thread.sleep(5000);
+            resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
+            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
+
+
+            try {
+                WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
+                AssertJUnit.assertTrue(commNav.isWebElementPresent("KPI header label", kpiCard));
+                System.out.println(resultsMsg + " - Passed");
+
+                resultsMsg = "VP: '" + selectedKpiMetric + "' KPI card title check";
+                try {
+                    String kpiCardTitle = kpiCard.getText();
+                    String regExp = "^[\\s\\S]*" + selectedKpiMetric + "[\\s\\S]*$";
+                    AssertJUnit.assertTrue(kpiCardTitle.matches(regExp));
+                    System.out.println(resultsMsg + " - Passed");
+                }
+                catch (Error e) {
+                    System.out.println(resultsMsg + " - Failed");
+                }
+
+                resultsMsg = "VP: '" + selectedKpiMetric + "' KPI Chart page check";
+                commNav.highlightNClick(kpiCard);
+                try {
+                    commNav.waitForPage(selectedKpiMetric);
+                    WebElement kpiChart = driver.findElement(By.id("chart_generic_bar"));
+                    System.out.println(resultsMsg + " - Passed");
+                }
+                catch (NoSuchElementException e) {
+                    System.out.println(resultsMsg + " - Failed");
+                }
+                headerButton.clickHeaderButton("back");
+            }
+            catch (NoSuchElementException e) {
+                System.out.println(methodID + "(): " + e.toString());
+                System.out.println(resultsMsg + " - Failed");
+            }
+
+            //Step: un-select the KPI item
+            headerButton.showRightContextMenu();
+            commNav.rightClickContextMenuItem(selectedKpiMetric);
+            headerButton.closeRightContextMenu();
+            Thread.sleep(5000);
+        }
+
+        //END
+        //---
+        //Step: go back to start screen
+        headerButton.closeRightContextMenu();
+        commNav.clickGlobalMenuItem("My Activities");
+        Thread.sleep(3000);
+
+        System.out.println(ENDLINE);
+    }
 	
 
 	//MBL10112 - KPI widgets need to work for listviews under an entity - Opportunities (filtering by hash tags) ... hashtags removed in 3.1
@@ -1400,7 +1403,7 @@ public class MobileSprint233Test extends BaseTest {
 				commNav.rightClickContextMenuItem(hSelectedFilter);
 				Thread.sleep(5000);		
 				String resultsMsg = "VP: " + selectedKpiMetric + " KPI metric card is displayed above the list view";
-				String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
+				String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
 
 				try {
 					//WebElement selectedKPICard = driver.findElement(By.xpath(kpiCardXpath));
@@ -1545,7 +1548,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
