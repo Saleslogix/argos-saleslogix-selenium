@@ -76,7 +76,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[7]/div[3]/div/div/div/button")
+	@FindBy(xpath = "//div[7]/div[2]/div/div/div/button")
 	WebElement leadsListView1stKPICard;
 	
 	@CacheLookup
@@ -323,97 +323,97 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsEditViewDetailsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_NameField_0']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/input")
 	WebElement leadsEditViewNameInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_NameField_0']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/button")
 	WebElement leadsEditViewNameFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_2']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_TextField_2']/input")
 	WebElement leadsEditViewCompanyInputFld;
 	
 	@CacheLookup
-	// @FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_3']/input")
+	// @FindBy(xpath = "//*[@id='argos_Fields_TextField_3']/input")
     @FindBy(xpath = "//input[@name='WebAddress']")
 	WebElement leadsEditViewWebInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_0']/input")
 	WebElement leadsEditViewWorkPhoneInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_1']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_1']/input")
 	WebElement leadsEditViewMobilePhoneInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_2']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_2']/input")
 	WebElement leadsEditViewTollFreeInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_4']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_TextField_4']/input")
 	WebElement leadsEditViewEmailInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/input")
 	WebElement leadsEditViewTitleInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/button")
 	WebElement leadsEditViewTitleFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_0']/div")
+	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']/div")
 	WebElement leadsEditViewAddressInputFld;
 	
 	@CacheLookup
-	// @FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_0']/button")
+	// @FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']/button")
     @FindBy(xpath = "//*[@data-field='Address']//button")
 	WebElement leadsEditViewAddressFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
 	WebElement leadsEditViewLeadSourceInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/button")
 	WebElement leadsEditViewLeadSourceFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_5']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_TextField_5']/input")
 	WebElement leadsEditViewInterestsInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/input")
 	WebElement leadsEditViewIndustryInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/button")
 	WebElement leadsEditViewIndustryFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_6']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_TextField_6']/input")
 	WebElement leadsEditViewSicCodeInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/textarea")
+	@FindBy(xpath = "//*[@id='argos_Fields_NoteField_0']/textarea")
 	WebElement leadsEditViewBusDescInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_1']/textarea")
+	@FindBy(xpath = "//*[@id='argos_Fields_NoteField_1']/textarea")
 	WebElement leadsEditViewCommentsInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_1']/textarea")
+	@FindBy(xpath = "//*[@id='argos_Fields_NoteField_1']/textarea")
 	WebElement leadsEditViewCommentsFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
 	WebElement leadsEditViewOwnerInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/button")
 	WebElement leadsEditViewOwnerFldBtn;
 
     @CacheLookup

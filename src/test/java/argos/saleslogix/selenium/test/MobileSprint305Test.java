@@ -75,7 +75,7 @@ public class MobileSprint305Test extends BaseTest {
 		    
 			//SubStep: setup and confirm the Regarding field val...
 			//NOTE: here we just set the value of the input text field; selecting a Regarding value is not supported by Se WebDriver
-			String regardingFldXPath = "//div[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input";
+			String regardingFldXPath = "//div[@id='crm_Fields_PicklistField_0']/input";
 			driver.findElement(By.xpath(regardingFldXPath)).clear();
 			driver.findElement(By.xpath(regardingFldXPath)).sendKeys(regardingVal);		    
 		    //VP: check the modified Regarding field val...
@@ -89,7 +89,7 @@ public class MobileSprint305Test extends BaseTest {
 		    }
 		    
 		    //VP: check that the For Lead button is set to OFF (default)
-		    //String forLeadTglCSS = "#Sage_Platform_Mobile_Fields_BooleanField_4 > div.toggle > span.toggleOff";
+		    //String forLeadTglCSS = "#argos_Fields_BooleanField_4 > div.toggle > span.toggleOff";
 		    //String resultsMsg = "VP: the For Lead toggle button was set to default value of 'NO'";
 		    //try {
 		    //	AssertJUnit.assertEquals("NO", driver.findElement(By.cssSelector(forLeadTglCSS)).getText());
@@ -100,8 +100,8 @@ public class MobileSprint305Test extends BaseTest {
 		    //}
 		    
 		    //VP: check that both the Account & Contact field values are blank (default)
-		    String accountFldCSS = "#Sage_Platform_Mobile_Fields_LookupField_1 > input[type='text']";
-		    String contactFldCSS = "#Sage_Platform_Mobile_Fields_LookupField_2 > input[type='text']";
+		    String accountFldCSS = "#argos_Fields_LookupField_1 > input[type='text']";
+		    String contactFldCSS = "#argos_Fields_LookupField_2 > input[type='text']";
 		    String resultsMsg = "VP: the Account & Contact field values are un-set";
 		    try {
 		    	AssertJUnit.assertEquals("", driver.findElement(By.cssSelector(accountFldCSS)).getText());

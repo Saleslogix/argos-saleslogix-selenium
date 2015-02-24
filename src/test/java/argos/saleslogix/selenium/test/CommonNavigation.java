@@ -168,7 +168,7 @@ public class CommonNavigation {
 		//conditionally click the GlobalMenu button to reveal panel
 		WebElement glblMenuPnl = driver.findElement(By.xpath(".//*[@id='left_drawer']"));
 		if (!glblMenuPnl.isDisplayed()) {
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+			driver.findElement(By.xpath("//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 			Thread.sleep(1000);
 		}
 						
@@ -253,7 +253,7 @@ public class CommonNavigation {
 		
 		//conditionally click the RightContext Menu button to reveal panel
 		if (!commNav.rmenu_panel.isDisplayed()) {
-			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+			driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 			Thread.sleep(1000);
 			
 			try {
@@ -631,18 +631,18 @@ public class CommonNavigation {
 				//invoke the Right Context menu ... no longer needed, Lookup field is top of screen
 				//headerbutton.clickHeaderButton("right context menu");
 				
-		    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
+		    	//driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
                 commView.lookupTxtBox.clear();
 		    	Thread.sleep(500);
                 commView.lookupTxtBox.click();
                 Thread.sleep(500);
-		    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
+		    	//driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
                 commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 		    	Thread.sleep(500);
-		    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
+		    	//driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
                 commView.lookupTxtBox.sendKeys(searchItemName);
 		    	Thread.sleep(500);
-		    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();
+		    	//driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();
                 commView.lookupTxtBox.sendKeys(Keys.RETURN);
 		    }
 		    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
@@ -694,18 +694,18 @@ public class CommonNavigation {
 		//invoke the Right Context menu ... no longer needed, Lookup is at the top of the screen
 		//headerbutton.clickHeaderButton("right context menu");
 		
-    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
+    	//driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
         commView.lookupTxtBox.clear();
         Thread.sleep(500);
         commView.lookupTxtBox.click();
         Thread.sleep(500);
-    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
+    	//driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
         commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
         Thread.sleep(500);
-    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
+    	//driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
         commView.lookupTxtBox.sendKeys(searchItemName);
         Thread.sleep(500);
-    	//driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();
+    	//driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();
         commView.lookupTxtBox.sendKeys(Keys.RETURN);
 
 	    System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");

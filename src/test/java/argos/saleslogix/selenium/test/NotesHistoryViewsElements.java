@@ -40,7 +40,7 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistorysListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[10]/div[3]/div/div/div/button")
+	@FindBy(xpath = "//div[10]/div[2]/div/div/div/button")
 	WebElement notesHistorysListView1stKPICard;
 	
 	@CacheLookup
@@ -219,73 +219,73 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistoryEditView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_DateField_0']/input")
 	WebElement notesHistoryEditViewTimeInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_DateField_0']/button")
 	WebElement notesHistoryEditViewTimeFldBtn;
 	
 	//@CacheLookup
-	//@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
+	//@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/input")
     @FindBy(xpath = "//*[@data-field='Description']//input")
 	WebElement notesHistoryEditViewRegardingInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/button")
 	WebElement notesHistoryEditViewRegardingFldBtn;
 	
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_0']/textarea")
+	@FindBy(xpath = "//*[@id='argos_Fields_TextAreaField_0']/textarea")
 	WebElement notesHistoryEditViewNotesInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_BooleanField_1']/div/span[1]")
+	@FindBy(xpath = "//*[@id='argos_Fields_BooleanField_1']/div/span[1]")
 	WebElement notesHistoryEditViewForLeadToggleBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
 	WebElement notesHistoryEditViewAccountInputFld;
 	
 	@CacheLookup
-	//@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
+	//@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/button")
     @FindBy(xpath = "//*[@data-field='Account']//button")
 	WebElement notesHistoryEditViewAccountFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
 	WebElement notesHistoryEditViewContactInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/button")
 	WebElement notesHistoryEditViewContactFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/input")
 	WebElement notesHistoryEditViewOpportunityInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/button")
 	WebElement notesHistoryEditViewOpportunityFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_3']/input")
 	WebElement notesHistoryEditViewTicketInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_3']/button")
 	WebElement notesHistoryEditViewTicketFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_4']/input")
 	WebElement notesHistoryEditViewLeadInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_4']/button")
 	WebElement notesHistoryEditViewLeadFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_2']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_TextField_2']/input")
 	WebElement notesHistoryEditViewCompanyInputFld;
 
     @CacheLookup

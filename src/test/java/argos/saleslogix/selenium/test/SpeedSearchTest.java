@@ -32,8 +32,8 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 		headerButton.showGlobalMenu();
 		
 	    //Step: UI element check
-	    AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
-	    //AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
+	    AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
+	    //AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    
 		//click the Page Title (forces closure of any blocking panels)
 		driver.findElement(By.id("pageTitle")).click();
@@ -271,29 +271,29 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    // Required Entity: TYPE - NAME
 	    // ====================================
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 
 	    // Step: UI element check
 	    try {
-	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
+	      assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
-	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
+	      assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // -- Section: Execute some global searches in the mobile client
 	    // Step: perform 1st SpeedSearch on Leads...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")).clear();
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Pacific");
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+	    driver.findElement(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")).clear();
+	    driver.findElement(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Pacific");
+	    driver.findElement(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    assertEquals("Search Results", driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText());
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
@@ -328,7 +328,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -336,7 +336,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 
 	    // Step: navigate back to Home...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -359,30 +359,30 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    // Required Entity: TYPE - NAME
 	    // ====================================
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 
 	    // Step: UI element check
 	    try {
-	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
+	      assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
-	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
+	      assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // -- Section: Accounts
 	    // Step: perform 1st SpeedSearch on Accounts...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).click();
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).clear();
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).sendKeys("Abbott");
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input")).clear();
+	    driver.findElement(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input")).sendKeys("Abbott");
+	    driver.findElement(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[3]/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -412,7 +412,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -435,7 +435,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -464,7 +464,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -486,7 +486,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -510,7 +510,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -539,7 +539,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -568,7 +568,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -577,7 +577,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    // -- End Section
 	    
 	    // Step: navigate back to Home...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -600,29 +600,29 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    // Required Entity: TYPE - NAME
 	    // ====================================
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 
 	    // Step: UI element check
 	    try {
-	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
+	      assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
-	      assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
+	      assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: perform 1st SpeedSearch on Tickets...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).click();
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).clear();
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input")).sendKeys("001-00-000004");
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[3]/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input")).clear();
+	    driver.findElement(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input")).sendKeys("001-00-000004");
+	    driver.findElement(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[3]/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -656,7 +656,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Search Results".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}
@@ -664,7 +664,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    }
 
 	    // Step: navigate back to Home...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) fail("timeout");
 	    	try { if ("Tickets".equals(driver.findElement(By.xpath(".//*[@id='pageTitle']")).getText())) break; } catch (Exception e) {}

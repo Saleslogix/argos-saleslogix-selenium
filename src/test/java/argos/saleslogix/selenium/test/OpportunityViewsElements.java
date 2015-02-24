@@ -44,7 +44,7 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement topOpportunityListItem;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[6]/div[3]/div/div/div/button")
+	@FindBy(xpath = "//div[6]/div[2]/div/div/div/button")
 	WebElement opportunityListView1stKPICard;
 	
 	@CacheLookup
@@ -341,87 +341,87 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityEditViewOpportunityInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
 	WebElement opportunityEditViewAccountInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
 	WebElement opportunityEditViewAcctInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/button")
 	WebElement opportunityEditViewAcctFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
 	WebElement opportunityEditViewAcctMgrInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/button")
 	WebElement opportunityEditViewAcctMgrFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/input")
 	WebElement opportunityEditViewResellerInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/button")
 	WebElement opportunityEditViewResellerFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_DateField_0']/input")
 	WebElement opportunityEditViewEstCloseInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DateField_0']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_DateField_0']/button")
 	WebElement opportunityEditViewEstCloseFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_MultiCurrencyField_0']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_MultiCurrencyField_0']/input")
 	WebElement opportunityEditViewSalesPotentialInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_MultiCurrencyField_0']/span")
+	@FindBy(xpath = "//*[@id='crm_Fields_MultiCurrencyField_0']/span")
 	WebElement opportunityEditViewSalesPotentialCurrencyFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/input")
 	WebElement opportunityEditViewTypeInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/button")
 	WebElement opportunityEditViewTypeFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/input")
 	WebElement opportunityEditViewStatusInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/button")
 	WebElement opportunityEditViewStatusFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_3']/input")
 	WebElement opportunityEditViewLeadSourceInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_3']/button")
 	WebElement opportunityEditViewLeadSourceFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_4']/input")
 	WebElement opportunityEditViewOwnerInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_4']/button")
 	WebElement opportunityEditViewOwnerFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_2']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_2']/input")
 	WebElement opportunityEditViewCloseProbInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_2']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_2']/button")
 	WebElement opportunityEditViewCloseProbFldBtn;
 	
 	@CacheLookup
@@ -429,7 +429,7 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityEditViewExchangeRateFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_2']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_TextField_2']/input")
 	WebElement opportunityEditViewExchangeRateInputFld;
 	
 	@CacheLookup
@@ -437,11 +437,11 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityEditViewCodeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_5']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_5']/input")
 	WebElement opportunityEditViewCodeInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_5']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_5']/button")
 	WebElement opportunityEditViewCodeFldBtn;
 	
 	@CacheLookup
@@ -449,7 +449,7 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityEditViewRateLockedFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_BooleanField_1']/div/span[2]")
+	@FindBy(xpath = "//*[@id='argos_Fields_BooleanField_1']/div/span[2]")
 	WebElement opportunityEditViewRateLockedToggle;
 	
 	@CacheLookup

@@ -36,11 +36,11 @@ public class AddAccountContactEditViewElements extends BaseTest {
 	WebElement addAcctCntctContactAccountInfoHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_NameField_0']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/input")
 	WebElement addAcctCntctNameInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_NameField_0']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/button")
 	WebElement addAcctCntctNameInputBtn;
 	
 	@CacheLookup
@@ -48,7 +48,7 @@ public class AddAccountContactEditViewElements extends BaseTest {
 	WebElement addAcctCntctAccountInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_3']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_TextField_3']/input")
 	WebElement addAcctCntctEMailInputFld;
 	
 	@CacheLookup
@@ -65,35 +65,35 @@ public class AddAccountContactEditViewElements extends BaseTest {
 	WebElement addAcctCntctContactInfoHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/input")
 	WebElement addAcctCntctTitleInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/button")
 	WebElement addAcctCntctTitleInputBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_1']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_1']/input")
 	WebElement addAcctCntctHomePhoneInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_2']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_2']/input")
 	WebElement addAcctCntctMobileInputFld;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_3']/input")
+    @FindBy(xpath = "//*[@id='argos_Fields_PhoneField_3']/input")
     WebElement addAcctCntContactWorkPhoneInputFld;
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_4']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_4']/input")
 	WebElement addAcctCntctFaxInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_0']/div")
+	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']/div")
 	WebElement addAcctCntctAddressInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_0']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']/button")
 	WebElement addAcctCntctAddressInputBtn;
 	
 	//Account Info section
@@ -102,35 +102,35 @@ public class AddAccountContactEditViewElements extends BaseTest {
 	WebElement addAcctCntctAcctFaxInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/input")
 	WebElement addAcctCntctTypeInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/button")
 	WebElement addAcctCntctTypeInputBtn;	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_2']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_2']/input")
 	WebElement addAcctCntctSubTypeInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_2']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_2']/button")
 	WebElement addAcctCntctSubTypeInputBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_3']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_3']/input")
 	WebElement addAcctCntctStatusInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_3']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_3']/button")
 	WebElement addAcctCntctStatusFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_4']/input")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_4']/input")
 	WebElement addAcctCntctIndustryInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_4']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_4']/button")
 	WebElement addAcctCntctIndustryFldBtn;
 	
 	@CacheLookup
@@ -138,27 +138,27 @@ public class AddAccountContactEditViewElements extends BaseTest {
 	WebElement addAcctCntctDescInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
 	WebElement addAcctCntctAcctMgrInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/button")
 	WebElement addAcctCntctAcctMgrFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
 	WebElement addAcctCntctOwnerInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/button")
 	WebElement addAcctCntctOwnerFldBtn;		
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_1']/div")
+	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_1']/div")
 	WebElement addAcctCntctAcctAddressInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_AddressField_1']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_1']/button")
 	WebElement addAcctCntctAcctAddressInputBtn;
 	
 	//Methods

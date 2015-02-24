@@ -329,7 +329,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityEditViewRegardingFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_0']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/button")
 	WebElement activityEditViewRegardingFldBtn;
 		
 	@CacheLookup
@@ -341,7 +341,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityEditViewPriorityFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_1']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/button")
 	WebElement activityEditViewPriorityFldBtn;
 	
 	@CacheLookup
@@ -349,7 +349,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityEditViewCategoryFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_2']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_2']/button")
 	WebElement activityEditViewCategoryFldBtn;
 	
 	@CacheLookup
@@ -361,11 +361,11 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityEditViewStartTimeFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_SelectField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_SelectField_0']/input")
 	WebElement activityEditViewRepeatsFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_SelectField_0']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_SelectField_0']/button")
 	WebElement activityEditViewRepeatsFldBtn;
 
     @CacheLookup
@@ -377,103 +377,103 @@ public class MyActivityViewsElements extends BaseTest {
     WebElement activityCompleteViewFollowUpBtn;
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_RecurrencesField_0']/div")
+	@FindBy(xpath = "//*[@id='crm_Fields_RecurrencesField_0']/div")
 	WebElement activityEditViewRecurringFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_RecurrencesField_0']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_RecurrencesField_0']/button")
 	WebElement activityEditViewRecurringFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_BooleanField_1']/div/span[1]")
+	@FindBy(xpath = "//*[@id='argos_Fields_BooleanField_1']/div/span[1]")
 	WebElement activityEditViewTimelessTgl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DurationField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_DurationField_0']/input")
 	WebElement activityEditViewDurationFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DurationField_0']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_DurationField_0']/button")
 	WebElement activityEditViewDurationBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_BooleanField_2']/div/span[1]")
+	@FindBy(xpath = "//*[@id='argos_Fields_BooleanField_2']/div/span[1]")
 	WebElement activityEditViewAlarmTgl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DurationField_1']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_DurationField_1']/input")
 	WebElement activityEditViewAlarmFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_DurationField_1']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_DurationField_1']/button")
 	WebElement activityEditViewAlarmFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_BooleanField_3']/div/span[1]")
+	@FindBy(xpath = "//*[@id='argos_Fields_BooleanField_3']/div/span[1]")
 	WebElement activityEditViewAutoRolloverFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
 	WebElement activityEditViewLeaderFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_0']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/button")
 	WebElement activityEditViewLeaderFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/textarea")
+	@FindBy(xpath = "//*[@id='argos_Fields_NoteField_0']/textarea")
 	WebElement activityEditViewNotesFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_BooleanField_4']/div/span[1]")
+	@FindBy(xpath = "//*[@id='argos_Fields_BooleanField_4']/div/span[1]")
 	WebElement activityEditViewForLeadTgl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_5']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_5']/input")
 	WebElement activityEditViewLeadFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_5']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_5']/button")
 	WebElement activityEditViewLeadBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_TextField_3']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_TextField_3']/input")
 	WebElement activityEditViewCompanyFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
 	WebElement activityEditViewAccountFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_1']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/button")
 	WebElement activityEditViewAccountBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/input")
 	WebElement activityEditViewContactFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_2']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/button")
 	WebElement activityEditViewContactBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_3']/input")
 	WebElement activityEditViewOpportunityFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_3']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_3']/button")
 	WebElement activityEditViewOpportunityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_4']/input")
 	WebElement activityEditViewTicketFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_LookupField_4']/button")
+	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_4']/button")
 	WebElement activityEditViewTicketBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Sage_Platform_Mobile_Fields_PhoneField_0']/input")
+	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_0']/input")
 	WebElement activityEditViewPhoneFld;
 	
 	

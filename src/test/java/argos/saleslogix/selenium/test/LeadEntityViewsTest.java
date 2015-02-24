@@ -502,7 +502,7 @@ public class LeadEntityViewsTest extends BaseTest {
 	    driver.findElement(By.linkText("Test123")).click();
 	    
 	    // Step: click the top Add buton...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Add Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -526,28 +526,28 @@ public class LeadEntityViewsTest extends BaseTest {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Lead screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Lead Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Abbott Ltd.".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Leads".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}

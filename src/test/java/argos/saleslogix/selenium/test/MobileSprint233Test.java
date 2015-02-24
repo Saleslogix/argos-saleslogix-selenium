@@ -57,7 +57,7 @@ public class MobileSprint233Test extends BaseTest {
 		/*
 		String resultMsg = "VP: Accounts - " + KPI1 + " KPI was selected";
 		try {
-			AssertJUnit.assertEquals(KPI1, driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MetricWidget_0']/button/div[1]")).getText());
+			AssertJUnit.assertEquals(KPI1, driver.findElement(By.xpath("//*[@id='crm_Views_MetricWidget_0']/button/div[1]")).getText());
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e){
@@ -73,7 +73,7 @@ public class MobileSprint233Test extends BaseTest {
 		/*
 		resultMsg = "VP: Accounts - " + KPI2 + " KPI was selected";
 		try {
-			AssertJUnit.assertEquals(KPI2, driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MetricWidget_2']/button/div[1]")).getText());
+			AssertJUnit.assertEquals(KPI2, driver.findElement(By.xpath("//*[@id='crm_Views_MetricWidget_2']/button/div[1]")).getText());
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e){
@@ -96,7 +96,7 @@ public class MobileSprint233Test extends BaseTest {
 		/*
 		resultMsg = "VP: Contacts - " + KPI3 + " KPI was selected";
 		try {
-			AssertJUnit.assertEquals(KPI1, driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MetricWidget_3']/button/div[1]")).getText());
+			AssertJUnit.assertEquals(KPI1, driver.findElement(By.xpath("//*[@id='crm_Views_MetricWidget_3']/button/div[1]")).getText());
 			System.out.println(resultMsg + " - Passed");
 		}
 		catch (Error e){
@@ -153,7 +153,7 @@ public class MobileSprint233Test extends BaseTest {
             indexFilter = indexFilters[iCount];
             resultsMsg = "VP: Index filter - " + indexFilter + " succesfully filtered the SpeedSearch results";
             commNav.rightClickContextMenuItem(indexFilter);
-            //driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_1']/div/div[3]/button")).click();
+            //driver.findElement(By.xpath(".//*[@id='crm_SpeedSearchWidget_1']/div/div[3]/button")).click();
             commView.lookupTxtBox.sendKeys(Keys.RETURN);
             if (commNav.isTextPresentOnPage(indexFilter)) {
                 System.out.println(resultsMsg + " - Passed");
@@ -328,7 +328,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
             try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -583,7 +583,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -825,7 +825,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -1067,7 +1067,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));
@@ -1306,7 +1306,7 @@ public class MobileSprint233Test extends BaseTest {
             Thread.sleep(5000);
             resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
             opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-            String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
+            String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 
             try {
@@ -1403,7 +1403,7 @@ public class MobileSprint233Test extends BaseTest {
 				commNav.rightClickContextMenuItem(hSelectedFilter);
 				Thread.sleep(5000);		
 				String resultsMsg = "VP: " + selectedKpiMetric + " KPI metric card is displayed above the list view";
-				String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
+				String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 				try {
 					//WebElement selectedKPICard = driver.findElement(By.xpath(kpiCardXpath));
@@ -1548,7 +1548,7 @@ public class MobileSprint233Test extends BaseTest {
 			Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
-			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[3]/div/div/div/button";
+			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
 
 			try {
 				WebElement kpiCard = driver.findElement(By.xpath(kpiCardXpath));

@@ -417,7 +417,7 @@ public class OpportunityViewsTest extends BaseTest {
 			commNav.verifyEntityViewElementClick(viewName + ",close prob", opportunityEditView.opportunityEditViewCloseProbFldBtn, "Opportunity Probability");
 
             //Step: check the following fields only if Multi Currency is enabled
-            if (!driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_MultiCurrencyField_0']/span")).getText().isEmpty()) {
+            if (!driver.findElement(By.xpath("//*[@id='crm_Fields_MultiCurrencyField_0']/span")).getText().isEmpty()) {
                 System.out.println("Multi currency is enabled ... check the relevant M/C fields");
 			    commNav.isWebElementPresent(viewName + ",exchange rate", opportunityEditView.opportunityEditViewExchangeRateFld);
 			    commNav.isWebElementPresent(viewName + ",code", opportunityEditView.opportunityEditViewCodeFld);
@@ -637,7 +637,7 @@ public class OpportunityViewsTest extends BaseTest {
 		//Step: test each of the pre-set KPI items		
 		commNav.scrollDownPage();
 		commNav.rightClickContextMenuItem("Total Opportunities");
-		commNav.rightClickContextMenuItem("Sales Potential");
+		commNav.rightClickContextMenuItem("Total Sales Potential");
 		
 		//Step: go back to previous screen
 		headerButton.closeRightContextMenu();

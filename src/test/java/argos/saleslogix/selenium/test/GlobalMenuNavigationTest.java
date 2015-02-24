@@ -231,13 +231,13 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 
         // In Mobile 3.2 the clear and lookup buttons have been removed; use Backspace and Enter instead
-	    //driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[1]/input")).clear();
+	    //driver.findElement(By.xpath(".//*[@id='argos_SearchWidget_26']/div/div[1]/input")).clear();
         commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
 	    Thread.sleep(500);
-	    //driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[1]/input")).sendKeys("demonstration");
+	    //driver.findElement(By.xpath(".//*[@id='argos_SearchWidget_26']/div/div[1]/input")).sendKeys("demonstration");
         commView.lookupTxtBox.sendKeys("demonstration");
 	    Thread.sleep(1000);
-	    //driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_26']/div/div[3]/button")).click();
+	    //driver.findElement(By.xpath(".//*[@id='argos_SearchWidget_26']/div/div[3]/button")).click();
         commView.lookupTxtBox.sendKeys(Keys.RETURN);
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
@@ -263,13 +263,13 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click the Regarding edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_31 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#crm_Fields_PicklistField_31 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Activity Regarding".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -278,12 +278,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Complete Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -291,7 +291,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click Start Date edit button...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_DateField_10 > button.button.whiteButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_DateField_10 > button.button.whiteButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Calendar".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -300,12 +300,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Complete Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -313,7 +313,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click Duration edit button...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_DurationField_2 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_DurationField_2 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("List".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -322,12 +322,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -335,7 +335,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Result edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_32 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#crm_Fields_PicklistField_32 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Result".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -344,12 +344,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -357,7 +357,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Follow-up edit button...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_SelectField_2 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_SelectField_2 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Follow-up type".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -366,12 +366,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -379,7 +379,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Notes edit button...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_NoteField_7 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_NoteField_7 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Notes".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -388,12 +388,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -401,7 +401,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Priority edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_33 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#crm_Fields_PicklistField_33 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Priority".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -410,12 +410,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -423,7 +423,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Category edit button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_34 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#crm_Fields_PicklistField_34 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Activity Category".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -432,12 +432,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Name edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -445,7 +445,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Leader edit button...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_LookupField_33 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_LookupField_33 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Users".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -454,12 +454,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Address edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -467,7 +467,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Account edit button...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_LookupField_34 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_LookupField_34 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Accounts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -476,12 +476,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Address edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -489,7 +489,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Contact edit button...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_LookupField_35 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_LookupField_35 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Contacts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -498,12 +498,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Address edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -511,7 +511,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Opportunity edit button...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_LookupField_36 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_LookupField_36 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -520,12 +520,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Address edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -533,7 +533,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Tickets edit button...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_LookupField_37 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_LookupField_37 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Tickets".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -542,12 +542,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Address edit screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (driver.findElement(By.id("pageTitle")).getText().matches("^Complete[\\s\\S]*$")) break; } catch (Exception e) {}
@@ -555,7 +555,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back to the Add Account / Contact screen...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -576,21 +576,21 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
 	    // VP: check  the SpeedSearch bar...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > label")));
+	      AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > label")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
+	      AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
@@ -603,11 +603,11 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: enter an item in the search field then click the SpeedSearch button...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")).clear();
+	    driver.findElement(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")).clear();
 	    Thread.sleep(500);
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")).sendKeys("abbott");
+	    driver.findElement(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div > input[name=\"query\"]")).sendKeys("abbott");
 	    Thread.sleep(1000);
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+	    driver.findElement(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='speedsearch_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -629,14 +629,14 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	    
 	    // Step: click Top Blue Arrow button to navigate back...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("SpeedSearch".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -658,10 +658,10 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -674,11 +674,11 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for Account items...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_3 > div.table-layout > div > input[name=\"query\"]")).clear();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_3 > div.table-layout > div > input[name=\"query\"]")).clear();
 	    Thread.sleep(500);
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_3 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Big Systems");
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_3 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Big Systems");
 	    Thread.sleep(1000);
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_3 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_3 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='account_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -696,21 +696,21 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Edit button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    Thread.sleep(1000);
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.cssSelector("#Sage_Platform_Mobile_Fields_TextField_14 > input[name=\"AccountName\"]"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.cssSelector("#argos_Fields_TextField_14 > input[name=\"AccountName\"]"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
 	    // Step: click the Business Description edit buton...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_NoteField_0']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_NoteField_0']/button")).click();
 	    Thread.sleep(1000);
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
@@ -720,12 +720,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Account screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Account".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -733,7 +733,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the For Owners toggle to ON...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_LookupField_1 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_LookupField_1 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Owners".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -742,12 +742,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Account screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Account".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -755,7 +755,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Lead Sources edit button...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_Fields_LookupField_2 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#argos_Fields_LookupField_2 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Lead Sources".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -764,12 +764,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Account screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Account".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -777,21 +777,21 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Big Systems".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Accounts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -837,12 +837,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the Regarding edit button...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_PicklistField_31']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Fields_PicklistField_31']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Activity Regarding".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -851,12 +851,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -864,7 +864,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click Start Date edit button...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_DateField_10']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_DateField_10']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Calendar".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -873,12 +873,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -886,7 +886,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click Duration edit button...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_DurationField_2']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_DurationField_2']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("List".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -895,12 +895,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -908,7 +908,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Result edit button...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_PicklistField_32']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Fields_PicklistField_32']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Result".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -917,12 +917,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -930,7 +930,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Follow-up edit button...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_SelectField_2']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_SelectField_2']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Follow-up type".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -939,12 +939,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -952,7 +952,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Notes edit button...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_NoteField_7']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_NoteField_7']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Notes".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -961,12 +961,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -974,7 +974,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Priority edit button...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_PicklistField_33']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Fields_PicklistField_33']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Priority".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -983,12 +983,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -996,7 +996,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Category edit button...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_PicklistField_34']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Fields_PicklistField_34']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Activity Category".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1005,12 +1005,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1018,7 +1018,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Leader edit button...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_LookupField_33']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_LookupField_33']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Users".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1027,12 +1027,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1040,7 +1040,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Account edit button...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_LookupField_34']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_LookupField_34']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Accounts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1049,7 +1049,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
@@ -1062,7 +1062,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Contact edit button...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_LookupField_35']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_LookupField_35']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Contacts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1071,12 +1071,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1084,7 +1084,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Opportunity edit button...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_LookupField_36']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_LookupField_36']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1093,12 +1093,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1106,7 +1106,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Tickets edit button...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_LookupField_37']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_LookupField_37']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Tickets".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1115,12 +1115,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Complete Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1128,7 +1128,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back to the Activity screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1150,10 +1150,10 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1166,11 +1166,11 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for Contact items...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_6 > div.table-layout > div > input[name=\"query\"]")).clear();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_6 > div.table-layout > div > input[name=\"query\"]")).clear();
 	    Thread.sleep(500);
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_6 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Alfred");
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_6 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Alfred");
 	    Thread.sleep(1000);
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_6 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_6 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='contact_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -1189,13 +1189,13 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click the top Edit button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='contact_edit']/div[2]/fieldset/div[2]")));
 	    } catch (Error e) {
@@ -1204,7 +1204,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    Thread.sleep(1000);
 	    
 	    // Step: click the Cuisine edit buton...
-	    driver.findElement(By.cssSelector("#Mobile_SalesLogix_Fields_PicklistField_16 > button.button.simpleSubHeaderButton")).click();
+	    driver.findElement(By.cssSelector("#crm_Fields_PicklistField_16 > button.button.simpleSubHeaderButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Cuisine".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1214,13 +1214,13 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: navigate back to Contact screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1228,7 +1228,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the top Cancel button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Alfred, John".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1236,14 +1236,14 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back to Contacts screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Contacts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1265,10 +1265,10 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1281,11 +1281,11 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: perform Lead search then navigate to top result record...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[1]/input")).clear();
+	    driver.findElement(By.xpath(".//*[@id='argos_SearchWidget_16']/div/div[1]/input")).clear();
 	    Thread.sleep(500);
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[1]/input")).sendKeys("Day");
+	    driver.findElement(By.xpath(".//*[@id='argos_SearchWidget_16']/div/div[1]/input")).sendKeys("Day");
 	    Thread.sleep(1000);
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_16']/div/div[3]/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_SearchWidget_16']/div/div[3]/button")).click();
 	    Thread.sleep(5000);
 	    driver.findElement(By.xpath(".//*[@id='lead_list']//ul/li/div/h3")).click();
 	    for (int second = 0;; second++) {
@@ -1296,14 +1296,14 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    Thread.sleep(1000);
 	    
 	    // Step: click the top Edit button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    try {
 	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='lead_edit']/div[2]/fieldset/div[2]")));
 	    } catch (Error e) {
@@ -1312,7 +1312,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    Thread.sleep(1000);
 	    
 	    // Step: click the Comments edit buton...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_NoteField_2']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_NoteField_2']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Comments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1321,13 +1321,13 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: navigate back to Lead screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Lead".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1335,7 +1335,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the top Cancel button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Day, Bob".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1343,14 +1343,14 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back to the Leads screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Leads".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1372,10 +1372,10 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1388,11 +1388,11 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for Note items...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_27']/div/div[1]/input")).clear();
+	    driver.findElement(By.xpath(".//*[@id='argos_SearchWidget_27']/div/div[1]/input")).clear();
 	    Thread.sleep(500);
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_27']/div/div[1]/input")).sendKeys("notes");
+	    driver.findElement(By.xpath(".//*[@id='argos_SearchWidget_27']/div/div[1]/input")).sendKeys("notes");
 	    Thread.sleep(1000);
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_SearchWidget_27']/div/div[3]/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_SearchWidget_27']/div/div[3]/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='history_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -1410,12 +1410,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Edit button...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='history_edit']/div[2]/fieldset[1]/div[4]"))) break; } catch (Exception e) {}
@@ -1426,7 +1426,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    // Step: click the Regarding edit buton...
 	    // NOTE: this section seems to only work for Chrome; Note Description fails to open on button click for IE and FF
 	    if (browsername.equals("chrome")) {
-	    	driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_35']/button")).click();
+	    	driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_35']/button")).click();
 	    	for (int second = 0;; second++) {
 	    		if (second >= 60) Assert.fail("timeout");
 	    		try { if ("Note Description".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1435,12 +1435,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    	// VP: confirm that Global Menu button is available...
 	    	try {
-	    		AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	    		AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    	} catch (Error e) {
 	    		verificationErrors.append(methodID + "(): " + e.toString());
 	    	}
 	    	// Step: navigate back to Note screen...
-	    	driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    	driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    	for (int second = 0;; second++) {
 	    		if (second >= 60) Assert.fail("timeout");
 	    		try { if ("Note".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1449,9 +1449,9 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the For Lead toggle to ON...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_BooleanField_12']/div/span[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_BooleanField_12']/div/span[1]")).click();
 	    // Step: click the Lead edit button...
-	    driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_LookupField_43']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='argos_Fields_LookupField_43']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Leads".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1460,33 +1460,33 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to Note screen...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Note".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Note".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Notes/History".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1508,10 +1508,10 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1524,11 +1524,11 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for Opportunity records...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).clear();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).clear();
 	    Thread.sleep(500);
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Abbott WorldWide");
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Abbott WorldWide");
 	    Thread.sleep(1000);
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_11 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -1546,7 +1546,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
@@ -1561,7 +1561,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    Thread.sleep(1000);
 	
 	    // Step: click the top Add buton...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Select Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1571,7 +1571,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
@@ -1586,13 +1586,13 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click the Role edit button...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_PicklistField_20']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Fields_PicklistField_20']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Role".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1602,14 +1602,14 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click and select the None button...
 	    //driver.findElement(By.xpath(".//*[@id='pick_list_4']/div[2]/button")).click();
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Edit Opp. Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1617,7 +1617,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Standing edit button...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_21']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_21']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Standing".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1626,14 +1626,14 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click and select the None button...
 	    //driver.findElement(By.xpath(".//*[@id='pick_list_5']/div[2]/button")).click();
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Edit Opp. Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1641,7 +1641,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Competitor Pref edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_12']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_12']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Competitors".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1650,14 +1650,14 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    
 	    // Step: click and select the top Competitor item...
 	    //driver.findElement(By.xpath("//*[@id='competitor_related']/ul/li[1]/div/h3")).click();
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Edit Opp. Contact".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1665,7 +1665,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the top Cancel button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity Contacts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1673,7 +1673,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the top Back button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Opportunity Contacts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1681,14 +1681,14 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1710,10 +1710,10 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1726,9 +1726,9 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for Opportunity records...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).clear();
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Abbott WorldWide");
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).clear();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Abbott WorldWide");
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_11 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -1745,12 +1745,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Edit button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1758,7 +1758,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Account Manager edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_6']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_6']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Accounts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1767,12 +1767,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1780,7 +1780,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Reseller edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_8']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_8']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Accounts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1789,12 +1789,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1802,7 +1802,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Type edit button...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_17']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_17']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity Type".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1811,12 +1811,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1824,7 +1824,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Status edit button...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Fields_PicklistField_18']/button")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Fields_PicklistField_18']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity Status".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1833,12 +1833,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1846,7 +1846,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Lead Source edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_9']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_9']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Lead Sources".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1855,12 +1855,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1868,7 +1868,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Owner edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_10']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_10']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Owners".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1877,12 +1877,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1890,7 +1890,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Close Prob edit button...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_19']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_19']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity Probability".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1899,12 +1899,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1912,7 +1912,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Code edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_11']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_11']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Exchange Rates".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1921,12 +1921,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Opportunity view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1934,7 +1934,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the top Cancel button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Opportunity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1942,14 +1942,14 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1971,10 +1971,10 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
@@ -1987,9 +1987,9 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for Opportunity records...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).clear();
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Abbott WorldWide");
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_11 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).clear();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_11 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Abbott WorldWide");
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_11 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='opportunity_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -2006,7 +2006,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
@@ -2019,7 +2019,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the top Add buton...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity Product".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2028,12 +2028,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the Product edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_14']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_14']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Products".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2042,7 +2042,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
@@ -2055,7 +2055,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Price Level edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_15']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_15']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Product Programs".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2064,12 +2064,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Cancel button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunity Product".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2077,7 +2077,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the top Cancel button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Products".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2085,21 +2085,21 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Products".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Opportunities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2121,7 +2121,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[1]"))) break; } catch (Exception e) {}
@@ -2137,9 +2137,9 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for Tickets records...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_18 > div.table-layout > div > input[name=\"query\"]")).clear();
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_18 > div.table-layout > div > input[name=\"query\"]")).sendKeys("000-00-000011");
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_18 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_18 > div.table-layout > div > input[name=\"query\"]")).clear();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_18 > div.table-layout > div > input[name=\"query\"]")).sendKeys("000-00-000011");
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_18 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -2156,12 +2156,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the top Edit button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2169,7 +2169,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Contract edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_19']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_19']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Contacts".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2178,12 +2178,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2191,7 +2191,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Area edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_21']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_21']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket Area".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2200,7 +2200,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
@@ -2213,7 +2213,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Category edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_22']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_22']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket Category".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2222,7 +2222,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
@@ -2235,7 +2235,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Issue edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_23']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_23']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket Issue".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2244,12 +2244,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2257,7 +2257,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Source edit button...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_24']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_24']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Source".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2266,12 +2266,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2279,7 +2279,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Status edit button...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_25']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_25']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket Status".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2288,12 +2288,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2301,7 +2301,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Urgency edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_24']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_24']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket Urgency".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2310,12 +2310,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2323,7 +2323,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Description edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_NoteField_3']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_NoteField_3']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Description".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2332,12 +2332,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2345,7 +2345,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Resolution edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_NoteField_4']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_NoteField_4']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Resolution".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2354,12 +2354,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2367,7 +2367,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Comments edit button...
-	    driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_NoteField_5']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='argos_Fields_NoteField_5']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Comments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2376,12 +2376,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Ticket view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2389,7 +2389,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the top Cancel button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Ticket".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2397,14 +2397,14 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Tickets".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2426,7 +2426,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[1]"))) break; } catch (Exception e) {}
@@ -2442,9 +2442,9 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for Ticket records...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_18 > div.table-layout > div > input[name=\"query\"]")).clear();
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_18 > div.table-layout > div > input[name=\"query\"]")).sendKeys("000-00-000011");
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_18 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_18 > div.table-layout > div > input[name=\"query\"]")).clear();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_18 > div.table-layout > div > input[name=\"query\"]")).sendKeys("000-00-000011");
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_18 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='ticket_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -2461,7 +2461,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
@@ -2476,7 +2476,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
@@ -2489,7 +2489,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the top Edit button...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Edit Ticket Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2498,12 +2498,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the Type edit button...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_26']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_26']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Type".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2512,12 +2512,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Edit Ticket Activity view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Edit Ticket Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2525,7 +2525,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: click the Public Access edit button...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_27']/button")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_27']/button")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Public Access".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2534,12 +2534,12 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    // VP: confirm that Global Menu button is available...
 	    try {
-	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button")));
+	      AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button")));
 	    } catch (Error e) {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back to the Edit Ticket Activity view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("Edit Ticket Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2547,7 +2547,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back to the Ticket view...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Edit Ticket Activity".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2555,18 +2555,18 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: navigate back...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    Thread.sleep(1000);
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (!"Ticket Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    Thread.sleep(1000);	    
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -2587,7 +2587,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[1]"))) break; } catch (Exception e) {}
@@ -2778,7 +2778,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: click the Top-Left button to close the Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    // -- END
 	    System.out.println(ENDLINE);
 	  }
@@ -2794,7 +2794,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath("//*[@id='left_drawer']/div[3]/ul[1]"))) break; } catch (Exception e) {}
@@ -2810,9 +2810,9 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    }
 	
 	    // Step: perform search for Attachment records...
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_35 > div.table-layout > div > input[name=\"query\"]")).clear();
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_35 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Plate");
-	    driver.findElement(By.cssSelector("#Sage_Platform_Mobile_SearchWidget_35 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_35 > div.table-layout > div > input[name=\"query\"]")).clear();
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_35 > div.table-layout > div > input[name=\"query\"]")).sendKeys("Plate");
+	    driver.findElement(By.cssSelector("#argos_SearchWidget_35 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if (isElementPresent(By.xpath(".//*[@id='myattachment_list']//ul/li[1]"))) break; } catch (Exception e) {}
@@ -2827,7 +2827,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	      verificationErrors.append(methodID + "(): " + e.toString());
 	    }
 	    // Step: navigate back...
-	    driver.findElement(By.xpath("//div[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//div[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
 	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}

@@ -16,39 +16,39 @@ public class HeaderButton {
 	}
 		
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='toggleLeftDrawer']")
+	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='toggleLeftDrawer']")
 	WebElement globalMenuButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='toggleRightDrawer']")
+	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='toggleRightDrawer']")
 	WebElement rightCntxtMnuButton;
 
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='new']")
+	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='new']")
 	WebElement addButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='edit']")
+	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='edit']")
 	WebElement editButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='save']")
+	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='save']")
 	WebElement saveButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='complete']")
+	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='complete']")
 	WebElement checkButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='delete']")
+	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='delete']")
 	WebElement deleteButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='cancel']")
+	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='cancel']")
 	WebElement cancelButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']//descendant::*[@aria-label='back']")
+	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='back']")
 	WebElement backButton;
 		
 	public WebElement getSafeElement(By locator) throws InterruptedException {

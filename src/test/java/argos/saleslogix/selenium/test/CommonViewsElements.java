@@ -42,11 +42,11 @@ public class CommonViewsElements extends BaseTest {
 	WebElement addressDescriptionInputFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_BooleanField_1']/div/span")
+	@FindBy(xpath = "//div[@id='argos_Fields_BooleanField_1']/div/span")
 	WebElement addressPrimaryTgl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='Sage_Platform_Mobile_Fields_BooleanField_2']/div/span")
+	@FindBy(xpath = "//div[@id='argos_Fields_BooleanField_2']/div/span")
 	WebElement addressShippingTgl;
 	
 	@CacheLookup
@@ -100,7 +100,7 @@ public class CommonViewsElements extends BaseTest {
 	WebElement namePrefixInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_5']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_5']/button")
 	WebElement namePrefixInputFldBtn;
 	
 	@CacheLookup
@@ -120,7 +120,7 @@ public class CommonViewsElements extends BaseTest {
 	WebElement nameSuffixInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='Mobile_SalesLogix_Fields_PicklistField_6']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_6']/button")
 	WebElement nameSuffixInputFldBtn;
 	
 	//List View selection elements
@@ -175,11 +175,11 @@ public class CommonViewsElements extends BaseTest {
 	
 	//Description selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_43']/div/div[1]/input")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_43']/div/div[1]/input")
 	WebElement descriptionLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_43']/div/div[3]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_43']/div/div[3]/button")
 	WebElement descriptionLookupBtn;
 	
 	@CacheLookup
@@ -188,11 +188,11 @@ public class CommonViewsElements extends BaseTest {
 	
 	//Industry selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_49']/div/div[1]/input")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_49']/div/div[1]/input")
 	WebElement industryLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_49']/div/div[3]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_49']/div/div[3]/button")
 	WebElement industryLookupBtn;
 	
 	@CacheLookup
@@ -206,38 +206,38 @@ public class CommonViewsElements extends BaseTest {
 	
 	//Lead Source selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_33']/div/div[1]/input")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_33']/div/div[1]/input")
 	WebElement leadSourceLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_33']/div/div[3]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_33']/div/div[3]/button")
 	WebElement leadSourceLookupBtn;	
 	
 	//Name Prefix selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_43']/div/div[1]/input")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_43']/div/div[1]/input")
 	WebElement namePrefixLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_43']/div/div[3]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_43']/div/div[3]/button")
 	WebElement namePrefixLookupBtn;
 	
 	//Name Suffix selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_44']/div/div[1]/input")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_44']/div/div[1]/input")
 	WebElement nameSuffixLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_44']/div/div[3]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_44']/div/div[3]/button")
 	WebElement nameSuffixLookupBtn;
 	
 	//Owner selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_30']/div/div[1]/input")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_30']/div/div[1]/input")
 	WebElement ownerLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_30']/div/div[3]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_30']/div/div[3]/button")
 	WebElement ownerLookupBtn;	
 	
 	//State selection:
@@ -246,7 +246,7 @@ public class CommonViewsElements extends BaseTest {
 	WebElement stateLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_45']/div/div[3]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_45']/div/div[3]/button")
 	WebElement stateLookupBtn;
 	
 	@CacheLookup
@@ -255,11 +255,11 @@ public class CommonViewsElements extends BaseTest {
 	
 	//Account Status selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_48']/div/div[1]/input")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_48']/div/div[1]/input")
 	WebElement statusLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_48']/div/div[3]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_48']/div/div[3]/button")
 	WebElement statusLookupBtn;
 	
 	@CacheLookup
@@ -272,7 +272,7 @@ public class CommonViewsElements extends BaseTest {
 	WebElement subtypeLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_43']/div/div[3]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_43']/div/div[3]/button")
 	WebElement subtypeLookupBtn;
 	
 	@CacheLookup
@@ -281,11 +281,11 @@ public class CommonViewsElements extends BaseTest {
 	
 	//Title (name) selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_45']/div/div[1]/input")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_45']/div/div[1]/input")
 	WebElement titleLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_45']/div/div[1]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_45']/div/div[1]/button")
 	WebElement titleLookupBtn;
 	
 	@CacheLookup
@@ -294,18 +294,18 @@ public class CommonViewsElements extends BaseTest {
 	
 	//Users selection:
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_29']/div/div[1]/input")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_29']/div/div[1]/input")
 	WebElement userLookupInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_SearchWidget_29']/div/div[3]/button")
+	@FindBy(xpath = ".//*[@id='argos_SearchWidget_29']/div/div[3]/button")
 	WebElement userLookupBtn;
 	
 	//Text Input view elements
 	//========================	
 	//Business Description
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_0']/textarea")
+	@FindBy(xpath = ".//*[@id='argos_Fields_TextAreaField_0']/textarea")
 	WebElement busdescTxtArea;
 	
 		
@@ -379,7 +379,7 @@ public class CommonViewsElements extends BaseTest {
 		String pickListID = "";
 		WebElement lookupFld = listViewSearchInputFld;
 		WebElement lookupBtn = null;
-		String hdrCancelBtnXPath = ".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]";
+		String hdrCancelBtnXPath = ".//*[@id='crm_Views_MainToolbar_0']/button[3]";
 		
 		//setup common elements based on field name to set
 		switch (strFieldName.toLowerCase()) {
@@ -525,7 +525,7 @@ public class CommonViewsElements extends BaseTest {
 				}
 				catch (Exception e){
 					System.out.println(methodID + "():" + e.toString());
-					driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+					driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 				}
 			}
 			
@@ -553,7 +553,7 @@ public class CommonViewsElements extends BaseTest {
 		if (commNav.isPageDisplayed("Business Description")) {		
 			//set Business Description text
 			busdescTxtArea.sendKeys(strBusDesc);
-			driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+			driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 			
 			System.out.println(methodID + ":" + "Business Description - " + strBusDesc + " was set.");
 			commNav.waitForNotPage("Business Description");

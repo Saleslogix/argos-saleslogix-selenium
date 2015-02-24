@@ -24,15 +24,15 @@ public class SLXMobileLogin {
 	CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextField_0']/input")
+	@FindBy(xpath = ".//*[@id='argos_Fields_TextField_0']/input")
 	WebElement userNameTextbox;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='Sage_Platform_Mobile_Fields_TextField_1']/input")
+	@FindBy(xpath = ".//*[@id='argos_Fields_TextField_1']/input")
 	WebElement passwordTextbox;
 	
 	@CacheLookup
-	@FindBy(css = "#Sage_Platform_Mobile_Fields_BooleanField_0 > div.toggle > span.thumb")
+	@FindBy(css = "#argos_Fields_BooleanField_0 > div.toggle > span.thumb")
 	WebElement rememberToggle;
 	
 	@CacheLookup

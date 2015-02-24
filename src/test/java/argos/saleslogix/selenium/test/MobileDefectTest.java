@@ -690,10 +690,10 @@ public class MobileDefectTest extends BaseTest {
 		    }
 		    
 		    //Step: check to see if the Cuisine selection is empty or not...
-		    String cuisineVal = driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/input")).getAttribute("value");
+		    String cuisineVal = driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_16']/input")).getAttribute("value");
 		    if (!"".equals(cuisineVal)) {
 			    //Step: clear any previous Cuisine selections...
-				driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/button")).click();
+				driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_16']/button")).click();
 			    for (int second = 0;; second++) {
 			    	if (second >= 60) AssertJUnit.fail("timeout");
 			    	try { if ("Cuisine".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -711,7 +711,7 @@ public class MobileDefectTest extends BaseTest {
 		    }
 		    		    
 		    //Step: make 1st Cuisine selection...
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/button")).click();
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_16']/button")).click();
 		    for (int second = 0;; second++) {
 		    	if (second >= 60) AssertJUnit.fail("timeout");
 		    	try { if ("Cuisine".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -730,7 +730,7 @@ public class MobileDefectTest extends BaseTest {
 		    
 		    //VP: check the modified Cuisine field value
 		    try {
-		    	  AssertJUnit.assertEquals(cuisineSel1, driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/input")).getAttribute("value"));
+		    	  AssertJUnit.assertEquals(cuisineSel1, driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_16']/input")).getAttribute("value"));
 		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + "' - PASSED");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + "' - FAILED");
@@ -738,7 +738,7 @@ public class MobileDefectTest extends BaseTest {
 		    }
 		    
 		    //Step: make 2nd Cuisine selection...
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/button")).click();
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_16']/button")).click();
 		    for (int second = 0;; second++) {
 		    	if (second >= 60) AssertJUnit.fail("timeout");
 		    	try { if ("Cuisine".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -757,7 +757,7 @@ public class MobileDefectTest extends BaseTest {
 		    
 		    //VP: check the final modified Cuisine field value
 		    try {
-		    	  AssertJUnit.assertEquals(cuisineSel1 + ", " + cuisineSel2, driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_16']/input")).getAttribute("value"));
+		    	  AssertJUnit.assertEquals(cuisineSel1 + ", " + cuisineSel2, driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_16']/input")).getAttribute("value"));
 		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + ", " + cuisineSel2 + "' - PASSED");
 		    	} catch (Error e) {
 		    	  System.out.println("VP: Cuisine field value set to '" + cuisineSel1 + ", " + cuisineSel2 + "' - FAILED");
@@ -1127,10 +1127,10 @@ public class MobileDefectTest extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 	    // - Start Section
 	    // Step: click Top-Left button to reveal Global Menu...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath("//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath("//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	    Thread.sleep(1000);
@@ -1199,7 +1199,7 @@ public class MobileDefectTest extends BaseTest {
 	    }
 	    	
 	    // Step: click the top Add button...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[2]")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Views_MainToolbar_0']/button[2]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { if ("Add Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1235,19 +1235,19 @@ public class MobileDefectTest extends BaseTest {
 	    // -- End Section
 	    
 	    // Step: navigate back to Lead detail view...
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { if (!"Activity Attachments".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { if ("Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
-	    driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[3]")).click();
+	    driver.findElement(By.xpath("//*[@id='crm_Views_MainToolbar_0']/button[3]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { if ("Ballard, Matt".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
@@ -1270,10 +1270,10 @@ public class MobileDefectTest extends BaseTest {
 	    }
 	    
 	    // Step: navigate back to My Activities view...
-	    driver.findElement(By.xpath(".//*[@id='Mobile_SalesLogix_Views_MainToolbar_0']/button[1]")).click();
+	    driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[1]")).click();
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) AssertJUnit.fail("timeout");
-	    	try { if (isElementPresent(By.xpath(".//*[@id='Mobile_SalesLogix_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
+	    	try { if (isElementPresent(By.xpath(".//*[@id='crm_SpeedSearchWidget_0']/div/div[1]/input"))) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 	    driver.findElement(By.xpath(".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")).click();
@@ -1320,8 +1320,8 @@ public class MobileDefectTest extends BaseTest {
 					
 					// setup the Regarding field value
 					//TODO: re-factor the following to use ActivityViewsElements def.
-					driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys(regardingFldVal + iCount);
-					driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextField_102']/input")).click();
+					driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_28']/input")).sendKeys(regardingFldVal + iCount);
+					driver.findElement(By.xpath("//*[@id='argos_Fields_TextField_102']/input")).click();
 					Thread.sleep(500);
 					
 					// click the top Save button
@@ -1583,25 +1583,25 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Meeting");
 			
 			//setup Regarding field
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).click();
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys("Training");
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/input")).sendKeys(Keys.RETURN);
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_28']/input")).click();
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_28']/input")).sendKeys("Training");
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_28']/input")).sendKeys(Keys.RETURN);
 			Thread.sleep(1000);
 			
 			//click Regarding field selection button
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/button")).click();
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_28']/button")).click();
 			commNav.waitForPage("Activity Description");
 			String activityDescListInitTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
 			headerButton.clickHeaderButton("cancel");
 			
 			//setup Category field
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/input")).click();
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/input")).sendKeys("Training");
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/input")).sendKeys(Keys.RETURN);
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_30']/input")).click();
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_30']/input")).sendKeys("Training");
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_30']/input")).sendKeys(Keys.RETURN);
 			Thread.sleep(1000);
 			
 			//click Category field selection button
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/button")).click();
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_30']/button")).click();
 			commNav.waitForPage("Activity Category");
 			String activityCatListInitTxt = driver.findElement(By.xpath("//*[@id='pick_list_0']/ul")).getText();
 			headerButton.clickHeaderButton("cancel");
@@ -1633,7 +1633,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Meeting");
 			
 			//click Regarding field selection button
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_28']/button")).click();
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_28']/button")).click();
 			commNav.waitForPage("Activity Description");
 			
 			//VP: check to see that Activity Description list is un-changed (i.e. no duplicate items)
@@ -1650,7 +1650,7 @@ public class MobileDefectTest extends BaseTest {
 			headerButton.clickHeaderButton("cancel");
 			
 			//click Category field selection button
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_30']/button")).click();
+			driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_30']/button")).click();
 			commNav.waitForPage("Activity Category");
 			
 			//VP: check to see that Activity Category list is un-changed (i.e. no duplicate items)
@@ -1708,7 +1708,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Edit Ticket Activity");
 			
 			//VP: check the default value of the Public Access field
-			String publicAccessFldVal = driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_27']/input")).getAttribute("value");
+			String publicAccessFldVal = driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_27']/input")).getAttribute("value");
 			String expectedPublicAccessFldVal = "1-Customer";
 			String resultMsg = "VP: Default 'public access' field value set to '1-Customer'";
 			try {
@@ -1721,20 +1721,20 @@ public class MobileDefectTest extends BaseTest {
 			}
 			
 			//set User field value
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_48']/button")).click();
+			driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_48']/button")).click();
 			commNav.waitForPage("Users");
 			driver.findElement(By.xpath("//*[@id='user_list']/descendant::*[text() = 'Administrator, ']")).click();
 			commNav.waitForPage("Edit Ticket Activity");
 			
 			//set Start Date (use default)
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_6']/button")).click();
+			driver.findElement(By.xpath("//*[@id='argos_Fields_DateField_6']/button")).click();
 			commNav.waitForPage("Calendar");
 			Thread.sleep(1000);
 			headerButton.clickHeaderButton("check");
 			commNav.waitForPage("Edit Ticket Activity");
 			
 			//set End Date (use default)
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_7']/button")).click();
+			driver.findElement(By.xpath("//*[@id='argos_Fields_DateField_7']/button")).click();
 			commNav.waitForPage("Calendar");
 			Thread.sleep(1000);
 			headerButton.clickHeaderButton("check");
@@ -1742,9 +1742,9 @@ public class MobileDefectTest extends BaseTest {
 			
 			//set Comments text (for record identification)
 			String commentsTxt = "Test Ticket Activity for Mobile Defect Fix 13092338";
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).click();
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).sendKeys(commentsTxt);
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).sendKeys(Keys.RETURN);
+			driver.findElement(By.xpath("//*[@id='argos_Fields_TextAreaField_3']/textarea")).click();
+			driver.findElement(By.xpath("//*[@id='argos_Fields_TextAreaField_3']/textarea")).sendKeys(commentsTxt);
+			driver.findElement(By.xpath("//*[@id='argos_Fields_TextAreaField_3']/textarea")).sendKeys(Keys.RETURN);
 			Thread.sleep(1000);
 			
 			//keep remaining default field vals then save the activity
@@ -1822,20 +1822,20 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Edit Ticket Activity");			
 			
 			//set User field value
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_48']/button")).click();
+			driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_48']/button")).click();
 			commNav.waitForPage("Users");
 			driver.findElement(By.xpath("//*[@id='user_list']/descendant::*[text() = 'Barret, Dan']")).click();
 			commNav.waitForPage("Edit Ticket Activity");
 			
 			//set Start Date (use default)
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_6']/button")).click();
+			driver.findElement(By.xpath("//*[@id='argos_Fields_DateField_6']/button")).click();
 			commNav.waitForPage("Calendar");
 			Thread.sleep(1000);
 			headerButton.clickHeaderButton("check");
 			commNav.waitForPage("Edit Ticket Activity");
 			
 			//set End Date (use default)
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_DateField_7']/button")).click();
+			driver.findElement(By.xpath("//*[@id='argos_Fields_DateField_7']/button")).click();
 			commNav.waitForPage("Calendar");
 			Thread.sleep(1000);
 			headerButton.clickHeaderButton("check");
@@ -1843,9 +1843,9 @@ public class MobileDefectTest extends BaseTest {
 			
 			//set Comments text (for record identification)
 			String commentsTxt = "Test Ticket Activity for Mobile Defect Fix 13092338";
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).click();
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).sendKeys(commentsTxt);
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_3']/textarea")).sendKeys(Keys.RETURN);
+			driver.findElement(By.xpath("//*[@id='argos_Fields_TextAreaField_3']/textarea")).click();
+			driver.findElement(By.xpath("//*[@id='argos_Fields_TextAreaField_3']/textarea")).sendKeys(commentsTxt);
+			driver.findElement(By.xpath("//*[@id='argos_Fields_TextAreaField_3']/textarea")).sendKeys(Keys.RETURN);
 			Thread.sleep(1000);
 			
 			//keep remaining default field vals then save the activity
@@ -1928,28 +1928,28 @@ public class MobileDefectTest extends BaseTest {
 			AssertJUnit.assertTrue(commNav.waitForPage("Add Account / Contact"));
 						
 			//setup Name field
-			driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_NameField_0']/input")).click();
+			driver.findElement(By.xpath("//*[@id='crm_Fields_NameField_0']/input")).click();
 			commNav.waitForPage("Edit Name");
-			WebElement firstNameFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextField_66']/input"));
+			WebElement firstNameFld = driver.findElement(By.xpath("//*[@id='argos_Fields_TextField_66']/input"));
 			commNav.setupInputFieldValue(firstNameFld, firstNameTestVal);
-			WebElement lastNameFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_TextField_68']/input"));
+			WebElement lastNameFld = driver.findElement(By.xpath("//*[@id='argos_Fields_TextField_68']/input"));
 			commNav.setupInputFieldValue(lastNameFld, lastNameTestVal);
 			headerButton.clickHeaderButton("check");
 			commNav.waitForPage("Add Account / Contact");
 			
 			//setup Account field
-			WebElement accountFld = driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_TextField_62']/input"));
+			WebElement accountFld = driver.findElement(By.xpath(".//*[@id='argos_Fields_TextField_62']/input"));
 			commNav.setupInputFieldValue(accountFld, accountNameTestVal);
 			
 			//setup the Account Manager field
-			driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_LookupField_20']/input")).click();
+			driver.findElement(By.xpath("//*[@id='argos_Fields_LookupField_20']/input")).click();
 			commNav.waitForPage("Users");
 			//driver.findElement(By.xpath("//*[@id='user_list']/descendant::*[text() = 'Administrator, ']")).click();
 			headerButton.clickHeaderButton("cancel");
 			commNav.waitForPage("Add Account / Contact");
 			
 			//setup the Owner field
-			driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_LookupField_21']/input")).click();
+			driver.findElement(By.xpath(".//*[@id='argos_Fields_LookupField_21']/input")).click();
 			commNav.waitForPage("Owners");
 			headerButton.clickHeaderButton("cancel");
 			commNav.waitForPage("Add Account / Contact");
@@ -2067,10 +2067,10 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForPage("Note");
 			
 			//setup the Note fields then save
-			WebElement noteRegardingFld = driver.findElement(By.xpath("//*[@id='Mobile_SalesLogix_Fields_PicklistField_35']/input"));
+			WebElement noteRegardingFld = driver.findElement(By.xpath("//*[@id='crm_Fields_PicklistField_35']/input"));
 			commNav.setupInputFieldValue(noteRegardingFld, "Test Note");
 			
-			WebElement noteNotesFld = driver.findElement(By.xpath(".//*[@id='Sage_Platform_Mobile_Fields_TextAreaField_5']/textarea"));
+			WebElement noteNotesFld = driver.findElement(By.xpath(".//*[@id='argos_Fields_TextAreaField_5']/textarea"));
 			commNav.setupInputFieldValue(noteNotesFld, "Test Notes for Defect Fix 13092375");
 			
 			headerButton.clickHeaderButton("save");
@@ -2082,7 +2082,7 @@ public class MobileDefectTest extends BaseTest {
 			commNav.waitForNotPage("Account");
 			
 			//edit the Account Phone number (800) 944-5709
-			WebElement accountPhoneFld = driver.findElement(By.xpath("//*[@id='Sage_Platform_Mobile_Fields_PhoneField_5']/input"));
+			WebElement accountPhoneFld = driver.findElement(By.xpath("//*[@id='argos_Fields_PhoneField_5']/input"));
 			commNav.setupInputFieldValue(accountPhoneFld, "800-944-5709");
 			
 			//save the changes
