@@ -255,13 +255,13 @@ public class MobileSprint233Test extends BaseTest {
 		//Section 1: clear the default hash-tag/filter
 		//----------
 		//Step: un-select the KPI item
-		headerButton.showRightContextMenu();
-		commNav.rightClickContextMenuItem("Total History");
-		Thread.sleep(2000);
-		commNav.rightClickContextMenuItem("Total Duration");
-		Thread.sleep(2000);
-		headerButton.closeRightContextMenu();
-		Thread.sleep(5000);
+		//headerButton.showRightContextMenu();
+		//commNav.rightClickContextMenuItem("Total History");
+		//Thread.sleep(2000);
+		//commNav.rightClickContextMenuItem("Total Duration");
+		//Thread.sleep(2000);
+		//headerButton.closeRightContextMenu();
+		//Thread.sleep(5000);
 		
 		//Step: remove any current hash-tags/filters then perform a Lookup
         // In Mobile 3.2 the clear and lookup buttons have been removed ... for lookup text box, just backspace and enter instead
@@ -820,9 +820,9 @@ public class MobileSprint233Test extends BaseTest {
 			selectedKpiMetric = kpiMetrics[iKPICount];		
 		
 			//Step: select the KPI metric (should be un-selected by default)
-			commNav.rightClickContextMenuItem(selectedKpiMetric);
-			headerButton.closeRightContextMenu();
-			Thread.sleep(5000);
+			//commNav.rightClickContextMenuItem(selectedKpiMetric);
+			//headerButton.closeRightContextMenu();
+			//Thread.sleep(5000);
 			resultsMsg = "VP: '" + selectedKpiMetric + "' KPI metric button is displayed above the list view";
 			contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 			String kpiCardXpath = "//div[" + (KPIIndex + iKPICount) + "]/div[2]/div/div/div/button";
