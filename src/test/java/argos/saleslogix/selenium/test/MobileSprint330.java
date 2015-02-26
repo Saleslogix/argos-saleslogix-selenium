@@ -1,6 +1,7 @@
 package argos.saleslogix.selenium.test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
@@ -279,6 +280,61 @@ public class MobileSprint330 extends BaseTest {
         } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: View Address action for contact has opened a map with address - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10675 ... Lookup functionality is invalid in the Ticket Urgency
+
+
+    public void test04_MBL10675() throws Exception {
+        String methodID = "test04_MBL10675";
+
+        // Test Params:
+        String entityType = "ticket";
+        String viewName = "Ticket Add Edit view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: enter the Ticket Add Edit view...
+            commNav.entityRecordAdd(entityType);
+
+            TicketViewsElements ticketEditView = PageFactory.initElements(driver, TicketViewsElements.class);
+
+            //Step: open the Ticket Urgency lookup
+            ticketEditView.ticketsEditViewUrgencyFldBtn.click();
+            commNav.waitForPage("Ticket Urgency");
+
+            //Step: search for urgency values with 'high'
+            commView.lookupTxtBox.sendKeys("high");
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
+            Thread.sleep(3000);
+
+            //Step: check the values of the top 2 items ... should only see values that include 'high'
+            String urgencyItem1 = ticketEditView.ticketUrgency1stItem.getText();
+            String urgencyItem2 = ticketEditView.ticketUrgency2ndItem.getText();
+            AssertJUnit.assertEquals("VP: 1st item in Urgency list is not 'Med-High'  - FAILED", "Med-High", urgencyItem1);
+            System.out.println("VP: 1st item in Urgency list is 'Med-High'  - PASSED");
+            AssertJUnit.assertEquals("VP: 2nd item in Urgency list is not 'High'  - FAILED", "High", urgencyItem2);
+            System.out.println("VP: 2nd item in Urgency list is 'High'  - PASSED");
+
+
+        }
+        catch (Exception e) {
+            verificationErrors.append(e.toString());
+            System.out.println(methodID + ": ticket urgency lookup failed");
             AssertJUnit.fail("test failed");
         }
 

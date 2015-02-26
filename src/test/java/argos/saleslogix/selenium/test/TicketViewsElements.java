@@ -584,6 +584,15 @@ public class TicketViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_list']//span[2][@data-name='callPhone']")
     WebElement ticketGroupViewWorkPhoneFld;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='urgency_list']//li[1]//h3")
+    WebElement ticketUrgency1stItem;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='urgency_list']//li[2]//h3")
+    WebElement ticketUrgency2ndItem;
 	
 	
 	//Methods
