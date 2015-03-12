@@ -312,6 +312,10 @@ public class OpportunityViewsElements extends BaseTest {
     WebElement opportunityProductsTopProduct;
 
     @CacheLookup
+    @FindBy(xpath = "//div[@data-field='Opportunity']/div/input")
+    WebElement opportunityProductOpportunityText;
+
+    @CacheLookup
     @FindBy(xpath = "//div[@data-field='Program']/div/button")
     WebElement opportunityProductViewPriceLevelBtn;
 	

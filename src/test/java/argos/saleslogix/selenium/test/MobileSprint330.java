@@ -21,6 +21,7 @@ public class MobileSprint330 extends BaseTest {
 
     public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
     public String TEST_CONTACT_RECORD = "Abbott, John";
+    public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
 
 	//Login & Logout
 	//==============
@@ -337,6 +338,203 @@ public class MobileSprint330 extends BaseTest {
             System.out.println(methodID + ": ticket urgency lookup failed");
             AssertJUnit.fail("test failed");
         }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10853 ... New Activities opened from Calendar view in Mobile do not auto populate cached Account, Contact, or Lead information (Unifirst 15097946)
+
+    public void test05_MBL10853() throws Exception {
+        String methodID = "test05_MBL10853";
+
+        // Test Params:
+        String entityType = "Accounts";
+        String entityRecord = TEST_ACCOUNT_RECORD;
+        String viewName = "Account Detail view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Account entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, entityRecord);
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: retrieve value for activity Account
+            String newActivityAccount = activityEditView.activityEditViewAccountFld.getAttribute("value");
+            System.out.println("VP: Calendar activity Account field has been pre-populated with a value of ... " + newActivityAccount);
+
+            //Step: verify that activity is pre-populated with Abbott Ltd.
+            AssertJUnit.assertEquals("VP: Activity created from Calendar has been pre-populated with previous Account value of ... " + TEST_ACCOUNT_RECORD + " - FAILED", TEST_ACCOUNT_RECORD, newActivityAccount);
+            System.out.println("VP: Activity created from Calendar has been pre-populated with previous Account value of ... " + TEST_ACCOUNT_RECORD + " - PASSED");
+
+        }
+        catch (Exception e) {
+            verificationErrors.append(e.toString());
+            System.out.println(methodID + ": auto-population of calendar activity failed");
+            AssertJUnit.fail("test failed");
+        }
+
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10402 ... Activities - timeless activities in listview displaying unexpected timeframe
+
+    public void test06_MBL10402() throws Exception {
+        String methodID = "test06_MBL10402";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to "My Activities" view, if not already there ... wait for page My Activities
+            if (!commNav.isPageDisplayed("My Activities"))   {
+                commNav.clickGlobalMenuItem("My Activities");
+                commNav.waitForPage("My Activities");
+            }
+
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+
+            //Step: press the timeless toggle button to ON, then retrieve the value for MM/dd/yy
+            activityEditView.activityEditViewTimelessTgl.click();
+
+            //Step: save activity
+            headerButton.clickHeaderButton("Save");
+
+            //Step: wait for page My Activities
+            commNav.waitForPage("My Activities");
+
+            //Step: search for activity created ... and verify that 'Timeless' displays in the listview
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.performMyActivitiesSearch(newActivityRegarding);
+            //WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
+            String activityTime = activityEditView.topMyActivitiesListItemStartTime.getText();
+            System.out.println("VP: Timeless activity displays in listview with a timeframe of ... " + activityTime);
+
+            AssertJUnit.assertEquals("VP: Timeless activity displays in listview with a timeframe of 'Timeless' - FAILED", "Timeless", activityTime);
+            System.out.println("VP: Timeless activity displays in listview with a timeframe of 'Timeless' - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Timeless activities in listview displaying unexpected timeframe " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+
+    @Test(enabled = true)
+    //MBL-10749 ... Opportunity listview : when adding a product via Products quick action, the Opportunity field does not populate by default [DTS 14097414]
+
+    public void test07_MBL10749() throws Exception {
+
+        String methodID = "test07_MBL10749";
+
+        // Test Params:
+        String entityType = "Opportunities";
+        String expEntityPgTitle = "Opportunities";
+        String oppRecord = TEST_OPPORTUNITY_RECORD;
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+        //Step: click Top-Left button to reveal Global Menu...
+        headerButton.showGlobalMenu();
+
+        //Step: navigate to Opportunity list view ... search for Vegas Vision-Phase1
+        commNav.entityListViewSearch(entityType, oppRecord);
+
+        OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+
+
+        //Step: display the Quick Action buttons, press products, '+' to open Opportunity Product form
+        try {
+            //click list item icon to reveal Quick Action items
+            opportunitiesListView.topOpportunityListItemIcon.click();
+
+            //click the Products Quick Action button
+            opportunitiesListView.topOpportunityListItemQuickActionsProductsBtn.click();
+            commNav.waitForPage("Products");
+            headerButton.clickHeaderButton("Add");
+            commNav.waitForPage("Opportunity Product");
+
+            //Step: verify that the value for 'opportunity' is populated with the opportunity name
+            String opportunityName = opportunitiesListView.opportunityProductOpportunityText.getAttribute("value");
+            System.out.println("VP: Product opportunity value has been pre-populated as ... " + opportunityName);
+            //Step: verify that Product opportunity is pre-populated with the associated opportunity
+            AssertJUnit.assertEquals("VP: When added via listview quick action, Product opportunity value has been pre-populated with associated opportunity of ... " + TEST_OPPORTUNITY_RECORD + " - FAILED", TEST_OPPORTUNITY_RECORD, opportunityName);
+            System.out.println("VP: When added via listview quick action, Product opportunity value has been pre-populated with associated opportunity of ... " + TEST_OPPORTUNITY_RECORD + " - PASSED");
+
+
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Opportunity populated when adding product via listview quick action " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+
 
         System.out.println(ENDLINE);
     }
