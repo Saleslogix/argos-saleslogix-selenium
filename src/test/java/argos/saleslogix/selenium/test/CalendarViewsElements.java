@@ -40,6 +40,10 @@ public class CalendarViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//button[@data-tool='month']")
     WebElement calendarMonthBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//button[@data-action='goToNextMonth']")
+    WebElement calendarNextMonthBtn;
 	
 	@CacheLookup
     @FindBy(xpath = "//*[@id='calendar_daylist']/div[2]/button[5]")

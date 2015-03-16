@@ -8,6 +8,7 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 
@@ -319,6 +320,7 @@ public class MobileSprint330 extends BaseTest {
             commNav.waitForPage("Ticket Urgency");
 
             //Step: search for urgency values with 'high'
+            System.out.println("VP: search for urgency values containing 'high' ");
             commView.lookupTxtBox.sendKeys("high");
             commView.lookupTxtBox.sendKeys(Keys.RETURN);
             Thread.sleep(3000);
@@ -534,6 +536,152 @@ public class MobileSprint330 extends BaseTest {
             AssertJUnit.fail("test failed");
         }
 
+
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // MBL-10893/ MBL-10894 ... new activities added default to a time within the next 15 minutes
+
+    public void test08_MBL10894() throws Exception {
+        String methodID = "test08_MBL10894";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: retrieve value for start time ... creating an activity for "today"
+            String strDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: 'Today' activity date/ time is ... " + strDateTime);
+            String activityTime = strDateTime.substring(strDateTime.indexOf(' ')+1);
+            System.out.println("VP: Activity time has a value of ... " + activityTime);
+
+
+            //Step: convert activity string date representation to calendar date format
+            SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
+            Calendar activityDateTime1 = Calendar.getInstance();
+            activityDateTime1.setTime(ft.parse(activityTime));
+
+
+
+            //Step: convert current date/ time to date format of "hh:mm a", then convert time portion back to calendar date format
+            Calendar todayDate = Calendar.getInstance();
+            String todayString = ft.format(todayDate.getTime()).toString();
+            System.out.println("VP: Today's date in hh:mm a format is - " + todayString);
+            Calendar todayDateTime2 = Calendar.getInstance();
+            todayDateTime2.setTime(ft.parse(todayString));
+
+            //Step: calculate the number of minutes between activity date/time and current date/time
+            long activityDateTime1InMillis = activityDateTime1.getTimeInMillis();
+            long todayDateTime2InMillis = todayDateTime2.getTimeInMillis();
+            long diffInMillis = activityDateTime1InMillis - todayDateTime2InMillis;
+            System.out.println("VP: difference in milliseconds between activity date/time and current date/time is ... " + diffInMillis);
+            long diffInMinutes = diffInMillis / (60 * 1000);
+            System.out.println("VP: difference in minutes between activity date/time and current date/time is ... " + diffInMinutes);
+
+            //Step: check that the number of minutes between activity date/time and current date is between 1 and 15
+            if (diffInMinutes >= 1 && diffInMinutes <= 15) {
+                System.out.println("VP: new activity added today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - PASSED");
+            }
+            else {
+                System.out.println("VP: new activity added today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            //Step: cancel out of activity, press Month button, scroll to next month
+            headerButton.clickHeaderButton("cancel");
+            calendarView.calendarMonthBtn.click();
+            calendarView.calendarNextMonthBtn.click();
+            calendarView.calendarMonthFirstDayFourthRow.click();
+
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityScheduleMeetingBtn.click();
+
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: retrieve value for start time ... creating an activity that is "not for today"
+            strDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: 'Not for Today' activity date/ time is ... " + strDateTime);
+            activityTime = strDateTime.substring(strDateTime.indexOf(' ')+1);
+            System.out.println("VP: Activity time has a value of ... " + activityTime);
+
+
+            //Step: convert activity string date representation to calendar date format
+            ft = new SimpleDateFormat("hh:mm a");
+            activityDateTime1 = Calendar.getInstance();
+            activityDateTime1.setTime(ft.parse(activityTime));
+
+
+
+            //Step: convert current date/ time to date format of "hh:mm a", then convert time portion back to calendar date format
+            todayDate = Calendar.getInstance();
+            todayString = ft.format(todayDate.getTime()).toString();
+            System.out.println("VP: Today's date in hh:mm a format is - " + todayString);
+            todayDateTime2 = Calendar.getInstance();
+            todayDateTime2.setTime(ft.parse(todayString));
+
+            //Step: calculate the number of minutes between activity date/time and current date/time
+            activityDateTime1InMillis = activityDateTime1.getTimeInMillis();
+            todayDateTime2InMillis = todayDateTime2.getTimeInMillis();
+            diffInMillis = activityDateTime1InMillis - todayDateTime2InMillis;
+            System.out.println("VP: difference in milliseconds between activity date/time and current date/time is ... " + diffInMillis);
+            diffInMinutes = diffInMillis / (60 * 1000);
+            System.out.println("VP: difference in minutes between activity date/time and current date/time is ... " + diffInMinutes);
+
+            //Step: check that the number of minutes between activity date/time and current date/time is between 1 and 15
+            if (diffInMinutes >= 1 && diffInMinutes <= 15) {
+                System.out.println("VP: new activity added not for today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - PASSED");
+            }
+            else {
+                System.out.println("VP: new activity added not for today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+        }
+        catch (Exception e) {
+            verificationErrors.append(e.toString());
+            System.out.println(methodID + ": new activities added default to a time within the next 15 minutes failed");
+            AssertJUnit.fail("test failed");
+        }
 
 
         System.out.println(ENDLINE);
