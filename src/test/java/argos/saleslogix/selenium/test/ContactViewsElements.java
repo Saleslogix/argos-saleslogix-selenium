@@ -101,7 +101,7 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[8]/div[2]/div/div/div/button")
+	@FindBy(xpath = "//div[5]/div[2]/div/div/div/button")
 	WebElement contactsListView1stKPICard;
 	
 	@CacheLookup
