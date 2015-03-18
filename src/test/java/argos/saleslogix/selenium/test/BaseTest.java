@@ -2,6 +2,7 @@ package argos.saleslogix.selenium.test;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -36,6 +37,7 @@ public class BaseTest {
     public String shortProdName;
     public String copyrightLabel;
     public String versionLabel;
+    public String proxyUrl;
     public String STARTLINE = "==========";
     public String ENDLINE = "---------- end of test ----------";
     protected StringBuffer verificationErrors = new StringBuffer();
@@ -90,6 +92,13 @@ public class BaseTest {
             capabilities.setVersion(browserVersion);
         }
 
+        if (proxyUrl != null && !proxyUrl.isEmpty()) {
+            System.out.println("Proxy server configured, adding a proxy capability...");
+            Proxy proxy = new Proxy();
+            proxy.setHttpProxy(proxyUrl);
+            capabilities.setCapability(CapabilityType.PROXY, proxy);
+        }
+
         driver = new RemoteWebDriver(new URL(webDriverUrl), capabilities);
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.MINUTES);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -134,6 +143,7 @@ public class BaseTest {
             shortProdName = System.getProperty("short_prod_name");
             copyrightLabel = System.getProperty("copyright_lbl");
             versionLabel = System.getProperty("version_lbl");
+            proxyUrl = System.getProperty("proxy_url");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
