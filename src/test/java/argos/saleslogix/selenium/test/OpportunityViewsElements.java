@@ -90,31 +90,31 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement topOpportunityListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[7]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]//button[@aria-label='addAttachment']")
 	WebElement topOpportunityListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[6]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]//button[@aria-label='addActivity']")
 	WebElement topOpportunityListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[5]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]//button[@aria-label='addNote']")
 	WebElement topOpportunityListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]//button[@aria-label='viewProducts']")
 	WebElement topOpportunityListItemQuickActionsProductsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]//button[@aria-label='viewContacts']")
 	WebElement topOpportunityListItemQuickActionsContactsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]//button[@aria-label='viewAccount']")
 	WebElement topOpportunityListItemQuickActionsAccountBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]//button[@aria-label='edit']")
 	WebElement topOpportunityListItemQuickActionsEditBtn;
 	
 	@CacheLookup

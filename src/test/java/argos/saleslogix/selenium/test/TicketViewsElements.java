@@ -132,27 +132,27 @@ public class TicketViewsElements extends BaseTest {
 	WebElement topTicketsListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//li[2]/button[6]")
+	@FindBy(xpath = "//li[2]//button[@aria-label='addAttachment']")
 	WebElement topTicketsListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]/button[5]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]//button[@aria-label='addActivity']")
 	WebElement topTicketsListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]//button[@aria-label='addNote']")
 	WebElement topTicketsListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]//button[@aria-label='viewContact']")
 	WebElement topTicketsListItemQuickActionsContactBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]//button[@aria-label='viewAccount']")
 	WebElement topTicketsListItemQuickActionsAccountBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]//button[@aria-label='edit']")
 	WebElement topTicketsListItemQuickActionsEditBtn;
 	
 	@CacheLookup

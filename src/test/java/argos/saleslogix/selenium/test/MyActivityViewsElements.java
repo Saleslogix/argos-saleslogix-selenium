@@ -100,35 +100,35 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement topMyActivitiesListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]/button[8]")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='addAttachment']")
 	WebElement topMyActivitiesListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]/button[7]")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='call']")
 	WebElement topMyActivitiesListItemQuickActionsCallBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]/button[6]")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='decline']")
 	WebElement topMyActivitiesListItemQuickActionsDeclineBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]/button[5]")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='accept']")
 	WebElement topMyActivitiesListItemQuickActionsAcceptBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='complete']")
 	WebElement topMyActivitiesListItemQuickActionsCompleteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='viewContact']")
 	WebElement topMyActivitiesListItemQuickActionsContactBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='viewOpportunity']")
 	WebElement topMyActivitiesListItemQuickActionsOpportunityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='viewAccount']")
 	WebElement topMyActivitiesListItemQuickActionsAccountBtn;
 	
 	@CacheLookup

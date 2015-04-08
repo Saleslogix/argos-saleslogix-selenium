@@ -100,19 +100,19 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement topNotesHistoryListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]//button[@aria-label='addAttachment']")
 	WebElement topNotesHistoryListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]//button[@aria-label='viewContact']")
 	WebElement topNotesHistoryListItemQuickActionsContactsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]//button[@aria-label='viewOpportunity']")
 	WebElement topNotesHistoryListItemQuickActionsOpportunityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='history_list']//ul/li[2]//button[@aria-label='viewAccount']")
 	WebElement topNotesHistoryListItemQuickActionsAccountBtn;	
 	
 	@CacheLookup

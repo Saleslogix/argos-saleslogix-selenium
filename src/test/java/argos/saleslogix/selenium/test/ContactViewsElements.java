@@ -152,35 +152,35 @@ public class ContactViewsElements extends BaseTest {
 	WebElement topContactsListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[8]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='addAttachment']")
 	WebElement topContactsListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[7]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='addActivity']")
 	WebElement topContactsListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[6]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='addNote']")
 	WebElement topContactsListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[5]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='sendEmail']")
 	WebElement topContactsListItemQuickActionsEmailBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='viewAccount']")
 	WebElement topContactsListItemQuickActionsAccountBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='callMobile']")
 	WebElement topContactsListItemQuickActionsCallMobileBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='callWork']")
 	WebElement topContactsListItemQuickActionsCallWorkBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='edit']")
 	WebElement topContactsListItemQuickActionsEditBtn;
 	
 	@CacheLookup

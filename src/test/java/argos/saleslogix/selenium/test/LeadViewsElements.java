@@ -130,31 +130,31 @@ public class LeadViewsElements extends BaseTest {
 	WebElement topLeadsListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]/button[7]")
+	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='addAttachment']")
 	WebElement topLeadsListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]/button[6]")
+	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='addActivity']")
 	WebElement topLeadsListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]/button[5]")
+	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='addNote']")
 	WebElement topLeadsListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]/button[4]")
+	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='sendEmail']")
 	WebElement topLeadsListItemQuickActionsEmailBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]/button[3]")
+	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='callMobile']")
 	WebElement topLeadsListItemQuickActionsCallMobileBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]/button[2]")
+	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='callWork']")
 	WebElement topLeadsListItemQuickActionsCallWorkBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]/button[1]")
+	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='edit']")
 	WebElement topLeadsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
