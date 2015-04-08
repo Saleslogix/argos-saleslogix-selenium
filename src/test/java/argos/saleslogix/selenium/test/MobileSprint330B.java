@@ -41,8 +41,8 @@ public class MobileSprint330B extends BaseTest {
     @Test(enabled = true)
     // MBL-10613 ... My Activities : phone - on adding a second activity, phone displays value for the first activity's account, while account is blank
 
-    public void test09_MBL10613() throws Exception {
-        String methodID = "test09_MBL10613";
+    public void test01_MBL10613() throws Exception {
+        String methodID = "test01_MBL10613";
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
@@ -143,7 +143,78 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    
+    @Test(enabled = true)
+    // MBL-10930 ... Cancelled edits still unexpectedly displaying
+
+    public void test02_MBL10930() throws Exception {
+
+        String methodID = "test02_MBL10930";
+
+        // Test Params:
+        String entityType = "Accounts";
+        String entityRecord = TEST_ACCOUNT_RECORD;
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+
+            //Step: click Top-Left button to reveal Global Menu...
+            headerbutton.showGlobalMenu();
+
+            //Step: navigate to Accounts list view, and serach for an account
+            commNav.entityListViewSearch(entityType, entityRecord);
+
+            //Step: display quick actions for the account
+            AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+            accountListView.topAccountsListItemIcon.click();
+
+            //Step: press the 'edit' quick action button
+            accountListView.topAccountsListItemQuickActionsEditBtn.click();
+            commNav.waitForPage("Account");
+
+            //Step: save the initial value of the phone
+            String initialPhoneValue = accountListView.accountEditViewPhoneInputFld.getAttribute("value");
+            System.out.println("VP: initial value of phone is ... " + initialPhoneValue);
+
+            //Step: type in an 'x' at the end of the phone value, and save the edited phone value
+            accountListView.accountEditViewPhoneInputFld.sendKeys("x");
+            String editedPhoneValue = accountListView.accountEditViewPhoneInputFld.getAttribute("value");
+            System.out.println("VP: edited value of phone is ... " + editedPhoneValue);
+
+            //Step: cancel out of the edit view, without saving any changes
+            headerbutton.clickHeaderButton("Cancel");
+            commNav.waitForPage("Accounts");
+
+            //Step: again, display quick actions for the account, and press the 'edit' button
+            accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+            accountListView.topAccountsListItemIcon.click();
+            accountListView.topAccountsListItemQuickActionsEditBtn.click();
+            commNav.waitForPage("Account");
+
+            //Step: retrieve the current value of phone ... should be equal to the initial value of the phone, before the edit
+            String currentPhoneValue = accountListView.accountEditViewPhoneInputFld.getAttribute("value");
+            System.out.println("VP: value of phone after cancelled edit is ... " + currentPhoneValue);
+
+            //Step: verify that current phone value is equal to the initial value of the phone
+            AssertJUnit.assertEquals("VP: after cancelled edit current value of phone equals initial value of phone - FAILED", initialPhoneValue, currentPhoneValue);
+            System.out.println("VP: after cancelled edit current value of phone equals initial value of phone - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: cancelled edits still unexpectedly displaying " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
 
 
     @Test(enabled = true)
