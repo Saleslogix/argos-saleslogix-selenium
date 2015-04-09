@@ -51,6 +51,7 @@ public class MobileSprint330B extends BaseTest {
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
 
+
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         try {
@@ -90,14 +91,12 @@ public class MobileSprint330B extends BaseTest {
             activityEditView.activityEditViewAccountBtn.click();
             commNav.waitForPage("Accounts");
 
-
             commView.lookupTxtBox.sendKeys(TEST_ACCOUNT_RECORD);
             Thread.sleep(500);
             commView.lookupTxtBox.sendKeys(Keys.RETURN);
-            Thread.sleep(500);
-            accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+            Thread.sleep(1000);
             accountListView.relatedAccountsListViewTopItem.click();
-            //Thread.sleep(500);
+            Thread.sleep(500);
             commNav.waitForPage("Meeting");
 
             //Step: retrieve the value for phone for the account record chosen
