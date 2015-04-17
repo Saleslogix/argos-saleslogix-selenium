@@ -21,6 +21,7 @@ import java.util.GregorianCalendar;
 public class MobileSprint330B extends BaseTest {
 
     public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
+    public String TEST_OPPORTUNITY_RECORD2 = "Advising Group-Phase1";
     public String TEST_CONTACT_RECORD = "Abbott, John";
     public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
 
@@ -211,6 +212,186 @@ public class MobileSprint330B extends BaseTest {
             System.out.println("VP: cancelled edits still unexpectedly displaying " + " - FAILED");
             AssertJUnit.fail("test failed");
         }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    public void test03_MBL10928() throws Exception {
+        //MBL-10928 ... Opportunity 'Quick Edit' quick action and 'Edit' screen
+        //MBL-10935 ... Opportunity Quick Edit - disable 'close prob' editing for closed opportunities
+        //MBL-10931 ... non-group : Opportunity Quick Edit - multiple changes to one opportunity, and changes to multiple opportunities on 'Edit' screen should save as expected
+        String methodID = "test03_MBL10928";
+
+        // Test Params:
+        String entityType = "Opportunities";
+        String expEntityPgTitle = "Opportunities";
+        String oppRecord = TEST_OPPORTUNITY_RECORD;
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+        HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+            //Step: login & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: navigate to Opportunity list view ... search for specified opportunity
+            commNav.entityListViewSearch(entityType, oppRecord);
+
+
+            //Step: save listview card layout information
+            String opportunityCardLayout = opportunitiesListView.topOpportunityCardLayout.getText();
+            System.out.println("VP: opportunityCardLayout is ... " + opportunityCardLayout);
+
+            //Step: click button to display the Quick Actions
+            opportunitiesListView.topOpportunityListItemIcon.click();
+
+            //Step: verify existence of the Quick Edit quick action, then click it to open the 'Edit' screen
+            commNav.checkIfWebElementPresent("Opportunity, Quick Action Quick Edit button", opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn);
+            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+            commNav.waitForPage("Edit");
+
+            //Step: save quick edit card layout information
+            String quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
+            System.out.println("VP: quickEditCardLayout is ... " + quickEditCardLayout);
+
+            //Step: compare card layouts from Opportunity listview and Quick Edit 'Edit' view
+            AssertJUnit.assertEquals("VP: Opportunity card layout matches Quick Edit card layout - FAILED", opportunityCardLayout, quickEditCardLayout);
+            System.out.println("VP: Opportunity card layout matches Quick Edit card layout - PASSED");
+
+            //Step: verify that all 4 expected fields are present on the 'Edit' screen
+            commNav.checkIfWebElementPresent("Opportunity, Quick Edit 'stage'", opportunitiesListView.opportunityQuickEditStageText);
+            commNav.checkIfWebElementPresent("Opportunity, Quick Edit 'close prob'", opportunitiesListView.opportunityQuickEditCloseProbText);
+            commNav.checkIfWebElementPresent("Opportunity, Quick Edit 'sales potential'", opportunitiesListView.opportunityQuickEditSalesPotentialText);
+            commNav.checkIfWebElementPresent("Opportunity, Quick Edit 'est close'", opportunitiesListView.opportunityQuickEditEstCloseText);
+
+            //Step: edit the 'close prob' field, and set to '10' ... should be editable as opportunity is 'open'
+            opportunitiesListView.opportunityQuickEditCloseProbBtn.click();
+            commNav.waitForPage("Opportunity Probability");
+            opportunitiesListView.opportunityProbability10.click();
+            commNav.waitForPage("Edit");
+            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            String initEditCloseProb = opportunitiesListView.opportunityQuickEditCloseProbText.getAttribute("value");
+            System.out.println("VP: 1st edit of opportunity " + TEST_OPPORTUNITY_RECORD + " ... 'close prob' set to : " + initEditCloseProb);
+
+            //Step: edit the 'sales potential', and set to '5500.00' ... should be editable
+            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            opportunitiesListView.opportunityQuickEditSalesPotentialText.clear();
+            opportunitiesListView.opportunityQuickEditSalesPotentialText.sendKeys("5500.00");
+            String initEditSalesPotential = opportunitiesListView.opportunityQuickEditSalesPotentialText.getAttribute("value");
+            System.out.println("VP: 1st edit of opportunity " + TEST_OPPORTUNITY_RECORD + " ... 'sales potential' set to : " + initEditSalesPotential);
+
+            //Step: edit the 'est close' ... should be editable
+            opportunitiesListView.opportunityQuickEditEstCloseBtn.click();
+            commNav.waitForPage("Calendar");
+            calendarView.calendarIncrementYearBtn.click();
+            headerbutton.clickHeaderButton("check");
+            commNav.waitForPage("Edit");
+            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            String initEditEstClose = opportunitiesListView.opportunityQuickEditEstCloseText.getAttribute("value");
+            System.out.println("VP: 1st edit of opportunity " + TEST_OPPORTUNITY_RECORD + " ... 'est close' set to : " + initEditEstClose);
+
+            //Step: save the opportunity edits
+            headerbutton.clickHeaderButton("save");
+            commNav.waitForPage("Opportunities");
+
+            //Step: again, display quick actions for the opportunity, press 'Quick Edit' and wait for 'Edit' screen to open
+            opportunitiesListView.topOpportunityListItemIcon.click();
+            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+            commNav.waitForPage("Edit");
+
+            //Step: verify the expected values for 'close prob', 'sales potential' and 'est close'
+            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            AssertJUnit.assertEquals("VP: On re-opening Opportunity " + TEST_OPPORTUNITY_RECORD + " after 1st edit via Quick Edit, 'close prob' does not have expected value of : " + initEditCloseProb + " - FAILED", initEditCloseProb, opportunitiesListView.opportunityQuickEditCloseProbText.getAttribute("value"));
+            System.out.println("VP: On re-opening Opportunity " + TEST_OPPORTUNITY_RECORD + " after 1st edit via Quick Edit, 'close prob' does have expected value of : " + initEditCloseProb + " - PASSED");
+            AssertJUnit.assertEquals("VP: On re-opening Opportunity " + TEST_OPPORTUNITY_RECORD + " after 1st edit via Quick Edit, 'sales potential' does not have expected value of : " + initEditSalesPotential + " - FAILED", initEditSalesPotential, opportunitiesListView.opportunityQuickEditSalesPotentialText.getAttribute("value"));
+            System.out.println("VP: On re-opening Opportunity " + TEST_OPPORTUNITY_RECORD + " after 1st edit via Quick Edit, 'sales potential' does have expected value of : " + initEditSalesPotential + " - PASSED");
+            AssertJUnit.assertEquals("VP: On re-opening Opportunity " + TEST_OPPORTUNITY_RECORD + " after 1st edit via Quick Edit, 'est close' does not have expected value of : " + initEditEstClose + " - FAILED", initEditEstClose, opportunitiesListView.opportunityQuickEditEstCloseText.getAttribute("value"));
+            System.out.println("VP: On re-opening Opportunity " + TEST_OPPORTUNITY_RECORD + " after 1st edit via Quick Edit, 'est close' does have expected value of : " + initEditEstClose + " - PASSED");
+
+
+            //Step: edit the 'sales potential' for the same opportunity a second time, and set to '6702.00' ... should be editable
+            opportunitiesListView.opportunityQuickEditSalesPotentialText.clear();
+            opportunitiesListView.opportunityQuickEditSalesPotentialText.sendKeys("6702.00");
+            String secondEditSalesPotential = opportunitiesListView.opportunityQuickEditSalesPotentialText.getAttribute("value");
+            System.out.println("VP: 2nd edit of opportunity " + TEST_OPPORTUNITY_RECORD + " ... 'sales potential' set to : " + secondEditSalesPotential);
+
+            //Step: save the opportunity edits
+            headerbutton.clickHeaderButton("save");
+            commNav.waitForPage("Opportunities");
+
+            //Step: again, display quick actions for the opportunity, press 'Quick Edit' and wait for 'Edit' screen to open
+            opportunitiesListView.topOpportunityListItemIcon.click();
+            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+            commNav.waitForPage("Edit");
+
+            //Step: verify the expected values for 'sales potential' after the second edit
+            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            AssertJUnit.assertEquals("VP: On re-opening Opportunity " + TEST_OPPORTUNITY_RECORD + " after 2nd edit via Quick Edit, 'sales potential' does not have expected value of : " + secondEditSalesPotential + " - FAILED", secondEditSalesPotential, opportunitiesListView.opportunityQuickEditSalesPotentialText.getAttribute("value"));
+            System.out.println("VP: On re-opening Opportunity " + TEST_OPPORTUNITY_RECORD + " after 2nd edit via Quick Edit, 'sales potential' does have expected value of : " + secondEditSalesPotential + " - PASSED");
+
+
+            //Step: cancel out of the 'Edit' screen, and search for a different opportunity to edit (closed-won opportunity)
+            headerbutton.clickHeaderButton("cancel");
+            commNav.waitForPage("Opportunities");
+            commView.lookupTxtBox.click();
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(TEST_OPPORTUNITY_RECORD2);
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
+            Thread.sleep(500);
+
+            //Step: display quick actions for this second opportunity, press 'Quick Edit' and wait for 'Edit' screen to open
+            opportunitiesListView.topOpportunityListItemIcon.click();
+            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+            commNav.waitForPage("Edit");
+
+            //Step: verify that the 'close prob' field may not be edited  [MBL-10935]
+            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            opportunitiesListView.opportunityQuickEditCloseProbBtn.click();
+            Thread.sleep(500);
+            AssertJUnit.assertEquals("VP: 'close prob' disabled for a Closed opportunity " + TEST_OPPORTUNITY_RECORD2 + " - FAILED", "Edit", driver.findElement(By.id("pageTitle")).getText());
+            System.out.println("VP: 'close prob' disabled for a Closed opportunity " + TEST_OPPORTUNITY_RECORD2 + " - PASSED");
+
+
+            //Step: edit the 'sales potential' for this second opportunity, and set to '654321.00' ... should be editable
+            opportunitiesListView.opportunityQuickEditSalesPotentialText.clear();
+            opportunitiesListView.opportunityQuickEditSalesPotentialText.sendKeys("654321.00");
+            String thirdEditSalesPotential = opportunitiesListView.opportunityQuickEditSalesPotentialText.getAttribute("value");
+            System.out.println("VP: 3rd edit of a different opportunity " + TEST_OPPORTUNITY_RECORD2 + " ... 'sales potential' set to : " + thirdEditSalesPotential);
+
+
+            //Step: save the opportunity edit
+            headerbutton.clickHeaderButton("save");
+            commNav.waitForPage("Opportunities");
+
+            //Step: again, display quick actions for the opportunity, press 'Quick Edit' and wait for 'Edit' screen to open
+            opportunitiesListView.topOpportunityListItemIcon.click();
+            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+            commNav.waitForPage("Edit");
+
+            //Step: verify the expected values for 'sales potential' after the third edit for a different opportunity
+            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            AssertJUnit.assertEquals("VP: On re-opening different Opportunity " + TEST_OPPORTUNITY_RECORD2 + " after 3rd edit via Quick Edit, 'sales potential' does not have expected value of : " + thirdEditSalesPotential + " - FAILED", thirdEditSalesPotential, opportunitiesListView.opportunityQuickEditSalesPotentialText.getAttribute("value"));
+            System.out.println("VP: On re-opening different Opportunity " + TEST_OPPORTUNITY_RECORD2 + " after 3rd edit via Quick Edit, 'sales potential' does have expected value of : " + thirdEditSalesPotential + " - PASSED");
+
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Opportunity Quick Edit functioning as expected " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
 
         System.out.println(ENDLINE);
     }

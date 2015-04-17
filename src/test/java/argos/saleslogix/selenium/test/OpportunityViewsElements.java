@@ -42,7 +42,11 @@ public class OpportunityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]")
 	WebElement topOpportunityListItem;
-	
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='opportunity_list']//ul/li[1]/div[2]")
+    WebElement topOpportunityCardLayout;
+
 	@CacheLookup
 	@FindBy(xpath = "//div[3]/div[2]/div/div/div/button")
 	WebElement opportunityListView1stKPICard;
@@ -116,6 +120,10 @@ public class OpportunityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]//button[@aria-label='edit']")
 	WebElement topOpportunityListItemQuickActionsEditBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='opportunity_list']//ul/li[2]//button[@aria-label='quickEdit']")
+    WebElement topOpportunityListItemQuickActionsQuickEditBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_list']//ul/li[11]")
@@ -459,6 +467,38 @@ public class OpportunityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='opportunity_edit']/div[2]/fieldset[2]/div[4]")
 	WebElement opportunityEditViewRateDateFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[@id='opp_related_context_quickEdit']//div[@class='list-item-content']")
+    WebElement opportunityQuickEditCardLayout;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/input")
+    WebElement opportunityQuickEditStageText;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/input")
+    WebElement opportunityQuickEditCloseProbText;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/button")
+    WebElement opportunityQuickEditCloseProbBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='crm_Fields_MultiCurrencyField_0']/input")
+    WebElement opportunityQuickEditSalesPotentialText;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='argos_Fields_DateField_0']/input")
+    WebElement opportunityQuickEditEstCloseText;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='argos_Fields_DateField_0']/button")
+    WebElement opportunityQuickEditEstCloseBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[5]//h3")
+    WebElement opportunityProbability10;
 	
 	//Methods
 	//-------
