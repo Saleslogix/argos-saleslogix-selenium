@@ -499,6 +499,16 @@ public class OpportunityViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[5]//h3")
     WebElement opportunityProbability10;
+
+    // the data-key given here is for user loup 'Closed - Won' group
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='groups_configure']//li[@data-key='p6UJ9A00045E']")
+    WebElement groupsConfigureClosedWon;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='Closed - Won']")
+    WebElement rmenu_groupClosedWon;
 	
 	//Methods
 	//-------

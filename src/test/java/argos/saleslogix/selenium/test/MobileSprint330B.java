@@ -398,6 +398,149 @@ public class MobileSprint330B extends BaseTest {
 
 
     @Test(enabled = true)
+    public void test04_MBL10931() throws Exception {
+        //MBL-10931 ... groups : verify that summary and detail listview layouts are reflected on the Quick Edit screen
+        //                     : verify that group layout for a different group is reflected on the Quick Edit screen
+        String methodID = "test04_MBL10931";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+            //Step: login & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: navigate to Opportunity list view
+            commNav.clickGlobalMenuItem("Opportunities");
+            commNav.waitForPage("All Opportunities");
+
+            //Step: reveal Right Context Menu panel, and choose 'Summary' layout
+            headerbutton.showRightContextMenu();
+            commNav.rmenu_GroupSummary.click();
+            System.out.println("VP: Summary layout chosen for 'All Opportunities' group");
+            commNav.waitForPage("All Opportunities");
+            Thread.sleep(3000);
+
+
+            //Step: save group listview card layout information
+            String opportunityGroupLayout = opportunitiesListView.topOpportunityCardLayout.getText();
+            System.out.println("VP: Summary opportunityGroupLayout is ... " + opportunityGroupLayout);
+
+            //Step: click button to display the Quick Actions
+            opportunitiesListView.topOpportunityListItemIcon.click();
+
+            //Step: verify existence of the Quick Edit quick action, then click it to open the 'Edit' screen
+            commNav.checkIfWebElementPresent("Opportunity, Quick Action Quick Edit button", opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn);
+            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+            commNav.waitForPage("Edit");
+
+            //Step: save quick edit card layout information
+            String quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
+            System.out.println("VP: quickEditCardLayout is ... " + quickEditCardLayout);
+
+            //Step: compare card layouts from Opportunity group Summary listview and Quick Edit 'Edit' view
+            AssertJUnit.assertEquals("VP: Summary Opportunity group layout matches Quick Edit card layout - FAILED", opportunityGroupLayout, quickEditCardLayout);
+            System.out.println("VP: Summary Opportunity group layout matches Quick Edit card layout - PASSED");
+
+
+            //Step: cancel out of the 'Edit' screen
+            headerbutton.clickHeaderButton("cancel");
+            commNav.waitForPage("All Opportunities");
+
+            //Step: reveal Right Context Menu panel, and choose 'Detail' layout
+            headerbutton.showRightContextMenu();
+            commNav.rmenu_GroupDetail.click();
+            System.out.println("VP: Detail layout chosen for 'All Opportunities' group");
+            commNav.waitForPage("All Opportunities");
+            Thread.sleep(3000);
+
+
+            //Step: save group listview card layout information
+            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            opportunityGroupLayout = opportunitiesListView.topOpportunityCardLayout.getText();
+            System.out.println("VP: Detail opportunityGroupLayout is ... " + opportunityGroupLayout);
+
+            //Step: click button to display the Quick Actions
+            opportunitiesListView.topOpportunityListItemIcon.click();
+
+            //Step: click the Quick Edit quick action to open the 'Edit' screen
+            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+            commNav.waitForPage("Edit");
+
+            //Step: save quick edit card layout information
+            quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
+            System.out.println("VP: quickEditCardLayout is ... " + quickEditCardLayout);
+
+            //Step: compare card layouts from Opportunity group Detail listview and Quick Edit 'Edit' view
+            AssertJUnit.assertEquals("VP: Detail Opportunity group layout matches Quick Edit card layout - FAILED", opportunityGroupLayout, quickEditCardLayout);
+            System.out.println("VP: Detail Opportunity group layout matches Quick Edit card layout - PASSED");
+
+
+            //Step: cancel out of the 'Edit' screen
+            headerbutton.clickHeaderButton("cancel");
+            commNav.waitForPage("All Opportunities");
+
+            //Step: reveal Right Context Menu panel
+            headerbutton.showRightContextMenu();
+
+            //Step: click on Configure button to open 'Groups Lookup' and select 'Closed - Won' for loup
+            commNav.rmenu_GroupConfigure.click();
+            commNav.waitForPage("Groups Lookup");
+            opportunitiesListView.groupsConfigureClosedWon.click();
+            headerbutton.checkButton.click();
+            commNav.waitForPage("All Opportunities");
+
+
+            //Step: open right menu and select 'Closed - Won' group to display
+            headerbutton.showRightContextMenu();
+            opportunitiesListView.rmenu_groupClosedWon.click();
+            commNav.waitForPage("Closed - Won");
+
+            //Step: verify that group 'Closed - Won' is displayed
+            commNav = PageFactory.initElements(driver, CommonNavigation.class);
+            AssertJUnit.assertEquals("VP: user is not seeing the chosen group (Closed - Won) just selected  - FAILED","Closed - Won", driver.findElement(By.id("pageTitle")).getText());
+            System.out.println("VP: user is seeing the chosen group (Closed - Won) just selected  - PASSED");
+
+            //Step: save group listview card layout information ... for 'Closed - Won' group
+            headerbutton.closeRightContextMenu();
+            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+            opportunityGroupLayout = opportunitiesListView.topOpportunityCardLayout.getText();
+            System.out.println("VP: 'Closed - Won' opportunityGroupLayout is ... " + opportunityGroupLayout);
+
+            //Step: click button to display the Quick Actions
+            opportunitiesListView.topOpportunityListItemIcon.click();
+
+            //Step: click the Quick Edit quick action to open the 'Edit' screen
+            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+            commNav.waitForPage("Edit");
+
+            //Step: save quick edit card layout information
+            quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
+            System.out.println("VP: quickEditCardLayout is ... " + quickEditCardLayout);
+
+            //Step: compare card layouts from 'Closed - Won' Opportunity group Detail listview and Quick Edit 'Edit' view
+            AssertJUnit.assertEquals("VP: 'Closed - Won' Opportunity group layout matches Quick Edit card layout - FAILED", opportunityGroupLayout, quickEditCardLayout);
+            System.out.println("VP: 'Closed - Won' Opportunity group layout matches Quick Edit card layout - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Opportunity Quick Edit layout as expected for detail/ summary/ different groups " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";
 		
