@@ -541,6 +541,207 @@ public class MobileSprint330B extends BaseTest {
 
 
     @Test(enabled = true)
+    public void test05_MBL10925() throws Exception {
+        //MBL-10925 ... personalize quick actions
+        String methodID = "test05_MBL10925";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+        AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: navigate to Account list view
+            commNav.clickGlobalMenuItem("Accounts");
+            commNav.waitForPage("All Accounts");
+
+            //Step: click button to display the Quick Actions
+            accountListView.topAccountsListItemIcon.click();
+
+            //Step: verify OOTB quick actions ... order and display
+            String quickActionText0 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=0]/label")).getText();
+            String quickActionText1 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=1]/label")).getText();
+            String quickActionText2 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=2]/label")).getText();
+            String quickActionText3 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=3]/label")).getText();
+            String quickActionText4 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=4]/label")).getText();
+            String quickActionText5 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=5]/label")).getText();
+            String quickActionText6 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=6]/label")).getText();
+
+            AssertJUnit.assertEquals("VP: 1st Account quick action is 'Configure' - FAILED", "Configure", quickActionText0);
+            System.out.println("VP: 1st Account quick action is 'Configure' - PASSED");
+            AssertJUnit.assertEquals("VP: 2nd Account quick action is 'Edit' - FAILED", "Edit", quickActionText1);
+            System.out.println("VP: 2nd Account quick action is 'Edit' - PASSED");
+            AssertJUnit.assertEquals("VP: 3rd Account quick action is 'Call Main' - FAILED", "Call Main", quickActionText2);
+            System.out.println("VP: 3rd Account quick action is 'Call Main' - PASSED");
+            AssertJUnit.assertEquals("VP: 4th Account quick action is 'Contacts' - FAILED", "Contacts", quickActionText3);
+            System.out.println("VP: 4th Account quick action is 'Contacts' - PASSED");
+            AssertJUnit.assertEquals("VP: 5th Account quick action is 'Add Note' - FAILED", "Add Note", quickActionText4);
+            System.out.println("VP: 5th Account quick action is 'Add Note' - PASSED");
+            AssertJUnit.assertEquals("VP: 6th Account quick action is 'Add Activity' - FAILED", "Add Activity", quickActionText5);
+            System.out.println("VP: 6th Account quick action is 'Add Activity' - PASSED");
+            AssertJUnit.assertEquals("VP: 7th Account quick action is 'Add Attachment' - FAILED", "Add Attachment", quickActionText6);
+            System.out.println("VP: 7th Account quick action is 'Add Attachment' - PASSED");
+
+            //Step: press Configure quick action to open 'Configure Quick Actions' screen
+            //      click on 'Call Main' to hide this quick action, and move up 'Add Attachment' quick action one position, above 'Add Activity'
+            accountListView.topAccountsListItemQuickActionsConfiguretBtn.click();
+            commNav.waitForPage("Configure Quick Actions");
+            accountListView.accountConfigureQACallMain.click();
+            accountListView.accountConfigureQAAddAttachUp.click();
+            headerbutton.clickHeaderButton("save");
+            commNav.waitForPage("All Accounts");
+
+            //Step: click button to display the amended Quick Actions
+            accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+            accountListView.topAccountsListItemIcon.click();
+
+            //Step: verify that the quick action order and visibility has changed appropriately in group view
+            quickActionText0 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=0]/label")).getText();
+            quickActionText1 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=1]/label")).getText();
+            quickActionText2 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=2]/label")).getText();
+            quickActionText3 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=3]/label")).getText();
+            quickActionText4 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=4]/label")).getText();
+            quickActionText5 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=5]/label")).getText();
+
+            AssertJUnit.assertEquals("VP: after personalization 1st Account quick action in group view is 'Configure' - FAILED", "Configure", quickActionText0);
+            System.out.println("VP: after personalization 1st Account quick action in group view is 'Configure' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization 2nd Account quick action in group view is 'Edit' - FAILED", "Edit", quickActionText1);
+            System.out.println("VP: after personalization 2nd Account quick action in group view is 'Edit' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization 3rd Account quick action in group view is 'Contacts' - FAILED", "Contacts", quickActionText2);
+            System.out.println("VP: after personalization 3rd Account quick action in group view is 'Contacts' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization 4th Account quick action in group view is 'Add Note' - FAILED", "Add Note", quickActionText3);
+            System.out.println("VP: after personalization 4th Account quick action in group view is 'Add Note' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization 5th Account quick action in group view is 'Add Attachment' - FAILED", "Add Attachment", quickActionText4);
+            System.out.println("VP: after personalization 5th Account quick action in group view is 'Add Attachment' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization 6th Account quick action in group view is 'Add Activity' - FAILED", "Add Activity", quickActionText5);
+            System.out.println("VP: after personalization 6th Account quick action in group view is 'Add Activity' - PASSED");
+
+
+            //Step: Clear search button and search on all records ... to display the 'card layout' view
+            commView.lookupTxtBox.click();
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
+            Thread.sleep(3000);
+            commNav.waitForPage("Accounts");
+
+            //Step: click button to display the amended Quick Actions
+            accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+            accountListView.topAccountsListItemIcon.click();
+
+            //Step: verify that the quick action order and visibility in card layout reflects the personalization appropriately
+            quickActionText0 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=0]/label")).getText();
+            quickActionText1 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=1]/label")).getText();
+            quickActionText2 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=2]/label")).getText();
+            quickActionText3 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=3]/label")).getText();
+            quickActionText4 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=4]/label")).getText();
+            quickActionText5 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=5]/label")).getText();
+
+            AssertJUnit.assertEquals("VP: after personalization 1st Account quick action in card layout view is 'Configure' - FAILED", "Configure", quickActionText0);
+            System.out.println("VP: after personalization 1st Account quick action in card layout view is 'Configure' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization 2nd Account quick action in card layout view is 'Edit' - FAILED", "Edit", quickActionText1);
+            System.out.println("VP: after personalization 2nd Account quick action in card layout view is 'Edit' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization 3rd Account quick action in card layout view is 'Contacts' - FAILED", "Contacts", quickActionText2);
+            System.out.println("VP: after personalization 3rd Account quick action in card layout view is 'Contacts' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization 4th Account quick action in card layout view is 'Add Note' - FAILED", "Add Note", quickActionText3);
+            System.out.println("VP: after personalization 4th Account quick action in card layout view is 'Add Note' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization 5th Account quick action in card layout view is 'Add Attachment' - FAILED", "Add Attachment", quickActionText4);
+            System.out.println("VP: after personalization 5th Account quick action in card layout view is 'Add Attachment' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization 6th Account quick action in card layout view is 'Add Activity' - FAILED", "Add Activity", quickActionText5);
+            System.out.println("VP: after personalization 6th Account quick action in card layout view is 'Add Activity' - PASSED");
+
+            //Step: logout & log back in (to clear cookies) ... then recheck that Account quick actions personalization is still in effect
+            LogOutThenLogBackIn(userName, userPwd);
+
+            commNav = PageFactory.initElements(driver, CommonNavigation.class);
+
+            //Step: navigate to Account list view
+            commNav.clickGlobalMenuItem("Accounts");
+            commNav.waitForPage("All Accounts");
+
+            //Step: click button to display the amended Quick Actions
+            accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+            accountListView.topAccountsListItemIcon.click();
+
+            //Step: verify that the quick action order and visibility is still reflecting the personalization appropriately after logoff/ on
+            quickActionText0 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=0]/label")).getText();
+            quickActionText1 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=1]/label")).getText();
+            quickActionText2 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=2]/label")).getText();
+            quickActionText3 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=3]/label")).getText();
+            quickActionText4 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=4]/label")).getText();
+            quickActionText5 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=5]/label")).getText();
+
+            AssertJUnit.assertEquals("VP: after personalization and logoff/on 1st Account quick action in group view is 'Configure' - FAILED", "Configure", quickActionText0);
+            System.out.println("VP: after personalization and logoff/on 1st Account quick action in group view is 'Configure' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization and logoff/on 2nd Account quick action in group view is 'Edit' - FAILED", "Edit", quickActionText1);
+            System.out.println("VP: after personalization and logoff/on 2nd Account quick action in group view is 'Edit' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization and logoff/on 3rd Account quick action in group view is 'Contacts' - FAILED", "Contacts", quickActionText2);
+            System.out.println("VP: after personalization and logoff/on 3rd Account quick action in group view is 'Contacts' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization and logoff/on 4th Account quick action in group view is 'Add Note' - FAILED", "Add Note", quickActionText3);
+            System.out.println("VP: after personalization and logoff/on 4th Account quick action in group view is 'Add Note' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization and logoff/on 5th Account quick action in group view is 'Add Attachment' - FAILED", "Add Attachment", quickActionText4);
+            System.out.println("VP: after personalization and logoff/on 5th Account quick action in group view is 'Add Attachment' - PASSED");
+            AssertJUnit.assertEquals("VP: after personalization and logoff/on 6th Account quick action in group view is 'Add Activity' - FAILED", "Add Activity", quickActionText5);
+            System.out.println("VP: after personalization and logoff/on 6th Account quick action in group view is 'Add Activity' - PASSED");
+
+            //Step: press Configure quick action to open 'Configure Quick Actions' screen ... restore to OOTB position and display
+            //      click on 'Call Main' to re-display this quick action, and move down 'Add Attachment' quick action one position, below 'Add Activity'
+            accountListView.topAccountsListItemQuickActionsConfiguretBtn.click();
+            commNav.waitForPage("Configure Quick Actions");
+            accountListView.accountConfigureQACallMain.click();
+            accountListView.accountConfigureQAAddAttachDown.click();
+            headerbutton.clickHeaderButton("save");
+            commNav.waitForPage("All Accounts");
+
+            //Step: click button to display the amended Quick Actions
+            accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+            accountListView.topAccountsListItemIcon.click();
+
+            //Step: verify OOTB quick actions order and display have been restored
+            quickActionText0 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=0]/label")).getText();
+            quickActionText1 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=1]/label")).getText();
+            quickActionText2 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=2]/label")).getText();
+            quickActionText3 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=3]/label")).getText();
+            quickActionText4 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=4]/label")).getText();
+            quickActionText5 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=5]/label")).getText();
+            quickActionText6 = driver.findElement(By.xpath("//*[@id='account_list']//ul/li[2]//button[@data-id=6]/label")).getText();
+
+            AssertJUnit.assertEquals("VP: after resetting to OOTB order and display 1st Account quick action is 'Configure' - FAILED", "Configure", quickActionText0);
+            System.out.println("VP: after resetting to OOTB order and display 1st Account quick action is 'Configure' - PASSED");
+            AssertJUnit.assertEquals("VP: after resetting to OOTB order and display 2nd Account quick action is 'Edit' - FAILED", "Edit", quickActionText1);
+            System.out.println("VP: after resetting to OOTB order and display 2nd Account quick action is 'Edit' - PASSED");
+            AssertJUnit.assertEquals("VP: after resetting to OOTB order and display 3rd Account quick action is 'Call Main' - FAILED", "Call Main", quickActionText2);
+            System.out.println("VP: after resetting to OOTB order and display 3rd Account quick action is 'Call Main' - PASSED");
+            AssertJUnit.assertEquals("VP: after resetting to OOTB order and display 4th Account quick action is 'Contacts' - FAILED", "Contacts", quickActionText3);
+            System.out.println("VP: after resetting to OOTB order and display 4th Account quick action is 'Contacts' - PASSED");
+            AssertJUnit.assertEquals("VP: after resetting to OOTB order and display 5th Account quick action is 'Add Note' - FAILED", "Add Note", quickActionText4);
+            System.out.println("VP: after resetting to OOTB order and display 5th Account quick action is 'Add Note' - PASSED");
+            AssertJUnit.assertEquals("VP: after resetting to OOTB order and display 6th Account quick action is 'Add Activity' - FAILED", "Add Activity", quickActionText5);
+            System.out.println("VP: after resetting to OOTB order and display 6th Account quick action is 'Add Activity' - PASSED");
+            AssertJUnit.assertEquals("VP: after resetting to OOTB order and display 7th Account quick action is 'Add Attachment' - FAILED", "Add Attachment", quickActionText6);
+            System.out.println("VP: after resetting to OOTB order and display 7th Account quick action is 'Add Attachment' - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: personalization of quick actions " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";
 		

@@ -164,9 +164,13 @@ public class AccountViewsElements extends BaseTest {
 	WebElement topAccountsListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='addAttachment']")
-	WebElement topAccountsListItemQuickActionsAddAttachmentBtn;
-	
+	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='__editPrefs__']")
+	WebElement topAccountsListItemQuickActionsConfiguretBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='addAttachment']")
+    WebElement topAccountsListItemQuickActionsAddAttachmentBtn;
+
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='addActivity']")
 	WebElement topAccountsListItemQuickActionsAddActivityBtn;
@@ -456,6 +460,20 @@ public class AccountViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_list']//span[2][@data-propertyname='MainPhone']")
     WebElement accountGroupViewMainPhoneFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='configure_quickactions']//li[@data-key='callMain']")
+    WebElement accountConfigureQACallMain;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='configure_quickactions']//li[@data-descriptor='Add Attachment']/div//span[@data-action='moveUp']")
+    WebElement accountConfigureQAAddAttachUp;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='configure_quickactions']//li[@data-descriptor='Add Attachment']/div//span[@data-action='moveDown']")
+    WebElement accountConfigureQAAddAttachDown;
+
 
 
     //Methods
