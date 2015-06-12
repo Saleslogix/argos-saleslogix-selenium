@@ -742,6 +742,131 @@ public class MobileSprint330B extends BaseTest {
 
 
     @Test(enabled = true)
+    // INFORCRM-2071 (MBL-10894) ... Calendar Month view : where activity is created not today, with start time earlier than current time,
+    //               on saving, the calendar cell count is incremented by 1 as expected, but the associated activity doesn't display
+    public void test06_INFORCRM2071() throws Exception {
+        String methodID = "test06_INFORCRM2071";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar, and press 'Month' button
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+            calendarView.calendarDayListToMonthBtn.click();
+
+
+            //Step: go to the next month, and click on the Sunday at the start of the 2nd row of days for the month
+            calendarView.calendarNextMonthBtn.click();
+            calendarView.calendarMonthFirstDaySecondRow.click();
+
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+
+            //Step: retrieve the default value for start time, then open the start time Calendar to set time to be earlier than the current time
+            String newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: Value for Start Time is : " + newActivityStartDate);
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            commNav.waitForPage("Calendar");
+            calendarView.calendarDecrementHourBtn.click();
+            headerButton.clickHeaderButton("accept");
+            commNav.waitForPage("Meeting");
+
+
+            //Step: retrieve the new value for start time, then find the 'time' portion only
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            String strDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: 'Value for updated Start Time is ... " + strDateTime);
+            String activityTime = strDateTime.substring(strDateTime.indexOf(' ')+1);
+            System.out.println("VP: Activity time has a value of ... " + activityTime);
+
+
+            //Step: convert activity string date representation to calendar date format
+            SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
+            Calendar activityDateTime1 = Calendar.getInstance();
+            activityDateTime1.setTime(ft.parse(activityTime));
+
+
+            //Step: convert current date/ time to date format of "hh:mm a", then convert time portion back to calendar date format
+            Calendar todayDate = Calendar.getInstance();
+            String todayString = ft.format(todayDate.getTime()).toString();
+            System.out.println("VP: Today's time in hh:mm a format is - " + todayString);
+            Calendar todayDateTime2 = Calendar.getInstance();
+            todayDateTime2.setTime(ft.parse(todayString));
+
+            //Step: check that the time of the activity is less than the current time 'today'
+            if (activityDateTime1.before(todayDateTime2)){
+                System.out.println("VP: Activity time is less than the current time for today ... continue test");
+            }
+            else {
+                System.out.println("VP: Activity time is not less than the current time for today ... stop test " + " - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+
+            //Step: save activity
+            headerButton.clickHeaderButton("Save");
+
+
+            //Step: wait for page Calendar ... should still be positioned on Month view
+            commNav.waitForPage("Calendar");
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+
+            //Step: focus should still be on the Sunday at the start of the 2nd row of days for the month; verify that activity just created appears for this day
+            AssertJUnit.assertEquals("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - FAILED", newActivityRegarding, calendarView.calendarMonthFirstActivityDescription.getText());
+            System.out.println("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - PASSED");
+
+
+        }
+
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
 	public void test99_Mobile_LogOut()  throws InterruptedException {				
 		String methodID = "test99_Mobile_LogOut";
 		
