@@ -744,6 +744,7 @@ public class MobileSprint330B extends BaseTest {
     @Test(enabled = true)
     // INFORCRM-2071 (MBL-10894) ... Calendar Month view : where activity is created not today, with start time earlier than current time,
     //               on saving, the calendar cell count is incremented by 1 as expected, but the associated activity doesn't display
+    //               Requires that Month view ... next month ... first day on second row has no activities
     public void test06_INFORCRM2071() throws Exception {
         String methodID = "test06_INFORCRM2071";
 

@@ -85,6 +85,11 @@ public class CalendarViewsElements extends BaseTest {
 
 
     @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_monthlist']/div[4]/div[2]/table/tbody/tr[4]/td[1]")
+    WebElement calendarMonthFirstDayThirdRow;
+
+
+    @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_monthlist']/div[4]/div[2]/table/tbody/tr[5]/td[1]")
     WebElement calendarMonthFirstDayFourthRow;
 
