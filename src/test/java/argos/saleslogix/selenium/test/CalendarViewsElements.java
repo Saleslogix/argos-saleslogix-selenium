@@ -48,7 +48,17 @@ public class CalendarViewsElements extends BaseTest {
 	@CacheLookup
     @FindBy(xpath = "//*[@id='calendar_daylist']/div[2]/button[5]")
 	WebElement calendarDayListToMonthBtn;
-	
+
+    // Date Time Picker Calendar fields
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='day-field']")
+    WebElement calendarDayField;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='month-field']")
+    WebElement calendarMonthField;
+
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='datetime-picker-time']//button[@data-action='incrementHour']")
 	WebElement calendarIncrementHourBtn;
