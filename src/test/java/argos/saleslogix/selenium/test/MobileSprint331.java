@@ -225,6 +225,87 @@ public class MobileSprint331 extends BaseTest {
     }
 
 
+    @Test(enabled = true)
+    // INFORCRM-3906 ... Calendar - for the first day of the month, activity count may be wrong if there are All-Day activities
+    public void test03_INFORCRM3906() throws Exception {
+        String methodID = "test03_INFORCRM3906";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: go to Calendar view ... wait for page Calendar, and press 'Month' button
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+            calendarView.calendarDayListToMonthBtn.click();
+
+            //Step: retrieve value for activity count for first day of the month
+            String activityCountInitial = calendarView.calendarMonthFirstDayMonthActivityCount.getText();
+            System.out.println("VP: Initial value of activity count for first day of current month is - " + activityCountInitial);
+
+            //Step: click on the first day of the month, then click the Add header button to open Activity schedule view
+            calendarView.calendarMonthFirstDayMonth.click();
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: set the activity to be Timeless
+            activityEditView.activityEditViewTimelessTgl.click();
+            System.out.println("VP: activity has been set to Timeless");
+
+            //Step: save activity
+            headerButton.clickHeaderButton("Save");
+
+            //Step: wait for page Calendar ... should still be positioned on Month view
+            commNav.waitForPage("Calendar");
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+            //Step: retrieve value for activity count for first day of the month
+            String activityCountFinal = calendarView.calendarMonthFirstDayMonthActivityCount.getText();
+            System.out.println("VP: Final value of activity count for first day of current month is - " + activityCountFinal);
+
+            String expectedActivityCount = Integer.toString(Integer.parseInt(activityCountInitial) + 1);
+            System.out.println("VP: Expected value of activity count for first day of current month is - " + expectedActivityCount);
+            AssertJUnit.assertEquals("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - FAILED",expectedActivityCount, activityCountFinal);
+            System.out.println("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - PASSED");
+
+        }
+
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+
+        System.out.println(ENDLINE);
+    }
+
+
 	//Login & Logout
 	//==============
 	@Test(enabled = true)

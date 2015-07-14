@@ -113,6 +113,14 @@ public class CalendarViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='calendar_monthlist']//h3[@class='p-description']")
     WebElement calendarMonthFirstActivityDescription ;
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_monthlist']//td[contains(@data-date, '-01')]")
+    WebElement calendarMonthFirstDayMonth;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='calendar_monthlist']//td[contains(@data-date, '-01')]//span[@class='activity-count']")
+    WebElement calendarMonthFirstDayMonthActivityCount;
+
 
     //Methods
 	//TODO: clickCalendarNavButton() - click a specific nav button by name
