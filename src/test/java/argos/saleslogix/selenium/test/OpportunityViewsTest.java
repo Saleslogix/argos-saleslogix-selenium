@@ -318,18 +318,19 @@ public class OpportunityViewsTest extends BaseTest {
             OpportunityViewsElements opportunityDetailView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
             //Step: check each item under the Opportunity Detail View, Quick Actions section
-            commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", opportunityDetailView.opportunityDetailViewQuickActionsHdr);
+            //commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", opportunityDetailView.opportunityDetailViewQuickActionsHdr);
             commNav.isWebElementPresent(viewName + ",'Schedule activity'", opportunityDetailView.opportunityDetailViewScheduleActivityLnk);
             commNav.isWebElementPresent(viewName + ",'Add note'", opportunityDetailView.opportunityDetailViewAddNoteLnk);
 
             //SubStep: conditionally expand the More Details section
-            if (opportunityDetailView.opportunityDetailViewMoreDetailsFields.getSize().height < 1) {
-                opportunityDetailView.opportunityDetailViewMoreDetailsHdr.click();
-                Thread.sleep(1000);
-            }
+            //if (opportunityDetailView.opportunityDetailViewMoreDetailsFields.getSize().height < 1) {
+            //    opportunityDetailView.opportunityDetailViewMoreDetailsHdr.click();
+            //    Thread.sleep(1000);
+            //}
 
             //Step: check each item under the Opportunity Detail View, Details section
-            commNav.isWebElementPresent(viewName + ",'Details' section header", opportunityDetailView.opportunityDetailViewDetailsHdr);
+            //commNav.isWebElementPresent(viewName + ",'Details' section header", opportunityDetailView.opportunityDetailViewDetailsHdr);
+            commNav.highlightNClick(opportunityDetailView.opportunityDetailViewDetailsTab);
             commNav.isFieldValueEmpty(viewName + ",'opportunity'", opportunityDetailView.opportunityDetailViewOpportunityFld);
             commNav.isFieldValueEmpty(viewName + ",'acct'", opportunityDetailView.opportunityDetailViewAcctFld);
             commNav.isFieldValueEmpty(viewName + ",'status'", opportunityDetailView.opportunityDetailViewStatusFld);
@@ -353,7 +354,8 @@ public class OpportunityViewsTest extends BaseTest {
             //commNav.isFieldValueEmpty(viewName + ",'rate locked'", opportunityDetailView.opportunityDetailViewRateLockedFld);
 
             //Step: check each item under the Opportunity Detail View, More Details section
-            commNav.isWebElementPresent(viewName + ",'More Details' section header", opportunityDetailView.opportunityDetailViewMoreDetailsHdr);
+            //commNav.isWebElementPresent(viewName + ",'More Details' section header", opportunityDetailView.opportunityDetailViewMoreDetailsHdr);
+            commNav.highlightNClick(opportunityDetailView.opportunityDetailViewMoreDetailsTab);
             commNav.isFieldValueEmpty(viewName + ",'type'", opportunityDetailView.opportunityDetailViewTypeFld);
             commNav.isFieldValueEmpty(viewName + ",'reseller'", opportunityDetailView.opportunityDetailViewResellerFld);
             commNav.isFieldValueEmpty(viewName + ",'close prob'", opportunityDetailView.opportunityDetailViewCloseProbFld);
@@ -361,7 +363,8 @@ public class OpportunityViewsTest extends BaseTest {
             commNav.isFieldValueEmpty(viewName + ",'lead source'", opportunityDetailView.opportunityDetailViewLeadSourceFld);
 
             //Step: check each item under the Opportunity Detail View, Related Items section
-            commNav.isWebElementPresent(viewName + ",'Related Items' section header", opportunityDetailView.opportunityDetailViewRelatedItemsHdr);
+            //commNav.isWebElementPresent(viewName + ",'Related Items' section header", opportunityDetailView.opportunityDetailViewRelatedItemsHdr);
+            commNav.highlightNClick(opportunityDetailView.opportunityDetailViewRelatedItemsTab);
             commNav.verifyEntityViewElementClick(viewName + ",'Products'", opportunityDetailView.opportunityDetailViewProductsLnk, "Products");
             commNav.verifyEntityViewElementClick(viewName + ",'Activities'", opportunityDetailView.opportunityDetailViewActivitiesLnk, "Activities");
             commNav.verifyEntityViewElementClick(viewName + ",'Opportunity Contacts'", opportunityDetailView.opportunityDetailViewOpportunityContactsLnk, "Opportunity Contacts");

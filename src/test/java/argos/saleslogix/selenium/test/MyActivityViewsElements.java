@@ -239,11 +239,13 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityDetailViewFaxFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[1]/div[4]")
+	//@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[1]/div[4]")
+    @FindBy(xpath = "//*[@id='activity_detail']//div[@data-property='Type']/span")
 	WebElement activityDetailViewTypeFld;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[2]/div[1]/span")
+    //@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[2]/div[1]/span")
+    @FindBy(xpath = "//*[@id='activity_detail']//div[@data-property='StartDate']/span")
     WebElement activityDetailViewStartTimeFld;
 	
 	@CacheLookup
@@ -586,6 +588,28 @@ public class MyActivityViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[15]//h3")
     WebElement activityLeaderViewUser15;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[1]")
+    WebElement activityDetailViewDetailsTab;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[2]")
+    WebElement activityDetailViewWhenTab;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[3]")
+    WebElement activityDetailViewWhoTab;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[4]")
+    WebElement activityDetailViewMoreDetailsTab;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[5]")
+    WebElement activityDetailViewRelatedItemsTab;
+
+
 
     //Methods
 	//=======

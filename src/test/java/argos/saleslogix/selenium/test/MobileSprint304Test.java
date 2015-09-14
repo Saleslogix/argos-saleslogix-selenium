@@ -194,15 +194,16 @@ public class MobileSprint304Test extends BaseTest {
         LeadViewsElements leadDetailView = PageFactory.initElements(driver, LeadViewsElements.class);
 
         // Step: expand the More Details section if collapsed
-        if (leadDetailView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
-            leadDetailView.leadsDetailViewMoreDetailsHdr.click();
-            Thread.sleep(1000);
-        }
+       // if (leadDetailView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
+       //    leadDetailView.leadsDetailViewMoreDetailsHdr.click();
+       //     Thread.sleep(1000);
+       // }
 
         //VP: check to see that the Mobile Phone field is available in the Detail view
 		String mobilePhoneDtlViewFldXPath = "//*[@id='lead_detail']/descendant::*[text() = 'mobile phone']";
 		String resultsMsg = "VP: the Mobile Phone field is available in the Lead Detail view";
 		try {
+            commNav.highlightNClick(leadDetailView.leadsDetailViewMoreDetailsTab);
 			AssertJUnit.assertTrue(driver.findElement(By.xpath(mobilePhoneDtlViewFldXPath)).isDisplayed());
 			System.out.println(resultsMsg + " - Passed");
 		}
@@ -705,6 +706,8 @@ public class MobileSprint304Test extends BaseTest {
 		    
 		    //Step: open the Ticket Activities view
 		    String tktDetVwActivitiesXPath = "//*[@id='ticket_detail']/descendant::*[text() = '" + entityDetailViewLink + "']";
+            WebElement relatedItemsTab = driver.findElement(By.xpath ("//*[@id='ticket_detail']//ul[@class='tab-list']/li[3]"));
+            commNav.highlightNClick(relatedItemsTab);
 		    driver.findElement(By.xpath(tktDetVwActivitiesXPath)).click();
 		    commNav.waitForPage(entityDetailViewLink);
 		    
@@ -724,14 +727,17 @@ public class MobileSprint304Test extends BaseTest {
 		    commNav.waitForNotPage(entityDetailViewLink);
 		    
 		    //Step: expand the More Details link
-		    WebElement moreDetailsLnk = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/descendant::*[text() = 'More Details']"));
-		    moreDetailsLnk.click();
+		    //WebElement moreDetailsLnk = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/descendant::*[text() = 'More Details']"));
+		    //moreDetailsLnk.click();
+            WebElement moreDetailsTab = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']//ul[@class='tab-list']/li[2]"));
+            commNav.highlightNClick(moreDetailsTab);
 		    
 		    //VP: check to see that the Elapsed Hours field is not equal to 0.0333333333333333
 		    String txt2Chk = "0.0333333333333333";
 		    String resultsMsg = "VP: The Elapsed Hours field value is not equal to " + txt2Chk;
 		    try {
-			    WebElement elapsedHrsFld = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/div[2]/div[2]/div[2]"));
+			    //WebElement elapsedHrsFld = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']/div[2]/div[2]/div[2]"));
+                WebElement elapsedHrsFld = driver.findElement(By.xpath("//*[@id='ticketactivity_detail']//div[@data-property='ElapsedUnits']/span "));
 			    String elapsedHrsVal = elapsedHrsFld.getText();
 		    	AssertJUnit.assertFalse(elapsedHrsVal.equals("elapsed hours" + txt2Chk));
 		    	System.out.println(resultsMsg + " - Passed");
@@ -830,6 +836,7 @@ public class MobileSprint304Test extends BaseTest {
 		commNav.entityRecordOpenDetailView(entityType, searchItem);
 		
 		//Step: capture the phone number from the Account Detail view
+        commNav.highlightNClick(accountDetailView.accountDetailViewDetailsTab);
         String acctDetVwPhoneNum = accountDetailView.accountDetailViewCallMainNumberLnk.getText();
 		
 	    //Step: schedule an activity from an Account Detail view
@@ -869,7 +876,10 @@ public class MobileSprint304Test extends BaseTest {
 		commNav.entityRecordOpenDetailView(entityType, searchItem);
 		
 		//Step: capture the phone number from the Contact Detail view
-		String cntctDetVwPhoneFldXPath = "//*[@id='contact_detail']/div[2]/ul[1]/li[1]/a/span";
+		//String cntctDetVwPhoneFldXPath = "//*[@id='contact_detail']/div[2]/ul[1]/li[1]/a/span";
+        WebElement detailsTab = driver.findElement(By.xpath("//*[@id='contact_detail']//ul[@class='tab-list']/li[1] "));
+        commNav.highlightNClick(detailsTab);
+        String cntctDetVwPhoneFldXPath = "//*[@id='contact_detail']//div[@data-property='WorkPhone']/span";
 		String cntctDetVwPhoneNum = driver.findElement(By.xpath(cntctDetVwPhoneFldXPath)).getText();
 		
 	    //Step: schedule an activity from a Contact Detail view

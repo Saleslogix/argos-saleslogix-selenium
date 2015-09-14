@@ -332,9 +332,12 @@ public class MobileSprint305Test extends BaseTest {
 	
 		//Step: open the Ticket Detail view  
 		commNav.clickListViewItemN(entityView, 1);
-		
-		//Step: click the Ticket Activities link
-		String tcktActivitiesLnkXPath = "//*[@id='ticket_detail']/descendant::*[text() = 'Ticket Activities']";
+
+        WebElement relatedItemsTab = driver.findElement(By.xpath("//*[@id='ticket_detail']//ul[@class='tab-list']/li[3] "));
+        commNav.highlightNClick(relatedItemsTab);
+
+        //Step: click the Ticket Activities link
+        String tcktActivitiesLnkXPath = "//*[@id='ticket_detail']/descendant::*[text() = 'Ticket Activities']";
 		driver.findElement(By.xpath(tcktActivitiesLnkXPath)).click();
 		commNav.waitForPage("Ticket Activities");
 		

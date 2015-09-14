@@ -162,19 +162,23 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistoryDetailViewDetailsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[1]/span")
+	//@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[1]/span")
+    @FindBy(xpath = "//*[@id='history_detail']//div[@data-property='StartDate']/span")
 	WebElement notesHistoryDetailViewScheduledFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[2]/span")
+	//@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[2]/span")
+    @FindBy(xpath = "//*[@id='history_detail']//div[@data-property='CompletedDate']/span")
 	WebElement notesHistoryDetailViewCompletedFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[3]/span")
+	//@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[3]/span")
+    @FindBy(xpath = "//*[@id='history_detail']//div[@data-property='Description']/span")
 	WebElement notesHistoryDetailViewRegardingFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[4]/span")
+	//@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[4]/span")
+    @FindBy(xpath = "//*[@id='history_detail']//div[@data-property='CompletedUser']/span")
 	WebElement notesHistoryDetailViewCompletedByFld;
 	
 	@CacheLookup
@@ -182,7 +186,8 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistoryDetailViewNotesHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div/pre")
+	//@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[1]/div/pre")
+    @FindBy(xpath = "//*[@id='history_detail']//div[@data-property='LongNotes']/pre")
 	WebElement notesHistoryDetailViewNotesFld;
 	
 	@CacheLookup
@@ -190,19 +195,23 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistoryDetailRelatedItems1Hdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[5]/span")
+	//@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[5]/span")
+    @FindBy(xpath = "//*[@id='history_detail']/div[3]/div[5]/div[5]/span")
 	WebElement notesHistoryDetailViewAccountFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[6]/span")
+	//@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[6]/span")
+    @FindBy(xpath = "//*[@id='history_detail']/div[3]/div[5]/div[6]/span")
 	WebElement notesHistoryDetailViewContactFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[7]/span")
+	//@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[7]/span")
+    @FindBy(xpath = "//*[@id='history_detail']/div[3]/div[5]/div[7]/span")
 	WebElement notesHistoryDetailViewOpportunityFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[8]/span")
+	//@FindBy(xpath = "//*[@id='history_detail']/div[2]/div[2]/div[8]/span")
+    @FindBy(xpath = "//*[@id='history_detail']/div[3]/div[5]/div[8]/span")
 	WebElement notesHistoryDetailViewTicketFld;
 	
 	@CacheLookup
@@ -210,7 +219,8 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistoryDetailRelatedItems2Hdr;
 		
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='history_detail']/div[2]/ul/li/a")
+	//@FindBy(xpath = "//*[@id='history_detail']/div[2]/ul/li/a")
+    @FindBy(xpath = "//*[@id='history_detail']/descendant::*[text() = 'Attachments']")
 	WebElement notesHistoryDetailViewAttachmentsLnk;	
 			
 	//Edit View elements
@@ -299,6 +309,19 @@ public class NotesHistoryViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = ".//*[@id='history_edit']/div[1]//h4")
     WebElement notesHistoryEditViewValSummField;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='history_detail']//ul[@class='tab-list']/li[1]")
+    WebElement notesHistoryDetailViewNotesTab;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='history_detail']//ul[@class='tab-list']/li[2]")
+    WebElement notesHistoryDetailViewDetailsTab;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='history_detail']//ul[@class='tab-list']/li[3]")
+    WebElement notesHistoryDetailViewRelatedItemsTab;
+
 	
 	//Methods
 	//-------

@@ -259,19 +259,23 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsDetailViewDetailsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[1]")
+	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[1]")
+    @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='NameLF']/span")
 	WebElement contactsDetailViewContactFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[2]")
+	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[2]")
+    @FindBy(xpath = "//*[@id='contact_detail']/div[3]/div[4]/div[2]/span")
 	WebElement contactsDetailViewAccountFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[2]")
+	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[2]")
+    @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='WebAddress']/span")
 	WebElement contactsDetailViewWebFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[3]")
+	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[3]")
+    @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='Title']/span")
 	WebElement contactsDetailViewTitleFld;
 		
 	@CacheLookup
@@ -283,23 +287,32 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsDetailViewMoreDetailsFields;	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[1]")
-	WebElement contactsDetailViewHomePhoneFld;
+    //@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[1]")
+    @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='HomePhone']/span")
+    WebElement contactsDetailViewHomePhoneFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='WorkPhone']/span")
+    WebElement contactsDetailViewWorkPhoneFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[4]")
+	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[4]")
+    @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='Fax']/span")
 	WebElement contactsDetailViewFaxFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[4]")
+	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[4]")
+    @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='AccountManager.UserInfo']/span")
 	WebElement contactsDetailViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[5]")
+	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[5]")
+    @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='Owner.OwnerDescription']/span")
 	WebElement contactsDetailViewOwnerFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[6]/span")
+	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[6]/span")
+    @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='CuisinePreference']/span")
 	WebElement contactsDetailViewCuisineFld;
 
 	@CacheLookup
@@ -460,6 +473,19 @@ public class ContactViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//span[2][@data-propertyname='Mobile']")
     WebElement contactGroupViewMobileFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_detail']//ul[@class='tab-list']/li[1]")
+    WebElement contactDetailViewDetailsTab;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_detail']//ul[@class='tab-list']/li[2]")
+    WebElement contactDetailViewMoreDetailsTab;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='contact_detail']//ul[@class='tab-list']/li[3]")
+    WebElement contactDetailViewRelatedItemsTab;
+
 	
 	//Methods
 	//=======

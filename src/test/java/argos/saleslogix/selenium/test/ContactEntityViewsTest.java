@@ -289,79 +289,83 @@ public class ContactEntityViewsTest extends BaseTest {
 	}
 
 
-	@Test(enabled = true)
-	public void test07_SeTestTCContactDetailView() throws Exception {
-		String methodID = "test07_SeTestTCContactDetailView";
-		
-		//Test Parameters:
-		String entityType = "Contacts";
-		String contactRecord = TEST_CONTACT_RECORD;
-		String viewName = "Contact Detail view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+    @Test(enabled = true)
+    public void test07_SeTestTCContactDetailView() throws Exception {
+        String methodID = "test07_SeTestTCContactDetailView";
+
+        //Test Parameters:
+        String entityType = "Contacts";
+        String contactRecord = TEST_CONTACT_RECORD;
+        String viewName = "Contact Detail view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: login & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
-		
-		try {
-			//Step: search for Contact entity, then open it's Detail view
-			commNav.entityRecordOpenDetailView(entityType, contactRecord);
-			
-			ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
-			
-			//Step: check each item under the Contact Detail View, Quick Actions section
-			commNav.isWebElementPresent(viewName + ", 'Quick Actions' section header", contactDetailView.contactsDetailViewQuickActionsHdr);
-			commNav.isWebElementPresent(viewName + ", 'Call work'", contactDetailView.contactsDetailViewCallMainNumberLnk);
-			commNav.isWebElementPresent(viewName + ", 'Call mobile'", contactDetailView.contactsDetailViewCallMobileLnk);
+
+        try {
+            //Step: search for Contact entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, contactRecord);
+
+            ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
+
+            //Step: check each item under the Contact Detail View, Quick Actions section
+            //commNav.isWebElementPresent(viewName + ", 'Quick Actions' section header", contactDetailView.contactsDetailViewQuickActionsHdr);
+            commNav.isWebElementPresent(viewName + ", 'Call work'", contactDetailView.contactsDetailViewCallMainNumberLnk);
+            commNav.isWebElementPresent(viewName + ", 'Call mobile'", contactDetailView.contactsDetailViewCallMobileLnk);
             commNav.verifyEntityViewElementClick(viewName + ", 'Schedule activity'", contactDetailView.contactsDetailViewScheduleActivityLnk, "Schedule...");
             commNav.isWebElementPresent(viewName + ", 'Add note'", contactDetailView.contactsDetailViewAddNoteLnk);
-			commNav.isWebElementPresent(viewName + ", 'Send email'", contactDetailView.contactsDetailViewSendEmailLnk);
-			commNav.isWebElementPresent(viewName + ", 'View address'", contactDetailView.contactsDetailViewViewAddressLnk);
+            commNav.isWebElementPresent(viewName + ", 'Send email'", contactDetailView.contactsDetailViewSendEmailLnk);
+            commNav.isWebElementPresent(viewName + ", 'View address'", contactDetailView.contactsDetailViewViewAddressLnk);
 
             //Step: conditionally expand the More Details section
-            if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
-                contactDetailView.contactsDetailViewMoreDetailsHdr.click();
-                Thread.sleep(1000);
-            }
-			
-			//Step: check each item under the Contact Detail View, Details section
-			commNav.isWebElementPresent(viewName + ", 'Details' section header", contactDetailView.contactsDetailViewDetailsHdr);
-			commNav.isFieldValueEmpty(viewName + ", 'contact'", contactDetailView.contactsDetailViewContactFld);
-			commNav.isFieldValueEmpty(viewName + ", 'account'", contactDetailView.contactsDetailViewAccountFld);
+            //if (contactDetailView.contactsDetailViewMoreDetailsFields.getSize().height < 1) {
+            //    contactDetailView.contactsDetailViewMoreDetailsHdr.click();
+            //    Thread.sleep(1000);
+            //}
+
+            //Step: check each item under the Contact Detail View, Details section
+            //commNav.isWebElementPresent(viewName + ", 'Details' section header", contactDetailView.contactsDetailViewDetailsHdr);
+            commNav.highlightNClick(contactDetailView.contactDetailViewDetailsTab);
+            commNav.isFieldValueEmpty(viewName + ", 'contact'", contactDetailView.contactsDetailViewContactFld);
+            commNav.isFieldValueEmpty(viewName + ", 'account'", contactDetailView.contactsDetailViewAccountFld);
+            commNav.isFieldValueEmpty(viewName + ", 'work phone'", contactDetailView.contactsDetailViewWorkPhoneFld);
             commNav.isFieldValueEmpty(viewName + ", 'acct mgr'", contactDetailView.contactsDetailViewAcctMgrFld);
 
-			//Step: check each item under the Contact Detail View, More Details section
-			commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
-			commNav.isFieldValueEmpty(viewName + ", 'home phone'", contactDetailView.contactsDetailViewHomePhoneFld);
+            //Step: check each item under the Contact Detail View, More Details section
+            //commNav.isWebElementPresent(viewName + ", 'More Details' section header", contactDetailView.contactsDetailViewMoreDetailsHdr);
+            commNav.highlightNClick(contactDetailView.contactDetailViewMoreDetailsTab);
+            commNav.isFieldValueEmpty(viewName + ", 'home phone'", contactDetailView.contactsDetailViewHomePhoneFld);
             commNav.isFieldValueEmpty(viewName + ", 'web'", contactDetailView.contactsDetailViewWebFld);
             commNav.isFieldValueEmpty(viewName + ", 'title'", contactDetailView.contactsDetailViewTitleFld);
-			commNav.isFieldValueEmpty(viewName + ", 'fax'", contactDetailView.contactsDetailViewFaxFld);
-			commNav.isFieldValueEmpty(viewName + ", 'owner'", contactDetailView.contactsDetailViewOwnerFld);
-			commNav.isFieldValueEmpty(viewName + ", 'cuisine'", contactDetailView.contactsDetailViewCuisineFld);
-	
-			//Step: check each item under the Contact Detail View, Related Items section
-			commNav.isWebElementPresent(viewName + ", 'Related Items' section header", contactDetailView.contactsDetailViewRelatedItemsHdr);
-			commNav.verifyEntityViewElementClick(viewName + ", 'Activities'", contactDetailView.contactsDetailViewActivitiesLnk, "Activities");
-			commNav.verifyEntityViewElementClick(viewName + ", 'Opportunities'", contactDetailView.contactsDetailViewOpportunitiesLnk, "Opportunities");
-			commNav.verifyEntityViewElementClick(viewName + ", 'Tickets'", contactDetailView.contactsDetailViewTicketsLnk, "Tickets");
-			commNav.verifyEntityViewElementClick(viewName + ", 'Notes/History'", contactDetailView.contactsDetailViewNotesHistoryLnk, "Notes/History");
-			commNav.verifyEntityViewElementClick(viewName + ", 'Addresses'", contactDetailView.contactsDetailViewAddressesLnk, "Addresses");
-			commNav.verifyEntityViewElementClick(viewName + ", 'Attachments'", contactDetailView.contactsDetailViewAttachmentsLnk, "Contact Attachments");
-		}
-		catch (Exception e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": the Contact Detail view for the '" + contactRecord + "' Contact record; test aborted.");
-		}
-				
-		//Step: go back to previous screen
-		headerButton.goBack();
-		commNav.waitForPage("Contacts");
-		
-		System.out.println(ENDLINE);
-	}
+            commNav.isFieldValueEmpty(viewName + ", 'fax'", contactDetailView.contactsDetailViewFaxFld);
+            commNav.isFieldValueEmpty(viewName + ", 'owner'", contactDetailView.contactsDetailViewOwnerFld);
+            commNav.isFieldValueEmpty(viewName + ", 'cuisine'", contactDetailView.contactsDetailViewCuisineFld);
+
+            //Step: check each item under the Contact Detail View, Related Items section
+            //commNav.isWebElementPresent(viewName + ", 'Related Items' section header", contactDetailView.contactsDetailViewRelatedItemsHdr);
+            commNav.highlightNClick(contactDetailView.contactDetailViewRelatedItemsTab);
+            commNav.verifyEntityViewElementClick(viewName + ", 'Activities'", contactDetailView.contactsDetailViewActivitiesLnk, "Activities");
+            commNav.verifyEntityViewElementClick(viewName + ", 'Opportunities'", contactDetailView.contactsDetailViewOpportunitiesLnk, "Opportunities");
+            commNav.verifyEntityViewElementClick(viewName + ", 'Tickets'", contactDetailView.contactsDetailViewTicketsLnk, "Tickets");
+            commNav.verifyEntityViewElementClick(viewName + ", 'Notes/History'", contactDetailView.contactsDetailViewNotesHistoryLnk, "Notes/History");
+            commNav.verifyEntityViewElementClick(viewName + ", 'Addresses'", contactDetailView.contactsDetailViewAddressesLnk, "Addresses");
+            commNav.verifyEntityViewElementClick(viewName + ", 'Attachments'", contactDetailView.contactsDetailViewAttachmentsLnk, "Contact Attachments");
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + ": the Contact Detail view for the '" + contactRecord + "' Contact record; test aborted.");
+        }
+
+        //Step: go back to previous screen
+        headerButton.goBack();
+        commNav.waitForPage("Contacts");
+
+        System.out.println(ENDLINE);
+    }
 
 
 	@Test(enabled = true)

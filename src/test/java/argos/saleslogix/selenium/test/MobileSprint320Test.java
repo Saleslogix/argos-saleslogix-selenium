@@ -149,6 +149,7 @@ public class MobileSprint320Test extends BaseTest {
         commNav.entityRecordOpenDetailView(entityType, contactRecord);
 
         //Step: Open the Activities for the Contact
+        commNav.highlightNClick(contactDetailView.contactDetailViewRelatedItemsTab);
         contactDetailView.contactsDetailViewActivitiesLnk.click();
         commNav.waitForPage("Activities");
 

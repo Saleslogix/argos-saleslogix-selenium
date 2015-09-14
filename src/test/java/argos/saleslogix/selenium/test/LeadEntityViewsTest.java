@@ -289,83 +289,86 @@ public class LeadEntityViewsTest extends BaseTest {
 		
 		System.out.println(ENDLINE);
 	}
-	
-	@Test(enabled = true)
-	public void test07_SeTestTCLeadDetailView() throws Exception {
-		String methodID = "test07_SeTestTCLeadDetailView";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		// Test Params:
-		String entityType = "Lead";
-		String entityRecord = TEST_LEAD_RECORD;
-		String viewName = "Lead Detail view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+    @Test(enabled = true)
+    public void test07_SeTestTCLeadDetailView() throws Exception {
+        String methodID = "test07_SeTestTCLeadDetailView";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        // Test Params:
+        String entityType = "Lead";
+        String entityRecord = TEST_LEAD_RECORD;
+        String viewName = "Lead Detail view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
         //Step: login & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
-		
-		try {
-			//Step: search for Lead entity, then open it's Detail view
-			commNav.entityRecordOpenDetailView(entityType, entityRecord);
-			
-			LeadViewsElements leadDetailView = PageFactory.initElements(driver, LeadViewsElements.class);
-			
-			//Step: check each item under the Lead Detail View, Quick Actions section
-			commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", leadDetailView.leadsDetailViewQuickActionsHdr);
-			commNav.isWebElementPresent(viewName + ",'Call main number'", leadDetailView.leadsDetailViewCallMainNumberLnk);
-			commNav.isWebElementPresent(viewName + ",'Send email'", leadDetailView.leadsDetailViewSendEmailLnk);
-			commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", leadDetailView.leadsDetailViewScheduleActivityLnk, "Schedule...");
-			//commNav.isWebElementPresent(viewName + ",'Add note'", leadDetailView.leadsDetailViewAddNoteLnk);
-			//TODO: figure out why there is a failure for this step; reverting to 
-			commNav.verifyEntityViewElementClick(viewName + ",'Add note'", leadDetailView.leadsDetailViewAddNoteLnk, "Note");
-			commNav.isWebElementPresent(viewName + ",'View address'", leadDetailView.leadsDetailViewViewAddressLnk);
+
+        try {
+            //Step: search for Lead entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, entityRecord);
+
+            LeadViewsElements leadDetailView = PageFactory.initElements(driver, LeadViewsElements.class);
+
+            //Step: check each item under the Lead Detail View, Quick Actions section
+            //commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", leadDetailView.leadsDetailViewQuickActionsHdr);
+            commNav.isWebElementPresent(viewName + ",'Call main number'", leadDetailView.leadsDetailViewCallMainNumberLnk);
+            commNav.isWebElementPresent(viewName + ",'Send email'", leadDetailView.leadsDetailViewSendEmailLnk);
+            commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", leadDetailView.leadsDetailViewScheduleActivityLnk, "Schedule...");
+            //commNav.isWebElementPresent(viewName + ",'Add note'", leadDetailView.leadsDetailViewAddNoteLnk);
+            //TODO: figure out why there is a failure for this step; reverting to
+            commNav.verifyEntityViewElementClick(viewName + ",'Add note'", leadDetailView.leadsDetailViewAddNoteLnk, "Note");
+            commNav.isWebElementPresent(viewName + ",'View address'", leadDetailView.leadsDetailViewViewAddressLnk);
 
             // Step: expand the More Details section if collapsed
-            if (leadDetailView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
-                leadDetailView.leadsDetailViewMoreDetailsHdr.click();
-                Thread.sleep(1000);
-            }
+            //if (leadDetailView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
+            //    leadDetailView.leadsDetailViewMoreDetailsHdr.click();
+            //    Thread.sleep(1000);
+            //}
 
-			//Step: check each item under the Lead Detail View, Details section
-			commNav.isWebElementPresent(viewName + ",'Details' section header", leadDetailView.leadsDetailViewDetailsHdr);
-			commNav.isFieldValueEmpty(viewName + ",'name'", leadDetailView.leadsDetailViewNameFld);
-			commNav.isFieldValueEmpty(viewName + ",'company'", leadDetailView.leadsDetailViewCompanyFld);
+            //Step: check each item under the Lead Detail View, Details section
+            //commNav.isWebElementPresent(viewName + ",'Details' section header", leadDetailView.leadsDetailViewDetailsHdr);
+            commNav.highlightNClick(leadDetailView.leadsDetailViewDetailsTab);
+            commNav.isFieldValueEmpty(viewName + ",'name'", leadDetailView.leadsDetailViewNameFld);
+            commNav.isFieldValueEmpty(viewName + ",'company'", leadDetailView.leadsDetailViewCompanyFld);
             commNav.isFieldValueEmpty(viewName + ",'title'", leadDetailView.leadsDetailViewTitleFld);
 
 
-			//Step: check each item under the Lead Detail View, More Details section
-			commNav.isWebElementPresent(viewName + ",'More Details' section header", leadDetailView.leadsDetailViewMoreDetailsHdr);
+            //Step: check each item under the Lead Detail View, More Details section
+            //commNav.isWebElementPresent(viewName + ",'More Details' section header", leadDetailView.leadsDetailViewMoreDetailsHdr);
+            commNav.highlightNClick(leadDetailView.leadsDetailViewMoreDetailsTab);
             commNav.isFieldValueEmpty(viewName + ",'work phone'", leadDetailView.leadsDetailViewWorkPhoneFld);
             commNav.isFieldValueEmpty(viewName + ",'mobile phone'", leadDetailView.leadsDetailViewMobilePhoneFld);
             commNav.isFieldValueEmpty(viewName + ",'toll free'", leadDetailView.leadsDetailViewTollFreeFld);
             commNav.isFieldValueEmpty(viewName + ",'lead source'", leadDetailView.leadsDetailViewLeadSourceFld);
             commNav.isFieldValueEmpty(viewName + ",'web'", leadDetailView.leadsDetailViewWebFld);
-			commNav.isFieldValueEmpty(viewName + ",'interests'", leadDetailView.leadsDetailViewInterestsFld);
-			commNav.isFieldValueEmpty(viewName + ",'industry'", leadDetailView.leadsDetailViewIndustryFld);
-			commNav.isFieldValueEmpty(viewName + ",'sic code'", leadDetailView.leadsDetailViewSicCodeFld);
-			commNav.isFieldValueEmpty(viewName + ",'bus desc'", leadDetailView.leadsDetailViewBusDescFld);
-			commNav.isFieldValueEmpty(viewName + ",'comments'", leadDetailView.leadsDetailViewCommentsFld);
-			commNav.isFieldValueEmpty(viewName + ",'owner'", leadDetailView.leadsDetailViewOwnerFld);
+            commNav.isFieldValueEmpty(viewName + ",'interests'", leadDetailView.leadsDetailViewInterestsFld);
+            commNav.isFieldValueEmpty(viewName + ",'industry'", leadDetailView.leadsDetailViewIndustryFld);
+            commNav.isFieldValueEmpty(viewName + ",'sic code'", leadDetailView.leadsDetailViewSicCodeFld);
+            commNav.isFieldValueEmpty(viewName + ",'bus desc'", leadDetailView.leadsDetailViewBusDescFld);
+            commNav.isFieldValueEmpty(viewName + ",'comments'", leadDetailView.leadsDetailViewCommentsFld);
+            commNav.isFieldValueEmpty(viewName + ",'owner'", leadDetailView.leadsDetailViewOwnerFld);
 
-			//Step: check each item under the Lead Detail View, Related Items section
-			commNav.isWebElementPresent(viewName + ",'Related Items' section header", leadDetailView.leadsDetailViewRelatedItemsHdr);
-			commNav.verifyEntityViewElementClick(viewName + ",'Activities'", leadDetailView.leadsDetailViewActivitiesLnk, "Activities");
-			commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", leadDetailView.leadsDetailViewNotesHistoryLnk, "Notes/History");
-			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", leadDetailView.leadsDetailViewAttachmentsLnk, "Lead Attachments");
-			
-			//Step: go back to previous screen
-			headerButton.goBack();
-			Thread.sleep(3000);
-		}
-		catch (Exception e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-		}
-		
-		System.out.println(ENDLINE);
-	}
+            //Step: check each item under the Lead Detail View, Related Items section
+            //commNav.isWebElementPresent(viewName + ",'Related Items' section header", leadDetailView.leadsDetailViewRelatedItemsHdr);
+            commNav.highlightNClick(leadDetailView.leadsDetailViewRelatedItemsTab);
+            commNav.verifyEntityViewElementClick(viewName + ",'Activities'", leadDetailView.leadsDetailViewActivitiesLnk, "Activities");
+            commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", leadDetailView.leadsDetailViewNotesHistoryLnk, "Notes/History");
+            commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", leadDetailView.leadsDetailViewAttachmentsLnk, "Lead Attachments");
+
+            //Step: go back to previous screen
+            headerButton.goBack();
+            Thread.sleep(3000);
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        System.out.println(ENDLINE);
+    }
 	
 	
 	@Test(enabled = true)

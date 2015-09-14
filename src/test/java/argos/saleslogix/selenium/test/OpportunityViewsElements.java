@@ -216,35 +216,43 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityDetailViewDetailsHdr;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[1]")
+	//@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[1]")
+    @FindBy(xpath = "//*[@id='opportunity_detail']//div[@data-property='Description']/span")
 	WebElement opportunityDetailViewOpportunityFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[2]")
+	//@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[2]")
+    @FindBy(xpath = "//*[@id='opportunity_detail']/div[3]/div[4]/div[2]/span")
 	WebElement opportunityDetailViewAcctFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[2]")
+	//@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[2]")
+    @FindBy(xpath = "//*[@id='opportunity_detail']/div[3]/div[5]/div[2]/span")
 	WebElement opportunityDetailViewResellerFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[4]")
+	//@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[4]")
+    @FindBy(xpath = "//*[@id='opportunity_detail']//div[@data-property='EstimatedClose']/span")
 	WebElement opportunityDetailViewEstCloseFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[3]")
+	//@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[3]")
+    @FindBy(xpath = "//*[@id='opportunity_detail']//div[@data-property='Status']/span")
 	WebElement opportunityDetailViewStatusFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[1]")
+	//@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[1]")
+    @FindBy(xpath = "//*[@id='opportunity_detail']//div[@data-property='Type']/span")
 	WebElement opportunityDetailViewTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[3]")
+	//@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[3]")
+    @FindBy(xpath = "//*[@id='opportunity_detail']//div[@data-property='CloseProbability']/span")
 	WebElement opportunityDetailViewCloseProbFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[5]")
+	//@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[1]/div[5]")
+    @FindBy(xpath = "//*[@id='opportunity_detail']//div[@data-property='SalesPotential']/span")
 	WebElement opportunityDetailViewSalesPotentialBaseRateFld;
 	
 	@CacheLookup
@@ -288,11 +296,13 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityDetailViewMoreDetailsFields;	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[4]")
+	//@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[4]")
+    @FindBy(xpath = "//*[@id='opportunity_detail']//div[@data-property='AccountManager.UserInfo']/span")
 	WebElement opportunityDetailViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[5]")
+	//@FindBy(xpath = "//*[@id='opportunity_detail']/div[2]/div[2]/div[5]")
+    @FindBy(xpath = "//*[@id='opportunity_detail']//div[@data-property='LeadSource.Description']/span")
 	WebElement opportunityDetailViewLeadSourceFld;
 
 	@CacheLookup
@@ -509,7 +519,20 @@ public class OpportunityViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='Closed - Won']")
     WebElement rmenu_groupClosedWon;
-	
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='opportunity_detail']//ul[@class='tab-list']/li[1]")
+    WebElement opportunityDetailViewDetailsTab;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='opportunity_detail']//ul[@class='tab-list']/li[2]")
+    WebElement opportunityDetailViewMoreDetailsTab;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='opportunity_detail']//ul[@class='tab-list']/li[3]")
+    WebElement opportunityDetailViewRelatedItemsTab;
+
+
 	//Methods
 	//-------
 	public String getOpportunityListViewTxt() {

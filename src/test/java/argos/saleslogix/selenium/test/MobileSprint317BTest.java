@@ -129,15 +129,16 @@ public class MobileSprint317BTest extends BaseTest {
             leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
 
             // Step: expand the More Details section if collapsed ... it will be in Mobile 3.2
-            if (leadEditView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
-                leadEditView.leadsDetailViewMoreDetailsHdr.click();
-                Thread.sleep(1000);
-            }
+            //if (leadEditView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
+            //    leadEditView.leadsDetailViewMoreDetailsHdr.click();
+            //    Thread.sleep(1000);
+            //}
 
             //Store the current window handle for the mobile window
             String winHandleBefore = driver.getWindowHandle();
 
             //Step: click on the lead detail view web link ... should open expected web page
+            commNav.highlightNClick(leadEditView.leadsDetailViewMoreDetailsTab);
             leadEditView.leadsDetailViewWebFldLnk.click();
             Thread.sleep(7000);
 
@@ -317,6 +318,7 @@ public class MobileSprint317BTest extends BaseTest {
             OpportunityViewsElements opportunityDetailView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
             //Step: open the Products list for the opportunity, and choose to add a product
+            commNav.highlightNClick(opportunityDetailView.opportunityDetailViewRelatedItemsTab);
             opportunityDetailView.opportunityDetailViewProductsLnk.click();
             commNav.waitForPage("Products");
             headerButton.clickHeaderButton("Add");

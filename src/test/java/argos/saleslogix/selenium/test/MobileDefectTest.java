@@ -548,6 +548,7 @@ public class MobileDefectTest extends BaseTest {
                 CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
 				
 			    // Step: click the Notes/History link...
+                commNav.highlightNClick(leadDetailView.leadsDetailViewRelatedItemsTab);
 				leadDetailView.leadsDetailViewNotesHistoryLnk.click();
 				commNav.waitForPage("Notes/History");
 			    
@@ -884,6 +885,7 @@ public class MobileDefectTest extends BaseTest {
 		    
 		    //Step: click the Attachments link from the Contact detail view...
 		    contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
+            commNav.highlightNClick(contactDetailView.contactDetailViewRelatedItemsTab);
 		    contactDetailView.contactsDetailViewAttachmentsLnk.click();
 			commNav.waitForPage("Contact Attachments");
 			
@@ -990,6 +992,7 @@ public class MobileDefectTest extends BaseTest {
 				LeadViewsElements leadDetailView = PageFactory.initElements(driver, LeadViewsElements.class);
 			
 			    // Step: click the Attachments link...
+                commNav.highlightNClick(leadDetailView.leadsDetailViewRelatedItemsTab);
 				leadDetailView.leadsDetailViewAttachmentsLnk.click();
 			    	
 			    // Step: click the top Add button...
@@ -1066,6 +1069,7 @@ public class MobileDefectTest extends BaseTest {
 				leadDetailView = PageFactory.initElements(driver, LeadViewsElements.class);
 			
 			    // Step: click the Attachments link...
+                commNav.highlightNClick(leadDetailView.leadsDetailViewRelatedItemsTab);
 				leadDetailView.leadsDetailViewAttachmentsLnk.click();
 			    	
 			    // Step: click the top Add button...
@@ -1101,6 +1105,7 @@ public class MobileDefectTest extends BaseTest {
 			    // -- Start Section
 			    // Step: navigate back to My Activities view...
 			    headerButton.backButton.click();
+                commNav.highlightNClick(leadDetailView.leadsDetailViewRelatedItemsTab);
 			    leadDetailView.leadsDetailViewAttachmentsLnk.click();
 			}
 			catch (Exception e) {
@@ -1383,6 +1388,7 @@ public class MobileDefectTest extends BaseTest {
 			ContactViewsElements contactDetail = PageFactory.initElements(driver, ContactViewsElements.class);
 			
 			//Step: open the Activities view
+            commNav.highlightNClick(contactDetail.contactDetailViewRelatedItemsTab);
 			contactDetail.contactsDetailViewActivitiesLnk.click();
 			commNav.waitForPage("Activities");
 				
@@ -1431,6 +1437,7 @@ public class MobileDefectTest extends BaseTest {
 			LeadViewsElements leadDetail = PageFactory.initElements(driver, LeadViewsElements.class);
 			
 			//Step: open the Activities view
+            commNav.highlightNClick(leadDetail.leadsDetailViewRelatedItemsTab);
 			leadDetail.leadsDetailViewActivitiesLnk.click();
 			commNav.waitForPage("Activities");
 				
@@ -1476,6 +1483,7 @@ public class MobileDefectTest extends BaseTest {
 			ContactViewsElements contactDetail = PageFactory.initElements(driver, ContactViewsElements.class);
 			
 			//Step: open the Activities view
+            commNav.highlightNClick(contactDetail.contactDetailViewRelatedItemsTab);
 			contactDetail.contactsDetailViewActivitiesLnk.click();
 			commNav.waitForPage("Activities");
 			
@@ -2141,9 +2149,12 @@ public class MobileDefectTest extends BaseTest {
 		commNav.waitForNotPage("Notes/History");
 		
 		//VP: check the Regarding field value in the Notes/History detail view
-		WebElement regardingFld = driver.findElement(By.xpath("//*[@id='history_detail']/div[2]/div[2]/div[3]/span"));
+		//WebElement regardingFld = driver.findElement(By.xpath("//*[@id='history_detail']/div[2]/div[2]/div[3]/span"));
+        WebElement detailsTab = driver.findElement(By.xpath("//*[@id='history_detail']//ul[@class='tab-list']/li[2]"));
+        WebElement regardingFld = driver.findElement(By.xpath("//*[@id='history_detail']//div[@data-property='Description']/span"));
 		resultMsg = "VP: Notes/History record's Detail view Regarding field value is non-null";
 		try {
+            commNav.highlightNClick(detailsTab);
 			AssertJUnit.assertFalse(regardingFld.getText().equals(null));
 			System.out.println(resultMsg + " - PASSED");
 		}
@@ -2376,6 +2387,7 @@ public class MobileDefectTest extends BaseTest {
 		AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
 		
 		//click the Activities link
+        commNav.highlightNClick(accountDetailView.accountDetailViewRelatedItemsTab);
 		accountDetailView.accountDetailViewActivitiesLnk.click();
 		commNav.waitForNotPage("Activities");
 		

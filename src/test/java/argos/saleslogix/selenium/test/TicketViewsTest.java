@@ -385,50 +385,52 @@ public class TicketViewsTest extends BaseTest {
 	}
 
 
-	@Test(enabled = true)
-	public void test07_SeTestTCTicketDetailView() throws Exception {
-		String methodID = "test07_SeTestTCTicketDetailView";
-		
-		// Test Params:
-		String entityType = "Tickets";
-		String entityRecord = TEST_TICKET_RECORD;
-		String viewName = "Ticket Detail view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-				
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		//Step: logout & log back in (to clear cookies)
-		LogOutThenLogBackIn(userName, userPwd);
-		
-		try {
-			//Step: search for Ticket entity, then open it's Detail view
-			commNav.entityRecordOpenDetailView(entityType, entityRecord);
-			
-			TicketViewsElements ticketDetailView = PageFactory.initElements(driver, TicketViewsElements.class);
-			
-			//Step: check each item under the Ticket Detail View, Quick Actions section
-			commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", ticketDetailView.ticketsDetailViewQuickActionsHdr);			
-			commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", ticketDetailView.ticketsDetailViewScheduleActivityLnk, "Schedule...");
+    @Test(enabled = true)
+    public void test07_SeTestTCTicketDetailView() throws Exception {
+        String methodID = "test07_SeTestTCTicketDetailView";
+
+        // Test Params:
+        String entityType = "Tickets";
+        String entityRecord = TEST_TICKET_RECORD;
+        String viewName = "Ticket Detail view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Ticket entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, entityRecord);
+
+            TicketViewsElements ticketDetailView = PageFactory.initElements(driver, TicketViewsElements.class);
+
+            //Step: check each item under the Ticket Detail View, Quick Actions section
+            //commNav.isWebElementPresent(viewName + ",'Quick Actions' section header", ticketDetailView.ticketsDetailViewQuickActionsHdr);
+            commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", ticketDetailView.ticketsDetailViewScheduleActivityLnk, "Schedule...");
 
             //Step: conditionally expand the More Details section
-            if (ticketDetailView.ticketsDetailViewMoreDetailsFields.getSize().height < 1) {
-                ticketDetailView.ticketsDetailViewMoreDetailsHdr.click();
-                Thread.sleep(1000);
-            }
+            //if (ticketDetailView.ticketsDetailViewMoreDetailsFields.getSize().height < 1) {
+            //    ticketDetailView.ticketsDetailViewMoreDetailsHdr.click();
+            //    Thread.sleep(1000);
+            //}
 
-			//Step: check each item under the Ticket Detail View, Details section
-			commNav.isWebElementPresent(viewName + ",'Details' section header", ticketDetailView.ticketsDetailViewDetailsHdr);
-			commNav.isFieldValueEmpty(viewName + ",'account'", ticketDetailView.ticketsDetailViewAccountFld);
-			commNav.isFieldValueEmpty(viewName + ",'contact'", ticketDetailView.ticketsDetailViewContactFld);
+            //Step: check each item under the Ticket Detail View, Details section
+            //commNav.isWebElementPresent(viewName + ",'Details' section header", ticketDetailView.ticketsDetailViewDetailsHdr);
+            commNav.highlightNClick(ticketDetailView.ticketDetailViewDetailsTab);
+            commNav.isFieldValueEmpty(viewName + ",'account'", ticketDetailView.ticketsDetailViewAccountFld);
+            commNav.isFieldValueEmpty(viewName + ",'contact'", ticketDetailView.ticketsDetailViewContactFld);
             commNav.isFieldValueEmpty(viewName + ",'assigned to'", ticketDetailView.ticketsDetailViewAssignedToFld);
             commNav.isFieldValueEmpty(viewName + ",'urgency'", ticketDetailView.ticketsDetailViewUrgencyFld);
             commNav.isFieldValueEmpty(viewName + ",'needed date'", ticketDetailView.ticketsDetailViewNeededDateFld);
 
-	
-			//Step: check each item under the Ticket Detail View, More Details section
-			commNav.isWebElementPresent(viewName + ",'More Details' section header", ticketDetailView.ticketsDetailViewMoreDetailsHdr);
+
+            //Step: check each item under the Ticket Detail View, More Details section
+            //commNav.isWebElementPresent(viewName + ",'More Details' section header", ticketDetailView.ticketsDetailViewMoreDetailsHdr);
+            commNav.highlightNClick(ticketDetailView.ticketDetailViewMoreDetailsTab);
             commNav.isFieldValueEmpty(viewName + ",'area'", ticketDetailView.ticketsDetailViewAreaFld);
             commNav.isFieldValueEmpty(viewName + ",'category'", ticketDetailView.ticketsDetailViewCategoryFld);
             commNav.isFieldValueEmpty(viewName + ",'issue'", ticketDetailView.ticketsDetailViewIssueFld);
@@ -436,29 +438,30 @@ public class TicketViewsTest extends BaseTest {
             commNav.isFieldValueEmpty(viewName + ",'description'", ticketDetailView.ticketsDetailViewDescriptionFld);
             commNav.isFieldValueEmpty(viewName + ",'status'", ticketDetailView.ticketsDetailViewStatusFld);
             commNav.isFieldValueEmpty(viewName + ",'completed by'", ticketDetailView.ticketsDetailViewCompletedByFld);
-			commNav.isFieldValueEmpty(viewName + ",'contract'", ticketDetailView.ticketsDetailViewContractFld);
-			commNav.isFieldValueEmpty(viewName + ",'source'", ticketDetailView.ticketsDetailViewSourceFld);
-			commNav.isFieldValueEmpty(viewName + ",'assigned date'", ticketDetailView.ticketsDetailViewAssignedDateFld);
-			commNav.isFieldValueEmpty(viewName + ",'resolution'", ticketDetailView.ticketsDetailViewResolutionFld);
-			commNav.isFieldValueEmpty(viewName + ",'comments'", ticketDetailView.ticketsDetailViewCommentsFld);
-	
-			//Step: check each item under the Ticket Detail View, Related Items section
-			commNav.isWebElementPresent(viewName + ",'Related Items' section header", ticketDetailView.ticketsDetailViewRelatedItemsHdr);
-			commNav.verifyEntityViewElementClick(viewName + ",'Activities'", ticketDetailView.ticketsDetailViewActivitiesLnk, "Activities");
-			commNav.verifyEntityViewElementClick(viewName + ",'Ticket Activities'", ticketDetailView.ticketsDetailViewTicketsActivitiesLnk, "Ticket Activities");
-			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", ticketDetailView.ticketsDetailViewAttachmentsLnk, "Ticket Attachments");
-		}
-		catch (Exception e) {
-			verificationErrors.append(e.toString());
-			System.out.println(methodID + ": the Ticket Detail view for the '" + entityRecord + "' Ticket record; test aborted.");
-		}
-				
-		//Step: go back to previous screen
-		headerButton.goBack();
-		commNav.waitForPage("Tickets");
-		
-		System.out.println(ENDLINE);
-	}
+            commNav.isFieldValueEmpty(viewName + ",'contract'", ticketDetailView.ticketsDetailViewContractFld);
+            commNav.isFieldValueEmpty(viewName + ",'source'", ticketDetailView.ticketsDetailViewSourceFld);
+            commNav.isFieldValueEmpty(viewName + ",'assigned date'", ticketDetailView.ticketsDetailViewAssignedDateFld);
+            commNav.isFieldValueEmpty(viewName + ",'resolution'", ticketDetailView.ticketsDetailViewResolutionFld);
+            commNav.isFieldValueEmpty(viewName + ",'comments'", ticketDetailView.ticketsDetailViewCommentsFld);
+
+            //Step: check each item under the Ticket Detail View, Related Items section
+            //commNav.isWebElementPresent(viewName + ",'Related Items' section header", ticketDetailView.ticketsDetailViewRelatedItemsHdr);
+            commNav.highlightNClick(ticketDetailView.ticketDetailViewRelatedItemsTab);
+            commNav.verifyEntityViewElementClick(viewName + ",'Activities'", ticketDetailView.ticketsDetailViewActivitiesLnk, "Activities");
+            commNav.verifyEntityViewElementClick(viewName + ",'Ticket Activities'", ticketDetailView.ticketsDetailViewTicketsActivitiesLnk, "Ticket Activities");
+            commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", ticketDetailView.ticketsDetailViewAttachmentsLnk, "Ticket Attachments");
+        }
+        catch (Exception e) {
+            verificationErrors.append(e.toString());
+            System.out.println(methodID + ": the Ticket Detail view for the '" + entityRecord + "' Ticket record; test aborted.");
+        }
+
+        //Step: go back to previous screen
+        headerButton.goBack();
+        commNav.waitForPage("Tickets");
+
+        System.out.println(ENDLINE);
+    }
 
 
 	@Test(enabled = true)

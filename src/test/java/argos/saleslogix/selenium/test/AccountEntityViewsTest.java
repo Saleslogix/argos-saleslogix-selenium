@@ -276,43 +276,44 @@ public class AccountEntityViewsTest extends BaseTest {
 		System.out.println(ENDLINE);
 	}
 
-	
-	@Test(enabled = true)
-	public void test07_SeTestTCAccountDetailView() throws Exception {
-		String methodID = "test07_SeTestTCAccountDetailView";
-		
-		// Test Params:
-		String entityType = "Accounts";
-		String entityRecord = TEST_ACCOUNT_RECORD;
-		String viewName = "Account Detail view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-				
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		//Step: login & log back in (to clear cookies)
-		LogOutThenLogBackIn(userName, userPwd);
-		
-		try {
+
+    @Test(enabled = true)
+    public void test07_SeTestTCAccountDetailView() throws Exception {
+        String methodID = "test07_SeTestTCAccountDetailView";
+
+        // Test Params:
+        String entityType = "Accounts";
+        String entityRecord = TEST_ACCOUNT_RECORD;
+        String viewName = "Account Detail view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
             //Step: search for Account entity, then open it's Detail view
             commNav.entityRecordOpenDetailView(entityType, entityRecord);
 
             AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
 
             //Step: check each item under the Account Detail View, Actions section
-            commNav.isWebElementPresent(viewName + ",'Actions' section header", accountDetailView.accountDetailViewQuickActionsHdr);
+            //commNav.isWebElementPresent(viewName + ",'Actions' section header", accountDetailView.accountDetailViewQuickActionsHdr);
             commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", accountDetailView.accountDetailViewScheduleActivityLnk, "Schedule...");
             commNav.verifyEntityViewElementClick(viewName + ",'Add note'", accountDetailView.accountDetailViewAddNoteLnk, "Note");
 
             //Step: add code to expand More Details section
-            if (accountDetailView.accountDetailViewMoreDetailsFields.getSize().height < 1) {
-                accountDetailView.accountDetailViewMoreDetailsHdr.click();
-                Thread.sleep(1000);
-            }
+            //if (accountDetailView.accountDetailViewMoreDetailsFields.getSize().height < 1) {
+            //    accountDetailView.accountDetailViewMoreDetailsHdr.click();
+            //    Thread.sleep(1000);
+            //}
 
             //Step: check each item under the Account Detail View, Details section
-            commNav.isWebElementPresent(viewName + ",'Details' section header", accountDetailView.accountDetailViewDetailsHdr);
+            //commNav.isWebElementPresent(viewName + ",'Details' section header", accountDetailView.accountDetailViewDetailsHdr);
+            commNav.highlightNClick(accountDetailView.accountDetailViewDetailsTab);
             commNav.isFieldValueEmpty(viewName + ",'account'", accountDetailView.accountDetailViewAccountFld);
             commNav.isFieldValueEmpty(viewName + ",'phone'", accountDetailView.accountDetailViewCallMainNumberLnk);
             commNav.isFieldValueEmpty(viewName + ",'status'", accountDetailView.accountDetailViewStatusFld);
@@ -320,6 +321,7 @@ public class AccountEntityViewsTest extends BaseTest {
 
 
             // Step: check More Details section
+            commNav.highlightNClick(accountDetailView.accountDetailViewMoreDetailsTab);
             commNav.isFieldValueEmpty(viewName + ",'web'", accountDetailView.accountDetailViewWebFld);
             commNav.isFieldValueEmpty(viewName + ",'address'", accountDetailView.accountDetailViewViewAddressLnk);
             commNav.isFieldValueEmpty(viewName + ",'fax'", accountDetailView.accountDetailViewFaxFld);
@@ -333,7 +335,8 @@ public class AccountEntityViewsTest extends BaseTest {
 
 
             //Step: check each item under the Account Detail View, Related Items section
-            commNav.isWebElementPresent(viewName + ",'Related Items' section header", accountDetailView.accountDetailViewRelatedItemsHdr);
+            commNav.highlightNClick(accountDetailView.accountDetailViewRelatedItemsTab);
+            //commNav.isWebElementPresent(viewName + ",'Related Items' section header", accountDetailView.accountDetailViewRelatedItemsHdr);
             commNav.verifyEntityViewElementClick(viewName + ",'Activities'", accountDetailView.accountDetailViewActivitiesLnk, "Activities");
             commNav.verifyEntityViewElementClick(viewName + ",'Contacts'", accountDetailView.accountDetailViewContactsLnk, "Contacts");
             commNav.verifyEntityViewElementClick(viewName + ",'Opportunities'", accountDetailView.accountDetailViewOpportunitiesLnk, "Opportunities");
@@ -341,18 +344,18 @@ public class AccountEntityViewsTest extends BaseTest {
             commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", accountDetailView.accountDetailViewNotesHistoryLnk, "Notes/History");
             commNav.verifyEntityViewElementClick(viewName + ",'Addresses'", accountDetailView.accountDetailViewAddressesLnk, "Addresses");
             commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Account Attachments");
-		}
-		catch (Exception e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": the Account Detail view for the '" + entityRecord + "' Account record; test aborted.");
-		}
-				
-		//Step: go back to previous screen
-		headerButton.goBack();
-		commNav.waitForPage("Accounts");
-		
-		System.out.println(ENDLINE);
-	}
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + ": the Account Detail view for the '" + entityRecord + "' Account record; test aborted.");
+        }
+
+        //Step: go back to previous screen
+        headerButton.goBack();
+        commNav.waitForPage("Accounts");
+
+        System.out.println(ENDLINE);
+    }
 	
 	
 	@Test(enabled = true)

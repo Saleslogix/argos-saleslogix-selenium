@@ -294,60 +294,63 @@ public class NotesHistoryViewsTest extends BaseTest {
         }
 		System.out.println(ENDLINE);
 	}
-	
 
-	@Test(enabled = true)
-	public void test07_SeTestTCNotesHistoryDetailView() throws Exception {
-		String methodID = "test07_SeTestTCNotesHistoryDetailView";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		// Test Params:
-		String entityType = "Notes/History";
-		String entityRecord = TEST_NOTE_RECORD;
-		String viewName = "History Detail view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+    @Test(enabled = true)
+    public void test07_SeTestTCNotesHistoryDetailView() throws Exception {
+        String methodID = "test07_SeTestTCNotesHistoryDetailView";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        // Test Params:
+        String entityType = "Notes/History";
+        String entityRecord = TEST_NOTE_RECORD;
+        String viewName = "History Detail view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
         //Step: logout & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
 
-		try {
-			//Step: search for Notes/History entity, then open it's Detail view
-			commNav.entityRecordOpenDetailView(entityType, entityRecord);
-			
-			NotesHistoryViewsElements notesHistoryDetailView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+        try {
+            //Step: search for Notes/History entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, entityRecord);
+
+            NotesHistoryViewsElements notesHistoryDetailView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 
             //Step: check each item under the History Detail View, Details section
-            commNav.isWebElementPresent(viewName + ",'Notes' section header", notesHistoryDetailView.notesHistoryDetailViewNotesHdr);
+            //commNav.isWebElementPresent(viewName + ",'Notes' section header", notesHistoryDetailView.notesHistoryDetailViewNotesHdr);
+            commNav.highlightNClick(notesHistoryDetailView.notesHistoryDetailViewNotesTab);
             commNav.isFieldValueEmpty(viewName + ",'notes field'", notesHistoryDetailView.notesHistoryDetailViewNotesFld);
-			
-			//Step: check each item under the History Detail View, Quick Actions section
-			commNav.isWebElementPresent(viewName + ",'Details' section header", notesHistoryDetailView.notesHistoryDetailViewDetailsHdr);
-			commNav.isFieldValueEmpty(viewName + ",'scheduled'", notesHistoryDetailView.notesHistoryDetailViewScheduledFld);
-			commNav.isFieldValueEmpty(viewName + ",'completed'", notesHistoryDetailView.notesHistoryDetailViewCompletedFld);
-			commNav.isFieldValueEmpty(viewName + ",'regarding'", notesHistoryDetailView.notesHistoryDetailViewRegardingFld);
-			commNav.isFieldValueEmpty(viewName + ",'completed by'", notesHistoryDetailView.notesHistoryDetailViewCompletedByFld);
+
+            //Step: check each item under the History Detail View, Quick Actions section
+            //commNav.isWebElementPresent(viewName + ",'Details' section header", notesHistoryDetailView.notesHistoryDetailViewDetailsHdr);
+            commNav.highlightNClick(notesHistoryDetailView.notesHistoryDetailViewDetailsTab);
+            commNav.isFieldValueEmpty(viewName + ",'scheduled'", notesHistoryDetailView.notesHistoryDetailViewScheduledFld);
+            commNav.isFieldValueEmpty(viewName + ",'completed'", notesHistoryDetailView.notesHistoryDetailViewCompletedFld);
+            commNav.isFieldValueEmpty(viewName + ",'regarding'", notesHistoryDetailView.notesHistoryDetailViewRegardingFld);
+            commNav.isFieldValueEmpty(viewName + ",'completed by'", notesHistoryDetailView.notesHistoryDetailViewCompletedByFld);
             commNav.isFieldValueEmpty(viewName + ",'account'", notesHistoryDetailView.notesHistoryDetailViewAccountFld);
             commNav.isFieldValueEmpty(viewName + ",'contact'", notesHistoryDetailView.notesHistoryDetailViewContactFld);
             commNav.isFieldValueEmpty(viewName + ",'opportunity'", notesHistoryDetailView.notesHistoryDetailViewOpportunityFld);
             commNav.isFieldValueEmpty(viewName + ",'ticket'", notesHistoryDetailView.notesHistoryDetailViewTicketFld);
 
-			//Step: check each item under the History Detail View, Related Items section
-			commNav.isWebElementPresent(viewName + ",'Related Items' section header", notesHistoryDetailView.notesHistoryDetailRelatedItems1Hdr);
-			commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", notesHistoryDetailView.notesHistoryDetailViewAttachmentsLnk, "History Attachments");
-			
-			//Step: go back to previous screen
-			headerButton.goBack();
-			Thread.sleep(3000);
-		}
-		catch (Exception e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-		}
-		
-		System.out.println(ENDLINE);
-	}
+            //Step: check each item under the History Detail View, Related Items section
+            //commNav.isWebElementPresent(viewName + ",'Related Items' section header", notesHistoryDetailView.notesHistoryDetailRelatedItems1Hdr);
+            commNav.highlightNClick(notesHistoryDetailView.notesHistoryDetailViewRelatedItemsTab);
+            commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", notesHistoryDetailView.notesHistoryDetailViewAttachmentsLnk, "History Attachments");
+
+            //Step: go back to previous screen
+            headerButton.goBack();
+            Thread.sleep(3000);
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        System.out.println(ENDLINE);
+    }
 
 	@Test(enabled = true)
     // This test searches on 'Research the prospect', then edits that item ... now that loup may only edit his own notes, this will fail unless loup adds
