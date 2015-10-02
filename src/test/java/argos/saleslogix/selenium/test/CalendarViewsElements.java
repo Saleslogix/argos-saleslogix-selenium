@@ -59,6 +59,50 @@ public class CalendarViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='month-field']")
     WebElement calendarMonthField;
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@class='hours']")
+    WebElement calendarHourField;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='1']")
+    WebElement calendarHourOne;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='5']")
+    WebElement calendarHourFive;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='7']")
+    WebElement calendarHourSeven;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='8']")
+    WebElement calendarHourEight;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='9']")
+    WebElement calendarHourNine;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@class='minutes']")
+    WebElement calendarMinuteField;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='00']")
+    WebElement calendarMinute00;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='15']")
+    WebElement calendarMinute15;
+
+    @CacheLookup
+    @FindBy(xpath = "//span[@class=toggleOn']")
+    WebElement calendarAM;
+
+    @CacheLookup
+    @FindBy(xpath = "//span[@class=toggleOff']")
+    WebElement calendarPM;
+
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='datetime-picker-time']//button[@data-action='incrementHour']")
 	WebElement calendarIncrementHourBtn;
@@ -120,6 +164,30 @@ public class CalendarViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_monthlist']//td[contains(@data-date, '-01')]//span[@class='activity-count']")
     WebElement calendarMonthFirstDayMonthActivityCount;
+
+    @CacheLookup
+    @FindBy(xpath = "(.//td[text()='1'])[1]")
+    WebElement calendarModalDayOneCurrMonth;
+
+    @CacheLookup
+    @FindBy(xpath = "//span[@class='month']")
+    WebElement calendarModalCurrMonthValue;
+
+    @CacheLookup
+    @FindBy(xpath = "//span[@data-action='incrementMonth']")
+    WebElement calendarModalIncrMonth;
+
+    @CacheLookup
+    @FindBy(xpath = "//span[@data-action='decrementMonth']")
+    WebElement calendarModalDecrMonth;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(text(),'Confirm')]")
+    WebElement calendarModalConfirm;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(text(),'Advanced')]")
+    WebElement calendarModalAdvanced;
 
 
     //Methods

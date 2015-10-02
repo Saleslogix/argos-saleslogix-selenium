@@ -48,8 +48,8 @@ public class MobileSprint308Test extends BaseTest {
 		System.out.println(ENDLINE);
 	}
 
-    @Test(enabled = true)
-    // MBL-10408 ... Calendar - date time picker shows wrong 'day' for timeless activities (eg: Wednesday instead of Thursday)
+    @Test(enabled = false)
+    // MBL-10408 ... Calendar - date time picker shows wrong 'day' for timeless activities (eg: Wednesday instead of Thursday) ... no longer relevant with new Calendar in Mobile 3.4
     public void test01_MBL10408() throws Exception {
         String methodID = "test01_MBL10408";
 

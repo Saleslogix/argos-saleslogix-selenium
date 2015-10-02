@@ -290,10 +290,18 @@ public class MobileSprint330B extends BaseTest {
 
             //Step: edit the 'est close' ... should be editable
             opportunitiesListView.opportunityQuickEditEstCloseBtn.click();
-            commNav.waitForPage("Calendar");
-            calendarView.calendarIncrementYearBtn.click();
-            headerbutton.clickHeaderButton("check");
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Press Advanced button to open Calendar view, press button to go forward one month, and confirm
+            calendarView.calendarModalAdvanced.click();
+            calendarView.calendarModalIncrMonth.click();
+            calendarView.calendarModalConfirm.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
             commNav.waitForPage("Edit");
+
             opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
             String initEditEstClose = opportunitiesListView.opportunityQuickEditEstCloseText.getAttribute("value");
             System.out.println("VP: 1st edit of opportunity " + TEST_OPPORTUNITY_RECORD + " ... 'est close' set to : " + initEditEstClose);
@@ -802,9 +810,19 @@ public class MobileSprint330B extends BaseTest {
             String newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: Value for Start Time is : " + newActivityStartDate);
             activityEditView.activityEditViewStartTimeFldBtn.click();
-            commNav.waitForPage("Calendar");
-            calendarView.calendarDecrementHourBtn.click();
-            headerButton.clickHeaderButton("accept");
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Press Advanced button to open Calendar view, set hour to 1 and minutes to 00, and confirm
+            calendarView.calendarModalAdvanced.click();
+            calendarView.calendarHourField.click();
+            calendarView.calendarHourOne.click();
+            calendarView.calendarMinuteField.click();
+            calendarView.calendarMinute00.click();
+            calendarView.calendarModalConfirm.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
 
 

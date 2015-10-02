@@ -73,9 +73,16 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: open calendar for 'est close', and choose 1 month earlier
             oppsListView.opportunityEditViewEstCloseFldBtn.click();
-            commNav.waitForPage("Calendar");
-            calendarEditView.calendarDecrementMonthBtn.click();
-            headerButton.checkButton.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Press Advanced button to open Calendar view, press button to go back one month
+            calendarEditView.calendarModalAdvanced.click();
+            calendarEditView.calendarModalDecrMonth.click();
+            calendarEditView.calendarModalConfirm.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
             commNav.waitForPage("Opportunity");
 
             //Step: retrieve the revised 'est close' date
@@ -120,7 +127,6 @@ public class MobileSprint330 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -198,9 +204,17 @@ public class MobileSprint330 extends BaseTest {
             //Step: edit the start date and re-save activity
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             activityEditView.activityEditViewStartTimeFldBtn.click();
-            commNav.waitForPage("Calendar");
-            calendarView.calendarDecrementMonthBtn.click();
-            headerButton.checkButton.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Press Advanced button to open Calendar view, press button to go back one month
+            calendarView.calendarModalAdvanced.click();
+            calendarView.calendarModalDecrMonth.click();
+            calendarView.calendarModalConfirm.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
             commNav.waitForPage("Activity");
 
             String editedActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");

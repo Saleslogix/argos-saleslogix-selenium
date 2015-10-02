@@ -351,357 +351,379 @@ public class MobileSprint306Test extends BaseTest {
 			System.out.println(ENDLINE);
 		}
 
-	@Test(enabled = true)
-	// MBL-10193 ... Calendar - in Week and Day view a couple of activities are not appearing in time order for the day 
-	public void test04_MBL10193() throws Exception {
-	    String methodID = "test04_MBL10193";
-				
-	    CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-	    HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-	    CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-	    MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-	       
-			
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-			
-		try {
-				
-				
-		    //Step: logout & log back in (to clear cookies)
-		    LogOutThenLogBackIn(userName, userPwd);
-						
-		                   
-		    //Step: go to "Calendar" view 
-		    commNav.clickGlobalMenuItem("Calendar");
-	
-	        //Step: wait for page Calendar
-		    commNav.waitForPage("Calendar");
-		       	
-			
-		    //Step: ensure focus is on Today, then the Day view
-		    calendarView.calendarTodayBtn.click();
-		    calendarView.calendarDayBtn.click();
-	         
-		    
-			//Step: Add 1st activity
-	        //Step: click the Add header button to open Activity schedule view for 1st activity 
-	        headerButton.clickHeaderButton("Add");
-	        
-	        //Step: wait for page Schedule... to open
-			commNav.waitForPage("Schedule...");
-			
-			//Step: select Meeting for activity type
-			activityEditView.activityScheduleMeetingBtn.click();
-			
-			//Step: wait for page Meeting to open
-			commNav.waitForPage("Meeting");
-			
-			
-			//Step: set 1st Activity record with 'regarding' value of Demonstration, date of today, and time 2 1/4 hours ahead of default 
-			activityEditView.activityEditViewRegardingFld.sendKeys("Demonstration");
-			activityEditView.activityEditViewStartTimeFldBtn.click();
-			commNav.waitForPage("Calendar");
-			calendarView.calendarIncrementHourBtn.click();
-			calendarView.calendarIncrementHourBtn.click();
-			calendarView.calendarIncrementMinuteBtn.click();
-			headerButton.clickHeaderButton("check");
-			commNav.waitForPage("Meeting");
-			System.out.println("1st activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
-			
-			//Step: save 1st activity
-	        headerButton.clickHeaderButton("Save");
-	
-	        //Step: wait for page Calendar
-	        commNav.waitForPage("Calendar");
-			
-		
-			//Step: Add 2nd activity
-	        //Step: click the Add header button to open Activity schedule view for 2nd activity 
-	        headerButton.clickHeaderButton("Add");
-	        
-	        //Step: wait for page Schedule... to open
-			commNav.waitForPage("Schedule...");
-			
-			//Step: select Meeting for activity type
-			activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-			activityEditView.activityScheduleMeetingBtn.click();
-			
-			//Step: wait for page Meeting to open
-			commNav.waitForPage("Meeting");
-			
-			
-			//Step: set 2nd Activity record with 'regarding' value of Presentation, date of today, and time 3 hours ahead of default
-			activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-			activityEditView.activityEditViewRegardingFld.sendKeys("Presentation");
-			activityEditView.activityEditViewStartTimeFldBtn.click();
-			commNav.waitForPage("Calendar");
-			calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-			calendarView.calendarIncrementHourBtn.click();
-			calendarView.calendarIncrementHourBtn.click();
-			calendarView.calendarIncrementHourBtn.click();
-			headerButton.clickHeaderButton("check");
-			commNav.waitForPage("Meeting");
-			System.out.println("2nd activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
-			
-			//Step: save 2nd activity
-	        headerButton.clickHeaderButton("Save");
-	
-	        //Step: wait for page Calendar
-		    commNav.waitForPage("Calendar");
-		    
-		   
-			//Step: Add 3rd activity
-	        //Step: click the Add header button to open Activity schedule view for 3rd activity 
-	        headerButton.clickHeaderButton("Add");
-	        
-	        //Step: wait for page Schedule... to open
-			commNav.waitForPage("Schedule...");
-			
-			//Step: select Meeting for activity type
-			activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-			activityEditView.activityScheduleMeetingBtn.click();
-			
-			//Step: wait for page Meeting to open
-			commNav.waitForPage("Meeting");
-			
-			
-			//Step: set 3rd Activity record with 'regarding' value of Review proposal, date of today, and time 1 1/2 hours ahead of default
-			activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-			activityEditView.activityEditViewRegardingFld.sendKeys("Review proposal");
-			activityEditView.activityEditViewStartTimeFldBtn.click();
-			commNav.waitForPage("Calendar");
-			calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-			calendarView.calendarIncrementHourBtn.click();
-			calendarView.calendarIncrementMinuteBtn.click();
-			calendarView.calendarIncrementMinuteBtn.click();
-			headerButton.clickHeaderButton("check");
-			commNav.waitForPage("Meeting");
-			System.out.println("3rd activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
-			
-			//Step: save 3rd activity
-	        headerButton.clickHeaderButton("Save");
-	
-	        //Step: wait for page Calendar
-		    commNav.waitForPage("Calendar");
-		    
-	        
-		
-			//Step: Add 4th activity  (All-Day)
-	        //Step: click the Add header button to open Activity schedule view for 4th activity 
-	        headerButton.clickHeaderButton("Add");
-	        
-	        //Step: wait for page Schedule... to open
-			commNav.waitForPage("Schedule...");
-			
-			//Step: select Meeting for activity type
-			activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-			activityEditView.activityScheduleMeetingBtn.click();
-			
-			//Step: wait for page Meeting to open
-			commNav.waitForPage("Meeting");
-			
-			
-			//Step: set 4th Activity record with 'regarding' value of Training, date of today, and timeless
-			activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-			activityEditView.activityEditViewRegardingFld.sendKeys("Training");
-			activityEditView.activityEditViewTimelessTgl.click();
-			System.out.println("4th activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
-			
-			//Step: save 4th activity
-	        headerButton.clickHeaderButton("Save");
-	
-	        //Step: wait for page Calendar
-		    commNav.waitForPage("Calendar");
-		    
-	        	    
-	        //Calendar DAY VIEW
-	        //Step: loop through any 'All-Day' events in Day view
-		    int n=1;
-		    while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-		    	n=n+1;	   
-	        }
-	
-		    //Step: retrieve time for first non "All-Day" event in Day view
-		    String strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
-		    n=n+1;
-		    
-		    //Step: loop through any 'All-Day' events in Day view
-		    while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-		    	n=n+1;	   
-	        }
-		    
-		    //Step: retrieve time for second non "All-Day" event in Day view
-		    String strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
-		    n=n+1;
-		    
-		    //Step: loop through any 'All-Day' events in Day view
-		    while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-		    	n=n+1;	   
-	        }
-		    
-		    //Step: retrieve time for third non "All-Day" event in Day view
-		    String strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
-		   	
-		    //Step: print out activity times for first 3 activities under Day view
-		    System.out.println("Day view today's date : 1st activity time has a value of - " + strTime1);
-		    System.out.println("Day view today's date : 2nd activity time has a value of - " + strTime2);
-		    System.out.println("Day view today's date : 3rd activity time has a value of - " + strTime3);
-		    
-		    //Step: convert string date representation to calendar date format
-		    SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
-		    Calendar dateTime1 = Calendar.getInstance();
-		    Calendar dateTime2 = Calendar.getInstance();
-		    Calendar dateTime3 = Calendar.getInstance();
-	        dateTime1.setTime(ft.parse(strTime1));
-	        dateTime2.setTime(ft.parse(strTime2));
-	        dateTime3.setTime(ft.parse(strTime3));
-	       
-	        
-	        //Step: check that Day view activities are appearing in descending date order
-	        if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
-	        	System.out.println("VP: Day view calendar activities are appearing in descending time order " + " - PASSED"); 	
-	        } else {
-	        	System.out.println("VP: Day view calendar activities not appearing in descending time order " + " - FAILED");
-	        	AssertJUnit.fail("test failed");
-	        }
-	        
-	        
-	        //Calendar WEEK VIEW
-	        //Step: switch focus to Week view
-		    calendarView.calendarWeekBtn.click();
-		    
-		    //Step: convert today's date to string of format "MMM d,yyyy"
-		    ft = new SimpleDateFormat("MMM d, yyyy");
-		    Calendar todayDate = Calendar.getInstance();
-		    String todayString = ft.format(todayDate.getTime()).toString();
-		    System.out.println("Today's date in MMM d, yyyy format is - " + todayString);
-	        
-	        //Step: loop through days of the week until find section for today's date
-	        int x=1;
-	        while (!driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//span[@class='dayHeaderRight'])[" + x + "]")).getText().equals(todayString))  {
-		    	x=x+1;	   
-	        }
-	        
-	        System.out.println("Week view: section found for today - " + driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//span[@class='dayHeaderRight'])[" + x + "]")).getText());
-	        
-	        //Step: loop through any 'All Day' events in Week view section for today's date
-		    n=1;
-		    while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
-		    	n=n+1;	   
-	        }
-	
-		    //Step: retrieve time for first non "All Day" event in Week view section for today's date
-		    strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
-		    n=n+1;
-		    
-		    //Step: loop through any 'All Day' events in Week view section for today's date
-		    while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
-		    	n=n+1;	   
-	        }
-		    
-		    //Step: retrieve time for second non "All Day" event in Week view section for today's date
-		    strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
-		    n=n+1;
-		    
-		    //Step: loop through any 'All Day' events in Week view section for today's date
-		    while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
-		    	n=n+1;   
-	        }
-		    
-		    //Step: retrieve time for third non "All Day" event in Week view section for today's date
-		    strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
-		   	
-		    //Step: print out activity times for first 3 activities under Day view
-		    System.out.println("Week view today's date : 1st activity time has a value of - " + strTime1);
-		    System.out.println("Week view today's date : 2nd activity time has a value of - " + strTime2);
-		    System.out.println("Week view today's date : 3rd activity time has a value of - " + strTime3);
-		    
-		    //Step: convert string date representation to calendar date format
-		    ft = new SimpleDateFormat("hh:mm a");
-		    dateTime1 = Calendar.getInstance();
-		    dateTime2 = Calendar.getInstance();
-		    dateTime3 = Calendar.getInstance();
-	        dateTime1.setTime(ft.parse(strTime1));
-	        dateTime2.setTime(ft.parse(strTime2));
-	        dateTime3.setTime(ft.parse(strTime3));
-	       
-	        
-	        //Step: check that Week view activities for today's date are appearing in descending date order
-	        if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
-	        	System.out.println("VP: Week view calendar activities are appearing in descending time order " + " - PASSED"); 	
-	        } else {
-	        	System.out.println("VP: Week view calendar activities not appearing in descending time order " + " - FAILED");
-	        	AssertJUnit.fail("test failed");
-	        }
-	        
-	        
-	        //Calendar MONTH VIEW
-	        //Step: switch focus to Month view ... by default, today's activities display ... use original calendarMonthBtn
-		    calendarView.calendarMonthBtn.click();
-		    
-		    
-		    //Step: loop through any 'All-Day' events in Month view
-		    n=1;
-		    while (driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-		    	n=n+1;	   
-	        }
-	
-		    //Step: retrieve time for first non "All-Day" event in Month view
-		    strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText();
-		    n=n+1;
-		    
-		    //Step: loop through any 'All-Day' events in Month view
-		    while (driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-		    	n=n+1;	   
-	        }
-		    
-		    //Step: retrieve time for second non "All-Day" event in Month view
-		    strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText();
-		    n=n+1;
-		    
-		    //Step: loop through any 'All-Day' events in Month view
-		    while (driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-		    	n=n+1;	   
-	        }
-		    
-		    //Step: retrieve time for third non "All-Day" event in Month view
-		    strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText();
-		   	
-		    //Step: print out activity times for first 3 activities under Month view
-		    System.out.println("Month view today's date : 1st activity time has a value of - " + strTime1);
-		    System.out.println("Month view today's date : 2nd activity time has a value of - " + strTime2);
-		    System.out.println("Month view today's date : 3rd activity time has a value of - " + strTime3);
-		    
-		    //Step: convert string date representation to calendar date format
-		    ft = new SimpleDateFormat("hh:mm a");
-		    dateTime1 = Calendar.getInstance();
-		    dateTime2 = Calendar.getInstance();
-		    dateTime3 = Calendar.getInstance();
-	        dateTime1.setTime(ft.parse(strTime1));
-	        dateTime2.setTime(ft.parse(strTime2));
-	        dateTime3.setTime(ft.parse(strTime3));
-	       
-	        
-	        //Step: check that Month view activities are appearing in descending date order
-	        if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
-	        	System.out.println("VP: Month view calendar activities are appearing in descending time order " + " - PASSED"); 	
-	        } else {
-	        	System.out.println("VP: Month view calendar activities not appearing in descending time order " + " - FAILED");
-	        	AssertJUnit.fail("test failed");
-	        }
-	        
-	        
-		    
-	             }
-	
-		 catch (Exception e) {
-			 verificationErrors.append(methodID + "(): " + e.toString());
-			 System.out.println("VP: calendar activities not appearing in descending time order " + " - FAILED");
-			 AssertJUnit.fail("test failed");		
-		 }
-			
-			System.out.println(ENDLINE);
-		}
+    @Test(enabled = true)
+    // MBL-10193 ... Calendar - in Week and Day view a couple of activities are not appearing in time order for the day
+    public void test04_MBL10193() throws Exception {
+        String methodID = "test04_MBL10193";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to "Calendar" view
+            commNav.clickGlobalMenuItem("Calendar");
+
+            //Step: wait for page Calendar
+            commNav.waitForPage("Calendar");
+
+
+            //Step: ensure focus is on Today, then the Day view
+            calendarView.calendarTodayBtn.click();
+            calendarView.calendarDayBtn.click();
+
+
+            //Step: Add 1st activity
+            //Step: click the Add header button to open Activity schedule view for 1st activity
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+
+            //Step: set 1st Activity record with 'regarding' value of Demonstration, date of today, and hour set to 8
+            activityEditView.activityEditViewRegardingFld.sendKeys("Demonstration");
+
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Press Advanced button to open Calendar view, choose hour of '8', and press confirm
+            calendarView.calendarModalAdvanced.click();
+            calendarView.calendarHourField.click();
+            calendarView.calendarHourEight.click();
+            calendarView.calendarModalConfirm.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage("Meeting");
+            System.out.println("1st activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            //Step: save 1st activity
+            headerButton.clickHeaderButton("Save");
+
+            //Step: wait for page Calendar
+            commNav.waitForPage("Calendar");
+
+
+            //Step: Add 2nd activity
+            //Step: click the Add header button to open Activity schedule view for 2nd activity
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+
+            //Step: set 2nd Activity record with 'regarding' value of Presentation, date of today, and hour set to 9
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityEditViewRegardingFld.sendKeys("Presentation");
+
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Press Advanced button to open Calendar view, choose hour of '9', and press confirm
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+            calendarView.calendarModalAdvanced.click();
+            calendarView.calendarHourField.click();
+            calendarView.calendarHourNine.click();
+            calendarView.calendarModalConfirm.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage("Meeting");
+            System.out.println("2nd activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            //Step: save 2nd activity
+            headerButton.clickHeaderButton("Save");
+
+            //Step: wait for page Calendar
+            commNav.waitForPage("Calendar");
+
+
+            //Step: Add 3rd activity
+            //Step: click the Add header button to open Activity schedule view for 3rd activity
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+
+            //Step: set 3rd Activity record with 'regarding' value of Review proposal, date of today, and hour set to 7
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityEditViewRegardingFld.sendKeys("Review proposal");
+
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Press Advanced button to open Calendar view, choose hour of '7', and press confirm
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+            calendarView.calendarModalAdvanced.click();
+            calendarView.calendarHourField.click();
+            calendarView.calendarHourSeven.click();
+            calendarView.calendarModalConfirm.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage("Meeting");
+            System.out.println("3rd activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            //Step: save 3rd activity
+            headerButton.clickHeaderButton("Save");
+
+            //Step: wait for page Calendar
+            commNav.waitForPage("Calendar");
+
+
+
+            //Step: Add 4th activity  (All-Day)
+            //Step: click the Add header button to open Activity schedule view for 4th activity
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+
+            //Step: set 4th Activity record with 'regarding' value of Training, date of today, and timeless
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityEditViewRegardingFld.sendKeys("Training");
+            activityEditView.activityEditViewTimelessTgl.click();
+            System.out.println("4th activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            //Step: save 4th activity
+            headerButton.clickHeaderButton("Save");
+
+            //Step: wait for page Calendar
+            commNav.waitForPage("Calendar");
+
+
+            //Calendar DAY VIEW
+            //Step: loop through any 'All-Day' events in Day view
+            int n=1;
+            while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for first non "All-Day" event in Day view
+            String strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
+            n=n+1;
+
+            //Step: loop through any 'All-Day' events in Day view
+            while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for second non "All-Day" event in Day view
+            String strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
+            n=n+1;
+
+            //Step: loop through any 'All-Day' events in Day view
+            while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for third non "All-Day" event in Day view
+            String strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
+
+            //Step: print out activity times for first 3 activities under Day view
+            System.out.println("Day view today's date : 1st activity time has a value of - " + strTime1);
+            System.out.println("Day view today's date : 2nd activity time has a value of - " + strTime2);
+            System.out.println("Day view today's date : 3rd activity time has a value of - " + strTime3);
+
+            //Step: convert string date representation to calendar date format
+            SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
+            Calendar dateTime1 = Calendar.getInstance();
+            Calendar dateTime2 = Calendar.getInstance();
+            Calendar dateTime3 = Calendar.getInstance();
+            dateTime1.setTime(ft.parse(strTime1));
+            dateTime2.setTime(ft.parse(strTime2));
+            dateTime3.setTime(ft.parse(strTime3));
+
+
+            //Step: check that Day view activities are appearing in descending date order
+            if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
+                System.out.println("VP: Day view calendar activities are appearing in descending time order " + " - PASSED");
+            } else {
+                System.out.println("VP: Day view calendar activities not appearing in descending time order " + " - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+
+            //Calendar WEEK VIEW
+            //Step: switch focus to Week view
+            calendarView.calendarWeekBtn.click();
+
+            //Step: convert today's date to string of format "MMM d,yyyy"
+            ft = new SimpleDateFormat("MMM d, yyyy");
+            Calendar todayDate = Calendar.getInstance();
+            String todayString = ft.format(todayDate.getTime()).toString();
+            System.out.println("Today's date in MMM d, yyyy format is - " + todayString);
+
+            //Step: loop through days of the week until find section for today's date
+            int x=1;
+            while (!driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//span[@class='dayHeaderRight'])[" + x + "]")).getText().equals(todayString))  {
+                x=x+1;
+            }
+
+            System.out.println("Week view: section found for today - " + driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//span[@class='dayHeaderRight'])[" + x + "]")).getText());
+
+            //Step: loop through any 'All Day' events in Week view section for today's date
+            n=1;
+            while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for first non "All Day" event in Week view section for today's date
+            strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
+            n=n+1;
+
+            //Step: loop through any 'All Day' events in Week view section for today's date
+            while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for second non "All Day" event in Week view section for today's date
+            strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
+            n=n+1;
+
+            //Step: loop through any 'All Day' events in Week view section for today's date
+            while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for third non "All Day" event in Week view section for today's date
+            strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
+
+            //Step: print out activity times for first 3 activities under Day view
+            System.out.println("Week view today's date : 1st activity time has a value of - " + strTime1);
+            System.out.println("Week view today's date : 2nd activity time has a value of - " + strTime2);
+            System.out.println("Week view today's date : 3rd activity time has a value of - " + strTime3);
+
+            //Step: convert string date representation to calendar date format
+            ft = new SimpleDateFormat("hh:mm a");
+            dateTime1 = Calendar.getInstance();
+            dateTime2 = Calendar.getInstance();
+            dateTime3 = Calendar.getInstance();
+            dateTime1.setTime(ft.parse(strTime1));
+            dateTime2.setTime(ft.parse(strTime2));
+            dateTime3.setTime(ft.parse(strTime3));
+
+
+            //Step: check that Week view activities for today's date are appearing in descending date order
+            if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
+                System.out.println("VP: Week view calendar activities are appearing in descending time order " + " - PASSED");
+            } else {
+                System.out.println("VP: Week view calendar activities not appearing in descending time order " + " - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+
+            //Calendar MONTH VIEW
+            //Step: switch focus to Month view ... by default, today's activities display ... use original calendarMonthBtn
+            calendarView.calendarMonthBtn.click();
+
+
+            //Step: loop through any 'All-Day' events in Month view
+            n=1;
+            while (driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for first non "All-Day" event in Month view
+            strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText();
+            n=n+1;
+
+            //Step: loop through any 'All-Day' events in Month view
+            while (driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for second non "All-Day" event in Month view
+            strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText();
+            n=n+1;
+
+            //Step: loop through any 'All-Day' events in Month view
+            while (driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for third non "All-Day" event in Month view
+            strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText();
+
+            //Step: print out activity times for first 3 activities under Month view
+            System.out.println("Month view today's date : 1st activity time has a value of - " + strTime1);
+            System.out.println("Month view today's date : 2nd activity time has a value of - " + strTime2);
+            System.out.println("Month view today's date : 3rd activity time has a value of - " + strTime3);
+
+            //Step: convert string date representation to calendar date format
+            ft = new SimpleDateFormat("hh:mm a");
+            dateTime1 = Calendar.getInstance();
+            dateTime2 = Calendar.getInstance();
+            dateTime3 = Calendar.getInstance();
+            dateTime1.setTime(ft.parse(strTime1));
+            dateTime2.setTime(ft.parse(strTime2));
+            dateTime3.setTime(ft.parse(strTime3));
+
+
+            //Step: check that Month view activities are appearing in descending date order
+            if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
+                System.out.println("VP: Month view calendar activities are appearing in descending time order " + " - PASSED");
+            } else {
+                System.out.println("VP: Month view calendar activities not appearing in descending time order " + " - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: calendar activities not appearing in descending time order " + " - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
 
     @Test(enabled = true)
     // MBL-10400 ... unexpected Activity values for start date/ time and alarm per three scenarios
@@ -781,10 +803,19 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: change the activity's time
             activityEditView.activityEditViewStartTimeFldBtn.click();
-            commNav.waitForPage("Calendar");
-            calendarView.calendarIncrementHourBtn.click();
-            calendarView.calendarIncrementMinuteBtn.click();
-            headerButton.clickHeaderButton("check");
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Press Advanced button to open Calendar view, change the hours and minutes, and press confirm
+            calendarView.calendarModalAdvanced.click();
+            calendarView.calendarHourField.click();
+            calendarView.calendarHourEight.click();
+            calendarView.calendarMinuteField.click();
+            calendarView.calendarMinute15.click();
+            calendarView.calendarModalConfirm.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
             commNav.waitForPage("Activity");
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             System.out.println("Activity Date/time value for Start Date is now : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
@@ -870,24 +901,32 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: for activity start time open the Calendar screen
             activityEditView.activityEditViewStartTimeFldBtn.click();
-            commNav.waitForPage("Calendar");
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
 
-            //Step: set the start time hour to '05', the minutes to '00'
-            new Select(driver.findElement(By.xpath("//*[@id='hour-field']"))).selectByValue("5");
-            new Select(driver.findElement(By.xpath("//*[@id='minute-field']"))).selectByValue("0");
+            //Press Advanced button to open Calendar view, choose hour of '5', minutes of '00'
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+            calendarView.calendarModalAdvanced.click();
+            calendarView.calendarHourField.click();
+            calendarView.calendarHourFive.click();
+            calendarView.calendarMinuteField.click();
+            calendarView.calendarMinute00.click();
+
 
             // toggleOn = AM ... if this is displayed, then click to choose PM
-            if (driver.findElement(By.xpath("//*[@id='datetime-picker-time']//div[@data-action='toggleMeridiem']//span[@class='toggleOn']")).isDisplayed()) {
-                driver.findElement(By.xpath("//*[@id='datetime-picker-time']//div[@data-action='toggleMeridiem']")).click();
-            }
+            //if (calendarView.calendarAM.isDisplayed()) {
+            //   calendarView.calendarAM.click();
+            //}
 
-            //Step: check to accept calendar changes
-            headerButton.clickHeaderButton("check");
+            //Step: confirm calendar changes
+            calendarView.calendarModalConfirm.click();
 
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
             //Step: wait for page Activity to open
             commNav.waitForPage("Activity");
 
-            //Step: retrieve value for start time, with the expected time of 5:00 PM
+            //Step: retrieve value for start time, with the expected time of 5:00 AM/ PM
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             String newActivityStartDate4 = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date for activity has been changed to - " + newActivityStartDate4);
@@ -904,7 +943,7 @@ public class MobileSprint306Test extends BaseTest {
             //Step: wait for page Activity
             commNav.waitForPage("Activity");
 
-            //Step: validate that activity edit view start date/time has not changed since it was changed to 5:00 PM
+            //Step: validate that activity edit view start date/time has not changed since it was changed to 5:00 AM/ PM
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             String newActivityStartDate5 = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             AssertJUnit.assertEquals("VP: for Scenario #2, changed Date/time value for Start Date for activity has not been retained on the edit view, is now - " + newActivityStartDate5 + " - FAILED", newActivityStartDate4, newActivityStartDate5);

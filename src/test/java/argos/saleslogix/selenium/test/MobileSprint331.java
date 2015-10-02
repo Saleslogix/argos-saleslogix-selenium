@@ -157,23 +157,26 @@ public class MobileSprint331 extends BaseTest {
 
             //Step: Open Start Time calendar, and wait for page Calendar
             activityEditView.activityEditViewStartTimeFldBtn.click();
-            commNav.waitForPage("Calendar");
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
 
-            //Step: Click the Day dropdown, and choose '01' for the first day of the month
-            Select dropdown = new Select(calendarView.calendarDayField);
-            dropdown.selectByValue("1");
-            String dayChosen = calendarView.calendarDayField.getAttribute("value");
-            System.out.println("VP: value set for Day, where activity not timeless, is ... " + dayChosen);
+            //Press Advanced button to open Calendar view, and choose 1st day of current month
+            calendarView.calendarModalAdvanced.click();
+            calendarView.calendarModalDayOneCurrMonth.click();
+
+            System.out.println("VP: value set for Day, where activity not timeless, is ... 1");
 
             // store the current value for the month
             String initialMonthText;
-            Select selectOption = new Select(calendarView.calendarMonthField);
-            WebElement option = selectOption.getFirstSelectedOption();
-            initialMonthText = option.getText();
+            initialMonthText = calendarView.calendarModalCurrMonthValue.getText();
             System.out.println("VP: initial value for Month, where activity not timeless, is ... " + initialMonthText);
 
             //Step: accept the date changes
-            headerButton.clickHeaderButton("accept");
+            calendarView.calendarModalConfirm.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage("Meeting");
 
             //Step: save activity
             headerButton.clickHeaderButton("Save");
@@ -201,14 +204,16 @@ public class MobileSprint331 extends BaseTest {
 
             //Step: Open Start Time calendar, and wait for page Calendar
             activityEditView.activityEditViewStartTimeFldBtn.click();
-            commNav.waitForPage("Calendar");
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Press Advanced button to open Calendar view
+            calendarView.calendarModalAdvanced.click();
 
             //Step: Verify that the correct month is displaying for the activity date
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
             String currentMonthText;
-            selectOption = new Select(calendarView.calendarMonthField);
-            option = selectOption.getFirstSelectedOption();
-            currentMonthText = option.getText();
+            currentMonthText = calendarView.calendarModalCurrMonthValue.getText();
             System.out.println("VP: current value for Month, after activity set to timeless, is ... " + currentMonthText);
             AssertJUnit.assertEquals("VP: DateTimePicker Calendar month not off by a month when setting activity to be timeless on 1st day of the month - FAILED", initialMonthText, currentMonthText);
             System.out.println("VP: DateTimePicker Calendar month not off by a month when setting activity to be timeless on 1st day of the month - PASSED");

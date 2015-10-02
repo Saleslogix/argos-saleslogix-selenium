@@ -785,175 +785,184 @@ public class MobileDefectTest extends BaseTest {
 		
 		System.out.println(ENDLINE);
 	}
-	
-
-	@Test(enabled = true)
-	public void test50_MobileDefect13092146()  throws Exception {				
-		String methodID = "test50_MobileDefect13092146";		
-		
-		// test params
-		String entityType = "Contacts";
-		String contactName = "Alexander, Mark";
-		String actType = "To-Do";
-		String regardingVal = "Send quote";
-		String repeatVal = "Daily";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
-				
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
 
-		try {
+    @Test(enabled = true)
+    public void test50_MobileDefect13092146()  throws Exception {
+        String methodID = "test50_MobileDefect13092146";
 
-			//Step: open the Contact record's Detail View...			
-			commNav.entityRecordOpenDetailView(entityType, contactName);
-			
-			ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
-		    		    
-		    //Step: click the Schedule Activity link...
-			contactDetailView.contactsDetailViewScheduleActivityLnk.click();
-			commNav.waitForPage("Schedule...");
-			
-			//TODO: create a separate class for scheduling activities...
-			//SubStep: set the To-Do Activity Type...(do not select, just enter the value in the input field)
-			driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = '" + actType + "']")).click();
-			commNav.waitForPage(actType);
-			
-			MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-		    
-			//SubStep: setup and confirm the Regarding field val...
-			//NOTE: here we just set the value of the input text field; selecting a Regarding value is not supported by Se WebDriver
-			activityEditView.activityEditViewRegardingFld.clear();
-			activityEditView.activityEditViewRegardingFld.sendKeys(regardingVal);		    
-		    //VP: check the modified Regarding field val...
-		    try {
-		    	  AssertJUnit.assertEquals(regardingVal, activityEditView.activityEditViewRegardingFld.getAttribute("value"));
-		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - PASSED");
-		    	} catch (Error e) {
-		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - FAILED");
-		    	  verificationErrors.append(methodID + "(): " + e.toString());
-		    }
-		    
-		    //SubStep: setup and confirm the Start Time field val...
-		    String oldStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
-		    activityEditView.activityEditViewStartTimeFldBtn.click();
-			commNav.waitForPage("Calendar");
-			//TODO: create a separate class for the Calendar Date view
-			//set Start Time = +1 Month
-			driver.findElement(By.xpath("//*[@id='datetime-picker-date']/tbody/tr[1]/td[1]/button")).click();
-			headerbutton.clickHeaderButton("check");
-			commNav.waitForPage(actType);
-			
-		    //VP: check the modified Start Time field val...
-			activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-			String newStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
-		    try {
-		    	  AssertJUnit.assertNotSame(oldStartTime, newStartTime);
-		    	  System.out.println("VP: Start Time field value set to '" + newStartTime + "' - PASSED");
-		    	} catch (Error e) {
-		    	  System.out.println("VP: Regarding field value set to '" + newStartTime + "' - FAILED");
-		    	  verificationErrors.append(methodID + "(): " + e.toString());
-		    }
-		    
-		    //SubStep: setup and confirm the Repeats field val...
-		    activityEditView.activityEditViewRepeatsFldBtn.click();
-			commNav.waitForPage("Recurring");		    
-			driver.findElement(By.xpath("//*[@id='select_list']/descendant::*[text() = '" + repeatVal + "']")).click();
-			commNav.waitForPage(actType);
-		    try {
-		    	  AssertJUnit.assertEquals(repeatVal, activityEditView.activityEditViewRepeatsFld.getAttribute("value"));
-		    	  System.out.println("VP: Repeats field value set to '" + repeatVal + "' - PASSED");
-		    	} catch (Error e) {
-		    	  System.out.println("VP: Repeats field value set to '" + repeatVal + "' - FAILED");
-		    	  verificationErrors.append(methodID + "(): " + e.toString());
-		    }
-		    
-		    //SubStep: setup and confirm the Recurring Until field val...
-		    activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-		    activityEditView.activityEditViewRecurringFldBtn.click();
-			commNav.waitForPage("Recurrence");
-			//Note: here we just open the Recurrence page, then click the Header, Check button (no changes)
-			headerbutton.clickHeaderButton("check");
-			
-		    //Step: click the Header, Save button to return to Contact detail view...
-		    headerbutton.clickHeaderButton("save");
-		    Thread.sleep(3000);
-		    if (commNav.waitForPage(contactName)) {
-			    System.out.println(methodID + ": successfully scheduled an '" + actType + " - " + regardingVal + "' activity for " + entityType + " - " + contactName);
-		    }
-		    
-		    //Step: click the Attachments link from the Contact detail view...
-		    contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
+        // test params
+        String entityType = "Contacts";
+        String contactName = "Alexander, Mark";
+        String actType = "To-Do";
+        String regardingVal = "Send quote";
+        String repeatVal = "Daily";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+
+        try {
+
+            //Step: open the Contact record's Detail View...
+            commNav.entityRecordOpenDetailView(entityType, contactName);
+
+            ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
+
+            //Step: click the Schedule Activity link...
+            contactDetailView.contactsDetailViewScheduleActivityLnk.click();
+            commNav.waitForPage("Schedule...");
+
+            //TODO: create a separate class for scheduling activities...
+            //SubStep: set the To-Do Activity Type...(do not select, just enter the value in the input field)
+            driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = '" + actType + "']")).click();
+            commNav.waitForPage(actType);
+
+            MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+
+            //SubStep: setup and confirm the Regarding field val...
+            //NOTE: here we just set the value of the input text field; selecting a Regarding value is not supported by Se WebDriver
+            activityEditView.activityEditViewRegardingFld.clear();
+            activityEditView.activityEditViewRegardingFld.sendKeys(regardingVal);
+            //VP: check the modified Regarding field val...
+            try {
+                AssertJUnit.assertEquals(regardingVal, activityEditView.activityEditViewRegardingFld.getAttribute("value"));
+                System.out.println("VP: Regarding field value set to '" + regardingVal + "' - PASSED");
+            } catch (Error e) {
+                System.out.println("VP: Regarding field value set to '" + regardingVal + "' - FAILED");
+                verificationErrors.append(methodID + "(): " + e.toString());
+            }
+
+            //SubStep: setup and confirm the Start Time field val...
+            CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+            String oldStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //set Start Time = +1 Month
+
+            //Press Advanced button to open Calendar view, then increment the month and press confirm
+            calendarView.calendarModalAdvanced.click();
+            calendarView.calendarModalIncrMonth.click();
+            calendarView.calendarModalConfirm.click();
+
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage(actType);
+
+            //VP: check the modified Start Time field val...
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            String newStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            try {
+                AssertJUnit.assertNotSame(oldStartTime, newStartTime);
+                System.out.println("VP: Start Time field value set to '" + newStartTime + "' - PASSED");
+            } catch (Error e) {
+                System.out.println("VP: Regarding field value set to '" + newStartTime + "' - FAILED");
+                verificationErrors.append(methodID + "(): " + e.toString());
+            }
+
+            //SubStep: setup and confirm the Repeats field val...
+            activityEditView.activityEditViewRepeatsFldBtn.click();
+            commNav.waitForPage("Recurring");
+            driver.findElement(By.xpath("//*[@id='select_list']/descendant::*[text() = '" + repeatVal + "']")).click();
+            commNav.waitForPage(actType);
+            try {
+                AssertJUnit.assertEquals(repeatVal, activityEditView.activityEditViewRepeatsFld.getAttribute("value"));
+                System.out.println("VP: Repeats field value set to '" + repeatVal + "' - PASSED");
+            } catch (Error e) {
+                System.out.println("VP: Repeats field value set to '" + repeatVal + "' - FAILED");
+                verificationErrors.append(methodID + "(): " + e.toString());
+            }
+
+            //SubStep: setup and confirm the Recurring Until field val...
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityEditViewRecurringFldBtn.click();
+            commNav.waitForPage("Recurrence");
+            //Note: here we just open the Recurrence page, then click the Header, Check button (no changes)
+            headerbutton.clickHeaderButton("check");
+
+            //Step: click the Header, Save button to return to Contact detail view...
+            headerbutton.clickHeaderButton("save");
+            Thread.sleep(3000);
+            if (commNav.waitForPage(contactName)) {
+                System.out.println(methodID + ": successfully scheduled an '" + actType + " - " + regardingVal + "' activity for " + entityType + " - " + contactName);
+            }
+
+            //Step: click the Attachments link from the Contact detail view...
+            contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
             commNav.highlightNClick(contactDetailView.contactDetailViewRelatedItemsTab);
-		    contactDetailView.contactsDetailViewAttachmentsLnk.click();
-			commNav.waitForPage("Contact Attachments");
-			
-			// Step: click the top Add buton...
-		    headerbutton.addButton.click();
-		    commNav.waitForPage("Add Attachments");
-		
-		    // VP: confirm the elements of the Add Attachments screen...
-		    try {
-		      AssertJUnit.assertTrue(isElementPresent(By.cssSelector("input[type=\"file\"]")));
-		    } catch (Error e) {
-		      verificationErrors.append(methodID + "(): " + e.toString());
-		    }
-		    try {
-		    	AssertJUnit.assertTrue(isElementPresent(By.cssSelector("button.button.inline")));
-		    } catch (Error e) {
-		      verificationErrors.append(methodID + "(): " + e.toString());
-		    }
-		    try {
-		    	AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='attachment_Add']/div[2]/div/button[2]")));
-		    } catch (Error e) {
-		      verificationErrors.append(methodID + "(): " + e.toString());
-		    }
-		    
-		    // Step: click the 'add a file' section of the screen...
-		    String filepath = "C://uploadtest.txt";
-		    driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).sendKeys(filepath);
-		    Thread.sleep(2000);	    
-		    
-		    // Step: setup a unique, time-based file name for the uploaded file...
-		    String newfilename = "upload." + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime()) + ".txt";
-		    try {
-			    driver.findElement(By.id("File_0")).clear();
-			    Thread.sleep(1000);
-			    driver.findElement(By.id("File_0")).sendKeys(newfilename);
-			    Thread.sleep(1000);
-			    
-			    // Step: proceed with file upload...
-			    driver.findElement(By.id("fileSelect-btn-upload")).click();
-			    
-			    // Step: verify that new attachment appears in the Contact Attachments list view...
-			    commNav.waitForPage("Contact Attachments");
-			    try {
-			    	AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
-			    	System.out.println("VP: the '" + newfilename + "' attachmment upload check - PASSED");
-			    } 
-			    catch (Error e) {
-			    	System.out.println("VP: the '" + newfilename + "' attachmment upload check - FAILED");
-			    	verificationErrors.append(methodID + "(): " + e.toString());
-			    }
-		    }
-		    catch (Exception e) {
-		    	//System.out.println(methodID + "(): " + e.toString());
-		    	System.out.println(methodID + ": unable to upload the file due to a system issue; step skipped");
-		    }
-		    
-		} catch (Error e) {
-			System.out.println("Step: '" + contactName + "' check on Contacts, List View - FAILED");
-			verificationErrors.append(methodID + "(): " + e.toString());
-		}
-		
-		// End Tests
-		// Step: click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
-		
-		System.out.println(ENDLINE);		
-	}
+            contactDetailView.contactsDetailViewAttachmentsLnk.click();
+            commNav.waitForPage("Contact Attachments");
+
+            // Step: click the top Add buton...
+            headerbutton.addButton.click();
+            commNav.waitForPage("Add Attachments");
+
+            // VP: confirm the elements of the Add Attachments screen...
+            try {
+                AssertJUnit.assertTrue(isElementPresent(By.cssSelector("input[type=\"file\"]")));
+            } catch (Error e) {
+                verificationErrors.append(methodID + "(): " + e.toString());
+            }
+            try {
+                AssertJUnit.assertTrue(isElementPresent(By.cssSelector("button.button.inline")));
+            } catch (Error e) {
+                verificationErrors.append(methodID + "(): " + e.toString());
+            }
+            try {
+                AssertJUnit.assertTrue(isElementPresent(By.xpath("//div[@id='attachment_Add']/div[2]/div/button[2]")));
+            } catch (Error e) {
+                verificationErrors.append(methodID + "(): " + e.toString());
+            }
+
+            // Step: click the 'add a file' section of the screen...
+            String filepath = "C://uploadtest.txt";
+            driver.findElement(By.xpath(".//*[@id='attachment_Add']/div[1]/div/div/input")).sendKeys(filepath);
+            Thread.sleep(2000);
+
+            // Step: setup a unique, time-based file name for the uploaded file...
+            String newfilename = "upload." + new SimpleDateFormat("yyMMddHHmm").format(new GregorianCalendar().getTime()) + ".txt";
+            try {
+                driver.findElement(By.id("File_0")).clear();
+                Thread.sleep(1000);
+                driver.findElement(By.id("File_0")).sendKeys(newfilename);
+                Thread.sleep(1000);
+
+                // Step: proceed with file upload...
+                driver.findElement(By.id("fileSelect-btn-upload")).click();
+
+                // Step: verify that new attachment appears in the Contact Attachments list view...
+                commNav.waitForPage("Contact Attachments");
+                try {
+                    AssertJUnit.assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*" + newfilename + "[\\s\\S]*$"));
+                    System.out.println("VP: the '" + newfilename + "' attachmment upload check - PASSED");
+                }
+                catch (Error e) {
+                    System.out.println("VP: the '" + newfilename + "' attachmment upload check - FAILED");
+                    verificationErrors.append(methodID + "(): " + e.toString());
+                }
+            }
+            catch (Exception e) {
+                //System.out.println(methodID + "(): " + e.toString());
+                System.out.println(methodID + ": unable to upload the file due to a system issue; step skipped");
+            }
+
+        } catch (Error e) {
+            System.out.println("Step: '" + contactName + "' check on Contacts, List View - FAILED");
+            verificationErrors.append(methodID + "(): " + e.toString());
+        }
+
+        // End Tests
+        // Step: click the Top-Left, Global Menu button...
+        headerbutton.showGlobalMenu();
+        commNav.clickGlobalMenuItem("My Activities");
+
+        System.out.println(ENDLINE);
+    }
 	
 	
 	@Test(enabled = true)
