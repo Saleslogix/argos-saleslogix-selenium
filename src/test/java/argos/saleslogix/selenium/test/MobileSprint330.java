@@ -632,8 +632,8 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: cancel out of activity, press Month button, scroll to next month
             headerButton.clickHeaderButton("cancel");
-            calendarView.calendarMonthBtn.click();
-            calendarView.calendarNextMonthBtn.click();
+
+            calendarView.calendarModalIncrMonth.click();
             calendarView.calendarMonthFirstDayFourthRow.click();
 
 

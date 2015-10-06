@@ -45,11 +45,9 @@ public class MobileSprint331 extends BaseTest {
             LogOutThenLogBackIn(userName, userPwd);
 
 
-            //Step: go to Calendar view ... wait for page Calendar, and press 'Month' button
+            //Step: go to Calendar view ... wait for page Calendar ... already on 'Month' view
             commNav.clickGlobalMenuItem("Calendar");
             commNav.waitForPage("Calendar");
-            calendarView.calendarDayListToMonthBtn.click();
-
 
             //Step: click on the Sunday at the start of the 3rd row of days for the month
             calendarView.calendarMonthFirstDayThirdRow.click();
@@ -230,8 +228,8 @@ public class MobileSprint331 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
-    // INFORCRM-3906 ... Calendar - for the first day of the month, activity count may be wrong if there are All-Day activities
+    @Test(enabled = false)
+    // INFORCRM-3906 ... Calendar - for the first day of the month, activity count may be wrong if there are All-Day activities ... not relevant for Mobile 3.4 upwards
     public void test03_INFORCRM3906() throws Exception {
         String methodID = "test03_INFORCRM3906";
 

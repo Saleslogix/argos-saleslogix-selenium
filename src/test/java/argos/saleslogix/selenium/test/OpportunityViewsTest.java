@@ -446,59 +446,59 @@ public class OpportunityViewsTest extends BaseTest {
 	}
 
 
-	@Test(enabled = true)
-	public void test09_SeTestTCOpportunityAddEditView() throws Exception {
-		String methodID = "test09_SeTestTCOpportunityAddEditView";
-		
-		// Test Params:
-		String entityType = "Opportunity";
-		String viewName = "Opportunity Add Edit view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+    @Test(enabled = true)
+    public void test09_SeTestTCOpportunityAddEditView() throws Exception {
+        String methodID = "test09_SeTestTCOpportunityAddEditView";
+
+        // Test Params:
+        String entityType = "Opportunity";
+        String viewName = "Opportunity Add Edit view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: login & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
-		
-		try {
-			//Step: enter the Opportunity Add Edit view...
-			commNav.entityRecordAdd(entityType);
-			
-			OpportunityViewsElements opportunityEditView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-			
-			//Step: check each input field and if applicable, its related list item selection view
-			commNav.isWebElementPresent(viewName + ",'opportunity'", opportunityEditView.opportunityEditViewOpportunityInputFld);			
-			commNav.verifyEntityViewElementClick(viewName + ", acct", opportunityEditView.opportunityEditViewAcctFldBtn, "Accounts");			
-			commNav.verifyEntityViewElementClick(viewName + ",acct mgr", opportunityEditView.opportunityEditViewAcctMgrFldBtn, "Users");			
-			commNav.verifyEntityViewElementClick(viewName + ",reseller", opportunityEditView.opportunityEditViewResellerFldBtn, "Accounts");
-			commNav.verifyEntityViewElementClick(viewName + ",est close", opportunityEditView.opportunityEditViewEstCloseFldBtn, "Calendar");
-			commNav.isFieldValueEmpty(viewName + ",'sales potential", opportunityEditView.opportunityEditViewSalesPotentialInputFld);
-			commNav.verifyEntityViewElementClick(viewName + ",type", opportunityEditView.opportunityEditViewTypeFldBtn, "Opportunity Type");
-			commNav.verifyEntityViewElementClick(viewName + ",status", opportunityEditView.opportunityEditViewStatusFldBtn, "Opportunity Status");
-			commNav.verifyEntityViewElementClick(viewName + ",lead source", opportunityEditView.opportunityEditViewLeadSourceFldBtn, "Lead Sources");
-			commNav.verifyEntityViewElementClick(viewName + ",owner", opportunityEditView.opportunityEditViewOwnerFldBtn, "Owners");
-			commNav.verifyEntityViewElementClick(viewName + ",close prob", opportunityEditView.opportunityEditViewCloseProbFldBtn, "Opportunity Probability");
-			commNav.isFieldValueEmpty(viewName + ",exchange rate", opportunityEditView.opportunityEditViewExchangeRateFld);
-			commNav.verifyEntityViewElementClick(viewName + ",code", opportunityEditView.opportunityEditViewCodeFldBtn, "Exchange Rates");
-			commNav.isWebElementPresent(viewName + ",rate locked", opportunityEditView.opportunityEditViewRateLockedFld);
-			commNav.isWebElementPresent(viewName + ",rate date", opportunityEditView.opportunityEditViewRateDateFld);
-			
-			//end of test
-			headerButton.clickHeaderButton("cancel");
-		
-			//Step: go back to previous screen
-			headerButton.goBack();
-			Thread.sleep(2000);
-		}
-		catch (Exception e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": unable to open the Opportunity Add Edit view.");
-		}
-		
-		System.out.println(ENDLINE);
-	}
+
+        try {
+            //Step: enter the Opportunity Add Edit view...
+            commNav.entityRecordAdd(entityType);
+
+            OpportunityViewsElements opportunityEditView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+
+            //Step: check each input field and if applicable, its related list item selection view
+            commNav.isWebElementPresent(viewName + ",'opportunity'", opportunityEditView.opportunityEditViewOpportunityInputFld);
+            commNav.verifyEntityViewElementClick(viewName + ", acct", opportunityEditView.opportunityEditViewAcctFldBtn, "Accounts");
+            commNav.verifyEntityViewElementClick(viewName + ",acct mgr", opportunityEditView.opportunityEditViewAcctMgrFldBtn, "Users");
+            commNav.verifyEntityViewElementClick(viewName + ",reseller", opportunityEditView.opportunityEditViewResellerFldBtn, "Accounts");
+            commNav.isWebElementPresent(viewName + ",est close", opportunityEditView.opportunityEditViewEstCloseFldBtn);
+            commNav.isFieldValueEmpty(viewName + ",'sales potential", opportunityEditView.opportunityEditViewSalesPotentialInputFld);
+            commNav.verifyEntityViewElementClick(viewName + ",type", opportunityEditView.opportunityEditViewTypeFldBtn, "Opportunity Type");
+            commNav.verifyEntityViewElementClick(viewName + ",status", opportunityEditView.opportunityEditViewStatusFldBtn, "Opportunity Status");
+            commNav.verifyEntityViewElementClick(viewName + ",lead source", opportunityEditView.opportunityEditViewLeadSourceFldBtn, "Lead Sources");
+            commNav.verifyEntityViewElementClick(viewName + ",owner", opportunityEditView.opportunityEditViewOwnerFldBtn, "Owners");
+            commNav.verifyEntityViewElementClick(viewName + ",close prob", opportunityEditView.opportunityEditViewCloseProbFldBtn, "Opportunity Probability");
+            commNav.isFieldValueEmpty(viewName + ",exchange rate", opportunityEditView.opportunityEditViewExchangeRateFld);
+            commNav.verifyEntityViewElementClick(viewName + ",code", opportunityEditView.opportunityEditViewCodeFldBtn, "Exchange Rates");
+            commNav.isWebElementPresent(viewName + ",rate locked", opportunityEditView.opportunityEditViewRateLockedFld);
+            commNav.isWebElementPresent(viewName + ",rate date", opportunityEditView.opportunityEditViewRateDateFld);
+
+            //end of test
+            headerButton.clickHeaderButton("cancel");
+
+            //Step: go back to previous screen
+            headerButton.goBack();
+            Thread.sleep(2000);
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + ": unable to open the Opportunity Add Edit view.");
+        }
+
+        System.out.println(ENDLINE);
+    }
 
 	
 	@Test(enabled = false)

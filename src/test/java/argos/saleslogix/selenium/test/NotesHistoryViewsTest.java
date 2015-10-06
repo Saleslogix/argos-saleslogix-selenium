@@ -352,54 +352,54 @@ public class NotesHistoryViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-	@Test(enabled = true)
+    @Test(enabled = true)
     // This test searches on 'Research the prospect', then edits that item ... now that loup may only edit his own notes, this will fail unless loup adds
     //  a note for 'Research the prospect' manually : later - automate this note creation
-	public void test08_SeTestTCNotesHistoryEditView() throws Exception {
-		String methodID = "test08_SeTestTCNotesHistoryEditView";
-		
-		// Test Params:
-		String entityType = "Notes/History";
-		String entityRecord = "Research the prospect";
-		String viewName = "History Detail Edit view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		//Step: logout & log back in (to clear cookies)
-		LogOutThenLogBackIn(userName, userPwd);
-		
-		try {
-			//Step: search for Notes/History entity, then open it's Edit view
-			AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
-			
-			NotesHistoryViewsElements notesHistoryEditView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
-		
-			//Step: check each input field and if applicable, its related list item selection view			
-			commNav.verifyEntityViewElementClick(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn, "Calendar");			
-			commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Note Description");			
-			commNav.isFieldValueEmpty(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
-			commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
-			commNav.verifyEntityViewElementClick(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountFldBtn, "Accounts");
-			commNav.verifyEntityViewElementClick(viewName + " contact", notesHistoryEditView.notesHistoryEditViewContactFldBtn, "Contacts");
-			commNav.verifyEntityViewElementClick(viewName + ", opportunity", notesHistoryEditView.notesHistoryEditViewOpportunityFldBtn, "Opportunities");
-			commNav.verifyEntityViewElementClick(viewName + " ticket", notesHistoryEditView.notesHistoryEditViewTicketFldBtn, "Tickets");
-				
-			//end of test
-			headerButton.clickHeaderButton("cancel");
-		
-			//Step: go back to previous screen
-			headerButton.goBack();
-			Thread.sleep(2000);
-		} catch (Exception e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
-		}
-		
-		System.out.println(ENDLINE);
-	}
+    public void test08_SeTestTCNotesHistoryEditView() throws Exception {
+        String methodID = "test08_SeTestTCNotesHistoryEditView";
+
+        // Test Params:
+        String entityType = "Notes/History";
+        String entityRecord = "Research the prospect";
+        String viewName = "History Detail Edit view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Notes/History entity, then open it's Edit view
+            AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
+
+            NotesHistoryViewsElements notesHistoryEditView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
+
+            //Step: check each input field and if applicable, its related list item selection view
+            commNav.isWebElementPresent(viewName + ", time", notesHistoryEditView.notesHistoryEditViewTimeFldBtn);
+            commNav.verifyEntityViewElementClick(viewName + ", regarding", notesHistoryEditView.notesHistoryEditViewRegardingFldBtn, "Note Description");
+            commNav.isFieldValueEmpty(viewName + ", notes", notesHistoryEditView.notesHistoryEditViewNotesInputFld);
+            commNav.isWebElementPresent(viewName + ", for lead", notesHistoryEditView.notesHistoryEditViewForLeadToggleBtn);
+            commNav.verifyEntityViewElementClick(viewName + ", account", notesHistoryEditView.notesHistoryEditViewAccountFldBtn, "Accounts");
+            commNav.verifyEntityViewElementClick(viewName + " contact", notesHistoryEditView.notesHistoryEditViewContactFldBtn, "Contacts");
+            commNav.verifyEntityViewElementClick(viewName + ", opportunity", notesHistoryEditView.notesHistoryEditViewOpportunityFldBtn, "Opportunities");
+            commNav.verifyEntityViewElementClick(viewName + " ticket", notesHistoryEditView.notesHistoryEditViewTicketFldBtn, "Tickets");
+
+            //end of test
+            headerButton.clickHeaderButton("cancel");
+
+            //Step: go back to previous screen
+            headerButton.goBack();
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);
+        }
+
+        System.out.println(ENDLINE);
+    }
 	
 
 	@Test(enabled = true)

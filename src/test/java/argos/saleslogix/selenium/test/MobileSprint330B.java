@@ -771,14 +771,12 @@ public class MobileSprint330B extends BaseTest {
             LogOutThenLogBackIn(userName, userPwd);
 
 
-            //Step: go to Calendar view ... wait for page Calendar, and press 'Month' button
+            //Step: go to Calendar view ... wait for page Calendar ... already on Month view
             commNav.clickGlobalMenuItem("Calendar");
             commNav.waitForPage("Calendar");
-            calendarView.calendarDayListToMonthBtn.click();
-
 
             //Step: go to the next month, and click on the Sunday at the start of the 2nd row of days for the month
-            calendarView.calendarNextMonthBtn.click();
+            calendarView.calendarModalIncrMonth.click();
             calendarView.calendarMonthFirstDaySecondRow.click();
 
 

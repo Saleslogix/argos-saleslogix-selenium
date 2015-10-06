@@ -134,27 +134,27 @@ public class CalendarViewsElements extends BaseTest {
 	//Month View Elements
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='calendar_monthlist']/div[4]/div[2]/table/tbody/tr[3]/td[1]")
+    @FindBy(xpath = "//*[@id='calendar-view__calendar']//tr[2]/td[1]")
     WebElement calendarMonthFirstDaySecondRow;
 
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='calendar_monthlist']/div[4]/div[2]/table/tbody/tr[4]/td[1]")
+    @FindBy(xpath = "//*[@id='calendar-view__calendar']//tr[3]/td[1]")
     WebElement calendarMonthFirstDayThirdRow;
 
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='calendar_monthlist']/div[4]/div[2]/table/tbody/tr[5]/td[1]")
+    @FindBy(xpath = "//*[@id='calendar-view__calendar']//tr[4]/td[1]")
     WebElement calendarMonthFirstDayFourthRow;
 
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='calendar_monthlist']//span[@class='p-time']")
+    @FindBy(xpath = "//span[@class='timeStamp__time']")
     WebElement calendarMonthFirstActivityTime;
 
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='calendar_monthlist']//h3[@class='p-description']")
+    @FindBy(xpath = "//h3[@class='header__title']")
     WebElement calendarMonthFirstActivityDescription ;
 
     @CacheLookup

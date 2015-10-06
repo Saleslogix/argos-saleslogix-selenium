@@ -464,133 +464,133 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-	@Test(enabled = true)
-	public void test08_SeTestTCTicketEditView() throws Exception {
-		String methodID = "test08_SeTestTCTicketEditView";
-		
-		// Test Params:
-		String entityType = "Ticket";
-		String entityRecord = TEST_TICKET_RECORD;
-		String viewName = "Ticket Edit view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		//Step: logout & log back in (to clear cookies)
-		LogOutThenLogBackIn(userName, userPwd);
-		
-		try {
-			//Step: search for Ticket entity, then open it's Edit view
-			AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
-			
-			TicketViewsElements ticketEditView = PageFactory.initElements(driver, TicketViewsElements.class);
-			
-			//Step: check each input field and if applicable, its related list item selection view
-			commNav.isWebElementPresent(viewName + ", 'Details' section header", ticketEditView.ticketsEditViewDetailsHdr);
-			commNav.verifyEntityViewElementClick(viewName + ",'account field'", ticketEditView.ticketsEditViewAccountFldBtn, "Accounts");
-			commNav.verifyEntityViewElementClick(viewName + ",'contact field'", ticketEditView.ticketsEditViewContactFldBtn, "Contacts");
-			commNav.verifyEntityViewElementClick(viewName + ",'contract field'", ticketEditView.ticketsEditViewContractFldBtn, "Contracts");			
-			commNav.verifyEntityViewElementClick(viewName + ",'area field'", ticketEditView.ticketsEditViewAreaFldBtn, "Ticket Area");
-			commNav.verifyEntityViewElementClick(viewName + ",'category field'", ticketEditView.ticketsEditViewCategoryFldBtn, "Ticket Category");
-			commNav.verifyEntityViewElementClick(viewName + ",'issue field'", ticketEditView.ticketsEditViewIssueFldBtn, "Ticket Issue");
-			commNav.verifyEntityViewElementClick(viewName + ",'source field'", ticketEditView.ticketsEditViewSourceFldBtn, "Source");
-			commNav.verifyEntityViewElementClick(viewName + ",'status field'", ticketEditView.ticketsEditViewStatusFldBtn, "Ticket Status");
-			commNav.verifyEntityViewElementClick(viewName + ",'urgency field'", ticketEditView.ticketsEditViewUrgencyFldBtn, "Ticket Urgency");
-			commNav.verifyEntityViewElementClick(viewName + ",'needed date field'", ticketEditView.ticketsEditViewNeededDateFldBtn, "Calendar");
-			commNav.verifyEntityViewElementClick(viewName + ",'assigned date field'", ticketEditView.ticketsEditViewAssignedDateFldBtn, "Calendar");
-			commNav.verifyEntityViewElementClick(viewName + ",'assigned to field'", ticketEditView.ticketsEditViewAssignedToFldBtn, "Owners");
-			
-			
-			commNav.isFieldValueEmpty(viewName + ", subject ", ticketEditView.ticketsEditViewSubjectInputFld);
-			commNav.isFieldValueEmpty(viewName + ", description ", ticketEditView.ticketsEditViewDescInputFld);
-			commNav.isFieldValueEmpty(viewName + ", resolution ", ticketEditView.ticketsEditViewResolutionInputFld);
-			commNav.isFieldValueEmpty(viewName + ", comments ", ticketEditView.ticketsEditViewCommentsInputFld);
-			
-			
-			//end of test
-			headerButton.clickHeaderButton("cancel");
-		
-			//Step: go back to previous screen
-			headerButton.goBack();
-			Thread.sleep(2000);
-		} catch (Error e) {
-			verificationErrors.append(e.toString());
-			System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);		
-		}
-		
-		System.out.println(ENDLINE);
-	}
+    @Test(enabled = true)
+    public void test08_SeTestTCTicketEditView() throws Exception {
+        String methodID = "test08_SeTestTCTicketEditView";
+
+        // Test Params:
+        String entityType = "Ticket";
+        String entityRecord = TEST_TICKET_RECORD;
+        String viewName = "Ticket Edit view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Ticket entity, then open it's Edit view
+            AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
+
+            TicketViewsElements ticketEditView = PageFactory.initElements(driver, TicketViewsElements.class);
+
+            //Step: check each input field and if applicable, its related list item selection view
+            commNav.isWebElementPresent(viewName + ", 'Details' section header", ticketEditView.ticketsEditViewDetailsHdr);
+            commNav.verifyEntityViewElementClick(viewName + ",'account field'", ticketEditView.ticketsEditViewAccountFldBtn, "Accounts");
+            commNav.verifyEntityViewElementClick(viewName + ",'contact field'", ticketEditView.ticketsEditViewContactFldBtn, "Contacts");
+            commNav.verifyEntityViewElementClick(viewName + ",'contract field'", ticketEditView.ticketsEditViewContractFldBtn, "Contracts");
+            commNav.verifyEntityViewElementClick(viewName + ",'area field'", ticketEditView.ticketsEditViewAreaFldBtn, "Ticket Area");
+            commNav.verifyEntityViewElementClick(viewName + ",'category field'", ticketEditView.ticketsEditViewCategoryFldBtn, "Ticket Category");
+            commNav.verifyEntityViewElementClick(viewName + ",'issue field'", ticketEditView.ticketsEditViewIssueFldBtn, "Ticket Issue");
+            commNav.verifyEntityViewElementClick(viewName + ",'source field'", ticketEditView.ticketsEditViewSourceFldBtn, "Source");
+            commNav.verifyEntityViewElementClick(viewName + ",'status field'", ticketEditView.ticketsEditViewStatusFldBtn, "Ticket Status");
+            commNav.verifyEntityViewElementClick(viewName + ",'urgency field'", ticketEditView.ticketsEditViewUrgencyFldBtn, "Ticket Urgency");
+            commNav.isWebElementPresent(viewName + ",'needed date field'", ticketEditView.ticketsEditViewNeededDateFldBtn);
+            commNav.isWebElementPresent(viewName + ",'assigned date field'", ticketEditView.ticketsEditViewAssignedDateFldBtn);
+            commNav.verifyEntityViewElementClick(viewName + ",'assigned to field'", ticketEditView.ticketsEditViewAssignedToFldBtn, "Owners");
 
 
-	@Test(enabled = true)
-	public void test09_SeTestTCTicketAddEditView() throws Exception {
-		String methodID = "test09_SeTestTCTicketAddEditView";
-		
-		// Test Params:
-		String entityType = "ticket";
-		String viewName = "Ticket Add Edit view";
-		
-		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);	
-		
-		//Step: logout & log back in (to clear cookies)
-		LogOutThenLogBackIn(userName, userPwd);
-		
-		try {
-			//Step: enter the Ticket Add Edit view...
-			commNav.entityRecordAdd(entityType);
-					
-			TicketViewsElements ticketEditView = PageFactory.initElements(driver, TicketViewsElements.class);
-			
-			//Step: check each input field and if applicable, its related list item selection view
-			commNav.isWebElementPresent(viewName + ", 'Details' section header", ticketEditView.ticketsEditViewDetailsHdr);
-			commNav.verifyEntityViewElementClick(viewName + ",'account field'", ticketEditView.ticketsEditViewAccountFldBtn, "Accounts");
-			commNav.verifyEntityViewElementClick(viewName + ",'contact field'", ticketEditView.ticketsEditViewContactFldBtn, "Contacts");
-			commNav.verifyEntityViewElementClick(viewName + ",'contract field'", ticketEditView.ticketsEditViewContractFldBtn, "Contracts");
-			
-			//the following will fail for Area, Category, Issue
-			//commNav.verifyEntityViewElementClick(viewName + ",'area field'", ticketEditView.ticketsEditViewAreaFldBtn, "Ticket Area");
-			//commNav.verifyEntityViewElementClick(viewName + ",'category field'", ticketEditView.ticketsEditViewCategoryFldBtn, "Ticket Category");
-			//commNav.verifyEntityViewElementClick(viewName + ",'issue field'", ticketEditView.ticketsEditViewIssueFldBtn, "Ticket Issue");
-			
-		    // the following checks the area, category, and issue fields without navigating to the associated selection listview
-			// possibly change in the future to also open the listview
-			commNav.isFieldValueEmpty(viewName + ",'area'", ticketEditView.ticketsEditViewAreaFld);
-			commNav.isFieldValueEmpty(viewName + ",'category'", ticketEditView.ticketsEditViewCategoryFld);
-			commNav.isFieldValueEmpty(viewName + ",'issue'", ticketEditView.ticketsEditViewIssueFld);
-						
-			
-			commNav.verifyEntityViewElementClick(viewName + ",'source field'", ticketEditView.ticketsEditViewSourceFldBtn, "Source");
-			commNav.verifyEntityViewElementClick(viewName + ",'status field'", ticketEditView.ticketsEditViewStatusFldBtn, "Ticket Status");
-			commNav.verifyEntityViewElementClick(viewName + ",'urgency field'", ticketEditView.ticketsEditViewUrgencyFldBtn, "Ticket Urgency");
-			commNav.verifyEntityViewElementClick(viewName + ",'needed date field'", ticketEditView.ticketsEditViewNeededDateFldBtn, "Calendar");
-			commNav.verifyEntityViewElementClick(viewName + ",'assigned date field'", ticketEditView.ticketsEditViewAssignedDateFldBtn, "Calendar");
-			commNav.verifyEntityViewElementClick(viewName + ",'assigned to field'", ticketEditView.ticketsEditViewAssignedToFldBtn, "Owners");
-	
-			commNav.isWebElementPresent(viewName + ", subject ", ticketEditView.ticketsEditViewSubjectInputFld);
-			commNav.isWebElementPresent(viewName + ", description ", ticketEditView.ticketsEditViewDescInputFld);
-			commNav.isWebElementPresent(viewName + ", resolution ", ticketEditView.ticketsEditViewResolutionInputFld);
-			commNav.isWebElementPresent(viewName + ", comments ", ticketEditView.ticketsEditViewCommentsInputFld);
-	
-			
-			//end of test
-			headerButton.clickHeaderButton("cancel");
-		
-			//Step: go back to previous screen
-			headerButton.goBack();
-			Thread.sleep(2000);
-		}
-		catch (Exception e) {
-			verificationErrors.append(e.toString());
-			System.out.println(methodID + ": unable to open the Ticket Edit Add view.");			
-		}
-		
-		System.out.println(ENDLINE);
-	}
+            commNav.isFieldValueEmpty(viewName + ", subject ", ticketEditView.ticketsEditViewSubjectInputFld);
+            commNav.isFieldValueEmpty(viewName + ", description ", ticketEditView.ticketsEditViewDescInputFld);
+            commNav.isFieldValueEmpty(viewName + ", resolution ", ticketEditView.ticketsEditViewResolutionInputFld);
+            commNav.isFieldValueEmpty(viewName + ", comments ", ticketEditView.ticketsEditViewCommentsInputFld);
+
+
+            //end of test
+            headerButton.clickHeaderButton("cancel");
+
+            //Step: go back to previous screen
+            headerButton.goBack();
+            Thread.sleep(2000);
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+            System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    public void test09_SeTestTCTicketAddEditView() throws Exception {
+        String methodID = "test09_SeTestTCTicketAddEditView";
+
+        // Test Params:
+        String entityType = "ticket";
+        String viewName = "Ticket Add Edit view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: enter the Ticket Add Edit view...
+            commNav.entityRecordAdd(entityType);
+
+            TicketViewsElements ticketEditView = PageFactory.initElements(driver, TicketViewsElements.class);
+
+            //Step: check each input field and if applicable, its related list item selection view
+            commNav.isWebElementPresent(viewName + ", 'Details' section header", ticketEditView.ticketsEditViewDetailsHdr);
+            commNav.verifyEntityViewElementClick(viewName + ",'account field'", ticketEditView.ticketsEditViewAccountFldBtn, "Accounts");
+            commNav.verifyEntityViewElementClick(viewName + ",'contact field'", ticketEditView.ticketsEditViewContactFldBtn, "Contacts");
+            commNav.verifyEntityViewElementClick(viewName + ",'contract field'", ticketEditView.ticketsEditViewContractFldBtn, "Contracts");
+
+            //the following will fail for Area, Category, Issue
+            //commNav.verifyEntityViewElementClick(viewName + ",'area field'", ticketEditView.ticketsEditViewAreaFldBtn, "Ticket Area");
+            //commNav.verifyEntityViewElementClick(viewName + ",'category field'", ticketEditView.ticketsEditViewCategoryFldBtn, "Ticket Category");
+            //commNav.verifyEntityViewElementClick(viewName + ",'issue field'", ticketEditView.ticketsEditViewIssueFldBtn, "Ticket Issue");
+
+            // the following checks the area, category, and issue fields without navigating to the associated selection listview
+            // possibly change in the future to also open the listview
+            commNav.isFieldValueEmpty(viewName + ",'area'", ticketEditView.ticketsEditViewAreaFld);
+            commNav.isFieldValueEmpty(viewName + ",'category'", ticketEditView.ticketsEditViewCategoryFld);
+            commNav.isFieldValueEmpty(viewName + ",'issue'", ticketEditView.ticketsEditViewIssueFld);
+
+
+            commNav.verifyEntityViewElementClick(viewName + ",'source field'", ticketEditView.ticketsEditViewSourceFldBtn, "Source");
+            commNav.verifyEntityViewElementClick(viewName + ",'status field'", ticketEditView.ticketsEditViewStatusFldBtn, "Ticket Status");
+            commNav.verifyEntityViewElementClick(viewName + ",'urgency field'", ticketEditView.ticketsEditViewUrgencyFldBtn, "Ticket Urgency");
+            commNav.isWebElementPresent(viewName + ",'needed date field'", ticketEditView.ticketsEditViewNeededDateFldBtn);
+            commNav.isWebElementPresent(viewName + ",'assigned date field'", ticketEditView.ticketsEditViewAssignedDateFldBtn);
+            commNav.verifyEntityViewElementClick(viewName + ",'assigned to field'", ticketEditView.ticketsEditViewAssignedToFldBtn, "Owners");
+
+            commNav.isWebElementPresent(viewName + ", subject ", ticketEditView.ticketsEditViewSubjectInputFld);
+            commNav.isWebElementPresent(viewName + ", description ", ticketEditView.ticketsEditViewDescInputFld);
+            commNav.isWebElementPresent(viewName + ", resolution ", ticketEditView.ticketsEditViewResolutionInputFld);
+            commNav.isWebElementPresent(viewName + ", comments ", ticketEditView.ticketsEditViewCommentsInputFld);
+
+
+            //end of test
+            headerButton.clickHeaderButton("cancel");
+
+            //Step: go back to previous screen
+            headerButton.goBack();
+            Thread.sleep(2000);
+        }
+        catch (Exception e) {
+            verificationErrors.append(e.toString());
+            System.out.println(methodID + ": unable to open the Ticket Edit Add view.");
+        }
+
+        System.out.println(ENDLINE);
+    }
 
 
 	@Test(enabled = false)

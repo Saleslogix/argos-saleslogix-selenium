@@ -374,13 +374,8 @@ public class MobileSprint306Test extends BaseTest {
             //Step: go to "Calendar" view
             commNav.clickGlobalMenuItem("Calendar");
 
-            //Step: wait for page Calendar
+            //Step: wait for page Calendar ... focus will automatically be on today
             commNav.waitForPage("Calendar");
-
-
-            //Step: ensure focus is on Today, then the Day view
-            calendarView.calendarTodayBtn.click();
-            calendarView.calendarDayBtn.click();
 
 
             //Step: Add 1st activity
@@ -535,41 +530,165 @@ public class MobileSprint306Test extends BaseTest {
             commNav.waitForPage("Calendar");
 
 
-            //Calendar DAY VIEW
+            //Calendar DAY VIEW ... comment out this section as there is no longer a 'Day' view in Mobile 3.4
             //Step: loop through any 'All-Day' events in Day view
-            int n=1;
-            while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-                n=n+1;
-            }
+            //int n=1;
+            //while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
+            //    n=n+1;
+            //}
 
             //Step: retrieve time for first non "All-Day" event in Day view
-            String strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
-            n=n+1;
+            //String strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
+            //n=n+1;
 
             //Step: loop through any 'All-Day' events in Day view
-            while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-                n=n+1;
-            }
+            //while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
+            //    n=n+1;
+            //}
 
             //Step: retrieve time for second non "All-Day" event in Day view
-            String strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
-            n=n+1;
+            //String strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
+            //n=n+1;
 
             //Step: loop through any 'All-Day' events in Day view
-            while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
+            //while (driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
+            //    n=n+1;
+            //}
+
+            //Step: retrieve time for third non "All-Day" event in Day view
+            //String strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
+
+            //Step: print out activity times for first 3 activities under Day view
+            //System.out.println("Day view today's date : 1st activity time has a value of - " + strTime1);
+            //System.out.println("Day view today's date : 2nd activity time has a value of - " + strTime2);
+            //System.out.println("Day view today's date : 3rd activity time has a value of - " + strTime3);
+
+            //Step: convert string date representation to calendar date format
+            //SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
+            //Calendar dateTime1 = Calendar.getInstance();
+            //Calendar dateTime2 = Calendar.getInstance();
+            //Calendar dateTime3 = Calendar.getInstance();
+            //dateTime1.setTime(ft.parse(strTime1));
+            //dateTime2.setTime(ft.parse(strTime2));
+            //dateTime3.setTime(ft.parse(strTime3));
+
+
+            //Step: check that Day view activities are appearing in descending date order
+            //if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
+            //    System.out.println("VP: Day view calendar activities are appearing in descending time order " + " - PASSED");
+            //} else {
+            //    System.out.println("VP: Day view calendar activities not appearing in descending time order " + " - FAILED");
+            //    AssertJUnit.fail("test failed");
+            //}
+
+
+            //Calendar WEEK VIEW ... comment out this section as there is currently no week view in Mobile 3.4
+            //Step: switch focus to Week view
+            //calendarView.calendarWeekBtn.click();
+
+            //Step: convert today's date to string of format "MMM d,yyyy"
+            //ft = new SimpleDateFormat("MMM d, yyyy");
+            //Calendar todayDate = Calendar.getInstance();
+            //String todayString = ft.format(todayDate.getTime()).toString();
+            //System.out.println("Today's date in MMM d, yyyy format is - " + todayString);
+
+            //Step: loop through days of the week until find section for today's date
+            //int x=1;
+            //while (!driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//span[@class='dayHeaderRight'])[" + x + "]")).getText().equals(todayString))  {
+            //    x=x+1;
+            //}
+
+            //System.out.println("Week view: section found for today - " + driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//span[@class='dayHeaderRight'])[" + x + "]")).getText());
+
+            //Step: loop through any 'All Day' events in Week view section for today's date
+            //n=1;
+            //while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
+            //    n=n+1;
+            //}
+
+            //Step: retrieve time for first non "All Day" event in Week view section for today's date
+            //strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
+            //n=n+1;
+
+            //Step: loop through any 'All Day' events in Week view section for today's date
+            //while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
+            //    n=n+1;
+            //}
+
+            //Step: retrieve time for second non "All Day" event in Week view section for today's date
+            //strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
+            //n=n+1;
+
+            //Step: loop through any 'All Day' events in Week view section for today's date
+            //while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
+            //    n=n+1;
+            //}
+
+            //Step: retrieve time for third non "All Day" event in Week view section for today's date
+            //strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
+
+            //Step: print out activity times for first 3 activities under Day view
+            //System.out.println("Week view today's date : 1st activity time has a value of - " + strTime1);
+            //System.out.println("Week view today's date : 2nd activity time has a value of - " + strTime2);
+            //System.out.println("Week view today's date : 3rd activity time has a value of - " + strTime3);
+
+            //Step: convert string date representation to calendar date format
+            //ft = new SimpleDateFormat("hh:mm a");
+            //dateTime1 = Calendar.getInstance();
+            //dateTime2 = Calendar.getInstance();
+            //dateTime3 = Calendar.getInstance();
+            //dateTime1.setTime(ft.parse(strTime1));
+            //dateTime2.setTime(ft.parse(strTime2));
+            //dateTime3.setTime(ft.parse(strTime3));
+
+
+            //Step: check that Week view activities for today's date are appearing in descending date order
+            //if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
+            //    System.out.println("VP: Week view calendar activities are appearing in descending time order " + " - PASSED");
+            //} else {
+            //    System.out.println("VP: Week view calendar activities not appearing in descending time order " + " - FAILED");
+            //    AssertJUnit.fail("test failed");
+            //}
+
+
+            //Calendar MONTH VIEW ... in Month view by default in Mobile 3.4
+
+
+            //Step: loop through any 'All-Day' events in Month view
+            int n=1;
+            while (driver.findElement(By.xpath("(//span[@class='timeStamp__time'])[" + n + "]")).getText().equals("All-Day"))  {
                 n=n+1;
             }
 
-            //Step: retrieve time for third non "All-Day" event in Day view
-            String strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_daylist']//span[@class='p-time'])[" + n + "]")).getText();
+            //Step: retrieve time for first non "All-Day" event in Month view
+            String strTime1 = driver.findElement(By.xpath("(//span[@class='timeStamp__time'])[" + n + "]")).getText();
+            n=n+1;
 
-            //Step: print out activity times for first 3 activities under Day view
-            System.out.println("Day view today's date : 1st activity time has a value of - " + strTime1);
-            System.out.println("Day view today's date : 2nd activity time has a value of - " + strTime2);
-            System.out.println("Day view today's date : 3rd activity time has a value of - " + strTime3);
+            //Step: loop through any 'All-Day' events in Month view
+            while (driver.findElement(By.xpath("(//span[@class='timeStamp__time'])[" + n + "]")).getText().equals("All-Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for second non "All-Day" event in Month view
+            String strTime2 = driver.findElement(By.xpath("(//span[@class='timeStamp__time'])[" + n + "]")).getText();
+            n=n+1;
+
+            //Step: loop through any 'All-Day' events in Month view
+            while (driver.findElement(By.xpath("(//span[@class='timeStamp__time'])[" + n + "]")).getText().equals("All-Day"))  {
+                n=n+1;
+            }
+
+            //Step: retrieve time for third non "All-Day" event in Month view
+            String strTime3 = driver.findElement(By.xpath("(//span[@class='timeStamp__time'])[" + n + "]")).getText();
+
+            //Step: print out activity times for first 3 activities under Month view
+            System.out.println("Month view today's date : 1st activity time has a value of - " + strTime1);
+            System.out.println("Month view today's date : 2nd activity time has a value of - " + strTime2);
+            System.out.println("Month view today's date : 3rd activity time has a value of - " + strTime3);
 
             //Step: convert string date representation to calendar date format
             SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
+
             Calendar dateTime1 = Calendar.getInstance();
             Calendar dateTime2 = Calendar.getInstance();
             Calendar dateTime3 = Calendar.getInstance();
@@ -578,136 +697,11 @@ public class MobileSprint306Test extends BaseTest {
             dateTime3.setTime(ft.parse(strTime3));
 
 
-            //Step: check that Day view activities are appearing in descending date order
-            if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
-                System.out.println("VP: Day view calendar activities are appearing in descending time order " + " - PASSED");
+            //Step: check that Month view activities are appearing in ascending date order
+            if ((dateTime2.after(dateTime1)) && (dateTime3.after(dateTime2))) {
+                System.out.println("VP: Month view calendar activities are appearing in ascending time order " + " - PASSED");
             } else {
-                System.out.println("VP: Day view calendar activities not appearing in descending time order " + " - FAILED");
-                AssertJUnit.fail("test failed");
-            }
-
-
-            //Calendar WEEK VIEW
-            //Step: switch focus to Week view
-            calendarView.calendarWeekBtn.click();
-
-            //Step: convert today's date to string of format "MMM d,yyyy"
-            ft = new SimpleDateFormat("MMM d, yyyy");
-            Calendar todayDate = Calendar.getInstance();
-            String todayString = ft.format(todayDate.getTime()).toString();
-            System.out.println("Today's date in MMM d, yyyy format is - " + todayString);
-
-            //Step: loop through days of the week until find section for today's date
-            int x=1;
-            while (!driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//span[@class='dayHeaderRight'])[" + x + "]")).getText().equals(todayString))  {
-                x=x+1;
-            }
-
-            System.out.println("Week view: section found for today - " + driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//span[@class='dayHeaderRight'])[" + x + "]")).getText());
-
-            //Step: loop through any 'All Day' events in Week view section for today's date
-            n=1;
-            while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
-                n=n+1;
-            }
-
-            //Step: retrieve time for first non "All Day" event in Week view section for today's date
-            strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
-            n=n+1;
-
-            //Step: loop through any 'All Day' events in Week view section for today's date
-            while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
-                n=n+1;
-            }
-
-            //Step: retrieve time for second non "All Day" event in Week view section for today's date
-            strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
-            n=n+1;
-
-            //Step: loop through any 'All Day' events in Week view section for today's date
-            while (driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText().equals("All Day"))  {
-                n=n+1;
-            }
-
-            //Step: retrieve time for third non "All Day" event in Week view section for today's date
-            strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_weeklist']//ul[" + x + "]//span[@class='p-time'])[" + n + "]")).getText();
-
-            //Step: print out activity times for first 3 activities under Day view
-            System.out.println("Week view today's date : 1st activity time has a value of - " + strTime1);
-            System.out.println("Week view today's date : 2nd activity time has a value of - " + strTime2);
-            System.out.println("Week view today's date : 3rd activity time has a value of - " + strTime3);
-
-            //Step: convert string date representation to calendar date format
-            ft = new SimpleDateFormat("hh:mm a");
-            dateTime1 = Calendar.getInstance();
-            dateTime2 = Calendar.getInstance();
-            dateTime3 = Calendar.getInstance();
-            dateTime1.setTime(ft.parse(strTime1));
-            dateTime2.setTime(ft.parse(strTime2));
-            dateTime3.setTime(ft.parse(strTime3));
-
-
-            //Step: check that Week view activities for today's date are appearing in descending date order
-            if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
-                System.out.println("VP: Week view calendar activities are appearing in descending time order " + " - PASSED");
-            } else {
-                System.out.println("VP: Week view calendar activities not appearing in descending time order " + " - FAILED");
-                AssertJUnit.fail("test failed");
-            }
-
-
-            //Calendar MONTH VIEW
-            //Step: switch focus to Month view ... by default, today's activities display ... use original calendarMonthBtn
-            calendarView.calendarMonthBtn.click();
-
-
-            //Step: loop through any 'All-Day' events in Month view
-            n=1;
-            while (driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-                n=n+1;
-            }
-
-            //Step: retrieve time for first non "All-Day" event in Month view
-            strTime1 = driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText();
-            n=n+1;
-
-            //Step: loop through any 'All-Day' events in Month view
-            while (driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-                n=n+1;
-            }
-
-            //Step: retrieve time for second non "All-Day" event in Month view
-            strTime2 = driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText();
-            n=n+1;
-
-            //Step: loop through any 'All-Day' events in Month view
-            while (driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText().equals("All-Day"))  {
-                n=n+1;
-            }
-
-            //Step: retrieve time for third non "All-Day" event in Month view
-            strTime3 = driver.findElement(By.xpath("(//div[@id='calendar_monthlist']//span[@class='p-time'])[" + n + "]")).getText();
-
-            //Step: print out activity times for first 3 activities under Month view
-            System.out.println("Month view today's date : 1st activity time has a value of - " + strTime1);
-            System.out.println("Month view today's date : 2nd activity time has a value of - " + strTime2);
-            System.out.println("Month view today's date : 3rd activity time has a value of - " + strTime3);
-
-            //Step: convert string date representation to calendar date format
-            ft = new SimpleDateFormat("hh:mm a");
-            dateTime1 = Calendar.getInstance();
-            dateTime2 = Calendar.getInstance();
-            dateTime3 = Calendar.getInstance();
-            dateTime1.setTime(ft.parse(strTime1));
-            dateTime2.setTime(ft.parse(strTime2));
-            dateTime3.setTime(ft.parse(strTime3));
-
-
-            //Step: check that Month view activities are appearing in descending date order
-            if ((!dateTime2.after(dateTime1)) && (!dateTime3.after(dateTime2))) {
-                System.out.println("VP: Month view calendar activities are appearing in descending time order " + " - PASSED");
-            } else {
-                System.out.println("VP: Month view calendar activities not appearing in descending time order " + " - FAILED");
+                System.out.println("VP: Month view calendar activities not appearing in ascending time order " + " - FAILED");
                 AssertJUnit.fail("test failed");
             }
 
@@ -717,7 +711,7 @@ public class MobileSprint306Test extends BaseTest {
 
         catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
-            System.out.println("VP: calendar activities not appearing in descending time order " + " - FAILED");
+            System.out.println("VP: calendar activities not appearing in ascending time order " + " - FAILED");
             AssertJUnit.fail("test failed");
         }
 

@@ -305,10 +305,9 @@ public class MobileSprint308Test extends BaseTest {
             LogOutThenLogBackIn(userName, userPwd);
 
 
-            //Step: go to Calendar view ... wait for page Calendar, and press 'Month' button
+            //Step: go to Calendar view ... wait for page Calendar ... already on 'Month' view in Mobile 3.4
             commNav.clickGlobalMenuItem("Calendar");
             commNav.waitForPage("Calendar");
-            calendarView.calendarDayListToMonthBtn.click();
 
 
             //Step: click on the Sunday at the start of the 2nd row of days for the month
@@ -380,9 +379,9 @@ public class MobileSprint308Test extends BaseTest {
 
 
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     // MBL-10427 ... Calendar Day view : problems loading activities, don't all display
-    //               Assumes eval data contains no activities for the Sunday at the start of the fourth row for the month
+    //               Assumes eval data contains no activities for the Sunday at the start of the fourth row for the month ... disable as no Day view from Mobile 3.4
     public void test04_MBL10427() throws Exception {
         String methodID = "test04_MBL10427";
 
