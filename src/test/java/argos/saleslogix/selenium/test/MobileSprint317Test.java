@@ -3,6 +3,7 @@ package argos.saleslogix.selenium.test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
@@ -140,14 +141,15 @@ public class MobileSprint317Test extends BaseTest {
         commNav.waitForPage("Configure");
 
 
-        //Step: for Calendar, press button once to move it up to the top of the list, above 'My Activities'
-        miscView.configureCalendarMoveUpBtn.click();
+        //Step: for Calendar, drag button up to the top of the list, above 'My Activities'
+        Actions action = new Actions(driver);
+        action.dragAndDrop(miscView.configureCalendarBtn, miscView.configureTopPosition).build().perform();
         headerButton.clickHeaderButton("Save");
 
         //Step: logout & log back in ... then verify that default page after login is now 'Calendar'
         LogOutThenLogBackIn(userName, userPwd);
         commNav.waitForPage("Calendar");
-        AssertJUnit.assertTrue("VP: default page after login now set to 'Calendar' - FAILED", driver.findElement(By.xpath(".//*[@id='calendar_daylist']")).isDisplayed());
+        AssertJUnit.assertTrue("VP: default page after login now set to 'Calendar' - FAILED", driver.findElement(By.xpath(".//*[@id='calendar_view']")).isDisplayed());
         System.out.println("VP: default page after login now set to 'Calendar' - PASSED");
 
         //Step: reset the default page back to 'My Activities'
@@ -157,8 +159,8 @@ public class MobileSprint317Test extends BaseTest {
         commNav.clickGlobalMenuItem("Configure Menu");
         commNav.waitForPage("Configure");
 
-        //Step: for Calendar, press button once to move it down below 'My Activities'
-        miscView.configureCalendarMoveDownBtn.click();
+        //Step: for Calendar, drag button down to second position
+        action.dragAndDrop(miscView.configureCalendarBtn, miscView.configureSecondPosition).build().perform();
         headerButton.clickHeaderButton("Save");
 
         //Step: logout & log back in ... then verify that default page after login is again 'My Activities'

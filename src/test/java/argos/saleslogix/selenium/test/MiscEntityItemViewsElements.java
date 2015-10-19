@@ -131,12 +131,17 @@ public class MiscEntityItemViewsElements extends BaseTest {
 
     //Configure View items
     @CacheLookup
-    @FindBy(xpath = "//*[@id='configure']//li[@data-descriptor='Calendar']//span[@data-action='moveUp']")
-    WebElement configureCalendarMoveUpBtn;
+    @FindBy(xpath = "//li[@data-descriptor='Calendar']/div/h3/span[2]")
+    WebElement configureCalendarBtn;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='configure']//li[@data-descriptor='Calendar']//span[@data-action='moveDown']")
-    WebElement configureCalendarMoveDownBtn;
+    @FindBy(xpath = "//li[1]//span[2]")
+    WebElement configureTopPosition;
+
+    @CacheLookup
+    @FindBy(xpath = "//li[2]//span[2]")
+    WebElement configureSecondPosition;
+
 
     //Methods
 	//TODO: create a setupNameFields() method that sets and saves the Name input fields with given values

@@ -478,14 +478,17 @@ public class AccountViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='configure_quickactions']//li[@data-key='callMain']")
     WebElement accountConfigureQACallMain;
 
+    @CacheLookup
+    @FindBy(xpath = "//li[@data-descriptor='Add Attachment']/div/h3/span[2]")
+    WebElement accountConfigureQAAddAttach;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='configure_quickactions']//li[@data-descriptor='Add Attachment']/div//span[@data-action='moveUp']")
-    WebElement accountConfigureQAAddAttachUp;
+    @FindBy(xpath = "//li[5]//span[2]")
+    WebElement accountConfigureQAPosition5;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='configure_quickactions']//li[@data-descriptor='Add Attachment']/div//span[@data-action='moveDown']")
-    WebElement accountConfigureQAAddAttachDown;
+    @FindBy(xpath = "//li[6]//span[2]")
+    WebElement accountConfigureQAPosition6;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_detail']//ul[@class='tab-list']/li[1]")
