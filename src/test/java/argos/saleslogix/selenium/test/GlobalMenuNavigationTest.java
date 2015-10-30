@@ -203,7 +203,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	
 	    //Step: click the Top Cancel button...
 	    headerButton.clickHeaderButton("cancel");
-	    commNav.waitForPage("My Activities");
+	    //commNav.waitForPage("My Activities");
 	    
 	    // -- END
 	    System.out.println(ENDLINE);

@@ -651,7 +651,7 @@ public class AccountEntityViewsTest extends BaseTest {
 		}
 		
 		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}

@@ -109,7 +109,7 @@ public class LeadEntityViewsTest extends BaseTest {
 			System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
 		}
 		
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 	
@@ -740,7 +740,7 @@ public class LeadEntityViewsTest extends BaseTest {
         }
 		
 		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}

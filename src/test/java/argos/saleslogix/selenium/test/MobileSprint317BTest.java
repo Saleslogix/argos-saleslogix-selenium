@@ -356,7 +356,7 @@ public class MobileSprint317BTest extends BaseTest {
     @Test(enabled = true)
     // MBL-10543 ... Recurring Activities - on editing all occurrences, changing repeats from Daily to 'Never' has no effect
     public void test06_MBL10543() throws Exception {
-        String methodID = "test01_MBL10408";
+        String methodID = "test06_MBL10543";
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);

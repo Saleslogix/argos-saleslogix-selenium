@@ -867,7 +867,7 @@ public class MobileSprint306Test extends BaseTest {
             commNav.waitForPage("Activity");
 
             //Step: On activity detail view convert start date from "M/d/yyyy h:mm:ss a" to "M/d/yyyy h:mm a" to allow comparison
-            commNav.highlightNClick(activityEditView.activityDetailViewWhenTab);
+            commNav.highlightNClick(activityEditView.activityDetailViewMoreDetailsTab);
             String newActivityStartDate2Long = activityEditView.activityDetailViewStartTimeFld.getText();
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy h:mm:ss a");

@@ -107,7 +107,7 @@ public class MobileSprint304Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -227,7 +227,7 @@ public class MobileSprint304Test extends BaseTest {
 		}
 			
 		//END
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -475,7 +475,7 @@ public class MobileSprint304Test extends BaseTest {
 	    }
 		
 		//END
-	    commNav.clickGlobalMenuItem("My Activities");
+	    //commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -752,7 +752,7 @@ public class MobileSprint304Test extends BaseTest {
 	    }
 	    
 		//END
-	    commNav.clickGlobalMenuItem("My Activities");
+	   // commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -813,7 +813,7 @@ public class MobileSprint304Test extends BaseTest {
 	    }
 	    
 		//END
-	    commNav.clickGlobalMenuItem("My Activities");
+	   // commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -911,7 +911,7 @@ public class MobileSprint304Test extends BaseTest {
 	    }
 	    
 		//END
-	    commNav.clickGlobalMenuItem("My Activities");
+	    //commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -1033,7 +1033,7 @@ public class MobileSprint304Test extends BaseTest {
 	    System.out.println("");
 	    	    
 		//END
-	    commNav.clickGlobalMenuItem("My Activities");
+	   // commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 

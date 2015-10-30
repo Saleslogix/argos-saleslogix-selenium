@@ -181,7 +181,7 @@ public class CommonNavigation {
 			case "speedsearch": case "search":
 				highlightNClick(gmenu_speedSearch);
 				break;			
-			case "my activities": case "activities":				
+			case "my activities": case "activities":
 				highlightNClick(gmenu_myActivities);
 				break;
 			case "calendar":

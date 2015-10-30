@@ -121,9 +121,9 @@ public class MobileDefectTest extends BaseTest {
 		}
 		
 		// Step: navigate back to the My Activities list view
-		headerbutton.goBack();
-		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//headerbutton.goBack();
+		//headerbutton.showGlobalMenu();
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		// End Tests
 		System.out.println(ENDLINE);
@@ -191,9 +191,9 @@ public class MobileDefectTest extends BaseTest {
 		}
 		
 		// Step: navigate back to the My Activities list view
-		headerbutton.goBack();
-		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//headerbutton.goBack();
+		//headerbutton.showGlobalMenu();
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		// End Tests
 		System.out.println(ENDLINE);
@@ -286,8 +286,8 @@ public class MobileDefectTest extends BaseTest {
 		
 		// End Section
 		// Step: click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//headerbutton.showGlobalMenu();
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -323,8 +323,8 @@ public class MobileDefectTest extends BaseTest {
 		
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//headerbutton.showGlobalMenu();
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -416,8 +416,8 @@ public class MobileDefectTest extends BaseTest {
 				
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//headerbutton.showGlobalMenu();
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -478,8 +478,8 @@ public class MobileDefectTest extends BaseTest {
 		}
 		
 		// Step: navigate back to the My Activities list view
-		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//headerbutton.showGlobalMenu();
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		// End Tests
 		System.out.println(ENDLINE);
@@ -518,8 +518,8 @@ public class MobileDefectTest extends BaseTest {
 		
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//headerbutton.showGlobalMenu();
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -637,7 +637,7 @@ public class MobileDefectTest extends BaseTest {
 		    Thread.sleep(1000);
 		    headerButton.goBack();
 		    Thread.sleep(1000); 
-			commNav.clickGlobalMenuItem("My Activities");
+			//commNav.clickGlobalMenuItem("My Activities");
 		}		
 		else {
 			System.out.println(methodID + ": this test can only be run on the Chromedriver browser; skipping...");
@@ -780,8 +780,8 @@ public class MobileDefectTest extends BaseTest {
 		
 		// End Tests
 		// Step: click the Top-Left, Global Menu button...
-		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//headerbutton.showGlobalMenu();
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -958,8 +958,8 @@ public class MobileDefectTest extends BaseTest {
 
         // End Tests
         // Step: click the Top-Left, Global Menu button...
-        headerbutton.showGlobalMenu();
-        commNav.clickGlobalMenuItem("My Activities");
+        //headerbutton.showGlobalMenu();
+        //commNav.clickGlobalMenuItem("My Activities");
 
         System.out.println(ENDLINE);
     }
@@ -1514,7 +1514,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -1557,9 +1557,9 @@ public class MobileDefectTest extends BaseTest {
 		}
 				
 		// Step: navigate back to the My Activities list view
-		headerbutton.showGlobalMenu();
-		commNav.clickGlobalMenuItem("My Activities");
-		commNav.waitForPage("My Activities");
+		//headerbutton.showGlobalMenu();
+		//commNav.clickGlobalMenuItem("My Activities");
+		//commNav.waitForPage("My Activities");
 		
 		// End Tests
 		System.out.println(ENDLINE);
@@ -1689,8 +1689,8 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		headerButton.clickHeaderButton("cancel");
-		commNav.clickGlobalMenuItem("My Activities");
+		//headerButton.clickHeaderButton("cancel");
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -1804,7 +1804,7 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -1917,7 +1917,7 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -1991,7 +1991,7 @@ public class MobileDefectTest extends BaseTest {
 		}		
 		
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");		
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -2054,7 +2054,7 @@ public class MobileDefectTest extends BaseTest {
 		headerButton.clickHeaderButton("cancel");
 		headerButton.clickHeaderButton("cancel");
 		headerButton.clickHeaderButton("back");
-		commNav.clickGlobalMenuItem("My Activities");		
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -2123,7 +2123,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// End Tests
 		headerButton.clickHeaderButton("back");
-		commNav.clickGlobalMenuItem("My Activities");		
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -2174,7 +2174,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		// End Tests
 		headerButton.clickHeaderButton("back");
-		commNav.clickGlobalMenuItem("My Activities");		
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 	@Test (enabled = true)
@@ -2201,7 +2201,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 			
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");		
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -2245,7 +2245,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 			
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");		
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -2281,7 +2281,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 			
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");		
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -2320,7 +2320,7 @@ public class MobileDefectTest extends BaseTest {
 		}
 			
 		// End Tests
-		commNav.clickGlobalMenuItem("My Activities");		
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 
@@ -2359,17 +2359,17 @@ public class MobileDefectTest extends BaseTest {
 		slxmobilelogin.doLogin(userName, "", true);
 		
 		// VP: confirm that the 'My Activities' screen displays after login
-		Thread.sleep(3000);
-		try {
-			AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
-			System.out.println("VP: Successfully logged in to Mobile Client.");
-		} catch (UnhandledAlertException e) {
+		//Thread.sleep(3000);
+		//try {
+		//	AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
+		//	System.out.println("VP: Successfully logged in to Mobile Client.");
+		//} catch (UnhandledAlertException e) {
 			//closeAlert();
-			closeModal();
+		//	closeModal();
 			//assertEquals("The user name or password is invalid.", closeAlertAndGetItsText());
-			System.out.println("Error: Unable to login to Mobile Client.");
-			System.out.println(methodID + "(): " + e.toString());
-		}		
+		//	System.out.println("Error: Unable to login to Mobile Client.");
+		//	System.out.println(methodID + "(): " + e.toString());
+		//}
 		
 		// End Tests
 		System.out.println(ENDLINE);
@@ -2413,7 +2413,7 @@ public class MobileDefectTest extends BaseTest {
 			
 		// End Tests
 		headerButton.clickHeaderButton("back");
-		commNav.clickGlobalMenuItem("My Activities");		
+		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
 }

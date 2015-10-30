@@ -117,7 +117,7 @@ public class MobileSprint233Test extends BaseTest {
 		}
 		
 		//Step: go back to My Activities view
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		
 		System.out.println(ENDLINE);
 	}
@@ -165,7 +165,7 @@ public class MobileSprint233Test extends BaseTest {
         }
 
         //Step: go back to previous screen
-        commNav.clickGlobalMenuItem("My Activities");
+        //commNav.clickGlobalMenuItem("My Activities");
         Thread.sleep(3000);
 
         System.out.println(ENDLINE);
@@ -374,7 +374,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -499,7 +499,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -629,7 +629,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -737,7 +737,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -871,7 +871,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -986,7 +986,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1113,7 +1113,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1220,7 +1220,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1353,7 +1353,7 @@ public class MobileSprint233Test extends BaseTest {
         //---
         //Step: go back to start screen
         headerButton.closeRightContextMenu();
-        commNav.clickGlobalMenuItem("My Activities");
+        //commNav.clickGlobalMenuItem("My Activities");
         Thread.sleep(3000);
 
         System.out.println(ENDLINE);
@@ -1465,7 +1465,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1594,7 +1594,7 @@ public class MobileSprint233Test extends BaseTest {
 		//---
 		//Step: go back to start screen
 		headerButton.closeRightContextMenu();
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);
@@ -1702,7 +1702,7 @@ public class MobileSprint233Test extends BaseTest {
 		//END
 		//---
 		//Step: go back to start screen
-		commNav.clickGlobalMenuItem("My Activities");
+		//commNav.clickGlobalMenuItem("My Activities");
 		Thread.sleep(3000);
 		
 		System.out.println(ENDLINE);

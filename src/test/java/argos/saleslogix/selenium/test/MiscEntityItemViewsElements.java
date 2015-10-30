@@ -135,6 +135,10 @@ public class MiscEntityItemViewsElements extends BaseTest {
     WebElement configureCalendarBtn;
 
     @CacheLookup
+    @FindBy(xpath = "//li[@data-descriptor='My Activities']")
+    WebElement configureMyActivities;
+
+    @CacheLookup
     @FindBy(xpath = "//li[1]//span[2]")
     WebElement configureTopPosition;
 
