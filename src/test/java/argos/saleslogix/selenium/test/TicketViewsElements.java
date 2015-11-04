@@ -50,7 +50,7 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[2]/div[2]/div/div/div/button")
+	@FindBy(xpath = "//div[4]/div[2]/div/div/div/button")
 	WebElement ticketsListView1stKPICard;
 	
 	@CacheLookup
@@ -185,7 +185,7 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
 	WebElement ticketsKPIHdr;
 	
 	@CacheLookup
@@ -462,19 +462,19 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsEditViewUrgencyFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='argos_Fields_DateField_0']/input")
+	@FindBy(xpath = "//div[@data-field='NeededByDate']//input")
 	WebElement ticketsEditViewNeededDateFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='argos_Fields_DateField_0']/button")
+	@FindBy(xpath = "//div[@data-field='NeededByDate']//button")
 	WebElement ticketsEditViewNeededDateFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='argos_Fields_DateField_1']/input")
+	@FindBy(xpath = "//div[@data-field='AssignedDate']//input")
 	WebElement ticketsEditViewAssignedDateFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='argos_Fields_DateField_1']/button")
+	@FindBy(xpath = "//div[@data-field='AssignedDate']//button")
 	WebElement ticketsEditViewAssignedDateFldBtn;
 	
 	@CacheLookup

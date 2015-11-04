@@ -37,6 +37,44 @@ public class MobileSprint330 extends BaseTest {
 		System.out.println(ENDLINE);	
 	}
 
+    @Test(enabled = true)
+    // Add My Activities as a menu item
+    public void test01_AddMyActivities() throws Exception {
+        String methodID = "test01_AddMyActivities";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MiscEntityItemViewsElements miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: enable 'My Activities' under Configure view ... needed with 'My Activities' no longer displaying by default in 3.4
+            commNav.clickGlobalMenuItem("Configure Menu");
+            commNav.waitForPage("Configure");
+            miscView.configureMyActivities.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("My Schedule");
+
+            System.out.println("VP: added My Activities back as a menu item - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: added My Activities back as a menu item - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
 
     @Test(enabled = true)
     // MBL-10793 ... Opportunity - an edit to the 'est close' is setting the date to a day ahead of what was chosen
@@ -227,9 +265,10 @@ public class MobileSprint330 extends BaseTest {
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             headerButton.clickHeaderButton("Edit");
             commNav.waitForPage("Activity");
+
             String edited2ActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date after re-save is : " + edited2ActivityStartDate);
-
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             AssertJUnit.assertEquals("VP: after editing start date and re-saving timeless activity, activity is no longer timeless - FAILED", editedActivityStartDate, edited2ActivityStartDate);
             System.out.println("VP: after editing start date and re-saving timeless activity, activity remains timeless - PASSED");
 
@@ -633,7 +672,7 @@ public class MobileSprint330 extends BaseTest {
             //Step: cancel out of activity, press Month button, scroll to next month
             headerButton.clickHeaderButton("cancel");
 
-            calendarView.calendarModalIncrMonth.click();
+            calendarView.calendarIncrementMonthBtn.click();
             calendarView.calendarMonthFirstDayFourthRow.click();
 
 

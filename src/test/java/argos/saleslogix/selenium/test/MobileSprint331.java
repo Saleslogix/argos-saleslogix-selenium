@@ -23,6 +23,44 @@ public class MobileSprint331 extends BaseTest {
 	//Test Methods Set
 	//================
 
+    @Test(enabled = true)
+    // Add My Activities as a menu item
+    public void test01_AddMyActivities() throws Exception {
+        String methodID = "test01_AddMyActivities";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MiscEntityItemViewsElements miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: enable 'My Activities' under Configure view ... needed with 'My Activities' no longer displaying by default in 3.4
+            commNav.clickGlobalMenuItem("Configure Menu");
+            commNav.waitForPage("Configure");
+            miscView.configureMyActivities.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("My Schedule");
+
+            System.out.println("VP: added My Activities back as a menu item - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: added My Activities back as a menu item - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
 
     @Test(enabled = true)
     // INFORCRM-3395 ... Calendar - unable to add more than one activity under 'Month' view ... Schedule page not opening
@@ -166,7 +204,7 @@ public class MobileSprint331 extends BaseTest {
 
             // store the current value for the month
             String initialMonthText;
-            initialMonthText = calendarView.calendarModalCurrMonthValue.getText();
+            initialMonthText = calendarView.calendarModalCurrMonthValue.getAttribute("value");
             System.out.println("VP: initial value for Month, where activity not timeless, is ... " + initialMonthText);
 
             //Step: accept the date changes
@@ -206,12 +244,13 @@ public class MobileSprint331 extends BaseTest {
             driver.switchTo().activeElement();
 
             //Press Advanced button to open Calendar view
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
             calendarView.calendarModalAdvanced.click();
 
             //Step: Verify that the correct month is displaying for the activity date
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
             String currentMonthText;
-            currentMonthText = calendarView.calendarModalCurrMonthValue.getText();
+            currentMonthText = calendarView.calendarModalCurrMonthValue.getAttribute("value");
             System.out.println("VP: current value for Month, after activity set to timeless, is ... " + currentMonthText);
             AssertJUnit.assertEquals("VP: DateTimePicker Calendar month not off by a month when setting activity to be timeless on 1st day of the month - FAILED", initialMonthText, currentMonthText);
             System.out.println("VP: DateTimePicker Calendar month not off by a month when setting activity to be timeless on 1st day of the month - PASSED");

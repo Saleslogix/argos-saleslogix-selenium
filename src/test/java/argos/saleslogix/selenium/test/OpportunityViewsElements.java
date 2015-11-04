@@ -48,7 +48,7 @@ public class OpportunityViewsElements extends BaseTest {
     WebElement topOpportunityCardLayout;
 
 	@CacheLookup
-	@FindBy(xpath = "//div[3]/div[2]/div/div/div/button")
+	@FindBy(xpath = "//div[5]/div[2]/div/div/div/button")
 	WebElement opportunityListView1stKPICard;
 	
 	@CacheLookup
@@ -187,7 +187,7 @@ public class OpportunityViewsElements extends BaseTest {
 	WebElement opportunityListViewNotesBoxSeeListLink;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
 	WebElement opportunityKPIHdr;
 	
 	@CacheLookup

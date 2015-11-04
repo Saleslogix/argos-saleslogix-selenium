@@ -126,11 +126,11 @@ public class CommonNavigation {
 	WebElement rmenu_HashTagsSubPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
 	WebElement rmenu_KPIHdr;
 
     @CacheLookup
-    @FindBy(xpath = ".//*[@id='right_drawer']/div[3]/h2[1]")
+    @FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'Groups')]")
     WebElement rmenu_GroupHdr;
 
     @CacheLookup

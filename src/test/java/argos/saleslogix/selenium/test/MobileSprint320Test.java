@@ -27,6 +27,45 @@ public class MobileSprint320Test extends BaseTest {
 
 
     @Test(enabled = true)
+    // Add My Activities as a menu item
+    public void test01_AddMyActivities() throws Exception {
+        String methodID = "test01_AddMyActivities";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MiscEntityItemViewsElements miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: enable 'My Activities' under Configure view ... needed with 'My Activities' no longer displaying by default in 3.4
+            commNav.clickGlobalMenuItem("Configure Menu");
+            commNav.waitForPage("Configure");
+            miscView.configureMyActivities.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("My Schedule");
+
+            System.out.println("VP: added My Activities back as a menu item - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: added My Activities back as a menu item - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
     // MBL-10698 ... Recurring Activity : for Complete Occurrence screen, leader displays as an ID
 
     public void test01_MBL10698() throws Exception {

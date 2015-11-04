@@ -39,6 +39,44 @@ public class MobileSprint330B extends BaseTest {
 		System.out.println(ENDLINE);	
 	}
 
+    @Test(enabled = true)
+    // Add My Activities as a menu item
+    public void test01_AddMyActivities() throws Exception {
+        String methodID = "test01_AddMyActivities";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MiscEntityItemViewsElements miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: enable 'My Activities' under Configure view ... needed with 'My Activities' no longer displaying by default in 3.4
+            commNav.clickGlobalMenuItem("Configure Menu");
+            commNav.waitForPage("Configure");
+            miscView.configureMyActivities.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("My Schedule");
+
+            System.out.println("VP: added My Activities back as a menu item - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: added My Activities back as a menu item - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
 
     @Test(enabled = true)
     // MBL-10613 ... My Activities : phone - on adding a second activity, phone displays value for the first activity's account, while account is blank
@@ -755,7 +793,7 @@ public class MobileSprint330B extends BaseTest {
 
     @Test(enabled = true)
     // INFORCRM-2071 (MBL-10894) ... Calendar Month view : where activity is created not today, with start time earlier than current time,
-    //               on saving, (N/A for Mobile 3.4 + ...the calendar cell count is incremented by 1 as expected), but the associated activity doesn't display
+    //               on saving, (N/A for Mobile 3.4 + ...the calendar cell count is incremented by 1 as expected), the associated activity doesn't display
     //               Requires that Month view ... next month ... first day on second row has no activities
     public void test06_INFORCRM2071() throws Exception {
         String methodID = "test06_INFORCRM2071";
@@ -780,7 +818,7 @@ public class MobileSprint330B extends BaseTest {
             commNav.waitForPage("Calendar");
 
             //Step: go to the next month, and click on the Sunday at the start of the 2nd row of days for the month
-            calendarView.calendarModalIncrMonth.click();
+            calendarView.calendarIncrementMonthBtn.click();
             calendarView.calendarMonthFirstDaySecondRow.click();
 
 

@@ -62,7 +62,7 @@ public class AccountViewsElements extends BaseTest {
     WebElement relatedAccountsListViewTopItem;
 
 	@CacheLookup
-	@FindBy(xpath = "//div[6]/div[2]/div/div/div/button")
+	@FindBy(xpath = "//div[8]/div[2]/div/div/div/button")
 	WebElement accountsListView1stKPICard;
 	
 	@CacheLookup
@@ -221,7 +221,7 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
 	WebElement accountKPIHdr;
 	
 	@CacheLookup

@@ -60,6 +60,44 @@ public class MobileSprint317Test extends BaseTest {
 
 
     @Test(enabled = true)
+    // Add My Activities as a menu item
+    public void test01_AddMyActivities() throws Exception {
+        String methodID = "test01_AddMyActivities";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MiscEntityItemViewsElements miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: enable 'My Activities' under Configure view ... needed with 'My Activities' no longer displaying by default in 3.4
+            commNav.clickGlobalMenuItem("Configure Menu");
+            commNav.waitForPage("Configure");
+            miscView.configureMyActivities.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("My Schedule");
+
+            System.out.println("VP: added My Activities back as a menu item - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: added My Activities back as a menu item - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test(enabled = true)
     // MBL-10429 ... For a new contact/ account, the address entered for the contact is copied into the account address if the account address is not set
     public void test01_MBL10429() throws Exception {
         String methodID = "test01_MBL10429";
@@ -122,7 +160,7 @@ public class MobileSprint317Test extends BaseTest {
 
 
     @Test(enabled = true)
-    // MBL-10404 ... load home page based on user's preference as defined on Configure View (at present the default home page is 'My Activities')
+    // MBL-10404 ... load home page based on user's preference as defined on Configure View
     public void test02_MBL10404() throws Exception {
         String methodID = "test02_MBL10404";
 
@@ -141,7 +179,7 @@ public class MobileSprint317Test extends BaseTest {
         commNav.waitForPage("Configure");
 
 
-        //Step: for Calendar, drag button up to the top of the list, above 'My Activities'
+        //Step: for Calendar, drag button up to the top of the list, above 'My Activities', or whatever is the current default page
         Actions action = new Actions(driver);
         action.dragAndDrop(miscView.configureCalendarBtn, miscView.configureTopPosition).build().perform();
         headerButton.clickHeaderButton("Save");
@@ -152,7 +190,7 @@ public class MobileSprint317Test extends BaseTest {
         AssertJUnit.assertTrue("VP: default page after login now set to 'Calendar' - FAILED", driver.findElement(By.xpath(".//*[@id='calendar_view']")).isDisplayed());
         System.out.println("VP: default page after login now set to 'Calendar' - PASSED");
 
-        //Step: reset the default page back to 'My Activities'
+        //Step: reset the default page back to 'My Activities', or whatever it was previously
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         headerButton = PageFactory.initElements(driver, HeaderButton.class);
         miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
@@ -340,6 +378,7 @@ public class MobileSprint317Test extends BaseTest {
             LogOutThenLogBackIn(userName, userPwd);
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
+            commNav = PageFactory.initElements(driver, CommonNavigation.class);
             if (!commNav.isPageDisplayed("My Activities"))   {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");

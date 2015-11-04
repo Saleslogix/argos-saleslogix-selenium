@@ -233,7 +233,7 @@ public class MobileSprint233Test extends BaseTest {
 		
 		// Test Params:
 		String entityType = "Notes/History";
-		int KPIIndex = 7;
+		int KPIIndex = 9;
 		
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
@@ -519,7 +519,7 @@ public class MobileSprint233Test extends BaseTest {
 		
 		// Test Params:
 		String entityType = "Accounts";
-		int KPIIndex = 6;	//derived from the x in '//div[x]/...' (1st KPI metric card xpath def.)
+		int KPIIndex = 8;	//derived from the x in '//div[x]/...' (1st KPI metric card xpath def.)
 		
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
@@ -757,7 +757,7 @@ public class MobileSprint233Test extends BaseTest {
 		
 		// Test Params:
 		String entityType = "Contacts";
-		int KPIIndex = 5;	//derived from the x in '//div[x]/...' (1st KPI metric card xpath def.)
+		int KPIIndex = 7;	//derived from the x in '//div[x]/...' (1st KPI metric card xpath def.)
 		
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
@@ -1005,7 +1005,7 @@ public class MobileSprint233Test extends BaseTest {
 		
 		// Test Params:
 		String entityType = "Leads";
-		int KPIIndex = 4;	//derived from the x in '//div[x]/...' (1st KPI metric card xpath def.)
+		int KPIIndex = 6;	//derived from the x in '//div[x]/...' (1st KPI metric card xpath def.)
 		
 		//Step: login & log back in (to clear cookies)
 		LogOutThenLogBackIn(userName, userPwd);
@@ -1240,7 +1240,7 @@ public class MobileSprint233Test extends BaseTest {
 
         // Test Params:
         String entityType = "Opportunities";
-        int KPIIndex = 3;
+        int KPIIndex = 5;
 
         //Step: login & log back in
         LogOutThenLogBackIn(userName, userPwd);
@@ -1373,7 +1373,7 @@ public class MobileSprint233Test extends BaseTest {
 		
 		// Test Params:
 		String entityType = "Opportunities";
-		int KPIIndex = 3;
+		int KPIIndex = 5;
 		
 		//Step: login & log back in
 		LogOutThenLogBackIn(userName, userPwd);
@@ -1485,7 +1485,7 @@ public class MobileSprint233Test extends BaseTest {
 		
 		// Test Params:
 		String entityType = "Tickets";
-		int KPIIndex = 2;
+		int KPIIndex = 4;
 		
 		//Step: login & log back in
 		LogOutThenLogBackIn(userName, userPwd);

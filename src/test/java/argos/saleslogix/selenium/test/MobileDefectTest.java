@@ -50,10 +50,50 @@ public class MobileDefectTest extends BaseTest {
 		
 		System.out.println(ENDLINE);
 	}
-	
+
 
 	//Test Methods		
 	//============
+
+    @Test(enabled = true)
+    // Add My Activities as a menu item
+    public void test01_AddMyActivities() throws Exception {
+        String methodID = "test01_AddMyActivities";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MiscEntityItemViewsElements miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: enable 'My Activities' under Configure view ... needed with 'My Activities' no longer displaying by default in 3.4
+            commNav.clickGlobalMenuItem("Configure Menu");
+            commNav.waitForPage("Configure");
+            miscView.configureMyActivities.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("My Schedule");
+
+            System.out.println("VP: added My Activities back as a menu item - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: added My Activities back as a menu item - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
 	//TODO: test41_MobileDefect13092144 mysteriously fails to run on Jenkins server
 	@Test(enabled = true)
 	public void test41_MobileDefect13092144()  throws InterruptedException {
@@ -67,6 +107,10 @@ public class MobileDefectTest extends BaseTest {
 		String attachmentName = TEST_JPG_RECORD;
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
 		// Step: click the Top-Left, Global Menu button...
 		headerbutton.showGlobalMenu();
 	
@@ -2177,7 +2221,8 @@ public class MobileDefectTest extends BaseTest {
 		//commNav.clickGlobalMenuItem("My Activities");
 		System.out.println(ENDLINE);
 	}
-	@Test (enabled = true)
+
+    @Test (enabled = true)
 	public void test65_MobileDefect13092422()  throws Exception {
 		//tags: My Activities, list view, Unknown
 		String methodID = "test65_MobileDefect13092422";

@@ -164,8 +164,12 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarPM;
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='datetime-picker-time']//button[@data-action='incrementHour']")
-	WebElement calendarIncrementHourBtn;
+	@FindBy(xpath = "//span[@data-action='incrementMonth']")
+	WebElement calendarIncrementMonthBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='datetime-picker-time']//button[@data-action='incrementHour']")
+    WebElement calendarIncrementHourBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='datetime-picker-time']//button[@data-action='decrementHour']")
@@ -294,43 +298,43 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarModalRelativeDateTitle;
 
     @CacheLookup
-    @FindBy(xpath = "//li[@class='simpleList__item'][1]/div[1]")
+    @FindBy(xpath = "//ul//li//div[contains(., 'This Evening')]")
     WebElement calendarModalThisEveningTitle;
 
     @CacheLookup
-    @FindBy(xpath = "//li[@class='simpleList__item'][1]/div[2]")
+    @FindBy(xpath = "//ul//li//div[contains(., 'This Evening')]/following::div[1]")
     WebElement calendarModalThisEveningValue;
 
     @CacheLookup
-    @FindBy(xpath = "//li[@class='simpleList__item'][2]/div[1]")
+    @FindBy(xpath = "//ul//li//div[contains(., 'Tomorrow Morning')]")
     WebElement calendarModalTomorrowMorningTitle;
 
     @CacheLookup
-    @FindBy(xpath = "//li[@class='simpleList__item'][2]/div[2]")
+    @FindBy(xpath = "//ul//li//div[contains(., 'Tomorrow Morning')]/following::div[1]")
     WebElement calendarModalTomorrowMorningValue;
 
     @CacheLookup
-    @FindBy(xpath = "//li[@class='simpleList__item'][3]/div[1]")
+    @FindBy(xpath = "//ul//li//div[contains(., 'Tomorrow Evening')]")
     WebElement calendarModalTomorrowEveningTitle;
 
     @CacheLookup
-    @FindBy(xpath = "//li[@class='simpleList__item'][3]/div[2]")
+    @FindBy(xpath = "//ul//li//div[contains(., 'Tomorrow Evening')]/following::div[1]")
     WebElement calendarModalTomorrowEveningValue;
 
     @CacheLookup
-    @FindBy(xpath = "//li[@class='simpleList__item'][4]/div[1]")
+    @FindBy(xpath = "//ul//li//div[contains(., 'Next Week')]")
     WebElement calendarModalNextWeekTitle;
 
     @CacheLookup
-    @FindBy(xpath = "//li[@class='simpleList__item'][4]/div[2]")
+    @FindBy(xpath = "//ul//li//div[contains(., 'Next Week')]/following::div[1]")
     WebElement calendarModalNextWeekValue;
 
     @CacheLookup
-    @FindBy(xpath = "//li[@class='simpleList__item'][5]/div[1]")
+    @FindBy(xpath = "//ul//li//div[contains(., 'Next Month')]")
     WebElement calendarModalNextMonthTitle;
 
     @CacheLookup
-    @FindBy(xpath = "//li[@class='simpleList__item'][5]/div[2]")
+    @FindBy(xpath = "//ul//li//div[contains(., 'Next Month')]/following::div[1]")
     WebElement calendarModalNextMonthValue;
 
 

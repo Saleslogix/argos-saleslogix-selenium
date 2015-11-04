@@ -44,6 +44,46 @@ public class MobileSprint305Test extends BaseTest {
 	
 	//Test Methods
 	//============
+
+    @Test(enabled = true)
+    // Add My Activities as a menu item
+    public void test01_AddMyActivities() throws Exception {
+        String methodID = "test01_AddMyActivities";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MiscEntityItemViewsElements miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: enable 'My Activities' under Configure view ... needed with 'My Activities' no longer displaying by default in 3.4
+            commNav.clickGlobalMenuItem("Configure Menu");
+            commNav.waitForPage("Configure");
+            miscView.configureMyActivities.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("My Schedule");
+
+            System.out.println("VP: added My Activities back as a menu item - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: added My Activities back as a menu item - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
 	@Test(enabled = true)
 	public void test01_MobileDefect_MBL10267()  throws InterruptedException {
 		//Reference: MBL-10267
@@ -51,6 +91,7 @@ public class MobileSprint305Test extends BaseTest {
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
 		
 		// test params
 		String entityView = "My Activities";
@@ -59,28 +100,36 @@ public class MobileSprint305Test extends BaseTest {
 		
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-	
-		//Step: click the My Activities link
-		commNav.clickGlobalMenuItem("My Activities");
-		
-		//Section 1: click the top-right + button to schedule a new activity
-		headerButton.clickHeaderButton("add");
+
 		try {
-			AssertJUnit.assertTrue(commNav.waitForPage("Schedule..."));
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: go to "My Activities" view, if not already there ... wait for page My Activities
+            if (!commNav.isPageDisplayed("My Activities"))   {
+                commNav.clickGlobalMenuItem("My Activities");
+                commNav.waitForPage("My Activities");
+            }
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
 			
 			//TODO: create a separate class for scheduling activities...
 			//SubStep: set the Activity Type...
 			driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = '" + actType + "']")).click();
 			commNav.waitForPage(actType);
 		    
-			//SubStep: setup and confirm the Regarding field val...
-			//NOTE: here we just set the value of the input text field; selecting a Regarding value is not supported by Se WebDriver
-			String regardingFldXPath = "//div[@id='crm_Fields_PicklistField_0']/input";
-			driver.findElement(By.xpath(regardingFldXPath)).clear();
-			driver.findElement(By.xpath(regardingFldXPath)).sendKeys(regardingVal);		    
+			//SubStep: setup and confirm the Regarding field val.
+            System.out.println("Activity regarding field will be - " + regardingVal);
+            activityEditView.activityEditViewRegardingFld.sendKeys(regardingVal);
+
 		    //VP: check the modified Regarding field val...
 		    try {
-		    	  AssertJUnit.assertEquals(regardingVal, driver.findElement(By.xpath(regardingFldXPath)).getAttribute("value"));
+		    	  AssertJUnit.assertEquals(regardingVal, activityEditView.activityEditViewRegardingFld.getAttribute("value"));
 		    	  System.out.println("VP: Regarding field value set to '" + regardingVal + "' - Passed");
 		    	} 
 		    catch (Error e) {
@@ -321,6 +370,9 @@ public class MobileSprint305Test extends BaseTest {
 	    String entityRecord = TEST_TICKET_RECORD;
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 	
 		//Step: open the entities List view from the Global Menu
 		commNav.clickGlobalMenuItem(entityView);
@@ -333,7 +385,7 @@ public class MobileSprint305Test extends BaseTest {
 		//Step: open the Ticket Detail view  
 		commNav.clickListViewItemN(entityView, 1);
 
-        WebElement relatedItemsTab = driver.findElement(By.xpath("//*[@id='ticket_detail']//ul[@class='tab-list']/li[3] "));
+        WebElement relatedItemsTab = driver.findElement(By.xpath("//*[@id='ticket_detail']//ul[@class='tab-list']/li[3]"));
         commNav.highlightNClick(relatedItemsTab);
 
         //Step: click the Ticket Activities link

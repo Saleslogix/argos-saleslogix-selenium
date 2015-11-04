@@ -101,7 +101,7 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[5]/div[2]/div/div/div/button")
+	@FindBy(xpath = "//div[7]/div[2]/div/div/div/button")
 	WebElement contactsListView1stKPICard;
 	
 	@CacheLookup
@@ -214,7 +214,7 @@ public class ContactViewsElements extends BaseTest {
 	WebElement contactsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
 	WebElement contactsKPIHdr;
 	
 	@CacheLookup

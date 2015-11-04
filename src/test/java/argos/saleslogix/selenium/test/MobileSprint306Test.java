@@ -45,6 +45,46 @@ public class MobileSprint306Test extends BaseTest {
 		System.out.println(ENDLINE);
 	}
 
+
+    @Test(enabled = true)
+    // Add My Activities as a menu item
+    public void test01_AddMyActivities() throws Exception {
+        String methodID = "test01_AddMyActivities";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MiscEntityItemViewsElements miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: enable 'My Activities' under Configure view ... needed with 'My Activities' no longer displaying by default in 3.4
+            commNav.clickGlobalMenuItem("Configure Menu");
+            commNav.waitForPage("Configure");
+            miscView.configureMyActivities.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("My Schedule");
+
+            System.out.println("VP: added My Activities back as a menu item - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: added My Activities back as a menu item - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
 	@Test(enabled = true)
 	// MBL-10319 ... Can't remove items from multi-select picklist
 	public void test01_MBL10319() throws Exception {
@@ -61,6 +101,10 @@ public class MobileSprint306Test extends BaseTest {
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
 		try {
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
 			//Step: search for Contact entity record, then open it's Edit view
 			AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, contactRecord));
 			
@@ -85,6 +129,7 @@ public class MobileSprint306Test extends BaseTest {
 		
 			//Step: wait for page Contact (edit view) to open, then save changes
 			commNav.waitForPage(entityType);
+            headerButton = PageFactory.initElements(driver, HeaderButton.class);
 			headerButton.clickHeaderButton("save");
 			
 			//Step: wait for page Contact detail to open
@@ -268,12 +313,13 @@ public class MobileSprint306Test extends BaseTest {
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 	    HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 	    MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        MiscEntityItemViewsElements miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
 	       
 			
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 			
 		try {
-				
+
 				
 		    //Step: logout & log back in (to clear cookies)
 		    LogOutThenLogBackIn(userName, userPwd);
@@ -698,7 +744,8 @@ public class MobileSprint306Test extends BaseTest {
 
 
             //Step: check that Month view activities are appearing in ascending date order
-            if ((dateTime2.after(dateTime1)) && (dateTime3.after(dateTime2))) {
+            //if ((dateTime2.after(dateTime1)) && (dateTime3.after(dateTime2))) {
+            if (((dateTime2.after(dateTime1) || dateTime2.equals(dateTime1))) && ((dateTime3.after(dateTime2) || dateTime3.equals(dateTime2)))) {
                 System.out.println("VP: Month view calendar activities are appearing in ascending time order " + " - PASSED");
             } else {
                 System.out.println("VP: Month view calendar activities not appearing in ascending time order " + " - FAILED");

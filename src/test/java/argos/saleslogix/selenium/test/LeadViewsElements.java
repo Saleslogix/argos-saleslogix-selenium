@@ -76,7 +76,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[4]/div[2]/div/div/div/button")
+	@FindBy(xpath = "//div[6]/div[2]/div/div/div/button")
 	WebElement leadsListView1stKPICard;
 	
 	@CacheLookup
@@ -187,7 +187,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[3]")
+	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
 	WebElement leadsKPIHdr;
 	
 	@CacheLookup
@@ -433,7 +433,7 @@ public class LeadViewsElements extends BaseTest {
 
     @CacheLookup
     // this data-key is specific to user loup for 'All Leads' group
-    @FindBy(xpath = "//*[@id='groups_configure']//li[@data-key='p6UJ9A0004QH']")
+    @FindBy(xpath = "//*[@id='groups_configure']//li[@data-descriptor='All Leads']")
     WebElement groupsConfigureAllLeads;
 
     @CacheLookup

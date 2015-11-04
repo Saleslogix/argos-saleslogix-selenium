@@ -40,7 +40,7 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistorysListView;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[7]/div[2]/div/div/div/button")
+	@FindBy(xpath = "//div[9]/div[2]/div/div/div/button")
 	WebElement notesHistorysListView1stKPICard;
 	
 	@CacheLookup
@@ -137,7 +137,7 @@ public class NotesHistoryViewsElements extends BaseTest {
 	
 	//Context Menu elements
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
+	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'Hash Tags')]")
 	WebElement notesHistoryHashTagsHdr;
 	
 	@CacheLookup
@@ -145,7 +145,7 @@ public class NotesHistoryViewsElements extends BaseTest {
 	WebElement notesHistoryHashTagsPnl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
+	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
 	WebElement notesHistoryKPIHdr;
 	
 	@CacheLookup

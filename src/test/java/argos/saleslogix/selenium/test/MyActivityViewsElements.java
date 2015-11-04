@@ -455,7 +455,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityEditViewContactFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/button")
+	@FindBy(xpath = "//div[@data-field='Contact']//button")
 	WebElement activityEditViewContactBtn;
 	
 	@CacheLookup
@@ -602,11 +602,11 @@ public class MyActivityViewsElements extends BaseTest {
     WebElement activityDetailViewWhoTab;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[4]")
+    @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[2]")
     WebElement activityDetailViewMoreDetailsTab;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[5]")
+    @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[3]")
     WebElement activityDetailViewRelatedItemsTab;
 
 
