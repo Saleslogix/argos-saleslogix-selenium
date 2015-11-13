@@ -262,10 +262,10 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: re-edit activity, retrieve edited start date
             headerButton = PageFactory.initElements(driver, HeaderButton.class);
-            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             headerButton.clickHeaderButton("Edit");
             commNav.waitForPage("Activity");
 
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             String edited2ActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date after re-save is : " + edited2ActivityStartDate);
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);

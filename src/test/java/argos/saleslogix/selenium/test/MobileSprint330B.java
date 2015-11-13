@@ -846,36 +846,37 @@ public class MobileSprint330B extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-            //Step: retrieve the default value for start time, then open the start time Calendar to set time to be earlier than the current time
+            //Step: retrieve the default value for start time
             String newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: Value for Start Time is : " + newActivityStartDate);
-            activityEditView.activityEditViewStartTimeFldBtn.click();
-            Thread.sleep(1000);
-            driver.switchTo().activeElement();
 
-            //Press Advanced button to open Calendar view, set hour to 1 and minutes to 00, and confirm
-            calendarView.calendarModalAdvanced.click();
-            calendarView.calendarHourField.click();
-            calendarView.calendarHourOne.click();
-            calendarView.calendarMinuteField.click();
-            calendarView.calendarMinute00.click();
-            calendarView.calendarModalConfirm.click();
+            //Step: retrieve date only value (MM/DD/YYYY), time only value (hh:mm a), convert time string to a calendar time (hh:mm a), ready for manipulation
+            String savedDateOnly = newActivityStartDate.split("\\ ")[0];
+            String savedTimeOnly = newActivityStartDate.substring(newActivityStartDate.indexOf(' ')+1);
 
-            Thread.sleep(1000);
-            driver.switchTo().activeElement();
-            commNav.waitForPage("Meeting");
+            //SimpleDateFormat ft = new SimpleDateFormat("M/d/YYYY hh:mm a");
+            SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
+            Calendar activityInitialTime = Calendar.getInstance();
+            activityInitialTime.setTime(ft.parse(savedTimeOnly));
 
+            //Step: subtract an hour from the default value for start time, so time will be earlier than the current time
+            activityInitialTime.add(Calendar.HOUR,-1);
 
-            //Step: retrieve the new value for start time, then find the 'time' portion only
-            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            //Step: combine date only value and edited time ... to replace value in 'start time' field
+            String editedActivityStartDate = savedDateOnly + " " + ft.format(activityInitialTime.getTime()).toString();
+            activityEditView.activityEditViewStartTimeFld.click();
+            activityEditView.activityEditViewStartTimeFld.clear();
+            activityEditView.activityEditViewStartTimeFld.sendKeys(editedActivityStartDate);
             String strDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: 'Value for updated Start Time is ... " + strDateTime);
+
+            //Step: retrieve the new value for start time, then find the 'time' portion only
             String activityTime = strDateTime.substring(strDateTime.indexOf(' ')+1);
             System.out.println("VP: Activity time has a value of ... " + activityTime);
 
 
             //Step: convert activity string date representation to calendar date format
-            SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
+            ft = new SimpleDateFormat("hh:mm a");
             Calendar activityDateTime1 = Calendar.getInstance();
             activityDateTime1.setTime(ft.parse(activityTime));
 
@@ -883,7 +884,7 @@ public class MobileSprint330B extends BaseTest {
             //Step: convert current date/ time to date format of "hh:mm a", then convert time portion back to calendar date format
             Calendar todayDate = Calendar.getInstance();
             String todayString = ft.format(todayDate.getTime()).toString();
-            System.out.println("VP: Today's time in hh:mm a format is - " + todayString);
+            System.out.println("VP: Today's time in hh:mm a format is ... " + todayString);
             Calendar todayDateTime2 = Calendar.getInstance();
             todayDateTime2.setTime(ft.parse(todayString));
 

@@ -650,7 +650,7 @@ public class MobileSprint304Test extends BaseTest {
 		System.out.println(ENDLINE);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void test10_MobileDefect_MBL10166() throws Exception {
 		//MBL-10166 : where History item has null value for 'completed by', remove the continual 'loading ...' [DTS defect 13091823]
 		String methodID = "test10_MobileDefect_MBL10166";
@@ -828,6 +828,9 @@ public class MobileSprint304Test extends BaseTest {
         AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
 			
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 		
 		//Section 1: test the Account-based scenario
 	    //Step: open the Account Detail view

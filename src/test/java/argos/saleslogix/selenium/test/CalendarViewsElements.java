@@ -26,9 +26,13 @@ public class CalendarViewsElements extends BaseTest {
 	//Header Navigation elements
 	
 	@CacheLookup
-	@FindBy(xpath = "//button[@data-tool='today']")
+	@FindBy(xpath = "//div[@data-action='goToToday']")
 	WebElement calendarTodayBtn;
-	
+
+    @CacheLookup
+    @FindBy(xpath = "//span[@class='toggleOn weekToggle__on']")
+    WebElement calendarWeekToggle;
+
 	@CacheLookup
 	@FindBy(xpath = "//button[@data-tool='day']")
 	WebElement calendarDayBtn;
@@ -61,10 +65,18 @@ public class CalendarViewsElements extends BaseTest {
 
     @CacheLookup
     @FindBy(xpath = "//div[8]/ul/li[1]")
-    WebElement calendarYearTopItem;
+    WebElement calendarModalYearTopItem;
 
     @CacheLookup
     @FindBy(xpath = "//div[8]/ul/li[21]")
+    WebElement calendarModalYearBottomItem;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[6]/ul/li[1]")
+    WebElement calendarYearTopItem;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[6]/ul/li[21]")
     WebElement calendarYearBottomItem;
 
     @CacheLookup
@@ -72,51 +84,51 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarMonthField;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='January']")
+    @FindBy(xpath = "//ul/li[@data-value='january']")
     WebElement calendarMonthJan;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='February']")
+    @FindBy(xpath = "//ul/li[@data-value='february']")
     WebElement calendarMonthFeb;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='March']")
+    @FindBy(xpath = "//ul/li[@data-value='march']")
     WebElement calendarMonthMar;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='April']")
+    @FindBy(xpath = "//ul/li[@data-value='april']")
     WebElement calendarMonthApr;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='May']")
+    @FindBy(xpath = "//ul/li[@data-value='may']")
     WebElement calendarMonthMay;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='June']")
+    @FindBy(xpath = "//ul/li[@data-value='june']")
     WebElement calendarMonthJun;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='July']")
+    @FindBy(xpath = "//ul/li[@data-value='july']")
     WebElement calendarMonthJul;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='August']")
+    @FindBy(xpath = "//ul/li[@data-value='august']")
     WebElement calendarMonthAug;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='September']")
+    @FindBy(xpath = "//ul/li[@data-value='september']")
     WebElement calendarMonthSep;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='October']")
+    @FindBy(xpath = "//ul/li[@data-value='october']")
     WebElement calendarMonthOct;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='November']")
+    @FindBy(xpath = "//ul/li[@data-value='november']")
     WebElement calendarMonthNov;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='December']")
+    @FindBy(xpath = "//ul/li[@data-value='december']")
     WebElement calendarMonthDec;
 
     @CacheLookup
@@ -181,7 +193,7 @@ public class CalendarViewsElements extends BaseTest {
 	WebElement calendarIncrementMinuteBtn;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='datetime-picker-date']//button[@data-action='decrementMonth']")
+    @FindBy(xpath = "//span[@data-action='decrementMonth']")
     WebElement calendarDecrementMonthBtn;
 
     @CacheLookup

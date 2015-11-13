@@ -24,7 +24,7 @@ public class MobileSprint340 extends BaseTest {
 	//================
 
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     // INFORCRM-4569 ... My Activities : on creating an activity, without first selecting an account, press the Contact lookup to ensure that this may be opened correctly
 
     public void test01_INFORCRM4569() throws Exception {
@@ -226,7 +226,7 @@ public class MobileSprint340 extends BaseTest {
     }
 
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     // INFORCRM-4861 ... Calendar modal control ... calendar/ time selection
     public void test03_INFORCRM4861() throws Exception {
         String methodID = "test03_INFORCRM4861";
@@ -324,8 +324,8 @@ public class MobileSprint340 extends BaseTest {
             //Verify the year dropdown is as expected
             String calendarCurrentYear = calendarView.calendarModalCurrYearValue.getAttribute("value");
             calendarView.calendarModalCurrYearValue.click();
-            String calendarYearLowRange = calendarView.calendarYearTopItem.getText();
-            String calendarYearHighRange = calendarView.calendarYearBottomItem.getText();
+            String calendarYearLowRange = calendarView.calendarModalYearTopItem.getText();
+            String calendarYearHighRange = calendarView.calendarModalYearBottomItem.getText();
             System.out.println("VP: Current Year is ... " + calendarCurrentYear + " : Year Range is from ... " + calendarYearLowRange + " to " + calendarYearHighRange);
 
 
@@ -348,6 +348,114 @@ public class MobileSprint340 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
+
+
+    @Test(enabled = true)
+    // INFORCRM-4861 ... Calendar screen
+    public void test04_INFORCRM4861() throws Exception {
+        String methodID = "test04_INFORCRM4861";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        String viewName = "Calendar Screen";
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            // Verify that the current month and year are present and display their values
+            String currentMonth = calendarView.calendarMonthField.getAttribute("value");
+            commNav.isWebElementPresent(viewName + ",Current Month value", calendarView.calendarMonthField);
+            commNav.isWebElementPresent(viewName + ",Current Year value", calendarView.calendarYearField);
+            System.out.println("VP: value for current Month is ... " + calendarView.calendarMonthField.getAttribute("value"));
+            System.out.println("VP: value for current Year is ... " + calendarView.calendarYearField.getAttribute("value"));
+
+            //Click the month forward button and check next month
+            calendarView.calendarIncrementMonthBtn.click();
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+            System.out.println("VP: value for next Month is ... " + calendarView.calendarMonthField.getAttribute("value"));
+            System.out.println("VP: value for associated Year is ... " + calendarView.calendarYearField.getAttribute("value"));
+
+            //Click the Today button to again display the current month
+            calendarView.calendarTodayBtn.click();
+            AssertJUnit.assertEquals("VP: Pressing Today button to return to current month - FAILED", currentMonth, calendarView.calendarMonthField.getAttribute("value"));
+            System.out.println("VP: Pressing Today button to return to current month - PASSED");
+
+            //Click the month back button and check the previous month
+            calendarView.calendarDecrementMonthBtn.click();
+            System.out.println("VP: value for previous Month is ... " + calendarView.calendarMonthField.getAttribute("value"));
+            System.out.println("VP: value for associated Year is ... " + calendarView.calendarYearField.getAttribute("value"));
+
+
+            //Verify that the days of the week are displaying
+            commNav.isWebElementPresent(viewName + ",Day of Week - Sunday", calendarView.calendarModalDayOfWeekSunday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Monday", calendarView.calendarModalDayOfWeekMonday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Tuesday", calendarView.calendarModalDayOfWeekTuesday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Wednesday", calendarView.calendarModalDayOfWeekWednesday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Thursday", calendarView.calendarModalDayOfWeekThursday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Friday", calendarView.calendarModalDayOfWeekFriday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Saturday", calendarView.calendarModalDayOfWeekSaturday);
+
+            //Verify the month dropdown is as expected
+            calendarView.calendarMonthField.click();
+            commNav.isWebElementPresent(viewName + ",Month - January", calendarView.calendarMonthJan);
+            commNav.isWebElementPresent(viewName + ",Month - February", calendarView.calendarMonthFeb);
+            commNav.isWebElementPresent(viewName + ",Month - March", calendarView.calendarMonthMar);
+            commNav.isWebElementPresent(viewName + ",Month - April", calendarView.calendarMonthApr);
+            commNav.isWebElementPresent(viewName + ",Month - May", calendarView.calendarMonthMay);
+            commNav.isWebElementPresent(viewName + ",Month - June", calendarView.calendarMonthJun);
+            commNav.isWebElementPresent(viewName + ",Month - July", calendarView.calendarMonthJul);
+            commNav.isWebElementPresent(viewName + ",Month - August", calendarView.calendarMonthAug);
+            commNav.isWebElementPresent(viewName + ",Month - September", calendarView.calendarMonthSep);
+            commNav.isWebElementPresent(viewName + ",Month - October", calendarView.calendarMonthOct);
+            commNav.isWebElementPresent(viewName + ",Month - November", calendarView.calendarMonthNov);
+            commNav.isWebElementPresent(viewName + ",Month - December", calendarView.calendarMonthDec);
+
+            //Verify the year dropdown is as expected
+            String calendarCurrentYear = calendarView.calendarYearField.getAttribute("value");
+            calendarView.calendarYearField.click();
+            String calendarYearLowRange = calendarView.calendarYearTopItem.getText();
+            String calendarYearHighRange = calendarView.calendarYearBottomItem.getText();
+            System.out.println("VP: Current Year is ... " + calendarCurrentYear + " : Year Range is from ... " + calendarYearLowRange + " to " + calendarYearHighRange);
+
+
+            //Step: check the day/ week toggle
+            calendarView.calendarWeekToggle.click();
+            List<WebElement> allElements = driver.findElements(By.xpath("//tr[@class='calendar-week']//td[contains(@class, 'selected')]"));
+            AssertJUnit.assertEquals("VP: Calendar - pressing the week toggle should select 7 days of the week - FAILED",7,allElements.size());
+            System.out.println("VP: Calendar - pressing the week toggle should select 7 days of the week - PASSED");
+
+            for (WebElement element: allElements) {
+                System.out.println("Day of month selected - " + element.getText() + " " + calendarView.calendarMonthField.getAttribute("value") + " " + calendarView.calendarYearField.getAttribute("value"));
+            }
+
+
+            System.out.println("VP: Calendar screen functionality - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Calendar screen functionality - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
 
 	//Login & Logout
 	//==============
