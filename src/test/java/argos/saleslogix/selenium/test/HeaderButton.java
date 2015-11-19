@@ -26,6 +26,10 @@ public class HeaderButton {
 	//@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='new']")
 	WebElement addButton;
+
+    //@CacheLookup
+    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='briefCase']")
+    WebElement briefcaseButton;
 	
 	//@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='edit']")
@@ -172,6 +176,9 @@ public class HeaderButton {
 		case "edit":
 			editButton.click();
 			break;
+        case "briefcase":
+             briefcaseButton.click();
+             break;
 		case "check": case "accept":
 			checkButton.click();
 			break;

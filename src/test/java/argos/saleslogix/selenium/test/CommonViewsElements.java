@@ -300,7 +300,36 @@ public class CommonViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_29']/div/div[3]/button")
 	WebElement userLookupBtn;
-	
+
+    //Briefcase Complete toast elements
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='modal-template']//div[contains(text(), 'Okay')]")
+    WebElement briefcaseCompleteOkayBtn;
+
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='modal-template']//div[contains(text(), 'Cancel')]")
+    WebElement briefcaseCompleteCancelBtn;
+
+    //Offline Options under Settings
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='settings']//li[@data-action='viewOfflineOptions']")
+    WebElement settingsOfflineOptions;
+
+    //Offline Options elements
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='olderThan-dropdown offline_usage_widget_undefined']/input")
+    WebElement offlineDataOlderField;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='0']")
+    WebElement offlineDataOlderZeroDays;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='offline_usage_widget_undefined']//button[contains(text(), 'Clear')]")
+    WebElement offlineDataClearBtn;
+
+
+
 	//Text Input view elements
 	//========================	
 	//Business Description

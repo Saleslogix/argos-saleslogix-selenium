@@ -58,7 +58,7 @@ public class CommonNavigation {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'My Activities']")
 	WebElement gmenu_myActivities;
-	
+
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Calendar']")
 	WebElement gmenu_calendar;
@@ -90,7 +90,19 @@ public class CommonNavigation {
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'My Attachments']")
 	WebElement gmenu_myAttachments;
-	
+
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'My Schedule']")
+    WebElement gmenu_mySchedule;
+
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'My Briefcase']")
+    WebElement gmenu_myBriefcase;
+
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Recently Viewed']")
+    WebElement gmenu_recentlyViewed;
+
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Configure Menu']")
 	WebElement gmenu_configureMenu;
@@ -184,10 +196,13 @@ public class CommonNavigation {
 			case "my activities": case "activities":
 				highlightNClick(gmenu_myActivities);
 				break;
-			case "calendar":
-				highlightNClick(gmenu_calendar);
-				hasListview = false;
+			case "my schedule":
+				highlightNClick(gmenu_mySchedule);
 				break;
+            case "calendar":
+                highlightNClick(gmenu_calendar);
+                hasListview = false;
+                break;
 			case "notes/history": case "notes history": case "notes":
 				highlightNClick(gmenu_notesHistory);
 				break;
@@ -209,6 +224,12 @@ public class CommonNavigation {
 			case "my attachments": case "attachments": case "attachment":
 				highlightNClick(gmenu_myAttachments);
 				break;
+            case "recently viewed":
+                highlightNClick(gmenu_recentlyViewed);
+                break;
+            case "my briefcase":
+                highlightNClick(gmenu_myBriefcase);
+                break;
 			case "configure menu": case "configure":
 				highlightNClick(gmenu_configureMenu);
 				break;
