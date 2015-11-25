@@ -229,7 +229,7 @@ public class MobileSprint330 extends BaseTest {
             activityEditView.performMyActivitiesSearch(newActivityRegarding);
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
-            commNav.waitForPage("Activity");
+            commNav.waitForPage("Meeting - Regarding: " + newActivityRegarding);
 
 
             //Step: open the activity created in edit mode
@@ -237,7 +237,7 @@ public class MobileSprint330 extends BaseTest {
             headerButton.clickHeaderButton("Edit");
 
             //Step: wait for page Activity
-            commNav.waitForPage("Activity");
+            commNav.waitForPage("Meeting");
 
             //Step: edit the start date and re-save activity
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -253,22 +253,21 @@ public class MobileSprint330 extends BaseTest {
 
             Thread.sleep(1000);
             driver.switchTo().activeElement();
-            commNav.waitForPage("Activity");
+            commNav.waitForPage("Meeting");
 
             String editedActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date changed to : " + editedActivityStartDate);
             headerButton.clickHeaderButton("Save");
-
+            commNav.waitForPage("Meeting - Regarding: " + newActivityRegarding);
 
             //Step: re-edit activity, retrieve edited start date
             headerButton = PageFactory.initElements(driver, HeaderButton.class);
             headerButton.clickHeaderButton("Edit");
-            commNav.waitForPage("Activity");
+            commNav.waitForPage("Meeting");
 
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             String edited2ActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date after re-save is : " + edited2ActivityStartDate);
-            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             AssertJUnit.assertEquals("VP: after editing start date and re-saving timeless activity, activity is no longer timeless - FAILED", editedActivityStartDate, edited2ActivityStartDate);
             System.out.println("VP: after editing start date and re-saving timeless activity, activity remains timeless - PASSED");
 

@@ -295,12 +295,14 @@ public class GroupsTest2 extends BaseTest {
         System.out.println("VP: clicking the ticket group Work Phone did try to call that number - PASSED");
 
         driver.navigate().back();
-        driver.navigate().refresh();
-        if (commNav.isTextNotPresentOnPage("Copyright")) {
-           driver.navigate().refresh();
-        }
-        doVerificationLogin();
+        //driver.navigate().refresh();
+        //if (commNav.isTextNotPresentOnPage("Copyright")) {
+        //   driver.navigate().refresh();
+        //}
+        //doVerificationLogin();
 
+        Thread.sleep(3000);
+        commNav.waitForPage("My Schedule");
         System.out.println(ENDLINE);
     }
 
@@ -344,12 +346,14 @@ public class GroupsTest2 extends BaseTest {
         System.out.println("VP: clicking the Account group Main Phone did try to call that number - PASSED");
 
         driver.navigate().back();
-        driver.navigate().refresh();
-        if (commNav.isTextNotPresentOnPage("Copyright")) {
-            driver.navigate().refresh();
-        }
-        doVerificationLogin();
+        //driver.navigate().refresh();
+        //if (commNav.isTextNotPresentOnPage("Copyright")) {
+        //    driver.navigate().refresh();
+        //}
+        //doVerificationLogin();
 
+        Thread.sleep(3000);
+        commNav.waitForPage("My Schedule");
 
         //Contacts group view phone hyperlinks
         // Test Params:
@@ -384,11 +388,14 @@ public class GroupsTest2 extends BaseTest {
         System.out.println("VP: clicking the Contact group Work Phone did try to call that number - PASSED");
 
         driver.navigate().back();
-        driver.navigate().refresh();
-        if (commNav.isTextNotPresentOnPage("Copyright")) {
-            driver.navigate().refresh();
-        }
-        doVerificationLogin();
+        //driver.navigate().refresh();
+        //if (commNav.isTextNotPresentOnPage("Copyright")) {
+        //    driver.navigate().refresh();
+        //}
+        //doVerificationLogin();
+
+        Thread.sleep(3000);
+        commNav.waitForPage("My Schedule");
 
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
@@ -415,11 +422,14 @@ public class GroupsTest2 extends BaseTest {
         System.out.println("VP: clicking the Contact group Mobile Phone did try to call that number - PASSED");
 
         driver.navigate().back();
-        driver.navigate().refresh();
-        if (commNav.isTextNotPresentOnPage("Copyright")) {
-            driver.navigate().refresh();
-        }
-        doVerificationLogin();
+        //driver.navigate().refresh();
+        //if (commNav.isTextNotPresentOnPage("Copyright")) {
+        //    driver.navigate().refresh();
+        //}
+        //doVerificationLogin();
+
+        Thread.sleep(3000);
+        commNav.waitForPage("My Schedule");
 
         //Step: reset the Contact group layout to 'Summary' again
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -465,11 +475,14 @@ public class GroupsTest2 extends BaseTest {
         System.out.println("VP: clicking the Lead group Work Phone did try to call that number - PASSED");
 
         driver.navigate().back();
-        driver.navigate().refresh();
-        if (commNav.isTextNotPresentOnPage("Copyright")) {
-            driver.navigate().refresh();
-        }
-        doVerificationLogin();
+        //driver.navigate().refresh();
+        //if (commNav.isTextNotPresentOnPage("Copyright")) {
+        //    driver.navigate().refresh();
+        //}
+        //doVerificationLogin();
+
+        Thread.sleep(3000);
+        commNav.waitForPage("My Schedule");
 
 
         //Step: reset the Lead group layout to 'Summary' again

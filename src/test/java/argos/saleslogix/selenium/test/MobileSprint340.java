@@ -445,9 +445,6 @@ public class MobileSprint340 extends BaseTest {
 
             System.out.println("VP: Calendar screen functionality - PASSED");
 
-            // CHECK ... what displays
-            commNav.clickGlobalMenuItem("Calendar");
-            commNav.waitForPage("Calendar");
 
         }
 
