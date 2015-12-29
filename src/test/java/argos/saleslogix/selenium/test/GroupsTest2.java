@@ -285,7 +285,7 @@ public class GroupsTest2 extends BaseTest {
         ticketWorkPhoneEdited = ticketWorkPhoneEdited.replace("-","");
         System.out.println("VP: Ticket group view Work Phone value to be clicked is ... " + ticketWorkPhone + " / " + ticketWorkPhoneEdited);
         ticketsListView.ticketGroupViewWorkPhoneFld.click();
-        commNav.waitForPage("Note");
+        //commNav.waitForPage("Note");
         Thread.sleep(3000);
         String urlTelephone = driver.getCurrentUrl().substring(4);
         System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
@@ -294,15 +294,16 @@ public class GroupsTest2 extends BaseTest {
         AssertJUnit.assertEquals("VP: clicking the ticket group Work Phone did not try to call that number - FAILED",ticketWorkPhoneEdited,urlTelephone);
         System.out.println("VP: clicking the ticket group Work Phone did try to call that number - PASSED");
 
-        driver.navigate().back();
+
+        closeBrowser();
+        launchBrowser();
+        //driver.navigate().back();
         //driver.navigate().refresh();
         //if (commNav.isTextNotPresentOnPage("Copyright")) {
         //   driver.navigate().refresh();
         //}
-        //doVerificationLogin();
+        doVerificationLogin();
 
-        Thread.sleep(3000);
-        commNav.waitForPage("My Schedule");
         System.out.println(ENDLINE);
     }
 
@@ -324,7 +325,7 @@ public class GroupsTest2 extends BaseTest {
 
 
         //Step: logout & log back in (to clear cookies)
-        LogOutThenLogBackIn(userName, userPwd);
+        //LogOutThenLogBackIn(userName, userPwd);
 
         //Step: navigate to Accounts list view ...the 'All Accounts' group should be displaying in Summary layout
         commNav.clickGlobalMenuItem(entityType);
@@ -345,15 +346,17 @@ public class GroupsTest2 extends BaseTest {
         AssertJUnit.assertEquals("VP: clicking the Account group Main Phone did not try to call that number - FAILED",accountMainPhoneEdited,urlTelephone);
         System.out.println("VP: clicking the Account group Main Phone did try to call that number - PASSED");
 
-        driver.navigate().back();
+        closeBrowser();
+        launchBrowser();
+        //driver.navigate().back();
         //driver.navigate().refresh();
         //if (commNav.isTextNotPresentOnPage("Copyright")) {
         //    driver.navigate().refresh();
         //}
-        //doVerificationLogin();
+        doVerificationLogin();
 
         Thread.sleep(3000);
-        commNav.waitForPage("My Schedule");
+        //commNav.waitForPage("My Schedule");
 
         //Contacts group view phone hyperlinks
         // Test Params:
@@ -378,7 +381,7 @@ public class GroupsTest2 extends BaseTest {
         contactWorkPhoneEdited = contactWorkPhoneEdited.replace("-","");
         System.out.println("VP: Contact group view Work Phone value to be clicked is ... " + contactWorkPhone + " / " + contactWorkPhoneEdited);
         contactsListView.contactGroupViewWorkPhoneFld.click();
-        commNav.waitForPage("Note");
+        commNav.waitForPage("President");
         Thread.sleep(3000);
         urlTelephone = driver.getCurrentUrl().substring(4);
         System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
@@ -395,7 +398,7 @@ public class GroupsTest2 extends BaseTest {
         //doVerificationLogin();
 
         Thread.sleep(3000);
-        commNav.waitForPage("My Schedule");
+        //commNav.waitForPage("My Schedule");
 
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
@@ -412,7 +415,7 @@ public class GroupsTest2 extends BaseTest {
         contactMobileEdited = contactMobileEdited.replace("-","");
         System.out.println("VP: Contact group view Mobile Phone value to be clicked is ... " + contactMobilePhone + " / " + contactMobileEdited);
         contactsListView.contactGroupViewMobileFld.click();
-        commNav.waitForPage("Note");
+        commNav.waitForPage("President");
         Thread.sleep(3000);
         urlTelephone = driver.getCurrentUrl().substring(4);
         System.out.println("VP: Value of Mobile Phone in browser address bar (would be called) is ... " + urlTelephone);
@@ -429,7 +432,7 @@ public class GroupsTest2 extends BaseTest {
         //doVerificationLogin();
 
         Thread.sleep(3000);
-        commNav.waitForPage("My Schedule");
+        //commNav.waitForPage("My Schedule");
 
         //Step: reset the Contact group layout to 'Summary' again
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -450,8 +453,21 @@ public class GroupsTest2 extends BaseTest {
         LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
         headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
-        //Step: navigate to Leads list view ...the 'All Leads' group should be displaying in Summary layout, switch to Detail layout
+        //Step: navigate to Leads list view ... since the web browser was closed and re-opened since step 05, need to re-instate the 'All Leads' group and switch to Detail layout
         commNav.clickGlobalMenuItem(entityType);
+        commNav.waitForPage("Leads");
+
+        //Step: reveal Right Context Menu panel
+        headerButton.showRightContextMenu();
+
+        //Step: click on Configure button to open 'Groups Lookup' and select 'All Leads' for loup
+        commNav.rmenu_GroupConfigure.click();
+        commNav.waitForPage("Groups Lookup");
+        leadsListView.groupsConfigureAllLeads.click();
+        headerButton.checkButton.click();
+        commNav.waitForPage("All Leads");
+        Thread.sleep(3000);
+
         headerButton.rightCntxtMnuButton.click();
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("All Leads");
@@ -465,7 +481,7 @@ public class GroupsTest2 extends BaseTest {
         leadWorkPhoneEdited = leadWorkPhoneEdited.replace("-","");
         System.out.println("VP: Lead group view Work Phone value to be clicked is ... " + leadWorkPhone + " / " + leadWorkPhoneEdited);
         leadsListView.leadGroupViewWorkPhoneFld.click();
-        commNav.waitForPage("Note");
+        commNav.waitForPage("IT Director");
         Thread.sleep(3000);
         urlTelephone = driver.getCurrentUrl().substring(4);
         System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
@@ -482,7 +498,7 @@ public class GroupsTest2 extends BaseTest {
         //doVerificationLogin();
 
         Thread.sleep(3000);
-        commNav.waitForPage("My Schedule");
+        //commNav.waitForPage("My Schedule");
 
 
         //Step: reset the Lead group layout to 'Summary' again
