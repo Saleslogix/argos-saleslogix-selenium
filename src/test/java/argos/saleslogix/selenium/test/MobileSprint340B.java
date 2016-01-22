@@ -179,11 +179,12 @@ public class MobileSprint340B extends BaseTest {
             //Step: wait for page My Schedule
             commNav.waitForPage("My Schedule");
 
-            //Step: open activity just created and briefcase
+            //Step: open first activity in the list, which may or may not be the one just created, and briefcase
+            String activityTitle = scheduleListView.myScheduleListItem1.getAttribute("data-descriptor");
             scheduleListView.myScheduleListItem1.click();
-            commNav.waitForPage(fullActivityRegarding);
+            commNav.waitForPage(activityTitle);
             headerButton.clickHeaderButton("Briefcase");
-            System.out.println("VP: Activity " + newActivityRegarding + " is being briefcased");
+            System.out.println("VP: Activity " + activityTitle + " is being briefcased");
 
             Thread.sleep(5000);
             driver.switchTo().activeElement();
@@ -191,7 +192,7 @@ public class MobileSprint340B extends BaseTest {
             commView.briefcaseCompleteCancelBtn.click();
             Thread.sleep(1000);
             driver.switchTo().activeElement();
-            commNav.waitForPage(fullActivityRegarding);
+            commNav.waitForPage(activityTitle);
 
             //Step: go to My Briefcase
             System.out.println("VP: go to My Briefcase ...");
@@ -199,8 +200,8 @@ public class MobileSprint340B extends BaseTest {
             commNav.waitForPage("My Briefcase");
 
             //Step: validate the items currently in the briefcase
-            AssertJUnit.assertEquals("VP: 'briefcased' activity " + fullActivityRegarding + " added to My Briefcase - FAILED", fullActivityRegarding, briefcaseListView.myBriefcaseDescriptionItem1.getText());
-            System.out.println("VP: 'briefcased' activity " + fullActivityRegarding + " added to My Briefcase - PASSED");
+            AssertJUnit.assertEquals("VP: 'briefcased' activity " + activityTitle + " added to My Briefcase - FAILED", activityTitle, briefcaseListView.myBriefcaseDescriptionItem1.getText());
+            System.out.println("VP: 'briefcased' activity " + activityTitle + " added to My Briefcase - PASSED");
             AssertJUnit.assertEquals("VP: 'briefcased' ticket " + TEST_TICKET_RECORD + " added to My Briefcase - FAILED", TEST_TICKET_RECORD, briefcaseListView.myBriefcaseDescriptionItem2.getText());
             System.out.println("VP: 'briefcased' ticket " + TEST_TICKET_RECORD + " added to My Briefcase - PASSED");
             AssertJUnit.assertEquals("VP: 'briefcased' opportunity " + TEST_OPPORTUNITY_RECORD + " added to My Briefcase - FAILED", TEST_OPPORTUNITY_RECORD, briefcaseListView.myBriefcaseDescriptionItem3.getText());
@@ -218,9 +219,9 @@ public class MobileSprint340B extends BaseTest {
             commNav.clickGlobalMenuItem("Recently Viewed");
             commNav.waitForPage("Recently Viewed");
 
-            //Step: validate the items currently in the briefcase
-            AssertJUnit.assertEquals("VP: 'viewed' activity detail " + fullActivityRegarding + " added to Recently Viewed - FAILED", fullActivityRegarding, recentlyViewedListView.recentlyViewedDescriptionItem1.getText());
-            System.out.println("VP: 'viewed' activity detail " + fullActivityRegarding + " added to Recently Viewed - PASSED");
+            //Step: validate the items currently under Recently Viewed
+            AssertJUnit.assertEquals("VP: 'viewed' activity detail " + activityTitle + " added to Recently Viewed - FAILED", activityTitle, recentlyViewedListView.recentlyViewedDescriptionItem1.getText());
+            System.out.println("VP: 'viewed' activity detail " + activityTitle + " added to Recently Viewed - PASSED");
             AssertJUnit.assertEquals("VP: 'viewed' ticket " + TEST_TICKET_RECORD + " added to Recently Viewed - FAILED", TEST_TICKET_RECORD, recentlyViewedListView.recentlyViewedDescriptionItem2.getText());
             System.out.println("VP: 'viewed' ticket " + TEST_TICKET_RECORD + " added to Recently Viewed - PASSED");
             AssertJUnit.assertEquals("VP: 'viewed' opportunity " + TEST_OPPORTUNITY_RECORD + " added to Recently Viewed - FAILED", TEST_OPPORTUNITY_RECORD, recentlyViewedListView.recentlyViewedDescriptionItem3.getText());
