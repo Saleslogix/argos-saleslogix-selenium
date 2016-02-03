@@ -332,8 +332,8 @@ public class MobileSprint330B extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
 
-            //Press Advanced button to open Calendar view, press button to go forward one month, and confirm
-            calendarView.calendarModalAdvanced.click();
+            //Calendar view should display at once now, press button to go forward one month, and confirm
+            //calendarView.calendarModalAdvanced.click();
             calendarView.calendarModalIncrMonth.click();
             calendarView.calendarModalConfirm.click();
 

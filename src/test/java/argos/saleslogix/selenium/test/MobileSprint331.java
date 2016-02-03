@@ -243,9 +243,9 @@ public class MobileSprint331 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
 
-            //Press Advanced button to open Calendar view
+            //Calendar view should display at once, now activity is timeless
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-            calendarView.calendarModalAdvanced.click();
+            //calendarView.calendarModalAdvanced.click();
 
             //Step: Verify that the correct month is displaying for the activity date
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);

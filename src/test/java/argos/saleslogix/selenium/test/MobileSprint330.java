@@ -114,8 +114,8 @@ public class MobileSprint330 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
 
-            //Press Advanced button to open Calendar view, press button to go back one month
-            calendarEditView.calendarModalAdvanced.click();
+            //Calendar view should open directly, press button to go back one month
+            //calendarEditView.calendarModalAdvanced.click();
             calendarEditView.calendarModalDecrMonth.click();
             calendarEditView.calendarModalConfirm.click();
 
@@ -246,8 +246,8 @@ public class MobileSprint330 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
 
-            //Press Advanced button to open Calendar view, press button to go back one month
-            calendarView.calendarModalAdvanced.click();
+            //Calendar view should open directly, press button to go back one month
+            //calendarView.calendarModalAdvanced.click();
             calendarView.calendarModalDecrMonth.click();
             calendarView.calendarModalConfirm.click();
 
