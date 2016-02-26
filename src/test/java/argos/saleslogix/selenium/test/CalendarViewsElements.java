@@ -84,51 +84,51 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarMonthField;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='january']")
+    @FindBy(xpath = "//ul/li[@data-value='January']")
     WebElement calendarMonthJan;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='february']")
+    @FindBy(xpath = "//ul/li[@data-value='February']")
     WebElement calendarMonthFeb;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='march']")
+    @FindBy(xpath = "//ul/li[@data-value='March']")
     WebElement calendarMonthMar;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='april']")
+    @FindBy(xpath = "//ul/li[@data-value='April']")
     WebElement calendarMonthApr;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='may']")
+    @FindBy(xpath = "//ul/li[@data-value='May']")
     WebElement calendarMonthMay;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='june']")
+    @FindBy(xpath = "//ul/li[@data-value='June']")
     WebElement calendarMonthJun;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='july']")
+    @FindBy(xpath = "//ul/li[@data-value='July']")
     WebElement calendarMonthJul;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='august']")
+    @FindBy(xpath = "//ul/li[@data-value='August']")
     WebElement calendarMonthAug;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='september']")
+    @FindBy(xpath = "//ul/li[@data-value='September']")
     WebElement calendarMonthSep;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='october']")
+    @FindBy(xpath = "//ul/li[@data-value='October']")
     WebElement calendarMonthOct;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='november']")
+    @FindBy(xpath = "//ul/li[@data-value='November']")
     WebElement calendarMonthNov;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='december']")
+    @FindBy(xpath = "//ul/li[@data-value='December']")
     WebElement calendarMonthDec;
 
     @CacheLookup
