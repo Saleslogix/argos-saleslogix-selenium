@@ -275,8 +275,8 @@ public class MobileSprint340 extends BaseTest {
 
             // Verify that the current month and year are present and display their values
             String currentMonth = calendarView.calendarModalCurrMonthValue.getAttribute("value");
-            commNav.isWebElementPresent(viewName + ",Current Month value", calendarView.calendarModalCurrMonthValue);
-            commNav.isWebElementPresent(viewName + ",Current Year value", calendarView.calendarModalCurrYearValue);
+            commNav.isWebElementPresent(viewName + ", Current Month value", calendarView.calendarModalCurrMonthValue);
+            commNav.isWebElementPresent(viewName + ", Current Year value", calendarView.calendarModalCurrYearValue);
             System.out.println("VP: value for current Month is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
             System.out.println("VP: value for current Year is ... " + calendarView.calendarModalCurrYearValue.getAttribute("value"));
 
@@ -298,28 +298,28 @@ public class MobileSprint340 extends BaseTest {
 
 
             //Verify that the days of the week are displaying
-            commNav.isWebElementPresent(viewName + ",Day of Week - Sunday", calendarView.calendarModalDayOfWeekSunday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Monday", calendarView.calendarModalDayOfWeekMonday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Tuesday", calendarView.calendarModalDayOfWeekTuesday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Wednesday", calendarView.calendarModalDayOfWeekWednesday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Thursday", calendarView.calendarModalDayOfWeekThursday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Friday", calendarView.calendarModalDayOfWeekFriday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Saturday", calendarView.calendarModalDayOfWeekSaturday);
+            commNav.isWebElementPresent(viewName + ", Day of Week - Sunday", calendarView.calendarModalDayOfWeekSunday);
+            commNav.isWebElementPresent(viewName + ", Day of Week - Monday", calendarView.calendarModalDayOfWeekMonday);
+            commNav.isWebElementPresent(viewName + ", Day of Week - Tuesday", calendarView.calendarModalDayOfWeekTuesday);
+            commNav.isWebElementPresent(viewName + ", Day of Week - Wednesday", calendarView.calendarModalDayOfWeekWednesday);
+            commNav.isWebElementPresent(viewName + ", Day of Week - Thursday", calendarView.calendarModalDayOfWeekThursday);
+            commNav.isWebElementPresent(viewName + ", Day of Week - Friday", calendarView.calendarModalDayOfWeekFriday);
+            commNav.isWebElementPresent(viewName + ", Day of Week - Saturday", calendarView.calendarModalDayOfWeekSaturday);
 
             //Verify the month dropdown is as expected
             calendarView.calendarModalCurrMonthValue.click();
-            commNav.isWebElementPresent(viewName + ",Month - January", calendarView.calendarMonthJan);
-            commNav.isWebElementPresent(viewName + ",Month - February", calendarView.calendarMonthFeb);
-            commNav.isWebElementPresent(viewName + ",Month - March", calendarView.calendarMonthMar);
-            commNav.isWebElementPresent(viewName + ",Month - April", calendarView.calendarMonthApr);
-            commNav.isWebElementPresent(viewName + ",Month - May", calendarView.calendarMonthMay);
-            commNav.isWebElementPresent(viewName + ",Month - June", calendarView.calendarMonthJun);
-            commNav.isWebElementPresent(viewName + ",Month - July", calendarView.calendarMonthJul);
-            commNav.isWebElementPresent(viewName + ",Month - August", calendarView.calendarMonthAug);
-            commNav.isWebElementPresent(viewName + ",Month - September", calendarView.calendarMonthSep);
-            commNav.isWebElementPresent(viewName + ",Month - October", calendarView.calendarMonthOct);
-            commNav.isWebElementPresent(viewName + ",Month - November", calendarView.calendarMonthNov);
-            commNav.isWebElementPresent(viewName + ",Month - December", calendarView.calendarMonthDec);
+            commNav.isWebElementPresent(viewName + ", Month - January", calendarView.calendarMonthJan);
+            commNav.isWebElementPresent(viewName + ", Month - February", calendarView.calendarMonthFeb);
+            commNav.isWebElementPresent(viewName + ", Month - March", calendarView.calendarMonthMar);
+            commNav.isWebElementPresent(viewName + ", Month - April", calendarView.calendarMonthApr);
+            commNav.isWebElementPresent(viewName + ", Month - May", calendarView.calendarMonthMay);
+            commNav.isWebElementPresent(viewName + ", Month - June", calendarView.calendarMonthJun);
+            commNav.isWebElementPresent(viewName + ", Month - July", calendarView.calendarMonthJul);
+            commNav.isWebElementPresent(viewName + ", Month - August", calendarView.calendarMonthAug);
+            commNav.isWebElementPresent(viewName + ", Month - September", calendarView.calendarMonthSep);
+            commNav.isWebElementPresent(viewName + ", Month - October", calendarView.calendarMonthOct);
+            commNav.isWebElementPresent(viewName + ", Month - November", calendarView.calendarMonthNov);
+            commNav.isWebElementPresent(viewName + ", Month - December", calendarView.calendarMonthDec);
 
             //Verify the year dropdown is as expected
             String calendarCurrentYear = calendarView.calendarModalCurrYearValue.getAttribute("value");
@@ -327,6 +327,37 @@ public class MobileSprint340 extends BaseTest {
             String calendarYearLowRange = calendarView.calendarModalYearTopItem.getText();
             String calendarYearHighRange = calendarView.calendarModalYearBottomItem.getText();
             System.out.println("VP: Current Year is ... " + calendarCurrentYear + " : Year Range is from ... " + calendarYearLowRange + " to " + calendarYearHighRange);
+
+            //Verify the hour dropdown is as expected
+            calendarView.calendarHourField.click();
+            commNav.isWebElementPresent(viewName + ", Hour - 1", calendarView.calendarHourOne);
+            commNav.isWebElementPresent(viewName + ", Hour - 2", calendarView.calendarHourTwo);
+            commNav.isWebElementPresent(viewName + ", Hour - 3", calendarView.calendarHourThree);
+            commNav.isWebElementPresent(viewName + ", Hour - 4", calendarView.calendarHourFour);
+            commNav.isWebElementPresent(viewName + ", Hour - 5", calendarView.calendarHourFive);
+            commNav.isWebElementPresent(viewName + ", Hour - 6", calendarView.calendarHourSix);
+            commNav.isWebElementPresent(viewName + ", Hour - 7", calendarView.calendarHourSeven);
+            commNav.isWebElementPresent(viewName + ", Hour - 8", calendarView.calendarHourEight);
+            commNav.isWebElementPresent(viewName + ", Hour - 9", calendarView.calendarHourNine);
+            commNav.isWebElementPresent(viewName + ", Hour - 10", calendarView.calendarHourTen);
+            commNav.isWebElementPresent(viewName + ", Hour - 11", calendarView.calendarHourEleven);
+            commNav.isWebElementPresent(viewName + ", Hour - 12", calendarView.calendarHourTwelve);
+
+            //Verify the minute dropdown is as expected
+            calendarView.calendarMinuteField.click();
+            commNav.isWebElementPresent(viewName + ", Minutes - 00", calendarView.calendarMinute00);
+            commNav.isWebElementPresent(viewName + ", Minutes - 05", calendarView.calendarMinute05);
+            commNav.isWebElementPresent(viewName + ", Minutes - 10", calendarView.calendarMinute10);
+            commNav.isWebElementPresent(viewName + ", Minutes - 15", calendarView.calendarMinute15);
+            commNav.isWebElementPresent(viewName + ", Minutes - 20", calendarView.calendarMinute20);
+            commNav.isWebElementPresent(viewName + ", Minutes - 25", calendarView.calendarMinute25);
+            commNav.isWebElementPresent(viewName + ", Minutes - 30", calendarView.calendarMinute30);
+            commNav.isWebElementPresent(viewName + ", Minutes - 35", calendarView.calendarMinute35);
+            commNav.isWebElementPresent(viewName + ", Minutes - 40", calendarView.calendarMinute40);
+            commNav.isWebElementPresent(viewName + ", Minutes - 45", calendarView.calendarMinute45);
+            commNav.isWebElementPresent(viewName + ", Minutes - 50", calendarView.calendarMinute50);
+            commNav.isWebElementPresent(viewName + ", Minutes - 55", calendarView.calendarMinute55);
+
 
 
             //Step: cancel to close the calendar modal control

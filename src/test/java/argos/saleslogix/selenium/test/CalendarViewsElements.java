@@ -140,8 +140,24 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarHourOne;
 
     @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='2']")
+    WebElement calendarHourTwo;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='3']")
+    WebElement calendarHourThree;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='4']")
+    WebElement calendarHourFour;
+
+    @CacheLookup
     @FindBy(xpath = "//ul/li[@data-value='5']")
     WebElement calendarHourFive;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='6']")
+    WebElement calendarHourSix;
 
     @CacheLookup
     @FindBy(xpath = "//ul/li[@data-value='7']")
@@ -156,6 +172,18 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarHourNine;
 
     @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='9']/following-sibling::*[1]")
+    WebElement calendarHourTen;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='11']")
+    WebElement calendarHourEleven;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='12']")
+    WebElement calendarHourTwelve;
+
+    @CacheLookup
     @FindBy(xpath = "//*[@id='minute-modal']/input")
     WebElement calendarMinuteField;
 
@@ -164,8 +192,48 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarMinute00;
 
     @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='05']")
+    WebElement calendarMinute05;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='05']/following-sibling::*[1]")
+    WebElement calendarMinute10;
+
+    @CacheLookup
     @FindBy(xpath = "//ul/li[@data-value='15']")
     WebElement calendarMinute15;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='20']")
+    WebElement calendarMinute20;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='25']")
+    WebElement calendarMinute25;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='30']")
+    WebElement calendarMinute30;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='35']")
+    WebElement calendarMinute35;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='40']")
+    WebElement calendarMinute40;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='45']")
+    WebElement calendarMinute45;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='50']")
+    WebElement calendarMinute50;
+
+    @CacheLookup
+    @FindBy(xpath = "//ul/li[@data-value='55']")
+    WebElement calendarMinute55;
 
     @CacheLookup
     @FindBy(xpath = "//span[@class='toggleOn']")
