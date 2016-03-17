@@ -308,18 +308,18 @@ public class MobileSprint340 extends BaseTest {
 
             //Verify the month dropdown is as expected
             calendarView.calendarModalCurrMonthValue.click();
-            commNav.isWebElementPresent(viewName + ", Month - January", calendarView.calendarMonthJan);
-            commNav.isWebElementPresent(viewName + ", Month - February", calendarView.calendarMonthFeb);
-            commNav.isWebElementPresent(viewName + ", Month - March", calendarView.calendarMonthMar);
-            commNav.isWebElementPresent(viewName + ", Month - April", calendarView.calendarMonthApr);
-            commNav.isWebElementPresent(viewName + ", Month - May", calendarView.calendarMonthMay);
-            commNav.isWebElementPresent(viewName + ", Month - June", calendarView.calendarMonthJun);
-            commNav.isWebElementPresent(viewName + ", Month - July", calendarView.calendarMonthJul);
-            commNav.isWebElementPresent(viewName + ", Month - August", calendarView.calendarMonthAug);
-            commNav.isWebElementPresent(viewName + ", Month - September", calendarView.calendarMonthSep);
-            commNav.isWebElementPresent(viewName + ", Month - October", calendarView.calendarMonthOct);
-            commNav.isWebElementPresent(viewName + ", Month - November", calendarView.calendarMonthNov);
-            commNav.isWebElementPresent(viewName + ", Month - December", calendarView.calendarMonthDec);
+            commNav.isWebElementPresent(viewName + ", Month - January", calendarView.calendarModalMonthJan);
+            commNav.isWebElementPresent(viewName + ", Month - February", calendarView.calendarModalMonthFeb);
+            commNav.isWebElementPresent(viewName + ", Month - March", calendarView.calendarModalMonthMar);
+            commNav.isWebElementPresent(viewName + ", Month - April", calendarView.calendarModalMonthApr);
+            commNav.isWebElementPresent(viewName + ", Month - May", calendarView.calendarModalMonthMay);
+            commNav.isWebElementPresent(viewName + ", Month - June", calendarView.calendarModalMonthJun);
+            commNav.isWebElementPresent(viewName + ", Month - July", calendarView.calendarModalMonthJul);
+            commNav.isWebElementPresent(viewName + ", Month - August", calendarView.calendarModalMonthAug);
+            commNav.isWebElementPresent(viewName + ", Month - September", calendarView.calendarModalMonthSep);
+            commNav.isWebElementPresent(viewName + ", Month - October", calendarView.calendarModalMonthOct);
+            commNav.isWebElementPresent(viewName + ", Month - November", calendarView.calendarModalMonthNov);
+            commNav.isWebElementPresent(viewName + ", Month - December", calendarView.calendarModalMonthDec);
 
             //Verify the year dropdown is as expected
             String calendarCurrentYear = calendarView.calendarModalCurrYearValue.getAttribute("value");
@@ -432,13 +432,13 @@ public class MobileSprint340 extends BaseTest {
 
 
             //Verify that the days of the week are displaying
-            commNav.isWebElementPresent(viewName + ",Day of Week - Sunday", calendarView.calendarModalDayOfWeekSunday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Monday", calendarView.calendarModalDayOfWeekMonday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Tuesday", calendarView.calendarModalDayOfWeekTuesday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Wednesday", calendarView.calendarModalDayOfWeekWednesday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Thursday", calendarView.calendarModalDayOfWeekThursday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Friday", calendarView.calendarModalDayOfWeekFriday);
-            commNav.isWebElementPresent(viewName + ",Day of Week - Saturday", calendarView.calendarModalDayOfWeekSaturday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Sunday", calendarView.calendarDayOfWeekSunday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Monday", calendarView.calendarDayOfWeekMonday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Tuesday", calendarView.calendarDayOfWeekTuesday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Wednesday", calendarView.calendarDayOfWeekWednesday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Thursday", calendarView.calendarDayOfWeekThursday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Friday", calendarView.calendarDayOfWeekFriday);
+            commNav.isWebElementPresent(viewName + ",Day of Week - Saturday", calendarView.calendarDayOfWeekSaturday);
 
             //Verify the month dropdown is as expected
             calendarView.calendarMonthField.click();
