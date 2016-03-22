@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 
 /**
@@ -437,6 +438,186 @@ public class MobileSprint341A extends BaseTest {
         catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar control ability to set months and years from Advanced view - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-8390 ... Calendar : not seeing 'Event' as an option when opening an activity
+    public void test03_INFORCRM8390() throws Exception {
+        String methodID = "test03_INFORCRM8390";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        String viewName = "Schedule Activity screen";
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Verify that Event is an option for an activity
+            List elements = driver.findElements(By.xpath("//*[@id='activity_types_list']//ul/li[5]/div[2]"));
+
+            if(elements.size() > 0) {
+                commNav.isWebElementPresent(viewName + ", Event Option ", activityEditView.activityScheduleEventBtn);
+                System.out.println("VP: from Calendar, on adding an activity, see Event as an option - PASSED");
+            } else {
+                System.out.println("VP: from Calendar, on adding an activity, see Event as an option - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            System.out.println(methodID + "- PASSED");
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + "- FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-8139 ... on editing Ticket dates should not see the Relative date view before calendar control view
+    public void test04_INFORCRM8139() throws Exception {
+        String methodID = "test04_INFORCRM8139";
+
+        // Test Params:
+        String entityType = "Ticket";
+        String entityRecord = TEST_TICKET_RECORD;
+        String viewName = "Ticket Edit view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Ticket entity, then open it's Edit view
+            AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
+
+            TicketViewsElements ticketEditView = PageFactory.initElements(driver, TicketViewsElements.class);
+
+            //Step: press Icon for 'needed date'
+            commNav.isWebElementPresent(viewName + ",'needed date icon'", ticketEditView.ticketsEditViewNeededDateFldBtn);
+            ticketEditView.ticketsEditViewNeededDateFldBtn.click();
+
+            //Check whether or not 'Next Week' on Relative date view displays ... it should not display
+            List elements = driver.findElements(By.xpath("//ul//li//div[contains(., 'Next Week')]"));
+
+            if(elements.size() > 0) {
+                commNav.isWebElementPresent(viewName + ", Next Week title", calendarView.calendarModalNextWeekTitle);
+                System.out.println("VP: on editing Ticket dates should not see the relative date view before calendar view - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+            System.out.println("VP: on editing Ticket dates should not see the relative date view before calendar view - PASSED");
+            System.out.println(methodID + "- PASSED");
+
+        } catch (Error e) {
+            verificationErrors.append(e.toString());
+            System.out.println(methodID + "- FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-8380 ... Calendar : all day activities not appearing as expected on the calendar for the first day of a month
+    public void test05_INFORCRM8380() throws Exception {
+        String methodID = "test05_INFORCRM8380";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        String viewName = "Calendar screen";
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: select the first day of that month
+            calendarView.calendarDayOneCurrMonth.click();
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: set the activity to be timeless, and save activity
+            activityEditView.activityEditViewTimelessTgl.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Calendar");
+
+            //Step: verify that the activity created displays for the currently selected first day of the month
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
+            if(commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
+                System.out.println("VP: all day activities not appearing as expected on the calendar for the first day of a month - PASSED");
+            } else {
+                System.out.println("VP: all day activities not appearing as expected on the calendar for the first day of a month - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            System.out.println(methodID + "- PASSED");
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + "- FAILED");
             AssertJUnit.fail("test failed");
         }
 

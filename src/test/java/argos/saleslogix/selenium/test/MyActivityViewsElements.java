@@ -496,6 +496,10 @@ public class MyActivityViewsElements extends BaseTest {
     WebElement activityScheduleToDoBtn;
 
     @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_types_list']//ul/li[5]/div[2]")
+    WebElement activityScheduleEventBtn;
+
+    @CacheLookup
     @FindBy(xpath = "//*[@id='select_list']//li[@data-descriptor='Never']")
     WebElement activityRecurringNeverFld;
 

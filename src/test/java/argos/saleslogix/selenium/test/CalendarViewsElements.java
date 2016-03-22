@@ -368,8 +368,12 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarMonthFirstDayMonthActivityCount;
 
     @CacheLookup
-    @FindBy(xpath = "(.//td[text()='1'])[1]")
+    @FindBy(xpath = "//div[contains(@id,'datetime-calendar')]//tr[1]//td[text()='1']")
     WebElement calendarModalDayOneCurrMonth;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'calendar-view__calendar')]//tr[1]//td[text()='1']")
+    WebElement calendarDayOneCurrMonth;
 
     @CacheLookup
     @FindBy(xpath = "//div[@id='modal-template']//div[@class='month']//input")
