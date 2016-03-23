@@ -625,6 +625,192 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
+    @Test(enabled = true)
+    //INFORCRM-6889 ... Opportunity - unable to change the value of the 'close prob' field
+    public void test06_INFORCRM6889() throws Exception {
+        String methodID = "test06_INFORCRM6889";
+
+        // Test Params:
+        String entityType = "Opportunity";
+        String entityRecord = TEST_OPPORTUNITY_RECORD;
+        String viewName = "Opportunity Detail Edit view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+            //Step: login & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: search for Opportunity entity, then open it's Edit view
+            AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
+
+            OpportunityViewsElements opportunityEditView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+
+            //Step: click on 'close prob' button to open Opportunity Probability list
+            opportunityEditView.opportunityEditViewCloseProbFldBtn.click();
+            commNav.waitForPage("Opportunity Probability");
+            opportunityEditView.opportunityProbability10.click();
+            headerButton.clickHeaderButton("save");
+            commNav.waitForPage(TEST_OPPORTUNITY_RECORD);
+            AssertJUnit.assertEquals("VP: for opportunity, unable to change the value of the 'close prob' field - FAILED", TEST_OPPORTUNITY_RECORD, driver.findElement(By.id("pageTitle")).getText());
+            System.out.println("VP: for opportunity, unable to change the value of the 'close prob' field - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: for opportunity, unable to change the value of the 'close prob' field - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-6722 ... Activity Detail - complete activity quick action opens relevant screen, but unable to save completion
+    public void test07_INFORCRM6722() throws Exception {
+        String methodID = "test07_INFORCRM-6722";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        String viewName = "Calendar screen";
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar (use currently selected day)
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: save the activity
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Calendar");
+
+            //Step: locate the activity for the currently selected day of the month
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
+            activityItemLnk.click();
+            commNav.waitForPage(newActivityRegarding);
+
+            //Step: complete the activity from the detail view
+            activityEditView.activityDetailViewCompleteActivityLnk.click();
+            commNav.waitForPage("Complete Activity");
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Calendar");
+
+            //Step: verify that save of completion worked, and one is positioned back on the Calendar screen
+            AssertJUnit.assertEquals("VP: Activity Detail - complete activity quick action opens relevant screen, but unable to save completion - FAILED", "Calendar", driver.findElement(By.id("pageTitle")).getText());
+            System.out.println("VP: Activity Detail - complete activity quick action opens relevant screen, but unable to save completion - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Activity Detail - complete activity quick action opens relevant screen, but unable to save completion - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    public void test08_INFORCRM6401() throws Exception {
+        String methodID = "test08_INFORCRM6401";
+
+        // Test Params:
+        String entityType = "Tickets";
+        String entityRecord = TEST_TICKET_RECORD;
+        String viewName = "Ticket Detail view";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
+
+        try {
+            //Step: search for Ticket entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, entityRecord);
+
+            TicketViewsElements ticketDetailView = PageFactory.initElements(driver, TicketViewsElements.class);
+
+            //Step: under the Related Items section, open Ticket Activities
+            commNav.highlightNClick(ticketDetailView.ticketDetailViewRelatedItemsTab);
+            commNav.highlightNClick(ticketDetailView.ticketsDetailViewTicketsActivitiesLnk);
+            commNav.waitForPage("Ticket Activities");
+
+            //Step: add a new ticket activity
+            headerButton.clickHeaderButton("add");
+            commNav.waitForPage("Edit Ticket Activity");
+
+            //Step: press icon for start date to open Calendar view
+            ticketDetailView.ticketActivityStartDateBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: cancel out of Calendar control view
+            calendarView.calendarModalCancel.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: press icon for end date to open Calendar view
+            ticketDetailView.ticketActivityStartDateBtn.click();
+
+            //Step: verify that the calendar control has again opened as expected ... try to select month of January from month dropdown as a check
+            calendarView.calendarModalCurrMonthValue.click();
+            calendarView.calendarMonthJan.click();
+            String currentMonth = "January";
+            AssertJUnit.assertEquals("VP: Calendar/ time control : where there is no default date/ time assigned to a field, unable to open the 'Advanced' calendar/ time control - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
+            System.out.println("VP: Calendar/ time control : where there is no default date/ time assigned to a field, unable to open the 'Advanced' calendar/ time control - PASSED");
+
+
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Calendar/ time control : where there is no default date/ time assigned to a field, unable to open the 'Advanced' calendar/ time control - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
 	//Login & Logout
 	//==============
 	@Test(enabled = true)

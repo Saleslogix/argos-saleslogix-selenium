@@ -586,6 +586,14 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsEditViewLeadSourceFldBtn;
 
     @CacheLookup
+    @FindBy(xpath = "//*[@id='ticketactivity_edit']//div[@data-field='AssignedDate']//button")
+    WebElement ticketActivityStartDateBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='ticketactivity_edit']//div[@data-field='CompletedDate']//button")
+    WebElement ticketActivityEndDateBtn;
+
+    @CacheLookup
     // this data-key is specific to user loup for 'Follow-Up' group
     @FindBy(xpath = "//*[@id='groups_configure']//li[@data-key='p6UJ9A0004QM']")
     WebElement groupsConfigureFollowUp;
