@@ -532,8 +532,12 @@ public class OpportunityViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='opportunity_detail']//ul[@class='tab-list']/li[3]")
     WebElement opportunityDetailViewRelatedItemsTab;
 
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='opportunity_related']//ul/li[1]")
+    WebElement topRelatedOpportunitiesListItem;
 
-	//Methods
+
+    //Methods
 	//-------
 	public String getOpportunityListViewTxt() {
 		String methodID = "getOpportunityListViewTxt";
