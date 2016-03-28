@@ -59,8 +59,9 @@ public class CalendarViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='day-field']")
     WebElement calendarDayField;
 
+    // CalendarYearField ... use this for the Calendar screen (not calendar control)
     @CacheLookup
-    @FindBy(xpath = "//div[@class='year']//input")
+    @FindBy(xpath = "//div[contains(@id,'calendar-view__calendar')]//div[@class='year']//input")
     WebElement calendarYearField;
 
     // Calendar/ time control introduced in Mobile 3.4 :
@@ -73,6 +74,14 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarModalYearTopItem;
 
     @CacheLookup
+    @FindBy(xpath = "//div[8]/ul/li[10]")
+    WebElement calendarModalYearTen;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[8]/ul/li[11]")
+    WebElement calendarModalYearEleven;
+
+    @CacheLookup
     @FindBy(xpath = "//div[8]/ul/li[21]")
     WebElement calendarModalYearBottomItem;
 
@@ -81,11 +90,20 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarYearTopItem;
 
     @CacheLookup
+    @FindBy(xpath = "//div[6]/ul/li[10]")
+    WebElement calendarYearTen;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[6]/ul/li[11]")
+    WebElement calendarYearEleven;
+
+    @CacheLookup
     @FindBy(xpath = "//div[6]/ul/li[21]")
     WebElement calendarYearBottomItem;
 
+    // CalendarMonthField ... use this for the Calendar screen (not calendar control)
     @CacheLookup
-    @FindBy(xpath = "//div[@class='month']//input")
+    @FindBy(xpath = "//div[contains(@id,'calendar-view__calendar')]//div[@class='month']//input")
     WebElement calendarMonthField;
 
     // Calendar/ time control introduced in Mobile 3.4 :
@@ -368,19 +386,45 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarMonthFirstDayMonthActivityCount;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'datetime-calendar')]//tr[1]//td[text()='1']")
+    @FindBy(xpath = "(//div[contains(@id,'datetime-calendar')]//td[text()='1'])[1]")
     WebElement calendarModalDayOneCurrMonth;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'calendar-view__calendar')]//tr[1]//td[text()='1']")
+    @FindBy(xpath = "(//div[contains(@id,'calendar-view__calendar')]//td[text()='1'])[1]")
     WebElement calendarDayOneCurrMonth;
 
     @CacheLookup
-    @FindBy(xpath = "//div[@id='modal-template']//div[@class='month']//input")
-    WebElement calendarModalCurrMonthValue;
+    @FindBy(xpath = "(//div[contains(@id,'datetime-calendar')]//td[text()='16'])[1]")
+    WebElement calendarModalDay16CurrMonth;
 
     @CacheLookup
-    @FindBy(xpath = "//div[@id='modal-template']//div[@class='year']//input")
+    @FindBy(xpath = "(//div[contains(@id,'calendar-view__calendar')]//td[text()='16'])[1]")
+    WebElement calendarDay16CurrMonth;
+
+    @CacheLookup
+    @FindBy(xpath = "(//div[contains(@id,'datetime-calendar')]//td[text()='18'])[1]")
+    WebElement calendarModalDay18CurrMonth;
+
+    @CacheLookup
+    @FindBy(xpath = "(//div[contains(@id,'calendar-view__calendar')]//td[text()='18'])[1]")
+    WebElement calendarDay18CurrMonth;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'datetime-calendar')]//td[contains(@class, 'selected')]")
+    WebElement calendarModalDaySelected;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'calendar-view__calendar')]//td[contains(@class, 'selected')]")
+    WebElement calendarDaySelected;
+
+    // CalendarModalCurrMonthValue ... use this for the Calendar control (not calendar screen)
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'datetime-calendar')]//div[@class='month']//input")
+    WebElement calendarModalCurrMonthValue;
+
+    // CalendarModalCurrYearValue ... use this for the Calendar control (not calendar screen)
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'datetime-calendar')]//div[@class='year']//input")
     WebElement calendarModalCurrYearValue;
 
     @CacheLookup
