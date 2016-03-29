@@ -22,7 +22,9 @@ import java.util.List;
 public class MobileSprint341A extends BaseTest {
 
     public String TEST_CONTACT_RECORD = "Abbott, John";
+    public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
     public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
+    public String TEST_OPPORTUNITY_RECORD3 = "Abbott Ltd.-Phase3";
     public String TEST_TICKET_RECORD = "001-00-000014";
 	
 	//Test Methods Set
@@ -1629,6 +1631,255 @@ public class MobileSprint341A extends BaseTest {
         catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar/ time control- date/ time displayed on opening control is not the value of the field from which it was opened - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-6527 ... Calendar screen - month and year dropdowns stop working after modal calendar opened
+    public void test16_INFORCRM6527() throws Exception {
+        String methodID = "test16_INFORCRM6527";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: Open Start Time calendar, and wait for modal calendar control to open
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: Press Advanced button to open modal Calendar control
+            calendarView.calendarModalAdvanced.click();
+
+            //Cancel out of the modal calendar control
+            calendarView.calendarModalCancel.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage("Meeting");
+
+            //Step: cancel the new activity, to return to the Calendar screen
+            headerButton.clickHeaderButton("cancel");
+            commNav.waitForPage("Calendar");
+
+            //Step: check to see if the month dropdown is working on the Calendar screen
+            calendarView.calendarMonthField.click();
+            calendarView.calendarMonthJan.click();
+            String currentMonth = "January";
+            System.out.println("Month value is ... " + calendarView.calendarMonthField.getAttribute("value"));
+            AssertJUnit.assertEquals("VP: Pressing 'January' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarMonthField.getAttribute("value"));
+            System.out.println("VP: Pressing 'January' month from dropdown displays that value in the month field - PASSED");
+
+            //Step: check to see if the year dropdown is working on the Calendar screen
+            calendarView.calendarYearField.click();
+            calendarView.calendarYearTopItem.click();
+            String topYear = calendarView.calendarYearTopItem.getAttribute("data-value");
+            System.out.println("Top year value is ... " + calendarView.calendarYearField.getAttribute("value"));
+            AssertJUnit.assertEquals("VP: Pressing top year from dropdown displays that value in the year field - FAILED", topYear, calendarView.calendarYearField.getAttribute("value"));
+            System.out.println("VP: Pressing top year from dropdown displays that value in the year field - PASSED");
+
+            System.out.println("VP: Calendar screen - month and year dropdowns stop working after modal calendar opened  - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Calendar screen - month and year dropdowns stop working after modal calendar opened  - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // NOTE : this method covers both INFORCRM-6887 and INFORCRM-6888
+
+    // INFORCRM-6887 ... Add Recurring Activity problems - contact and opportunity display as ID's, 'repeats' as [object Object], and may not save
+    public void test17_INFORCRM6887_6888() throws Exception {
+        String methodID = "test17_INFORCRM-6887_6888";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+        ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+        OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar (use currently selected day)
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: press button for the 'repeats' field, then choose 'Daily'
+            activityEditView.activityEditViewRepeatsFldBtn.click();
+            commNav.waitForPage("Recurring");
+            activityEditView.activityRecurringDailyFld.click();
+            commNav.waitForPage("Meeting");
+
+            //Step: choose an account for the activity
+            activityEditView.activityEditViewAccountBtn.click();
+            commNav.waitForPage("Accounts");
+            commView.lookupTxtBox.sendKeys(TEST_ACCOUNT_RECORD);
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
+            Thread.sleep(500);
+            accountsListView.relatedAccountsListViewTopItem.click();
+            commNav.waitForPage("Meeting");
+
+            //Step: choose a contact for the activity
+            activityEditView.activityEditViewContactBtn.click();
+            commNav.waitForPage("Contacts");
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
+            commView.lookupTxtBox.sendKeys(TEST_CONTACT_RECORD);
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
+            Thread.sleep(500);
+            contactsListView.relatedContactsListViewTopItem.click();
+            commNav.waitForPage("Meeting");
+
+            //Step: choose an opportunity for the activity
+            activityEditView.activityEditViewOpportunityBtn.click();
+            commNav.waitForPage("Opportunities");
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
+            commView.lookupTxtBox.sendKeys(TEST_OPPORTUNITY_RECORD3);
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
+            Thread.sleep(500);
+            opportunitiesListView.topRelatedOpportunitiesListItem.click();
+            commNav.waitForPage("Meeting");
+
+            //Step: verify that 'repeats' on the insert activity screen displays as 'Daily'
+            String activityRepeatsValue = activityEditView.activityEditViewRepeatsFld.getAttribute("value");
+            System.out.println("VP: on activity insert screen, 'repeats' has a value of ... " + activityRepeatsValue);
+            AssertJUnit.assertEquals("VP: Insert Activity 'repeats' field displays with chosen value of 'Daily' - FAILED","Daily",activityRepeatsValue);
+            System.out.println("VP: Insert Activity 'repeats' field displays with chosen value of 'Daily' - PASSED");
+
+            //Step: verify that contact on the insert activity screen displays as expected
+            String activityContactValue = activityEditView.activityEditViewContactFld.getAttribute("value");
+            System.out.println("VP: on activity insert screen, 'contact' has a value of ... " + activityContactValue);
+            AssertJUnit.assertEquals("VP: Insert Activity 'contact' field displays with chosen value of " + TEST_CONTACT_RECORD + " - FAILED",TEST_CONTACT_RECORD,activityContactValue);
+            System.out.println("VP: Insert Activity 'contact' field displays with chosen value of " + TEST_CONTACT_RECORD + " - PASSED");
+
+            //Step: verify that opportunity on the insert activity screen displays as expected
+            String activityOpportunityValue = activityEditView.activityEditViewOpportunityFld.getAttribute("value");
+            System.out.println("VP: on activity insert screen, 'opportunity' has a value of ... " + activityOpportunityValue);
+            AssertJUnit.assertEquals("VP: Insert Activity 'opportunity' field displays with chosen value of " + TEST_OPPORTUNITY_RECORD3 + " - FAILED",TEST_OPPORTUNITY_RECORD3,activityOpportunityValue);
+            System.out.println("VP: Insert Activity 'opportunity' field displays with chosen value of " + TEST_OPPORTUNITY_RECORD3 + " - PASSED");
+
+            //Step: save the activity
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Calendar");
+
+            //Step: verify that save of recurring activity worked, and one is positioned back on the Calendar screen
+            AssertJUnit.assertEquals("VP: Recurring Activity saved as expected - FAILED", "Calendar", driver.findElement(By.id("pageTitle")).getText());
+            System.out.println("VP: Recurring Activity saved as expected - PASSED");
+
+            System.out.println("VP: Add Recurring Activity problems (INFORCRM-6887) - contact and opportunity display as ID's, 'repeats' as [object Object], and may not save - PASSED");
+
+
+            // INFORCRM-6888 ... Activity - for Complete Occurrence/ Series screen, contact and opportunity display as ID's, 'follow-up' as [object Object], and completion won't save
+
+            //Step: locate the activity for the currently selected day of the month
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
+            activityItemLnk.click();
+            commNav.waitForPage(newActivityRegarding);
+
+            //Step: press link on detail view to complete the activity series
+            activityEditView.activityDetailViewCompleteSeriesLnk.click();
+            commNav.waitForPage("Complete Series");
+            activityEditView.activityCompleteViewFollowUpBtn.click();
+            commNav.waitForPage("Follow-up type");
+            activityEditView.activityFollowUpSchedulePhoneCallBtn.click();
+            commNav.waitForPage("Complete Series");
+
+            //Step: verify that 'follow-up' on the complete series screen displays as 'Phone Call'
+            String activityFollowUpValue = activityEditView.activityCompleteViewFollowUpFld.getAttribute("value");
+            System.out.println("VP: on activity Complete Series screen, 'follow-up' has a value of ... " + activityFollowUpValue);
+            AssertJUnit.assertEquals("VP: Complete Series Activity 'follow-up' field displays with chosen value of 'Phone Call' - FAILED","Phone Call",activityFollowUpValue);
+            System.out.println("VP: Complete Series Activity 'follow-up' field displays with chosen value of 'Phone Call' - PASSED");
+
+            //Step: verify that contact on the activity Complete Series screen displays as expected
+            activityContactValue = activityEditView.activityCompleteViewContactFld.getAttribute("value");
+            System.out.println("VP: on activity Complete Series screen, 'contact' has a value of ... " + activityContactValue);
+            AssertJUnit.assertEquals("VP: activity Complete Series 'contact' field displays with chosen value of " + TEST_CONTACT_RECORD + " - FAILED",TEST_CONTACT_RECORD,activityContactValue);
+            System.out.println("VP: activity Complete Series 'contact' field displays with chosen value of " + TEST_CONTACT_RECORD + " - PASSED");
+
+            //Step: verify that opportunity on the activity Complete Series screen displays as expected
+            activityOpportunityValue = activityEditView.activityCompleteViewOpportunityFld.getAttribute("value");
+            System.out.println("VP: on activity Complete Series screen, 'opportunity' has a value of ... " + activityOpportunityValue);
+            AssertJUnit.assertEquals("VP: activity Complete Series 'opportunity' field displays with chosen value of " + TEST_OPPORTUNITY_RECORD3 + " - FAILED",TEST_OPPORTUNITY_RECORD3,activityOpportunityValue);
+            System.out.println("VP: activity Complete Series 'opportunity' field displays with chosen value of " + TEST_OPPORTUNITY_RECORD3 + " - PASSED");
+
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Phone Call");
+
+            //Step: verify that save of completion worked, and one is positioned on the Phone Call screen, ready for the follow-up activity
+            AssertJUnit.assertEquals("VP: Activity Completion - completion saved as expected - FAILED", "Phone Call", driver.findElement(By.id("pageTitle")).getText());
+            System.out.println("VP: Activity Completion - completion saved as expected - PASSED");
+
+            System.out.println("VP: Activity - for Complete Occurrence/ Series screen (INFORCRM-6888), contact and opportunity display as ID's, 'follow-up' as [object Object], and completion won't save - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: insert recurring activity/ complete recurring activity - contact and opportunity display as ID's, 'repeats'/ 'follow-up' as [object Object] - FAILED");
             AssertJUnit.fail("test failed");
         }
 

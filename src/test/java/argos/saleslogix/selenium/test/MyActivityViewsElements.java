@@ -378,6 +378,14 @@ public class MyActivityViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@data-field='Followup']//button")
     WebElement activityCompleteViewFollowUpBtn;
 
+    @CacheLookup
+    @FindBy(xpath = "//div[@id = 'activity_complete']//*[@data-field='Contact']//input")
+    WebElement activityCompleteViewContactFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[@id = 'activity_complete']//*[@data-field='Opportunity']//input")
+    WebElement activityCompleteViewOpportunityFld;
+
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_RecurrencesField_0']/div")
 	WebElement activityEditViewRecurringFld;
