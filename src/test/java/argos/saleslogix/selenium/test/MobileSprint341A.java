@@ -22,6 +22,7 @@ import java.util.List;
 public class MobileSprint341A extends BaseTest {
 
     public String TEST_CONTACT_RECORD = "Abbott, John";
+    public String TEST_CONTACT_RECORD2 = "Aceti, Janet";
     public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
     public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
     public String TEST_OPPORTUNITY_RECORD3 = "Abbott Ltd.-Phase3";
@@ -29,6 +30,9 @@ public class MobileSprint341A extends BaseTest {
 	
 	//Test Methods Set
 	//================
+
+
+
 
 
     @Test(enabled = true)
@@ -1887,7 +1891,630 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-	//Login & Logout
+    @Test(enabled = true)
+    // INFORCRM-7247 ... Calendar select control - incorrect year may display on control per scenario ... on confirm does appear correctly on edit view
+    public void test18_INFORCRM7247_1() throws Exception {
+        String methodID = "test18_INFORCRM7247_1";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar (use currently selected day)
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: save the current value for the 'start time' ... will be 'today' with an appropriate time
+            String activityInitialStartTimeToday = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: initial value for the activity 'start time' (defaults to 'today') is ... " + activityInitialStartTimeToday);
+
+            //Step: Open Start Time calendar, then press Advanced, and wait for modal calendar control to open
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            calendarView.calendarModalAdvanced.click();
+
+            //Step: save the currently selected values for month and year, which has defaulted to 'today'
+            String activityMonthForToday = calendarView.calendarModalCurrMonthValue.getAttribute("value");
+            String activityYearForToday = calendarView.calendarModalCurrYearValue.getAttribute("value");
+
+            //Step: set day to 16, month to January, year to one year following the current one
+            calendarView.calendarModalDay16CurrMonth.click();
+            calendarView.calendarModalCurrMonthValue.click();
+            calendarView.calendarModalMonthJan.click();
+            calendarView.calendarModalCurrYearValue.click();
+            calendarView.calendarModalYearFollowingSelectedYear.click();
+
+            //Step: save and display month and year set for the activity being added
+            String activityMonthSet = calendarView.calendarModalCurrMonthValue.getAttribute("value");
+            String activityYearSet = calendarView.calendarModalCurrYearValue.getAttribute("value");
+            System.out.println("VP: activity start month changed to ... " + activityMonthSet);
+            System.out.println("VP: activity start year changed to ... " + activityYearSet);
+
+            //Step: Confirm the date/ time value chosen
+            calendarView.calendarModalConfirm.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage("Meeting");
+
+            //Step: save and display the 'start time' for the new activity
+            String activityChangedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: changed value for the activity 'start time' is ...  " + activityChangedStartTime);
+
+
+            //Step: save the activity
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Calendar");
+
+            //Step: on the Calendar screen (defaults to today's date) select day 16, month of January and one year following the current year
+            calendarView.calendarDay16CurrMonth.click();
+            calendarView.calendarMonthField.click();
+            calendarView.calendarMonthJan.click();
+            calendarView.calendarYearField.click();
+            calendarView.calendarYearFollowingSelectedYear.click();
+
+            //Step: locate the activity for the currently selected day of the month
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
+            activityItemLnk.click();
+            commNav.waitForPage(newActivityRegarding);
+
+            //Step: choose to edit the activity
+            headerButton.clickHeaderButton("edit");
+            commNav.waitForPage("Meeting");
+
+            //Step: Open Start Time calendar ... relative calendar
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: Press Advanced button to open Calendar control
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+            calendarView.calendarModalAdvanced.click();
+
+            //Step: set year to one year past the current activity year (equals two years past the current year)
+            activityYearSet = calendarView.calendarModalCurrYearValue.getAttribute("value");
+            System.out.println("VP: activity start year was previously set to ... " + activityYearSet);
+            calendarView.calendarModalCurrYearValue.click();
+            calendarView.calendarModalYearFollowingSelectedYear.click();
+            String activityYearEdited = calendarView.calendarModalCurrYearValue.getAttribute("value");
+            System.out.println("VP: activity start year has been changed to ... " + activityYearEdited);
+
+            //Step: press 'TODAY' button, and save values for month and year
+            calendarView.calendarModalTodayBtn.click();
+            String activityMonthFinal = calendarView.calendarModalCurrMonthValue.getAttribute("value");
+            String activityYearFinal = calendarView.calendarModalCurrYearValue.getAttribute("value");
+            System.out.println("VP: on pressing 'TODAY' button, activity year has been reset to ... " + activityYearFinal);
+            System.out.println("VP: on pressing 'TODAY' button, activity month has been reset to ... " + activityMonthFinal);
+
+            //Step: verify that the year and month display as expected for 'today'
+            AssertJUnit.assertEquals("VP: on pressing calendar control 'TODAY button, activity year value on calendar has been reset to that for 'today'... " + activityYearFinal + " - FAILED", activityYearForToday, activityYearFinal);
+            System.out.println("VP: on pressing calendar control 'TODAY button, activity year value on calendar has been reset to that for 'today'... " + activityYearFinal + " - PASSED");
+            AssertJUnit.assertEquals("VP: on pressing calendar control 'TODAY button, activity month value on calendar has been reset to that for 'today'... " + activityMonthFinal + " - FAILED", activityMonthForToday, activityMonthFinal);
+            System.out.println("VP: on pressing calendar control 'TODAY button, activity month value on calendar has been reset to that for 'today'... " + activityMonthFinal + " - PASSED");
+
+            //Step: press Confirm for the date/time
+            calendarView.calendarModalConfirm.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage("Meeting");
+
+            //Step: verify the the date/time on the edit view is the same as it was initially on the insert view, where today's date was being used
+            String activityFinalStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: after resetting 'start time' to TODAY, value for the activity 'start time' on the edit view is  ... " + activityFinalStartTime);
+            AssertJUnit.assertEquals("VP: on pressing calendar control 'TODAY button, activity 'start time' value on the edit view has been reset to that for 'today' - FAILED", activityInitialStartTimeToday, activityFinalStartTime);
+            System.out.println("VP: on pressing calendar control 'TODAY button, activity 'start time' value on the edit view has been reset to that for 'today' - PASSED");
+
+            System.out.println("VP: Calendar select control - incorrect year may display on control per scenario ... on confirm does appear correctly on edit view - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Calendar select control - incorrect year may display on control per scenario ... on confirm does appear correctly on edit view - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+
+    @Test(enabled = true)
+    // INFORCRM-7247 ... Calendar select control - incorrect month may display on control per scenarios ... on confirm does appear correctly on edit view
+    public void test19_INFORCRM7247_2() throws Exception {
+        String methodID = "test19_INFORCRM7247_2";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar (use currently selected day)
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: save the current value for the 'start time' ... will be 'today' with an appropriate time
+            String activityInitialStartTimeToday = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: initial value for the activity 'start time' (defaults to 'today') is ... " + activityInitialStartTimeToday);
+
+            //Step: Open Start Time calendar, then press Advanced, and wait for modal calendar control to open
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            calendarView.calendarModalAdvanced.click();
+
+            //Step: save the currently selected values for month and year, which has defaulted to 'today'
+            String activityMonthForToday = calendarView.calendarModalCurrMonthValue.getAttribute("value");
+            String activityYearForToday = calendarView.calendarModalCurrYearValue.getAttribute("value");
+
+            //Step: set day to 16, month to January, year to one year following the current one
+            calendarView.calendarModalDay16CurrMonth.click();
+            calendarView.calendarModalCurrMonthValue.click();
+            calendarView.calendarModalMonthJan.click();
+            calendarView.calendarModalCurrYearValue.click();
+            calendarView.calendarModalYearFollowingSelectedYear.click();
+
+            //Step: save and display month and year set for the activity being added
+            String activityMonthSet = calendarView.calendarModalCurrMonthValue.getAttribute("value");
+            String activityYearSet = calendarView.calendarModalCurrYearValue.getAttribute("value");
+            System.out.println("VP: activity start month changed to ... " + activityMonthSet);
+            System.out.println("VP: activity start year changed to ... " + activityYearSet);
+
+            //Step: Confirm the date/ time value chosen
+            calendarView.calendarModalConfirm.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage("Meeting");
+
+            //Step: save and display the 'start time' for the new activity
+            String activityChangedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: changed value for the activity 'start time' is ...  " + activityChangedStartTime);
+
+
+            //Step: save the activity
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Calendar");
+
+            //Step: on the Calendar screen (defaults to today's date) select day 16, month of January and one year following the current year
+            calendarView.calendarDay16CurrMonth.click();
+            calendarView.calendarMonthField.click();
+            calendarView.calendarMonthJan.click();
+            calendarView.calendarYearField.click();
+            calendarView.calendarYearFollowingSelectedYear.click();
+
+            //Step: locate the activity for the currently selected day of the month
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
+            activityItemLnk.click();
+            commNav.waitForPage(newActivityRegarding);
+
+            //Step: choose to edit the activity
+            headerButton.clickHeaderButton("edit");
+            commNav.waitForPage("Meeting");
+
+            //Step: Open Start Time calendar ... relative calendar
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: Press Advanced button to open Calendar control
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+            calendarView.calendarModalAdvanced.click();
+
+            //Step: set month to February
+            activityMonthSet = calendarView.calendarModalCurrMonthValue.getAttribute("value");
+            System.out.println("VP: activity start month was previously set to ... " + activityMonthSet);
+            calendarView.calendarModalCurrMonthValue.click();
+            calendarView.calendarModalMonthFeb.click();
+            String activityMonthEdited = calendarView.calendarModalCurrMonthValue.getAttribute("value");
+            System.out.println("VP: activity start month has been changed to ... " + activityMonthEdited);
+
+            //Step: press 'TODAY' button, and save values for month and year
+            calendarView.calendarModalTodayBtn.click();
+            String activityMonthFinal = calendarView.calendarModalCurrMonthValue.getAttribute("value");
+            String activityYearFinal = calendarView.calendarModalCurrYearValue.getAttribute("value");
+            System.out.println("VP: on pressing 'TODAY' button, activity year has been reset to ... " + activityYearFinal);
+            System.out.println("VP: on pressing 'TODAY' button, activity month has been reset to ... " + activityMonthFinal);
+
+            //Step: verify that the year and month display as expected for 'today'
+            AssertJUnit.assertEquals("VP: on pressing calendar control 'TODAY button, activity year value on calendar has been reset to that for 'today'... " + activityYearFinal + " - FAILED", activityYearForToday, activityYearFinal);
+            System.out.println("VP: on pressing calendar control 'TODAY button, activity year value on calendar has been reset to that for 'today'... " + activityYearFinal + " - PASSED");
+            AssertJUnit.assertEquals("VP: on pressing calendar control 'TODAY button, activity month value on calendar has been reset to that for 'today'... " + activityMonthFinal + " - FAILED", activityMonthForToday, activityMonthFinal);
+            System.out.println("VP: on pressing calendar control 'TODAY button, activity month value on calendar has been reset to that for 'today'... " + activityMonthFinal + " - PASSED");
+
+            //Step: press Confirm for the date/time
+            calendarView.calendarModalConfirm.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage("Meeting");
+
+            //Step: verify the the date/time on the edit view is the same as it was initially on the insert view, where today's date was being used
+            String activityFinalStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: after resetting 'start time' to TODAY, value for the activity 'start time' on the edit view is  ... " + activityFinalStartTime);
+            AssertJUnit.assertEquals("VP: on pressing calendar control 'TODAY button, activity 'start time' value on the edit view has been reset to that for 'today' - FAILED", activityInitialStartTimeToday, activityFinalStartTime);
+            System.out.println("VP: on pressing calendar control 'TODAY button, activity 'start time' value on the edit view has been reset to that for 'today' - PASSED");
+
+            System.out.println("VP: Calendar select control - incorrect month may display on control per scenario ... on confirm does appear correctly on edit view - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Calendar select control - incorrect month may display on control per scenario ... on confirm does appear correctly on edit view - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-7168 ... Activities - on saving the edited occurrence of a recurring activity, there is no error
+    public void test20_INFORCRM7168() throws Exception {
+        String methodID = "test20_INFORCRM7168";
+
+        // Test Params:
+        String entityType = "Accounts";
+        String entityRecord = TEST_ACCOUNT_RECORD;
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+
+        try {
+
+            //Step: login & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: search for Account entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, entityRecord);
+
+            AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
+
+            //Step: check each item under the Account Detail View, Related Items section
+            commNav.highlightNClick(accountDetailView.accountDetailViewRelatedItemsTab);
+            commNav.highlightNClick(accountDetailView.accountDetailViewActivitiesLnk);
+            commNav.waitForPage("Activities");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: open the repeats screen, and choose Daily ... 3 occurrences
+            activityEditView.activityEditViewRepeatsFldBtn.click();
+            commNav.waitForPage("Recurring");
+            activityEditView.activityRecurringDailyFld.click();
+            commNav.waitForPage("Meeting");
+            activityEditView.activityEditViewRecurringFldBtn.click();
+            commNav.waitForPage("Recurrence");
+            activityEditView.activityRecurrenceOccurencesFld.clear();
+            activityEditView.activityRecurrenceOccurencesFld.sendKeys("3");
+            headerButton.clickHeaderButton("accept");
+            commNav.waitForPage("Meeting");
+
+            //Step: save the recurring activity
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Activities");
+
+            //Step: verify that 3 occurrences of the recurring activity display under account Activities view
+            List elements = driver.findElements(By.xpath("//*[@id='activity_related']//h3//span[text() = '" + newActivityRegarding + "']"));
+
+            if(elements.size() == 3) {
+                System.out.println("VP: there are 3 occurrences of activity " + newActivityRegarding + " on the account Activities' list - PASSED");
+            } else {
+                System.out.println("VP: there are 3 occurrences of activity " + newActivityRegarding + " on the account Activities' list - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            //Step: locate and open the first activity occurrence that has been created
+            WebElement activityItemLnk1 = driver.findElement(By.xpath("(//*[@id='activity_related']//h3//span[text() = '" + newActivityRegarding + "'])[1]"));
+            activityItemLnk1.click();
+            String fullActivityRegarding = "Meeting - Regarding: " + newActivityRegarding;
+            commNav.waitForPage(fullActivityRegarding);
+
+            //Step: choose to edit the activity ... for the popup window, press Cancel to edit a single occurrence
+            headerButton.clickHeaderButton("edit");
+            driver.switchTo().alert().dismiss();
+            commNav.waitForPage("Meeting");
+
+            //Step: edit the regarding field, then save the activity
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityEditViewRegardingFld.click();
+            activityEditView.activityEditViewRegardingFld.sendKeys("-1");
+            headerButton.clickHeaderButton("save");
+            String editedFullActivityRegarding = fullActivityRegarding + "-1";
+            String editedActivityRegarding = newActivityRegarding + "-1";
+            commNav.waitForPage(editedFullActivityRegarding);
+
+            //Step: verify that the activity occurrence saved successfully, and that one is now positioned on the activity detail view
+            AssertJUnit.assertEquals("VP: on saving the edited occurrence of a recurring activity, there is no error, and activity detail view displays - FAILED", editedActivityRegarding, activityEditView.activityDetailViewRegardingFld.getText());
+            System.out.println("VP: on saving the edited occurrence of a recurring activity, there is no error and activity detail view displays - PASSED");
+
+
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + ": on saving the edited occurrence of a recurring activity, there is no error and activity detail view displays - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // Add My Activities as a menu item
+    public void test21_AddMyActivities() throws Exception {
+        String methodID = "test21_AddMyActivities";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MiscEntityItemViewsElements miscView = PageFactory.initElements(driver, MiscEntityItemViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: enable 'My Activities' under Configure view ... needed with 'My Activities' no longer displaying by default in 3.4
+            commNav.clickGlobalMenuItem("Configure Menu");
+            commNav.waitForPage("Configure");
+            miscView.configureMyActivities.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("My Schedule");
+
+            System.out.println("VP: added My Activities back as a menu item - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: added My Activities back as a menu item - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-7170 ... Activities - editing/ saving an occurrence of a recurring activity from My Activities incorrectly changes all occurrences
+    public void test21_INFORCRM7170() throws Exception {
+        String methodID = "test21_INFORCRM7170";
+
+        // Test Params:
+        String entityType = "Contacts";
+        String contactRecord = TEST_CONTACT_RECORD2;
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        ContactViewsElements contactDetailView = PageFactory.initElements(driver, ContactViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+
+        try {
+
+            //Step: login & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+            //Step: go to "My Activities" view, if not already there ... wait for page My Activities
+            if (!commNav.isPageDisplayed("My Activities"))   {
+                commNav.clickGlobalMenuItem("My Activities");
+                commNav.waitForPage("My Activities");
+            }
+
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: open the repeats screen, and choose Daily ... 3 occurrences
+            activityEditView.activityEditViewRepeatsFldBtn.click();
+            commNav.waitForPage("Recurring");
+            activityEditView.activityRecurringDailyFld.click();
+            commNav.waitForPage("Meeting");
+            activityEditView.activityEditViewRecurringFldBtn.click();
+            commNav.waitForPage("Recurrence");
+            activityEditView.activityRecurrenceOccurencesFld.clear();
+            activityEditView.activityRecurrenceOccurencesFld.sendKeys("3");
+            headerButton.clickHeaderButton("accept");
+            commNav.waitForPage("Meeting");
+
+            //Step: choose contact Janet Aceti
+            activityEditView.activityEditViewContactBtn.click();
+            commNav.waitForPage("Contacts");
+            ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
+            commView.lookupTxtBox.click();
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(TEST_CONTACT_RECORD2);
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
+            Thread.sleep(3000);
+            contactsListView.relatedContactsListViewTopItem.click();
+            System.out.println("VP: contact chosen was : " + TEST_CONTACT_RECORD2);
+            commNav.waitForPage("Meeting");
+
+            //Step: save the recurring activity
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("My Activities");
+
+            //Step: search for this activity under My Activities listview
+            commView = PageFactory.initElements(driver, CommonViewsElements.class);
+            commView.lookupTxtBox.click();
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(newActivityRegarding);
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
+            Thread.sleep(3000);
+
+            //Step: verify that one occurrence of the recurring activity display under My Activities view
+            List elements = driver.findElements(By.xpath("//*[@id='myactivity_list']//ul/li"));
+
+            if(elements.size() == 1) {
+                System.out.println("VP: should see one occurrences of activity " + newActivityRegarding + " on the My Activities' listview - PASSED");
+            } else {
+                System.out.println("VP: should see one occurrences of activity " + newActivityRegarding + " on the My Activities' listview  - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            //Step: open the activity occurrence that displays under My Activities
+            activityEditView.topMyActivitiesListItem.click();
+            String fullActivityRegarding = "Meeting - Regarding: " + newActivityRegarding;
+            commNav.waitForPage(fullActivityRegarding);
+
+            //Step: choose to edit the activity ... for the popup window, press Cancel to edit a single occurrence
+            headerButton.clickHeaderButton("edit");
+            driver.switchTo().alert().dismiss();
+            commNav.waitForPage("Meeting");
+
+            //Step: edit the regarding field, then save the activity
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityEditViewRegardingFld.click();
+            activityEditView.activityEditViewRegardingFld.sendKeys("-1");
+            headerButton.clickHeaderButton("save");
+            String editedFullActivityRegarding = fullActivityRegarding + "-1";
+            String editedActivityRegarding = newActivityRegarding + "-1";
+            commNav.waitForPage(editedFullActivityRegarding);
+
+            //Step: search for Contact entity, then open it's Detail view
+            commNav.entityRecordOpenDetailView(entityType, contactRecord);
+            contactDetailView.contactDetailViewRelatedItemsTab.click();
+            contactDetailView.contactsDetailViewActivitiesLnk.click();
+            commNav.waitForPage("Activities");
+
+            //Step: verify that the 3 activity occurrences display under the contact, with only one of the occurrences having been edited
+            //      verify that one sees two occurrences of activity with regarding field unedited
+            List elements2 = driver.findElements(By.xpath("//*[@id='activity_related']//span[text() = '" + newActivityRegarding + "']"));
+
+            if(elements2.size() == 2) {
+                System.out.println("VP: should see two occurrences of activity with regarding field unedited (" + newActivityRegarding + ") on the contact Activities' listview - PASSED");
+            } else {
+                System.out.println("VP: should see two occurrences of activity with regarding field unedited (" + newActivityRegarding + ") on the contact Activities' listview  - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            //      verify that one sees one occurrence of activity with regarding field edited
+            List elements3 = driver.findElements(By.xpath("//*[@id='activity_related']//span[text() = '" + editedActivityRegarding + "']"));
+
+            if(elements3.size() == 1) {
+                System.out.println("VP: should see one occurrence of activity with regarding field edited (" + editedActivityRegarding + ") on the contact Activities' listview - PASSED");
+            } else {
+                System.out.println("VP: should see one occurrence of activity with regarding field edited (" + editedActivityRegarding + ") on the contact Activities' listview  - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+
+        }
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + ": Activities - editing/ saving an occurrence of a recurring activity from My Activities incorrectly changes all occurrences - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+
+        System.out.println(ENDLINE);
+    }
+
+
+    //Login & Logout
 	//==============
 	@Test(enabled = true)
 	public void test00_MobileClient_Login() throws InterruptedException {

@@ -86,6 +86,9 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarModalYearBottomItem;
 
     @CacheLookup
+    @FindBy(xpath = "//div[8]/ul//li[contains(@class, 'item--selected')]/following-sibling::*[1]")
+    WebElement calendarModalYearFollowingSelectedYear;
+    @CacheLookup
     @FindBy(xpath = "//div[6]/ul/li[1]")
     WebElement calendarYearTopItem;
 
@@ -100,6 +103,10 @@ public class CalendarViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//div[6]/ul/li[21]")
     WebElement calendarYearBottomItem;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[6]/ul//li[contains(@class, 'item--selected')]/following-sibling::*[1]")
+    WebElement calendarYearFollowingSelectedYear;
 
     // CalendarMonthField ... use this for the Calendar screen (not calendar control)
     @CacheLookup

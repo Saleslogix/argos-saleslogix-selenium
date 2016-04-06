@@ -217,7 +217,11 @@ public class MyActivityViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/ul[1]/li[3]/a")
 	WebElement activityDetailViewAddNoteLnk;
-	
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_detail']//div[@data-property='Description']/span")
+    WebElement activityDetailViewRegardingFld;
+
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/ul[1]/li[4]/a")
 	WebElement activityDetailViewViewAddressLnk;
