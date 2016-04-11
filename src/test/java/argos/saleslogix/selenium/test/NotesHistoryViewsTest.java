@@ -23,9 +23,94 @@ import org.openqa.selenium.support.PageFactory;
 public class NotesHistoryViewsTest extends BaseTest {
 	
 	public String TEST_NOTE_RECORD = "Research the prospect";
+    public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
 	
 	//Test Methods Set
 	//================
+
+    @Test(enabled = true)
+    // Add an activity with 'regarding' set to 'Research the prospect', for use in test08_SeTestTCNotesHistoryEditView
+    public void test01_AddAndCompleteActivity() throws Exception {
+        String methodID = "test01_AddAndCompleteActivity";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: go to Calendar view ... wait for page Calendar (use currently selected day)
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with value for 'regarding' of 'Research the prospect'
+            String newActivityRegarding = "Research the prospect";
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: choose an account for this activity
+            activityEditView.activityEditViewAccountBtn.click();
+            commNav.waitForPage("Accounts");
+            commView.lookupTxtBox.click();
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(TEST_ACCOUNT_RECORD);
+            Thread.sleep(500);
+            commView.lookupTxtBox.sendKeys(Keys.RETURN);
+            accountListView.relatedAccountsListViewTopItem.click();
+            commNav.waitForPage("Meeting");
+
+            //Step: save the activity
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Calendar");
+
+            //Step: locate the activity for the currently selected day of the month
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
+            activityItemLnk.click();
+            commNav.waitForPage(newActivityRegarding);
+
+            //Step: complete the activity from the detail view
+            activityEditView.activityDetailViewCompleteActivityLnk.click();
+            commNav.waitForPage("Complete Activity");
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Calendar");
+
+            //Step: verify that save of completion worked, and one is positioned back on the Calendar screen
+            AssertJUnit.assertEquals("VP: Activity Detail - activity 'Research the prospect' created and completed - FAILED", "Calendar", driver.findElement(By.id("pageTitle")).getText());
+            System.out.println("VP: Activity Detail - activity 'Research the prospect' created and completed - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Activity Detail - activity 'Research the prospect' created and completed - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+
 	@Test(enabled = true)
 	public void test01_SeTestTCNotesHistoryListView() throws Exception {
 		//Reference: MBL-10068

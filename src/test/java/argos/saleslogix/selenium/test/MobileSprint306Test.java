@@ -110,7 +110,10 @@ public class MobileSprint306Test extends BaseTest {
 			
 			//Step: ContactViewsElements class			
 			ContactViewsElements contactEditView = PageFactory.initElements(driver, ContactViewsElements.class);
-	
+
+            //Step: clear the cuisine field of any data
+            contactEditView.contactsEditViewCuisineInputFld.click();
+            contactEditView.contactsEditViewCuisineInputFld.clear();
 			
 			//Step: click cuisine button on Contact edit view
 			contactEditView.contactsEditViewCuisineInputFldBtn.click();

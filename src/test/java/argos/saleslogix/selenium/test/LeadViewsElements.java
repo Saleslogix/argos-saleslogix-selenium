@@ -114,6 +114,10 @@ public class LeadViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[4]")
     WebElement topLeadsListItemLine5;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[5]")
+    WebElement topLeadsListItemLine6;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")

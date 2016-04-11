@@ -329,8 +329,16 @@ public class MyActivityViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = ".//*[@id='activity_edit']/fieldset/div/div")
     WebElement activityEditViewLoadingMessage;
-	
-	@CacheLookup
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_edit']//div[@class='panel-validation-summary']//h3")
+    WebElement activityEditViewValidationMessage1;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_edit']//div[@class='panel-validation-summary']//h4")
+    WebElement activityEditViewValidationMessage2;
+
+    @CacheLookup
 	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][2]")
 	WebElement activityEditViewRegardingFld;
 	

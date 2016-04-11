@@ -10,6 +10,7 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -453,7 +454,6 @@ public class MobileSprint341A extends BaseTest {
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
         MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
         String viewName = "Schedule Activity screen";
 
@@ -512,7 +512,6 @@ public class MobileSprint341A extends BaseTest {
         String viewName = "Ticket Edit view";
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
         CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -938,7 +937,7 @@ public class MobileSprint341A extends BaseTest {
             opportunitiesListView.topRelatedOpportunitiesListItem.click();
             commNav.waitForPage("Meeting");
 
-            //Step: select the contact for the opportunity
+            //Step: select the contact for the activity
             activityEditView.activityEditViewContactBtn.click();
             commNav.waitForPage("Contacts");
             contactsListView.relatedContactsListViewTopItem.click();
@@ -1156,7 +1155,6 @@ public class MobileSprint341A extends BaseTest {
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
         MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
         ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-        MyScheduleViewsElements myScheduleListView = PageFactory.initElements(driver, MyScheduleViewsElements.class);
 
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
@@ -2509,6 +2507,437 @@ public class MobileSprint341A extends BaseTest {
             AssertJUnit.fail("test failed");
         }
 
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-9481 ... Calendar control - no longer opening where activity is timeless, since fix for Jira INFORCRM-8810
+    // Part 1
+    public void test22_INFORCRM9481_1() throws Exception {
+        String methodID = "test22_INFORCRM9481_1";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        String viewName = "Calendar control";
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view ... uses current day as default
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: set the activity to be timeless, and save activity
+            activityEditView.activityEditViewTimelessTgl.click();
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Calendar");
+
+            //Step: verify that the activity created displays for the currently selected day of the month
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
+            if(commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
+                System.out.println("VP: timeless activity created for the currently selected day of the month - PASSED");
+            } else {
+                System.out.println("VP: timeless activity created for the currently selected day of the month - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            //Step: open and edit this timeless activity
+            activityItemLnk.click();
+            commNav.waitForPage(newActivityRegarding);
+            headerButton.clickHeaderButton("Edit");
+            commNav.waitForPage("Meeting");
+
+            //Step: press icon for start time ... verify that the calendar control opens (check that calendar Cancel button displays)
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            List elements = driver.findElements(By.xpath("//div[contains(text(),'Cancel')]"));
+
+            if(elements.size() == 1) {
+                commNav.highlightNClick(calendarView.calendarModalCancel);
+                System.out.println("VP: Calendar control - no longer opening where activity is timeless - PASSED");
+            } else {
+                System.out.println("VP: Calendar control - no longer opening where activity is timeless - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            System.out.println(methodID + "- PASSED");
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + "- FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-9481 ... Calendar control - no longer opening where activity has time of '00' minutes, since fix for Jira INFORCRM-8810
+    // Part 2
+    public void test23_INFORCRM9481_2() throws Exception {
+        String methodID = "test23_INFORCRM9481_2";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        String viewName = "Calendar control";
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view ... uses current day as default
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: add an Activity record with a random value for 'regarding'
+            String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+            System.out.println("Activity regarding field will be - " + newActivityRegarding);
+
+            activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
+
+            //Step: press 'start time' icon to open Calendar control
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: Press Advanced button to open Calendar view
+            calendarView.calendarModalAdvanced.click();
+
+            //Step: on the calendar modal control, set the minutes to be '00'
+            calendarView.calendarMinuteField.click();
+            calendarView.calendarMinute00.click();
+            String currentMinute = "00";
+            System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
+            AssertJUnit.assertEquals("VP: Pressing '00' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+            System.out.println("VP: Pressing '00' minutes from dropdown displays that value in the minutes field - PASSED");
+            calendarView.calendarModalConfirm.click();
+
+            //Step: save the time with '00' minutes
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage("Calendar");
+
+            //Step: verify that the activity created displays for the currently selected day of the month
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
+            if(commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
+                System.out.println("VP: activity with minutes set to '00' created for the currently selected day of the month - PASSED");
+            } else {
+                System.out.println("VP: activity with minutes set to '00' created for the currently selected day of the month - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            //Step: open and edit this timeless activity
+            activityItemLnk.click();
+            commNav.waitForPage(newActivityRegarding);
+            headerButton.clickHeaderButton("Edit");
+            commNav.waitForPage("Meeting");
+
+            //Step: press icon for start time to open relative date control
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: press Advanced button to open Calendar view
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+            calendarView.calendarModalAdvanced.click();
+
+            //Step: ... verify that the calendar control opens (check that calendar Cancel button displays)
+            List elements = driver.findElements(By.xpath("//div[contains(text(),'Cancel')]"));
+
+            if(elements.size() == 1) {
+                commNav.highlightNClick(calendarView.calendarModalCancel);
+                System.out.println("VP: Calendar control - no longer opening where activity has time of '00' minutes - PASSED");
+            } else {
+                System.out.println("VP: Calendar control - no longer opening where activity has time of '00' minutes - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            System.out.println(methodID + "- PASSED");
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + "- FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-5597 ... Relative date format control - 'This Evening' and 'Tomorrow Evening' not resulting in expected date or time
+    public void test24_INFORCRM5597() throws Exception {
+        String methodID = "test24_INFORCRM5597";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        String viewName = "Modal Calendar";
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open, and store default value of 'start time'
+            commNav.waitForPage("Meeting");
+            String newActivityStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: initial activity start time (defaults to 'today') is ... " + newActivityStartTime);
+
+            //Step: for initial value of 'start time', convert string date representation to calendar date format ... edit view start time has a format of 'M/d/yyyy h:mm a' (this will extract the date portion only)
+            SimpleDateFormat ftDate = new SimpleDateFormat("M/d/yyyy");
+            Calendar dateTime1 = Calendar.getInstance();
+            dateTime1.setTime(ftDate.parse(newActivityStartTime));
+
+            //Step: Open Start Time calendar, and wait for modal calendar control to open
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Verify that the relative date elements on the modal Calendar control are present
+            commNav.isWebElementPresent(viewName + ",Relative Date title", calendarView.calendarModalRelativeDateTitle);
+
+            //First check if 'This Evening' displays ... it will not after a certain time of day
+            List elements = driver.findElements(By.xpath("//ul//li//div[contains(., 'This Evening')]"));
+
+            //Choose Relative date of 'This Evening', if it is displaying
+            if(elements.size() > 0) {
+                calendarView.calendarModalThisEveningTitle.click();
+                Thread.sleep(1000);
+                driver.switchTo().activeElement();
+                commNav.waitForPage("Meeting");
+                String newActivityThisEveStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+                System.out.println("VP: after choosing 'This Evening', activity start time is ... " + newActivityThisEveStartTime);
+
+                //Step: for changed value of 'start time', convert string date representation to calendar date format ... edit view start time has a format of 'M/d/yyyy h:mm a' (this will extract the date portion only)
+                Calendar dateTime2 = Calendar.getInstance();
+                dateTime2.setTime(ftDate.parse(newActivityThisEveStartTime));
+
+                System.out.println("VP: initial activity start time (date only) is ... " + ftDate.format(dateTime1.getTime()));
+                System.out.println("VP: after choosing 'This Evening', activity start time (date only) is ... " + ftDate.format(dateTime2.getTime()));
+
+                //Step: verify that date for 'This Evening' is the same date as for 'today' (default date)
+                if (dateTime2.equals(dateTime1))  {
+                    System.out.println("VP: Calendar control ... date for 'This Evening' is the same date as for 'today' (default date) " + " - PASSED");
+                } else {
+                    System.out.println("VP: Calendar control ... date for 'This Evening' is the same date as for 'today' (default date) " + " - FAILED");
+                    AssertJUnit.fail("test failed");
+                }
+
+                //Step: verify that time for 'This Evening' is 3:00 PM ... need to convert format of 'M/d/yyyy h:mm a' to 'h:mm a' before comparison
+                System.out.println("newActivityThisEveStartTime value is ... " + newActivityThisEveStartTime);
+                ftDate = new SimpleDateFormat("M/d/yyyy h:mm a");
+                Calendar dateTime3 = Calendar.getInstance();
+                dateTime3.setTime(ftDate.parse(newActivityThisEveStartTime));
+
+                ftDate = new SimpleDateFormat("h:mm a");
+                String newActivityThisEveTimeOnly = ftDate.format(dateTime3.getTime());
+
+                AssertJUnit.assertEquals("VP: Calendar control ... time for 'This Evening' is expected to be '3:00 PM' and has a value of .. " + newActivityThisEveTimeOnly + " - FAILED", "3:00 PM", newActivityThisEveTimeOnly);
+                System.out.println("VP: Calendar control ... time for 'This Evening' is expected to be '3:00 PM' and has a value of .. " + newActivityThisEveTimeOnly + " - PASSED");
+
+            } else {
+                System.out.println("VP: past a certain time in the afternoon 'This Evening' no longer displays on the Relative Date control as an option");
+            }
+
+
+            //Step: Open Start Time calendar, and wait for modal calendar control to open
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: choose Relative date of 'Tomorrow Evening' and display the date/ time
+            calendarView.calendarModalTomorrowEveningTitle.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+            commNav.waitForPage("Meeting");
+            String newActivityTomorrowEveStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: after choosing 'Tomorrow Evening', activity start time is ... " + newActivityTomorrowEveStartTime);
+
+            //Step: for changed value of 'start time', convert string date representation to calendar date format ... edit view start time has a format of 'M/d/yyyy h:mm a' (this will extract the date portion only)
+            ftDate = new SimpleDateFormat("M/d/yyyy");
+            Calendar dateTime2 = Calendar.getInstance();
+            dateTime2.setTime(ftDate.parse(newActivityTomorrowEveStartTime));
+
+            System.out.println("VP: initial activity start time (date only) is ... " + ftDate.format(dateTime1.getTime()));
+            System.out.println("VP: after choosing 'Tomorrow Evening', activity start time (date only) is ... " + ftDate.format(dateTime2.getTime()));
+
+            //Step: verify that date for 'Tomorrow Evening' is one day past 'today'
+            dateTime2.add(Calendar.DATE, -1);
+            if (dateTime2.equals(dateTime1))  {
+                System.out.println("VP: Calendar control ... date for 'Tomorrow Evening' is one day past 'today' (default date) " + " - PASSED");
+            } else {
+                System.out.println("VP: Calendar control ... date for 'Tomorrow Evening' is is one day past 'today' (default date) " + " - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+
+            //Step: verify that time for 'Tomorrow Evening' is 3:00 PM ... need to convert format of 'M/d/yyyy h:mm a' to 'h:mm a' before comparison
+            System.out.println("newActivityTomorrowEveStartTime value is ... " + newActivityTomorrowEveStartTime);
+            ftDate = new SimpleDateFormat("M/d/yyyy h:mm a");
+            Calendar dateTime3 = Calendar.getInstance();
+            dateTime3.setTime(ftDate.parse(newActivityTomorrowEveStartTime));
+
+            ftDate = new SimpleDateFormat("h:mm a");
+            String newActivityTomEveTimeOnly = ftDate.format(dateTime3.getTime());
+
+            AssertJUnit.assertEquals("VP: Calendar control ... time for 'Tomorrow Evening' is expected to be '3:00 PM' and has a value of .. " + newActivityTomEveTimeOnly + " - FAILED", "3:00 PM", newActivityTomEveTimeOnly);
+            System.out.println("VP: Calendar control ... time for 'Tomorrow Evening' is expected to be '3:00 PM' and has a value of .. " + newActivityTomEveTimeOnly + " - PASSED");
+
+
+
+            System.out.println("VP: Relative date format control - 'This Evening' and 'Tomorrow Evening' not resulting in expected date or time - PASSED");
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Relative date format control - 'This Evening' and 'Tomorrow Evening' not resulting in expected date or time - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-4949 ... Date/ time field : now able to manually enter and save an unwanted or invalid date/ time ... should see error
+    public void test25_INFORCRM4949() throws Exception {
+        String methodID = "test25_INFORCRM4949";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+
+            //Step: click the Add header button to open Activity schedule view
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+            commNav.waitForPage("Meeting");
+
+            //Step: clear start time field, then enter an invalid date and try to save the activity
+            activityEditView.activityEditViewStartTimeFld.click();
+            activityEditView.activityEditViewStartTimeFld.clear();
+            activityEditView.activityEditViewStartTimeFld.sendKeys("07/2017");
+
+            String newActivityInvalidDate1 = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: invalid date manually entered is ... " + newActivityInvalidDate1);
+            headerButton.clickHeaderButton("Save");
+
+            //Step: first check if a 'Validation Summary' displays
+            List elements = driver.findElements(By.xpath("//div[@class='panel-validation-summary']"));
+
+            if(elements.size() > 0) {
+                System.out.println("VP: on activity save, a 'Validation Summary' is displaying as follows ... ");
+                System.out.println("VP: " + activityEditView.activityEditViewValidationMessage1.getText());
+                System.out.println("VP: " + activityEditView.activityEditViewValidationMessage2.getText());
+                System.out.println("VP: Date/ time field : now able to manually enter and save an unwanted or invalid date/ time ... should see error - PASSED");
+            } else {
+                System.out.println("VP: Date/ time field : now able to manually enter and save an unwanted or invalid date/ time ... should see error - FAILED");
+            }
+
+
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println("VP: Date/ time field : now able to manually enter and save an unwanted or invalid date/ time ... should see error - FAILED");
+            AssertJUnit.fail("test failed");
+        }
 
         System.out.println(ENDLINE);
     }

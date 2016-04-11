@@ -49,6 +49,50 @@ public class LeadEntityViewsTest extends BaseTest {
 	
 	//Test Set
 	//========
+
+    @Test(enabled = true)
+    // Add mobile phone for the lead
+    public void test01_SeTestAddMobilePhoneForLead() throws Exception {
+        String methodID = "test01_SeTestAddMobilePhoneForLead";
+
+        // Test Params:
+        String entityType = "Lead";
+        String entityRecord = TEST_LEAD_RECORD;
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+
+        try {
+            //Step: search for Lead entity, then open it's Edit view
+            AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
+
+            LeadViewsElements leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
+
+            //Step: add some data for the lead's mobile phone, and save
+            leadEditView.leadsEditViewMobilePhoneInputFld.click();
+            leadEditView.leadsEditViewMobilePhoneInputFld.clear();
+            leadEditView.leadsEditViewMobilePhoneInputFld.sendKeys("(630)-776-0917");
+            headerButton.clickHeaderButton("Save");
+            commNav.waitForPage(entityRecord);
+            System.out.println("VP: mobile phone (630)-776-0917 added for lead " + entityRecord);
+
+            //Step: go back to previous screen
+            headerButton.goBack();
+            Thread.sleep(2000);
+
+        } catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + ": unable to add mobile phone for ... '" + entityRecord + "' " + entityType);
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+
 	@Test(enabled = true)
 	public void test01_SeTestTCLeadListView() throws Exception {
 		//Reference: MBL-10050
@@ -80,8 +124,9 @@ public class LeadEntityViewsTest extends BaseTest {
 			commNav.checkIfWebElementPresent("Leads List View, item record name", LeadListView.topLeadsListItemName);
 			commNav.checkIfWebElementPresent("Leads List View, item record company", LeadListView.topLeadsListItemLine2);
 			commNav.checkIfWebElementPresent("Leads List View, item record work", LeadListView.topLeadsListItemLine3);
-			commNav.checkIfWebElementPresent("Leads List View, item record web", LeadListView.topLeadsListItemLine4);
-			commNav.checkIfWebElementPresent("Leads List View, item record email", LeadListView.topLeadsListItemLine5);
+            commNav.checkIfWebElementPresent("Leads List View, item record mobile", LeadListView.topLeadsListItemLine4);
+			commNav.checkIfWebElementPresent("Leads List View, item record web", LeadListView.topLeadsListItemLine5);
+			commNav.checkIfWebElementPresent("Leads List View, item record email", LeadListView.topLeadsListItemLine6);
             commNav.checkIfWebElementPresent("Leads List View, item record touch icon", LeadListView.topLeadsListItemTouch);
 			
 			//Step: check the Quick Action button and items
@@ -400,7 +445,7 @@ public class LeadEntityViewsTest extends BaseTest {
 			commNav.isFieldValueEmpty(viewName + ", company field", leadEditView.leadsEditViewCompanyInputFld);			
 			commNav.isFieldValueEmpty(viewName + ", web field", leadEditView.leadsEditViewWebInputFld);			
 			commNav.isFieldValueEmpty(viewName + ", work phone field", leadEditView.leadsEditViewWorkPhoneInputFld);			
-			commNav.isWebElementPresent(viewName + ", mobile phone field", leadEditView.leadsEditViewWorkPhoneInputFld);
+			commNav.isFieldValueEmpty(viewName + ", mobile phone field", leadEditView.leadsEditViewMobilePhoneInputFld);
 			commNav.isWebElementPresent(viewName + ", toll free field", leadEditView.leadsEditViewTollFreeInputFld);
 			commNav.isWebElementPresent(viewName + ", email field", leadEditView.leadsEditViewEmailInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ", title field", leadEditView.leadsEditViewTitleFldBtn, "Title");			
@@ -859,7 +904,7 @@ public class LeadEntityViewsTest extends BaseTest {
 			commNav.isWebElementPresent(viewName + ", company field", leadEditView.leadsEditViewCompanyInputFld);			
 			commNav.isWebElementPresent(viewName + ", web field", leadEditView.leadsEditViewWebInputFld);			
 			commNav.isWebElementPresent(viewName + ", work phone field", leadEditView.leadsEditViewWorkPhoneInputFld);			
-			commNav.isWebElementPresent(viewName + ", mobile phone field", leadEditView.leadsEditViewWorkPhoneInputFld);
+			commNav.isWebElementPresent(viewName + ", mobile phone field", leadEditView.leadsEditViewMobilePhoneInputFld);
 			commNav.isWebElementPresent(viewName + ", toll free field", leadEditView.leadsEditViewTollFreeInputFld);
 			commNav.isWebElementPresent(viewName + ", email field", leadEditView.leadsEditViewEmailInputFld);
 			commNav.verifyEntityViewElementClick(viewName + ", title field", leadEditView.leadsEditViewTitleFldBtn, "Title");			
