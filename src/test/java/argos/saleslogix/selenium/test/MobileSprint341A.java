@@ -726,6 +726,7 @@ public class MobileSprint341A extends BaseTest {
             commNav.waitForPage("Calendar");
 
             //Step: verify that save of completion worked, and one is positioned back on the Calendar screen
+            Thread.sleep(3000);
             AssertJUnit.assertEquals("VP: Activity Detail - complete activity quick action opens relevant screen, but unable to save completion - FAILED", "Calendar", driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: Activity Detail - complete activity quick action opens relevant screen, but unable to save completion - PASSED");
 
@@ -789,7 +790,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: verify that the calendar control has again opened as expected ... try to select month of January from month dropdown as a check
             calendarView.calendarModalCurrMonthValue.click();
-            calendarView.calendarMonthJan.click();
+            calendarView.calendarModalMonthJan.click();
             String currentMonth = "January";
             AssertJUnit.assertEquals("VP: Calendar/ time control : where there is no default date/ time assigned to a field, unable to open the 'Advanced' calendar/ time control - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
             System.out.println("VP: Calendar/ time control : where there is no default date/ time assigned to a field, unable to open the 'Advanced' calendar/ time control - PASSED");
@@ -2936,6 +2937,96 @@ public class MobileSprint341A extends BaseTest {
         catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Date/ time field : now able to manually enter and save an unwanted or invalid date/ time ... should see error - FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
+
+    @Test(enabled = true)
+    // INFORCRM-9563 ... Calendar Control - where 'start time' minutes have a value not present in the minutes dropdown list, on pressing Confirm button, minutes are set to '00'
+    public void test26_INFORCRM9563() throws Exception {
+        String methodID = "test26_INFORCRM9563";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+        String viewName = "Calendar control";
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view ... uses current day as default
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: store initial value of 'start time', then manually change it to have a time of '11:07 AM'
+            String activityInitialDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            String[] dtSplit = activityInitialDateTime.split(" ");
+            System.out.println("VP: initial value for activity 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            String activityModifiedDateTime = dtSplit[0] + " 11:07 AM";
+            activityEditView.activityEditViewStartTimeFld.clear();
+            activityEditView.activityEditViewStartTimeFld.sendKeys(activityModifiedDateTime);
+            System.out.println("VP: manually edited value for activity 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            //Step: press 'start time' icon to open Calendar control
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: Press Advanced button to open Calendar view
+            calendarView.calendarModalAdvanced.click();
+
+            //Step: on the calendar modal control, check that the hour and minutes value display as '11' and '07' respectively
+            String expectedHour = "11";
+            String expectedMinute = "07";
+
+            AssertJUnit.assertEquals("VP: on calendar control, manually entered hour for activity of '11' displays as expected - FAILED", expectedHour, calendarView.calendarHourField.getAttribute("value"));
+            System.out.println("VP: on calendar control, manually entered hour for activity of '11' displays as expected - PASSED");
+
+            AssertJUnit.assertEquals("VP: on calendar control, manually entered minutes for activity of '07' displays as expected - FAILED", expectedMinute, calendarView.calendarMinuteField.getAttribute("value"));
+            System.out.println("VP: on calendar control, manually entered minutes for activity of '07' displays as expected - PASSED");
+
+            //Step: press Confirm button from the calendar control
+            calendarView.calendarModalConfirm.click();
+            commNav.waitForPage("Meeting");
+
+            //Step: check that the current value of 'start time' is the same as the manually changed value ... minutes of '07' should still display
+            String activityFinalDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            System.out.println("VP: current value for activity 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            AssertJUnit.assertEquals("VP: current value for activity 'start time' is the same as the value before calendar was opened and Confirm was pressed - FAILED", activityModifiedDateTime, activityFinalDateTime);
+            System.out.println("VP: current value for activity 'start time' is the same as the value before calendar was opened and Confirm was pressed - PASSED");
+
+            System.out.println(methodID + "- PASSED");
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + "- FAILED");
             AssertJUnit.fail("test failed");
         }
 

@@ -65,47 +65,46 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarYearField;
 
     // Calendar/ time control introduced in Mobile 3.4 :
-    // - for the calendar screen use calendarYearxxxItem
-    // - for the modal calendar control use calendarYearxxxItem if the Calendar screen has not been opened
-    // - for the modal calendar control use calendarModalYearxxxItem if the Calendar screen has been opened
+    // - for the calendar screen use calendarYearxxx Item
+    // - for the modal calendar control use calendarModalYearxxx Item
 
     @CacheLookup
-    @FindBy(xpath = "//div[8]/ul/li[1]")
+    @FindBy(xpath = "//div[contains(@id,'year-dropdown datetime-calendar')]/ul/li[1]")
     WebElement calendarModalYearTopItem;
 
     @CacheLookup
-    @FindBy(xpath = "//div[8]/ul/li[10]")
+    @FindBy(xpath = "//div[contains(@id,'year-dropdown datetime-calendar')]/ul/li[10]")
     WebElement calendarModalYearTen;
 
     @CacheLookup
-    @FindBy(xpath = "//div[8]/ul/li[11]")
+    @FindBy(xpath = "//div[contains(@id,'year-dropdown datetime-calendar')]/ul/li[11]")
     WebElement calendarModalYearEleven;
 
     @CacheLookup
-    @FindBy(xpath = "//div[8]/ul/li[21]")
+    @FindBy(xpath = "//div[contains(@id,'year-dropdown datetime-calendar')]/ul/li[21]")
     WebElement calendarModalYearBottomItem;
 
     @CacheLookup
-    @FindBy(xpath = "//div[8]/ul//li[contains(@class, 'item--selected')]/following-sibling::*[1]")
+    @FindBy(xpath = "//div[contains(@id,'year-dropdown datetime-calendar')]/ul//li[contains(@class, 'item--selected')]/following-sibling::*[1]")
     WebElement calendarModalYearFollowingSelectedYear;
     @CacheLookup
-    @FindBy(xpath = "//div[6]/ul/li[1]")
+    @FindBy(xpath = "//div[contains(@id,'year-dropdown calendar-view__calendar')]/ul/li[1]")
     WebElement calendarYearTopItem;
 
     @CacheLookup
-    @FindBy(xpath = "//div[6]/ul/li[10]")
+    @FindBy(xpath = "//div[contains(@id,'year-dropdown calendar-view__calendar')]/ul/li[10]")
     WebElement calendarYearTen;
 
     @CacheLookup
-    @FindBy(xpath = "//div[6]/ul/li[11]")
+    @FindBy(xpath = "//div[contains(@id,'year-dropdown calendar-view__calendar')]/ul/li[11]")
     WebElement calendarYearEleven;
 
     @CacheLookup
-    @FindBy(xpath = "//div[6]/ul/li[21]")
+    @FindBy(xpath = "//div[contains(@id,'year-dropdown calendar-view__calendar')]/ul/li[21]")
     WebElement calendarYearBottomItem;
 
     @CacheLookup
-    @FindBy(xpath = "//div[6]/ul//li[contains(@class, 'item--selected')]/following-sibling::*[1]")
+    @FindBy(xpath = "//div[contains(@id,'year-dropdown calendar-view__calendar')]/ul//li[contains(@class, 'item--selected')]/following-sibling::*[1]")
     WebElement calendarYearFollowingSelectedYear;
 
     // CalendarMonthField ... use this for the Calendar screen (not calendar control)
@@ -113,105 +112,104 @@ public class CalendarViewsElements extends BaseTest {
     @FindBy(xpath = "//div[contains(@id,'calendar-view__calendar')]//div[@class='month']//input")
     WebElement calendarMonthField;
 
-    // Calendar/ time control introduced in Mobile 3.4 :
+    // Calendar/ time control introduced in Mobile 3.4 ... month dropdown :
     // - for the calendar screen use calendarMonthxxx
-    // - for the modal calendar control use calendarMonthxxx if the Calendar screen has not been opened
-    // - for the modal calendar control use calendarModalMonthxxx if the Calendar screen has been opened
+    // - for the modal calendar control use calendarModalMonthxxx
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='January']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[1]")
     WebElement calendarMonthJan;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='January']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[1]")
     WebElement calendarModalMonthJan;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='February']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[2]")
     WebElement calendarMonthFeb;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='February']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[2]")
     WebElement calendarModalMonthFeb;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='March']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[3]")
     WebElement calendarMonthMar;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='March']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[3]")
     WebElement calendarModalMonthMar;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='April']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[4]")
     WebElement calendarMonthApr;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='April']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[4]")
     WebElement calendarModalMonthApr;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='May']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[5]")
     WebElement calendarMonthMay;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='May']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[5]")
     WebElement calendarModalMonthMay;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='June']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[6]")
     WebElement calendarMonthJun;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='June']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[6]")
     WebElement calendarModalMonthJun;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='July']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[7]")
     WebElement calendarMonthJul;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='July']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[7]")
     WebElement calendarModalMonthJul;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='August']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[8]")
     WebElement calendarMonthAug;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='August']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[8]")
     WebElement calendarModalMonthAug;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='September']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[9]")
     WebElement calendarMonthSep;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='September']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[9]")
     WebElement calendarModalMonthSep;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='October']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[10]")
     WebElement calendarMonthOct;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='October']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[10]")
     WebElement calendarModalMonthOct;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='November']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[11]")
     WebElement calendarMonthNov;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='November']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[11]")
     WebElement calendarModalMonthNov;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='December']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown calendar-view__calendar')]//ul/li[12]")
     WebElement calendarMonthDec;
 
     @CacheLookup
-    @FindBy(xpath = "//div[7]//ul/li[@data-value='December']")
+    @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[12]")
     WebElement calendarModalMonthDec;
 
     @CacheLookup
@@ -219,51 +217,51 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarHourField;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='1']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[1]")
     WebElement calendarHourOne;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='2']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[2]")
     WebElement calendarHourTwo;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='3']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[3]")
     WebElement calendarHourThree;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='4']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[4]")
     WebElement calendarHourFour;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='5']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[5]")
     WebElement calendarHourFive;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='6']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[6]")
     WebElement calendarHourSix;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='7']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[7]")
     WebElement calendarHourSeven;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='8']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[8]")
     WebElement calendarHourEight;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='9']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[9]")
     WebElement calendarHourNine;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='9']/following-sibling::*[1]")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[10]")
     WebElement calendarHourTen;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='11']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[11]")
     WebElement calendarHourEleven;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='12']")
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[12]")
     WebElement calendarHourTwelve;
 
     @CacheLookup
@@ -271,51 +269,51 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarMinuteField;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='00']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[1]")
     WebElement calendarMinute00;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='05']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[2]")
     WebElement calendarMinute05;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='05']/following-sibling::*[1]")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[3]")
     WebElement calendarMinute10;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='15']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[4]")
     WebElement calendarMinute15;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='20']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[5]")
     WebElement calendarMinute20;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='25']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[6]")
     WebElement calendarMinute25;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='30']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[7]")
     WebElement calendarMinute30;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='35']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[8]")
     WebElement calendarMinute35;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='40']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[9]")
     WebElement calendarMinute40;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='45']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[10]")
     WebElement calendarMinute45;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='50']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[11]")
     WebElement calendarMinute50;
 
     @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='55']")
+    @FindBy(xpath = "//div[contains(@id,'minute-modal')]//ul/li[12]")
     WebElement calendarMinute55;
 
     @CacheLookup
