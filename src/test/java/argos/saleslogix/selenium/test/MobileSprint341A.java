@@ -1598,6 +1598,8 @@ public class MobileSprint341A extends BaseTest {
             //Step: re-open the activity detail view and choose to edit
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
+
             headerButton.clickHeaderButton("edit");
             commNav.waitForPage("Meeting");
 
@@ -1985,6 +1987,7 @@ public class MobileSprint341A extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: choose to edit the activity
             headerButton.clickHeaderButton("edit");
@@ -2142,6 +2145,7 @@ public class MobileSprint341A extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: choose to edit the activity
             headerButton.clickHeaderButton("edit");
@@ -2283,6 +2287,7 @@ public class MobileSprint341A extends BaseTest {
             activityItemLnk1.click();
             String fullActivityRegarding = "Meeting - Regarding: " + newActivityRegarding;
             commNav.waitForPage(fullActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: choose to edit the activity ... for the popup window, press Cancel to edit a single occurrence
             headerButton.clickHeaderButton("edit");
@@ -2458,6 +2463,7 @@ public class MobileSprint341A extends BaseTest {
             activityEditView.topMyActivitiesListItem.click();
             String fullActivityRegarding = "Meeting - Regarding: " + newActivityRegarding;
             commNav.waitForPage(fullActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: choose to edit the activity ... for the popup window, press Cancel to edit a single occurrence
             headerButton.clickHeaderButton("edit");
@@ -2954,9 +2960,6 @@ public class MobileSprint341A extends BaseTest {
         MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
         CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
-        String viewName = "Calendar control";
-
-
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         try {
@@ -3032,6 +3035,147 @@ public class MobileSprint341A extends BaseTest {
 
         System.out.println(ENDLINE);
     }
+
+
+    @Test(enabled = true)
+    // INFORCRM-9676 ... Calendar control : addition of non-standard minutes to minutes dropdown should only display for that instance of the date being used, not for all other activities in the login session
+    public void test27_INFORCRM9676() throws Exception {
+        String methodID = "test27_INFORCRM9676";
+
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        try {
+
+
+            //Step: logout & log back in (to clear cookies)
+            LogOutThenLogBackIn(userName, userPwd);
+
+
+            //Step: go to Calendar view ... wait for page Calendar
+            commNav.clickGlobalMenuItem("Calendar");
+            commNav.waitForPage("Calendar");
+
+            //Step: click the Add header button to open Activity schedule view ... uses current day as default   ACTIVITY # 1
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: store initial value of 'start time', then manually change it to have a time of '11:07 AM'
+            String activityInitialDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            String[] dtSplit = activityInitialDateTime.split(" ");
+            System.out.println("VP: initial value for activity #1 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            String activityModifiedDateTime = dtSplit[0] + " 11:07 AM";
+            activityEditView.activityEditViewStartTimeFld.clear();
+            activityEditView.activityEditViewStartTimeFld.sendKeys(activityModifiedDateTime);
+            System.out.println("VP: manually edited value for activity #1 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            //Step: press 'start time' icon to open Calendar control
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: Press Advanced button to open Calendar view
+            calendarView.calendarModalAdvanced.click();
+
+            //Step: on the calendar modal control, check that the minutes value displays as '07'
+            String expectedMinutes = "07";
+            String zeroMinutes = "00";
+
+            AssertJUnit.assertEquals("VP: on calendar control, manually entered minutes for activity #1 of '07' displays as expected - FAILED", expectedMinutes, calendarView.calendarMinuteField.getAttribute("value"));
+            System.out.println("VP: on calendar control, manually entered minutes for activity #1 of '07' displays as expected - PASSED");
+
+            //Step: open the minutes dropdown, and confirm that the top 2 items are 07 (just added), then 00
+            calendarView.calendarMinuteField.click();
+
+            AssertJUnit.assertEquals("VP: on calendar control, minutes dropdown for activity #1 displays '07' in first position at the top as expected - FAILED", expectedMinutes, calendarView.calendarMinute00.getText());
+            System.out.println("VP: on calendar control, minutes dropdown for activity #1 displays '07' in first position at the top as expected - PASSED");
+
+            AssertJUnit.assertEquals("VP: on calendar control, minutes dropdown for activity #1 displays '00' in second position from the top as expected - FAILED", zeroMinutes, calendarView.calendarMinute05.getText());
+            System.out.println("VP: on calendar control, minutes dropdown for activity #1 displays '00' in second position from the top as expected - PASSED");
+
+            //Step: just Cancel from the calendar control, and from the activity
+            calendarView.calendarModalCancel.click();
+            commNav.waitForPage("Meeting");
+            headerButton.clickHeaderButton("Cancel");
+            commNav.waitForPage("Calendar");
+
+
+
+            //Step: click the Add header button to open Activity schedule view ... uses current day as default   ACTIVITY # 2
+            headerButton.clickHeaderButton("Add");
+
+            //Step: wait for page Schedule... to open
+            commNav.waitForPage("Schedule...");
+
+            //Step: select Meeting for activity type
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityScheduleMeetingBtn.click();
+
+            //Step: wait for page Meeting to open
+            commNav.waitForPage("Meeting");
+
+            //Step: store initial value of 'start time', then manually change it to have a time of '10:24 AM'
+            activityInitialDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+            dtSplit = activityInitialDateTime.split(" ");
+            System.out.println("VP: initial value for activity #2 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            activityModifiedDateTime = dtSplit[0] + " 10:24 AM";
+            activityEditView.activityEditViewStartTimeFld.clear();
+            activityEditView.activityEditViewStartTimeFld.sendKeys(activityModifiedDateTime);
+            System.out.println("VP: manually edited value for activity #2 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+
+            //Step: press 'start time' icon to open Calendar control
+            activityEditView.activityEditViewStartTimeFldBtn.click();
+            Thread.sleep(1000);
+            driver.switchTo().activeElement();
+
+            //Step: Press Advanced button to open Calendar view
+            calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+            calendarView.calendarModalAdvanced.click();
+
+            //Step: on the calendar modal control, check that the minutes value displays as '24'
+            expectedMinutes = "24";
+            zeroMinutes = "00";
+
+            AssertJUnit.assertEquals("VP: on calendar control, manually entered minutes for activity #2 of '24' displays as expected - FAILED", expectedMinutes, calendarView.calendarMinuteField.getAttribute("value"));
+            System.out.println("VP: on calendar control, manually entered minutes for activity #2 of '24' displays as expected - PASSED");
+
+            //Step: open the minutes dropdown, and confirm that the top 2 items are 24 (just added), then 00 ... not 24, 07 (activity #1),00
+            calendarView.calendarMinuteField.click();
+
+            AssertJUnit.assertEquals("VP: on calendar control, minutes dropdown for activity #2 displays '24' in first position at the top as expected - FAILED", expectedMinutes, calendarView.calendarMinute00.getText());
+            System.out.println("VP: on calendar control, minutes dropdown for activity #2 displays '24' in first position at the top as expected - PASSED");
+
+            AssertJUnit.assertEquals("VP: on calendar control, minutes dropdown for activity #2 displays '00' in second position from the top as expected - FAILED", zeroMinutes, calendarView.calendarMinute05.getText());
+            System.out.println("VP: on calendar control, minutes dropdown for activity #2 displays '00' in second position from the top as expected - PASSED");
+
+
+            System.out.println(methodID + "- PASSED");
+        }
+
+        catch (Exception e) {
+            verificationErrors.append(methodID + "(): " + e.toString());
+            System.out.println(methodID + "- FAILED");
+            AssertJUnit.fail("test failed");
+        }
+
+        System.out.println(ENDLINE);
+    }
+
 
 
     //Login & Logout

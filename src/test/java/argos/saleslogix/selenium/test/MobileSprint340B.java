@@ -183,6 +183,8 @@ public class MobileSprint340B extends BaseTest {
             String activityTitle = scheduleListView.myScheduleListItem1.getAttribute("data-descriptor");
             scheduleListView.myScheduleListItem1.click();
             commNav.waitForPage(activityTitle);
+            Thread.sleep(1000);
+
             headerButton.clickHeaderButton("Briefcase");
             System.out.println("VP: Activity " + activityTitle + " is being briefcased");
 

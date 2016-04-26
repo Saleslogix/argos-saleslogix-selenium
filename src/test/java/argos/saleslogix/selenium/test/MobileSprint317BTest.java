@@ -459,6 +459,7 @@ public class MobileSprint317BTest extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
 
 
             //Step: open the activity created in edit mode ... close alert, should default to 'OK' being chosen
