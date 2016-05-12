@@ -119,6 +119,7 @@ public class MobileSprint330B extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -138,6 +139,7 @@ public class MobileSprint330B extends BaseTest {
             accountListView.relatedAccountsListViewTopItem.click();
             Thread.sleep(500);
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: retrieve the value for phone for the account record chosen
             String firstActivityPhoneNo = activityEditView.activityEditViewPhoneFld.getAttribute("value");
@@ -162,6 +164,7 @@ public class MobileSprint330B extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: with no account chosen for activity, verify that phone number is not set to the first activity's phone number - should be blank
             String secondActivityPhoneNo = activityEditView.activityEditViewPhoneFld.getAttribute("value");
@@ -216,6 +219,7 @@ public class MobileSprint330B extends BaseTest {
             //Step: press the 'edit' quick action button
             accountListView.topAccountsListItemQuickActionsEditBtn.click();
             commNav.waitForPage("Account");
+            Thread.sleep(1000);
 
             //Step: save the initial value of the phone
             String initialPhoneValue = accountListView.accountEditViewPhoneInputFld.getAttribute("value");
@@ -485,6 +489,7 @@ public class MobileSprint330B extends BaseTest {
             commNav.checkIfWebElementPresent("Opportunity, Quick Action Quick Edit button", opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn);
             opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
             commNav.waitForPage("Edit");
+            Thread.sleep(1000);
 
             //Step: save quick edit card layout information
             String quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
@@ -518,6 +523,7 @@ public class MobileSprint330B extends BaseTest {
             //Step: click the Quick Edit quick action to open the 'Edit' screen
             opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
             commNav.waitForPage("Edit");
+            Thread.sleep(1000);
 
             //Step: save quick edit card layout information
             quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
@@ -565,6 +571,7 @@ public class MobileSprint330B extends BaseTest {
             //Step: click the Quick Edit quick action to open the 'Edit' screen
             opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
             commNav.waitForPage("Edit");
+            Thread.sleep(1000);
 
             //Step: save quick edit card layout information
             quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
@@ -836,6 +843,7 @@ public class MobileSprint330B extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'

@@ -103,6 +103,7 @@ public class MobileSprint320Test extends BaseTest {
 
         //Step: wait for page Meeting to open
         commNav.waitForPage("Meeting");
+        Thread.sleep(1000);
 
 
         //Step: add an Activity record with a random value for 'regarding'
@@ -116,6 +117,7 @@ public class MobileSprint320Test extends BaseTest {
         commNav.waitForPage("Recurring");
         activityEditView.activityRecurringDailyFld.click();
         commNav.waitForPage("Meeting");
+        Thread.sleep(1000);
 
 
         activityEditView.activityEditViewRecurringFldBtn.click();
@@ -124,6 +126,7 @@ public class MobileSprint320Test extends BaseTest {
         activityEditView.activityRecurrenceOccurencesFld.sendKeys("2");
         headerButton.checkButton.click();
         commNav.waitForPage("Meeting");
+        Thread.sleep(1000);
 
 
         //Step: retrieve the value of the activity's Leader ... and print
@@ -148,6 +151,7 @@ public class MobileSprint320Test extends BaseTest {
         Thread.sleep(3000);
         activityEditView.activityDetailViewCompleteOccurrenceLnk.click();
         commNav.waitForPage("Complete Occurrence");
+        Thread.sleep(1000);
 
         //Step: retrieve the value of the Leader on this dialog, and compare to the initial value of Leader ... should be the same (ie: NOT an ID)
         String completeOccurrenceLeaderValue = activityEditView.activityEditViewLeaderFld.getAttribute("value");
@@ -197,6 +201,7 @@ public class MobileSprint320Test extends BaseTest {
         commNav.waitForPage("Schedule...");
         activityEditView.activityScheduleMeetingBtn.click();
         commNav.waitForPage("Meeting");
+        Thread.sleep(1000);
 
         //Step: add an Activity record with a random value for 'regarding'
         String newActivityRegarding = "SeAutoTestActivity-1-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -217,8 +222,10 @@ public class MobileSprint320Test extends BaseTest {
         activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
         activityEditView.topRelatedActivitiesListItem.click();
         commNav.waitForPage("Activity");
+        Thread.sleep(1000);
         activityEditView.activityDetailViewCompleteActivityLnk.click();
         commNav.waitForPage("Complete Activity");
+        Thread.sleep(1000);
 
         //Step: on Complete Activity, choose to 'follow-up' with a phone call activity after completion   ++
         activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -227,6 +234,7 @@ public class MobileSprint320Test extends BaseTest {
         commNav.waitForPage("Follow-up type");
         activityEditView.activityFollowUpSchedulePhoneCallBtn.click();
         commNav.waitForPage("Complete Activity");
+        Thread.sleep(1000);
         headerButton.clickHeaderButton("save");
 
         //Step: after saving the completed activity, should pop-up the follow-up activity for a phone call

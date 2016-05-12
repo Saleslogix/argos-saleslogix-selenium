@@ -346,6 +346,7 @@ public class MobileSprint306Test extends BaseTest {
 			
 			//Step: wait for page Meeting to open
 			commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 			
 			//Step: add an Activity record with a random value for 'regarding' 
 			String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -440,6 +441,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
 
             //Step: set 1st Activity record with 'regarding' value of Demonstration, date of today, and hour set to 8
@@ -458,6 +460,7 @@ public class MobileSprint306Test extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
             System.out.println("1st activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
             //Step: save 1st activity
@@ -480,6 +483,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
 
             //Step: set 2nd Activity record with 'regarding' value of Presentation, date of today, and hour set to 9
@@ -500,6 +504,7 @@ public class MobileSprint306Test extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
             System.out.println("2nd activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
             //Step: save 2nd activity
@@ -522,6 +527,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
 
             //Step: set 3rd Activity record with 'regarding' value of Review proposal, date of today, and hour set to 7
@@ -542,6 +548,7 @@ public class MobileSprint306Test extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
             System.out.println("3rd activity Date/time value for Start Date is : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
             //Step: save 3rd activity
@@ -565,6 +572,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
 
             //Step: set 4th Activity record with 'regarding' value of Training, date of today, and timeless
@@ -809,6 +817,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding' (scenario #1)
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -842,6 +851,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
 
             //Step: toggle timeless Off
             activityEditView.activityEditViewTimelessTgl.click();
@@ -863,6 +873,7 @@ public class MobileSprint306Test extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             System.out.println("Activity Date/time value for Start Date is now : " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
@@ -871,6 +882,7 @@ public class MobileSprint306Test extends BaseTest {
             headerButton.clickHeaderButton("save");
             String pageTitle = ("Meeting - Regarding: " + newActivityRegarding);
             commNav.waitForPage(pageTitle);
+            Thread.sleep(1000);
             AssertJUnit.assertEquals("VP: for Scenario #1, Activity appears to not have saved - FAILED", pageTitle, driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: for Scenario #1, Activity has saved successfully " + " - PASSED");
 
@@ -894,6 +906,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding' (scenario #2)
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -917,6 +930,7 @@ public class MobileSprint306Test extends BaseTest {
             activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
 
             //Step: On activity detail view convert start date from "M/d/yyyy h:mm:ss a" to "M/d/yyyy h:mm a" to allow comparison
             commNav.highlightNClick(activityEditView.activityDetailViewMoreDetailsTab);
@@ -939,6 +953,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
 
             //Step: validate that activity edit view start date/time has not changed since activity was created
             String newActivityStartDate3 = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -971,6 +986,7 @@ public class MobileSprint306Test extends BaseTest {
             driver.switchTo().activeElement();
             //Step: wait for page Activity to open
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
 
             //Step: retrieve value for start time, with the expected time of 5:00 AM/ PM
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -982,12 +998,14 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: wait for page 'Meeting - Regarding: ' newActivityRegarding
             commNav.waitForPage("Meeting - Regarding: " + newActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: open the activity created in edit mode
             headerButton.clickHeaderButton("Edit");
 
             //Step: wait for page Activity
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
 
             //Step: validate that activity edit view start date/time has not changed since it was changed to 5:00 AM/ PM
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -1001,6 +1019,7 @@ public class MobileSprint306Test extends BaseTest {
             //Step: cancel out of previous edit screen and wait for page Activity
             headerButton.clickHeaderButton("cancel");
             commNav.waitForPage("Meeting - Regarding: " + newActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: press back button and wait for page My Activities
             headerButton.clickHeaderButton("back");
@@ -1017,6 +1036,7 @@ public class MobileSprint306Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding' (scenario #2)
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -1051,10 +1071,12 @@ public class MobileSprint306Test extends BaseTest {
             activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
 
             //Step: open activity in edit mode and wait for page Activity
             headerButton.clickHeaderButton("edit");
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
 
             //Step: for activity set timeless = ON (it is OFF by default)
             activityEditView.activityEditViewTimelessTgl.click();

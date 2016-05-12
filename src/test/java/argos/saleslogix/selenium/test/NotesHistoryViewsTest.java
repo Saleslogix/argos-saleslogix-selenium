@@ -59,6 +59,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with value for 'regarding' of 'Research the prospect'
             String newActivityRegarding = "Research the prospect";
@@ -87,10 +88,12 @@ public class NotesHistoryViewsTest extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: complete the activity from the detail view
             activityEditView.activityDetailViewCompleteActivityLnk.click();
             commNav.waitForPage("Complete Activity");
+            Thread.sleep(1000);
             headerButton.clickHeaderButton("Save");
             commNav.waitForPage("Calendar");
 

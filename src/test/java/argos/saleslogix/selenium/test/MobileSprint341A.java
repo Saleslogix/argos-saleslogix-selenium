@@ -72,6 +72,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: Open Start Time calendar, and wait for modal calendar control to open
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -315,6 +316,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: Open Start Time calendar, and wait for modal calendar control to open
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -590,6 +592,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -703,6 +706,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -718,10 +722,12 @@ public class MobileSprint341A extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: complete the activity from the detail view
             activityEditView.activityDetailViewCompleteActivityLnk.click();
             commNav.waitForPage("Complete Activity");
+            Thread.sleep(1000);
             headerButton.clickHeaderButton("Save");
             commNav.waitForPage("Calendar");
 
@@ -843,6 +849,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -918,6 +925,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -937,12 +945,14 @@ public class MobileSprint341A extends BaseTest {
             commView.lookupTxtBox.sendKeys(Keys.RETURN);
             opportunitiesListView.topRelatedOpportunitiesListItem.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: select the contact for the activity
             activityEditView.activityEditViewContactBtn.click();
             commNav.waitForPage("Contacts");
             contactsListView.relatedContactsListViewTopItem.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: save the values for each of account, contact and opportunity
             String activityAccountValue = activityEditView.activityEditViewAccountFld.getAttribute("value");
@@ -1065,6 +1075,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -1084,6 +1095,7 @@ public class MobileSprint341A extends BaseTest {
             commView.lookupTxtBox.sendKeys(Keys.RETURN);
             contactsListView.relatedContactsListViewTopItem.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: save the value of the activity's work phone number
             String activityWorkPhone = activityEditView.activityEditViewPhoneFld.getAttribute("value");
@@ -1182,6 +1194,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -1201,6 +1214,7 @@ public class MobileSprint341A extends BaseTest {
             commView.lookupTxtBox.sendKeys(Keys.RETURN);
             contactsListView.relatedContactsListViewTopItem.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: save the value of the activity's work phone number
             String activityWorkPhone = activityEditView.activityEditViewPhoneFld.getAttribute("value");
@@ -1293,6 +1307,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -1317,6 +1332,7 @@ public class MobileSprint341A extends BaseTest {
             activityItemLnk.click();
             activityEditView.activityDetailViewCompleteActivityLnk.click();
             commNav.waitForPage("Complete Activity");
+            Thread.sleep(1000);
             headerButton.clickHeaderButton("save");
             commNav.waitForPage("My Schedule");
 
@@ -1380,6 +1396,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -1409,6 +1426,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
             String originalStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: original activity 'start time' that has been confirmed is ... " + originalStartTime);
 
@@ -1436,6 +1454,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: on the activity insert screen, validate that start time displays as 8/16/2015 9:30 AM/PM as expected
             System.out.println("VP: activity 'start time' was changed on the modal calendar control, then that value was cancelled");
@@ -1466,6 +1485,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: open the activity detail view and confirm that the start time displays as the original value of 8/16/2015 9:30 AM/PM
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
             activityEditView.activityDetailViewMoreDetailsTab.click();
             String originalStartTimePlusMins = originalStartTime.replace("30", "30:00");
             System.out.println("VP: activity detail 'start time' value is ... " + activityEditView.activityDetailViewStartTimeFld.getText());
@@ -1523,6 +1543,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -1573,6 +1594,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: save the activity
             headerButton.clickHeaderButton("save");
@@ -1602,6 +1624,7 @@ public class MobileSprint341A extends BaseTest {
 
             headerButton.clickHeaderButton("edit");
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: for 'start time' open the calendar control
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -1678,6 +1701,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: Open Start Time calendar, and wait for modal calendar control to open
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -1692,6 +1716,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: cancel the new activity, to return to the Calendar screen
             headerButton.clickHeaderButton("cancel");
@@ -1767,6 +1792,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -1779,6 +1805,7 @@ public class MobileSprint341A extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: choose an account for the activity
             activityEditView.activityEditViewAccountBtn.click();
@@ -1788,6 +1815,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(500);
             accountsListView.relatedAccountsListViewTopItem.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: choose a contact for the activity
             activityEditView.activityEditViewContactBtn.click();
@@ -1798,6 +1826,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(500);
             contactsListView.relatedContactsListViewTopItem.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: choose an opportunity for the activity
             activityEditView.activityEditViewOpportunityBtn.click();
@@ -1808,6 +1837,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(500);
             opportunitiesListView.topRelatedOpportunitiesListItem.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: verify that 'repeats' on the insert activity screen displays as 'Daily'
             String activityRepeatsValue = activityEditView.activityEditViewRepeatsFld.getAttribute("value");
@@ -1844,14 +1874,18 @@ public class MobileSprint341A extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: press link on detail view to complete the activity series
             activityEditView.activityDetailViewCompleteSeriesLnk.click();
             commNav.waitForPage("Complete Series");
+            Thread.sleep(1000);
             activityEditView.activityCompleteViewFollowUpBtn.click();
             commNav.waitForPage("Follow-up type");
+            Thread.sleep(1000);
             activityEditView.activityFollowUpSchedulePhoneCallBtn.click();
             commNav.waitForPage("Complete Series");
+            Thread.sleep(1000);
 
             //Step: verify that 'follow-up' on the complete series screen displays as 'Phone Call'
             String activityFollowUpValue = activityEditView.activityCompleteViewFollowUpFld.getAttribute("value");
@@ -1873,6 +1907,7 @@ public class MobileSprint341A extends BaseTest {
 
             headerButton.clickHeaderButton("Save");
             commNav.waitForPage("Phone Call");
+            Thread.sleep(1000);
 
             //Step: verify that save of completion worked, and one is positioned on the Phone Call screen, ready for the follow-up activity
             AssertJUnit.assertEquals("VP: Activity Completion - completion saved as expected - FAILED", "Phone Call", driver.findElement(By.id("pageTitle")).getText());
@@ -1927,6 +1962,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -1966,6 +2002,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: save and display the 'start time' for the new activity
             String activityChangedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -1992,6 +2029,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: choose to edit the activity
             headerButton.clickHeaderButton("edit");
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: Open Start Time calendar ... relative calendar
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -2028,6 +2066,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: verify the the date/time on the edit view is the same as it was initially on the insert view, where today's date was being used
             String activityFinalStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -2085,6 +2124,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -2124,6 +2164,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: save and display the 'start time' for the new activity
             String activityChangedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -2150,6 +2191,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: choose to edit the activity
             headerButton.clickHeaderButton("edit");
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: Open Start Time calendar ... relative calendar
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -2186,6 +2228,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: verify the the date/time on the edit view is the same as it was initially on the insert view, where today's date was being used
             String activityFinalStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -2249,6 +2292,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -2261,12 +2305,14 @@ public class MobileSprint341A extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
             activityEditView.activityEditViewRecurringFldBtn.click();
             commNav.waitForPage("Recurrence");
             activityEditView.activityRecurrenceOccurencesFld.clear();
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("3");
             headerButton.clickHeaderButton("accept");
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: save the recurring activity
             headerButton.clickHeaderButton("Save");
@@ -2293,6 +2339,7 @@ public class MobileSprint341A extends BaseTest {
             headerButton.clickHeaderButton("edit");
             driver.switchTo().alert().dismiss();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: edit the regarding field, then save the activity
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -2302,6 +2349,7 @@ public class MobileSprint341A extends BaseTest {
             String editedFullActivityRegarding = fullActivityRegarding + "-1";
             String editedActivityRegarding = newActivityRegarding + "-1";
             commNav.waitForPage(editedFullActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: verify that the activity occurrence saved successfully, and that one is now positioned on the activity detail view
             AssertJUnit.assertEquals("VP: on saving the edited occurrence of a recurring activity, there is no error, and activity detail view displays - FAILED", editedActivityRegarding, activityEditView.activityDetailViewRegardingFld.getText());
@@ -2400,6 +2448,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -2412,12 +2461,14 @@ public class MobileSprint341A extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
             activityEditView.activityEditViewRecurringFldBtn.click();
             commNav.waitForPage("Recurrence");
             activityEditView.activityRecurrenceOccurencesFld.clear();
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("3");
             headerButton.clickHeaderButton("accept");
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: choose contact Janet Aceti
             activityEditView.activityEditViewContactBtn.click();
@@ -2434,6 +2485,7 @@ public class MobileSprint341A extends BaseTest {
             contactsListView.relatedContactsListViewTopItem.click();
             System.out.println("VP: contact chosen was : " + TEST_CONTACT_RECORD2);
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: save the recurring activity
             headerButton.clickHeaderButton("Save");
@@ -2469,6 +2521,7 @@ public class MobileSprint341A extends BaseTest {
             headerButton.clickHeaderButton("edit");
             driver.switchTo().alert().dismiss();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: edit the regarding field, then save the activity
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -2478,6 +2531,7 @@ public class MobileSprint341A extends BaseTest {
             String editedFullActivityRegarding = fullActivityRegarding + "-1";
             String editedActivityRegarding = newActivityRegarding + "-1";
             commNav.waitForPage(editedFullActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: search for Contact entity, then open it's Detail view
             commNav.entityRecordOpenDetailView(entityType, contactRecord);
@@ -2557,6 +2611,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -2581,8 +2636,10 @@ public class MobileSprint341A extends BaseTest {
             //Step: open and edit this timeless activity
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
             headerButton.clickHeaderButton("Edit");
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: press icon for start time ... verify that the calendar control opens (check that calendar Cancel button displays)
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -2650,6 +2707,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -2690,8 +2748,10 @@ public class MobileSprint341A extends BaseTest {
             //Step: open and edit this timeless activity
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
             headerButton.clickHeaderButton("Edit");
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: press icon for start time to open relative date control
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -2764,6 +2824,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open, and store default value of 'start time'
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
             String newActivityStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: initial activity start time (defaults to 'today') is ... " + newActivityStartTime);
 
@@ -2789,6 +2850,7 @@ public class MobileSprint341A extends BaseTest {
                 Thread.sleep(1000);
                 driver.switchTo().activeElement();
                 commNav.waitForPage("Meeting");
+                Thread.sleep(1000);
                 String newActivityThisEveStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
                 System.out.println("VP: after choosing 'This Evening', activity start time is ... " + newActivityThisEveStartTime);
 
@@ -2834,6 +2896,7 @@ public class MobileSprint341A extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
             String newActivityTomorrowEveStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: after choosing 'Tomorrow Evening', activity start time is ... " + newActivityTomorrowEveStartTime);
 
@@ -2915,6 +2978,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: select Meeting for activity type
             activityEditView.activityScheduleMeetingBtn.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: clear start time field, then enter an invalid date and try to save the activity
             activityEditView.activityEditViewStartTimeFld.click();
@@ -2984,6 +3048,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: store initial value of 'start time', then manually change it to have a time of '11:07 AM'
             String activityInitialDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -3016,6 +3081,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: press Confirm button from the calendar control
             calendarView.calendarModalConfirm.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: check that the current value of 'start time' is the same as the manually changed value ... minutes of '07' should still display
             String activityFinalDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -3072,6 +3138,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: store initial value of 'start time', then manually change it to have a time of '11:07 AM'
             String activityInitialDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -3110,6 +3177,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: just Cancel from the calendar control, and from the activity
             calendarView.calendarModalCancel.click();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
             headerButton.clickHeaderButton("Cancel");
             commNav.waitForPage("Calendar");
 
@@ -3127,6 +3195,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: store initial value of 'start time', then manually change it to have a time of '10:24 AM'
             activityInitialDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");

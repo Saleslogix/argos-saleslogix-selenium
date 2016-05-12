@@ -105,6 +105,7 @@ public class MobileSprint331 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -184,6 +185,7 @@ public class MobileSprint331 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -213,6 +215,7 @@ public class MobileSprint331 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: save activity
             headerButton.clickHeaderButton("Save");
@@ -226,6 +229,7 @@ public class MobileSprint331 extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
 
 
             //Step: open the activity created in edit mode
@@ -233,6 +237,7 @@ public class MobileSprint331 extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Activity");
+            Thread.sleep(1000);
 
             //Step: toggle off the Timeless button
             activityEditView.activityEditViewTimelessTgl.click();
@@ -307,6 +312,7 @@ public class MobileSprint331 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());

@@ -122,6 +122,7 @@ public class MobileSprint305Test extends BaseTest {
 			//SubStep: set the Activity Type...
 			driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = '" + actType + "']")).click();
 			commNav.waitForPage(actType);
+            Thread.sleep(1000);
 		    
 			//SubStep: setup and confirm the Regarding field val.
             System.out.println("Activity regarding field will be - " + regardingVal);
@@ -178,11 +179,13 @@ public class MobileSprint305Test extends BaseTest {
 		commNav.searchListView(entityView, regardingVal);
 		commNav.clickListViewItemN(entityView, 1);
 		commNav.waitForPage("Personal Activity - Regarding: Birthday Reminder");
+        Thread.sleep(1000);
 		
 		//Step: complete the activity
 	    String completeActyIconXPath = "//*[@id='activity_detail']/div[2]/ul[1]/li/a";
 	    driver.findElement(By.xpath(completeActyIconXPath)).click();
 	    commNav.waitForPage("Complete Activity");
+        Thread.sleep(1000);
 		headerButton.clickHeaderButton("save");
 	    Thread.sleep(5000);
 	    commNav.waitForPage("My Activities");
@@ -195,6 +198,7 @@ public class MobileSprint305Test extends BaseTest {
 		commNav.searchListView(entityView, regardingVal);
 		commNav.clickListViewItemN(entityView, 1);
 		commNav.waitForPage(actType);
+        Thread.sleep(1000);
 		
 		//Step: modify the Notes field
 		headerButton.clickHeaderButton("edit");

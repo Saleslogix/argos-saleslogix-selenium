@@ -207,6 +207,7 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -239,6 +240,7 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: edit the start date and re-save activity
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -255,16 +257,19 @@ public class MobileSprint330 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             String editedActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date changed to : " + editedActivityStartDate);
             headerButton.clickHeaderButton("Save");
             commNav.waitForPage("Meeting - Regarding: " + newActivityRegarding);
+            Thread.sleep(1000);
 
             //Step: re-edit activity, retrieve edited start date
             headerButton = PageFactory.initElements(driver, HeaderButton.class);
             headerButton.clickHeaderButton("Edit");
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             String edited2ActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -439,6 +444,7 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: retrieve value for activity Account
             String newActivityAccount = activityEditView.activityEditViewAccountFld.getAttribute("value");
@@ -498,6 +504,7 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -630,6 +637,7 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: retrieve value for start time ... creating an activity for "today"
             String strDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -690,6 +698,7 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
+            Thread.sleep(1000);
 
             //Step: retrieve value for start time ... creating an activity that is "not for today"
             strDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
