@@ -239,6 +239,7 @@ public class MobileSprint330B extends BaseTest {
             accountListView.topAccountsListItemIcon.click();
             accountListView.topAccountsListItemQuickActionsEditBtn.click();
             commNav.waitForPage("Account");
+            Thread.sleep(1000);
 
             //Step: retrieve the current value of phone ... should be equal to the initial value of the phone, before the edit
             String currentPhoneValue = accountListView.accountEditViewPhoneInputFld.getAttribute("value");

@@ -490,6 +490,7 @@ public class MobileSprint317BTest extends BaseTest {
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             headerButton.clickHeaderButton("Save");
             commNav.waitForNotPage("Meeting");
+            Thread.sleep(1000);
             headerButton.clickHeaderButton("Edit");
             commNav.waitForPage("Meeting");
             Thread.sleep(1000);

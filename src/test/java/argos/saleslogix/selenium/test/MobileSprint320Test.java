@@ -135,6 +135,7 @@ public class MobileSprint320Test extends BaseTest {
 
         //Step: save activity
         headerButton.clickHeaderButton("Save");
+        Thread.sleep(1000);
 
         //Step: search for recurring activity created above
         commView.lookupTxtBox.click();

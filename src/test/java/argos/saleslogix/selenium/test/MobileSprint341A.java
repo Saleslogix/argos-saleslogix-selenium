@@ -1464,6 +1464,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: save the activity
             headerButton.clickHeaderButton("save");
             commNav.waitForPage("Calendar");
+            Thread.sleep(1000);
 
             //Step: place focus on calendar for 8/16/2015
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
@@ -1599,6 +1600,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: save the activity
             headerButton.clickHeaderButton("save");
             commNav.waitForPage("Calendar");
+            Thread.sleep(1000);
 
             //Step: place focus on calendar for 8/16/2015
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
@@ -1607,6 +1609,7 @@ public class MobileSprint341A extends BaseTest {
             calendarView.calendarMonthAug.click();
             calendarView.calendarYearField.click();
             calendarView.calendarYearTen.click();
+            Thread.sleep(1000);
 
             //Step: validate that the activity displays as expected for 8/16/2015
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));

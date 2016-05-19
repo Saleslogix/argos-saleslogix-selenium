@@ -496,11 +496,13 @@ public class MobileSprint317Test extends BaseTest {
                 //click the Edit Quick Action item
                 accountListView.topAccountsListItemQuickActionsEditBtn.click();
                 commNav.waitForPage("Account");
+                Thread.sleep(1000);
                 AccountViewsElements accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
 
                 //click the edit address button to open the Address screen
                 accountEditView.accountEditViewAddressFldBtn.click();
                 commNav.waitForPage("Address");
+                Thread.sleep(1000);
 
                 String addressLine1Data = commView.addressLine1.getAttribute("value");
                 System.out.println("address Line1 is ... " + addressLine1Data);
