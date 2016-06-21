@@ -381,7 +381,7 @@ public class MobileSprint330 extends BaseTest {
             System.out.println("VP: search for urgency values containing 'high' ");
             commView.lookupTxtBox.sendKeys("high");
             commView.lookupTxtBox.sendKeys(Keys.RETURN);
-            Thread.sleep(3000);
+            Thread.sleep(4000);
 
             //Step: check the values of the top 2 items ... should only see values that include 'high'
             String urgencyItem1 = ticketEditView.ticketUrgency1stItem.getText();

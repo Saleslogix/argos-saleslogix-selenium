@@ -1815,7 +1815,7 @@ public class MobileSprint341A extends BaseTest {
             commNav.waitForPage("Accounts");
             commView.lookupTxtBox.sendKeys(TEST_ACCOUNT_RECORD);
             commView.lookupTxtBox.sendKeys(Keys.RETURN);
-            Thread.sleep(500);
+            Thread.sleep(1000);
             accountsListView.relatedAccountsListViewTopItem.click();
             commNav.waitForPage("Meeting");
             Thread.sleep(1000);
@@ -1826,7 +1826,7 @@ public class MobileSprint341A extends BaseTest {
             commView = PageFactory.initElements(driver, CommonViewsElements.class);
             commView.lookupTxtBox.sendKeys(TEST_CONTACT_RECORD);
             commView.lookupTxtBox.sendKeys(Keys.RETURN);
-            Thread.sleep(500);
+            Thread.sleep(1000);
             contactsListView.relatedContactsListViewTopItem.click();
             commNav.waitForPage("Meeting");
             Thread.sleep(1000);
@@ -1837,7 +1837,7 @@ public class MobileSprint341A extends BaseTest {
             commView = PageFactory.initElements(driver, CommonViewsElements.class);
             commView.lookupTxtBox.sendKeys(TEST_OPPORTUNITY_RECORD3);
             commView.lookupTxtBox.sendKeys(Keys.RETURN);
-            Thread.sleep(500);
+            Thread.sleep(1000);
             opportunitiesListView.topRelatedOpportunitiesListItem.click();
             commNav.waitForPage("Meeting");
             Thread.sleep(1000);
