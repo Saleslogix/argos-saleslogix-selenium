@@ -30,7 +30,7 @@ public class CalendarViewsElements extends BaseTest {
 	WebElement calendarTodayBtn;
 
     @CacheLookup
-    @FindBy(xpath = "//span[@class='toggleOn weekToggle__on']")
+    @FindBy(xpath = "//div[@class='toggle toggle-horizontal calendar__weekToggle']")
     WebElement calendarWeekToggle;
 
 	@CacheLookup
