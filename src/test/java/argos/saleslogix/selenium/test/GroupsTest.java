@@ -301,7 +301,7 @@ public class GroupsTest extends BaseTest {
         ticketsListView.rmenu_groupFollowUp.click();
         commNav.waitForPage("Follow-Up");
 
-        //Step: reveal Right Context Menu panel again, and choose 'Detail' layout ... right menu is still open
+        //Step: reveal Right Context Menu panel again, and choose 'Detail' layout ... right menu is still open?
         //headerButton.showRightContextMenu();
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("Follow-Up");

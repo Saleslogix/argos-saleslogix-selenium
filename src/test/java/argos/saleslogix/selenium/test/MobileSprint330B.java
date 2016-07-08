@@ -802,7 +802,7 @@ public class MobileSprint330B extends BaseTest {
     @Test(enabled = true)
     // INFORCRM-2071 (MBL-10894) ... Calendar Month view : where activity is created not today, with start time earlier than current time,
     //               on saving, (N/A for Mobile 3.4 + ...the calendar cell count is incremented by 1 as expected), the associated activity doesn't display
-    //               Requires that Month view ... next month ... first day on second row has no activities
+    //               Requires that Month view ... next month ... first day on second row has no activities (THIS RESTRICTION HAS BEEN REMOVED in 3.4.2)
     public void test06_INFORCRM2071() throws Exception {
         String methodID = "test06_INFORCRM2071";
 
@@ -917,7 +917,12 @@ public class MobileSprint330B extends BaseTest {
 
 
             //Step: focus should still be on the Sunday at the start of the 2nd row of days for the month; verify that activity just created appears for this day
-            AssertJUnit.assertEquals("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - FAILED", newActivityRegarding, calendarView.calendarMonthFirstActivityDescription.getText());
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
+            activityItemLnk.click();
+            commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
+
+            AssertJUnit.assertEquals("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - FAILED", newActivityRegarding, driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - PASSED");
 
 
