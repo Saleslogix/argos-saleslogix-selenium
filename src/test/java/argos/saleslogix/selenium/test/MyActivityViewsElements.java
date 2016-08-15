@@ -251,6 +251,10 @@ public class MyActivityViewsElements extends BaseTest {
     //@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[2]/div[1]/span")
     @FindBy(xpath = "//*[@id='activity_detail']//div[@data-property='StartDate']/span")
     WebElement activityDetailViewStartTimeFld;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='activity_detail']//div[@data-property='StartDate']/label")
+    WebElement activityDetailViewStartTimeLabel;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[1]/div[5]")

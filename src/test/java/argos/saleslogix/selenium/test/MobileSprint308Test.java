@@ -326,7 +326,7 @@ public class MobileSprint308Test extends BaseTest {
 
     @Test(enabled = true)
     // MBL-10433 ... Calendar Month view : timeless activity displays under previous day
-    //               Assumes eval data contains no activities for the Sunday at the start of the second row for the month
+    //               Assumes eval data contains no activities for the Sunday at the start of the second row for the month (THIS RESTRICTION HAS BEEN REMOVED in 3.4.2)
     public void test03_MBL10433() throws Exception {
         String methodID = "test03_MBL10433";
 
@@ -402,10 +402,18 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: click on the Sunday at the start of the 2nd row of days for the month and verify that activity just created appears for this day
             calendarView.calendarMonthFirstDaySecondRow.click();
-            AssertJUnit.assertEquals("VP: A timeless activity is not displaying under the expected day in Calendar Month view " + " - FAILED", "All-Day", calendarView.calendarMonthFirstActivityTime.getText());
+            WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
+            activityItemLnk.click();
+            commNav.waitForPage(newActivityRegarding);
+            Thread.sleep(1000);
+
+            activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+            activityEditView.activityDetailViewMoreDetailsTab.click();
+            AssertJUnit.assertEquals("VP: A timeless activity is not displaying under the expected day in Calendar Month view " + " - FAILED", "all day", activityEditView.activityDetailViewStartTimeLabel.getText());
             System.out.println("VP: A timeless activity is displaying under the expected day in Calendar Month view " + " - PASSED");
-            AssertJUnit.assertEquals("VP: Timeless activity created is not displaying under the expected day in Calendar Month view " + " - FAILED", newActivityRegarding, calendarView.calendarMonthFirstActivityDescription.getText());
-            System.out.println("VP: Timeless activity created is displaying under the expected day in Calendar Month view " + " - PASSED");
+
+            AssertJUnit.assertEquals("VP: Timeless activity created " + newActivityRegarding + " is not displaying under the expected day in Calendar Month view " + " - FAILED", newActivityRegarding, driver.findElement(By.id("pageTitle")).getText());
+            System.out.println("VP: Timeless activity created " + newActivityRegarding + " is displaying under the expected day in Calendar Month view " + " - PASSED");
 
 
         }

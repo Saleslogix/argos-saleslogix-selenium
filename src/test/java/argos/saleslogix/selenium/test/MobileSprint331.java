@@ -64,7 +64,7 @@ public class MobileSprint331 extends BaseTest {
 
     @Test(enabled = true)
     // INFORCRM-3395 ... Calendar - unable to add more than one activity under 'Month' view ... Schedule page not opening
-    //                   Requires that Month view, first day on third row, has no activities
+    //                   Requires that Month view, first day on third row, has no activities (THIS RESTRICTION IS NO LONGER RELEVANT AND DOES NOT APPLY in 3.4.2)
     public void test01_INFORCRM3395() throws Exception {
         String methodID = "test01_INFORCRM3395";
 
