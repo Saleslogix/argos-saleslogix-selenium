@@ -302,7 +302,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("Follow-Up");
 
         //Step: reveal Right Context Menu panel again, and choose 'Detail' layout ... right menu is still open?
-        //headerButton.showRightContextMenu();
+        headerButton.showRightContextMenu();
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("Follow-Up");
 
