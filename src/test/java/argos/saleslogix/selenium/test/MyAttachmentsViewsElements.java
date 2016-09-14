@@ -101,6 +101,10 @@ public class MyAttachmentsViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
 	WebElement myAttachmentsTagsPnl;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='attachment_Add']//div[@class='file-wrapper']")
+    WebElement myAttachmentsAddFile;
 				
 	//Methods
 	//-------
