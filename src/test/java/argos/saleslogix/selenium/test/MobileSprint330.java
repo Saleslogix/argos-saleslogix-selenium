@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 
 /**
@@ -316,26 +317,38 @@ public class MobileSprint330 extends BaseTest {
 
             commNav.isWebElementPresent(viewName + ", 'View address'", contactDetailView.contactsDetailViewViewAddressLnk);
 
-            //Store the current window handle for the mobile window
-            String winHandleBefore = driver.getWindowHandle();
+            //Store the current window handle for the mobile window ... not necessary in Mobile 3.5, no separate window opened for address
+            //String winHandleBefore = driver.getWindowHandle();
 
             //Step: click on the contact detail view 'View Address' link ... should open map with address
             contactDetailView.contactsDetailViewViewAddressLnk.click();
             Thread.sleep(7000);
 
-            //Switch to new window opened for the contact address
-            for(String winHandle : driver.getWindowHandles()){
-                driver.switchTo().window(winHandle);
+            //Switch to new window opened for the contact address ... no longer needed in Mobile 3.5
+            //for(String winHandle : driver.getWindowHandles()){
+            //    driver.switchTo().window(winHandle);
+            //}
+
+            //AssertJUnit.assertTrue("VP: View Address action for contact has opened a map with address - FAILED", driver.getPageSource().contains("Google"));
+            //System.out.println("VP: View Address action for contact has opened a map with address - PASSED");
+
+            driver.switchTo().frame(0);
+            List elements = driver.findElements(By.xpath("//*[@id='mapDiv']//span[1][contains(text(), 'Google')]"));
+
+            if(elements.size() > 0) {
+                System.out.println("VP: View Address action for contact has opened a map with address - PASSED");
             }
+            else {
+                System.out.println("VP: View Address action for contact has opened a map with address - FAILED");
+                AssertJUnit.fail("test failed");
+            }
+            driver.switchTo().defaultContent();
 
-            AssertJUnit.assertTrue("VP: View Address action for contact has opened a map with address - FAILED", driver.getPageSource().contains("Google Maps"));
-            System.out.println("VP: View Address action for contact has opened a map with address - PASSED");
+            //Close the new window (address map) ... no longer needed in Mobile 3.5
+            //driver.close();
 
-            //Close the new window (address map)
-            driver.close();
-
-            //Switch back to original browser (first window - mobile)
-            driver.switchTo().window(winHandleBefore);
+            //Switch back to original browser (first window - mobile) ... no longer needed in Mobile 3.5
+            //driver.switchTo().window(winHandleBefore);
 
         } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
