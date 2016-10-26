@@ -130,25 +130,31 @@ public class GroupsTest2 extends BaseTest {
         //Step: navigate to Leads list view...
         commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("Leads");
+        Thread.sleep(3000);
 
         LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
-        //Step: reveal Right Context Menu panel
-        headerButton.showRightContextMenu();
+        //From ICRM 8.3.0.4 and up, the 'All Leads' group should now display by default
+        String pageTitle2 = driver.findElement(By.id("pageTitle")).getText();
 
-        //Step: click on Configure button to open 'Groups Lookup' and select 'All Leads' for loup
-        commNav.rmenu_GroupConfigure.click();
-        commNav.waitForPage("Groups Lookup");
-        leadsListView.groupsConfigureAllLeads.click();
-        headerButton.checkButton.click();
-        commNav.waitForPage("All Leads");
-        Thread.sleep(3000);
+        if(!pageTitle2.equals("All Leads") ) {
+            //Step: if 'All Leads' group not displaying, reveal Right Context Menu panel
+            headerButton.showRightContextMenu();
 
-        //Step: open right menu and select 'All Leads' group to display   ... NO LONGER NEEDED
-        //headerButton.showRightContextMenu();
-        //leadsListView.rmenu_groupAllLeads.click();
-        //commNav.waitForPage("All Leads");
-        //Thread.sleep(3000);
+            //Step: if 'All Leads' group not displaying, click on Configure button to open 'Groups Lookup' and select 'All Leads' for loup
+            commNav.rmenu_GroupConfigure.click();
+            commNav.waitForPage("Groups Lookup");
+            leadsListView.groupsConfigureAllLeads.click();
+            headerButton.checkButton.click();
+            commNav.waitForPage("All Leads");
+            Thread.sleep(3000);
+
+            //Step: open right menu and select 'All Leads' group to display   ... NO LONGER NEEDED
+            //headerButton.showRightContextMenu();
+            //leadsListView.rmenu_groupAllLeads.click();
+            //commNav.waitForPage("All Leads");
+            //Thread.sleep(3000);
+        }
 
         //Step: verify that 'Summary' layout is in effect ... should not see a second column with 'Work Phone' in group listview
         AssertJUnit.assertFalse("VP: Lead Group List View is not displaying Summary layout by default - FAILED", driver.getPageSource().contains("Work Phone"));
@@ -453,20 +459,27 @@ public class GroupsTest2 extends BaseTest {
         LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
         headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
-        //Step: navigate to Leads list view ... since the web browser was closed and re-opened since step 05, need to re-instate the 'All Leads' group and switch to Detail layout
+        //Step: navigate to Leads list view
         commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("Leads");
-
-        //Step: reveal Right Context Menu panel
-        headerButton.showRightContextMenu();
-
-        //Step: click on Configure button to open 'Groups Lookup' and select 'All Leads' for loup
-        commNav.rmenu_GroupConfigure.click();
-        commNav.waitForPage("Groups Lookup");
-        leadsListView.groupsConfigureAllLeads.click();
-        headerButton.checkButton.click();
-        commNav.waitForPage("All Leads");
         Thread.sleep(3000);
+
+        //Step: as the web browser was closed and re-opened since step 05, need to re-instate the 'All Leads' group in ICRM 8.3.0.3 and earlier, and switch to Detail layout : reveal Right Context Menu panel
+        //From ICRM 8.3.0.4 and up, the 'All Leads' group should now display by default
+        String pageTitle3 = driver.findElement(By.id("pageTitle")).getText();
+
+        if(!pageTitle3.equals("All Leads") ) {
+            //Step: if 'All Leads' group not displaying, reveal Right Context Menu panel
+            headerButton.showRightContextMenu();
+
+            //Step: if 'All Leads' group not displaying, click on Configure button to open 'Groups Lookup' and select 'All Leads' for loup
+            commNav.rmenu_GroupConfigure.click();
+            commNav.waitForPage("Groups Lookup");
+            leadsListView.groupsConfigureAllLeads.click();
+            headerButton.checkButton.click();
+            commNav.waitForPage("All Leads");
+            Thread.sleep(3000);
+        }
 
         headerButton.rightCntxtMnuButton.click();
         commNav.rmenu_GroupDetail.click();
