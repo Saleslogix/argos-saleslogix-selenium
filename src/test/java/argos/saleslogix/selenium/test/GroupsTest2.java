@@ -343,7 +343,7 @@ public class GroupsTest2 extends BaseTest {
         accountMainPhoneEdited = accountMainPhoneEdited.replace("-","");
         System.out.println("VP: Account group view Main Phone value to be clicked is ... " + accountMainPhone + " / " + accountMainPhoneEdited);
         accountsListView.accountGroupViewMainPhoneFld.click();
-        commNav.waitForPage("Note");
+        //commNav.waitForPage("Note");
         Thread.sleep(3000);
         String urlTelephone = driver.getCurrentUrl().substring(4);
         System.out.println("VP: Value of Main Phone in browser address bar (would be called) is ... " + urlTelephone);
@@ -387,7 +387,7 @@ public class GroupsTest2 extends BaseTest {
         contactWorkPhoneEdited = contactWorkPhoneEdited.replace("-","");
         System.out.println("VP: Contact group view Work Phone value to be clicked is ... " + contactWorkPhone + " / " + contactWorkPhoneEdited);
         contactsListView.contactGroupViewWorkPhoneFld.click();
-        commNav.waitForPage("President");
+        //commNav.waitForPage("President");
         Thread.sleep(3000);
         urlTelephone = driver.getCurrentUrl().substring(4);
         System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
@@ -421,7 +421,7 @@ public class GroupsTest2 extends BaseTest {
         contactMobileEdited = contactMobileEdited.replace("-","");
         System.out.println("VP: Contact group view Mobile Phone value to be clicked is ... " + contactMobilePhone + " / " + contactMobileEdited);
         contactsListView.contactGroupViewMobileFld.click();
-        commNav.waitForPage("President");
+        //commNav.waitForPage("President");
         Thread.sleep(3000);
         urlTelephone = driver.getCurrentUrl().substring(4);
         System.out.println("VP: Value of Mobile Phone in browser address bar (would be called) is ... " + urlTelephone);
@@ -494,7 +494,7 @@ public class GroupsTest2 extends BaseTest {
         leadWorkPhoneEdited = leadWorkPhoneEdited.replace("-","");
         System.out.println("VP: Lead group view Work Phone value to be clicked is ... " + leadWorkPhone + " / " + leadWorkPhoneEdited);
         leadsListView.leadGroupViewWorkPhoneFld.click();
-        commNav.waitForPage("IT Director");
+        //commNav.waitForPage("IT Director");
         Thread.sleep(3000);
         urlTelephone = driver.getCurrentUrl().substring(4);
         System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
