@@ -99,6 +99,8 @@ public class BaseTest {
             capabilities.setCapability(CapabilityType.PROXY, proxy);
         }
 
+        capabilities.setCapability(CapabilityType.TAKES_SCREENSHOT, false);
+
         driver = new RemoteWebDriver(new URL(webDriverUrl), capabilities);
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.MINUTES);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -254,7 +256,12 @@ public class BaseTest {
      */
     @AfterClass
     public void closeBrowser() {
-        driver.quit();
+        try {
+            driver.quit();
+        } catch (Exception e) {
+            System.out.println("WEBDRIVER ERROR: " + e.getMessage());
+        }
+
     }
 
     /**
