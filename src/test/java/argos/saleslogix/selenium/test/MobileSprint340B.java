@@ -64,7 +64,7 @@ public class MobileSprint340B extends BaseTest {
             commView.offlineDataOlderZeroDays.click();
             commView.offlineDataClearBtn.click();
             WebDriverWait wait = new WebDriverWait(driver, 120);
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(), 'Total Storage Usage')]")));
+            Boolean element = wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='busyIndicator__offlineusage']")));
 
             //Briefcase Account
             String entityType = "Accounts";
@@ -248,7 +248,7 @@ public class MobileSprint340B extends BaseTest {
             commView.offlineDataOlderField.click();
             commView.offlineDataOlderZeroDays.click();
             commView.offlineDataClearBtn.click();
-            element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(), 'Total Storage Usage')]")));
+            element = wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='busyIndicator__offlineusage']")));
 
             //Step: verify that My Briefcase now has 'no records'
             commNav.clickGlobalMenuItem("My Briefcase");
