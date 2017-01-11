@@ -394,7 +394,7 @@ public class AccountEntityViewsTest extends BaseTest {
 			commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewIndustryFldBtn, "Industry");
 			commNav.isFieldValueEmpty(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
-			commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
+            commNav.isFieldValueEmpty(viewName + ", owner field", accountEditView.accountEditViewOwnerFld);
 			commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
 			
 			//end of test

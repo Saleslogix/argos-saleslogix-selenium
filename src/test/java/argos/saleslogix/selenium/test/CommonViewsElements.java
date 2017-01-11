@@ -325,8 +325,17 @@ public class CommonViewsElements extends BaseTest {
     WebElement offlineDataOlderZeroDays;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='offline_usage_widget_undefined']//button[contains(text(), 'Clear')]")
+    @FindBy(xpath = "//*[@id='offline_usage_widget_undefined']//button[@data-dojo-attach-event='onclick:onClearAllData']")
     WebElement offlineDataClearBtn;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='offline_usage_widget_undefined']//button[@data-dojo-attach-event='onclick:onClearBriefcasedData']")
+    WebElement offlineDataClearBriefcaseBtn;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='offline_usage_widget_undefined']//button[@data-dojo-attach-event='onclick:onClearRecentData']")
+    WebElement offlineDataClearRecViewedBtn;
 
 
 
