@@ -2183,7 +2183,7 @@ public class MobileDefectTest extends BaseTest {
 		
 		//navigate to the Notes/History List view then click the phonecall hashtag
 		commNav.clickGlobalMenuItem("Notes/History");
-		commNav.rightClickContextMenuItem("phonecall");
+		commNav.rightClickContextMenuItem("#phonecall");
 		
 		//VP: check that Regarding field value of top record is not null
 		WebElement topRegardingFld = driver.findElement(By.xpath("//*[@id='history_list']//ul/li[1]/div[2]/h4[2]"));

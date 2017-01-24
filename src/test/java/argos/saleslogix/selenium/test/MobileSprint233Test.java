@@ -243,7 +243,7 @@ public class MobileSprint233Test extends BaseTest {
 		NotesHistoryViewsElements notesHistoryListView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
 		
 		//VP: confirm that current hash-tag/filter appears above the list view in the Lookup ... from 3.1 #my-history does not display by default
-        commNav.rightClickContextMenuItem("my-history");
+        commNav.rightClickContextMenuItem("#my-history");
 		String resultsMsg = "VP: current hash-tag/filter is displayed above the Notes/History list view";
         //String currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
         String currHashTag = commView.lookupTxtBox.getAttribute("value");
@@ -424,7 +424,7 @@ public class MobileSprint233Test extends BaseTest {
 			
 			//KPI filter + hashtag filter selection loop
 			String hSelectedFilter = "";
-			String[] hTagFilters = {"my-history", "note", "phonecall", "meeting", "personal", "email"};
+			String[] hTagFilters = {"#my-history", "#note", "#phonecall", "#meeting", "#personal", "#email"};
 			for (int iCount = 0;iCount<hTagFilters.length;iCount++) {
 				hSelectedFilter = hTagFilters[iCount];
 				
@@ -446,13 +446,13 @@ public class MobileSprint233Test extends BaseTest {
 						System.out.println(resultsMsg + " - Passed");
 						
 						String selectedKPICardVal = getKPICardValue(selectedKPICardTitle);
-						System.out.println("'" + selectedKpiMetric + "' & #" + hSelectedFilter + " card value: " + selectedKPICardVal);
+						System.out.println("'" + selectedKpiMetric + "' & " + hSelectedFilter + " card value: " + selectedKPICardVal);
 					}
 					catch (Error e) {
 						System.out.println(resultsMsg + " - Failed");
 					}
 					
-					resultsMsg = "VP: selected '#" + hSelectedFilter + "' hash tag filter label check";
+					resultsMsg = "VP: selected '" + hSelectedFilter + "' hash tag filter label check";
                     try {
                         //String selectedHTagFilterLbl = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
                         String selectedHTagFilterLbl = commView.lookupTxtBox.getAttribute("value");
@@ -460,7 +460,7 @@ public class MobileSprint233Test extends BaseTest {
                         AssertJUnit.assertTrue(selectedHTagFilterLbl.matches(regExp));
                         System.out.println(resultsMsg + " - PASSED");
 
-                        System.out.println("select hash tag filter applied: '#" + hSelectedFilter + "'");
+                        System.out.println("select hash tag filter applied: '" + hSelectedFilter + "'");
                     }
                     catch (Error e) {
                         System.out.println(resultsMsg + " - FAILED");

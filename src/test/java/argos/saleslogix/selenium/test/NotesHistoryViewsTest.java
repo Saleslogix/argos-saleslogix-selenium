@@ -551,12 +551,12 @@ public class NotesHistoryViewsTest extends BaseTest {
 		}
 		
 		//Step: test each of the pre-set Hash Tag items
-		commNav.rightClickContextMenuItem("my-history");
-		commNav.rightClickContextMenuItem("note");
-		commNav.rightClickContextMenuItem("phonecall");
-		commNav.rightClickContextMenuItem("meeting");
-		commNav.rightClickContextMenuItem("personal");
-		commNav.rightClickContextMenuItem("email");
+		commNav.rightClickContextMenuItem("#my-history");
+		commNav.rightClickContextMenuItem("#note");
+		commNav.rightClickContextMenuItem("#phonecall");
+		commNav.rightClickContextMenuItem("#meeting");
+		commNav.rightClickContextMenuItem("#personal");
+		commNav.rightClickContextMenuItem("#email");
 		
 		//Step: go back to previous screen
 		headerButton.goBack();
