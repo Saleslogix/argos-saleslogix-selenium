@@ -265,6 +265,58 @@ public class CalendarViewsElements extends BaseTest {
     WebElement calendarHourTwelve;
 
     @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[13]")
+    WebElement calendarHourThirteen;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[14]")
+    WebElement calendarHourFourteen;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[15]")
+    WebElement calendarHourFifteen;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[16]")
+    WebElement calendarHourSixteen;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[17]")
+    WebElement calendarHourSeventeen;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[18]")
+    WebElement calendarHourEighteen;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[19]")
+    WebElement calendarHourNineteen;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[20]")
+    WebElement calendarHourTwenty;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[21]")
+    WebElement calendarHourTwentyOne;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[22]")
+    WebElement calendarHourTwentyTwo;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[23]")
+    WebElement calendarHourTwentyThree;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[24]")
+    WebElement calendarHourTwentyFour;
+
+    @CacheLookup
     @FindBy(xpath = "//*[@id='minute-modal']/input")
     WebElement calendarMinuteField;
 

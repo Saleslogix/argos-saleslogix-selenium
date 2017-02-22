@@ -315,6 +315,11 @@ public class CommonViewsElements extends BaseTest {
     @FindBy(xpath = ".//*[@id='settings']//li[@data-action='viewOfflineOptions']")
     WebElement settingsOfflineOptions;
 
+    //Use 24 hour clock under Settings
+    @CacheLookup
+    @FindBy(xpath = ".//*[@id='settings']//li[@data-action='use24HourClock']")
+    WebElement settingsUse24HourClock;
+
     //Offline Options elements
     @CacheLookup
     @FindBy(xpath = "//*[@id='olderThan-dropdown offline_usage_widget_undefined']/input")
