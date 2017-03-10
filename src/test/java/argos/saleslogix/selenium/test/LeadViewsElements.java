@@ -122,6 +122,10 @@ public class LeadViewsElements extends BaseTest {
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
 	WebElement topLeadsListItemBtmIndicator;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_list']//li[1]//span[@data-action='sendEmail']")
+    WebElement topLeadsListItemEmailLink;
 	
 	@CacheLookup
 	//@FindBy(css = "#lead_list > ul.list-content > li > #bottom_item_indicators > span > img")
@@ -449,6 +453,25 @@ public class LeadViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='lead_list']//span[2][@data-propertyname='WorkPhone']")
     WebElement leadGroupViewWorkPhoneFld;
 
+    @CacheLookup
+    // Group View Email link for lead John Beck
+    @FindBy(xpath = "//*[@id='lead_list']//li[@data-key='QDEMOA00013R']//span[@data-propertyname='Email']")
+    WebElement johnBeckGroupViewEmailLink;
+
+    @CacheLookup
+    // Group view card for lead John Beck ... press to open lead
+    @FindBy(xpath = "//*[@id='lead_list']//li[@data-key='QDEMOA00013R']//div[@class='group-item']")
+    WebElement johnBeckGroupViewCard;
+
+    @CacheLookup
+    // Group view button to open quick actions for lead John Beck
+    @FindBy(xpath = "//*[@id='lead_list']//li[@data-key='QDEMOA00013R']//button[@data-action='selectEntry']")
+    WebElement johnBeckGroupViewQuickActionBtn;
+
+    @CacheLookup
+    // Group view button to open email quick action
+    @FindBy(xpath = "//*[@id='lead_list']//li//button[@aria-label='sendEmail']")
+    WebElement groupViewQuickActionEmailBtn;
 
     @CacheLookup
     @FindBy(xpath = ".//*[@id='lead_detail']//ul[@class='tab-list']/li[1]")

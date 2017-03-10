@@ -38,6 +38,10 @@ public class HeaderButton {
 	//@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='save']")
 	WebElement saveButton;
+
+    //@CacheLookup
+    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='refresh']")
+    WebElement refreshButton;
 	
 	//@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='complete']")
