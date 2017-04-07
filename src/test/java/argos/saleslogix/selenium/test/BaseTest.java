@@ -234,7 +234,7 @@ public class BaseTest {
         SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);
 
         //Step: Log out of Mobile Client
-        commNav.clickGlobalMenuItem("log out");
+        commNav.clickGlobalMenuItem("sign off");
         Thread.sleep(2000);
         closeAlert();
         Thread.sleep(1000);
@@ -359,7 +359,7 @@ public class BaseTest {
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
         // Click the Log Off button
-        commNav.clickGlobalMenuItem("log out");
+        commNav.clickGlobalMenuItem("sign off");
         Thread.sleep(2000);
         closeAlert();
         Thread.sleep(1000);
@@ -373,9 +373,9 @@ public class BaseTest {
         // Verify the Mobile Login screen displays
         try {
             AssertJUnit.assertEquals(fullProdName, driver.findElement(By.id("pageTitle")).getText());
-            System.out.println("VP: Mobile Client Logout Check - Passed");
+            System.out.println("VP: Mobile Client Sign Off Check - Passed");
         } catch (Error e) {
-            System.out.println("Error: Mobile Client Logout Check - FAILED");
+            System.out.println("Error: Mobile Client Sign Off Check - FAILED");
             System.out.println(methodID + "(): " + e.toString());
         }
     }

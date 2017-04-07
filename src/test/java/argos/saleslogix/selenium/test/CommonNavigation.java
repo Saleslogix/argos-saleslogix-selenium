@@ -116,11 +116,11 @@ public class CommonNavigation {
 	WebElement gmenu_help;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Log Out']")
+	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Sign Off']")
 	WebElement gmenu_logOff;
 	
 	@CacheLookup
-	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Log Out']")
+	@FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Sign Off']")
 	WebElement gmenu_logOut;
 
 	
@@ -240,7 +240,7 @@ public class CommonNavigation {
 			case "help":
 				highlightNClick(gmenu_help);
 				break;
-			case "log off": case "log out": case "logout": case "logoff":
+			case "log off": case "sign off": case "logout": case "logoff":
 				highlightNClick(gmenu_logOut);
 				hasListview = false;
 				break;
