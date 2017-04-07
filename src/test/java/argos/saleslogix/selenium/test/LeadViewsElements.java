@@ -126,6 +126,15 @@ public class LeadViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//li[1]//span[@data-action='sendEmail']")
     WebElement topLeadsListItemEmailLink;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_list']//li[1]//span[@data-action='callWork']")
+    WebElement topLeadsListItemCallWorkLink;
+
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='lead_list']//li[1]//span[@data-action='callMobile']")
+    WebElement topLeadsListItemCallMobileLink;
 	
 	@CacheLookup
 	//@FindBy(css = "#lead_list > ul.list-content > li > #bottom_item_indicators > span > img")
@@ -471,7 +480,17 @@ public class LeadViewsElements extends BaseTest {
     @CacheLookup
     // Group view button to open email quick action
     @FindBy(xpath = "//*[@id='lead_list']//li//button[@aria-label='sendEmail']")
-    WebElement groupViewQuickActionEmailBtn;
+    WebElement leadGroupViewQuickActionEmailBtn;
+
+    @CacheLookup
+    // Group view button to open call work quick action
+    @FindBy(xpath = "//*[@id='lead_list']//li//button[@aria-label='callWork']")
+    WebElement leadGroupViewQuickActionCallWorkBtn;
+
+    @CacheLookup
+    // Group view button to open call mobile quick action
+    @FindBy(xpath = "//*[@id='lead_list']//li//button[@aria-label='callMobile']")
+    WebElement leadGroupViewQuickActionCallMobileBtn;
 
     @CacheLookup
     @FindBy(xpath = ".//*[@id='lead_detail']//ul[@class='tab-list']/li[1]")
