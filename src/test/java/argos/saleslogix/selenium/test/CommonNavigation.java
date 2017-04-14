@@ -814,7 +814,7 @@ public class CommonNavigation {
 			Thread.sleep(1000);
 	    	if (second >= 60) AssertJUnit.fail("timeout");
 	    	try { 
-	    		AssertJUnit.assertEquals(pageTitle, driver.findElement(By.id("pageTitle")).getText());
+	    		AssertJUnit.assertEquals(pageTitle, driver.findElement(By.cssSelector(".toolbar > .title > h1")).getText());
 	    		System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
 	    		return true;
 	    	} 
@@ -1007,9 +1007,7 @@ public class CommonNavigation {
 	 */	
 	public boolean isPageDisplayed(String pageTitle) throws InterruptedException {		
 		String methodID = "isPageDisplayed";
-		
-		Thread.sleep(1000);
-    	if (pageTitle.equals(driver.findElement(By.id("pageTitle")).getText())) {
+    	if (pageTitle.equals(driver.findElement(By.cssSelector(".toolbar > .title > h1")).getText())) {
     		System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
     		return true; 
     	}

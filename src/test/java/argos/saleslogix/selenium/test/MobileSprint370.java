@@ -1,12 +1,10 @@
 package argos.saleslogix.selenium.test;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
@@ -17,8 +15,8 @@ import java.util.List;
 
 /**
  * @author Kathy Lockyer-Bratton
- * Class: MobileSprint360
- * Desc.: Test class for some defects or features in Mobile 3.7.0
+ *         Class: MobileSprint360
+ *         Desc.: Test class for some defects or features in Mobile 3.7.0
  */
 public class MobileSprint370 extends BaseTest {
 
@@ -28,9 +26,8 @@ public class MobileSprint370 extends BaseTest {
     public String TEST_COMPANY_RECORD = "Rdi Group Inc";
 
 
-	
-	//Test Methods Set
-	//================
+    //Test Methods Set
+    //================
 
 
     @Test(enabled = true)
@@ -59,19 +56,18 @@ public class MobileSprint370 extends BaseTest {
 
             //Step: add some data for the lead's email if it is blank, and save
             String leadNewEmail = "jbeck@gmail.com";
-            if(leadEditView.leadsEditViewEmailInputFld.getAttribute("value").isEmpty()) {
+            if (leadEditView.leadsEditViewEmailInputFld.getAttribute("value").isEmpty()) {
                 leadEditView.leadsEditViewEmailInputFld.click();
                 leadEditView.leadsEditViewEmailInputFld.clear();
                 leadEditView.leadsEditViewEmailInputFld.sendKeys(leadNewEmail);
                 headerButton.clickHeaderButton("Save");
                 commNav.waitForPage(entityRecord);
                 System.out.println("VP: email value for lead '" + entityRecord + "' has been set to ... " + leadNewEmail);
-            }
-            else {
+            } else {
                 System.out.println("VP: email value for lead '" + entityRecord + "' is already set to ... " + leadEditView.leadsEditViewEmailInputFld.getAttribute("value"));
             }
 
-        }  catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + ": unable to check or add email for ... '" + entityRecord + "' " + entityType);
             AssertJUnit.fail("test failed");
@@ -79,7 +75,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -142,8 +137,7 @@ public class MobileSprint370 extends BaseTest {
             }
 
             System.out.println("VP: history record created for lead after pressing 'Send email' QA on lead detail view - PASSED");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: history record created for lead after pressing 'Send email' QA on lead detail view - FAILED");
             AssertJUnit.fail("test failed");
@@ -151,7 +145,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -223,8 +216,7 @@ public class MobileSprint370 extends BaseTest {
 
 
             System.out.println("VP: history record created for lead after pressing email link on listview - PASSED");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: history record created for lead after pressing email link on listview - FAILED");
             AssertJUnit.fail("test failed");
@@ -232,7 +224,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -305,8 +296,7 @@ public class MobileSprint370 extends BaseTest {
 
 
             System.out.println("VP: history record created for lead after pressing Email quick action on listview - PASSED");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: history record created for lead after pressing Email quick action on listview - FAILED");
             AssertJUnit.fail("test failed");
@@ -314,7 +304,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -383,8 +372,7 @@ public class MobileSprint370 extends BaseTest {
 
 
             System.out.println("VP: history record created for lead after pressing email link on group view - PASSED");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: history record created for lead after pressing email link on group view - FAILED");
             AssertJUnit.fail("test failed");
@@ -392,7 +380,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -456,8 +443,7 @@ public class MobileSprint370 extends BaseTest {
 
 
             System.out.println("VP: history record created for lead after pressing email quick action on group view - PASSED");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: history record created for lead after pressing email quick action on group view - FAILED");
             AssertJUnit.fail("test failed");
@@ -465,7 +451,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -493,11 +478,11 @@ public class MobileSprint370 extends BaseTest {
             commNav.highlightNClick(leadListView.leadGroupViewQuickActionCallWorkBtn);
 
             Thread.sleep(3000);
-            String urlTelType = driver.getCurrentUrl().substring(0,3);
+            String urlTelType = driver.getCurrentUrl().substring(0, 3);
             String urlTelephone = driver.getCurrentUrl().substring(4);
 
             //Step: verify that clicking the lead 'Call Work' quick action in leads group view results in a call being initiated
-            AssertJUnit.assertEquals("VP: Lead group view - clicking the lead 'Call Work' quick action results in a call being initiated - FAILED","tel",urlTelType);
+            AssertJUnit.assertEquals("VP: Lead group view - clicking the lead 'Call Work' quick action results in a call being initiated - FAILED", "tel", urlTelType);
             System.out.println("VP: Value of lead's Work Phone in browser address bar (would be called) is ... " + urlTelephone);
             System.out.println("VP: Lead group view - clicking the lead 'Call Work' quick action results in a call being initiated  - PASSED");
 
@@ -508,8 +493,7 @@ public class MobileSprint370 extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Lead group view : 'Call Work' quick action incorrectly initiating an email - FAILED");
             AssertJUnit.fail("test failed");
@@ -517,7 +501,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -544,11 +527,11 @@ public class MobileSprint370 extends BaseTest {
             commNav.highlightNClick(leadListView.leadGroupViewQuickActionCallMobileBtn);
 
             Thread.sleep(3000);
-            String urlTelType = driver.getCurrentUrl().substring(0,3);
+            String urlTelType = driver.getCurrentUrl().substring(0, 3);
             String urlTelephone = driver.getCurrentUrl().substring(4);
 
             //Step: verify that clicking the lead 'Call Mobile' quick action in leads group view results in a call being initiated
-            AssertJUnit.assertEquals("VP: Lead group view - clicking the lead 'Call Mobile' quick action results in a call being initiated - FAILED","tel",urlTelType);
+            AssertJUnit.assertEquals("VP: Lead group view - clicking the lead 'Call Mobile' quick action results in a call being initiated - FAILED", "tel", urlTelType);
             System.out.println("VP: Value of lead's Mobile Phone in browser address bar (would be called) is ... " + urlTelephone);
             System.out.println("VP: Lead group view - clicking the lead 'Call Mobile' quick action results in a call being initiated  - PASSED");
 
@@ -559,8 +542,7 @@ public class MobileSprint370 extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Leads group view : 'Call Mobile' quick action incorrectly initiating an email - FAILED");
             AssertJUnit.fail("test failed");
@@ -568,7 +550,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -597,11 +578,11 @@ public class MobileSprint370 extends BaseTest {
             commNav.highlightNClick(leadListView.topLeadsListItemCallWorkLink);
 
             Thread.sleep(3000);
-            String urlTelType = driver.getCurrentUrl().substring(0,3);
+            String urlTelType = driver.getCurrentUrl().substring(0, 3);
             String urlTelephone = driver.getCurrentUrl().substring(4);
 
             //Step: verify that clicking the lead work phone link in leads list view results in a call being initiated
-            AssertJUnit.assertEquals("VP: Lead list view - clicking the lead work phone link results in a call being initiated - FAILED","tel",urlTelType);
+            AssertJUnit.assertEquals("VP: Lead list view - clicking the lead work phone link results in a call being initiated - FAILED", "tel", urlTelType);
             System.out.println("VP: Value of lead's Work Phone in browser address bar (would be called) is ... " + urlTelephone);
             System.out.println("VP: Lead list view - clicking the lead work phone link results in a call being initiated  - PASSED");
 
@@ -612,8 +593,7 @@ public class MobileSprint370 extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Lead list view : work phone link incorrectly initiating an email - FAILED");
             AssertJUnit.fail("test failed");
@@ -621,7 +601,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -650,11 +629,11 @@ public class MobileSprint370 extends BaseTest {
             commNav.highlightNClick(leadListView.topLeadsListItemCallMobileLink);
 
             Thread.sleep(3000);
-            String urlTelType = driver.getCurrentUrl().substring(0,3);
+            String urlTelType = driver.getCurrentUrl().substring(0, 3);
             String urlTelephone = driver.getCurrentUrl().substring(4);
 
             //Step: verify that clicking the lead mobile phone link in leads list view results in a call being initiated
-            AssertJUnit.assertEquals("VP: Lead list view - clicking the lead mobile phone link results in a call being initiated - FAILED","tel",urlTelType);
+            AssertJUnit.assertEquals("VP: Lead list view - clicking the lead mobile phone link results in a call being initiated - FAILED", "tel", urlTelType);
             System.out.println("VP: Value of lead's Mobile Phone in browser address bar (would be called) is ... " + urlTelephone);
             System.out.println("VP: Lead list view - clicking the lead mobile phone link results in a call being initiated  - PASSED");
 
@@ -665,8 +644,7 @@ public class MobileSprint370 extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Lead list view : mobile phone link incorrectly initiating an email - FAILED");
             AssertJUnit.fail("test failed");
@@ -674,7 +652,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -704,11 +681,11 @@ public class MobileSprint370 extends BaseTest {
             commNav.highlightNClick(leadListView.topLeadsListItemQuickActionsCallWorkBtn);
 
             Thread.sleep(3000);
-            String urlTelType = driver.getCurrentUrl().substring(0,3);
+            String urlTelType = driver.getCurrentUrl().substring(0, 3);
             String urlTelephone = driver.getCurrentUrl().substring(4);
 
             //Step: verify that clicking the lead 'Call Work' quick action in leads list view results in a call being initiated
-            AssertJUnit.assertEquals("VP: Lead list view - clicking the lead 'Call Work' quick action results in a call being initiated - FAILED","tel",urlTelType);
+            AssertJUnit.assertEquals("VP: Lead list view - clicking the lead 'Call Work' quick action results in a call being initiated - FAILED", "tel", urlTelType);
             System.out.println("VP: Value of lead's Work Phone in browser address bar (would be called) is ... " + urlTelephone);
             System.out.println("VP: Lead list view - clicking the lead 'Call Work' quick action results in a call being initiated  - PASSED");
 
@@ -719,8 +696,7 @@ public class MobileSprint370 extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Lead list view : 'Call Work' quick action incorrectly initiating an email - FAILED");
             AssertJUnit.fail("test failed");
@@ -728,7 +704,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -758,11 +733,11 @@ public class MobileSprint370 extends BaseTest {
             commNav.highlightNClick(leadListView.topLeadsListItemQuickActionsCallMobileBtn);
 
             Thread.sleep(3000);
-            String urlTelType = driver.getCurrentUrl().substring(0,3);
+            String urlTelType = driver.getCurrentUrl().substring(0, 3);
             String urlTelephone = driver.getCurrentUrl().substring(4);
 
             //Step: verify that clicking the lead 'Call Mobile' quick action in leads list view results in a call being initiated
-            AssertJUnit.assertEquals("VP: Lead list view - clicking the lead 'Call Mobile' quick action results in a call being initiated - FAILED","tel",urlTelType);
+            AssertJUnit.assertEquals("VP: Lead list view - clicking the lead 'Call Mobile' quick action results in a call being initiated - FAILED", "tel", urlTelType);
             System.out.println("VP: Value of lead's Mobile Phone in browser address bar (would be called) is ... " + urlTelephone);
             System.out.println("VP: Lead list view - clicking the lead 'Call Mobile' quick action results in a call being initiated  - PASSED");
 
@@ -773,8 +748,7 @@ public class MobileSprint370 extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Lead list view : 'Call Mobile' quick action incorrectly initiating an email - FAILED");
             AssertJUnit.fail("test failed");
@@ -782,7 +756,6 @@ public class MobileSprint370 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -840,11 +813,10 @@ public class MobileSprint370 extends BaseTest {
             }
 
             //Step: verify that 'reminder' is disabled on the insert view, where 'alarm' is turned off
-            if(activityEditView.activityEditViewAlarmFld.isEnabled()) {
+            if (activityEditView.activityEditViewAlarmFld.isEnabled()) {
                 System.out.println("VP: Activity insert screen - 'reminder' field should be disabled when alarm toggle is off - FAILED");
                 AssertJUnit.fail("test failed");
-            }
-            else {
+            } else {
                 System.out.println("VP: Activity insert screen - 'reminder' field should be disabled when alarm toggle is off - PASSED");
             }
 
@@ -854,7 +826,7 @@ public class MobileSprint370 extends BaseTest {
 
             //Step: verify that the activity created displays for the currently selected day of the month
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
                 System.out.println("VP: activity created for the currently selected day of the month, with no alarm set - PASSED");
             } else {
                 System.out.println("VP: activity created for the currently selected day of the month, with no alarm set - FAILED");
@@ -880,18 +852,15 @@ public class MobileSprint370 extends BaseTest {
             }
 
             //Step: verify that 'reminder' is disabled on the edit view, where 'alarm' is turned off
-            if(activityEditView.activityEditViewAlarmFld.isEnabled()) {
+            if (activityEditView.activityEditViewAlarmFld.isEnabled()) {
                 System.out.println("VP: Activity edit screen - 'reminder' field should be disabled when alarm toggle is off - FAILED");
                 AssertJUnit.fail("test failed");
-            }
-            else {
+            } else {
                 System.out.println("VP: Activity edit screen - 'reminder' field should be disabled when alarm toggle is off - PASSED");
             }
 
             System.out.println(methodID + "- PASSED");
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + "- FAILED");
             AssertJUnit.fail("test failed");
@@ -901,32 +870,27 @@ public class MobileSprint370 extends BaseTest {
     }
 
 
+    //Login & Logout
+    //==============
+    @Test(enabled = true)
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
+        Assert.assertTrue(doVerificationLogin());
 
+        System.out.println(ENDLINE);
+    }
 
+    @Test(enabled = true)
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 }

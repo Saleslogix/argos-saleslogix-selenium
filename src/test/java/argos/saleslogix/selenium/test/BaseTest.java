@@ -269,81 +269,13 @@ public class BaseTest {
      * are defined in the app.properties file. After the verification check, this method will perform an login using the username an password members
      * defined in the BaseTest class.
      */
-    public void doVerificationLogin() throws InterruptedException {
+    public boolean doVerificationLogin() throws InterruptedException {
         String methodID = "doVerificationLogin";
 
         SLXMobileLogin slxMobileLogin = PageFactory.initElements(driver, SLXMobileLogin.class);
 
-        //VP: the Mobile Login screen is loaded from base URL
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        commNav.waitForPage(fullProdName);
-
-        //VP: Page Title (header text - not pagetitle property)
-        Thread.sleep(1000);
-        try {
-            AssertJUnit.assertEquals(shortProdName, driver.getTitle());
-            System.out.println("VP: Login Screen Title check - Passed");
-        }
-        catch (Error e) {
-            System.out.println("Error: Login Screen Title check - Failed");
-            verificationErrors.append(methodID).append("(): ").append(e.toString());
-        }
-
-        //VP: Login Page Name
-        Thread.sleep(1000);
-        try {
-            AssertJUnit.assertTrue(commNav.isPageDisplayed(fullProdName));
-            System.out.println("VP: Login Page Name check - Passed");
-        }
-        catch (Error e) {
-            System.out.println("Error: Login Page Name check - Failed");
-            verificationErrors.append(methodID + "(): " + e.toString());
-        }
-
-        //VP: product logo
-        try {
-            AssertJUnit.assertTrue(commNav.isElementDisplayed(By.xpath(".//*[@id='login']/p/img")));
-            System.out.println("VP: 'infor' logo check  - Passed");
-        }
-        catch (Error e) {
-            System.out.println("Error: product logo check - Failed");
-            verificationErrors.append(methodID + "(): " + e.toString());
-        }
-
-        //VP: Copyright Info
-
-        try {
-            AssertJUnit.assertEquals(copyrightLabel, driver.findElement(By.xpath(".//*[@id='login']/span[1]")).getText());
-            System.out.println("VP: Copyright check - Passed");
-        }
-        catch (Error e) {
-            System.out.println("Error: Copyright check - Failed");
-            verificationErrors.append(methodID + "(): " + e.toString());
-        }
-        try {
-            AssertJUnit.assertEquals(versionLabel, driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText());
-            System.out.println("VP: Version Label check - Passed");
-        }
-        catch (Error e) {
-            System.out.println("Error: Version Label check - Failed");
-            verificationErrors.append(methodID + "(): " + e.toString());
-        }
-
         // Step: Enter username and password then click the logon button
-        slxMobileLogin.doLogin(userName, userPwd, true);
-
-        // VP: confirm that the 'My Activities' screen displays after login
-        Thread.sleep(3000);
-        try {
-            //AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
-            System.out.println("VP: Successfully logged in to Mobile Client.");
-        } catch (UnhandledAlertException e) {
-            //closeAlert();
-            closeModal();
-            //assertEquals("The user name or password is invalid.", closeAlertAndGetItsText());
-            System.out.println("Error: Unable to login to Mobile Client.");
-            System.out.println(methodID + "(): " + e.toString());
-        }
+        return slxMobileLogin.doLogin(userName, userPwd, true);
     }
 
 
