@@ -226,7 +226,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
 	    // Step: search for then click an Activity link from the My Activities screen...
 	    for (int second = 0;; second++) {
 	    	if (second >= 60) Assert.fail("timeout");
-	    	try { if ("My Activities".equals(driver.findElement(By.id("pageTitle")).getText())) break; } catch (Exception e) {}
+	    	try { if ("My Activities".equals(driver.findElement(By.cssSelector(".toolbar > .title > h1")).getText())) break; } catch (Exception e) {}
 	    	Thread.sleep(1000);
 	    }
 

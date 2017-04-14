@@ -36,7 +36,7 @@ CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.cla
 	    //AssertJUnit.assertTrue(isElementPresent(By.cssSelector("#crm_SpeedSearchWidget_0 > div.table-layout > div.hasButton > button.subHeaderButton.searchButton")));
 	    
 		//click the Page Title (forces closure of any blocking panels)
-		driver.findElement(By.id("pageTitle")).click();
+		driver.findElement(By.cssSelector(".toolbar > .title > h1")).click();
 		Thread.sleep(1000);
 	    
 	    //-- Section: Execute some global searches in the mobile client

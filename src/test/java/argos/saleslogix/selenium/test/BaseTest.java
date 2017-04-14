@@ -228,25 +228,14 @@ public class BaseTest {
      * @param passWord password of SLX username
      */
     public void LogOutThenLogBackIn(String userName, String passWord) throws InterruptedException {
-        String methodID = "LogOutThenLogBackIn";
-
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);
-
-        //Step: Log out of Mobile Client
-        commNav.clickGlobalMenuItem("sign off");
-        Thread.sleep(2000);
-        closeAlert();
-        Thread.sleep(1000);
-        driver.navigate().refresh();
-        Thread.sleep(2000);
-        System.out.println("invoking " + methodID + " method...");
 
         //Step: Clear cookies
         driver.manage().deleteAllCookies();
+        driver.navigate().refresh();
 
         //Step: Redo login using valid credentials
-        slxmobilelogin.doLogin(userName, passWord, true);
+        slxmobilelogin.doLogin(userName, passWord, false);
     }
 
 
@@ -275,7 +264,7 @@ public class BaseTest {
         SLXMobileLogin slxMobileLogin = PageFactory.initElements(driver, SLXMobileLogin.class);
 
         // Step: Enter username and password then click the logon button
-        return slxMobileLogin.doLogin(userName, userPwd, true);
+        return slxMobileLogin.doLogin(userName, userPwd, false);
     }
 
 
@@ -304,7 +293,7 @@ public class BaseTest {
 
         // Verify the Mobile Login screen displays
         try {
-            AssertJUnit.assertEquals(fullProdName, driver.findElement(By.id("pageTitle")).getText());
+            AssertJUnit.assertEquals(fullProdName, driver.findElement(By.cssSelector(".toolbar > .title > h1")).getText());
             System.out.println("VP: Mobile Client Sign Off Check - Passed");
         } catch (Error e) {
             System.out.println("Error: Mobile Client Sign Off Check - FAILED");

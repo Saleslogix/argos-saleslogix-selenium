@@ -32,7 +32,7 @@ public class HeaderButton {
     WebElement briefcaseButton;
 	
 	//@CacheLookup
-	@FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='edit']")
+	@FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='edit']")
 	WebElement editButton;
 	
 	//@CacheLookup
