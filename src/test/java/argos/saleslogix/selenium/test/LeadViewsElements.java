@@ -474,12 +474,12 @@ public class LeadViewsElements extends BaseTest {
 
     @CacheLookup
     // Group view button to open quick actions for lead John Beck
-    @FindBy(xpath = "//*[@id='lead_list']//li[@data-key='QDEMOA00013R']//button[@data-action='selectEntry']")
+    @FindBy(xpath = "//*[@id='lead_list']//button[@data-key='QDEMOA00013R']")
     WebElement johnBeckGroupViewQuickActionBtn;
 
     @CacheLookup
     // Group view button to open email quick action
-    @FindBy(xpath = "//*[@id='lead_list']//li//button[@aria-label='sendEmail']")
+    @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='sendEmail']")
     WebElement leadGroupViewQuickActionEmailBtn;
 
     @CacheLookup

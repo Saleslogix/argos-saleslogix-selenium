@@ -373,18 +373,11 @@ public class MobileSprint370 extends BaseTest {
             //Step: open quick actions for lead, and press the 'Email' quick action for the lead under group view
             leadListView.johnBeckGroupViewQuickActionBtn.click();
             commNav.highlightNClick(leadListView.leadGroupViewQuickActionEmailBtn);
-            commNav.waitForPage("E-mail");
+            commNav.waitForPage("Note");
 
             //Step: on the 'E-mail' insert history record, add some data to Notes
             String notesData = "Email sent for John Beck-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
             notesHistoryInsertView.notesHistoryEditViewNotesInputFld.sendKeys(notesData);
-
-            //Step: on the 'E-mail' insert history record, verify expected lead and company are displaying
-            System.out.println("VP: adding history record for lead '" + TEST_LEAD_RECORD + "', with Notes value of ... " + notesData);
-            AssertJUnit.assertEquals("VP: expected lead '" + TEST_LEAD_RECORD + "' displaying on insert history record - FAILED", TEST_LEAD_RECORD, notesHistoryInsertView.notesHistoryEditViewLeadInputFld.getAttribute("value"));
-            System.out.println("VP: expected lead '" + TEST_LEAD_RECORD + "' displaying on insert history record - PASSED");
-            AssertJUnit.assertEquals("VP: expected company '" + TEST_COMPANY_RECORD + "' displaying on insert history record - FAILED", TEST_COMPANY_RECORD, notesHistoryInsertView.notesHistoryEditViewCompanyInputFld.getAttribute("value"));
-            System.out.println("VP: expected company '" + TEST_COMPANY_RECORD + "' displaying on insert history record - PASSED");
 
             //Step: save the 'E-mail' history record, open the lead detail from group view, and refresh the lead detail view
             headerButton.saveButton.click();
