@@ -92,7 +92,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement topLeadsListItemTab;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/button")
+	@FindBy(xpath = "//*[@id='lead_list']//button[@data-action='selectEntry'][1]")
 	WebElement topLeadsListItemIcon;
 
     @CacheLookup
@@ -147,31 +147,31 @@ public class LeadViewsElements extends BaseTest {
 	WebElement topLeadsListItemQuickActionsBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='addAttachment']")
+	@FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='addAttachment'][1]")
 	WebElement topLeadsListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='addActivity']")
+	@FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='addActivity'][1]")
 	WebElement topLeadsListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='addNote']")
+	@FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='addNote'][1]")
 	WebElement topLeadsListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='sendEmail']")
+	@FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='sendEmail'][1]")
 	WebElement topLeadsListItemQuickActionsEmailBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='callMobile']")
+	@FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='callMobile'][1]")
 	WebElement topLeadsListItemQuickActionsCallMobileBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='callWork']")
+	@FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='callWork'][1]")
 	WebElement topLeadsListItemQuickActionsCallWorkBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul/li[2]//button[@aria-label='edit']")
+	@FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='edit'][1]")
 	WebElement topLeadsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
