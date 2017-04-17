@@ -61,7 +61,7 @@ public class BaseTest {
      *
      * @throws InterruptedException
      */
-    @BeforeClass
+    @BeforeMethod
     public void launchBrowser() throws InterruptedException, MalformedURLException {
         // Run in grid
         loadProperties();
@@ -243,10 +243,12 @@ public class BaseTest {
      * This method will close and quit the WebDriver.
      *
      */
+    @AfterMethod
     @AfterClass
     public void closeBrowser() {
         try {
             driver.quit();
+            driver = null;
         } catch (Exception e) {
             System.out.println("WEBDRIVER ERROR: " + e.getMessage());
         }

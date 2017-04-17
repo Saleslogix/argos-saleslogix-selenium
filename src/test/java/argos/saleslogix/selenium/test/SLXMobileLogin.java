@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Wait;
 import java.util.Iterator;
 import java.util.Set;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class SLXMobileLogin {
@@ -58,8 +59,8 @@ public class SLXMobileLogin {
 
     public SLXMobileLogin waitForLoad() {
         Wait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(5, SECONDS)
-                .pollingEvery(1, SECONDS);
+                .withTimeout(10, SECONDS)
+                .pollingEvery(250, MILLISECONDS);
         wait.until((driver) -> this.userNameTextbox.isEnabled());
         return this;
     }
@@ -67,7 +68,7 @@ public class SLXMobileLogin {
     public SLXMobileLogin waitForAuth() {
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(10, SECONDS)
-                .pollingEvery(1, SECONDS);
+                .pollingEvery(250, MILLISECONDS);
         wait.until((driver) -> driver.findElement(By.xpath("//div[@id='login' and not(@selected)]")));
         return this;
     }

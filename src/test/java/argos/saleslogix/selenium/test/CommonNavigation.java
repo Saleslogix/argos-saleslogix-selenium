@@ -176,14 +176,19 @@ public class CommonNavigation {
 
         headerButton.rightCntxtMnuButton.click();
         Wait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(5, SECONDS)
-                .pollingEvery(100, MILLISECONDS);
+                .withTimeout(2, SECONDS)
+                .pollingEvery(50, MILLISECONDS);
         wait.until(ExpectedConditions.visibilityOf(rmenu_panel));
     }
 
     public void setGroupDetailMode(){
         this.openSettings();
         rmenu_GroupLayout.click();
+
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .pollingEvery(50, MILLISECONDS)
+                .withTimeout(2, SECONDS);
+        wait.until((d) -> rmenu_GroupDetail.isDisplayed());
         rmenu_GroupDetail.click();
     }
 
@@ -304,7 +309,7 @@ public class CommonNavigation {
             System.out.println(methodID + ": global menu link - '" + menuItem + "' was clicked.");
             Thread.sleep(1000);
             if (hasListview) {
-                waitForListView(menuItem);
+                waitForListView();
             }
             Thread.sleep(3000);
             {
@@ -553,64 +558,14 @@ public class CommonNavigation {
      * This method will wait for a specific Entity List view to load.  This method should is applicable
      * when performing a search on a list view.
      *
-     * @param listName description of the WebElement; for logging purposes
      * @throws InterruptedException
      * @version 1.0
      */
-    public CommonNavigation waitForListView(String listName) throws InterruptedException {
-
-        String methodID = "waitForListView";
-
-        String itemList = "";
-
-        try {
-            switch (listName.toLowerCase()) {
-                case "my activities":
-                case "activities":
-                    itemList = "myactivity_list";
-                    break;
-                case "notes/history":
-                case "notes history":
-                case "notes":
-                    itemList = "history_list";
-                    break;
-                case "accounts":
-                case "account":
-                    itemList = "account_list";
-                    break;
-                case "contacts":
-                case "contact":
-                    itemList = "contact_list";
-                    break;
-                case "leads":
-                case "lead":
-                    itemList = "lead_list";
-                    break;
-                case "opportunities":
-                case "opportunity":
-                    itemList = "opportunity_list";
-                    break;
-                case "tickets":
-                case "ticket":
-                    itemList = "ticket_list";
-                    break;
-                case "my attachments":
-                case "attachments":
-                case "attachment":
-                    itemList = "attachment_list";
-                    break;
-                //TODO: continue to expand this switch case list for additional list views
-            }
-            try {
-                if (isElementPresent(By.xpath("//div[@id='" + itemList + "' and @selected='selected']"))) {
-                    System.out.println("VP: " + listName + " List View was successfully loaded.");
-                }
-            } catch (Exception e) {
-                System.out.println("Error: " + listName + " List View was NOT successfully loaded.");
-            }
-        } catch (Exception e) {
-            System.out.println(methodID + ": " + e.toString());
-        }
+    public CommonNavigation waitForListView() throws InterruptedException {
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(30, SECONDS)
+                .pollingEvery(100, MILLISECONDS);
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@selected='selected' and contains(@class, 'list') and not(contains(@class, 'list-loading'))]")));
         return this;
     }
 
@@ -683,7 +638,7 @@ public class CommonNavigation {
                 commView.lookupTxtBox.sendKeys(Keys.RETURN);
             }
             System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
-            waitForListView(searchType);
+            waitForListView();
         } catch (Exception e) {
             System.out.println(methodID + ": " + e.toString());
         }
@@ -745,7 +700,7 @@ public class CommonNavigation {
         commView.lookupTxtBox.sendKeys(Keys.RETURN);
 
         System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
-        waitForListView(searchType);
+        waitForListView();
 
         return this;
     }
@@ -1639,9 +1594,9 @@ public class CommonNavigation {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             try {
                 js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: yellow; border: 2px solid yellow;");
-                Thread.sleep(50);
+                Thread.sleep(10);
                 js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: red; border: 2px solid red;");
-                Thread.sleep(50);
+                Thread.sleep(10);
                 js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "");
             } catch (Exception e) {
                 System.out.println(methodID + ": " + e.toString());
