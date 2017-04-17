@@ -84,7 +84,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsListView1stHashTagFilter;
 
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_list']//ul//li[1]")
+	@FindBy(xpath = "//*[@id='lead_list']//div[@data-action='activateEntry'][1]")
 	WebElement topLeadsListItem;
 	
 	@CacheLookup
@@ -124,7 +124,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement topLeadsListItemBtmIndicator;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='lead_list']//li[1]//span[@data-action='sendEmail']")
+    @FindBy(xpath = "//*[@id='lead_list']//span[@data-action='sendEmail'][1]")
     WebElement topLeadsListItemEmailLink;
 
     @CacheLookup
