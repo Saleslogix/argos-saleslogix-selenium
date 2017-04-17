@@ -427,7 +427,7 @@ public class MyActivityViewsElements extends BaseTest {
 	WebElement activityEditViewAlarmTgl;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='argos_Fields_DurationField_1']/input")
+	@FindBy(xpath = "//input[@name='Reminder']")
 	WebElement activityEditViewAlarmFld;
 	
 	@CacheLookup
@@ -504,7 +504,7 @@ public class MyActivityViewsElements extends BaseTest {
 	
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='activity_types_list']//ul/li[1]/div[2]")
+	@FindBy(xpath = "//*[@id='activity_types_list']//li[@data-key='atAppointment']")
 	WebElement activityScheduleMeetingBtn;
 
     @CacheLookup

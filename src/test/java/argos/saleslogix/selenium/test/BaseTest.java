@@ -7,6 +7,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
 import org.testng.annotations.*;
@@ -261,11 +263,7 @@ public class BaseTest {
      * defined in the BaseTest class.
      */
     public boolean doVerificationLogin() throws InterruptedException {
-        String methodID = "doVerificationLogin";
-
         SLXMobileLogin slxMobileLogin = PageFactory.initElements(driver, SLXMobileLogin.class);
-
-        // Step: Enter username and password then click the logon button
         return slxMobileLogin.doLogin(userName, userPwd, false);
     }
 
@@ -277,29 +275,15 @@ public class BaseTest {
      *
      */
     public void doVerificationLogout() throws InterruptedException {
-        String methodID = "doVerificationLogout";
-
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
         // Click the Log Off button
         commNav.clickGlobalMenuItem("sign off");
-        Thread.sleep(2000);
         closeAlert();
-        Thread.sleep(1000);
         driver.navigate().refresh();
-        Thread.sleep(2000);
-
-
-        //WebDriverWait wait = new WebDriverWait(driver, 10);
-        //wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("pageTitle"), fullProdName));
-
-        // Verify the Mobile Login screen displays
-        try {
-            AssertJUnit.assertEquals(fullProdName, driver.findElement(By.cssSelector(".toolbar > .title > h1")).getText());
-            System.out.println("VP: Mobile Client Sign Off Check - Passed");
-        } catch (Error e) {
-            System.out.println("Error: Mobile Client Sign Off Check - FAILED");
-            System.out.println(methodID + "(): " + e.toString());
-        }
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .pollingEvery(250, TimeUnit.MILLISECONDS)
+                .withTimeout(30, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='login' and @selected='selected]")));
     }
 }
