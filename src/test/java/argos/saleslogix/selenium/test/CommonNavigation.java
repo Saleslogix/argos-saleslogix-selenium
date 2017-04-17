@@ -7,9 +7,14 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.AssertJUnit;
 
 import java.util.List;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * CommonNavigation class defines WebElements and methods for any commonly accessed items (e.g. Global Menu).
@@ -616,42 +621,14 @@ public class CommonNavigation {
 
         HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
-
-        String searchWgtIDX = "";
         Boolean forSpdSrch = false;
 
         switch (searchType.toLowerCase()) {
             case "speedsearch":
             case "search":
             case "speed search":
-                //	searchWgtIDX = "0";
                 forSpdSrch = true;
                 break;
-            //case "my activities": case "activities": case "activity":
-            //	searchWgtIDX = "26";
-            //	break;
-            //case "notes/history": case "notes history": case "notes": case "note": case "history":
-            //	searchWgtIDX = "27";
-            //	break;
-            //case "accounts": case "account":
-            //	searchWgtIDX = "3";
-            //	break;
-            //case "contacts": case "contact":
-            //	searchWgtIDX = "6";
-            //	break;
-            //case "leads": case "lead":
-            //	searchWgtIDX = "16";
-            //	break;
-            //case "opportunities": case "opportunity":
-            //	searchWgtIDX = "11";
-            //	break;
-            //case "tickets": case "ticket":
-            //	searchWgtIDX = "18";
-            //	break;
-            //case "my attachments": case "attachments": case "attachment":
-            //	searchWgtIDX = "36";
-            //	break;
-            //TODO: continue to expand this switch case list for additional list views
         }
 
         //input the search item then perform the search
@@ -671,21 +648,9 @@ public class CommonNavigation {
                 Thread.sleep(500);
                 gmenu_speedSearchLookupFld.sendKeys(Keys.RETURN);
             } else {
-                //invoke the Right Context menu ... no longer needed, Lookup field is top of screen
-                //headerbutton.clickHeaderButton("right context menu");
-
-                //driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).clear();
                 commView.lookupTxtBox.clear();
-                Thread.sleep(500);
                 commView.lookupTxtBox.click();
-                Thread.sleep(500);
-                //driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[2]/button")).click();
-                commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
-                Thread.sleep(500);
-                //driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[1]/input")).sendKeys(searchItemName);
                 commView.lookupTxtBox.sendKeys(searchItemName);
-                Thread.sleep(500);
-                //driver.findElement(By.xpath("//*[@id='argos_SearchWidget_" + searchWgtIDX + "']/div/div[3]/button")).click();
                 commView.lookupTxtBox.sendKeys(Keys.RETURN);
             }
             System.out.println(methodID + ": performing search of '" + searchItemName + "' from " + searchType + " List View...");
@@ -839,20 +804,11 @@ public class CommonNavigation {
      * @param    pageTitle exact page title of expected page
      */
     public boolean waitForPage(String pageTitle) throws InterruptedException {
-        String methodID = "waitForPage";
-
-        for (int second = 0; ; second++) {
-            Thread.sleep(1000);
-            if (second >= 60) AssertJUnit.fail("timeout");
-            try {
-                AssertJUnit.assertEquals(pageTitle, driver.findElement(By.cssSelector(".toolbar > .title > h1")).getText());
-                System.out.println(methodID + ": '" + pageTitle + "' page was successfully loaded");
-                return true;
-            } catch (Error e) {
-                System.out.println(methodID + " " + e.toString());
-                return false;
-            }
-        }
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(30, SECONDS)
+                .pollingEvery(1, SECONDS);
+        wait.until(ExpectedConditions.textToBePresentInElement(By.cssSelector(".toolbar > .title > h1"), pageTitle));
+        return true;
     }
 
 
@@ -864,20 +820,11 @@ public class CommonNavigation {
      * @param    pageTitle exact title of transition from page
      */
     public boolean waitForNotPage(String pageTitle) throws InterruptedException {
-        String methodID = "waitForNotPage";
-
-        for (int second = 0; ; second++) {
-            Thread.sleep(1000);
-            if (second >= 60) AssertJUnit.fail("timeout");
-            try {
-                if (!pageTitle.equals(driver.findElement(By.cssSelector(".toolbar > .title > h1")).getText()))
-                    System.out.println(methodID + ": '" + pageTitle + "' page was successfully navigated away from");
-                return true;
-            } catch (Exception e) {
-                System.out.println(methodID + ": '" + pageTitle + "' page failed to navigate away from prior to timeout");
-                return false;
-            }
-        }
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(30, SECONDS)
+                .pollingEvery(1, SECONDS);
+        wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(By.cssSelector(".toolbar > .title > h1"), pageTitle)));
+        return true;
     }
 
 
@@ -1129,7 +1076,6 @@ public class CommonNavigation {
             searchListView(entityType, lastName);
         } else {
             searchListView(entityType, entityName);
-            Thread.sleep(3000);
         }
 
         //SubStep: singularize the entityType parameter
@@ -1501,8 +1447,6 @@ public class CommonNavigation {
         try {
             WebElement entityListItem = entityListViewSearch(entityType, entityName);
             highlightNClick(entityListItem);
-            //entityListItem.click();
-            Thread.sleep(3000);
 
             //Step: check if the detail view is loaded
             if (!entityType.toLowerCase().contains("notes")) {
@@ -1661,30 +1605,20 @@ public class CommonNavigation {
      * @return void
      */
     public void highlightElement(WebElement wElement) throws InterruptedException {
-
         String methodID = "highlightElement";
-
-        Thread.sleep(1000);
-        //try {
-        //AssertJUnit.assertTrue(wElement.isDisplayed());
-        //Thread.sleep(250);
         for (int i = 0; i <= 2; i++) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             try {
                 js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: yellow; border: 2px solid yellow;");
-                Thread.sleep(100);
+                Thread.sleep(50);
                 js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "color: red; border: 2px solid red;");
-                Thread.sleep(100);
+                Thread.sleep(50);
                 js.executeScript("arguments[0].setAttribute('style', arguments[1]);", wElement, "");
             } catch (Exception e) {
                 System.out.println(methodID + ": " + e.toString());
                 break;
             }
         }
-        //}
-        //catch (Error e){
-        //	System.out.println(methodID + ": " + e.toString());
-        //}
     }
 
 
@@ -1696,7 +1630,6 @@ public class CommonNavigation {
      * @return void
      */
     public void highlightNClick(WebElement wElement) throws InterruptedException {
-
         highlightElement(wElement);
         wElement.click();
     }

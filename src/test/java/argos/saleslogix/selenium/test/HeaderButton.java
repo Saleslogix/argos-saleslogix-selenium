@@ -10,37 +10,37 @@ import org.testng.AssertJUnit;
 public class HeaderButton {
 
     //@CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='toggleLeftDrawer']")
+    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='toggleLeftDrawer']")
     WebElement globalMenuButton;
     //@CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='toggleRightDrawer']")
+    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='toggleRightDrawer']")
     WebElement rightCntxtMnuButton;
     //@CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='new']")
+    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='new']")
     WebElement addButton;
     //@CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='briefCase']")
+    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='briefCase']")
     WebElement briefcaseButton;
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='edit']")
     WebElement editButton;
     //@CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='save']")
+    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='save']")
     WebElement saveButton;
     //@CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='refresh']")
+    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='refresh']")
     WebElement refreshButton;
     //@CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='complete']")
+    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='complete']")
     WebElement checkButton;
     //@CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='delete']")
+    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='delete']")
     WebElement deleteButton;
     //@CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='cancel']")
+    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='cancel']")
     WebElement cancelButton;
     //@CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Views_MainToolbar_0']//descendant::*[@aria-label='back']")
+    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='back']")
     WebElement backButton;
     private WebDriver driver;
 

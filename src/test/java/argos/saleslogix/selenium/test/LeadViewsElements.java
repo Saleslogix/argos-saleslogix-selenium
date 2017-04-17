@@ -230,7 +230,7 @@ public class LeadViewsElements extends BaseTest {
 	WebElement leadsDetailViewSendEmailLnk;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='lead_detail']/div[2]/ul[1]/li[3]/a")
+	@FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='send-email']")
 	WebElement leadsDetailViewScheduleActivityLnk;
 	
 	@CacheLookup

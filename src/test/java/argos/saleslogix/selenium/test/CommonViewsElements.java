@@ -29,7 +29,7 @@ public class CommonViewsElements extends BaseTest {
 
     //Main lookup field seen at top of screen all throughout Mobile
     @CacheLookup
-    @FindBy(xpath = "//*[@selected='true']//input[@name='query']")
+    @FindBy(xpath = "//*[@selected='selected']//input[@name='query']")
     WebElement lookupTxtBox;
 
 	//Address input fields:
