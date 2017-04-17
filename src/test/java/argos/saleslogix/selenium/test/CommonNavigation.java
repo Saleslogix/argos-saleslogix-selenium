@@ -14,6 +14,7 @@ import org.testng.AssertJUnit;
 
 import java.util.List;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
@@ -107,22 +108,25 @@ public class CommonNavigation {
     @CacheLookup
     @FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
     WebElement rmenu_KPIHdr;
-    @CacheLookup
-    @FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'Groups')]")
+
+    @FindBy(xpath = ".//*[@id='right_drawer']//div[contains(@class, 'accordion-header')][1]")
     WebElement rmenu_GroupHdr;
-    @CacheLookup
-    @FindBy(xpath = ".//*[@id='right_drawer']//li[@data-action='groupConfigureClicked']//h3")
+
+    @FindBy(xpath = ".//*[@id='right_drawer']//a[@data-action='groupConfigureClicked']")
     WebElement rmenu_GroupConfigure;
-    @CacheLookup
-    @FindBy(xpath = ".//*[@id='right_drawer']//li[@data-name='Summary']//h3")
+
+    @FindBy(xpath = "//div[@id='right_drawer']/div[@data-dojo-attach-point='contentNode']/div[contains(@class, 'accordion-header')][2]")
+    WebElement rmenu_GroupLayout;
+
+    @FindBy(xpath = ".//*[@id='right_drawer']//a[@data-action='layoutSelectedClicked' and @data-name='Summary']")
     WebElement rmenu_GroupSummary;
-    @CacheLookup
-    @FindBy(xpath = ".//*[@id='right_drawer']//li[@data-name='Detail']//h3")
+
+    @FindBy(xpath = ".//*[@id='right_drawer']//a[@data-action='layoutSelectedClicked' and @data-name='Detail']")
     WebElement rmenu_GroupDetail;
-    @CacheLookup
+
     @FindBy(xpath = ".//*[@id='right_drawer']//ul[@data-group='kpi']")
     WebElement rmenu_KPISubPnl;
-    @CacheLookup
+
     @FindBy(css = ".toolbar > .title > .application-menu-trigger")
     WebElement navTrigger;
 
@@ -162,6 +166,31 @@ public class CommonNavigation {
         if (!this.isNavOpen()) {
             this.navTrigger.click();
         }
+    }
+
+    public void openSettings() {
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        if (rmenu_panel.isDisplayed()) {
+            return;
+        }
+
+        headerButton.rightCntxtMnuButton.click();
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(5, SECONDS)
+                .pollingEvery(100, MILLISECONDS);
+        wait.until(ExpectedConditions.visibilityOf(rmenu_panel));
+    }
+
+    public void setGroupDetailMode(){
+        this.openSettings();
+        rmenu_GroupLayout.click();
+        rmenu_GroupDetail.click();
+    }
+
+    public void setGroupSummaryMode() {
+        this.openSettings();
+        rmenu_GroupLayout.click();
+        rmenu_GroupSummary.click();
     }
 
     /**
@@ -806,7 +835,7 @@ public class CommonNavigation {
     public boolean waitForPage(String pageTitle) throws InterruptedException {
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(30, SECONDS)
-                .pollingEvery(1, SECONDS);
+                .pollingEvery(100, MILLISECONDS);
         wait.until(ExpectedConditions.textToBePresentInElement(By.cssSelector(".toolbar > .title > h1"), pageTitle));
         return true;
     }

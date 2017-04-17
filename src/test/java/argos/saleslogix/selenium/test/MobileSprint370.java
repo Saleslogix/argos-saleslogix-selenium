@@ -302,61 +302,47 @@ public class MobileSprint370 extends BaseTest {
         //Step: logout & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
 
-        try {
+        //Step: navigate to Leads group
+        commNav.clickGlobalMenuItem("Leads");
+        commNav.waitForPage("All Leads");
 
-            //Step: navigate to Leads group
-            commNav.clickGlobalMenuItem("Leads");
-            commNav.waitForPage("All Leads");
-
-            //Step: open right menu, and choose to display 'Detail' layout
-            headerButton.rightCntxtMnuButton.click();
-            commNav.rmenu_GroupDetail.click();
-            commNav.waitForPage("All Leads");
+        //Step: open right menu, and choose to display 'Detail' layout
+        commNav.setGroupDetailMode();
+        commNav.waitForPage("All Leads");
 
 
-            //Step: press the email link for the lead under group view
-            commNav.highlightNClick(leadListView.johnBeckGroupViewEmailLink);
-            commNav.waitForPage("E-mail");
+        //Step: press the email link for the lead under group view
+        commNav.highlightNClick(leadListView.johnBeckGroupViewEmailLink);
+        commNav.waitForPage("Note");
 
-            //Step: on the 'E-mail' insert history record, add some data to Notes
-            String notesData = "Email sent for John Beck-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
-            notesHistoryInsertView.notesHistoryEditViewNotesInputFld.sendKeys(notesData);
+        //Step: on the 'E-mail' insert history record, add some data to Notes
+        String notesData = "Email sent for John Beck-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
+        notesHistoryInsertView.notesHistoryEditViewNotesInputFld.sendKeys(notesData);
 
-            //Step: on the 'E-mail' insert history record, verify expected lead and company are displaying
-            System.out.println("VP: adding history record for lead '" + TEST_LEAD_RECORD + "', with Notes value of ... " + notesData);
-            AssertJUnit.assertEquals("VP: expected lead '" + TEST_LEAD_RECORD + "' displaying on insert history record - FAILED", TEST_LEAD_RECORD, notesHistoryInsertView.notesHistoryEditViewLeadInputFld.getAttribute("value"));
-            System.out.println("VP: expected lead '" + TEST_LEAD_RECORD + "' displaying on insert history record - PASSED");
-            AssertJUnit.assertEquals("VP: expected company '" + TEST_COMPANY_RECORD + "' displaying on insert history record - FAILED", TEST_COMPANY_RECORD, notesHistoryInsertView.notesHistoryEditViewCompanyInputFld.getAttribute("value"));
-            System.out.println("VP: expected company '" + TEST_COMPANY_RECORD + "' displaying on insert history record - PASSED");
+        //Step: save the 'E-mail' history record, open the lead detail from group view, and refresh the lead detail view
+        headerButton.saveButton.click();
+        commNav.waitForPage("All Leads");
+        commNav.highlightNClick(leadListView.johnBeckGroupViewCard);
+        commNav.waitForPage(TEST_LEAD_RECORD);
+        headerButton.refreshButton.click();
 
-            //Step: save the 'E-mail' history record, open the lead detail from group view, and refresh the lead detail view
-            headerButton.saveButton.click();
-            commNav.waitForPage("All Leads");
-            commNav.highlightNClick(leadListView.johnBeckGroupViewCard);
-            commNav.waitForPage(TEST_LEAD_RECORD);
-            headerButton.refreshButton.click();
+        //Step: verify that this 'E-mail' history record displays under the Lead Detail View, Related Items section
+        commNav.highlightNClick(leadListView.leadsDetailViewRelatedItemsTab);
+        leadListView.leadsDetailViewNotesHistoryLnk.click();
+        commNav.waitForPage("Notes/History");
 
-            //Step: verify that this 'E-mail' history record displays under the Lead Detail View, Related Items section
-            commNav.highlightNClick(leadListView.leadsDetailViewRelatedItemsTab);
-            leadListView.leadsDetailViewNotesHistoryLnk.click();
-            commNav.waitForPage("Notes/History");
+        List<WebElement> notesHistoryItemLnk = driver.findElements(By.xpath("//*[@id='history_related']//div[@class='note-text-item']//div[contains(text(), '" + notesData + "')]"));
 
-            List<WebElement> notesHistoryItemLnk = driver.findElements(By.xpath("//*[@id='history_related']//div[@class='note-text-item']//div[contains(text(), '" + notesData + "')]"));
-
-            if (notesHistoryItemLnk.size() != 0) {
-                System.out.println("VP: history record with Notes value of '" + notesData + "' created for lead '" + TEST_LEAD_RECORD + "' after pressing email link for lead on group view - PASSED");
-            } else {
-                System.out.println("VP: history record with Notes value of '" + notesData + "' created for lead '" + TEST_LEAD_RECORD + "' after pressing email link for lead on group view -  FAILED");
-                AssertJUnit.fail("test failed");
-            }
-
-
-            System.out.println("VP: history record created for lead after pressing email link on group view - PASSED");
-        } catch (Exception e) {
-            verificationErrors.append(methodID + "(): " + e.toString());
-            System.out.println("VP: history record created for lead after pressing email link on group view - FAILED");
+        if (notesHistoryItemLnk.size() != 0) {
+            System.out.println("VP: history record with Notes value of '" + notesData + "' created for lead '" + TEST_LEAD_RECORD + "' after pressing email link for lead on group view - PASSED");
+        } else {
+            System.out.println("VP: history record with Notes value of '" + notesData + "' created for lead '" + TEST_LEAD_RECORD + "' after pressing email link for lead on group view -  FAILED");
             AssertJUnit.fail("test failed");
         }
+
+
+        System.out.println("VP: history record created for lead after pressing email link on group view - PASSED");
+
 
         System.out.println(ENDLINE);
     }

@@ -464,12 +464,12 @@ public class LeadViewsElements extends BaseTest {
 
     @CacheLookup
     // Group View Email link for lead John Beck
-    @FindBy(xpath = "//*[@id='lead_list']//li[@data-key='QDEMOA00013R']//span[@data-propertyname='Email']")
+    @FindBy(xpath = "//*[@id='lead_list']//span[@data-key='QDEMOA00013R']")
     WebElement johnBeckGroupViewEmailLink;
 
     @CacheLookup
     // Group view card for lead John Beck ... press to open lead
-    @FindBy(xpath = "//*[@id='lead_list']//li[@data-key='QDEMOA00013R']//div[@class='group-item']")
+    @FindBy(xpath = "//*[@id='lead_list']//div[@data-key='QDEMOA00013R']//div[@class='group-item']")
     WebElement johnBeckGroupViewCard;
 
     @CacheLookup

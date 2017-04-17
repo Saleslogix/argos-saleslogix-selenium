@@ -13,8 +13,8 @@ public class HeaderButton {
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='toggleLeftDrawer']")
     WebElement globalMenuButton;
     //@CacheLookup
-    @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='toggleRightDrawer']")
-    WebElement rightCntxtMnuButton;
+    @FindBy(xpath = "//div[@selected='selected']//div[@class='buttonset']/button[@data-action='openSettings']")
+    WebElement rightCntxtMnuButton; // TODO: This is no longer a header item, move it to common nav.
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='new']")
     WebElement addButton;
