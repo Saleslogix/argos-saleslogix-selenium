@@ -88,43 +88,15 @@ public class HeaderButton {
      * @version 1.0
      */
     public HeaderButton showGlobalMenu() throws InterruptedException {
-        String methodID = "showGlobalMenu";
-
-        //click the Page Title (forces closure of any blocking panels)
-        driver.findElement(By.id("pageTitle")).click();
-        Thread.sleep(1000);
-
-        // Click Header Global Menu button...
-        clickHeaderButton("global");
-
-        // Verify the 'Global Menu' left-screen displays...
-        try {
-            AssertJUnit.assertTrue(driver.findElement(By.xpath("//*[@id='left_drawer']")).isDisplayed());
-            System.out.println("VP: Global Menu was accessed successfully on header button click.");
-        } catch (Error e) {
-            System.out.println("Error: Global Menu failed to display on header button click.");
-            System.out.println(methodID + "(): " + e.toString());
-        }
-        Thread.sleep(1000);
+        CommonNavigation commonNavigation = PageFactory.initElements(driver, CommonNavigation.class);
+        commonNavigation.openNav();
         return this;
     }
 
     public boolean showRightContextMenu() throws InterruptedException {
-        String methodID = "showRightContextMenu";
-
-        // Click Header Right-Context Menu button...
-        clickHeaderButton("right context menu");
-
-        // Verify the 'Right-Context Menu' left-screen displays...
-        try {
-            AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed());
-            System.out.println(methodID + ": Right-Context Menu was accessed successfully on header button click.");
-            return true;
-        } catch (Error e) {
-            System.out.println(methodID + ": Right-Context Menu failed to display on header button click.");
-            System.out.println(methodID + "(): " + e.toString());
-            return false;
-        }
+        CommonNavigation commonNavigation = PageFactory.initElements(driver, CommonNavigation.class);
+        commonNavigation.openSettings();
+        return true;
     }
 
     public HeaderButton goBack() throws InterruptedException {
@@ -220,13 +192,8 @@ public class HeaderButton {
     }
 
     public boolean closeRightContextMenu() throws InterruptedException {
-        String methodID = "closeRightContextMenu";
-
-        //conditionally close the Right-Context menu...
-        if (driver.findElement(By.xpath(".//*[@id='right_drawer']")).isDisplayed()) {
-            // Click Header Right-Context Menu button...
-            clickHeaderButton("right context menu");
-        }
+        CommonNavigation commonNavigation = PageFactory.initElements(driver, CommonNavigation.class);
+        commonNavigation.openNav();
         return true;
     }
 }

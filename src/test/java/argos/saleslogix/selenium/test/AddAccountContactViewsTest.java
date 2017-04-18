@@ -21,34 +21,7 @@ import org.openqa.selenium.support.PageFactory;
  * Desc.: Test class for the Account entity views
  */
 public class AddAccountContactViewsTest extends BaseTest {
-	
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
-
-
-	@Test(enabled = true)
+	@Test
 	public void test01_SeTestTCAddAccountContact() throws Exception {
 		String methodID = "test01_SeTestTCAddAccountContact";
 		

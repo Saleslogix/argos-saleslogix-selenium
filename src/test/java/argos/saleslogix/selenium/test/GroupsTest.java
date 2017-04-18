@@ -23,23 +23,8 @@ public class GroupsTest extends BaseTest {
     public String TEST_CONTACT_RECORD = "Abbott, John";
     public String TEST_TICKET_RECORD_NULL_CONTACT = "001-00-000002";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-
     @Test(enabled = true)
     // MBL-10514 ... Right Menu - Groups section disappearing per scenario
-
     public void test01_MBL10514() throws Exception {
         String methodID = "test01_MBL10514";
 
@@ -328,22 +313,4 @@ public class GroupsTest extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
-
-
-
-
-    @Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
-
-
-
 }

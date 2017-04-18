@@ -1,7 +1,6 @@
 package argos.saleslogix.selenium.test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
@@ -9,31 +8,12 @@ import org.testng.annotations.Test;
 
 /**
  * Test class that defines test methods for the SLX Mobile Defect (v3.2.0) fixes.
- * 
+ *
  * @author kathleen.lockyer-bratton@swiftpage.com
- * @version	1.0
+ * @version 1.0
  */
 public class GroupsTest2 extends BaseTest {
-
-
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-
-
-
-
-    @Test(enabled = true)
+    @Test
     // MBL-10727 ... addition of Summary and Detail layout options for groups
 
     public void test05_MBL10727() throws Exception {
@@ -61,8 +41,8 @@ public class GroupsTest2 extends BaseTest {
 
         //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
         headerButton.showRightContextMenu();
-        AssertJUnit.assertTrue("Accounts : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Accounts ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
-        AssertJUnit.assertTrue("Accounts : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Accounts ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
+        AssertJUnit.assertTrue("Accounts : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Accounts ... Right Menu Group Summary layout option", commNav.rmenu_GroupSummary));
+        AssertJUnit.assertTrue("Accounts : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Accounts ... Right Menu Group Detail layout option", commNav.rmenu_GroupDetail));
 
         //Step: choose 'Detail' layout ... should see a second column with 'Sub-Type' in group listview
         commNav.rmenu_GroupDetail.click();
@@ -99,8 +79,8 @@ public class GroupsTest2 extends BaseTest {
 
         //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
         headerButton.showRightContextMenu();
-        AssertJUnit.assertTrue("Contacts : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Contacts ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
-        AssertJUnit.assertTrue("Contacts : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Contacts ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
+        AssertJUnit.assertTrue("Contacts : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Contacts ... Right Menu Group Summary layout option", commNav.rmenu_GroupSummary));
+        AssertJUnit.assertTrue("Contacts : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Contacts ... Right Menu Group Detail layout option", commNav.rmenu_GroupDetail));
 
         //Step: choose 'Detail' layout ... should see a second column with 'Work Phone' in group listview
         commNav.rmenu_GroupDetail.click();
@@ -137,7 +117,7 @@ public class GroupsTest2 extends BaseTest {
         //From ICRM 8.3.0.4 and up, the 'All Leads' group should now display by default
         String pageTitle2 = driver.findElement(By.id("pageTitle")).getText();
 
-        if(!pageTitle2.equals("All Leads") ) {
+        if (!pageTitle2.equals("All Leads")) {
             //Step: if 'All Leads' group not displaying, reveal Right Context Menu panel
             headerButton.showRightContextMenu();
 
@@ -162,8 +142,8 @@ public class GroupsTest2 extends BaseTest {
 
         //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
         headerButton.showRightContextMenu();
-        AssertJUnit.assertTrue("Leads : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Leads ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
-        AssertJUnit.assertTrue("Leads : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Leads ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
+        AssertJUnit.assertTrue("Leads : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Leads ... Right Menu Group Summary layout option", commNav.rmenu_GroupSummary));
+        AssertJUnit.assertTrue("Leads : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Leads ... Right Menu Group Detail layout option", commNav.rmenu_GroupDetail));
 
         //Step: choose 'Detail' layout ... should see a second column with 'Work Phone' in group listview
         commNav.rmenu_GroupDetail.click();
@@ -200,8 +180,8 @@ public class GroupsTest2 extends BaseTest {
 
         //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
         headerButton.showRightContextMenu();
-        AssertJUnit.assertTrue("Opportunities : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Opportunities ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
-        AssertJUnit.assertTrue("Opportunities : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Opportunities ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
+        AssertJUnit.assertTrue("Opportunities : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Opportunities ... Right Menu Group Summary layout option", commNav.rmenu_GroupSummary));
+        AssertJUnit.assertTrue("Opportunities : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Opportunities ... Right Menu Group Detail layout option", commNav.rmenu_GroupDetail));
 
         //Step: choose 'Detail' layout ... should see a second column with 'Weighted' in group listview
         commNav.rmenu_GroupDetail.click();
@@ -238,8 +218,8 @@ public class GroupsTest2 extends BaseTest {
 
         //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
         headerButton.showRightContextMenu();
-        AssertJUnit.assertTrue("Tickets : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Tickets ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
-        AssertJUnit.assertTrue("Tickets : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Tickets ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
+        AssertJUnit.assertTrue("Tickets : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Tickets ... Right Menu Group Summary layout option", commNav.rmenu_GroupSummary));
+        AssertJUnit.assertTrue("Tickets : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Tickets ... Right Menu Group Detail layout option", commNav.rmenu_GroupDetail));
 
         //Step: choose 'Detail' layout ... should see a second column with 'Received Date' in group listview
         commNav.rmenu_GroupDetail.click();
@@ -262,9 +242,8 @@ public class GroupsTest2 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10785 ... Ticket groups : phone hyperlink is not working
-
     public void test06_MBL10785() throws Exception {
         String methodID = "test06_MBL10785";
 
@@ -272,7 +251,6 @@ public class GroupsTest2 extends BaseTest {
         String entityType = "tickets";
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
         TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -286,9 +264,9 @@ public class GroupsTest2 extends BaseTest {
 
         //Step: Click on the Work Phone hyperlink ... some action should be taken to call the number
         String ticketWorkPhone = ticketsListView.ticketGroupViewWorkPhoneFld.getText();
-        String ticketWorkPhoneEdited  = ticketWorkPhone.replace("(","");
-        ticketWorkPhoneEdited = ticketWorkPhoneEdited.replace(")","");
-        ticketWorkPhoneEdited = ticketWorkPhoneEdited.replace("-","");
+        String ticketWorkPhoneEdited = ticketWorkPhone.replace("(", "");
+        ticketWorkPhoneEdited = ticketWorkPhoneEdited.replace(")", "");
+        ticketWorkPhoneEdited = ticketWorkPhoneEdited.replace("-", "");
         System.out.println("VP: Ticket group view Work Phone value to be clicked is ... " + ticketWorkPhone + " / " + ticketWorkPhoneEdited);
         ticketsListView.ticketGroupViewWorkPhoneFld.click();
         //commNav.waitForPage("Note");
@@ -297,7 +275,7 @@ public class GroupsTest2 extends BaseTest {
         System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
 
         //Step: verify that the work phone number clicked results in a call attempt to the same number
-        AssertJUnit.assertEquals("VP: clicking the ticket group Work Phone did not try to call that number - FAILED",ticketWorkPhoneEdited,urlTelephone);
+        AssertJUnit.assertEquals("VP: clicking the ticket group Work Phone did not try to call that number - FAILED", ticketWorkPhoneEdited, urlTelephone);
         System.out.println("VP: clicking the ticket group Work Phone did try to call that number - PASSED");
 
 
@@ -314,9 +292,8 @@ public class GroupsTest2 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10772 ... Need to hyperlink for Phone in group list ... Accounts, Contacts, Leads (Tickets covered in test06_MBL10785)
-
     public void test07_MBL10772() throws Exception {
         String methodID = "test07_MBL10772";
 
@@ -331,16 +308,16 @@ public class GroupsTest2 extends BaseTest {
 
 
         //Step: logout & log back in (to clear cookies)
-        //LogOutThenLogBackIn(userName, userPwd);
+        LogOutThenLogBackIn(userName, userPwd);
 
         //Step: navigate to Accounts list view ...the 'All Accounts' group should be displaying in Summary layout
         commNav.clickGlobalMenuItem(entityType);
 
         //Step: Click on the Main Phone hyperlink ... some action should be taken to call the number
         String accountMainPhone = accountsListView.accountGroupViewMainPhoneFld.getText();
-        String accountMainPhoneEdited  = accountMainPhone.replace("(","");
-        accountMainPhoneEdited = accountMainPhoneEdited.replace(")","");
-        accountMainPhoneEdited = accountMainPhoneEdited.replace("-","");
+        String accountMainPhoneEdited = accountMainPhone.replace("(", "");
+        accountMainPhoneEdited = accountMainPhoneEdited.replace(")", "");
+        accountMainPhoneEdited = accountMainPhoneEdited.replace("-", "");
         System.out.println("VP: Account group view Main Phone value to be clicked is ... " + accountMainPhone + " / " + accountMainPhoneEdited);
         accountsListView.accountGroupViewMainPhoneFld.click();
         //commNav.waitForPage("Note");
@@ -349,7 +326,7 @@ public class GroupsTest2 extends BaseTest {
         System.out.println("VP: Value of Main Phone in browser address bar (would be called) is ... " + urlTelephone);
 
         //Step: verify that the main phone number clicked results in a call attempt to the same number
-        AssertJUnit.assertEquals("VP: clicking the Account group Main Phone did not try to call that number - FAILED",accountMainPhoneEdited,urlTelephone);
+        AssertJUnit.assertEquals("VP: clicking the Account group Main Phone did not try to call that number - FAILED", accountMainPhoneEdited, urlTelephone);
         System.out.println("VP: clicking the Account group Main Phone did try to call that number - PASSED");
 
         closeBrowser();
@@ -382,9 +359,9 @@ public class GroupsTest2 extends BaseTest {
 
         //Step: Click on the Work Phone hyperlink ... some action should be taken to call the number
         String contactWorkPhone = contactsListView.contactGroupViewWorkPhoneFld.getText();
-        String contactWorkPhoneEdited  = contactWorkPhone.replace("(","");
-        contactWorkPhoneEdited = contactWorkPhoneEdited.replace(")","");
-        contactWorkPhoneEdited = contactWorkPhoneEdited.replace("-","");
+        String contactWorkPhoneEdited = contactWorkPhone.replace("(", "");
+        contactWorkPhoneEdited = contactWorkPhoneEdited.replace(")", "");
+        contactWorkPhoneEdited = contactWorkPhoneEdited.replace("-", "");
         System.out.println("VP: Contact group view Work Phone value to be clicked is ... " + contactWorkPhone + " / " + contactWorkPhoneEdited);
         contactsListView.contactGroupViewWorkPhoneFld.click();
         //commNav.waitForPage("President");
@@ -393,7 +370,7 @@ public class GroupsTest2 extends BaseTest {
         System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
 
         //Step: verify that the work phone number clicked results in a call attempt to the same number
-        AssertJUnit.assertEquals("VP: clicking the Contact group Work Phone did not try to call that number - FAILED",contactWorkPhoneEdited,urlTelephone);
+        AssertJUnit.assertEquals("VP: clicking the Contact group Work Phone did not try to call that number - FAILED", contactWorkPhoneEdited, urlTelephone);
         System.out.println("VP: clicking the Contact group Work Phone did try to call that number - PASSED");
 
         driver.navigate().back();
@@ -408,7 +385,6 @@ public class GroupsTest2 extends BaseTest {
 
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-        headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
         //Step: navigate to Contacts list view ...the 'All Contacts' group should still be displaying in Detail layout
         commNav.clickGlobalMenuItem(entityType);
@@ -416,9 +392,9 @@ public class GroupsTest2 extends BaseTest {
 
         //Step: Click on the Mobile hyperlink ... some action should be taken to call the number
         String contactMobilePhone = contactsListView.contactGroupViewMobileFld.getText();
-        String contactMobileEdited  = contactMobilePhone.replace("(","");
-        contactMobileEdited = contactMobileEdited.replace(")","");
-        contactMobileEdited = contactMobileEdited.replace("-","");
+        String contactMobileEdited = contactMobilePhone.replace("(", "");
+        contactMobileEdited = contactMobileEdited.replace(")", "");
+        contactMobileEdited = contactMobileEdited.replace("-", "");
         System.out.println("VP: Contact group view Mobile Phone value to be clicked is ... " + contactMobilePhone + " / " + contactMobileEdited);
         contactsListView.contactGroupViewMobileFld.click();
         //commNav.waitForPage("President");
@@ -427,7 +403,7 @@ public class GroupsTest2 extends BaseTest {
         System.out.println("VP: Value of Mobile Phone in browser address bar (would be called) is ... " + urlTelephone);
 
         //Step: verify that the mobile phone number clicked results in a call attempt to the same number
-        AssertJUnit.assertEquals("VP: clicking the Contact group Mobile Phone did not try to call that number - FAILED",contactMobileEdited,urlTelephone);
+        AssertJUnit.assertEquals("VP: clicking the Contact group Mobile Phone did not try to call that number - FAILED", contactMobileEdited, urlTelephone);
         System.out.println("VP: clicking the Contact group Mobile Phone did try to call that number - PASSED");
 
         driver.navigate().back();
@@ -468,7 +444,7 @@ public class GroupsTest2 extends BaseTest {
         //From ICRM 8.3.0.4 and up, the 'All Leads' group should now display by default
         String pageTitle3 = driver.findElement(By.id("pageTitle")).getText();
 
-        if(!pageTitle3.equals("All Leads") ) {
+        if (!pageTitle3.equals("All Leads")) {
             //Step: if 'All Leads' group not displaying, reveal Right Context Menu panel
             headerButton.showRightContextMenu();
 
@@ -489,9 +465,9 @@ public class GroupsTest2 extends BaseTest {
 
         //Step: Click on the Work Phone hyperlink ... some action should be taken to call the number
         String leadWorkPhone = leadsListView.leadGroupViewWorkPhoneFld.getText();
-        String leadWorkPhoneEdited  = leadWorkPhone.replace("(","");
-        leadWorkPhoneEdited = leadWorkPhoneEdited.replace(")","");
-        leadWorkPhoneEdited = leadWorkPhoneEdited.replace("-","");
+        String leadWorkPhoneEdited = leadWorkPhone.replace("(", "");
+        leadWorkPhoneEdited = leadWorkPhoneEdited.replace(")", "");
+        leadWorkPhoneEdited = leadWorkPhoneEdited.replace("-", "");
         System.out.println("VP: Lead group view Work Phone value to be clicked is ... " + leadWorkPhone + " / " + leadWorkPhoneEdited);
         leadsListView.leadGroupViewWorkPhoneFld.click();
         //commNav.waitForPage("IT Director");
@@ -500,7 +476,7 @@ public class GroupsTest2 extends BaseTest {
         System.out.println("VP: Value of Work Phone in browser address bar (would be called) is ... " + urlTelephone);
 
         //Step: verify that the work phone number clicked results in a call attempt to the same number
-        AssertJUnit.assertEquals("VP: clicking the Lead group Work Phone did not try to call that number - FAILED",leadWorkPhoneEdited,urlTelephone);
+        AssertJUnit.assertEquals("VP: clicking the Lead group Work Phone did not try to call that number - FAILED", leadWorkPhoneEdited, urlTelephone);
         System.out.println("VP: clicking the Lead group Work Phone did try to call that number - PASSED");
 
         driver.navigate().back();
@@ -527,19 +503,4 @@ public class GroupsTest2 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
-
-    @Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
-
-
-
 }

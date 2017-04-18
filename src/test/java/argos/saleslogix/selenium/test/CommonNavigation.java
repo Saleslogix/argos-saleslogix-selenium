@@ -372,19 +372,13 @@ public class CommonNavigation {
      * @version 1.0
      */
     public boolean checkIfWebElementPresent(String sDesc, WebElement wElement) throws InterruptedException {
-        String methodID = "checkIfWebElementPresent";
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withMessage(sDesc)
+                .pollingEvery(100, MILLISECONDS)
+                .withTimeout(5, SECONDS);
 
-        Thread.sleep(1000);
-        try {
-            AssertJUnit.assertTrue(wElement.isDisplayed());
-            highlightElement(wElement);
-            System.out.println(methodID + ": " + sDesc + " is displayed on the current page/screen.");
-            return true;
-        } catch (Error e) {
-            System.out.println(methodID + ": " + e.toString());
-            System.out.println(methodID + ": " + sDesc + " is NOT displayed on the current page/screen.");
-            return false;
-        }
+        wait.until((d) -> wElement.isDisplayed());
+        return true;
     }
 
 
@@ -542,6 +536,7 @@ public class CommonNavigation {
 
         try {
             commNav.clickWebElementToPage(elementDesc, wElement, expPgTitle);
+            headerButton.clickHeaderButton("back");
             try {
                 headerButton.backButton.click();
             } catch (Exception e) {

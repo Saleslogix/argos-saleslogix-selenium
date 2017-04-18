@@ -41,6 +41,9 @@ public class AccountEntityViewsTest extends BaseTest {
 		HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
 
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+		LogOutThenLogBackIn(userName, userPwd);
+
 	    //Step: click Top-Left button to reveal Global Menu...
 		headerbutton.showGlobalMenu();
 	
@@ -170,6 +173,8 @@ public class AccountEntityViewsTest extends BaseTest {
 		String entityRecord = TEST_ACCOUNT_RECORD;	
 		
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+
+		LogOutThenLogBackIn(userName, userPwd);
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -188,6 +193,8 @@ public class AccountEntityViewsTest extends BaseTest {
 		String entityType = "accounts";
 				
 		CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+
+		LogOutThenLogBackIn(userName, userPwd);
 				
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		
@@ -212,6 +219,8 @@ public class AccountEntityViewsTest extends BaseTest {
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 	
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+		LogOutThenLogBackIn(userName, userPwd);
 	
 		commNav.entityListViewSearch(entityType, entityRecord);
 			
@@ -294,65 +303,55 @@ public class AccountEntityViewsTest extends BaseTest {
         //Step: login & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
 
-        try {
-            //Step: search for Account entity, then open it's Detail view
-            commNav.entityRecordOpenDetailView(entityType, entityRecord);
+		//Step: search for Account entity, then open it's Detail view
+		commNav.entityRecordOpenDetailView(entityType, entityRecord);
 
-            AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
+		AccountViewsElements accountDetailView = PageFactory.initElements(driver, AccountViewsElements.class);
 
-            //Step: check each item under the Account Detail View, Actions section
-            //commNav.isWebElementPresent(viewName + ",'Actions' section header", accountDetailView.accountDetailViewQuickActionsHdr);
-            commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", accountDetailView.accountDetailViewScheduleActivityLnk, "Schedule...");
-            commNav.verifyEntityViewElementClick(viewName + ",'Add note'", accountDetailView.accountDetailViewAddNoteLnk, "Note");
+		//Step: check each item under the Account Detail View, Actions section
+		//commNav.isWebElementPresent(viewName + ",'Actions' section header", accountDetailView.accountDetailViewQuickActionsHdr);
+		commNav.verifyEntityViewElementClick(viewName + ",'Schedule activity'", accountDetailView.accountDetailViewScheduleActivityLnk, "Schedule...");
+		commNav.verifyEntityViewElementClick(viewName + ",'Add note'", accountDetailView.accountDetailViewAddNoteLnk, "Note");
 
-            //Step: add code to expand More Details section
-            //if (accountDetailView.accountDetailViewMoreDetailsFields.getSize().height < 1) {
-            //    accountDetailView.accountDetailViewMoreDetailsHdr.click();
-            //    Thread.sleep(1000);
-            //}
+		//Step: add code to expand More Details section
+		//if (accountDetailView.accountDetailViewMoreDetailsFields.getSize().height < 1) {
+		//    accountDetailView.accountDetailViewMoreDetailsHdr.click();
+		//    Thread.sleep(1000);
+		//}
 
-            //Step: check each item under the Account Detail View, Details section
-            //commNav.isWebElementPresent(viewName + ",'Details' section header", accountDetailView.accountDetailViewDetailsHdr);
-            commNav.highlightNClick(accountDetailView.accountDetailViewDetailsTab);
-            commNav.isFieldValueEmpty(viewName + ",'account'", accountDetailView.accountDetailViewAccountFld);
-            commNav.isFieldValueEmpty(viewName + ",'phone'", accountDetailView.accountDetailViewCallMainNumberLnk);
-            commNav.isFieldValueEmpty(viewName + ",'status'", accountDetailView.accountDetailViewStatusFld);
-            commNav.isFieldValueEmpty(viewName + ",'acct mgr'", accountDetailView.accountDetailViewAcctMgrFld);
-
-
-            // Step: check More Details section
-            commNav.highlightNClick(accountDetailView.accountDetailViewMoreDetailsTab);
-            commNav.isFieldValueEmpty(viewName + ",'web'", accountDetailView.accountDetailViewWebFld);
-            commNav.isFieldValueEmpty(viewName + ",'address'", accountDetailView.accountDetailViewViewAddressLnk);
-            commNav.isFieldValueEmpty(viewName + ",'fax'", accountDetailView.accountDetailViewFaxFld);
-            commNav.isFieldValueEmpty(viewName + ",'type'", accountDetailView.accountDetailViewTypeFld);
-            commNav.isFieldValueEmpty(viewName + ",'subtype'", accountDetailView.accountDetailViewSubTypeFld);
-
-            commNav.isFieldValueEmpty(viewName + ",'industry'", accountDetailView.accountDetailViewIndustryFld);
-            commNav.isFieldValueEmpty(viewName + ",'bus desc'", accountDetailView.accountDetailViewBusDescFld);
-            commNav.isFieldValueEmpty(viewName + ",'lead source'", accountDetailView.accountDetailViewLeadSourceFld);
-            commNav.isFieldValueEmpty(viewName + ",'owner'", accountDetailView.accountDetailViewOwnerFld);
+		//Step: check each item under the Account Detail View, Details section
+		//commNav.isWebElementPresent(viewName + ",'Details' section header", accountDetailView.accountDetailViewDetailsHdr);
+		commNav.highlightNClick(accountDetailView.accountDetailViewDetailsTab);
+		commNav.isFieldValueEmpty(viewName + ",'account'", accountDetailView.accountDetailViewAccountFld);
+		commNav.isFieldValueEmpty(viewName + ",'phone'", accountDetailView.accountDetailViewCallMainNumberLnk);
+		commNav.isFieldValueEmpty(viewName + ",'status'", accountDetailView.accountDetailViewStatusFld);
+		commNav.isFieldValueEmpty(viewName + ",'acct mgr'", accountDetailView.accountDetailViewAcctMgrFld);
 
 
-            //Step: check each item under the Account Detail View, Related Items section
-            commNav.highlightNClick(accountDetailView.accountDetailViewRelatedItemsTab);
-            //commNav.isWebElementPresent(viewName + ",'Related Items' section header", accountDetailView.accountDetailViewRelatedItemsHdr);
-            commNav.verifyEntityViewElementClick(viewName + ",'Activities'", accountDetailView.accountDetailViewActivitiesLnk, "Activities");
-            commNav.verifyEntityViewElementClick(viewName + ",'Contacts'", accountDetailView.accountDetailViewContactsLnk, "Contacts");
-            commNav.verifyEntityViewElementClick(viewName + ",'Opportunities'", accountDetailView.accountDetailViewOpportunitiesLnk, "Opportunities");
-            commNav.verifyEntityViewElementClick(viewName + ",'Tickets'", accountDetailView.accountDetailViewTicketsLnk, "Tickets");
-            commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", accountDetailView.accountDetailViewNotesHistoryLnk, "Notes/History");
-            commNav.verifyEntityViewElementClick(viewName + ",'Addresses'", accountDetailView.accountDetailViewAddressesLnk, "Addresses");
-            commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Account Attachments");
-        }
-        catch (Exception e) {
-            verificationErrors.append(methodID + "(): " + e.toString());
-            System.out.println(methodID + ": the Account Detail view for the '" + entityRecord + "' Account record; test aborted.");
-        }
+		// Step: check More Details section
+		commNav.highlightNClick(accountDetailView.accountDetailViewMoreDetailsTab);
+		commNav.isFieldValueEmpty(viewName + ",'web'", accountDetailView.accountDetailViewWebFld);
+		commNav.isFieldValueEmpty(viewName + ",'address'", accountDetailView.accountDetailViewViewAddressLnk);
+		commNav.isFieldValueEmpty(viewName + ",'fax'", accountDetailView.accountDetailViewFaxFld);
+		commNav.isFieldValueEmpty(viewName + ",'type'", accountDetailView.accountDetailViewTypeFld);
+		commNav.isFieldValueEmpty(viewName + ",'subtype'", accountDetailView.accountDetailViewSubTypeFld);
 
-        //Step: go back to previous screen
-        headerButton.goBack();
-        commNav.waitForPage("Accounts");
+		commNav.isFieldValueEmpty(viewName + ",'industry'", accountDetailView.accountDetailViewIndustryFld);
+		commNav.isFieldValueEmpty(viewName + ",'bus desc'", accountDetailView.accountDetailViewBusDescFld);
+		commNav.isFieldValueEmpty(viewName + ",'lead source'", accountDetailView.accountDetailViewLeadSourceFld);
+		commNav.isFieldValueEmpty(viewName + ",'owner'", accountDetailView.accountDetailViewOwnerFld);
+
+
+		//Step: check each item under the Account Detail View, Related Items section
+		commNav.highlightNClick(accountDetailView.accountDetailViewRelatedItemsTab);
+		//commNav.isWebElementPresent(viewName + ",'Related Items' section header", accountDetailView.accountDetailViewRelatedItemsHdr);
+		commNav.verifyEntityViewElementClick(viewName + ",'Activities'", accountDetailView.accountDetailViewActivitiesLnk, "Activities");
+		commNav.verifyEntityViewElementClick(viewName + ",'Contacts'", accountDetailView.accountDetailViewContactsLnk, "Contacts");
+		commNav.verifyEntityViewElementClick(viewName + ",'Opportunities'", accountDetailView.accountDetailViewOpportunitiesLnk, "Opportunities");
+		commNav.verifyEntityViewElementClick(viewName + ",'Tickets'", accountDetailView.accountDetailViewTicketsLnk, "Tickets");
+		commNav.verifyEntityViewElementClick(viewName + ",'Notes/History'", accountDetailView.accountDetailViewNotesHistoryLnk, "Notes/History");
+		commNav.verifyEntityViewElementClick(viewName + ",'Addresses'", accountDetailView.accountDetailViewAddressesLnk, "Addresses");
+		commNav.verifyEntityViewElementClick(viewName + ",'Attachments'", accountDetailView.accountDetailViewAttachmentsLnk, "Account Attachments");
 
         System.out.println(ENDLINE);
     }
@@ -587,38 +586,14 @@ public class AccountEntityViewsTest extends BaseTest {
 		}
 		//collapse Hash Tags sub-panel check
 		accountsListView.accountKPIHdr.click();
-		try {
-			AssertJUnit.assertFalse(accountsListView.accountKPIPnl.isDisplayed());
-			System.out.println("VP: KPI sub-panel collapse check - Passed");
-			
-			//re-expand the Hash Tags sub-panel
-			accountsListView.accountKPIHdr.click();
-			try {
-				AssertJUnit.assertTrue(accountsListView.accountKPIPnl.isDisplayed());
-				System.out.println("VP: KPI sub-panel expand check - Passed");
-			}
-			catch (Error e) {
-				verificationErrors.append(methodID + "(): " + e.toString());
-				System.out.println("VP: KPI sub-panel e check - FAILED");
-			}
-		}
-		catch (Error e) {
-			verificationErrors.append(methodID + "(): " + e.toString());
-			System.out.println("VP: KPI sub-panel collapse check - FAILED");
-		}
-		
-		//Step: re-enabled each of the KPI items		
-		commNav.rightClickContextMenuItem("Total Revenue");
-		commNav.scrollDownPage();
-		commNav.rightClickContextMenuItem("Avg Time as Customer");
-		commNav.scrollDownPage();
-		commNav.rightClickContextMenuItem("Total Accounts");
-		headerButton.closeRightContextMenu();
-		Thread.sleep(500);
-		
-		//Step: go back to previous screen
-		headerButton.goBack();
-		Thread.sleep(5000);
+        AssertJUnit.assertFalse(accountsListView.accountKPIPnl.isDisplayed());
+        System.out.println("VP: KPI sub-panel collapse check - Passed");
+
+        //re-expand the Hash Tags sub-panel
+        accountsListView.accountKPIHdr.click();
+
+        AssertJUnit.assertTrue(accountsListView.accountKPIPnl.isDisplayed());
+        System.out.println("VP: KPI sub-panel expand check - Passed");
 		
 		System.out.println(ENDLINE);
 	}
@@ -742,31 +717,4 @@ public class AccountEntityViewsTest extends BaseTest {
 		
 		System.out.println(ENDLINE);
 	}
-
-
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
-
-
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
-
 }
