@@ -28,11 +28,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  *         Desc.: Test class for some defects or features in Mobile 3.7.0
  */
 public class MobileSprint370 extends BaseTest {
-
-    public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
-    public String TEST_CONTACT_RECORD = "Abbott, John";
     public String TEST_LEAD_RECORD = "Beck, John";
-    public String TEST_COMPANY_RECORD = "Rdi Group Inc";
 
 
     //Test Methods Set
@@ -158,6 +154,7 @@ public class MobileSprint370 extends BaseTest {
 
         commNav.waitForPage("All Leads");
         commNav.waitForListView();
+        commView.clearToast();
         commView.lookupTxtBox.click();
         Thread.sleep(50);
         commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);
@@ -224,8 +221,8 @@ public class MobileSprint370 extends BaseTest {
 
         //Step: search for an existing Lead record
         commNav.clickGlobalMenuItem("Leads");
-
         commNav.waitForPage("All Leads");
+        commView.clearToast();
         commView.lookupTxtBox.click();
         Thread.sleep(50);
         commView.lookupTxtBox.sendKeys(Keys.BACK_SPACE);

@@ -342,7 +342,9 @@ public class CommonViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='offline_usage_widget_undefined']//button[@data-dojo-attach-event='onclick:onClearRecentData']")
     WebElement offlineDataClearRecViewedBtn;
 
-
+    @CacheLookup
+	@FindBy( id = "toast-container")
+    WebElement toastContainer;
 
 	//Text Input view elements
 	//========================	
@@ -351,9 +353,11 @@ public class CommonViewsElements extends BaseTest {
 	@FindBy(xpath = ".//*[@id='argos_Fields_TextAreaField_0']/textarea")
 	WebElement busdescTxtArea;
 	
-		
-	//Methods
-	//=======
+	public void clearToast() {
+        if (toastContainer.isDisplayed()) {
+            toastContainer.click();
+        }
+	}
 	/**
 	 * The lookupNSelectListItem method will lookup then select an item from a field input list 
 	 * view selection list (i.e. Account Type, City, Industry, etc.).  This method should be called

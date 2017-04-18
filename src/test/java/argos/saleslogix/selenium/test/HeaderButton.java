@@ -4,8 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.AssertJUnit;
+
+import java.util.concurrent.TimeUnit;
 
 public class HeaderButton {
 
@@ -42,6 +49,13 @@ public class HeaderButton {
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='back']")
     WebElement backButton;
+    @CacheLookup
+    @FindBy(xpath = "//div[contains(@class, 'toolbar')]/div[@class='more']/button[@aria-controls='app-toolbar-more']")
+    WebElement moreButton;
+    @CacheLookup
+    @FindBy(id = "app-toolbar-more")
+    WebElement moreMenu;
+
     private WebDriver driver;
 
     public HeaderButton(WebDriver driver) {
@@ -72,7 +86,6 @@ public class HeaderButton {
      * @throws InterruptedException
      * @author mike.llena@swiftpage.com
      * @version 1.0
-     * @param    N/A
      */
     public HeaderButton showGlobalMenu() throws InterruptedException {
         String methodID = "showGlobalMenu";
@@ -146,50 +159,63 @@ public class HeaderButton {
     }
 
     public HeaderButton clickHeaderButton(String buttonName) throws InterruptedException {
-        String methodID = "clickHeaderButton";
-
-        Thread.sleep(1000);
+        CommonNavigation commonNavigation = PageFactory.initElements(driver, CommonNavigation.class);
+        WebElement menuToClick = null;
         switch (buttonName.toLowerCase()) {
             case "global menu":
             case "global":
-                globalMenuButton.click();
+                menuToClick = globalMenuButton;
                 break;
             case "right context menu":
             case "right menu":
             case "right":
-                rightCntxtMnuButton.click();
+                menuToClick = rightCntxtMnuButton;
                 break;
             case "back":
             case "go back":
-                backButton.click();
+                menuToClick = backButton;
                 break;
             case "cancel":
-                cancelButton.click();
+                menuToClick = cancelButton;
                 break;
             case "add":
             case "add new":
-                addButton.click();
+                menuToClick = addButton;
                 break;
             case "edit":
-                editButton.click();
+                menuToClick = editButton;
                 break;
             case "briefcase":
-                briefcaseButton.click();
+                menuToClick = briefcaseButton;
                 break;
             case "check":
             case "accept":
-                checkButton.click();
+                menuToClick = checkButton;
                 break;
             case "delete":
-                deleteButton.click();
+                menuToClick = deleteButton;
                 break;
             case "save":
-                saveButton.click();
+                menuToClick = saveButton;
                 break;
         }
 
-        System.out.println(methodID + ": header button - '" + buttonName + "' was clicked.");
-        Thread.sleep(1500);
+        if (menuToClick == null) {
+            return this;
+        }
+
+        if (menuToClick.isDisplayed()) {
+            menuToClick.click();
+        } else {
+            String title = menuToClick.getAttribute("title");
+            moreButton.click();
+            WebElement popupMenuItem = driver.findElement(By.xpath("//ul[@id='app-toolbar-more']/li/a/span[contains(text(), '" + title + "')]/.."));
+            Wait<WebDriver> wait = new FluentWait<>(driver)
+                    .pollingEvery(50, TimeUnit.MILLISECONDS)
+                    .withTimeout(5, TimeUnit.SECONDS);
+            wait.until((d) -> popupMenuItem.isEnabled());
+            commonNavigation.highlightNClick(popupMenuItem);
+        }
         return this;
     }
 

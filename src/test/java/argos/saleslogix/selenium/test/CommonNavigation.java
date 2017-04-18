@@ -170,10 +170,13 @@ public class CommonNavigation {
 
     public void openSettings() {
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        CommonViewsElements commonViewsElements = PageFactory.initElements(driver, CommonViewsElements.class);
+
         if (rmenu_panel.isDisplayed()) {
             return;
         }
 
+        commonViewsElements.clearToast();
         headerButton.rightCntxtMnuButton.click();
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(2, SECONDS)
@@ -1513,17 +1516,16 @@ public class CommonNavigation {
         WebElement entityListItem = entityListViewSearch(entityType, entityName);
         if (!entityListItem.equals(null)) {
             entityListItem.click();
-            Thread.sleep(3000);
 
             //Step: check if the detail view is loaded
-            if (!entityType.contains("ote")) {
+            if (!entityType.contains("Note")) {
                 waitForPage(entityName);
             } else {
                 waitForNotPage("Notes/History");
             }
 
             //Step: open record Edit View
-            headerbutton.editButton.click();
+            headerbutton.clickHeaderButton("edit");
 
             String entTypeXPath = "";
             switch (entityType.toLowerCase()) {
