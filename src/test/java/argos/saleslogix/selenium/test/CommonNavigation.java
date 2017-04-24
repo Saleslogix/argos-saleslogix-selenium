@@ -393,23 +393,37 @@ public class CommonNavigation {
      */
     public boolean clickWebElementToPage(String sDesc, WebElement wElement, String expPageTitle) throws InterruptedException {
         String methodID = "clickWebElementToPage";
-
-        Thread.sleep(1000);
-        try {
-            highlightElement(wElement);
-            wElement.click();
-            Thread.sleep(3000);
-            boolean pgOpened = waitForPage(expPageTitle);
-            if (pgOpened) {
-                System.out.println(methodID + ": clicking the " + sDesc + " page element successfully opened the '" + expPageTitle + "' page/screen.");
-                return pgOpened;
-            } else {
-                return pgOpened;
-            }
-        } catch (Exception e) {
-            System.out.println(methodID + ": " + e.toString());
-            return false;
+        highlightElement(wElement);
+        wElement.click();
+        boolean pgOpened = waitForPage(expPageTitle);
+        if (pgOpened) {
+            System.out.println(methodID + ": clicking the " + sDesc + " page element successfully opened the '" + expPageTitle + "' page/screen.");
+            return pgOpened;
+        } else {
+            return pgOpened;
         }
+    }
+
+    private void clickElementByXPath(String xpath) {
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .pollingEvery(250, MILLISECONDS)
+                .withTimeout(5, SECONDS);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+        element.click();
+    }
+
+    public void clickDetailTab(String dataKey) {
+        String normalPath = String.format("//div[@selected='selected']//ul[@role='tablist']//li[@data-key='%s']", dataKey);
+        String tabMorePath = "//div[@selected='selected']//div[contains(@class, 'tab-container') and contains(@class, 'has-more-button')]//div[contains(@class, 'tab-more')]";
+        String moreMenuPath = String.format("//ul[contains(@class, 'tab-list-spillover') and contains(@class, 'is-open')]//li[@data-key='%s']", dataKey);
+
+        try {
+            clickElementByXPath(normalPath);
+        } catch(Exception ex) {
+            clickElementByXPath(tabMorePath);
+            clickElementByXPath(moreMenuPath);
+        }
+
     }
 
 
@@ -529,26 +543,17 @@ public class CommonNavigation {
      * @see        clickWebElement()
      */
     protected boolean verifyEntityViewElementClick(String elementDesc, WebElement wElement, String expPgTitle) throws InterruptedException {
-        String methodID = "verifyEntityViewElementClick";
-
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
-        try {
-            commNav.clickWebElementToPage(elementDesc, wElement, expPgTitle);
-            headerButton.clickHeaderButton("back");
-            try {
-                headerButton.backButton.click();
-            } catch (Exception e) {
-                headerButton.cancelButton.click();
-            }
-            Thread.sleep(1000);
-            return true;
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            return false;
-        }
+        commNav.clickWebElementToPage(elementDesc, wElement, expPgTitle);
 
+        try {
+            headerButton.clickHeaderButton("back");
+        } catch (Exception e) {
+            headerButton.clickHeaderButton("cancel");
+        }
+        return true;
     }
 
 
@@ -708,7 +713,7 @@ public class CommonNavigation {
      * This method will find and then click a specific WebElement object.
      *
      * @param listName   name of entity list view
-     * @param intemIndex index of list item to click
+     * @param itemIndex index of list item to click
      * @throws InterruptedException
      * @version 1.0
      */
@@ -1421,7 +1426,7 @@ public class CommonNavigation {
      * @throws Exception
      * @version 1.0
      * @param    entityType    entity type to search for
-     * @param    entityItem    item to search for
+     * @param    entityName    item to search for
      */
     public boolean entityRecordOpenDetailView(String entityType, String entityName) throws Exception {
         String methodID = "entityRecordOpenDetailView";
@@ -1495,6 +1500,12 @@ public class CommonNavigation {
         }
     }
 
+    public void waitForDetailLoad() {
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(30, SECONDS)
+                .pollingEvery(500, MILLISECONDS);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@selected='selected' and not(contains(@class, 'panel-loading'))]")));
+    }
 
     /**
      * This method will locate and then click an item from an entity list view to open the item's edit view.
@@ -1520,6 +1531,7 @@ public class CommonNavigation {
             }
 
             //Step: open record Edit View
+            waitForDetailLoad();
             headerbutton.clickHeaderButton("edit");
 
             String entTypeXPath = "";

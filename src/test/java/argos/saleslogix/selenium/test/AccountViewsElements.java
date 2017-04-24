@@ -239,7 +239,7 @@ public class AccountViewsElements extends BaseTest {
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[2]/span/a")
-    @FindBy(xpath = "//*[@id='account_detail']/div[3]/div[4]/div[2]/span/a")
+    @FindBy(xpath = "//*[@id='account_detail']//a[@data-action='callMainPhone']")
 	WebElement accountDetailViewCallMainNumberLnk;
 	
 	@CacheLookup
@@ -380,7 +380,7 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountEditViewAddressFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']/button")
+	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']//button")
 	WebElement accountEditViewAddressFldBtn;
 	
 	@CacheLookup
@@ -388,35 +388,35 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountEditViewFaxInputFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='crm_Fields_PicklistField_0']/input")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Type']//input")
 	WebElement accountEditViewTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='crm_Fields_PicklistField_0']/button")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Type']//button")
 	WebElement accountEditViewTypeFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='crm_Fields_PicklistField_1']/input")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='SubType']//input")
 	WebElement accountEditViewSubTypeFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='crm_Fields_PicklistField_1']/button")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='SubType']//button")
 	WebElement accountEditViewSubTypeFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='crm_Fields_PicklistField_2']/input")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Status']//input")
 	WebElement accountEditViewStatusFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='crm_Fields_PicklistField_2']/button")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Status']//button")
 	WebElement accountEditViewStatusFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='crm_Fields_PicklistField_3']/input")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Industry']//input")
 	WebElement accountEditViewIndustryFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='crm_Fields_PicklistField_3']/button")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Industry']//button")
 	WebElement accountEditViewIndustryFldBtn;
 	
 	@CacheLookup
@@ -424,31 +424,27 @@ public class AccountViewsElements extends BaseTest {
 	WebElement accountEditViewBusDescFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='argos_Fields_NoteField_0']/button")
-	WebElement accountEditViewBusDescFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//div[@id='argos_Fields_LookupField_0']/input")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='AccountManager']//input")
 	WebElement accountEditViewAcctMgrFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='argos_Fields_LookupField_0']/button")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='AccountManager']//button")
 	WebElement accountEditViewAcctMgrFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='argos_Fields_LookupField_1']/input")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Owner']//input")
 	WebElement accountEditViewOwnerFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='argos_Fields_LookupField_1']/button")
+	@FindBy(xpath = "///div[@selected='selected']//div[@data-field='Owner']//button")
 	WebElement accountEditViewOwnerFldBtn;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='argos_Fields_LookupField_2']/input")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='LeadSource']//input")
 	WebElement accountEditViewLeadSourceFld;
 	
 	@CacheLookup
-	@FindBy(xpath = "//div[@id='argos_Fields_LookupField_2']/button")
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='LeadSource']//button")
 	WebElement accountEditViewLeadSourceFldBtn;
 
     // the data-key given here is for user loup 'My Accounts' group
