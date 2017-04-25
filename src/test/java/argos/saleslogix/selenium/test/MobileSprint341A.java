@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
@@ -17,8 +15,8 @@ import java.util.List;
 
 /**
  * @author Kathy Lockyer-Bratton
- * Class: MobileSprint341A
- * Desc.: Test class for some defects or features in Mobile 3.4.1
+ *         Class: MobileSprint341A
+ *         Desc.: Test class for some defects or features in Mobile 3.4.1
  */
 public class MobileSprint341A extends BaseTest {
 
@@ -28,12 +26,9 @@ public class MobileSprint341A extends BaseTest {
     public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
     public String TEST_OPPORTUNITY_RECORD3 = "Abbott Ltd.-Phase3";
     public String TEST_TICKET_RECORD = "001-00-000014";
-	
-	//Test Methods Set
-	//================
 
-
-
+    //Test Methods Set
+    //================
 
 
     @Test(enabled = true)
@@ -255,9 +250,6 @@ public class MobileSprint341A extends BaseTest {
             System.out.println("VP: Pressing '55' minutes from dropdown displays that value in the minutes field - PASSED");
 
 
-
-
-
             //Step: cancel to close the calendar modal control
             //calendarView.calendarModalCancel.click();
 
@@ -267,9 +259,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println("VP: Calendar control ability to set minutes to 00 or 05 (as well as all other minutes and all hours) from Advanced view - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar control ability to set minutes to 00 or 05 (as well as all other minutes and all hours) from Advanced view - FAILED");
             AssertJUnit.fail("test failed");
@@ -436,9 +426,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println("VP: Calendar control ability to set months and years from Advanced view - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar control ability to set months and years from Advanced view - FAILED");
             AssertJUnit.fail("test failed");
@@ -482,7 +470,7 @@ public class MobileSprint341A extends BaseTest {
             //Verify that Event is an option for an activity
             List elements = driver.findElements(By.xpath("//*[@id='activity_types_list']//ul/li[5]/div[2]"));
 
-            if(elements.size() > 0) {
+            if (elements.size() > 0) {
                 commNav.isWebElementPresent(viewName + ", Event Option ", activityEditView.activityScheduleEventBtn);
                 System.out.println("VP: from Calendar, on adding an activity, see Event as an option - PASSED");
             } else {
@@ -491,9 +479,7 @@ public class MobileSprint341A extends BaseTest {
             }
 
             System.out.println(methodID + "- PASSED");
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + "- FAILED");
             AssertJUnit.fail("test failed");
@@ -534,7 +520,7 @@ public class MobileSprint341A extends BaseTest {
             //Check whether or not 'Next Week' on Relative date view displays ... it should not display
             List elements = driver.findElements(By.xpath("//ul//li//div[contains(., 'Next Week')]"));
 
-            if(elements.size() > 0) {
+            if (elements.size() > 0) {
                 commNav.isWebElementPresent(viewName + ", Next Week title", calendarView.calendarModalNextWeekTitle);
                 System.out.println("VP: on editing Ticket dates should not see the relative date view before calendar view - FAILED");
                 AssertJUnit.fail("test failed");
@@ -607,7 +593,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: verify that the activity created displays for the currently selected first day of the month
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
                 System.out.println("VP: all day activities not appearing as expected on the calendar for the first day of a month - PASSED");
             } else {
                 System.out.println("VP: all day activities not appearing as expected on the calendar for the first day of a month - FAILED");
@@ -615,9 +601,7 @@ public class MobileSprint341A extends BaseTest {
             }
 
             System.out.println(methodID + "- PASSED");
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + "- FAILED");
             AssertJUnit.fail("test failed");
@@ -660,9 +644,7 @@ public class MobileSprint341A extends BaseTest {
             AssertJUnit.assertEquals("VP: for opportunity, unable to change the value of the 'close prob' field - FAILED", TEST_OPPORTUNITY_RECORD, driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: for opportunity, unable to change the value of the 'close prob' field - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: for opportunity, unable to change the value of the 'close prob' field - FAILED");
             AssertJUnit.fail("test failed");
@@ -736,9 +718,7 @@ public class MobileSprint341A extends BaseTest {
             AssertJUnit.assertEquals("VP: Activity Detail - complete activity quick action opens relevant screen, but unable to save completion - FAILED", "Calendar", driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: Activity Detail - complete activity quick action opens relevant screen, but unable to save completion - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Activity Detail - complete activity quick action opens relevant screen, but unable to save completion - FAILED");
             AssertJUnit.fail("test failed");
@@ -802,8 +782,7 @@ public class MobileSprint341A extends BaseTest {
             System.out.println("VP: Calendar/ time control : where there is no default date/ time assigned to a field, unable to open the 'Advanced' calendar/ time control - PASSED");
 
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar/ time control : where there is no default date/ time assigned to a field, unable to open the 'Advanced' calendar/ time control - FAILED");
             AssertJUnit.fail("test failed");
@@ -832,7 +811,7 @@ public class MobileSprint341A extends BaseTest {
         try {
 
             //Step: go to "My Schedule" view, if not already there
-            if (!commNav.isPageDisplayed("My Schedule"))   {
+            if (!commNav.isPageDisplayed("My Schedule")) {
                 commNav.clickGlobalMenuItem("My Schedule");
                 commNav.waitForPage("My Schedule");
             }
@@ -863,7 +842,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: locate the activity added
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myday_list']//h3/span[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
                 System.out.println("VP: My Schedule - online : after adding an activity, listview not always being automatically refreshed - PASSED");
             } else {
                 System.out.println("VP: My Schedule - online : after adding an activity, listview not always being automatically refreshed - FAILED");
@@ -872,8 +851,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: My Schedule - online : after adding an activity, listview not always being automatically refreshed - FAILED");
             AssertJUnit.fail("test failed");
@@ -881,7 +859,6 @@ public class MobileSprint341A extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -908,7 +885,7 @@ public class MobileSprint341A extends BaseTest {
         try {
 
             //Step: go to "My Schedule" view, if not already there
-            if (!commNav.isPageDisplayed("My Schedule"))   {
+            if (!commNav.isPageDisplayed("My Schedule")) {
                 commNav.clickGlobalMenuItem("My Schedule");
                 commNav.waitForPage("My Schedule");
             }
@@ -968,7 +945,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: locate the activity added under My Schedule listview
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myday_list']//h3/span[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
                 System.out.println("VP: activity added has been located in My Schedule listview - PASSED");
             } else {
                 System.out.println("VP: activity added has been located in My Schedule listview - FAILED");
@@ -983,7 +960,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: press the Account quick action to open the relevant account ... check page title and a field on the account detail view
             myScheduleListView.myScheduleQuickActionAccount.click();
             commNav.waitForPage(activityAccountValue);
-            if(commNav.isWebElementPresent("Account Detail, account field ", accountDetailView.accountDetailViewAccountFld)) {
+            if (commNav.isWebElementPresent("Account Detail, account field ", accountDetailView.accountDetailViewAccountFld)) {
                 System.out.println("VP: navigated to account ... " + accountDetailView.accountDetailViewAccountFld.getText());
                 AssertJUnit.assertEquals("VP: navigated to expected account - FAILED", activityAccountValue, accountDetailView.accountDetailViewAccountFld.getText());
                 System.out.println("VP: activity link to account opened detail view as expected - PASSED");
@@ -997,7 +974,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: with quick actions still displaying for the activity in listview, press the Contact quick action to open the relevant contact ... check page title and a field on the contact detail view
             myScheduleListView.myScheduleQuickActionContact.click();
             commNav.waitForPage(activityContactValue);
-            if(commNav.isWebElementPresent("Contact Detail, contact field ", contactsListView.contactsDetailViewContactFld)) {
+            if (commNav.isWebElementPresent("Contact Detail, contact field ", contactsListView.contactsDetailViewContactFld)) {
                 System.out.println("VP: navigated to contact ... " + contactsListView.contactsDetailViewContactFld.getText());
                 AssertJUnit.assertEquals("VP: navigated to expected contact - FAILED", activityContactValue, contactsListView.contactsDetailViewContactFld.getText());
                 System.out.println("VP: activity link to contact opened detail view as expected - PASSED");
@@ -1011,7 +988,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: with quick actions still displaying for the activity in listview, press the Opportunity quick action to open the relevant contact ... check page title and a field on the opportunity detail view
             myScheduleListView.myScheduleQuickActionOpportunity.click();
             commNav.waitForPage("Opportunity");
-            if(commNav.isWebElementPresent("Opportunity Detail, opportunity field ", opportunitiesListView.opportunityDetailViewOpportunityFld)) {
+            if (commNav.isWebElementPresent("Opportunity Detail, opportunity field ", opportunitiesListView.opportunityDetailViewOpportunityFld)) {
                 System.out.println("VP: navigated to opportunity ... " + opportunitiesListView.opportunityDetailViewOpportunityFld.getText());
                 AssertJUnit.assertEquals("VP: navigated to expected opportunity - FAILED", activityOpportunityValue, opportunitiesListView.opportunityDetailViewOpportunityFld.getText());
                 System.out.println("VP: activity link to opportunity opened detail view as expected - PASSED");
@@ -1025,8 +1002,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: My Schedule - online : activity listview quick actions for Contact and Opportunity open screen with expected title, then see continuous loading and no detail - FAILED");
             AssertJUnit.fail("test failed");
@@ -1058,7 +1034,7 @@ public class MobileSprint341A extends BaseTest {
         try {
 
             //Step: go to "My Schedule" view, if not already there
-            if (!commNav.isPageDisplayed("My Schedule"))   {
+            if (!commNav.isPageDisplayed("My Schedule")) {
                 commNav.clickGlobalMenuItem("My Schedule");
                 commNav.waitForPage("My Schedule");
             }
@@ -1099,9 +1075,9 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: save the value of the activity's work phone number
             String activityWorkPhone = activityEditView.activityEditViewPhoneFld.getAttribute("value");
-            String activityWorkPhoneEdited  = activityWorkPhone.replace("(","");
-            activityWorkPhoneEdited = activityWorkPhoneEdited.replace(")","");
-            activityWorkPhoneEdited = activityWorkPhoneEdited.replace("-","");
+            String activityWorkPhoneEdited = activityWorkPhone.replace("(", "");
+            activityWorkPhoneEdited = activityWorkPhoneEdited.replace(")", "");
+            activityWorkPhoneEdited = activityWorkPhoneEdited.replace("-", "");
             System.out.println("VP: Activity detail Work Phone value to be clicked is ... " + activityWorkPhone + " / " + activityWorkPhoneEdited);
 
             //Step: save the activity
@@ -1110,7 +1086,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: locate the activity added under My Schedule listview
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myday_list']//h3/span[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
                 System.out.println("VP: activity added has been located in My Schedule listview - PASSED");
             } else {
                 System.out.println("VP: activity added has been located in My Schedule listview - FAILED");
@@ -1129,7 +1105,7 @@ public class MobileSprint341A extends BaseTest {
             System.out.println("VP: Value of activity's Work Phone in browser address bar (would be called) is ... " + urlTelephone);
 
             //Step: verify that clicking the activity Call quick action in My Schedule listview results in a call attempt to the activity's work phone
-            AssertJUnit.assertEquals("VP: My Schedule - clicking the activity Call quick action in listview did not try to call the activity's work phone - FAILED",activityWorkPhoneEdited,urlTelephone);
+            AssertJUnit.assertEquals("VP: My Schedule - clicking the activity Call quick action in listview did not try to call the activity's work phone - FAILED", activityWorkPhoneEdited, urlTelephone);
             System.out.println("VP: My Schedule - clicking the activity Call quick action in listview did not try to call the activity's work phone  - PASSED");
 
 
@@ -1144,8 +1120,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: My Schedule - clicking the activity Call quick action in listview did not try to call the activity's work phone - FAILED");
             AssertJUnit.fail("test failed");
@@ -1153,7 +1128,6 @@ public class MobileSprint341A extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -1177,7 +1151,7 @@ public class MobileSprint341A extends BaseTest {
         try {
 
             //Step: go to "My Schedule" view, if not already there
-            if (!commNav.isPageDisplayed("My Schedule"))   {
+            if (!commNav.isPageDisplayed("My Schedule")) {
                 commNav.clickGlobalMenuItem("My Schedule");
                 commNav.waitForPage("My Schedule");
             }
@@ -1218,9 +1192,9 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: save the value of the activity's work phone number
             String activityWorkPhone = activityEditView.activityEditViewPhoneFld.getAttribute("value");
-            String activityWorkPhoneEdited  = activityWorkPhone.replace("(","");
-            activityWorkPhoneEdited = activityWorkPhoneEdited.replace(")","");
-            activityWorkPhoneEdited = activityWorkPhoneEdited.replace("-","");
+            String activityWorkPhoneEdited = activityWorkPhone.replace("(", "");
+            activityWorkPhoneEdited = activityWorkPhoneEdited.replace(")", "");
+            activityWorkPhoneEdited = activityWorkPhoneEdited.replace("-", "");
             System.out.println("VP: Activity detail Work Phone value to be clicked is ... " + activityWorkPhone + " / " + activityWorkPhoneEdited);
 
             //Step: save the activity
@@ -1229,7 +1203,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: locate the activity added under My Schedule listview
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myday_list']//h3/span[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
                 System.out.println("VP: activity added has been located in My Schedule listview - PASSED");
             } else {
                 System.out.println("VP: activity added has been located in My Schedule listview - FAILED");
@@ -1245,7 +1219,7 @@ public class MobileSprint341A extends BaseTest {
             System.out.println("VP: Value of activity's Work Phone in browser address bar (would be called) is ... " + urlTelephone);
 
             //Step: verify that clicking the activity phone link in My Schedule listview results in a call attempt to the activity's phone number
-            AssertJUnit.assertEquals("VP: My Schedule - clicking the activity phone link in listview did not try to call the activity's work phone - FAILED",activityWorkPhoneEdited,urlTelephone);
+            AssertJUnit.assertEquals("VP: My Schedule - clicking the activity phone link in listview did not try to call the activity's work phone - FAILED", activityWorkPhoneEdited, urlTelephone);
             System.out.println("VP: My Schedule - clicking the activity phone link in listview did not try to call the activity's work phone  - PASSED");
 
 
@@ -1260,8 +1234,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: My Schedule - clicking the activity Call quick action in listview did not try to call the activity's work phone - FAILED");
             AssertJUnit.fail("test failed");
@@ -1290,7 +1263,7 @@ public class MobileSprint341A extends BaseTest {
         try {
 
             //Step: go to "My Schedule" view, if not already there
-            if (!commNav.isPageDisplayed("My Schedule"))   {
+            if (!commNav.isPageDisplayed("My Schedule")) {
                 commNav.clickGlobalMenuItem("My Schedule");
                 commNav.waitForPage("My Schedule");
             }
@@ -1321,7 +1294,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: locate the activity added
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myday_list']//h3/span[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
                 System.out.println("VP: My Schedule - online : after adding an activity, listview not always being automatically refreshed - PASSED");
             } else {
                 System.out.println("VP: My Schedule - online : after adding an activity, listview not always being automatically refreshed - FAILED");
@@ -1339,7 +1312,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: validate that the activity no longer displays under My Schedule listview
             List elements = driver.findElements(By.xpath("//*[@id='myday_list']//h3/span[text() = '" + newActivityRegarding + "']"));
 
-            if(elements.size() == 0) {
+            if (elements.size() == 0) {
                 System.out.println("VP: My Schedule - online : after completing an activity, listview is not always reflecting this until one does an explicit refresh - PASSED");
             } else {
                 System.out.println("VP: My Schedule - online : after completing an activity, listview is not always reflecting this until one does an explicit refresh - FAILED");
@@ -1348,8 +1321,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println(methodID + "- PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: My Schedule - online : after completing an activity, listview is not always reflecting this until one does an explicit refresh - FAILED");
             AssertJUnit.fail("test failed");
@@ -1477,7 +1449,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: validate that the activity displays as expected for 8/16/2015
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
                 System.out.println("VP: activity " + newActivityRegarding + " added appearing under the correct day/ month/ year - PASSED");
             } else {
                 System.out.println("VP: activity " + newActivityRegarding + " added appearing under the correct day/ month/ year - FAILED");
@@ -1496,9 +1468,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println("VP: Calendar/ time control - where date/ time value is confirmed, then date/ time value is cancelled, the saved date has the incorrect month and year - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar/ time control - where date/ time value is confirmed, then date/ time value is cancelled, the saved date has the incorrect month and year - FAILED");
             AssertJUnit.fail("test failed");
@@ -1614,7 +1584,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: validate that the activity displays as expected for 8/16/2015
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", Activity Added ", activityItemLnk)) {
                 System.out.println("VP: activity " + newActivityRegarding + " added appearing under the correct day/ month/ year - PASSED");
             } else {
                 System.out.println("VP: activity " + newActivityRegarding + " added appearing under the correct day/ month/ year - FAILED");
@@ -1658,9 +1628,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println("VP: Calendar/ time control - date/ time displayed on opening control is not the value of the field from which it was opened - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar/ time control- date/ time displayed on opening control is not the value of the field from which it was opened - FAILED");
             AssertJUnit.fail("test failed");
@@ -1744,9 +1712,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println("VP: Calendar screen - month and year dropdowns stop working after modal calendar opened  - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar screen - month and year dropdowns stop working after modal calendar opened  - FAILED");
             AssertJUnit.fail("test failed");
@@ -1846,19 +1812,19 @@ public class MobileSprint341A extends BaseTest {
             //Step: verify that 'repeats' on the insert activity screen displays as 'Daily'
             String activityRepeatsValue = activityEditView.activityEditViewRepeatsFld.getAttribute("value");
             System.out.println("VP: on activity insert screen, 'repeats' has a value of ... " + activityRepeatsValue);
-            AssertJUnit.assertEquals("VP: Insert Activity 'repeats' field displays with chosen value of 'Daily' - FAILED","Daily",activityRepeatsValue);
+            AssertJUnit.assertEquals("VP: Insert Activity 'repeats' field displays with chosen value of 'Daily' - FAILED", "Daily", activityRepeatsValue);
             System.out.println("VP: Insert Activity 'repeats' field displays with chosen value of 'Daily' - PASSED");
 
             //Step: verify that contact on the insert activity screen displays as expected
             String activityContactValue = activityEditView.activityEditViewContactFld.getAttribute("value");
             System.out.println("VP: on activity insert screen, 'contact' has a value of ... " + activityContactValue);
-            AssertJUnit.assertEquals("VP: Insert Activity 'contact' field displays with chosen value of " + TEST_CONTACT_RECORD + " - FAILED",TEST_CONTACT_RECORD,activityContactValue);
+            AssertJUnit.assertEquals("VP: Insert Activity 'contact' field displays with chosen value of " + TEST_CONTACT_RECORD + " - FAILED", TEST_CONTACT_RECORD, activityContactValue);
             System.out.println("VP: Insert Activity 'contact' field displays with chosen value of " + TEST_CONTACT_RECORD + " - PASSED");
 
             //Step: verify that opportunity on the insert activity screen displays as expected
             String activityOpportunityValue = activityEditView.activityEditViewOpportunityFld.getAttribute("value");
             System.out.println("VP: on activity insert screen, 'opportunity' has a value of ... " + activityOpportunityValue);
-            AssertJUnit.assertEquals("VP: Insert Activity 'opportunity' field displays with chosen value of " + TEST_OPPORTUNITY_RECORD3 + " - FAILED",TEST_OPPORTUNITY_RECORD3,activityOpportunityValue);
+            AssertJUnit.assertEquals("VP: Insert Activity 'opportunity' field displays with chosen value of " + TEST_OPPORTUNITY_RECORD3 + " - FAILED", TEST_OPPORTUNITY_RECORD3, activityOpportunityValue);
             System.out.println("VP: Insert Activity 'opportunity' field displays with chosen value of " + TEST_OPPORTUNITY_RECORD3 + " - PASSED");
 
             //Step: save the activity
@@ -1894,19 +1860,19 @@ public class MobileSprint341A extends BaseTest {
             //Step: verify that 'follow-up' on the complete series screen displays as 'Phone Call'
             String activityFollowUpValue = activityEditView.activityCompleteViewFollowUpFld.getAttribute("value");
             System.out.println("VP: on activity Complete Series screen, 'follow-up' has a value of ... " + activityFollowUpValue);
-            AssertJUnit.assertEquals("VP: Complete Series Activity 'follow-up' field displays with chosen value of 'Phone Call' - FAILED","Phone Call",activityFollowUpValue);
+            AssertJUnit.assertEquals("VP: Complete Series Activity 'follow-up' field displays with chosen value of 'Phone Call' - FAILED", "Phone Call", activityFollowUpValue);
             System.out.println("VP: Complete Series Activity 'follow-up' field displays with chosen value of 'Phone Call' - PASSED");
 
             //Step: verify that contact on the activity Complete Series screen displays as expected
             activityContactValue = activityEditView.activityCompleteViewContactFld.getAttribute("value");
             System.out.println("VP: on activity Complete Series screen, 'contact' has a value of ... " + activityContactValue);
-            AssertJUnit.assertEquals("VP: activity Complete Series 'contact' field displays with chosen value of " + TEST_CONTACT_RECORD + " - FAILED",TEST_CONTACT_RECORD,activityContactValue);
+            AssertJUnit.assertEquals("VP: activity Complete Series 'contact' field displays with chosen value of " + TEST_CONTACT_RECORD + " - FAILED", TEST_CONTACT_RECORD, activityContactValue);
             System.out.println("VP: activity Complete Series 'contact' field displays with chosen value of " + TEST_CONTACT_RECORD + " - PASSED");
 
             //Step: verify that opportunity on the activity Complete Series screen displays as expected
             activityOpportunityValue = activityEditView.activityCompleteViewOpportunityFld.getAttribute("value");
             System.out.println("VP: on activity Complete Series screen, 'opportunity' has a value of ... " + activityOpportunityValue);
-            AssertJUnit.assertEquals("VP: activity Complete Series 'opportunity' field displays with chosen value of " + TEST_OPPORTUNITY_RECORD3 + " - FAILED",TEST_OPPORTUNITY_RECORD3,activityOpportunityValue);
+            AssertJUnit.assertEquals("VP: activity Complete Series 'opportunity' field displays with chosen value of " + TEST_OPPORTUNITY_RECORD3 + " - FAILED", TEST_OPPORTUNITY_RECORD3, activityOpportunityValue);
             System.out.println("VP: activity Complete Series 'opportunity' field displays with chosen value of " + TEST_OPPORTUNITY_RECORD3 + " - PASSED");
 
             headerButton.clickHeaderButton("Save");
@@ -1919,9 +1885,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println("VP: Activity - for Complete Occurrence/ Series screen (INFORCRM-6888), contact and opportunity display as ID's, 'follow-up' as [object Object], and completion won't save - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: insert recurring activity/ complete recurring activity - contact and opportunity display as ID's, 'repeats'/ 'follow-up' as [object Object] - FAILED");
             AssertJUnit.fail("test failed");
@@ -2080,9 +2044,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println("VP: Calendar select control - incorrect year may display on control per scenario ... on confirm does appear correctly on edit view - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar select control - incorrect year may display on control per scenario ... on confirm does appear correctly on edit view - FAILED");
             AssertJUnit.fail("test failed");
@@ -2090,7 +2052,6 @@ public class MobileSprint341A extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -2242,9 +2203,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println("VP: Calendar select control - incorrect month may display on control per scenario ... on confirm does appear correctly on edit view - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar select control - incorrect month may display on control per scenario ... on confirm does appear correctly on edit view - FAILED");
             AssertJUnit.fail("test failed");
@@ -2325,7 +2284,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: verify that 3 occurrences of the recurring activity display under account Activities view
             List elements = driver.findElements(By.xpath("//*[@id='activity_related']//h3//span[text() = '" + newActivityRegarding + "']"));
 
-            if(elements.size() == 3) {
+            if (elements.size() == 3) {
                 System.out.println("VP: there are 3 occurrences of activity " + newActivityRegarding + " on the account Activities' list - PASSED");
             } else {
                 System.out.println("VP: there are 3 occurrences of activity " + newActivityRegarding + " on the account Activities' list - FAILED");
@@ -2360,8 +2319,7 @@ public class MobileSprint341A extends BaseTest {
             System.out.println("VP: on saving the edited occurrence of a recurring activity, there is no error and activity detail view displays - PASSED");
 
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + ": on saving the edited occurrence of a recurring activity, there is no error and activity detail view displays - FAILED");
             AssertJUnit.fail("test failed");
@@ -2399,9 +2357,7 @@ public class MobileSprint341A extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -2435,7 +2391,7 @@ public class MobileSprint341A extends BaseTest {
             LogOutThenLogBackIn(userName, userPwd);
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -2508,7 +2464,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: verify that one occurrence of the recurring activity display under My Activities view
             List elements = driver.findElements(By.xpath("//*[@id='myactivity_list']//ul/li"));
 
-            if(elements.size() == 1) {
+            if (elements.size() == 1) {
                 System.out.println("VP: should see one occurrences of activity " + newActivityRegarding + " on the My Activities' listview - PASSED");
             } else {
                 System.out.println("VP: should see one occurrences of activity " + newActivityRegarding + " on the My Activities' listview  - FAILED");
@@ -2547,7 +2503,7 @@ public class MobileSprint341A extends BaseTest {
             //      verify that one sees two occurrences of activity with regarding field unedited
             List elements2 = driver.findElements(By.xpath("//*[@id='activity_related']//span[text() = '" + newActivityRegarding + "']"));
 
-            if(elements2.size() == 2) {
+            if (elements2.size() == 2) {
                 System.out.println("VP: should see two occurrences of activity with regarding field unedited (" + newActivityRegarding + ") on the contact Activities' listview - PASSED");
             } else {
                 System.out.println("VP: should see two occurrences of activity with regarding field unedited (" + newActivityRegarding + ") on the contact Activities' listview  - FAILED");
@@ -2557,7 +2513,7 @@ public class MobileSprint341A extends BaseTest {
             //      verify that one sees one occurrence of activity with regarding field edited
             List elements3 = driver.findElements(By.xpath("//*[@id='activity_related']//span[text() = '" + editedActivityRegarding + "']"));
 
-            if(elements3.size() == 1) {
+            if (elements3.size() == 1) {
                 System.out.println("VP: should see one occurrence of activity with regarding field edited (" + editedActivityRegarding + ") on the contact Activities' listview - PASSED");
             } else {
                 System.out.println("VP: should see one occurrence of activity with regarding field edited (" + editedActivityRegarding + ") on the contact Activities' listview  - FAILED");
@@ -2565,8 +2521,7 @@ public class MobileSprint341A extends BaseTest {
             }
 
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + ": Activities - editing/ saving an occurrence of a recurring activity from My Activities incorrectly changes all occurrences - FAILED");
             AssertJUnit.fail("test failed");
@@ -2630,7 +2585,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: verify that the activity created displays for the currently selected day of the month
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
                 System.out.println("VP: timeless activity created for the currently selected day of the month - PASSED");
             } else {
                 System.out.println("VP: timeless activity created for the currently selected day of the month - FAILED");
@@ -2652,7 +2607,7 @@ public class MobileSprint341A extends BaseTest {
 
             List elements = driver.findElements(By.xpath("//div[contains(text(),'Cancel')]"));
 
-            if(elements.size() == 1) {
+            if (elements.size() == 1) {
                 commNav.highlightNClick(calendarView.calendarModalCancel);
                 System.out.println("VP: Calendar control - no longer opening where activity is timeless - PASSED");
             } else {
@@ -2661,9 +2616,7 @@ public class MobileSprint341A extends BaseTest {
             }
 
             System.out.println(methodID + "- PASSED");
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + "- FAILED");
             AssertJUnit.fail("test failed");
@@ -2742,7 +2695,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: verify that the activity created displays for the currently selected day of the month
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
-            if(commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
+            if (commNav.isWebElementPresent(viewName + ", ActivityAdded ", activityItemLnk)) {
                 System.out.println("VP: activity with minutes set to '00' created for the currently selected day of the month - PASSED");
             } else {
                 System.out.println("VP: activity with minutes set to '00' created for the currently selected day of the month - FAILED");
@@ -2769,7 +2722,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: ... verify that the calendar control opens (check that calendar Cancel button displays)
             List elements = driver.findElements(By.xpath("//div[contains(text(),'Cancel')]"));
 
-            if(elements.size() == 1) {
+            if (elements.size() == 1) {
                 commNav.highlightNClick(calendarView.calendarModalCancel);
                 System.out.println("VP: Calendar control - no longer opening where activity has time of '00' minutes - PASSED");
             } else {
@@ -2778,9 +2731,7 @@ public class MobileSprint341A extends BaseTest {
             }
 
             System.out.println(methodID + "- PASSED");
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + "- FAILED");
             AssertJUnit.fail("test failed");
@@ -2849,7 +2800,7 @@ public class MobileSprint341A extends BaseTest {
             List elements = driver.findElements(By.xpath("//ul//li//div[contains(., 'This Evening')]"));
 
             //Choose Relative date of 'This Evening', if it is displaying
-            if(elements.size() > 0) {
+            if (elements.size() > 0) {
                 calendarView.calendarModalThisEveningTitle.click();
                 Thread.sleep(1000);
                 driver.switchTo().activeElement();
@@ -2866,7 +2817,7 @@ public class MobileSprint341A extends BaseTest {
                 System.out.println("VP: after choosing 'This Evening', activity start time (date only) is ... " + ftDate.format(dateTime2.getTime()));
 
                 //Step: verify that date for 'This Evening' is the same date as for 'today' (default date)
-                if (dateTime2.equals(dateTime1))  {
+                if (dateTime2.equals(dateTime1)) {
                     System.out.println("VP: Calendar control ... date for 'This Evening' is the same date as for 'today' (default date) " + " - PASSED");
                 } else {
                     System.out.println("VP: Calendar control ... date for 'This Evening' is the same date as for 'today' (default date) " + " - FAILED");
@@ -2914,7 +2865,7 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: verify that date for 'Tomorrow Evening' is one day past 'today'
             dateTime2.add(Calendar.DATE, -1);
-            if (dateTime2.equals(dateTime1))  {
+            if (dateTime2.equals(dateTime1)) {
                 System.out.println("VP: Calendar control ... date for 'Tomorrow Evening' is one day past 'today' (default date) " + " - PASSED");
             } else {
                 System.out.println("VP: Calendar control ... date for 'Tomorrow Evening' is is one day past 'today' (default date) " + " - FAILED");
@@ -2934,12 +2885,9 @@ public class MobileSprint341A extends BaseTest {
             System.out.println("VP: Calendar control ... time for 'Tomorrow Evening' is expected to be '3:00 PM' and has a value of .. " + newActivityTomEveTimeOnly + " - PASSED");
 
 
-
             System.out.println("VP: Relative date format control - 'This Evening' and 'Tomorrow Evening' not resulting in expected date or time - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Relative date format control - 'This Evening' and 'Tomorrow Evening' not resulting in expected date or time - FAILED");
             AssertJUnit.fail("test failed");
@@ -2996,7 +2944,7 @@ public class MobileSprint341A extends BaseTest {
             //Step: first check if a 'Validation Summary' displays
             List elements = driver.findElements(By.xpath("//div[@class='panel-validation-summary']"));
 
-            if(elements.size() > 0) {
+            if (elements.size() > 0) {
                 System.out.println("VP: on activity save, a 'Validation Summary' is displaying as follows ... ");
                 System.out.println("VP: " + activityEditView.activityEditViewValidationMessage1.getText());
                 System.out.println("VP: " + activityEditView.activityEditViewValidationMessage2.getText());
@@ -3006,9 +2954,7 @@ public class MobileSprint341A extends BaseTest {
             }
 
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Date/ time field : now able to manually enter and save an unwanted or invalid date/ time ... should see error - FAILED");
             AssertJUnit.fail("test failed");
@@ -3057,12 +3003,12 @@ public class MobileSprint341A extends BaseTest {
             //Step: store initial value of 'start time', then manually change it to have a time of '11:07 AM'
             String activityInitialDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             String[] dtSplit = activityInitialDateTime.split(" ");
-            System.out.println("VP: initial value for activity 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+            System.out.println("VP: initial value for activity 'start time' is ... " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
             String activityModifiedDateTime = dtSplit[0] + " 11:07 AM";
             activityEditView.activityEditViewStartTimeFld.clear();
             activityEditView.activityEditViewStartTimeFld.sendKeys(activityModifiedDateTime);
-            System.out.println("VP: manually edited value for activity 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+            System.out.println("VP: manually edited value for activity 'start time' is ... " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
             //Step: press 'start time' icon to open Calendar control
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -3089,15 +3035,13 @@ public class MobileSprint341A extends BaseTest {
 
             //Step: check that the current value of 'start time' is the same as the manually changed value ... minutes of '07' should still display
             String activityFinalDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
-            System.out.println("VP: current value for activity 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+            System.out.println("VP: current value for activity 'start time' is ... " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
             AssertJUnit.assertEquals("VP: current value for activity 'start time' is the same as the value before calendar was opened and Confirm was pressed - FAILED", activityModifiedDateTime, activityFinalDateTime);
             System.out.println("VP: current value for activity 'start time' is the same as the value before calendar was opened and Confirm was pressed - PASSED");
 
             System.out.println(methodID + "- PASSED");
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + "- FAILED");
             AssertJUnit.fail("test failed");
@@ -3147,12 +3091,12 @@ public class MobileSprint341A extends BaseTest {
             //Step: store initial value of 'start time', then manually change it to have a time of '11:07 AM'
             String activityInitialDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             String[] dtSplit = activityInitialDateTime.split(" ");
-            System.out.println("VP: initial value for activity #1 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+            System.out.println("VP: initial value for activity #1 'start time' is ... " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
             String activityModifiedDateTime = dtSplit[0] + " 11:07 AM";
             activityEditView.activityEditViewStartTimeFld.clear();
             activityEditView.activityEditViewStartTimeFld.sendKeys(activityModifiedDateTime);
-            System.out.println("VP: manually edited value for activity #1 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+            System.out.println("VP: manually edited value for activity #1 'start time' is ... " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
             //Step: press 'start time' icon to open Calendar control
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -3186,7 +3130,6 @@ public class MobileSprint341A extends BaseTest {
             commNav.waitForPage("Calendar");
 
 
-
             //Step: click the Add header button to open Activity schedule view ... uses current day as default   ACTIVITY # 2
             headerButton.clickHeaderButton("Add");
 
@@ -3204,12 +3147,12 @@ public class MobileSprint341A extends BaseTest {
             //Step: store initial value of 'start time', then manually change it to have a time of '10:24 AM'
             activityInitialDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             dtSplit = activityInitialDateTime.split(" ");
-            System.out.println("VP: initial value for activity #2 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+            System.out.println("VP: initial value for activity #2 'start time' is ... " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
             activityModifiedDateTime = dtSplit[0] + " 10:24 AM";
             activityEditView.activityEditViewStartTimeFld.clear();
             activityEditView.activityEditViewStartTimeFld.sendKeys(activityModifiedDateTime);
-            System.out.println("VP: manually edited value for activity #2 'start time' is ... "  + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
+            System.out.println("VP: manually edited value for activity #2 'start time' is ... " + activityEditView.activityEditViewStartTimeFld.getAttribute("value"));
 
             //Step: press 'start time' icon to open Calendar control
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -3238,9 +3181,7 @@ public class MobileSprint341A extends BaseTest {
 
 
             System.out.println(methodID + "- PASSED");
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + "- FAILED");
             AssertJUnit.fail("test failed");
@@ -3250,28 +3191,27 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-
     //Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //==============
+    @Test(enabled = true)
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test(enabled = true)
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 }
