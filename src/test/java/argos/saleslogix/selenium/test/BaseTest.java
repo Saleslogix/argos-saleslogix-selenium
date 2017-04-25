@@ -246,7 +246,6 @@ public class BaseTest {
      *
      */
     @AfterMethod
-    @AfterClass
     public void closeBrowser() {
         try {
             driver.quit();

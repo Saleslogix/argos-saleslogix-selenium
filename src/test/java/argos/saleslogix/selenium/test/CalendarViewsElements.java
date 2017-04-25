@@ -212,108 +212,111 @@ public class CalendarViewsElements extends BaseTest {
     @FindBy(xpath = "//div[contains(@id,'month-dropdown datetime-calendar')]//ul/li[12]")
     WebElement calendarModalMonthDec;
 
-    @CacheLookup
-    @FindBy(xpath = "//*[@id='hour-dropdown']/input")
+    @FindBy(xpath = "//*[@id='hour-dropdown']//div[@role='combobox']")
     WebElement calendarHourField;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[1]")
+    @FindBy(xpath = "//*[@id='hour-dropdown']//select")
+    WebElement calendarHourSelect;
+
+    @CacheLookup
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[1]")
     WebElement calendarHourOne;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[2]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[2]")
     WebElement calendarHourTwo;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[3]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[3]")
     WebElement calendarHourThree;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[4]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[4]")
     WebElement calendarHourFour;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[5]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[5]")
     WebElement calendarHourFive;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[6]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[6]")
     WebElement calendarHourSix;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[7]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[7]")
     WebElement calendarHourSeven;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[8]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[8]")
     WebElement calendarHourEight;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[9]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[9]")
     WebElement calendarHourNine;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[10]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[10]")
     WebElement calendarHourTen;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[11]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[11]")
     WebElement calendarHourEleven;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[12]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[12]")
     WebElement calendarHourTwelve;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[13]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[13]")
     WebElement calendarHourThirteen;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[14]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[14]")
     WebElement calendarHourFourteen;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[15]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[15]")
     WebElement calendarHourFifteen;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[16]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[16]")
     WebElement calendarHourSixteen;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[17]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[17]")
     WebElement calendarHourSeventeen;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[18]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[18]")
     WebElement calendarHourEighteen;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[19]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[19]")
     WebElement calendarHourNineteen;
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[20]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[20]")
     WebElement calendarHourTwenty;
 
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[21]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[21]")
     WebElement calendarHourTwentyOne;
 
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[22]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[22]")
     WebElement calendarHourTwentyTwo;
 
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[23]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[23]")
     WebElement calendarHourTwentyThree;
 
 
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'hour-dropdown')]//ul/li[24]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[24]")
     WebElement calendarHourTwentyFour;
 
     @CacheLookup

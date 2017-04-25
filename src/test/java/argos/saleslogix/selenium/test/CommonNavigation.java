@@ -781,7 +781,7 @@ public class CommonNavigation {
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(30, SECONDS)
                 .pollingEvery(100, MILLISECONDS);
-        wait.until(ExpectedConditions.textToBePresentInElement(By.cssSelector(".toolbar > .title > h1"), pageTitle));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".toolbar > .title > h1"), pageTitle));
         return true;
     }
 
@@ -797,7 +797,7 @@ public class CommonNavigation {
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(30, SECONDS)
                 .pollingEvery(1, SECONDS);
-        wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(By.cssSelector(".toolbar > .title > h1"), pageTitle)));
+        wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".toolbar > .title > h1"), pageTitle)));
         return true;
     }
 
