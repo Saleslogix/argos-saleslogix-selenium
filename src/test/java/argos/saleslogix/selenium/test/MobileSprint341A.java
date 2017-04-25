@@ -2192,7 +2192,7 @@ public class MobileSprint341A extends BaseTest {
         //Step: choose to edit the activity ... for the popup window, press Cancel to edit a single occurrence
         headerButton.clickHeaderButton("edit");
         driver.switchTo().alert().dismiss();
-        commNav.waitForPage("Meeting"););
+        commNav.waitForPage("Meeting");
 
         //Step: edit the regarding field, then save the activity
         activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
