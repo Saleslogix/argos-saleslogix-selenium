@@ -336,31 +336,18 @@ public class CommonNavigation {
         String methodID = "rightClickContextMenuItem";
 
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
-        //conditionally click the RightContext Menu button to reveal panel
-        if (!commNav.rmenu_panel.isDisplayed()) {
-            driver.findElement(By.xpath(".//*[@id='crm_Views_MainToolbar_0']/button[2]")).click();
-            Thread.sleep(1000);
-
-            try {
-                AssertJUnit.assertTrue(commNav.rmenu_panel.isDisplayed());
-            } catch (Error e) {
-                System.out.println(methodID + ": " + e.toString());
-                return false;
-            }
-        }
+        //Step: reveal Right Context Menu panel
+        headerButton.showRightContextMenu();
 
         //Step: perform context menu item selection
-        try {
-            WebElement contxtMnuItem = driver.findElement(By.xpath("//*[@id='right_drawer']/descendant::*[text() = '" + menuItem + "']"));
-            highlightNClick(contxtMnuItem);
-            Thread.sleep(2000);
-            System.out.println(methodID + ": the '" + menuItem + "' Right-context Menu item was clicked.");
-            return true;
-        } catch (Exception e) {
-            System.out.println(methodID + ": " + e.toString());
-            return false;
-        }
+        WebElement header = driver.findElement(By.xpath("//*[@id='right_drawer']//descendant::*[text() = '" + menuItem + "']/../../../preceding-sibling::div[1]"));
+        header.click();
+        WebElement contxtMnuItem = driver.findElement(By.xpath("//*[@id='right_drawer']/descendant::*[text() = '" + menuItem + "']"));
+        highlightNClick(contxtMnuItem);
+        System.out.println(methodID + ": the '" + menuItem + "' Right-context Menu item was clicked.");
+        return true;
     }
 
 

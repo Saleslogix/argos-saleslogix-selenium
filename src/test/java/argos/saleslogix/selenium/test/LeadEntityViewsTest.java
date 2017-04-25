@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
+import sun.jvm.hotspot.utilities.AssertionFailure;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
@@ -98,34 +99,20 @@ public class LeadEntityViewsTest extends BaseTest {
             commNav.checkIfWebElementPresent("Leads List View, item record", LeadListView.topLeadsListItem);
             commNav.checkIfWebElementPresent("Leads List View, item record icon", LeadListView.topLeadsListItemIcon);
             commNav.checkIfWebElementPresent("Leads List View, item record name", LeadListView.topLeadsListItemName);
-            commNav.checkIfWebElementPresent("Leads List View, item record company", LeadListView.topLeadsListItemLine2);
-            commNav.checkIfWebElementPresent("Leads List View, item record work", LeadListView.topLeadsListItemLine3);
-            commNav.checkIfWebElementPresent("Leads List View, item record mobile", LeadListView.topLeadsListItemLine4);
-            commNav.checkIfWebElementPresent("Leads List View, item record web", LeadListView.topLeadsListItemLine5);
-            commNav.checkIfWebElementPresent("Leads List View, item record email", LeadListView.topLeadsListItemLine6);
-            commNav.checkIfWebElementPresent("Leads List View, item record touch icon", LeadListView.topLeadsListItemTouch);
 
-            //Step: check the Quick Action button and items
-            try {
-                //click list item icon to reveal Quick Action items
-                LeadListView.topLeadsListItemIcon.click();
+            //click list item icon to reveal Quick Action items
+            LeadListView.topLeadsListItemIcon.click();
 
-                //click the Quick Action button, then check each of the Quick Action items
-                commNav.checkIfWebElementPresent("Leads, Quick Action Add Attachment button", LeadListView.topLeadsListItemQuickActionsAddAttachmentBtn);
-                commNav.checkIfWebElementPresent("Leads, Quick Action Add Activity button", LeadListView.topLeadsListItemQuickActionsAddActivityBtn);
-                commNav.checkIfWebElementPresent("Leads, Quick Action Add Note button", LeadListView.topLeadsListItemQuickActionsAddNoteBtn);
-                commNav.checkIfWebElementPresent("Leads, Quick Action Email button", LeadListView.topLeadsListItemQuickActionsEmailBtn);
-                commNav.checkIfWebElementPresent("Leads, Quick Action Call Mobile button", LeadListView.topLeadsListItemQuickActionsCallMobileBtn);
-                commNav.checkIfWebElementPresent("Leads, Quick Action Call Work button", LeadListView.topLeadsListItemQuickActionsCallWorkBtn);
-                commNav.checkIfWebElementPresent("Leads, Quick Action Edit button", LeadListView.topLeadsListItemQuickActionsEditBtn);
-
-                //click list item icon to hide the Quick Action items
-                LeadListView.topLeadsListItemIcon.click();
-            } catch (Exception e) {
-                verificationErrors.append(methodID + "(): " + e.toString());
-            }
+            //click the Quick Action button, then check each of the Quick Action items
+            commNav.checkIfWebElementPresent("Leads, Quick Action Add Attachment button", LeadListView.topLeadsListItemQuickActionsAddAttachmentBtn);
+            commNav.checkIfWebElementPresent("Leads, Quick Action Add Activity button", LeadListView.topLeadsListItemQuickActionsAddActivityBtn);
+            commNav.checkIfWebElementPresent("Leads, Quick Action Add Note button", LeadListView.topLeadsListItemQuickActionsAddNoteBtn);
+            commNav.checkIfWebElementPresent("Leads, Quick Action Email button", LeadListView.topLeadsListItemQuickActionsEmailBtn);
+            commNav.checkIfWebElementPresent("Leads, Quick Action Call Mobile button", LeadListView.topLeadsListItemQuickActionsCallMobileBtn);
+            commNav.checkIfWebElementPresent("Leads, Quick Action Call Work button", LeadListView.topLeadsListItemQuickActionsCallWorkBtn);
+            commNav.checkIfWebElementPresent("Leads, Quick Action Edit button", LeadListView.topLeadsListItemQuickActionsEditBtn);
         } else {
-            System.out.println(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
+            Assert.fail(methodID + ": required '" + expEntityPgTitle + "' not loaded; test aborted");
         }
 
         //commNav.clickGlobalMenuItem("My Activities");
@@ -342,14 +329,7 @@ public class LeadEntityViewsTest extends BaseTest {
         commNav.verifyEntityViewElementClick(viewName + ",'Add note'", leadDetailView.leadsDetailViewAddNoteLnk, "Note");
         commNav.isWebElementPresent(viewName + ",'View address'", leadDetailView.leadsDetailViewViewAddressLnk);
 
-        // Step: expand the More Details section if collapsed
-        //if (leadDetailView.leadsDetailViewMoreDetailsFields.getSize().height < 1) {
-        //    leadDetailView.leadsDetailViewMoreDetailsHdr.click();
-        //    Thread.sleep(1000);
-        //}
-
         //Step: check each item under the Lead Detail View, Details section
-        //commNav.isWebElementPresent(viewName + ",'Details' section header", leadDetailView.leadsDetailViewDetailsHdr);
         commNav.highlightNClick(leadDetailView.leadsDetailViewDetailsTab);
         commNav.isFieldValueEmpty(viewName + ",'name'", leadDetailView.leadsDetailViewNameFld);
         commNav.isFieldValueEmpty(viewName + ",'company'", leadDetailView.leadsDetailViewCompanyFld);
@@ -399,33 +379,28 @@ public class LeadEntityViewsTest extends BaseTest {
         //Step: login & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
 
-        try {
-            //Step: search for Lead entity, then open it's Edit view
-            AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
+        //Step: search for Lead entity, then open it's Edit view
+        AssertJUnit.assertTrue(commNav.entityRecordEditView(entityType, entityRecord));
 
-            LeadViewsElements leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
+        LeadViewsElements leadEditView = PageFactory.initElements(driver, LeadViewsElements.class);
 
-            //Step: check each input field and if applicable, its related list item selection view
-            commNav.isWebElementPresent(viewName + ", 'Details' section header", leadEditView.leadsEditViewDetailsHdr);
-            commNav.verifyEntityViewElementClick(viewName + ", name field", leadEditView.leadsEditViewNameFldBtn, "Edit Name");
-            commNav.isFieldValueEmpty(viewName + ", company field", leadEditView.leadsEditViewCompanyInputFld);
-            commNav.isFieldValueEmpty(viewName + ", web field", leadEditView.leadsEditViewWebInputFld);
-            commNav.isFieldValueEmpty(viewName + ", work phone field", leadEditView.leadsEditViewWorkPhoneInputFld);
-            commNav.isFieldValueEmpty(viewName + ", mobile phone field", leadEditView.leadsEditViewMobilePhoneInputFld);
-            commNav.isWebElementPresent(viewName + ", toll free field", leadEditView.leadsEditViewTollFreeInputFld);
-            commNav.isWebElementPresent(viewName + ", email field", leadEditView.leadsEditViewEmailInputFld);
-            commNav.verifyEntityViewElementClick(viewName + ", title field", leadEditView.leadsEditViewTitleFldBtn, "Title");
-            commNav.verifyEntityViewElementClick(viewName + ", address field", leadEditView.leadsEditViewAddressFldBtn, "Address");
-            commNav.verifyEntityViewElementClick(viewName + ", lead source field", leadEditView.leadsEditViewLeadSourceFldBtn, "Lead Sources");
-            commNav.isWebElementPresent(viewName + ", interests field", leadEditView.leadsEditViewInterestsInputFld);
-            commNav.verifyEntityViewElementClick(viewName + ", industry field", leadEditView.leadsEditViewIndustryFldBtn, "Industry");
-            commNav.isWebElementPresent(viewName + ", sic code field", leadEditView.leadsEditViewSicCodeInputFld);
-            commNav.isWebElementPresent(viewName + ", business description text area", leadEditView.leadsEditViewBusDescInputFld);
-            commNav.verifyEntityViewElementClick(viewName + ", owner field", leadEditView.leadsEditViewOwnerFldBtn, "Owners");
-        } catch (Exception e) {
-            verificationErrors.append(methodID + "(): " + e.toString());
-            System.out.println(methodID + ": unable to open locate the '" + entityRecord + "' " + entityType);
-        }
+        //Step: check each input field and if applicable, its related list item selection view
+        commNav.isWebElementPresent(viewName + ", 'Details' section header", leadEditView.leadsEditViewDetailsHdr);
+        commNav.verifyEntityViewElementClick(viewName + ", name field", leadEditView.leadsEditViewNameFldBtn, "Edit Name");
+        commNav.isFieldValueEmpty(viewName + ", company field", leadEditView.leadsEditViewCompanyInputFld);
+        commNav.isFieldValueEmpty(viewName + ", web field", leadEditView.leadsEditViewWebInputFld);
+        commNav.isFieldValueEmpty(viewName + ", work phone field", leadEditView.leadsEditViewWorkPhoneInputFld);
+        commNav.isFieldValueEmpty(viewName + ", mobile phone field", leadEditView.leadsEditViewMobilePhoneInputFld);
+        commNav.isWebElementPresent(viewName + ", toll free field", leadEditView.leadsEditViewTollFreeInputFld);
+        commNav.isWebElementPresent(viewName + ", email field", leadEditView.leadsEditViewEmailInputFld);
+        commNav.verifyEntityViewElementClick(viewName + ", title field", leadEditView.leadsEditViewTitleFldBtn, "Title");
+        commNav.verifyEntityViewElementClick(viewName + ", address field", leadEditView.leadsEditViewAddressFldBtn, "Address");
+        commNav.verifyEntityViewElementClick(viewName + ", lead source field", leadEditView.leadsEditViewLeadSourceFldBtn, "Lead Sources");
+        commNav.isWebElementPresent(viewName + ", interests field", leadEditView.leadsEditViewInterestsInputFld);
+        commNav.verifyEntityViewElementClick(viewName + ", industry field", leadEditView.leadsEditViewIndustryFldBtn, "Industry");
+        commNav.isWebElementPresent(viewName + ", sic code field", leadEditView.leadsEditViewSicCodeInputFld);
+        commNav.isWebElementPresent(viewName + ", business description text area", leadEditView.leadsEditViewBusDescInputFld);
+        commNav.verifyEntityViewElementClick(viewName + ", owner field", leadEditView.leadsEditViewOwnerFldBtn, "Owners");
 
         System.out.println(ENDLINE);
     }
@@ -674,45 +649,9 @@ public class LeadEntityViewsTest extends BaseTest {
 
         LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
 
-        //Step: reveal Right Context Menu panel
-        headerButton.showRightContextMenu();
 
         //Step: test the KPI header
         //expand the KPI sub-panel if it's currently collapsed
-        if (!leadsListView.leadsKPIPnl.isDisplayed()) {
-            leadsListView.leadsKPIHdr.click();
-
-            //confirm the the panel was indeed expanded
-            try {
-                AssertJUnit.assertTrue(leadsListView.leadsHashTagsPnl.isDisplayed());
-            } catch (Error e) {
-                verificationErrors.append(methodID + "(): " + e.toString());
-                System.out.println(methodID + ": Hash Tags panel failed to expand on panel header click; test aborted.");
-                return;
-            }
-        }
-        //collapse Hash Tags sub-panel check
-        leadsListView.leadsKPIHdr.click();
-        try {
-            AssertJUnit.assertFalse(leadsListView.leadsKPIPnl.isDisplayed());
-            System.out.println("VP: KPI sub-panel collapse check - Passed");
-
-            //re-expand the Hash Tags sub-panel
-            leadsListView.leadsKPIHdr.click();
-            try {
-                AssertJUnit.assertTrue(leadsListView.leadsKPIPnl.isDisplayed());
-                System.out.println("VP: KPI sub-panel expand check - Passed");
-            } catch (Error e) {
-                verificationErrors.append(methodID + "(): " + e.toString());
-                System.out.println("VP: KPI sub-panel e check - FAILED");
-            }
-        } catch (Error e) {
-            verificationErrors.append(methodID + "(): " + e.toString());
-            System.out.println("VP: KPI sub-panel collapse check - FAILED");
-        }
-
-        //Step: test each of the pre-set KPI items
-        commNav.scrollDownPage();
         commNav.rightClickContextMenuItem("Total Leads");
 
         System.out.println(ENDLINE);

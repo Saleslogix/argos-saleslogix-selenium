@@ -33,93 +33,71 @@ public class CommonViewsElements extends BaseTest {
     WebElement lookupTxtBox;
 
 	//Address input fields:
-	@CacheLookup
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][1]")
 	WebElement addressDescriptionInputFld;
-	
-	@CacheLookup
+
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][1]")
 	WebElement addressDescriptionInputFldBtn;
-	
-	@CacheLookup
-	@FindBy(xpath = "//div[@id='argos_Fields_BooleanField_1']/div/span")
+
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='IsPrimary']")
 	WebElement addressPrimaryTgl;
-	
-	@CacheLookup
-	@FindBy(xpath = "//div[@id='argos_Fields_BooleanField_2']/div/span")
+
+	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='IsMailing']")
 	WebElement addressShippingTgl;
-	
-	@CacheLookup
+
 	@FindBy(css = "input[name='Address1']")
 	WebElement addressLine1;
-	
-	@CacheLookup
+
 	@FindBy(css = "input[name='Address2']")
 	WebElement addressLine2;
-	
-	@CacheLookup
+
 	@FindBy(css = "input[name='Address3']")
 	WebElement addressLine3;
-	
-	@CacheLookup
+
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][5]")
 	WebElement addressCityInputFld;
-	
-	@CacheLookup
+
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][5]")
 	WebElement addressCityInputFldBtn;
-	
-	@CacheLookup
+
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][6]")
 	WebElement addressStateInputFld;
-	
-	@CacheLookup
+
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][6]")
 	WebElement addressStateInputFldBtn;
-	
-	@CacheLookup
+
 	@FindBy(css = "input[name='PostalCode']")
 	WebElement addressPostalInputFld;
-	
-	@CacheLookup
+
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][8]")
 	WebElement addressCountryInputFld;
-	
-	@CacheLookup
+
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][8]")
 	WebElement addressCountryInputFldBtn;
-	
-	@CacheLookup
+
 	@FindBy(css = "input[name='Salutation']")
 	WebElement addressAttentionInputFld;		
 	
 	//Edit Name input fields:
 	//=======================
-	@CacheLookup
 	@FindBy(xpath = "//*[@id='name_edit']/descendant::*[@type='text'][1]")
 	WebElement namePrefixInputFld;
-	
-	@CacheLookup
+
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_5']/button")
 	WebElement namePrefixInputFldBtn;
-	
-	@CacheLookup
+
 	@FindBy(css = "input[name='FirstName']")
 	WebElement nameFirstInputFld;
-	
-	@CacheLookup
+
 	@FindBy(css = "input[name='MiddleName']")
 	WebElement nameMiddleInputFld;
-	
-	@CacheLookup
+
 	@FindBy(css = "input[name='LastName']")
 	WebElement nameLastInputFld;
-	
-	@CacheLookup
+
 	@FindBy(xpath = "//*[@id='name_edit']/descendant::*[@type='text'][5]")
 	WebElement nameSuffixInputFld;
-	
-	@CacheLookup
+
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_6']/button")
 	WebElement nameSuffixInputFldBtn;
 	

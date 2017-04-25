@@ -382,40 +382,27 @@ public class AccountEntityViewsTest extends BaseTest {
         //Step: login & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
 
-        try {
-            //Step: enter the Account Add Edit view...
-            commNav.entityRecordAdd(entityType);
+        //Step: enter the Account Add Edit view...
+        commNav.entityRecordAdd(entityType);
 
-            AccountViewsElements accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
+        AccountViewsElements accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
 
-            //Step: check each input field and if applicable, its related list item selection view
-            commNav.isWebElementPresent(viewName + ", 'Details' section header", accountEditView.accountEditViewDetailsHdr);
-            commNav.isWebElementPresent(viewName + ", account field", accountEditView.accountEditViewAccountInputFld);
-            commNav.isWebElementPresent(viewName + ", web field", accountEditView.accountEditViewWebInputFld);
-            commNav.isWebElementPresent(viewName + ", phone field", accountEditView.accountEditViewPhoneInputFld);
-            commNav.verifyEntityViewElementClick(viewName + ",'address field'", accountEditView.accountEditViewAddressFldBtn, "Address");
-            commNav.isWebElementPresent(viewName + ", fax field", accountEditView.accountEditViewFaxInputFld);
-            commNav.verifyEntityViewElementClick(viewName + ",'type field'", accountEditView.accountEditViewTypeFldBtn, "Account Type");
-            commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Subtype");
-            commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Status");
-            commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewIndustryFldBtn, "Industry");
-            accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
-            commNav.isWebElementPresent(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
-            commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
-            commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
-            commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
-
-            //end of test
-            headerButton.clickHeaderButton("cancel");
-
-            //Step: go back to previous screen
-            headerButton.goBack();
-            Thread.sleep(2000);
-        } catch (Exception e) {
-            verificationErrors.append(methodID + "(): " + e.toString());
-            System.out.println(methodID + ": unable to open the Account Edit Add view.");
-        }
-
+        //Step: check each input field and if applicable, its related list item selection view
+        commNav.isWebElementPresent(viewName + ", 'Details' section header", accountEditView.accountEditViewDetailsHdr);
+        commNav.isWebElementPresent(viewName + ", account field", accountEditView.accountEditViewAccountInputFld);
+        commNav.isWebElementPresent(viewName + ", web field", accountEditView.accountEditViewWebInputFld);
+        commNav.isWebElementPresent(viewName + ", phone field", accountEditView.accountEditViewPhoneInputFld);
+        commNav.verifyEntityViewElementClick(viewName + ",'address field'", accountEditView.accountEditViewAddressFldBtn, "Address");
+        commNav.isWebElementPresent(viewName + ", fax field", accountEditView.accountEditViewFaxInputFld);
+        commNav.verifyEntityViewElementClick(viewName + ",'type field'", accountEditView.accountEditViewTypeFldBtn, "Account Type");
+        commNav.verifyEntityViewElementClick(viewName + ",'subtype field'", accountEditView.accountEditViewSubTypeFldBtn, "Account Subtype");
+        commNav.verifyEntityViewElementClick(viewName + ",'status field'", accountEditView.accountEditViewStatusFldBtn, "Account Status");
+        commNav.verifyEntityViewElementClick(viewName + ",'industry field'", accountEditView.accountEditViewIndustryFldBtn, "Industry");
+        accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
+        commNav.isWebElementPresent(viewName + ", business description text area", accountEditView.accountEditViewBusDescFld);
+        commNav.verifyEntityViewElementClick(viewName + ",'account manager field'", accountEditView.accountEditViewAcctMgrFldBtn, "Users");
+        commNav.verifyEntityViewElementClick(viewName + ",'owner field'", accountEditView.accountEditViewOwnerFldBtn, "Owners");
+        commNav.verifyEntityViewElementClick(viewName + ",'lead source field'", accountEditView.accountEditViewLeadSourceFldBtn, "Lead Sources");
         System.out.println(ENDLINE);
     }
 

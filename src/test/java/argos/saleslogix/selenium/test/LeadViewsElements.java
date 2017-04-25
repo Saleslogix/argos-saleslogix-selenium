@@ -54,7 +54,7 @@ public class LeadViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='lead_list']//ul")
     WebElement leadsListViewHdr;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='lead_list']//ul")
+    @FindBy(xpath = "//*[@id='lead_list' and @selected='selected']")
     WebElement leadsListView;
     @CacheLookup
     @FindBy(xpath = "//div[6]/div[2]/div/div/div/button")
@@ -72,7 +72,7 @@ public class LeadViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='lead_list']//button[@data-action='selectEntry'][1]")
     WebElement topLeadsListItemIcon;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h3[1]")
+    @FindBy(xpath = "//*[@id='lead_list']//h2[@class='widget-title'][1]")
     WebElement topLeadsListItemName;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[1]")
@@ -158,6 +158,10 @@ public class LeadViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
     WebElement leadsKPIPnl;
+
+    @CacheLookup
+    @FindBy(xpath = "//*[@id='right_drawer']//div[@data-group='kpi']/preceding-sibling::div[1]")
+    WebElement leadsKPIHeader;
     //Detail View elements
     //TODO: the Lead Edit fields need to be updated when needed
     @CacheLookup
@@ -167,19 +171,19 @@ public class LeadViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='lead_detail']/div[2]/h2[1]")
     WebElement leadsDetailViewQuickActionsHdr;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='lead_detail']/div[2]/ul[1]/li[1]/a")
+    @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='callWorkPhone']")
     WebElement leadsDetailViewCallMainNumberLnk;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='lead_detail']/div[2]/ul[1]/li[2]/a")
+    @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='sendEmail']")
     WebElement leadsDetailViewSendEmailLnk;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='send-email']")
+    @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='scheduleActivity']")
     WebElement leadsDetailViewScheduleActivityLnk;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='lead_detail']/div[2]/ul[1]/li[4]/a")
+    @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='addNote']")
     WebElement leadsDetailViewAddNoteLnk;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='lead_detail']/div[2]/ul[1]/li[5]/a")
+    @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='viewAddress']")
     WebElement leadsDetailViewViewAddressLnk;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']/div[2]/h2[2]")
@@ -274,72 +278,64 @@ public class LeadViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/input")
     WebElement leadsEditViewNameInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/button")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='LeadNameLastFirst']//button")
     WebElement leadsEditViewNameFldBtn;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_TextField_2']/input")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Company']//input")
     WebElement leadsEditViewCompanyInputFld;
     @CacheLookup
-    // @FindBy(xpath = "//*[@id='argos_Fields_TextField_3']/input")
-    @FindBy(xpath = "//input[@name='WebAddress']")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='WebAddress']//input")
     WebElement leadsEditViewWebInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_PhoneField_0']/input")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='WorkPhone']//input")
     WebElement leadsEditViewWorkPhoneInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_PhoneField_1']/input")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Mobile']//input")
     WebElement leadsEditViewMobilePhoneInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_PhoneField_2']/input")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='TollFree']//input")
     WebElement leadsEditViewTollFreeInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_TextField_4']/input")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Email']//input")
     WebElement leadsEditViewEmailInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/input")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Title']//input")
     WebElement leadsEditViewTitleInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/button")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Title']//button")
     WebElement leadsEditViewTitleFldBtn;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']/div")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Address']/div/div/label")
     WebElement leadsEditViewAddressInputFld;
     @CacheLookup
-    // @FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']/button")
-    @FindBy(xpath = "//*[@data-field='Address']//button")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Address']//button")
     WebElement leadsEditViewAddressFldBtn;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='LeadSource']//input")
     WebElement leadsEditViewLeadSourceInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/button")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='LeadSource']//button")
     WebElement leadsEditViewLeadSourceFldBtn;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_TextField_5']/input")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Interests']//input")
     WebElement leadsEditViewInterestsInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/input")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Industry']//input")
     WebElement leadsEditViewIndustryInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/button")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Industry']//button")
     WebElement leadsEditViewIndustryFldBtn;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_TextField_6']/input")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='SICCode']//input")
     WebElement leadsEditViewSicCodeInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_NoteField_0']/textarea")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='BusinessDescription']//textarea")
     WebElement leadsEditViewBusDescInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_NoteField_1']/textarea")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Notes']//textarea")
     WebElement leadsEditViewCommentsInputFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_NoteField_1']/textarea")
-    WebElement leadsEditViewCommentsFldBtn;
-    @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
-    WebElement leadsEditViewOwnerInputFld;
-    @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/button")
+    @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Owner']//button")
     WebElement leadsEditViewOwnerFldBtn;
     @CacheLookup
     // this data-key is specific to user loup for 'All Leads' group
@@ -443,18 +439,14 @@ public class LeadViewsElements extends BaseTest {
         //Step: setup new Lead field values
         //setup name fields
         leadsEditViewNameFldBtn.click();
-        try {
-            //TEMP: disable Name Prefix selection in favor of direct input field value setting
-            commView.namePrefixInputFld.sendKeys("Mr.");
-            commView.nameFirstInputFld.sendKeys(strLeadFirstName);
-            commView.nameMiddleInputFld.sendKeys("Neo");
-            commView.nameLastInputFld.sendKeys(strLeadLastName);
-            //commView.nameSuffixInputFld.sendKeys("Jr.");
-            headerButton.clickHeaderButton("check");
-        } catch (Exception e0) {
-            System.out.println(methodID + "(): " + e0.toString());
-            headerButton.goBack();
-        }
+
+        //TEMP: disable Name Prefix selection in favor of direct input field value setting
+        commView.namePrefixInputFld.sendKeys("Mr.");
+        commView.nameFirstInputFld.sendKeys(strLeadFirstName);
+        commView.nameMiddleInputFld.sendKeys("Neo");
+        commView.nameLastInputFld.sendKeys(strLeadLastName);
+        //commView.nameSuffixInputFld.sendKeys("Jr.");
+        headerButton.clickHeaderButton("check");
 
         //setup company field
         leadsEditViewCompanyInputFld.sendKeys(strLeadCompany);
@@ -480,28 +472,27 @@ public class LeadViewsElements extends BaseTest {
         //conditionally setup address fields
         if (leadsEditViewAddressInputFld.getText().equals("")) {
             leadsEditViewAddressFldBtn.click();
-            try {
-                //TEMP disable selection views (doesn't work on Jenkins server)
-                commView.addressDescriptionInputFld.sendKeys("Mailing");
-                commView.addressPrimaryTgl.click();
-                commView.addressShippingTgl.click();
-                commView.addressLine1.sendKeys("8800 Mobile St.");
-                commView.addressLine2.sendKeys("Corporate Campus");
-                commView.addressLine3.sendKeys("Suite 200");
-                commView.addressCityInputFld.sendKeys("Phoenix");
-                commView.addressStateInputFld.sendKeys("AZ");
-                commView.addressPostalInputFld.sendKeys("85048");
-                commView.addressCountryInputFld.sendKeys("USA");
-                commView.addressAttentionInputFld.sendKeys("Mrs. Rogers");
-                headerButton.clickHeaderButton("check");
-            } catch (Exception e1) {
-                System.out.println(methodID + "(): " + e1.toString());
-                headerButton.goBack();
-            }
+            commNav.waitForPage("Address");
+            //TEMP disable selection views (doesn't work on Jenkins server)
+            commView.addressDescriptionInputFld.sendKeys("Mailing");
+            commView.addressPrimaryTgl.click();
+            commView.addressShippingTgl.click();
+            commView.addressLine1.sendKeys("8800 Mobile St.");
+            commView.addressLine2.sendKeys("Corporate Campus");
+            commView.addressLine3.sendKeys("Suite 200");
+            commView.addressCityInputFld.sendKeys("Phoenix");
+            commView.addressStateInputFld.sendKeys("AZ");
+            commView.addressPostalInputFld.sendKeys("85048");
+            commView.addressCountryInputFld.sendKeys("USA");
+            commView.addressAttentionInputFld.sendKeys("Mrs. Rogers");
+            headerButton.clickHeaderButton("check");
+            commNav.waitForPage("Lead");
         }
 
         //setup lead source field
         leadsEditViewLeadSourceFldBtn.click();
+        commNav.waitForPage("Lead Sources");
+        // TODO: Fix lookups
         commView.lookupNSelectListItem("Lead Sources", "Web - General");
 
         //setup interests field
