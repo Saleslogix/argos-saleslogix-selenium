@@ -31,16 +31,17 @@ public class MobileSprint341A extends BaseTest {
     //Test Methods Set
     //================
 
-    private void waitForDropdownToOpen() {
-        Wait<WebDriver> wait = new FluentWait<>(driver)
-                .pollingEvery(100, TimeUnit.MILLISECONDS)
-                .withTimeout(5, TimeUnit.SECONDS);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("dropdown-list")));
-    }
-
     private void clickHourField(WebElement element) throws InterruptedException {
         CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
         calendarView.calendarHourField.click();
+        Thread.sleep(250);
+        element.click();
+        Thread.sleep(250);
+    }
+
+    private void clickMinuteField(WebElement element) throws InterruptedException {
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+        calendarView.calendarMinuteField.click();
         Thread.sleep(250);
         element.click();
         Thread.sleep(250);
@@ -164,88 +165,76 @@ public class MobileSprint341A extends BaseTest {
 
 
         //Verify that the MINUTE value chosen from the dropdown displays in the field
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute00.click();
+        clickMinuteField(calendarView.calendarMinute00);
         String currentMinute = "00";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '00' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '00' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '00' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute05.click();
+        clickMinuteField(calendarView.calendarMinute05);
         currentMinute = "05";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '05' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '05' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '05' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute10.click();
+        clickMinuteField(calendarView.calendarMinute10);
         currentMinute = "10";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '10' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '10' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '10' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute15.click();
+        clickMinuteField(calendarView.calendarMinute15);
         currentMinute = "15";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '15' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '15' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '15' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute20.click();
+        clickMinuteField(calendarView.calendarMinute20);
         currentMinute = "20";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '20' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '20' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '20' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute25.click();
+        clickMinuteField(calendarView.calendarMinute25);
         currentMinute = "25";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '25' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '25' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '25' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute30.click();
+        clickMinuteField(calendarView.calendarMinute30);
         currentMinute = "30";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '30' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '30' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '30' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute35.click();
+        clickMinuteField(calendarView.calendarMinute35);
         currentMinute = "35";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '35' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '35' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '35' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute40.click();
+        clickMinuteField(calendarView.calendarMinute40);
         currentMinute = "40";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '40' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '40' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '40' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute45.click();
+        clickMinuteField(calendarView.calendarMinute45);
         currentMinute = "45";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '45' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '45' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '45' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute50.click();
+        clickMinuteField(calendarView.calendarMinute50);
         currentMinute = "50";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '50' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '50' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '50' minutes from dropdown displays that value in the minutes field - PASSED");
 
-        calendarView.calendarMinuteField.click();
-        calendarView.calendarMinute55.click();
+        clickMinuteField(calendarView.calendarMinute55);
         currentMinute = "55";
-        System.out.println("Minutes value is ... " + calendarView.calendarMinuteField.getAttribute("value"));
-        AssertJUnit.assertEquals("VP: Pressing '55' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteField.getAttribute("value"));
+        System.out.println("Minutes value is ... " + calendarView.calendarMinuteSelect.getAttribute("value"));
+        AssertJUnit.assertEquals("VP: Pressing '55' minutes from dropdown displays that value in the minutes field - FAILED", currentMinute, calendarView.calendarMinuteSelect.getAttribute("value"));
         System.out.println("VP: Pressing '55' minutes from dropdown displays that value in the minutes field - PASSED");
 
         System.out.println("VP: Calendar control ability to set minutes to 00 or 05 (as well as all other minutes and all hours) from Advanced view - PASSED");
