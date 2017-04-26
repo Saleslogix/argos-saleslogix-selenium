@@ -248,6 +248,10 @@ public class BaseTest {
     @AfterMethod
     public void closeBrowser() {
         try {
+            if (driver == null) {
+                return;
+            }
+
             driver.quit();
             driver = null;
         } catch (Exception e) {

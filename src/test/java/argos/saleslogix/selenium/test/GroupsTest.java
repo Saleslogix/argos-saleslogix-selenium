@@ -2,21 +2,16 @@ package argos.saleslogix.selenium.test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 
 /**
  * Test class that defines test methods for the SLX Mobile Defect (v3.0.4 sprint 8) fixes.
- * 
+ *
  * @author kathleen.lockyer-bratton@swiftpage.com
- * @version	1.0
+ * @version 1.0
  */
 public class GroupsTest extends BaseTest {
 
@@ -120,7 +115,7 @@ public class GroupsTest extends BaseTest {
 
         //Step: verify that group 'My Accounts' is displayed
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        AssertJUnit.assertEquals("VP: user is not seeing the chosen group (My Accounts) just selected  - FAILED","My Accounts", driver.findElement(By.id("pageTitle")).getText());
+        AssertJUnit.assertEquals("VP: user is not seeing the chosen group (My Accounts) just selected  - FAILED", "My Accounts", driver.findElement(By.id("pageTitle")).getText());
         System.out.println("VP: user is seeing the chosen group (My Accounts) just selected  - PASSED");
 
         //Step: logout & log back in (to clear cookies)
@@ -133,7 +128,7 @@ public class GroupsTest extends BaseTest {
 
         //Step: verify that group 'My Accounts' is displayed
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        AssertJUnit.assertEquals("VP: user is not seeing the last group (My Accounts) used in previous login session  - FAILED","My Accounts", driver.findElement(By.id("pageTitle")).getText());
+        AssertJUnit.assertEquals("VP: user is not seeing the last group (My Accounts) used in previous login session  - FAILED", "My Accounts", driver.findElement(By.id("pageTitle")).getText());
         System.out.println("VP: user is seeing the last group (My Accounts) used in previous login session  - PASSED");
 
         //Step: open right menu and select 'All Accounts' group to display again
@@ -151,7 +146,7 @@ public class GroupsTest extends BaseTest {
 
         //Step: verify that group 'All Accounts' is displayed
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        AssertJUnit.assertEquals("VP: user is not seeing the last group (All Accounts) used in previous login session  - FAILED","All Accounts", driver.findElement(By.id("pageTitle")).getText());
+        AssertJUnit.assertEquals("VP: user is not seeing the last group (All Accounts) used in previous login session  - FAILED", "All Accounts", driver.findElement(By.id("pageTitle")).getText());
         System.out.println("VP: user is seeing the last group (All Accounts) used in previous login session  - PASSED");
 
         //Step: open right menu, choose Configure and uncheck 'My Accounts', so back to single default group of 'All Accounts'
