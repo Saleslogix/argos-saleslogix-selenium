@@ -228,6 +228,7 @@ public class CommonNavigation {
             case "add account contact":
             case "add":
                 quickActionsHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_addAccountContact);
                 break;
             case "speedsearch":
@@ -237,14 +238,17 @@ public class CommonNavigation {
             case "my activities":
             case "activities":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_myActivities);
                 break;
             case "my schedule":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_mySchedule);
                 break;
             case "calendar":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_calendar);
                 hasListview = false;
                 break;
@@ -252,59 +256,71 @@ public class CommonNavigation {
             case "notes history":
             case "notes":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_notesHistory);
                 break;
             case "accounts":
             case "account":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_accounts);
                 break;
             case "contacts":
             case "contact":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_contacts);
                 break;
             case "leads":
             case "lead":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_leads);
                 break;
             case "opportunities":
             case "opportunity":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_opportunities);
                 break;
             case "tickets":
             case "ticket":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_tickets);
                 break;
             case "my attachments":
             case "attachments":
             case "attachment":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_myAttachments);
                 break;
             case "recently viewed":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_recentlyViewed);
                 break;
             case "my briefcase":
                 gotoHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_myBriefcase);
                 break;
             case "configure menu":
             case "configure":
                 otherHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_configureMenu);
                 break;
             case "settings":
                 otherHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_settings);
                 hasListview = false;
                 break;
             case "help":
                 otherHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_help);
                 break;
             case "log off":
@@ -312,6 +328,7 @@ public class CommonNavigation {
             case "logout":
             case "logoff":
                 otherHeader.click();
+                waitForAnimation();
                 highlightNClick(gmenu_logOut);
                 hasListview = false;
                 break;

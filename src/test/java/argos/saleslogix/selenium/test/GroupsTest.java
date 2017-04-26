@@ -191,8 +191,6 @@ public class GroupsTest extends BaseTest {
         contactsListView.rmenu_groupAuthContacts.click();
         commNav.waitForPage("Authorized Contacts");
 
-        //Step: reveal Right Context Menu panel again, and choose 'Detail' layout
-        Thread.sleep(3000);
         //headerButton = PageFactory.initElements(driver, HeaderButton.class);
         //headerButton.showRightContextMenu();
         commNav.openSettings();
@@ -201,7 +199,6 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("Authorized Contacts");
 
         //Step: verify that for the Authorized value, a value of 'T' or 'F' does not display ... expecting Yes or No
-        commNav = PageFactory.initElements(driver, CommonNavigation.class);
         String authorizedValue = contactsListView.authContactsGroupTopAuthValue.getText();
         System.out.println("VP: 'Authorized' has a value of ... " + authorizedValue);
 
