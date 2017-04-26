@@ -136,7 +136,6 @@ public class CommonNavigation {
     @FindBy(xpath = "//nav//div[contains(@class, 'accordion-header')][1]")
     WebElement quickActionsHeader;
 
-    @CacheLookup
     @FindBy(xpath = "//nav//div[contains(@class, 'accordion-header')][2]")
     WebElement gotoHeader;
 
@@ -148,6 +147,12 @@ public class CommonNavigation {
 
     public CommonNavigation(WebDriver driver) {
         this.driver = driver;
+    }
+
+    final public long SOHO_ANIMATION_DELAY = 300;
+
+    public void waitForAnimation() throws InterruptedException{
+        Thread.sleep(SOHO_ANIMATION_DELAY);
     }
 
     public boolean isNavOpen() {
@@ -162,13 +167,14 @@ public class CommonNavigation {
         return true;
     }
 
-    public void openNav() {
+    public void openNav() throws InterruptedException {
         if (!this.isNavOpen()) {
             this.navTrigger.click();
+            this.waitForAnimation();
         }
     }
 
-    public void openSettings() {
+    public void openSettings() throws InterruptedException {
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
         CommonViewsElements commonViewsElements = PageFactory.initElements(driver, CommonViewsElements.class);
 
@@ -178,13 +184,16 @@ public class CommonNavigation {
 
         commonViewsElements.clearToast();
         headerButton.rightCntxtMnuButton.click();
-        Wait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(2, SECONDS)
-                .pollingEvery(50, MILLISECONDS);
-        wait.until(ExpectedConditions.visibilityOf(rmenu_panel));
+        this.waitForAnimation();
     }
 
-    public void setGroupDetailMode(){
+    public void openGroupSettings () throws InterruptedException {
+        this.openSettings();
+        this.rmenu_GroupHdr.click();
+        this.waitForAnimation();
+    }
+
+    public void setGroupDetailMode() throws InterruptedException {
         this.openSettings();
         rmenu_GroupLayout.click();
 
@@ -195,7 +204,7 @@ public class CommonNavigation {
         rmenu_GroupDetail.click();
     }
 
-    public void setGroupSummaryMode() {
+    public void setGroupSummaryMode() throws InterruptedException {
         this.openSettings();
         rmenu_GroupLayout.click();
         rmenu_GroupSummary.click();
@@ -214,111 +223,103 @@ public class CommonNavigation {
         this.openNav();
 
         Boolean hasListview = true;
-        try {
-            switch (menuItem.toLowerCase()) {
-                case "add account/contact":
-                case "add account contact":
-                case "add":
-                    quickActionsHeader.click();
-                    highlightNClick(gmenu_addAccountContact);
-                    break;
-                case "speedsearch":
-                case "search":
-                    highlightNClick(gmenu_speedSearch);
-                    break;
-                case "my activities":
-                case "activities":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_myActivities);
-                    break;
-                case "my schedule":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_mySchedule);
-                    break;
-                case "calendar":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_calendar);
-                    hasListview = false;
-                    break;
-                case "notes/history":
-                case "notes history":
-                case "notes":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_notesHistory);
-                    break;
-                case "accounts":
-                case "account":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_accounts);
-                    break;
-                case "contacts":
-                case "contact":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_contacts);
-                    break;
-                case "leads":
-                case "lead":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_leads);
-                    break;
-                case "opportunities":
-                case "opportunity":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_opportunities);
-                    break;
-                case "tickets":
-                case "ticket":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_tickets);
-                    break;
-                case "my attachments":
-                case "attachments":
-                case "attachment":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_myAttachments);
-                    break;
-                case "recently viewed":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_recentlyViewed);
-                    break;
-                case "my briefcase":
-                    gotoHeader.click();
-                    highlightNClick(gmenu_myBriefcase);
-                    break;
-                case "configure menu":
-                case "configure":
-                    otherHeader.click();
-                    highlightNClick(gmenu_configureMenu);
-                    break;
-                case "settings":
-                    otherHeader.click();
-                    highlightNClick(gmenu_settings);
-                    hasListview = false;
-                    break;
-                case "help":
-                    otherHeader.click();
-                    highlightNClick(gmenu_help);
-                    break;
-                case "log off":
-                case "sign off":
-                case "logout":
-                case "logoff":
-                    otherHeader.click();
-                    highlightNClick(gmenu_logOut);
-                    hasListview = false;
-                    break;
-            }
+        switch (menuItem.toLowerCase()) {
+            case "add account/contact":
+            case "add account contact":
+            case "add":
+                quickActionsHeader.click();
+                highlightNClick(gmenu_addAccountContact);
+                break;
+            case "speedsearch":
+            case "search":
+                highlightNClick(gmenu_speedSearch);
+                break;
+            case "my activities":
+            case "activities":
+                gotoHeader.click();
+                highlightNClick(gmenu_myActivities);
+                break;
+            case "my schedule":
+                gotoHeader.click();
+                highlightNClick(gmenu_mySchedule);
+                break;
+            case "calendar":
+                gotoHeader.click();
+                highlightNClick(gmenu_calendar);
+                hasListview = false;
+                break;
+            case "notes/history":
+            case "notes history":
+            case "notes":
+                gotoHeader.click();
+                highlightNClick(gmenu_notesHistory);
+                break;
+            case "accounts":
+            case "account":
+                gotoHeader.click();
+                highlightNClick(gmenu_accounts);
+                break;
+            case "contacts":
+            case "contact":
+                gotoHeader.click();
+                highlightNClick(gmenu_contacts);
+                break;
+            case "leads":
+            case "lead":
+                gotoHeader.click();
+                highlightNClick(gmenu_leads);
+                break;
+            case "opportunities":
+            case "opportunity":
+                gotoHeader.click();
+                highlightNClick(gmenu_opportunities);
+                break;
+            case "tickets":
+            case "ticket":
+                gotoHeader.click();
+                highlightNClick(gmenu_tickets);
+                break;
+            case "my attachments":
+            case "attachments":
+            case "attachment":
+                gotoHeader.click();
+                highlightNClick(gmenu_myAttachments);
+                break;
+            case "recently viewed":
+                gotoHeader.click();
+                highlightNClick(gmenu_recentlyViewed);
+                break;
+            case "my briefcase":
+                gotoHeader.click();
+                highlightNClick(gmenu_myBriefcase);
+                break;
+            case "configure menu":
+            case "configure":
+                otherHeader.click();
+                highlightNClick(gmenu_configureMenu);
+                break;
+            case "settings":
+                otherHeader.click();
+                highlightNClick(gmenu_settings);
+                hasListview = false;
+                break;
+            case "help":
+                otherHeader.click();
+                highlightNClick(gmenu_help);
+                break;
+            case "log off":
+            case "sign off":
+            case "logout":
+            case "logoff":
+                otherHeader.click();
+                highlightNClick(gmenu_logOut);
+                hasListview = false;
+                break;
+        }
 
-            System.out.println(methodID + ": global menu link - '" + menuItem + "' was clicked.");
-            Thread.sleep(1000);
-            if (hasListview) {
-                waitForListView();
-            }
-            Thread.sleep(3000);
-            {
-            }
-        } catch (Exception e) {
-            System.out.println(methodID + ": " + e.toString());
+        System.out.println(methodID + ": global menu link - '" + menuItem + "' was clicked.");
+        if (hasListview) {
+            waitForListView();
         }
         return this;
     }
@@ -778,10 +779,17 @@ public class CommonNavigation {
      * @param    pageTitle exact page title of expected page
      */
     public boolean waitForPage(String pageTitle) throws InterruptedException {
+        // Ensure we transitioned to the page
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(30, SECONDS)
                 .pollingEvery(100, MILLISECONDS);
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(".toolbar > .title > h1"), pageTitle));
+
+        // Ensure the data has been fetched and the loading css is off the element
+        wait = new FluentWait<>(driver)
+                .withTimeout(30, SECONDS)
+                .pollingEvery(250, MILLISECONDS);
+        wait.until((driver) -> driver.findElement(By.xpath("//div[@selected='selected' and not(contains(@class, 'loading'))]")));
         return true;
     }
 

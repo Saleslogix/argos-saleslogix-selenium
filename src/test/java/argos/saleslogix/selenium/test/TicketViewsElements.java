@@ -599,11 +599,10 @@ public class TicketViewsElements extends BaseTest {
     WebElement groupsConfigureFollowUp;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='Follow-Up']")
+    @FindBy(xpath = "//*[@id='right_drawer']//a[@data-title='Follow-Up']")
     WebElement rmenu_groupFollowUp;
 
-    @CacheLookup
-    @FindBy(xpath = "//*[@id='ticket_list']//li[1]//div[3]/h3/span[2]")
+    @FindBy(xpath = "//div[@id='ticket_list']/div/div/div[1]/div/div[2]/div[2]/div[1]/div[last()]/div/span[2]")
     WebElement followUpTicketsGroupTopComplDate;
 
     @CacheLookup

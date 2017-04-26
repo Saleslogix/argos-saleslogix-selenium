@@ -453,16 +453,16 @@ public class AccountViewsElements extends BaseTest {
     WebElement groupsConfigureMyAccounts;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='My Accounts']")
+    @FindBy(xpath = "//*[@id='right_drawer']//a[@data-title='My Accounts']")
     WebElement rmenu_groupMyAccounts;
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='All Accounts']")
+    @FindBy(xpath = "//*[@id='right_drawer']//a[@data-title='All Accounts']")
     WebElement rmenu_groupAllAccounts;
 
 
     @CacheLookup
-    @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='Customers']")
+    @FindBy(xpath = "//*[@id='right_drawer']//a[@data-title='Customers']")
     WebElement rmenu_groupCustomers;
 
 

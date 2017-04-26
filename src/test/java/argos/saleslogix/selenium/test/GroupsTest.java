@@ -50,16 +50,10 @@ public class GroupsTest extends BaseTest {
         commView.lookupTxtBox.sendKeys(Keys.RETURN);
 
         //Step: reveal Right Context Menu panel
-        headerButton.showRightContextMenu();
-
-        //Step: verify that the Groups header is displayed
-        AssertJUnit.assertTrue("VP: right menu Groups header is not displaying after a 'lookup' - FAILED", commNav.rmenu_GroupHdr.isDisplayed());
-        System.out.println("VP: right menu Groups header is displaying after a 'lookup' - PASSED");
-
-        //Step: click on Configure button to open 'Groups Lookup', then simply cancel
+        commNav.openGroupSettings();
         commNav.rmenu_GroupConfigure.click();
         commNav.waitForPage("Groups Lookup");
-        headerButton.cancelButton.click();
+        headerButton.clickHeaderButton("cancel");
         commNav.waitForPage("Accounts");
 
         //Step: open right menu and verify that Groups header is still displayed
@@ -98,66 +92,59 @@ public class GroupsTest extends BaseTest {
 
         AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
-        //Step: reveal Right Context Menu panel
-        headerButton.showRightContextMenu();
-
         //Step: click on Configure button to open 'Groups Lookup' and select 'My Accounts' for loup
+        commNav.openGroupSettings();
         commNav.rmenu_GroupConfigure.click();
         commNav.waitForPage("Groups Lookup");
         accountsListView.groupsConfigureMyAccounts.click();
-        headerButton.checkButton.click();
+        headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Accounts");
 
         //Step: open right menu and select 'My Accounts' group to display
         //headerButton.showRightContextMenu();
+        commNav.openGroupSettings();
         accountsListView.rmenu_groupMyAccounts.click();
         commNav.waitForPage("My Accounts");
-
-        //Step: verify that group 'My Accounts' is displayed
-        commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        AssertJUnit.assertEquals("VP: user is not seeing the chosen group (My Accounts) just selected  - FAILED", "My Accounts", driver.findElement(By.id("pageTitle")).getText());
-        System.out.println("VP: user is seeing the chosen group (My Accounts) just selected  - PASSED");
 
         //Step: logout & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
 
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
         //Step: navigate to Accounts list view...
         commNav.clickGlobalMenuItem(entityType);
 
-        accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
+
 
         //Step: verify that group 'My Accounts' is displayed
-        commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        AssertJUnit.assertEquals("VP: user is not seeing the last group (My Accounts) used in previous login session  - FAILED", "My Accounts", driver.findElement(By.id("pageTitle")).getText());
-        System.out.println("VP: user is seeing the last group (My Accounts) used in previous login session  - PASSED");
+        commNav.waitForPage("My Accounts");
 
         //Step: open right menu and select 'All Accounts' group to display again
         headerButton.showRightContextMenu();
+        commNav.rmenu_GroupHdr.click();
+        commNav.waitForAnimation();
         accountsListView.rmenu_groupAllAccounts.click();
         commNav.waitForPage("All Accounts");
 
         //Step: logout & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
         //Step: navigate to Accounts list view...
         commNav.clickGlobalMenuItem(entityType);
 
-        accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-
         //Step: verify that group 'All Accounts' is displayed
-        commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        AssertJUnit.assertEquals("VP: user is not seeing the last group (All Accounts) used in previous login session  - FAILED", "All Accounts", driver.findElement(By.id("pageTitle")).getText());
-        System.out.println("VP: user is seeing the last group (All Accounts) used in previous login session  - PASSED");
+        commNav.waitForPage("All Accounts");
 
         //Step: open right menu, choose Configure and uncheck 'My Accounts', so back to single default group of 'All Accounts'
-        commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        headerButton.showRightContextMenu();
+        commNav.openGroupSettings();
         commNav.rmenu_GroupConfigure.click();
         commNav.waitForPage("Groups Lookup");
         accountsListView.groupsConfigureMyAccounts.click();
-        headerButton.checkButton.click();
+        headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Accounts");
-        headerButton.clickHeaderButton("right context menu");
 
         System.out.println(ENDLINE);
     }
@@ -190,14 +177,17 @@ public class GroupsTest extends BaseTest {
         headerButton.showRightContextMenu();
 
         //Step: click on Configure button to open 'Groups Lookup' and select 'Authorized Contacts' for loup
+        commNav.rmenu_GroupHdr.click();
         commNav.rmenu_GroupConfigure.click();
         commNav.waitForPage("Groups Lookup");
         contactsListView.groupsConfigureAuthContacts.click();
-        headerButton.checkButton.click();
+        headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Contacts");
 
         //Step: open right menu and select 'Authorized Contacts' group to display
         //headerButton.showRightContextMenu();
+        commNav.openSettings();
+        commNav.rmenu_GroupHdr.click();
         contactsListView.rmenu_groupAuthContacts.click();
         commNav.waitForPage("Authorized Contacts");
 
@@ -205,7 +195,8 @@ public class GroupsTest extends BaseTest {
         Thread.sleep(3000);
         //headerButton = PageFactory.initElements(driver, HeaderButton.class);
         //headerButton.showRightContextMenu();
-        headerButton.rightCntxtMnuButton.click();
+        commNav.openSettings();
+        commNav.rmenu_GroupLayout.click();
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("Authorized Contacts");
 
@@ -230,15 +221,16 @@ public class GroupsTest extends BaseTest {
         //Step: open right menu, choose Configure and uncheck 'Authorized Contacts', so back to single default group of 'All Contacts'
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-        //headerButton.showRightContextMenu();
-        headerButton.rightCntxtMnuButton.click();
+        commNav.openSettings();
+        commNav.rmenu_GroupHdr.click();
         commNav.rmenu_GroupConfigure.click();
         commNav.waitForPage("Groups Lookup");
         contactsListView.groupsConfigureAuthContacts.click();
-        headerButton.checkButton.click();
+        headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Contacts");
+        commNav.openSettings();
+        commNav.rmenu_GroupLayout.click();
         commNav.rmenu_GroupSummary.click();
-        //headerButton.closeRightContextMenu();
         System.out.println(ENDLINE);
     }
 
@@ -252,14 +244,12 @@ public class GroupsTest extends BaseTest {
         // Test Params:
         String entityType = "tickets";
 
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-
 
         //Step: logout & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
         //Step: navigate to Tickets list view...
         commNav.clickGlobalMenuItem(entityType);
@@ -267,44 +257,39 @@ public class GroupsTest extends BaseTest {
         TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 
         //Step: reveal Right Context Menu panel
-        headerButton.showRightContextMenu();
-
-        //Step: click on Configure button to open 'Groups Lookup' and select 'Follow-Up' for loup
+        commNav.openGroupSettings();
         commNav.rmenu_GroupConfigure.click();
         commNav.waitForPage("Groups Lookup");
         ticketsListView.groupsConfigureFollowUp.click();
-        headerButton.checkButton.click();
+        headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Open");
 
         //Step: open right menu and select 'Follow-Up' group to display
-        //headerButton.showRightContextMenu();
+        commNav.openGroupSettings();
         ticketsListView.rmenu_groupFollowUp.click();
         commNav.waitForPage("Follow-Up");
 
         //Step: reveal Right Context Menu panel again, and choose 'Detail' layout ... right menu is still open?
-        headerButton.showRightContextMenu();
-        commNav.rmenu_GroupDetail.click();
+        commNav.setGroupDetailMode();
         commNav.waitForPage("Follow-Up");
+        ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 
         //Step: verify that the Completed Date value for the top ticket does not display 'Invalid date' ... should just be blank
-        commNav = PageFactory.initElements(driver, CommonNavigation.class);
         String completedDate = ticketsListView.followUpTicketsGroupTopComplDate.getText();
         System.out.println("VP: 'Top Completed Date' has a value of ... " + completedDate);
         AssertJUnit.assertEquals("VP: top Completed Date is not displaying as blank  - FAILED", "", completedDate);
         System.out.println("VP: top Completed Date is displaying as blank, not 'Invalid date' - PASSED");
 
-
         //Step: open right menu, choose Configure and uncheck 'Follow-Up', so back to single default group of 'All Open'
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
-        headerButton.showRightContextMenu();
+        commNav.openGroupSettings();
         commNav.rmenu_GroupConfigure.click();
         commNav.waitForPage("Groups Lookup");
         ticketsListView.groupsConfigureFollowUp.click();
-        headerButton.checkButton.click();
+        headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Open");
-        commNav.rmenu_GroupSummary.click();
-        //headerButton.closeRightContextMenu();
+        commNav.setGroupSummaryMode();
 
         System.out.println(ENDLINE);
     }

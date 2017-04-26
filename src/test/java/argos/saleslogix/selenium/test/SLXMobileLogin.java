@@ -70,6 +70,11 @@ public class SLXMobileLogin {
                 .withTimeout(10, SECONDS)
                 .pollingEvery(250, MILLISECONDS);
         wait.until((driver) -> driver.findElement(By.xpath("//div[@id='login' and not(@selected)]")));
+
+        wait = new FluentWait<>(driver)
+                .withTimeout(30, SECONDS)
+                .pollingEvery(250, MILLISECONDS);
+        wait.until((driver) -> driver.findElement(By.xpath("//div[@selected='selected' and not(contains(@class, 'loading'))]")));
         return this;
     }
 
