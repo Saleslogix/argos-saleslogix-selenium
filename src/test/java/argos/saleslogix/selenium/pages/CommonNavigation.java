@@ -3,6 +3,7 @@ package argos.saleslogix.selenium.pages;
 //import static org.junit.Assert.fail;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +13,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.AssertJUnit;
 
-import java.util.List;
+import java.util.*;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -25,7 +26,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  * @version 1.0
  */
 public class CommonNavigation {
-    final public long SOHO_ANIMATION_DELAY = 300;
+    final public long SOHO_ANIMATION_DELAY = 350;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='right_drawer']/div[3]/h2[2]")
     public WebElement rmenu_HashTagsHdr;
@@ -63,7 +64,7 @@ public class CommonNavigation {
     @CacheLookup
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Accounts']")
     WebElement gmenu_accounts;
-    @CacheLookup
+
     @FindBy(xpath = ".//*[@id='left_drawer']/descendant::*[text() = 'Contacts']")
     WebElement gmenu_contacts;
     @CacheLookup
@@ -207,6 +208,17 @@ public class CommonNavigation {
         rmenu_GroupSummary.click();
     }
 
+    public void expandHeaderElement(WebElement header) throws InterruptedException {
+        WebElement element = header.findElement(By.xpath("a[@aria-expanded]"));
+        String expanded = element.getAttribute("aria-expanded");
+
+        System.out.println("Expanded? " + expanded);
+        if (expanded.equalsIgnoreCase("false")) {
+            header.click();
+            waitForAnimation();
+        }
+    }
+
     /**
      * This method will open and select an item from the Global menu.
      *
@@ -224,8 +236,7 @@ public class CommonNavigation {
             case "add account/contact":
             case "add account contact":
             case "add":
-                quickActionsHeader.click();
-                waitForAnimation();
+                expandHeaderElement(quickActionsHeader);
                 highlightNClick(gmenu_addAccountContact);
                 break;
             case "speedsearch":
@@ -234,98 +245,82 @@ public class CommonNavigation {
                 break;
             case "my activities":
             case "activities":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_myActivities);
                 break;
             case "my schedule":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_mySchedule);
                 break;
             case "calendar":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_calendar);
                 hasListview = false;
                 break;
             case "notes/history":
             case "notes history":
             case "notes":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_notesHistory);
                 break;
             case "accounts":
             case "account":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_accounts);
                 break;
             case "contacts":
             case "contact":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_contacts);
                 break;
             case "leads":
             case "lead":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_leads);
                 break;
             case "opportunities":
             case "opportunity":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_opportunities);
                 break;
             case "tickets":
             case "ticket":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_tickets);
                 break;
             case "my attachments":
             case "attachments":
             case "attachment":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_myAttachments);
                 break;
             case "recently viewed":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_recentlyViewed);
                 break;
             case "my briefcase":
-                gotoHeader.click();
-                waitForAnimation();
+                expandHeaderElement(gotoHeader);
                 highlightNClick(gmenu_myBriefcase);
                 break;
             case "configure menu":
             case "configure":
-                otherHeader.click();
-                waitForAnimation();
+                expandHeaderElement(otherHeader);
                 highlightNClick(gmenu_configureMenu);
                 break;
             case "settings":
-                otherHeader.click();
-                waitForAnimation();
+                expandHeaderElement(otherHeader);
                 highlightNClick(gmenu_settings);
                 hasListview = false;
                 break;
             case "help":
-                otherHeader.click();
-                waitForAnimation();
+                expandHeaderElement(otherHeader);
                 highlightNClick(gmenu_help);
                 break;
             case "log off":
             case "sign off":
             case "logout":
             case "logoff":
-                otherHeader.click();
-                waitForAnimation();
+                expandHeaderElement(otherHeader);
                 highlightNClick(gmenu_logOut);
                 hasListview = false;
                 break;
@@ -1437,23 +1432,17 @@ public class CommonNavigation {
     public boolean entityRecordOpenDetailView(String entityType, String entityName) throws Exception {
         String methodID = "entityRecordOpenDetailView";
 
-        try {
-            WebElement entityListItem = entityListViewSearch(entityType, entityName);
-            highlightNClick(entityListItem);
+        WebElement entityListItem = entityListViewSearch(entityType, entityName);
+        highlightNClick(entityListItem);
 
-            //Step: check if the detail view is loaded
-            if (!entityType.toLowerCase().contains("notes")) {
-                waitForPage(entityName);
-                return true;
-            } else if (entityType.toLowerCase().contains("notes") && entityType.toLowerCase().contains("history")) {
-                waitForNotPage("Notes/History");
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            System.out.println(methodID + ": " + e.toString());
-            System.out.println(methodID + ": Unable to open the " + entityType + " - " + entityName + " detail view");
+        //Step: check if the detail view is loaded
+        if (!entityType.toLowerCase().contains("notes")) {
+            waitForPage(entityName);
+            return true;
+        } else if (entityType.toLowerCase().contains("notes") && entityType.toLowerCase().contains("history")) {
+            waitForNotPage("Notes/History");
+            return true;
+        } else {
             return false;
         }
     }

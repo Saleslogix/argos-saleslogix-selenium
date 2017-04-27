@@ -11,25 +11,25 @@ public class RecentlyViewedViewsElements extends BaseTest {
 
     //List View elements
     @CacheLookup
-    @FindBy(xpath = "//*[@id='recently_viewed_list']//ul/li[1]//h3")
+    @FindBy(xpath = "(//*[@id='recently_viewed_list']//h2[@class='widget-title'])[1]")
     public WebElement recentlyViewedDescriptionItem1;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='recently_viewed_list']//ul/li[2]//h3")
+    @FindBy(xpath = "(//*[@id='recently_viewed_list']//h2[@class='widget-title'])[2]")
     public WebElement recentlyViewedDescriptionItem2;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='recently_viewed_list']//ul/li[3]//h3")
+    @FindBy(xpath = "(//*[@id='recently_viewed_list']//h2[@class='widget-title'])[3]")
     public WebElement recentlyViewedDescriptionItem3;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='recently_viewed_list']//ul/li[4]//h3")
+    @FindBy(xpath = "(//*[@id='recently_viewed_list']//h2[@class='widget-title'])[4]")
     public WebElement recentlyViewedDescriptionItem4;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='recently_viewed_list']//ul/li[5]//h3")
+    @FindBy(xpath = "(//*[@id='recently_viewed_list']//h2[@class='widget-title'])[5]")
     public WebElement recentlyViewedDescriptionItem5;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='recently_viewed_list']//ul/li[6]//h3")
+    @FindBy(xpath = "(//*[@id='recently_viewed_list']//h2[@class='widget-title'])[6]")
     public WebElement recentlyViewedDescriptionItem6;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='recently_viewed_list']//li/h2")
+    @FindBy(xpath = "//*[@id='recently_viewed_list']//div[@class='no-data']")
     public WebElement recentlyViewedNoRecords;
     private WebDriver driver;
 

@@ -229,10 +229,9 @@ public class CommonViewsElements extends BaseTest {
     public WebElement settingsUse24HourClock;
     //Offline Options elements
     @CacheLookup
-    @FindBy(xpath = "//*[@id='olderThan-dropdown offline_usage_widget_undefined']/input")
+    @FindBy(xpath = "//*[@id='olderThan-dropdown offline_usage_widget_undefined']//div[@role='combobox']")
     public WebElement offlineDataOlderField;
-    @CacheLookup
-    @FindBy(xpath = "//ul/li[@data-value='0']")
+    @FindBy(xpath = "//ul/li[@data-val='0']")
     public WebElement offlineDataOlderZeroDays;
     @CacheLookup
     @FindBy(xpath = "//*[@id='offline_usage_widget_undefined']//button[@data-dojo-attach-event='onclick:onClearAllData']")

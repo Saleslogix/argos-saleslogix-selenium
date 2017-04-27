@@ -220,10 +220,11 @@ public class MobileSprint360 extends BaseTest {
 
         //Step: Offline Options ... choose to clear all offline data older than 0 days (ie: ALL offline data)
         commView.offlineDataOlderField.click();
+        commNav.waitForAnimation();
         commView.offlineDataOlderZeroDays.click();
         commView.offlineDataClearBtn.click();
         WebDriverWait wait = new WebDriverWait(driver, 120);
-        Boolean element = wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='busyIndicator__offlineusage']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='busyIndicator__offlineusage']")));
 
         //Briefcase Account
         String entityType = "Accounts";
@@ -236,7 +237,7 @@ public class MobileSprint360 extends BaseTest {
         Thread.sleep(5000);
         driver.switchTo().activeElement();
         commView.briefcaseCompleteCancelBtn.click();
-        Thread.sleep(1000);
+        commNav.waitForAnimation();
         driver.switchTo().activeElement();
         commNav.waitForPage(TEST_ACCOUNT2_RECORD);
 
@@ -253,7 +254,7 @@ public class MobileSprint360 extends BaseTest {
         driver.switchTo().activeElement();
         commView = PageFactory.initElements(driver, CommonViewsElements.class);
         commView.briefcaseCompleteCancelBtn.click();
-        Thread.sleep(1000);
+        commNav.waitForAnimation();
         driver.switchTo().activeElement();
         commNav.waitForPage(TEST_CONTACT_RECORD2);
 
@@ -274,6 +275,7 @@ public class MobileSprint360 extends BaseTest {
         System.out.println("VP: go to Recently Viewed ...");
         commNav.clickGlobalMenuItem("Recently Viewed");
         commNav.waitForPage("Recently Viewed");
+        commNav.waitForAnimation();
 
         //Step: validate the items currently under Recently Viewed
         AssertJUnit.assertEquals("VP: 'viewed' contact " + TEST_CONTACT_RECORD2 + " added to Recently Viewed - FAILED", TEST_CONTACT_RECORD2, recentlyViewedListView.recentlyViewedDescriptionItem1.getText());
@@ -290,10 +292,12 @@ public class MobileSprint360 extends BaseTest {
 
         //Step: Offline Options ... choose to clear all offline data older than 0 days from My Briefcase
         commView.offlineDataOlderField.click();
+        commNav.waitForAnimation();
         commView.offlineDataOlderZeroDays.click();
+        commNav.waitForAnimation();
         System.out.println("VP: for all data older than 0 days, press Clear Briefcase");
         commView.offlineDataClearBriefcaseBtn.click();
-        element = wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='busyIndicator__offlineusage']")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='busyIndicator__offlineusage']")));
 
         //Step: verify that My Briefcase now has 'no records'
         commNav.clickGlobalMenuItem("My Briefcase");
@@ -313,6 +317,7 @@ public class MobileSprint360 extends BaseTest {
 
 
         //Step: go to settings, then Offline Options ... ready to clear all offline data from Recently Viewed
+        commView = PageFactory.initElements(driver, CommonViewsElements.class);
         commNav.clickGlobalMenuItem("Settings");
         commNav.waitForPage("Settings");
         commView.settingsOfflineOptions.click();
@@ -320,8 +325,10 @@ public class MobileSprint360 extends BaseTest {
 
         //Step: Offline Options ... choose to clear all offline data older than 0 days from Recently Viewed
         commView.offlineDataOlderField.click();
+        commNav.waitForAnimation();
         commView.offlineDataOlderZeroDays.click();
         System.out.println("VP: for all data older than 0 days, press Clear Recently Viewed");
+        commNav.waitForAnimation();
         commView.offlineDataClearRecViewedBtn.click();
 
         //Step: verify that Recently Viewed now has 'no records'

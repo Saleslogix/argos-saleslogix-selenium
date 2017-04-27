@@ -11,25 +11,25 @@ public class MyBriefcaseViewsElements extends BaseTest {
 
     //List View elements
     @CacheLookup
-    @FindBy(xpath = "//*[@id='briefcase_list']//ul/li[1]//h3")
+    @FindBy(xpath = "(//*[@id='briefcase_list']//h2[@class='widget-title'])[1]")
     public WebElement myBriefcaseDescriptionItem1;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='briefcase_list']//ul/li[2]//h3")
+    @FindBy(xpath = "(//*[@id='briefcase_list']//h2[@class='widget-title'])[2]")
     public WebElement myBriefcaseDescriptionItem2;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='briefcase_list']//ul/li[3]//h3")
+    @FindBy(xpath = "(//*[@id='briefcase_list']//h2[@class='widget-title'])[3]")
     public WebElement myBriefcaseDescriptionItem3;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='briefcase_list']//ul/li[4]//h3")
+    @FindBy(xpath = "(//*[@id='briefcase_list']//h2[@class='widget-title'])[4]")
     public WebElement myBriefcaseDescriptionItem4;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='briefcase_list']//ul/li[5]//h3")
+    @FindBy(xpath = "(//*[@id='briefcase_list']//h2[@class='widget-title'])[5]")
     public WebElement myBriefcaseDescriptionItem5;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='briefcase_list']//ul/li[6]//h3")
+    @FindBy(xpath = "(//*[@id='briefcase_list']//h2[@class='widget-title'])[6]")
     public WebElement myBriefcaseDescriptionItem6;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='briefcase_list']//li/h2")
+    @FindBy(xpath = "//*[@id='briefcase_list']//div[@class='no-data']")
     public WebElement briefcaseNoRecords;
     private WebDriver driver;
 
