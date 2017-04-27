@@ -3,8 +3,8 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import argos.saleslogix.selenium.pages.*;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
@@ -627,7 +627,6 @@ public class HashTagsTest extends BaseTest {
 			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + notesHistorySearchVal + "'");
 		}
-		headerButton.rightCntxtMnuButton.click();
 		
 		System.out.println(ENDLINE);
 	}
@@ -908,7 +907,6 @@ public class HashTagsTest extends BaseTest {
 			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + opportunitySearchVal + "'");
 		}
-		headerButton.rightCntxtMnuButton.click();
 		
 		System.out.println(ENDLINE);
 	}
@@ -1313,7 +1311,6 @@ public class HashTagsTest extends BaseTest {
 			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + accountSearchVal + "'");
 		}
-		headerButton.rightCntxtMnuButton.click();
 		
 		System.out.println(ENDLINE);
 	}
@@ -1884,7 +1881,6 @@ public class HashTagsTest extends BaseTest {
 			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + contactSearchVal + "'");
 		}
-		headerButton.rightCntxtMnuButton.click();
 		
 		System.out.println(ENDLINE);
 	}
@@ -2268,7 +2264,6 @@ public class HashTagsTest extends BaseTest {
 			System.out.println(methodID + "(): " + e.toString());
 			System.out.println(resulstMsg + " - FAILED; the actual value is '" + leadSearchVal + "'");
 		}
-		headerButton.rightCntxtMnuButton.click();
 		
 		System.out.println(ENDLINE);
 	}

@@ -1,5 +1,7 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium.pages;
 
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.test.BaseTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -30,306 +32,306 @@ public class CommonViewsElements extends BaseTest {
     //Main lookup field seen at top of screen all throughout Mobile
     @CacheLookup
     @FindBy(xpath = "//*[@selected='selected']//input[@name='query']")
-    WebElement lookupTxtBox;
+    public WebElement lookupTxtBox;
 
 	//Address input fields:
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][1]")
-	WebElement addressDescriptionInputFld;
+	public WebElement addressDescriptionInputFld;
 
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][1]")
-	WebElement addressDescriptionInputFldBtn;
+	public WebElement addressDescriptionInputFldBtn;
 
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='IsPrimary']")
-	WebElement addressPrimaryTgl;
+	public WebElement addressPrimaryTgl;
 
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='IsMailing']")
-	WebElement addressShippingTgl;
+	public WebElement addressShippingTgl;
 
 	@FindBy(css = "input[name='Address1']")
-	WebElement addressLine1;
+	public WebElement addressLine1;
 
 	@FindBy(css = "input[name='Address2']")
-	WebElement addressLine2;
+	public WebElement addressLine2;
 
 	@FindBy(css = "input[name='Address3']")
-	WebElement addressLine3;
+	public WebElement addressLine3;
 
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][5]")
-	WebElement addressCityInputFld;
+	public WebElement addressCityInputFld;
 
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][5]")
-	WebElement addressCityInputFldBtn;
+	public WebElement addressCityInputFldBtn;
 
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][6]")
-	WebElement addressStateInputFld;
+	public WebElement addressStateInputFld;
 
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][6]")
-	WebElement addressStateInputFldBtn;
+	public WebElement addressStateInputFldBtn;
 
 	@FindBy(css = "input[name='PostalCode']")
-	WebElement addressPostalInputFld;
+	public WebElement addressPostalInputFld;
 
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@type='text'][8]")
-	WebElement addressCountryInputFld;
+	public WebElement addressCountryInputFld;
 
 	@FindBy(xpath = "//*[@id='address_edit']/descendant::*[@aria-label='lookup'][8]")
-	WebElement addressCountryInputFldBtn;
+	public WebElement addressCountryInputFldBtn;
 
 	@FindBy(css = "input[name='Salutation']")
-	WebElement addressAttentionInputFld;		
+	public WebElement addressAttentionInputFld;
 	
 	//Edit Name input fields:
 	//=======================
 	@FindBy(xpath = "//*[@id='name_edit']/descendant::*[@type='text'][1]")
-	WebElement namePrefixInputFld;
+	public WebElement namePrefixInputFld;
 
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_5']/button")
-	WebElement namePrefixInputFldBtn;
+	public WebElement namePrefixInputFldBtn;
 
 	@FindBy(css = "input[name='FirstName']")
-	WebElement nameFirstInputFld;
+	public WebElement nameFirstInputFld;
 
 	@FindBy(css = "input[name='MiddleName']")
-	WebElement nameMiddleInputFld;
+	public WebElement nameMiddleInputFld;
 
 	@FindBy(css = "input[name='LastName']")
-	WebElement nameLastInputFld;
+	public WebElement nameLastInputFld;
 
 	@FindBy(xpath = "//*[@id='name_edit']/descendant::*[@type='text'][5]")
-	WebElement nameSuffixInputFld;
+	public WebElement nameSuffixInputFld;
 
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_6']/button")
-	WebElement nameSuffixInputFldBtn;
+	public WebElement nameSuffixInputFldBtn;
 	
 	//List View selection elements
 	//============================
 	//Account Type selection:
 	@CacheLookup
 	@FindBy(css = "input[name='query']")
-	WebElement accountTypeLookupInputFld;
+	public WebElement accountTypeLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[3]/button")
-	WebElement accountTypeLookupBtn;
+	public WebElement accountTypeLookupBtn;
 	
 	//City selection:
 	@CacheLookup
 	@FindBy(css = "input[name='query']")
-	WebElement cityLookupInputFld;
+	public WebElement cityLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[3]/button")
-	WebElement cityLookupBtn;
+	public WebElement cityLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_4']/div[2]/button")
-	WebElement citySelectNoneBtn;
+	public WebElement citySelectNoneBtn;
 	
 	//Country selection:
 	@CacheLookup
 	@FindBy(css = "input[name='query']")
-	WebElement countryLookupInputFld;
+	public WebElement countryLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[3]/button")
-	WebElement countryLookupBtn;
+	public WebElement countryLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_3']/div[2]/button")
-	WebElement countrySelectNoneBtn;
+	public WebElement countrySelectNoneBtn;
 	
 	//Cuisine selection:
 	@CacheLookup
 	@FindBy(css = "input[name='query']")
-	WebElement cuisineLookupInputFld;
+	public WebElement cuisineLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[3]/button")
-	WebElement cuisineLookupBtn;
+	public WebElement cuisineLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_3']/div[2]/button")
-	WebElement cuisineSelectNoneBtn;		
+	public WebElement cuisineSelectNoneBtn;		
 	
 	//Description selection:
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_43']/div/div[1]/input")
-	WebElement descriptionLookupInputFld;
+	public WebElement descriptionLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_43']/div/div[3]/button")
-	WebElement descriptionLookupBtn;
+	public WebElement descriptionLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_0']/div[2]/button")
-	WebElement descriptionSelectNoneBtn;
+	public WebElement descriptionSelectNoneBtn;
 	
 	//Industry selection:
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_49']/div/div[1]/input")
-	WebElement industryLookupInputFld;
+	public WebElement industryLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_49']/div/div[3]/button")
-	WebElement industryLookupBtn;
+	public WebElement industryLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_6']/div[2]/button")
-	WebElement industrySelectNoneBtn;
+	public WebElement industrySelectNoneBtn;
 	
 	//General List View search field:
 	@CacheLookup
 	@FindBy(css = "input[name='query']")
-	WebElement listViewSearchInputFld;
+	public WebElement listViewSearchInputFld;
 	
 	//Lead Source selection:
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_33']/div/div[1]/input")
-	WebElement leadSourceLookupInputFld;
+	public WebElement leadSourceLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_33']/div/div[3]/button")
-	WebElement leadSourceLookupBtn;	
+	public WebElement leadSourceLookupBtn;	
 	
 	//Name Prefix selection:
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_43']/div/div[1]/input")
-	WebElement namePrefixLookupInputFld;
+	public WebElement namePrefixLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_43']/div/div[3]/button")
-	WebElement namePrefixLookupBtn;
+	public WebElement namePrefixLookupBtn;
 	
 	//Name Suffix selection:
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_44']/div/div[1]/input")
-	WebElement nameSuffixLookupInputFld;
+	public WebElement nameSuffixLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_44']/div/div[3]/button")
-	WebElement nameSuffixLookupBtn;
+	public WebElement nameSuffixLookupBtn;
 	
 	//Owner selection:
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_30']/div/div[1]/input")
-	WebElement ownerLookupInputFld;
+	public WebElement ownerLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_30']/div/div[3]/button")
-	WebElement ownerLookupBtn;	
+	public WebElement ownerLookupBtn;	
 	
 	//State selection:
 	@CacheLookup
 	@FindBy(css = "input[name='query']")
-	WebElement stateLookupInputFld;
+	public WebElement stateLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_45']/div/div[3]/button")
-	WebElement stateLookupBtn;
+	public WebElement stateLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_2']/div[2]/button")
-	WebElement stateSelectNoneBtn;
+	public WebElement stateSelectNoneBtn;
 	
 	//Account Status selection:
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_48']/div/div[1]/input")
-	WebElement statusLookupInputFld;
+	public WebElement statusLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_48']/div/div[3]/button")
-	WebElement statusLookupBtn;
+	public WebElement statusLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_5']/div[2]/button")
-	WebElement statusSelectNoneBtn;	
+	public WebElement statusSelectNoneBtn;	
 	
 	//Account Subtype selection:
 	@CacheLookup
 	@FindBy(css = "input[name='query']")
-	WebElement subtypeLookupInputFld;
+	public WebElement subtypeLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_43']/div/div[3]/button")
-	WebElement subtypeLookupBtn;
+	public WebElement subtypeLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_0']/div[2]/button")
-	WebElement subtypeSelectNoneBtn;	
+	public WebElement subtypeSelectNoneBtn;	
 	
 	//Title (name) selection:
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_45']/div/div[1]/input")
-	WebElement titleLookupInputFld;
+	public WebElement titleLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_45']/div/div[1]/button")
-	WebElement titleLookupBtn;
+	public WebElement titleLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='pick_list_2']/div[2]/button")
-	WebElement titleSelectNoneBtn;
+	public WebElement titleSelectNoneBtn;
 	
 	//Users selection:
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_29']/div/div[1]/input")
-	WebElement userLookupInputFld;
+	public WebElement userLookupInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_SearchWidget_29']/div/div[3]/button")
-	WebElement userLookupBtn;
+	public WebElement userLookupBtn;
 
     //Briefcase Complete toast elements
     @CacheLookup
     @FindBy(xpath = ".//*[@id='modal-template']//div[contains(text(), 'Okay')]")
-    WebElement briefcaseCompleteOkayBtn;
+    public WebElement briefcaseCompleteOkayBtn;
 
     @CacheLookup
     @FindBy(xpath = ".//*[@id='modal-template']//div[contains(text(), 'Cancel')]")
-    WebElement briefcaseCompleteCancelBtn;
+    public WebElement briefcaseCompleteCancelBtn;
 
     //Offline Options under Settings
     @CacheLookup
     @FindBy(xpath = ".//*[@id='settings']//li[@data-action='viewOfflineOptions']")
-    WebElement settingsOfflineOptions;
+    public WebElement settingsOfflineOptions;
 
     //Use 24 hour clock under Settings
     @CacheLookup
     @FindBy(xpath = ".//*[@id='settings']//li[@data-action='use24HourClock']")
-    WebElement settingsUse24HourClock;
+    public WebElement settingsUse24HourClock;
 
     //Offline Options elements
     @CacheLookup
     @FindBy(xpath = "//*[@id='olderThan-dropdown offline_usage_widget_undefined']/input")
-    WebElement offlineDataOlderField;
+    public WebElement offlineDataOlderField;
 
     @CacheLookup
     @FindBy(xpath = "//ul/li[@data-value='0']")
-    WebElement offlineDataOlderZeroDays;
+    public WebElement offlineDataOlderZeroDays;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='offline_usage_widget_undefined']//button[@data-dojo-attach-event='onclick:onClearAllData']")
-    WebElement offlineDataClearBtn;
+    public WebElement offlineDataClearBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='offline_usage_widget_undefined']//button[@data-dojo-attach-event='onclick:onClearBriefcasedData']")
-    WebElement offlineDataClearBriefcaseBtn;
+    public WebElement offlineDataClearBriefcaseBtn;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='offline_usage_widget_undefined']//button[@data-dojo-attach-event='onclick:onClearRecentData']")
-    WebElement offlineDataClearRecViewedBtn;
+    public WebElement offlineDataClearRecViewedBtn;
 
     @CacheLookup
 	@FindBy( id = "toast-container")
-    WebElement toastContainer;
+    public WebElement toastContainer;
 
 	//Text Input view elements
 	//========================	
 	//Business Description
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='argos_Fields_TextAreaField_0']/textarea")
-	WebElement busdescTxtArea;
+	public WebElement busdescTxtArea;
 	
 	public void clearToast() {
         if (toastContainer.isDisplayed()) {

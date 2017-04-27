@@ -1,4 +1,4 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium.pages;
 
 //import static org.junit.Assert.fail;
 
@@ -101,10 +101,10 @@ public class CommonNavigation {
     WebElement rmenu_panel;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='right_drawer']/div[3]/h2[2]")
-    WebElement rmenu_HashTagsHdr;
+    public WebElement rmenu_HashTagsHdr;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='right_drawer']//ul[@data-group='view']")
-    WebElement rmenu_HashTagsSubPnl;
+    public WebElement rmenu_HashTagsSubPnl;
     @CacheLookup
     @FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
     WebElement rmenu_KPIHdr;
@@ -174,11 +174,15 @@ public class CommonNavigation {
         }
     }
 
+    public boolean isSettingsOpen() {
+        return rmenu_panel.isDisplayed();
+    }
+
     public void openSettings() throws InterruptedException {
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
         CommonViewsElements commonViewsElements = PageFactory.initElements(driver, CommonViewsElements.class);
 
-        if (rmenu_panel.isDisplayed()) {
+        if (isSettingsOpen()) {
             return;
         }
 
@@ -191,6 +195,12 @@ public class CommonNavigation {
         this.openSettings();
         this.rmenu_GroupHdr.click();
         this.waitForAnimation();
+    }
+
+    public void openGroupConfigure () throws InterruptedException {
+        this.openGroupSettings();
+        rmenu_GroupConfigure.click();
+        waitForPage("Groups Lookup");
     }
 
     public void setGroupDetailMode() throws InterruptedException {
@@ -489,7 +499,6 @@ public class CommonNavigation {
      * @param    elementDesc    description of the WebElement item
      * @param    wElement    WebElement object
      * @param    expText        text value of the WebElement to check against
-     * @see        highlightElement()
      */
     public void verifyWebElementText(String elementDesc, WebElement wElement, String expText) throws InterruptedException {
         String methodID = "verifyWebElementText";
@@ -516,7 +525,6 @@ public class CommonNavigation {
      * @param    elementDesc    description of the WebElement item
      * @param    wElement    WebElement object
      * @param    expValue    value of the WebElement to check against
-     * @see        highlightElement()
      */
     public void verifyWebElementValue(String elementDesc, WebElement wElement, String expValue) throws InterruptedException {
         String methodID = "verifyWebElementValue";
@@ -545,9 +553,8 @@ public class CommonNavigation {
      * @param    expPgTitle    title of the expected page
      * @return    <code>True</code> if the title of the loaded page matches the expected page title
      * <code>False</code> otherwise
-     * @see        clickWebElement()
      */
-    protected boolean verifyEntityViewElementClick(String elementDesc, WebElement wElement, String expPgTitle) throws InterruptedException {
+    public boolean verifyEntityViewElementClick(String elementDesc, WebElement wElement, String expPgTitle) throws InterruptedException {
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 
@@ -858,11 +865,11 @@ public class CommonNavigation {
      * (not necessarily displayed) on the page.
      *
      * @version 1.0
-     * @param    By            by locator string for target WebElement
+     * @param    by            by locator string for target WebElement
      * @return boolean        true - if WebElement with matching by locator is displayed;
      * false - otherwise
      */
-    protected boolean isElementPresent(By by) {
+    public boolean isElementPresent(By by) {
 
         try {
             driver.findElement(by);
@@ -878,11 +885,11 @@ public class CommonNavigation {
      * on the page.
      *
      * @version 1.0
-     * @param    By            by locator string for target WebElement
+     * @param    by            by locator string for target WebElement
      * @return boolean        true - if WebElement with matching by locator is displayed;
      * false - otherwise
      */
-    protected boolean isElementDisplayed(By by) {
+    public boolean isElementDisplayed(By by) {
 
         String methodID = "isElementDisplayed";
 
@@ -901,7 +908,7 @@ public class CommonNavigation {
      * the value is displayed in the log.
      *
      * @param sDesc      description of the WebElement
-     * @param WebElement WebElement object
+     * @param wElement
      * @return boolean    true - if WebElement's value is empty;
      * false - otherwise
      * @version 1.0
@@ -946,8 +953,8 @@ public class CommonNavigation {
      * This method will determine if a WebelEment is present or not.
      *
      * @version 1.0
-     * @param    String        description of webelement (for logging purposes)
-     * @param    WebElement    WebElement object
+     * @param    sDesc        description of webelement (for logging purposes)
+     * @param    wElement    WebElement object
      * @return boolean        true - if WebElement is present
      * false - otherwise
      * @throws InterruptedException
@@ -994,7 +1001,7 @@ public class CommonNavigation {
      *
      * @throws InterruptedException
      * @version 1.0
-     * @param    By            by locator string for target WebElement
+     * @param    pageText            by locator string for target WebElement
      * @return boolean        true - if WebElement with matching by locator is displayed;
      * false - otherwise
      */

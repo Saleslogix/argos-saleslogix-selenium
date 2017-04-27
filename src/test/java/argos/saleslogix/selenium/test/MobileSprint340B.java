@@ -1,7 +1,7 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 
 /**

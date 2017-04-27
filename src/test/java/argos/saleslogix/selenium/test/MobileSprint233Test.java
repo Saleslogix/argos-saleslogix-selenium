@@ -3,11 +3,8 @@
  */
 package argos.saleslogix.selenium.test;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-
+import argos.saleslogix.selenium.pages.*;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;

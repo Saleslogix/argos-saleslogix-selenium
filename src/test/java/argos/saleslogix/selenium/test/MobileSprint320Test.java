@@ -1,15 +1,12 @@
 package argos.saleslogix.selenium.test;
 
-import org.openqa.selenium.By;
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 
@@ -124,7 +121,7 @@ public class MobileSprint320Test extends BaseTest {
         commNav.waitForPage("Recurrence");
         activityEditView.activityRecurrenceOccurencesFld.clear();
         activityEditView.activityRecurrenceOccurencesFld.sendKeys("2");
-        headerButton.checkButton.click();
+        headerButton.clickHeaderButton("check");
         commNav.waitForPage("Meeting");
         Thread.sleep(1000);
 

@@ -1,5 +1,6 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium.pages;
 
+import argos.saleslogix.selenium.test.BaseTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -25,626 +26,623 @@ public class MyActivityViewsElements extends BaseTest {
 	//List View elements
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list_search-expression']")
-	WebElement myActivitiesListViewHeader;
+	public WebElement myActivitiesListViewHeader;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']")
-	WebElement myActivitiesListView;
+	public WebElement myActivitiesListView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_related_search-expression']")
-	WebElement relatedActivitiesListViewHeader;
+	public WebElement relatedActivitiesListViewHeader;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_related']")
-	WebElement relatedActivitiesListView;	
+	public WebElement relatedActivitiesListView;	
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]")
-	WebElement topMyActivitiesListItem;
+	public WebElement topMyActivitiesListItem;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_related']//ul/li[1]")
-    WebElement topRelatedActivitiesListItem;
+    public WebElement topRelatedActivitiesListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/div[1]")
-	WebElement topMyActivitiesListItemTab;
+	public WebElement topMyActivitiesListItemTab;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/button")
-	WebElement topMyActivitiesListItemIcon;
+	public WebElement topMyActivitiesListItemIcon;
 
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='myactivity_list']//ul/li[1]/div[2]/h3/span")
-	WebElement topMyActivitiesListItemRegarding;
+	public WebElement topMyActivitiesListItemRegarding;
 		
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/div[2]/h4[1]")
-	WebElement topMyActivitiesListItemStartTime;
+	public WebElement topMyActivitiesListItemStartTime;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul[1]/li[1]/div[2]/h4[2]")
-	WebElement topMyActivitiesListItemContactAccount;
+	public WebElement topMyActivitiesListItemContactAccount;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul[1]/li[1]/div[2]/h4[3]")
-	WebElement topMyActivitiesListItemPhone;
+	public WebElement topMyActivitiesListItemPhone;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[1]")
-	WebElement topMyActivitiesListItemAlarm;
+	public WebElement topMyActivitiesListItemAlarm;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[2]")
-	WebElement topMyActivitiesListItemTouch;
+	public WebElement topMyActivitiesListItemTouch;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='bottom_item_indicators']/span[3]")
-	WebElement topMyActivitiesListItemBang;
+	public WebElement topMyActivitiesListItemBang;
 	
 	@CacheLookup
     @FindBy(xpath = "//div[@id='bottom_item_indicators']/span[4]")
-    WebElement topMyActivitiesListItemRecurring;
+    public WebElement topMyActivitiesListItemRecurring;
 
     @CacheLookup
     @FindBy(xpath = "//div[@id='bottom_item_indicators']/span[5]")
-    WebElement topMyActivitiesListItemOverdueIndicator;
+    public WebElement topMyActivitiesListItemOverdueIndicator;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[1]/button")
-	WebElement topMyActivitiesListItemType;
+	public WebElement topMyActivitiesListItemType;
 	
 	@CacheLookup
 	@FindBy(css = "button.footer-item-selector.button")
-	WebElement topMyActivitiesListItemQuickActionsBtn;
+	public WebElement topMyActivitiesListItemQuickActionsBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='addAttachment']")
-	WebElement topMyActivitiesListItemQuickActionsAddAttachmentBtn;
+	public WebElement topMyActivitiesListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='call']")
-	WebElement topMyActivitiesListItemQuickActionsCallBtn;
+	public WebElement topMyActivitiesListItemQuickActionsCallBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='decline']")
-	WebElement topMyActivitiesListItemQuickActionsDeclineBtn;
+	public WebElement topMyActivitiesListItemQuickActionsDeclineBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='accept']")
-	WebElement topMyActivitiesListItemQuickActionsAcceptBtn;
+	public WebElement topMyActivitiesListItemQuickActionsAcceptBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='complete']")
-	WebElement topMyActivitiesListItemQuickActionsCompleteBtn;
+	public WebElement topMyActivitiesListItemQuickActionsCompleteBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='viewContact']")
-	WebElement topMyActivitiesListItemQuickActionsContactBtn;
+	public WebElement topMyActivitiesListItemQuickActionsContactBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='viewOpportunity']")
-	WebElement topMyActivitiesListItemQuickActionsOpportunityBtn;
+	public WebElement topMyActivitiesListItemQuickActionsOpportunityBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[2]//button[@aria-label='viewAccount']")
-	WebElement topMyActivitiesListItemQuickActionsAccountBtn;
+	public WebElement topMyActivitiesListItemQuickActionsAccountBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[11]")
-	WebElement eleventhMyActivitiesListItem;
+	public WebElement eleventhMyActivitiesListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[21]")
-	WebElement twentyfirstMyActivitiesListItem;
+	public WebElement twentyfirstMyActivitiesListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']//ul/li[31]")
-	WebElement thirtyfirstMyActivitiesListItem;
+	public WebElement thirtyfirstMyActivitiesListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']/div[2]")
-	WebElement recordsRemainingListItem;
+	public WebElement recordsRemainingListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='myactivity_list']/div[3]/li/h3")
-	WebElement noRecordsListItem;
+	public WebElement noRecordsListItem;
 	
 	//Context Menu elements
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
-	WebElement myActivitiesSearchTxtBox;
+	public WebElement myActivitiesSearchTxtBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
-	WebElement myActivitiesSearchClearBtn;
+	public WebElement myActivitiesSearchClearBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
-	WebElement myActivitiesSearchLookupBtn;
+	public WebElement myActivitiesSearchLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
-	WebElement relatedActivitiesSearchTxtBox;
+	public WebElement relatedActivitiesSearchTxtBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
-	WebElement relatedActivitiesSearchClearBtn;
+	public WebElement relatedActivitiesSearchClearBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
-	WebElement relatedActivitiesSearchLookupBtn;
+	public WebElement relatedActivitiesSearchLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[1]")
-	WebElement myActivitiesHashTagsHdr;
+	public WebElement myActivitiesHashTagsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
-	WebElement myActivitiesTagsPnl;
+	public WebElement myActivitiesTagsPnl;
 	
 	//Detail View elements
 	//TODO: update the Detail View elements
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']")
-	WebElement activityDetailView;
+	public WebElement activityDetailView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/h2[1]")
-	WebElement activityDetailViewQuickActionsHdr;
+	public WebElement activityDetailViewQuickActionsHdr;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Complete Activity']")
-    WebElement activityDetailViewCompleteActivityLnk;
+    public WebElement activityDetailViewCompleteActivityLnk;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Complete Occurrence']")
-	WebElement activityDetailViewCompleteOccurrenceLnk;
+	public WebElement activityDetailViewCompleteOccurrenceLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/ul[1]/li[1]/a/span")
-	WebElement activityDetailViewCompleteOccurrenceFld;
+	public WebElement activityDetailViewCompleteOccurrenceFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Complete Series']")
-	WebElement activityDetailViewCompleteSeriesLnk;
+	public WebElement activityDetailViewCompleteSeriesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/ul[1]/li[2]/a/span")
-	WebElement activityDetailViewCompleteSeriesFld;
+	public WebElement activityDetailViewCompleteSeriesFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/ul[1]/li[3]/a")
-	WebElement activityDetailViewAddNoteLnk;
+	public WebElement activityDetailViewAddNoteLnk;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_detail']//div[@data-property='Description']/span")
-    WebElement activityDetailViewRegardingFld;
+    public WebElement activityDetailViewRegardingFld;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/ul[1]/li[4]/a")
-	WebElement activityDetailViewViewAddressLnk;
+	public WebElement activityDetailViewViewAddressLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/h2[2]")
-	WebElement activityDetailViewDetailsHdr;
+	public WebElement activityDetailViewDetailsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[1]/div[1]")
-	WebElement activityDetailViewAccountFld;
+	public WebElement activityDetailViewAccountFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[1]/div[2]")
-	WebElement activityDetailViewWebFld;
+	public WebElement activityDetailViewWebFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[1]/div[3]")
-	WebElement activityDetailViewFaxFld;
+	public WebElement activityDetailViewFaxFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[1]/div[4]")
     @FindBy(xpath = "//*[@id='activity_detail']//div[@data-property='Type']/span")
-	WebElement activityDetailViewTypeFld;
+	public WebElement activityDetailViewTypeFld;
 
     @CacheLookup
     //@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[2]/div[1]/span")
     @FindBy(xpath = "//*[@id='activity_detail']//div[@data-property='StartDate']/span")
-    WebElement activityDetailViewStartTimeFld;
+    public WebElement activityDetailViewStartTimeFld;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_detail']//div[@data-property='StartDate']/label")
-    WebElement activityDetailViewStartTimeLabel;
+    public WebElement activityDetailViewStartTimeLabel;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[1]/div[5]")
-	WebElement activityDetailViewSubTypeFld;
+	public WebElement activityDetailViewSubTypeFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[1]/div[6]")
-	WebElement activityDetailViewStatusFld;
+	public WebElement activityDetailViewStatusFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/h2[3]")
-	WebElement activityDetailViewMoreDetailsHdr;
+	public WebElement activityDetailViewMoreDetailsHdr;
 		
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[2]")
-	WebElement activityDetailViewMoreDetailsFields;	
+	public WebElement activityDetailViewMoreDetailsFields;	
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[2]/div[1]")
-	WebElement activityDetailViewIndustryFld;
+	public WebElement activityDetailViewIndustryFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[2]/div[2]")
-	WebElement activityDetailViewBusDescFld;
+	public WebElement activityDetailViewBusDescFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[2]/div[3]")
-	WebElement activityDetailViewAcctMgrFld;
+	public WebElement activityDetailViewAcctMgrFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[2]/div[4]")
-	WebElement activityDetailViewOwnerFld;
+	public WebElement activityDetailViewOwnerFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/div[2]/div[5]")
-	WebElement activityDetailViewLeadSourceFld;
+	public WebElement activityDetailViewLeadSourceFld;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/div[2]/h2[4]")
-	WebElement activityDetailViewRelatedItemsHdr;
+	public WebElement activityDetailViewRelatedItemsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Activities']")
-	WebElement activityDetailViewActivitiesLnk;
+	public WebElement activityDetailViewActivitiesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Contacts']")
-	WebElement activityDetailViewContactsLnk;
+	public WebElement activityDetailViewContactsLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Opportunities']")
-	WebElement activityDetailViewOpportunitiesLnk;
+	public WebElement activityDetailViewOpportunitiesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Tickets']")
-	WebElement activityDetailViewTicketsLnk;
+	public WebElement activityDetailViewTicketsLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Notes/History']")
-	WebElement activityDetailViewNotesHistoryLnk;
+	public WebElement activityDetailViewNotesHistoryLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Addresses']")
-	WebElement activityDetailViewAddressesLnk;
+	public WebElement activityDetailViewAddressesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_detail']/descendant::*[text() = 'Attachments']")
-	WebElement activityDetailViewAttachmentsLnk;
+	public WebElement activityDetailViewAttachmentsLnk;
 		
 	//Edit View elements
 	//TODO: update the Edit View elements
 	@CacheLookup
 	@FindBy(xpath = ".//*[@id='activity_edit']")
-	WebElement activityEditView;
+	public WebElement activityEditView;
 
     @CacheLookup
     @FindBy(xpath = ".//*[@id='activity_edit']/fieldset/div/div")
-    WebElement activityEditViewLoadingMessage;
+    public WebElement activityEditViewLoadingMessage;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_edit']//div[@class='panel-validation-summary']//h3")
-    WebElement activityEditViewValidationMessage1;
+    public WebElement activityEditViewValidationMessage1;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_edit']//div[@class='panel-validation-summary']//h4")
-    WebElement activityEditViewValidationMessage2;
+    public WebElement activityEditViewValidationMessage2;
 
     @CacheLookup
 	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][2]")
-	WebElement activityEditViewRegardingFld;
+	public WebElement activityEditViewRegardingFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/button")
-	WebElement activityEditViewRegardingFldBtn;
+	public WebElement activityEditViewRegardingFldBtn;
 		
 	@CacheLookup
 	@FindBy(css = "input[name='Location']")
-	WebElement activityEditViewLocationFld;
+	public WebElement activityEditViewLocationFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][5]")
-	WebElement activityEditViewPriorityFld;
+	public WebElement activityEditViewPriorityFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/button")
-	WebElement activityEditViewPriorityFldBtn;
+	public WebElement activityEditViewPriorityFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][6]")
-	WebElement activityEditViewCategoryFld;
+	public WebElement activityEditViewCategoryFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_2']/button")
-	WebElement activityEditViewCategoryFldBtn;
+	public WebElement activityEditViewCategoryFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_edit']//descendant::*[@data-dojo-attach-point='inputNode'][7]")
-	WebElement activityEditViewStartTimeFld;
+	public WebElement activityEditViewStartTimeFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@data-field='StartDate']//button")
-	WebElement activityEditViewStartTimeFldBtn;
+	public WebElement activityEditViewStartTimeFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_SelectField_0']/input")
-	WebElement activityEditViewRepeatsFld;
+	public WebElement activityEditViewRepeatsFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_SelectField_0']/button")
-	WebElement activityEditViewRepeatsFldBtn;
+	public WebElement activityEditViewRepeatsFldBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@data-field='Followup']//input")
-    WebElement activityCompleteViewFollowUpFld;
+    public WebElement activityCompleteViewFollowUpFld;
 
     @CacheLookup
     @FindBy(xpath = "//*[@data-field='Followup']//button")
-    WebElement activityCompleteViewFollowUpBtn;
+    public WebElement activityCompleteViewFollowUpBtn;
 
     @CacheLookup
     @FindBy(xpath = "//div[@id = 'activity_complete']//*[@data-field='Contact']//input")
-    WebElement activityCompleteViewContactFld;
+    public WebElement activityCompleteViewContactFld;
 
     @CacheLookup
     @FindBy(xpath = "//div[@id = 'activity_complete']//*[@data-field='Opportunity']//input")
-    WebElement activityCompleteViewOpportunityFld;
+    public WebElement activityCompleteViewOpportunityFld;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_RecurrencesField_0']/div")
-	WebElement activityEditViewRecurringFld;
+	public WebElement activityEditViewRecurringFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_RecurrencesField_0']/button")
-	WebElement activityEditViewRecurringFldBtn;
+	public WebElement activityEditViewRecurringFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_BooleanField_1']/div/span[1]")
-	WebElement activityEditViewTimelessTgl;
+	public WebElement activityEditViewTimelessTgl;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_DurationField_0']/input")
-	WebElement activityEditViewDurationFld;
+	public WebElement activityEditViewDurationFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_DurationField_0']/button")
-	WebElement activityEditViewDurationBtn;
+	public WebElement activityEditViewDurationBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_BooleanField_2']/div/span[1]")
-	WebElement activityEditViewAlarmTgl;
+	public WebElement activityEditViewAlarmTgl;
 	
 	@CacheLookup
 	@FindBy(xpath = "//input[@name='Reminder']")
-	WebElement activityEditViewAlarmFld;
+	public WebElement activityEditViewAlarmFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_DurationField_1']/button")
-	WebElement activityEditViewAlarmFldBtn;
+	public WebElement activityEditViewAlarmFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_BooleanField_3']/div/span[1]")
-	WebElement activityEditViewAutoRolloverFld;
+	public WebElement activityEditViewAutoRolloverFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
-	WebElement activityEditViewLeaderFld;
+	public WebElement activityEditViewLeaderFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/button")
-	WebElement activityEditViewLeaderFldBtn;
+	public WebElement activityEditViewLeaderFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_NoteField_0']/textarea")
-	WebElement activityEditViewNotesFld;
+	public WebElement activityEditViewNotesFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_BooleanField_4']/div/span[1]")
-	WebElement activityEditViewForLeadTgl;
+	public WebElement activityEditViewForLeadTgl;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_5']/input")
-	WebElement activityEditViewLeadFld;
+	public WebElement activityEditViewLeadFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_5']/button")
-	WebElement activityEditViewLeadBtn;
+	public WebElement activityEditViewLeadBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_TextField_3']/input")
-	WebElement activityEditViewCompanyFld;
+	public WebElement activityEditViewCompanyFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
-	WebElement activityEditViewAccountFld;
+	public WebElement activityEditViewAccountFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/button")
-	WebElement activityEditViewAccountBtn;
+	public WebElement activityEditViewAccountBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/input")
-	WebElement activityEditViewContactFld;
+	public WebElement activityEditViewContactFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@data-field='Contact']//button")
-	WebElement activityEditViewContactBtn;
+	public WebElement activityEditViewContactBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_3']/input")
-	WebElement activityEditViewOpportunityFld;
+	public WebElement activityEditViewOpportunityFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_3']/button")
-	WebElement activityEditViewOpportunityBtn;
+	public WebElement activityEditViewOpportunityBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_4']/input")
-	WebElement activityEditViewTicketFld;
+	public WebElement activityEditViewTicketFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_4']/button")
-	WebElement activityEditViewTicketBtn;
+	public WebElement activityEditViewTicketBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_0']/input")
-	WebElement activityEditViewPhoneFld;
+	public WebElement activityEditViewPhoneFld;
 	
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='activity_types_list']//li[@data-key='atAppointment']")
-	WebElement activityScheduleMeetingBtn;
+	public WebElement activityScheduleMeetingBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_types_list']//ul/li[3]/div[2]")
-    WebElement activitySchedulePhoneCallBtn;
+    public WebElement activitySchedulePhoneCallBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='select_list']//li[2]")
-    WebElement activityFollowUpSchedulePhoneCallBtn;
+    public WebElement activityFollowUpSchedulePhoneCallBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_types_list']//ul/li[4]/div[2]")
-    WebElement activityScheduleToDoBtn;
+    public WebElement activityScheduleToDoBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_types_list']//ul/li[5]/div[2]")
-    WebElement activityScheduleEventBtn;
+    public WebElement activityScheduleEventBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='select_list']//li[@data-descriptor='Never']")
-    WebElement activityRecurringNeverFld;
+    public WebElement activityRecurringNeverFld;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='select_list']//li[@data-descriptor='Daily']")
-    WebElement activityRecurringDailyFld;
+    public WebElement activityRecurringDailyFld;
 
 
     // this field is used for an activity created on a Sunday
     @CacheLookup
     @FindBy(xpath = "//*[@id='select_list']//li[@data-descriptor='Weekly on Sunday']")
-    WebElement activityRecurringWeeklyFld;
+    public WebElement activityRecurringWeeklyFld;
 
 
     @CacheLookup
     @FindBy(xpath = "//div/input[@name='RecurIterations']")
-    WebElement activityRecurrenceOccurencesFld;
+    public WebElement activityRecurrenceOccurencesFld;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[1]//h3")
-    WebElement activityLeaderViewUser1;
+    public WebElement activityLeaderViewUser1;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[2]//h3")
-    WebElement activityLeaderViewUser2;
+    public WebElement activityLeaderViewUser2;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[3]//h3")
-    WebElement activityLeaderViewUser3;
+    public WebElement activityLeaderViewUser3;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[4]//h3")
-    WebElement activityLeaderViewUser4;
+    public WebElement activityLeaderViewUser4;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[5]//h3")
-    WebElement activityLeaderViewUser5;
+    public WebElement activityLeaderViewUser5;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[6]//h3")
-    WebElement activityLeaderViewUser6;
+    public WebElement activityLeaderViewUser6;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[7]//h3")
-    WebElement activityLeaderViewUser7;
+    public WebElement activityLeaderViewUser7;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[8]//h3")
-    WebElement activityLeaderViewUser8;
+    public WebElement activityLeaderViewUser8;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[9]//h3")
-    WebElement activityLeaderViewUser9;
+    public WebElement activityLeaderViewUser9;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[10]//h3")
-    WebElement activityLeaderViewUser10;
+    public WebElement activityLeaderViewUser10;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[11]//h3")
-    WebElement activityLeaderViewUser11;
+    public WebElement activityLeaderViewUser11;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[12]//h3")
-    WebElement activityLeaderViewUser12;
+    public WebElement activityLeaderViewUser12;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[13]//h3")
-    WebElement activityLeaderViewUser13;
+    public WebElement activityLeaderViewUser13;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[14]//h3")
-    WebElement activityLeaderViewUser14;
+    public WebElement activityLeaderViewUser14;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='calendar_access_list']//ul/li[15]//h3")
-    WebElement activityLeaderViewUser15;
+    public WebElement activityLeaderViewUser15;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[1]")
-    WebElement activityDetailViewDetailsTab;
+    public WebElement activityDetailViewDetailsTab;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[2]")
-    WebElement activityDetailViewWhenTab;
+    public WebElement activityDetailViewWhenTab;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[3]")
-    WebElement activityDetailViewWhoTab;
+    public WebElement activityDetailViewWhoTab;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[2]")
-    WebElement activityDetailViewMoreDetailsTab;
+    public WebElement activityDetailViewMoreDetailsTab;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='activity_detail']//ul[@class='tab-list']/li[3]")
-    WebElement activityDetailViewRelatedItemsTab;
-
-
+    public WebElement activityDetailViewRelatedItemsTab;
 
     //Methods
 	//=======
 	/**
 	 * This method will return a String that represents the contents of the My Activities list view. 
-	 * 
-	 * @param N/A
+	 *
 	 */
 	public String getMyActivitiesListViewTxt() {
 		String methodID = "getMyActivitiesListViewTxt";

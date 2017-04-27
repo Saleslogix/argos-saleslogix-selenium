@@ -1,6 +1,6 @@
 package argos.saleslogix.selenium.test;
 
-import org.openqa.selenium.By;
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
@@ -50,9 +50,7 @@ public class GroupsTest extends BaseTest {
         commView.lookupTxtBox.sendKeys(Keys.RETURN);
 
         //Step: reveal Right Context Menu panel
-        commNav.openGroupSettings();
-        commNav.rmenu_GroupConfigure.click();
-        commNav.waitForPage("Groups Lookup");
+        commNav.openGroupConfigure();
         headerButton.clickHeaderButton("cancel");
         commNav.waitForPage("Accounts");
 
@@ -61,7 +59,7 @@ public class GroupsTest extends BaseTest {
 
         //Step: verify that the Groups header is displayed
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        AssertJUnit.assertTrue("VP: right menu Groups header is not displaying after opening and closing Configure - FAILED", commNav.rmenu_GroupHdr.isDisplayed());
+        AssertJUnit.assertTrue("VP: right menu Groups header is not displaying after opening and closing Configure - FAILED", commNav.isSettingsOpen());
         System.out.println("VP: right menu Groups header is still displaying after opening and closing Configure - PASSED");
 
 
@@ -93,9 +91,7 @@ public class GroupsTest extends BaseTest {
         AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
         //Step: click on Configure button to open 'Groups Lookup' and select 'My Accounts' for loup
-        commNav.openGroupSettings();
-        commNav.rmenu_GroupConfigure.click();
-        commNav.waitForPage("Groups Lookup");
+        commNav.openGroupConfigure();
         accountsListView.groupsConfigureMyAccounts.click();
         headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Accounts");
@@ -120,9 +116,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("My Accounts");
 
         //Step: open right menu and select 'All Accounts' group to display again
-        headerButton.showRightContextMenu();
-        commNav.rmenu_GroupHdr.click();
-        commNav.waitForAnimation();
+        commNav.openGroupSettings();
         accountsListView.rmenu_groupAllAccounts.click();
         commNav.waitForPage("All Accounts");
 
@@ -139,9 +133,7 @@ public class GroupsTest extends BaseTest {
         commNav.waitForPage("All Accounts");
 
         //Step: open right menu, choose Configure and uncheck 'My Accounts', so back to single default group of 'All Accounts'
-        commNav.openGroupSettings();
-        commNav.rmenu_GroupConfigure.click();
-        commNav.waitForPage("Groups Lookup");
+        commNav.openGroupConfigure();
         accountsListView.groupsConfigureMyAccounts.click();
         headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Accounts");
@@ -173,29 +165,21 @@ public class GroupsTest extends BaseTest {
 
         ContactViewsElements contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
 
-        //Step: reveal Right Context Menu panel
-        headerButton.showRightContextMenu();
-
         //Step: click on Configure button to open 'Groups Lookup' and select 'Authorized Contacts' for loup
-        commNav.rmenu_GroupHdr.click();
-        commNav.rmenu_GroupConfigure.click();
-        commNav.waitForPage("Groups Lookup");
+        commNav.openGroupConfigure();
         contactsListView.groupsConfigureAuthContacts.click();
         headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Contacts");
 
         //Step: open right menu and select 'Authorized Contacts' group to display
         //headerButton.showRightContextMenu();
-        commNav.openSettings();
-        commNav.rmenu_GroupHdr.click();
+        commNav.openGroupSettings();
         contactsListView.rmenu_groupAuthContacts.click();
         commNav.waitForPage("Authorized Contacts");
 
         //headerButton = PageFactory.initElements(driver, HeaderButton.class);
         //headerButton.showRightContextMenu();
-        commNav.openSettings();
-        commNav.rmenu_GroupLayout.click();
-        commNav.rmenu_GroupDetail.click();
+        commNav.setGroupDetailMode();
         commNav.waitForPage("Authorized Contacts");
 
         //Step: verify that for the Authorized value, a value of 'T' or 'F' does not display ... expecting Yes or No
@@ -218,16 +202,11 @@ public class GroupsTest extends BaseTest {
         //Step: open right menu, choose Configure and uncheck 'Authorized Contacts', so back to single default group of 'All Contacts'
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         contactsListView = PageFactory.initElements(driver, ContactViewsElements.class);
-        commNav.openSettings();
-        commNav.rmenu_GroupHdr.click();
-        commNav.rmenu_GroupConfigure.click();
-        commNav.waitForPage("Groups Lookup");
+        commNav.openGroupConfigure();
         contactsListView.groupsConfigureAuthContacts.click();
         headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Contacts");
-        commNav.openSettings();
-        commNav.rmenu_GroupLayout.click();
-        commNav.rmenu_GroupSummary.click();
+        commNav.setGroupSummaryMode();
         System.out.println(ENDLINE);
     }
 
@@ -254,9 +233,7 @@ public class GroupsTest extends BaseTest {
         TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 
         //Step: reveal Right Context Menu panel
-        commNav.openGroupSettings();
-        commNav.rmenu_GroupConfigure.click();
-        commNav.waitForPage("Groups Lookup");
+        commNav.openGroupConfigure();
         ticketsListView.groupsConfigureFollowUp.click();
         headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Open");
@@ -280,9 +257,7 @@ public class GroupsTest extends BaseTest {
         //Step: open right menu, choose Configure and uncheck 'Follow-Up', so back to single default group of 'All Open'
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
         ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
-        commNav.openGroupSettings();
-        commNav.rmenu_GroupConfigure.click();
-        commNav.waitForPage("Groups Lookup");
+        commNav.openGroupConfigure();
         ticketsListView.groupsConfigureFollowUp.click();
         headerButton.clickHeaderButton("check");
         commNav.waitForPage("All Open");

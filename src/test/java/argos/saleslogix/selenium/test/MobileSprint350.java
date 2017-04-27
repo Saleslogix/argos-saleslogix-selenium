@@ -1,13 +1,12 @@
 package argos.saleslogix.selenium.test;
 
-import org.openqa.selenium.By;
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.pages.CommonViewsElements;
+import argos.saleslogix.selenium.pages.ContactViewsElements;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 
 /**

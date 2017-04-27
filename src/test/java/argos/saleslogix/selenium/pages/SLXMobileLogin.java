@@ -1,4 +1,4 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium.pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;

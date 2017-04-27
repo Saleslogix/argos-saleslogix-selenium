@@ -1,5 +1,9 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.pages.CommonViewsElements;
+import argos.saleslogix.selenium.pages.ContactViewsElements;
+import argos.saleslogix.selenium.pages.HeaderButton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;

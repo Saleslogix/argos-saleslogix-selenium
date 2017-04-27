@@ -1,13 +1,14 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium.pages;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 import java.io.IOException;
 
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.pages.CommonViewsElements;
+import argos.saleslogix.selenium.pages.HeaderButton;
+import argos.saleslogix.selenium.test.BaseTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -29,137 +30,137 @@ public class AddAccountContactEditViewElements extends BaseTest {
 	//Contact/Account Info section
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='add_account_contact']")
-	WebElement addAcctCntctEditView;
+	public WebElement addAcctCntctEditView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='add_account_contact']/div[2]/h2[1]")
-	WebElement addAcctCntctContactAccountInfoHdr;
+	public WebElement addAcctCntctContactAccountInfoHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/input")
-	WebElement addAcctCntctNameInputFld;
+	public WebElement addAcctCntctNameInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/button")
-	WebElement addAcctCntctNameInputBtn;
+	public WebElement addAcctCntctNameInputBtn;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='AccountName']")
-	WebElement addAcctCntctAccountInputFld;
+	public WebElement addAcctCntctAccountInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_TextField_3']/input")
-	WebElement addAcctCntctEMailInputFld;
+	public WebElement addAcctCntctEMailInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='WebAddress']")
-	WebElement addAcctCntctWebInputFld;
+	public WebElement addAcctCntctWebInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='MainPhone']")
-	WebElement addAcctCntctWorkPhoneInputFld;
+	public WebElement addAcctCntctWorkPhoneInputFld;
 	
 	//Contact Info section
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='add_account_contact']/div[2]/h2[2]")
-	WebElement addAcctCntctContactInfoHdr;
+	public WebElement addAcctCntctContactInfoHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/input")
-	WebElement addAcctCntctTitleInputFld;
+	public WebElement addAcctCntctTitleInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/button")
-	WebElement addAcctCntctTitleInputBtn;
+	public WebElement addAcctCntctTitleInputBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_1']/input")
-	WebElement addAcctCntctHomePhoneInputFld;
+	public WebElement addAcctCntctHomePhoneInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_2']/input")
-	WebElement addAcctCntctMobileInputFld;
+	public WebElement addAcctCntctMobileInputFld;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_PhoneField_3']/input")
-    WebElement addAcctCntContactWorkPhoneInputFld;
+    public WebElement addAcctCntContactWorkPhoneInputFld;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_4']/input")
-	WebElement addAcctCntctFaxInputFld;
+	public WebElement addAcctCntctFaxInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']/div")
-	WebElement addAcctCntctAddressInputFld;
+	public WebElement addAcctCntctAddressInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']/button")
-	WebElement addAcctCntctAddressInputBtn;
+	public WebElement addAcctCntctAddressInputBtn;
 	
 	//Account Info section
 	@CacheLookup
 	@FindBy(css = "input[name='Fax']")
-	WebElement addAcctCntctAcctFaxInputFld;
+	public WebElement addAcctCntctAcctFaxInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/input")
-	WebElement addAcctCntctTypeInputFld;
+	public WebElement addAcctCntctTypeInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/button")
-	WebElement addAcctCntctTypeInputBtn;	
+	public WebElement addAcctCntctTypeInputBtn;	
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_2']/input")
-	WebElement addAcctCntctSubTypeInputFld;
+	public WebElement addAcctCntctSubTypeInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_2']/button")
-	WebElement addAcctCntctSubTypeInputBtn;
+	public WebElement addAcctCntctSubTypeInputBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_3']/input")
-	WebElement addAcctCntctStatusInputFld;
+	public WebElement addAcctCntctStatusInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_3']/button")
-	WebElement addAcctCntctStatusFldBtn;
+	public WebElement addAcctCntctStatusFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_4']/input")
-	WebElement addAcctCntctIndustryInputFld;
+	public WebElement addAcctCntctIndustryInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_4']/button")
-	WebElement addAcctCntctIndustryFldBtn;
+	public WebElement addAcctCntctIndustryFldBtn;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='BusinessDescription']")
-	WebElement addAcctCntctDescInputFld;
+	public WebElement addAcctCntctDescInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
-	WebElement addAcctCntctAcctMgrInputFld;
+	public WebElement addAcctCntctAcctMgrInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/button")
-	WebElement addAcctCntctAcctMgrFldBtn;
+	public WebElement addAcctCntctAcctMgrFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
-	WebElement addAcctCntctOwnerInputFld;
+	public WebElement addAcctCntctOwnerInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/button")
-	WebElement addAcctCntctOwnerFldBtn;		
+	public WebElement addAcctCntctOwnerFldBtn;		
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_1']/div")
-	WebElement addAcctCntctAcctAddressInputFld;
+	public WebElement addAcctCntctAcctAddressInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_1']/button")
-	WebElement addAcctCntctAcctAddressInputBtn;
+	public WebElement addAcctCntctAcctAddressInputBtn;
 	
 	//Methods
 	//-------

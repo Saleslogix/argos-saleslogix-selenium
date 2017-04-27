@@ -1,5 +1,9 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.pages.CommonViewsElements;
+import argos.saleslogix.selenium.pages.HeaderButton;
+import argos.saleslogix.selenium.pages.LeadViewsElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -8,7 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
-import sun.jvm.hotspot.utilities.AssertionFailure;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;

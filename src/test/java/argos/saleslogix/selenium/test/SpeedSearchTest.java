@@ -1,14 +1,12 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.HeaderButton;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
-import argos.saleslogix.selenium.test.CommonNavigation;
-import argos.saleslogix.selenium.test.HeaderButton;
-import argos.saleslogix.selenium.test.SLXMobileLogin;
-import argos.saleslogix.selenium.test.BaseTest;
+import argos.saleslogix.selenium.pages.CommonNavigation;
 
 public class SpeedSearchTest extends BaseTest {
 	

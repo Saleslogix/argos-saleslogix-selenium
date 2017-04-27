@@ -1,14 +1,9 @@
 package argos.saleslogix.selenium.test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
-import sun.rmi.runtime.Log;
-
-import java.util.Iterator;
-import java.util.Set;
 
 
 /**
@@ -96,12 +91,8 @@ public class GroupsTest2 extends BaseTest {
         } catch(Exception ex) {
             LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
             //Step: if 'All Leads' group not displaying, reveal Right Context Menu panel
-            commNav.openGroupSettings();
-
-            //Step: if 'All Leads' group not displaying, click on Configure button to open 'Groups Lookup' and select 'All Leads' for loup
-            commNav.rmenu_GroupConfigure.click();
-            commNav.waitForPage("Groups Lookup");
-            leadsListView.groupsConfigureAllLeads.click();
+            commNav.openGroupConfigure();
+            leadsListView.clickGroupConfigureAllLeads();
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("All Leads");
         }

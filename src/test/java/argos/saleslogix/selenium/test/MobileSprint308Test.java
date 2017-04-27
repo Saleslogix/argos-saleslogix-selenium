@@ -1,10 +1,10 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
@@ -545,7 +545,7 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurrence");
             activityEditView.activityRecurrenceOccurencesFld.clear();
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("3");
-            headerButton.checkButton.click();
+            headerButton.clickHeaderButton("check");
             commNav.waitForPage("Meeting");
             Thread.sleep(1000);
 
@@ -787,7 +787,7 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurrence");
             activityEditView.activityRecurrenceOccurencesFld.clear();
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("3");
-            headerButton.checkButton.click();
+            headerButton.clickHeaderButton("check");
             commNav.waitForPage("Phone Call");
             Thread.sleep(1000);
 
@@ -891,7 +891,7 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurrence");
             activityEditView.activityRecurrenceOccurencesFld.clear();
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("3");
-            headerButton.checkButton.click();
+            headerButton.clickHeaderButton("check");
             commNav.waitForPage("To-Do");
             Thread.sleep(1000);
 
@@ -998,7 +998,7 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurrence");
             activityEditView.activityRecurrenceOccurencesFld.clear();
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("5");
-            headerButton.checkButton.click();
+            headerButton.clickHeaderButton("check");
             commNav.waitForPage("Meeting");
             Thread.sleep(1000);
 
@@ -1149,7 +1149,7 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurrence");
             activityEditView.activityRecurrenceOccurencesFld.clear();
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("5");
-            headerButton.checkButton.click();
+            headerButton.clickHeaderButton("check");
             commNav.waitForPage("Meeting");
             Thread.sleep(1000);
 
@@ -1209,7 +1209,7 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurrence");
             activityEditView.activityRecurrenceOccurencesFld.clear();
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("4");
-            headerButton.checkButton.click();
+            headerButton.clickHeaderButton("check");
             commNav.waitForPage("Phone Call");
             Thread.sleep(1000);
 
@@ -1357,7 +1357,7 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurrence");
             activityEditView.activityRecurrenceOccurencesFld.clear();
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("2");
-            headerButton.checkButton.click();
+            headerButton.clickHeaderButton("check");
             commNav.waitForPage("Meeting");
             Thread.sleep(1000);
 

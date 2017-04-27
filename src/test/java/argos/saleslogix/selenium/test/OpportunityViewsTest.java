@@ -3,6 +3,10 @@ package argos.saleslogix.selenium.test;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.pages.CommonViewsElements;
+import argos.saleslogix.selenium.pages.HeaderButton;
+import argos.saleslogix.selenium.pages.OpportunityViewsElements;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;

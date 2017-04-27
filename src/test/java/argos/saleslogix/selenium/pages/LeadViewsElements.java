@@ -1,5 +1,9 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium.pages;
 
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.pages.CommonViewsElements;
+import argos.saleslogix.selenium.pages.HeaderButton;
+import argos.saleslogix.selenium.test.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,367 +23,367 @@ public class LeadViewsElements extends BaseTest {
     //List View elements
     @CacheLookup
     @FindBy(xpath = "//*[@selected='true']//input[@name='query']")
-    WebElement leadsSearchTxtBox;
+    public WebElement leadsSearchTxtBox;
     @CacheLookup
     @FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
-    WebElement leadsSearchClearBtn;
+    public WebElement leadsSearchClearBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
-    WebElement leadsSearchLookupBtn;
+    public WebElement leadsSearchLookupBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']")
-    WebElement leadsListViewPnl;
+    public WebElement leadsListViewPnl;
     @CacheLookup
     @FindBy(xpath = "//*[@id='itemsNode']")
-    WebElement leadsListViewNotesBox;
+    public WebElement leadsListViewNotesBox;
     @CacheLookup
     @FindBy(xpath = "//*[@id='itemsNode']/div[2]")
-    WebElement leadsListViewNotesBox1stItem;
+    public WebElement leadsListViewNotesBox1stItem;
     @CacheLookup
     @FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[1]/div")
-    WebElement leadsListViewNotesBox1stItemInitialsBox;
+    public WebElement leadsListViewNotesBox1stItemInitialsBox;
     @CacheLookup
     @FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[1]/strong")
-    WebElement leadsListViewNotesBox1stItemRegarding;
+    public WebElement leadsListViewNotesBox1stItemRegarding;
     @CacheLookup
     @FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[2]")
-    WebElement leadsListViewNotesBox1stItemLastActivity;
+    public WebElement leadsListViewNotesBox1stItemLastActivity;
     @CacheLookup
     @FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[3]/div/h4")
-    WebElement leadsListViewNotesBox1stItemNotes;
+    public WebElement leadsListViewNotesBox1stItemNotes;
     @CacheLookup
     @FindBy(xpath = "//div[2]/div[4]/div[2]")
-    WebElement leadsListViewNotesBoxSeeListLink;
+    public WebElement leadsListViewNotesBoxSeeListLink;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul")
-    WebElement leadsListViewHdr;
+    public WebElement leadsListViewHdr;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list' and @selected='selected']")
-    WebElement leadsListView;
+    public WebElement leadsListView;
     @CacheLookup
     @FindBy(xpath = "//div[6]/div[2]/div/div/div/button")
-    WebElement leadsListView1stKPICard;
+    public WebElement leadsListView1stKPICard;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list_search-expression']/div")
-    WebElement leadsListView1stHashTagFilter;
+    public WebElement leadsListView1stHashTagFilter;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//div[@data-action='activateEntry'][1]")
-    WebElement topLeadsListItem;
+    public WebElement topLeadsListItem;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div[1]")
-    WebElement topLeadsListItemTab;
+    public WebElement topLeadsListItemTab;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//button[@data-action='selectEntry'][1]")
-    WebElement topLeadsListItemIcon;
+    public WebElement topLeadsListItemIcon;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//h2[@class='widget-title'][1]")
-    WebElement topLeadsListItemName;
+    public WebElement topLeadsListItemName;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[1]")
-    WebElement topLeadsListItemLine2;
+    public WebElement topLeadsListItemLine2;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[2]")
-    WebElement topLeadsListItemLine3;
+    public WebElement topLeadsListItemLine3;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[3]")
-    WebElement topLeadsListItemLine4;
+    public WebElement topLeadsListItemLine4;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[4]")
-    WebElement topLeadsListItemLine5;
+    public WebElement topLeadsListItemLine5;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul/li[1]/div/h4[5]")
-    WebElement topLeadsListItemLine6;
+    public WebElement topLeadsListItemLine6;
     @CacheLookup
     @FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
-    WebElement topLeadsListItemBtmIndicator;
+    public WebElement topLeadsListItemBtmIndicator;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//span[@data-action='sendEmail'][1]")
-    WebElement topLeadsListItemEmailLink;
+    public WebElement topLeadsListItemEmailLink;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//li[1]//span[@data-action='callWork']")
-    WebElement topLeadsListItemCallWorkLink;
+    public WebElement topLeadsListItemCallWorkLink;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//li[1]//span[@data-action='callMobile']")
-    WebElement topLeadsListItemCallMobileLink;
+    public WebElement topLeadsListItemCallMobileLink;
     @CacheLookup
     //@FindBy(css = "#lead_list > ul.list-content > li > #bottom_item_indicators > span > img")
     @FindBy(xpath = "//*[@id='bottom_item_indicators']/span")
-    WebElement topLeadsListItemTouch;
+    public WebElement topLeadsListItemTouch;
     @CacheLookup
     //@FindBy(css = "#lead_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
     @FindBy(xpath = "//*[@id='list-item-footer']/div/button")
-    WebElement topLeadsListItemQuickActionsBtn;
+    public WebElement topLeadsListItemQuickActionsBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='addAttachment'][1]")
-    WebElement topLeadsListItemQuickActionsAddAttachmentBtn;
+    public WebElement topLeadsListItemQuickActionsAddAttachmentBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='addActivity'][1]")
-    WebElement topLeadsListItemQuickActionsAddActivityBtn;
+    public WebElement topLeadsListItemQuickActionsAddActivityBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='addNote'][1]")
-    WebElement topLeadsListItemQuickActionsAddNoteBtn;
+    public WebElement topLeadsListItemQuickActionsAddNoteBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='sendEmail'][1]")
-    WebElement topLeadsListItemQuickActionsEmailBtn;
+    public WebElement topLeadsListItemQuickActionsEmailBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='callMobile'][1]")
-    WebElement topLeadsListItemQuickActionsCallMobileBtn;
+    public WebElement topLeadsListItemQuickActionsCallMobileBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='callWork'][1]")
-    WebElement topLeadsListItemQuickActionsCallWorkBtn;
+    public WebElement topLeadsListItemQuickActionsCallWorkBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='edit'][1]")
-    WebElement topLeadsListItemQuickActionsEditBtn;
+    public WebElement topLeadsListItemQuickActionsEditBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul[2]/li[11]")
-    WebElement eleventhLeadsListItem;
+    public WebElement eleventhLeadsListItem;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul[2]/li[21]")
-    WebElement twentyfirstLeadsListItem;
+    public WebElement twentyfirstLeadsListItem;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul[2]/li[31]")
-    WebElement thirtyfirstLeadsListItem;
+    public WebElement thirtyfirstLeadsListItem;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']/div[2]/div/span")
-    WebElement recordsRemainingListItem;
+    public WebElement recordsRemainingListItem;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//ul[2]/li/h3")
-    WebElement noRecordsListItem;
+    public WebElement noRecordsListItem;
     //Context Menu elements
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
-    WebElement leadsHashTagsHdr;
+    public WebElement leadsHashTagsHdr;
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
-    WebElement leadsHashTagsPnl;
+    public WebElement leadsHashTagsPnl;
     @CacheLookup
     @FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
-    WebElement leadsKPIHdr;
+    public WebElement leadsKPIHdr;
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
-    WebElement leadsKPIPnl;
+    public WebElement leadsKPIPnl;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//div[@data-group='kpi']/preceding-sibling::div[1]")
-    WebElement leadsKPIHeader;
+    public WebElement leadsKPIHeader;
     //Detail View elements
     //TODO: the Lead Edit fields need to be updated when needed
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']")
-    WebElement leadsDetailView;
+    public WebElement leadsDetailView;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']/div[2]/h2[1]")
-    WebElement leadsDetailViewQuickActionsHdr;
+    public WebElement leadsDetailViewQuickActionsHdr;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='callWorkPhone']")
-    WebElement leadsDetailViewCallMainNumberLnk;
+    public WebElement leadsDetailViewCallMainNumberLnk;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='sendEmail']")
-    WebElement leadsDetailViewSendEmailLnk;
+    public WebElement leadsDetailViewSendEmailLnk;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='scheduleActivity']")
-    WebElement leadsDetailViewScheduleActivityLnk;
+    public WebElement leadsDetailViewScheduleActivityLnk;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='addNote']")
-    WebElement leadsDetailViewAddNoteLnk;
+    public WebElement leadsDetailViewAddNoteLnk;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']//a[@data-action='viewAddress']")
-    WebElement leadsDetailViewViewAddressLnk;
+    public WebElement leadsDetailViewViewAddressLnk;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']/div[2]/h2[2]")
-    WebElement leadsDetailViewDetailsHdr;
+    public WebElement leadsDetailViewDetailsHdr;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[1]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='LeadNameLastFirst']/span")
-    WebElement leadsDetailViewNameFld;
+    public WebElement leadsDetailViewNameFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[2]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='Company']/span")
-    WebElement leadsDetailViewCompanyFld;
+    public WebElement leadsDetailViewCompanyFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[5]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='WebAddress']/span")
-    WebElement leadsDetailViewWebFld;
+    public WebElement leadsDetailViewWebFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[5]/span/a")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='WebAddress']/span/a")
-    WebElement leadsDetailViewWebFldLnk;
+    public WebElement leadsDetailViewWebFldLnk;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[1]/div[3]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='Title']/span")
-    WebElement leadsDetailViewTitleFld;
+    public WebElement leadsDetailViewTitleFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[1]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='WorkPhone']/span")
-    WebElement leadsDetailViewWorkPhoneFld;
+    public WebElement leadsDetailViewWorkPhoneFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[2]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='Mobile']/span")
-    WebElement leadsDetailViewMobilePhoneFld;
+    public WebElement leadsDetailViewMobilePhoneFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[3]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='TollFree']/span")
-    WebElement leadsDetailViewTollFreeFld;
+    public WebElement leadsDetailViewTollFreeFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[4]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='LeadSource.Description']/span")
-    WebElement leadsDetailViewLeadSourceFld;
+    public WebElement leadsDetailViewLeadSourceFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']/div[2]/h2[3]")
-    WebElement leadsDetailViewMoreDetailsHdr;
+    public WebElement leadsDetailViewMoreDetailsHdr;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]")
-    WebElement leadsDetailViewMoreDetailsFields;
+    public WebElement leadsDetailViewMoreDetailsFields;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[6]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='Interests']/span")
-    WebElement leadsDetailViewInterestsFld;
+    public WebElement leadsDetailViewInterestsFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[7]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='Industry']/span")
-    WebElement leadsDetailViewIndustryFld;
+    public WebElement leadsDetailViewIndustryFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[8]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='SICCode']/span")
-    WebElement leadsDetailViewSicCodeFld;
+    public WebElement leadsDetailViewSicCodeFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[9]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='BusinessDescription']/span")
-    WebElement leadsDetailViewBusDescFld;
+    public WebElement leadsDetailViewBusDescFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[10]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='Notes']/span")
-    WebElement leadsDetailViewCommentsFld;
+    public WebElement leadsDetailViewCommentsFld;
     @CacheLookup
     //@FindBy(xpath = "//*[@id='lead_detail']/div[2]/div[2]/div[11]")
     @FindBy(xpath = "//*[@id='lead_detail']//div[@data-property='Owner.OwnerDescription']/span")
-    WebElement leadsDetailViewOwnerFld;
+    public WebElement leadsDetailViewOwnerFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']/div[2]/h2[4]")
-    WebElement leadsDetailViewRelatedItemsHdr;
+    public WebElement leadsDetailViewRelatedItemsHdr;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']/descendant::*[text() = 'Activities']")
-    WebElement leadsDetailViewActivitiesLnk;
+    public WebElement leadsDetailViewActivitiesLnk;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']/descendant::*[text() = 'Notes/History']")
-    WebElement leadsDetailViewNotesHistoryLnk;
+    public WebElement leadsDetailViewNotesHistoryLnk;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_detail']/descendant::*[text() = 'Attachments']")
-    WebElement leadsDetailViewAttachmentsLnk;
+    public WebElement leadsDetailViewAttachmentsLnk;
     //Edit View elements
     //TODO: the Lead Edit fields need to be updated when needed
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_edit']")
-    WebElement leadsEditView;
+    public WebElement leadsEditView;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_edit']/div[2]/h2")
-    WebElement leadsEditViewDetailsHdr;
+    public WebElement leadsEditViewDetailsHdr;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/input")
-    WebElement leadsEditViewNameInputFld;
+    public WebElement leadsEditViewNameInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='LeadNameLastFirst']//button")
-    WebElement leadsEditViewNameFldBtn;
+    public WebElement leadsEditViewNameFldBtn;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Company']//input")
-    WebElement leadsEditViewCompanyInputFld;
+    public WebElement leadsEditViewCompanyInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='WebAddress']//input")
-    WebElement leadsEditViewWebInputFld;
+    public WebElement leadsEditViewWebInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='WorkPhone']//input")
-    WebElement leadsEditViewWorkPhoneInputFld;
+    public WebElement leadsEditViewWorkPhoneInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Mobile']//input")
-    WebElement leadsEditViewMobilePhoneInputFld;
+    public WebElement leadsEditViewMobilePhoneInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='TollFree']//input")
-    WebElement leadsEditViewTollFreeInputFld;
+    public WebElement leadsEditViewTollFreeInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Email']//input")
-    WebElement leadsEditViewEmailInputFld;
+    public WebElement leadsEditViewEmailInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Title']//input")
-    WebElement leadsEditViewTitleInputFld;
+    public WebElement leadsEditViewTitleInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Title']//button")
-    WebElement leadsEditViewTitleFldBtn;
+    public WebElement leadsEditViewTitleFldBtn;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Address']/div/div/label")
-    WebElement leadsEditViewAddressInputFld;
+    public WebElement leadsEditViewAddressInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Address']//button")
-    WebElement leadsEditViewAddressFldBtn;
+    public WebElement leadsEditViewAddressFldBtn;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='LeadSource']//input")
-    WebElement leadsEditViewLeadSourceInputFld;
+    public WebElement leadsEditViewLeadSourceInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='LeadSource']//button")
-    WebElement leadsEditViewLeadSourceFldBtn;
+    public WebElement leadsEditViewLeadSourceFldBtn;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Interests']//input")
-    WebElement leadsEditViewInterestsInputFld;
+    public WebElement leadsEditViewInterestsInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Industry']//input")
-    WebElement leadsEditViewIndustryInputFld;
+    public WebElement leadsEditViewIndustryInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Industry']//button")
-    WebElement leadsEditViewIndustryFldBtn;
+    public WebElement leadsEditViewIndustryFldBtn;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='SICCode']//input")
-    WebElement leadsEditViewSicCodeInputFld;
+    public WebElement leadsEditViewSicCodeInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='BusinessDescription']//textarea")
-    WebElement leadsEditViewBusDescInputFld;
+    public WebElement leadsEditViewBusDescInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Notes']//textarea")
-    WebElement leadsEditViewCommentsInputFld;
+    public WebElement leadsEditViewCommentsInputFld;
     @CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@data-field='Owner']//button")
-    WebElement leadsEditViewOwnerFldBtn;
+    public WebElement leadsEditViewOwnerFldBtn;
     @CacheLookup
     // this data-key is specific to user loup for 'All Leads' group
     @FindBy(xpath = "//*[@id='groups_configure']//li[@data-descriptor='All Leads']")
-    WebElement groupsConfigureAllLeads;
+    public WebElement groupsConfigureAllLeads;
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='All Leads']")
-    WebElement rmenu_groupAllLeads;
+    public WebElement rmenu_groupAllLeads;
     @CacheLookup
     @FindBy(xpath = "//*[@id='lead_list']//span[2][@data-propertyname='WorkPhone']")
-    WebElement leadGroupViewWorkPhoneFld;
+    public WebElement leadGroupViewWorkPhoneFld;
     @CacheLookup
     // Group View Email link for lead John Beck
     @FindBy(xpath = "//*[@id='lead_list']//span[@data-key='QDEMOA00013R']")
-    WebElement johnBeckGroupViewEmailLink;
+    public WebElement johnBeckGroupViewEmailLink;
     @CacheLookup
     // Group view card for lead John Beck ... press to open lead
     @FindBy(xpath = "//*[@id='lead_list']//div[@data-key='QDEMOA00013R']//div[@class='group-item']")
-    WebElement johnBeckGroupViewCard;
+    public WebElement johnBeckGroupViewCard;
     @CacheLookup
     // Group view button to open quick actions for lead John Beck
     @FindBy(xpath = "//*[@id='lead_list']//button[@data-key='QDEMOA00013R']")
-    WebElement johnBeckGroupViewQuickActionBtn;
+    public WebElement johnBeckGroupViewQuickActionBtn;
     @CacheLookup
     // Group view button to open email quick action
     @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='sendEmail']")
-    WebElement leadGroupViewQuickActionEmailBtn;
+    public WebElement leadGroupViewQuickActionEmailBtn;
     @CacheLookup
     // Group view button to open call work quick action
     @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='callWork']")
-    WebElement leadGroupViewQuickActionCallWorkBtn;
+    public WebElement leadGroupViewQuickActionCallWorkBtn;
     @CacheLookup
     // Group view button to open call mobile quick action
     @FindBy(xpath = "//*[@id='lead_list']//button[@aria-label='callMobile']")
-    WebElement leadGroupViewQuickActionCallMobileBtn;
+    public WebElement leadGroupViewQuickActionCallMobileBtn;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='lead_detail']//ul[@class='tab-list']/li[1]")
-    WebElement leadsDetailViewDetailsTab;
+    public WebElement leadsDetailViewDetailsTab;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='lead_detail']//ul[@class='tab-list']/li[2]")
-    WebElement leadsDetailViewMoreDetailsTab;
+    public WebElement leadsDetailViewMoreDetailsTab;
     @CacheLookup
     @FindBy(xpath = ".//*[@id='lead_detail']//ul[@class='tab-list']/li[3]")
-    WebElement leadsDetailViewRelatedItemsTab;
+    public WebElement leadsDetailViewRelatedItemsTab;
     private WebDriver driver;
     CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
@@ -391,10 +395,13 @@ public class LeadViewsElements extends BaseTest {
     //Methods
     //=======
 
+    public void clickGroupConfigureAllLeads() {
+        groupsConfigureAllLeads.click();
+    }
+
     /**
      * This method will return a String that represents the contents of the Leads list view.
      *
-     * @param N/A
      * @throws InterruptedException, Exception
      */
     public String getLeadsListViewTxt() {

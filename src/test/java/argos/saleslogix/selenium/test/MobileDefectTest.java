@@ -3,6 +3,7 @@ package argos.saleslogix.selenium.test;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
+import argos.saleslogix.selenium.pages.*;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
@@ -943,7 +944,7 @@ public class MobileDefectTest extends BaseTest {
             commNav.waitForPage("Contact Attachments");
 
             // Step: click the top Add buton...
-            headerbutton.addButton.click();
+            headerbutton.clickHeaderButton("add");
             commNav.waitForPage("Add Attachments");
 
             // VP: confirm the elements of the Add Attachments screen...
@@ -1049,7 +1050,7 @@ public class MobileDefectTest extends BaseTest {
 				leadDetailView.leadsDetailViewAttachmentsLnk.click();
 			    	
 			    // Step: click the top Add button...
-				headerButton.addButton.click();
+				headerButton.clickHeaderButton("add");
 			    commNav.waitForPage("Add Attachments");
 			    
 			    // Step: click the 'add a file' section of the screen...
@@ -1085,7 +1086,7 @@ public class MobileDefectTest extends BaseTest {
 			    // Step: click the top Add buton...
 			    headerButton = PageFactory.initElements(driver, HeaderButton.class);
 			    
-			    headerButton.addButton.click();
+			    headerButton.clickHeaderButton("add");
 			    commNav.waitForPage("Lead Attachments");
 			    
 			    // Step: click the 'add a file' section of the screen...
@@ -1126,7 +1127,7 @@ public class MobileDefectTest extends BaseTest {
 				leadDetailView.leadsDetailViewAttachmentsLnk.click();
 			    	
 			    // Step: click the top Add button...
-				headerButton.addButton.click();
+				headerButton.clickHeaderButton("add");
 			    commNav.waitForPage("Add Attachments");
 			    
 			    // Step: click the 'add a file' section of the screen...
@@ -1157,7 +1158,7 @@ public class MobileDefectTest extends BaseTest {
 			    
 			    // -- Start Section
 			    // Step: navigate back to My Activities view...
-			    headerButton.backButton.click();
+			    headerButton.clickHeaderButton("back");
                 commNav.highlightNClick(leadDetailView.leadsDetailViewRelatedItemsTab);
 			    leadDetailView.leadsDetailViewAttachmentsLnk.click();
 			}
@@ -2317,7 +2318,7 @@ public class MobileDefectTest extends BaseTest {
 		//VP: check that Right-Context menu is still open 	
 		String resultMsg = "VP: Right-Context menu is displayed while navigating back a page";
 		try {
-			AssertJUnit.assertTrue(commNav.rmenu_panel.isDisplayed());
+			AssertJUnit.assertTrue(commNav.isSettingsOpen());
 			System.out.println(resultMsg + " - PASSED");
 		}
 		catch (Error e) {

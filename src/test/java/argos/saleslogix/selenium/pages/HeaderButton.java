@@ -1,4 +1,4 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.AssertJUnit;
@@ -18,43 +17,43 @@ public class HeaderButton {
 
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='toggleLeftDrawer']")
-    WebElement globalMenuButton;
+    public WebElement globalMenuButton;
     //@CacheLookup
     @FindBy(xpath = "//div[@selected='selected']//div[@class='buttonset']/button[@data-action='openSettings']")
-    WebElement rightCntxtMnuButton; // TODO: This is no longer a header item, move it to common nav.
+    public WebElement rightCntxtMnuButton; // TODO: This is no longer a header item, move it to common nav.
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='new']")
-    WebElement addButton;
+    public WebElement addButton;
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='briefCase']")
-    WebElement briefcaseButton;
+    public WebElement briefcaseButton;
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='edit']")
-    WebElement editButton;
+    public WebElement editButton;
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='save']")
-    WebElement saveButton;
+    public WebElement saveButton;
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='refresh']")
-    WebElement refreshButton;
+    public WebElement refreshButton;
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='complete']")
-    WebElement checkButton;
+    public WebElement checkButton;
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='delete']")
-    WebElement deleteButton;
+    public WebElement deleteButton;
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='cancel']")
-    WebElement cancelButton;
+    public WebElement cancelButton;
     //@CacheLookup
     @FindBy(xpath = "//div[@class='buttonset']/button[@data-tool='back']")
-    WebElement backButton;
+    public WebElement backButton;
     @CacheLookup
     @FindBy(xpath = "//div[contains(@class, 'toolbar')]/div[@class='more']/button[@aria-controls='app-toolbar-more']")
-    WebElement moreButton;
+    public WebElement moreButton;
     @CacheLookup
     @FindBy(id = "app-toolbar-more")
-    WebElement moreMenu;
+    public WebElement moreMenu;
 
     private WebDriver driver;
 

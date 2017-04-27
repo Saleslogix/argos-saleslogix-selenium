@@ -3,12 +3,12 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.pages.HeaderButton;
+import argos.saleslogix.selenium.pages.MiscEntityItemViewsElements;
+import argos.saleslogix.selenium.pages.MyActivityViewsElements;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -85,7 +85,7 @@ public class MyActivityViewsTest extends BaseTest {
 		// SubStep: check the Page Title
 		if (commNav.isPageDisplayed(entityType)) {
 			
-			MyActivityViewsElements myActivitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);			
+			MyActivityViewsElements myActivitiesListView = PageFactory.initElements(driver, MyActivityViewsElements.class);
 			
 			//Step: check the My Activities List view, Card Layout
 			commNav.checkIfWebElementPresent("My Activites List View, Card Layout", myActivitiesListView.myActivitiesListView);

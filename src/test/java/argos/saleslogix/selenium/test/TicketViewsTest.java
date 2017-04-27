@@ -3,12 +3,13 @@ package argos.saleslogix.selenium.test;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.pages.CommonViewsElements;
+import argos.saleslogix.selenium.pages.HeaderButton;
+import argos.saleslogix.selenium.pages.TicketViewsElements;
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -47,7 +48,7 @@ public class TicketViewsTest extends BaseTest {
 		//Step: test Ticket, List View page elements
 		if (commNav.isPageDisplayed(entityType)) {
 			
-			TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);			
+			TicketViewsElements ticketsListView = PageFactory.initElements(driver, TicketViewsElements.class);
 			
 			//Step: check the Ticket list view format
 			commNav.checkIfWebElementPresent("Ticket List View", ticketsListView.ticketsListView);

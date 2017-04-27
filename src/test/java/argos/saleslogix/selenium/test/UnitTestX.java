@@ -1,26 +1,16 @@
 package argos.saleslogix.selenium.test;
 
 import static org.testng.AssertJUnit.assertEquals;
-import org.testng.annotations.AfterMethod;
+
+import argos.saleslogix.selenium.pages.HeaderButton;
+import argos.saleslogix.selenium.pages.SLXMobileLogin;
 import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
-import org.testng.Assert;
 import org.testng.AssertJUnit;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
-import argos.saleslogix.selenium.test.CommonNavigation;
-import argos.saleslogix.selenium.test.HeaderButton;
-import argos.saleslogix.selenium.test.SLXMobileLogin;
-import argos.saleslogix.selenium.test.BaseTest;
+import argos.saleslogix.selenium.pages.CommonNavigation;
 
 public class UnitTestX extends BaseTest {
 	
@@ -153,7 +143,7 @@ public class UnitTestX extends BaseTest {
 		//TODO: need to setup a method for Login() under CommonNavigation
 		String methodID = "test00_MobileClient_Login";
 		
-		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);	
+		SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);
 		
 		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 		

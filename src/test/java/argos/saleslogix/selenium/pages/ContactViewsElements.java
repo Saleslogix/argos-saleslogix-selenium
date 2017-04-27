@@ -1,6 +1,10 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium.pages;
 
 
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.pages.CommonViewsElements;
+import argos.saleslogix.selenium.pages.HeaderButton;
+import argos.saleslogix.selenium.test.BaseTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -26,465 +30,464 @@ public class ContactViewsElements extends BaseTest {
 	//==================
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
-	WebElement contactsSearchTxtBox;
+	public WebElement contactsSearchTxtBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
-	WebElement contactsSearchClearBtn;
+	public WebElement contactsSearchClearBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
-	WebElement contactsSearchLookupBtn;
+	public WebElement contactsSearchLookupBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@selected='true']//input[@name='query']")
-    WebElement relatedContactsSearchTxtBox;
+	public WebElement relatedContactsSearchTxtBox;
 
     @CacheLookup
     @FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
-    WebElement relatedContactsSearchClearBtn;
+	public WebElement relatedContactsSearchClearBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
-    WebElement relatedContactsSearchLookupBtn;
+	public WebElement relatedContactsSearchLookupBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_related']//ul")
-    WebElement relatedContactsListView;
+	public WebElement relatedContactsListView;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_related']//ul/li[1]")
-    WebElement relatedContactsListViewTopItem;
+	public WebElement relatedContactsListViewTopItem;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']")
-	WebElement contactsListViewPnl;
+	public WebElement contactsListViewPnl;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']")
-	WebElement contactsListViewNotesBox;
+	public WebElement contactsListViewNotesBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]")
-	WebElement contactsListViewNotesBox1stItem;
+	public WebElement contactsListViewNotesBox1stItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[1]/div")
-	WebElement contactsListViewNotesBox1stItemInitialsBox;
+	public WebElement contactsListViewNotesBox1stItemInitialsBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[1]/strong")
-	WebElement contactsListViewNotesBox1stItemRegarding;
+	public WebElement contactsListViewNotesBox1stItemRegarding;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[2]")
-	WebElement contactsListViewNotesBox1stItemLastActivity;
+	public WebElement contactsListViewNotesBox1stItemLastActivity;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[3]/div/h4")
-	WebElement contactsListViewNotesBox1stItemNotes;
+	public WebElement contactsListViewNotesBox1stItemNotes;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[2]/div[4]/div[2]")
-	WebElement contactsListViewNotesBoxSeeListLink;
+	public WebElement contactsListViewNotesBoxSeeListLink;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul")
-	WebElement contactsListViewHdr;
+	public WebElement contactsListViewHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Views_MetricWidget_1']/button")
-	WebElement contactsListViewMetricsBox1;
+	public WebElement contactsListViewMetricsBox1;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul")
-	WebElement contactsListView;
+	public WebElement contactsListView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[7]/div[2]/div/div/div/button")
-	WebElement contactsListView1stKPICard;
+	public WebElement contactsListView1stKPICard;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list_search-expression']/div")
-	WebElement contactsListView1stHashTagFilter;
-	
+	public WebElement contactsListView1stHashTagFilter;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]")
-	WebElement topContactsListItem;
+	public WebElement topContactsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/button")
-	WebElement topContactsListItemIcon;
+	public WebElement topContactsListItemIcon;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h3[1]")
-    WebElement topContactsListItemName;
+    public WebElement topContactsListItemName;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h4[1]")
-    WebElement topContactsListItemLine2;
+    public WebElement topContactsListItemLine2;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h4[3]")
-    WebElement topContactsListItemLine3;
+    public WebElement topContactsListItemLine3;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//span[@data-action='callWork']")
-    WebElement topContactsListItemWorkPhone;
+	public WebElement topContactsListItemWorkPhone;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h4[4]")
-    WebElement topContactsListItemLine4;
+    public WebElement topContactsListItemLine4;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h4[5]")
-    WebElement topContactsListItemLine5;
+    public WebElement topContactsListItemLine5;
 	
 	@CacheLookup
 	//@FindBy(css = "#contact_list > ul.list-content > li > #bottom_item_indicators > span > img")
     @FindBy(xpath = "//*[@id='bottom_item_indicators']/span")
-	WebElement topContactsListItemTouch;
+	public WebElement topContactsListItemTouch;
 	
 	@CacheLookup
 	//@FindBy(css = "#contact_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
     @FindBy(xpath = "//*[@id='list-item-footer']/div/button")
-	WebElement topContactsListItemQuickActionsBtn;
+	public WebElement topContactsListItemQuickActionsBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='addAttachment']")
-	WebElement topContactsListItemQuickActionsAddAttachmentBtn;
+	public WebElement topContactsListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='addActivity']")
-	WebElement topContactsListItemQuickActionsAddActivityBtn;
+	public WebElement topContactsListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='addNote']")
-	WebElement topContactsListItemQuickActionsAddNoteBtn;
+	public WebElement topContactsListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='sendEmail']")
-	WebElement topContactsListItemQuickActionsEmailBtn;
+	public WebElement topContactsListItemQuickActionsEmailBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='viewAccount']")
-	WebElement topContactsListItemQuickActionsAccountBtn;
+	public WebElement topContactsListItemQuickActionsAccountBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='callMobile']")
-	WebElement topContactsListItemQuickActionsCallMobileBtn;
+	public WebElement topContactsListItemQuickActionsCallMobileBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='callWork']")
-	WebElement topContactsListItemQuickActionsCallWorkBtn;
+	public WebElement topContactsListItemQuickActionsCallWorkBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li[2]//button[@aria-label='edit']")
-	WebElement topContactsListItemQuickActionsEditBtn;
+	public WebElement topContactsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul[2]/li[11]")
-	WebElement eleventhContactsListItem;
+	public WebElement eleventhContactsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul[2]/li[21]")
-	WebElement twentyfirstContactsListItem;
+	public WebElement twentyfirstContactsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul[2]/li[31]")
-	WebElement thirtyfirstContactsListItem;
+	public WebElement thirtyfirstContactsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']/div[2]/div/span")
-	WebElement recordsRemainingListItem;
+	public WebElement recordsRemainingListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_list']//ul/li/h3")
-	WebElement noRecordsListItem;
+	public WebElement noRecordsListItem;
 	
 	//Context Menu elements
 	//---------------------
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
-	WebElement contactsHashTagsHdr;
+	public WebElement contactsHashTagsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
-	WebElement contactsHashTagsPnl;
+	public WebElement contactsHashTagsPnl;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
-	WebElement contactsKPIHdr;
+	public WebElement contactsKPIHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
-	WebElement contactsKPIPnl;
+	public WebElement contactsKPIPnl;
 	
 	//Detail View elements
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']")
-	WebElement contactsDetailView;
+	public WebElement contactsDetailView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/h2[1]")
-	WebElement contactsDetailViewQuickActionsHdr;
+	public WebElement contactsDetailViewQuickActionsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Call work']")
-	WebElement contactsDetailViewCallMainNumberLnk;
+	public WebElement contactsDetailViewCallMainNumberLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Call mobile']")
-	WebElement contactsDetailViewCallMobileLnk;
+	public WebElement contactsDetailViewCallMobileLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Send email']")
-	WebElement contactsDetailViewSendEmailLnk;
+	public WebElement contactsDetailViewSendEmailLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Schedule activity']")
-	WebElement contactsDetailViewScheduleActivityLnk;
+	public WebElement contactsDetailViewScheduleActivityLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Add note']")
-	WebElement contactsDetailViewAddNoteLnk;
+	public WebElement contactsDetailViewAddNoteLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'View address']")
-	WebElement contactsDetailViewViewAddressLnk;
+	public WebElement contactsDetailViewViewAddressLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/h2[2]")
-	WebElement contactsDetailViewDetailsHdr;
+	public WebElement contactsDetailViewDetailsHdr;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[1]")
     @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='NameLF']/span")
-	WebElement contactsDetailViewContactFld;
+	public WebElement contactsDetailViewContactFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[2]")
     @FindBy(xpath = "//*[@id='contact_detail']/div[3]/div[4]/div[2]/span")
-	WebElement contactsDetailViewAccountFld;
+	public WebElement contactsDetailViewAccountFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[2]")
     @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='WebAddress']/span")
-	WebElement contactsDetailViewWebFld;
+	public WebElement contactsDetailViewWebFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[3]")
     @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='Title']/span")
-	WebElement contactsDetailViewTitleFld;
+	public WebElement contactsDetailViewTitleFld;
 		
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/h2[3]")
-	WebElement contactsDetailViewMoreDetailsHdr;
+	public WebElement contactsDetailViewMoreDetailsHdr;
 		
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]")
-	WebElement contactsDetailViewMoreDetailsFields;	
+	public WebElement contactsDetailViewMoreDetailsFields;
 	
 	@CacheLookup
     //@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[1]")
     @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='HomePhone']/span")
-    WebElement contactsDetailViewHomePhoneFld;
+    public WebElement contactsDetailViewHomePhoneFld;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='WorkPhone']/span")
-    WebElement contactsDetailViewWorkPhoneFld;
+    public WebElement contactsDetailViewWorkPhoneFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[4]")
     @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='Fax']/span")
-	WebElement contactsDetailViewFaxFld;
+	public WebElement contactsDetailViewFaxFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[1]/div[4]")
     @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='AccountManager.UserInfo']/span")
-	WebElement contactsDetailViewAcctMgrFld;
+	public WebElement contactsDetailViewAcctMgrFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[5]")
     @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='Owner.OwnerDescription']/span")
-	WebElement contactsDetailViewOwnerFld;
+	public WebElement contactsDetailViewOwnerFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='contact_detail']/div[2]/div[2]/div[6]/span")
     @FindBy(xpath = "//*[@id='contact_detail']//div[@data-property='CuisinePreference']/span")
-	WebElement contactsDetailViewCuisineFld;
+	public WebElement contactsDetailViewCuisineFld;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/div[2]/h2[4]")
-	WebElement contactsDetailViewRelatedItemsHdr;
+	public WebElement contactsDetailViewRelatedItemsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Activities']")
-	WebElement contactsDetailViewActivitiesLnk;
+	public WebElement contactsDetailViewActivitiesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Opportunities']")
-	WebElement contactsDetailViewOpportunitiesLnk;
+	public WebElement contactsDetailViewOpportunitiesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Tickets']")
-	WebElement contactsDetailViewTicketsLnk;
+	public WebElement contactsDetailViewTicketsLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Notes/History']")
-	WebElement contactsDetailViewNotesHistoryLnk;
+	public WebElement contactsDetailViewNotesHistoryLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Addresses']")
-	WebElement contactsDetailViewAddressesLnk;
+	public WebElement contactsDetailViewAddressesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_detail']/descendant::*[text() = 'Attachments']")
-	WebElement contactsDetailViewAttachmentsLnk;
+	public WebElement contactsDetailViewAttachmentsLnk;
 		
 	//Edit View elements
 	//------------------
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_edit']")
-	WebElement contactsEditView;
+	public WebElement contactsEditView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='contact_edit']/div[2]/h2")
-	WebElement contactsEditViewDetailsHdr;
+	public WebElement contactsEditViewDetailsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/input")
-	WebElement contactsEditViewNameInputFld;
+	public WebElement contactsEditViewNameInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_NameField_0']/button")
-	WebElement contactsEditViewNameInputFldBtn;
+	public WebElement contactsEditViewNameInputFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='argos_Fields_LookupField_0']/input")
-	WebElement contactsEditViewAccountInputFld;
+	public WebElement contactsEditViewAccountInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='argos_Fields_LookupField_0']/button")
-	WebElement contactsEditViewAccountInputFldBtn;
+	public WebElement contactsEditViewAccountInputFldBtn;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='WebAddress']")
-	WebElement contactsEditViewWebInputFld;
+	public WebElement contactsEditViewWebInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='WorkPhone']")
-	WebElement contactsEditViewPhoneInputFld;
+	public WebElement contactsEditViewPhoneInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='Email']")
-	WebElement contactsEditViewEmailInputFld;
+	public WebElement contactsEditViewEmailInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/input")
-	WebElement contactsEditViewTitleInputFld;
+	public WebElement contactsEditViewTitleInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/button")
-	WebElement contactsEditViewTitleInputFldBtn;
+	public WebElement contactsEditViewTitleInputFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='crm_Fields_AddressField_0']/div")
-	WebElement contactsEditViewAddressInputFld;
+	public WebElement contactsEditViewAddressInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='crm_Fields_AddressField_0']/button")
-	WebElement contactsEditViewAddressInputFldBtn;
+	public WebElement contactsEditViewAddressInputFldBtn;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='HomePhone']")
-	WebElement contactsEditViewHomePhoneInputFld;
+	public WebElement contactsEditViewHomePhoneInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='Mobile']")
-	WebElement contactsEditViewMobileInputFld;
+	public WebElement contactsEditViewMobileInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='Fax']")
-	WebElement contactsEditViewFaxInputFld;
+	public WebElement contactsEditViewFaxInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "#argos_Fields_LookupField_1 > input[type='text']")
-	WebElement contactsEditViewAcctMgrInputFld;
+	public WebElement contactsEditViewAcctMgrInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "#argos_Fields_LookupField_1 > button.button.simpleSubHeaderButton")
-	WebElement contactsEditViewAcctMgrInputFldBtn;
+	public WebElement contactsEditViewAcctMgrInputFldBtn;
 	
 	@CacheLookup
 	@FindBy(css = "#argos_Fields_LookupField_2 > input[type='text']")
-	WebElement contactsEditViewOwnerInputFld;
+	public WebElement contactsEditViewOwnerInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "#argos_Fields_LookupField_2 > button.button.simpleSubHeaderButton")
-	WebElement contactsEditViewOwnerInputFldBtn;
+	public WebElement contactsEditViewOwnerInputFldBtn;
 	
 	@CacheLookup
 	@FindBy(css= "#crm_Fields_PicklistField_1 > input[type='text']")
-	WebElement contactsEditViewCuisineInputFld;
+	public WebElement contactsEditViewCuisineInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "#crm_Fields_PicklistField_1 > button.button.simpleSubHeaderButton")
-	WebElement contactsEditViewCuisineInputFldBtn;
+	public WebElement contactsEditViewCuisineInputFldBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[1]//h3")
-    WebElement contactsEditViewTitleValue1;
+	public WebElement contactsEditViewTitleValue1;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[2]//h3")
-    WebElement contactsEditViewTitleValue2;
+	public WebElement contactsEditViewTitleValue2;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[3]//h3")
-    WebElement contactsEditViewTitleValue3;
+	public WebElement contactsEditViewTitleValue3;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[4]//h3")
-    WebElement contactsEditViewTitleValue4;
+	public WebElement contactsEditViewTitleValue4;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='pick_list_0']//ul/li[5]//h3")
-    WebElement contactsEditViewTitleValue5;
+	public WebElement contactsEditViewTitleValue5;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//li[1]/div[2]/div[1]/div/div[3]/h3[2]/span[2]")
-    WebElement authContactsGroupTopAuthValue;
+    public WebElement authContactsGroupTopAuthValue;
 
     @CacheLookup
     // this data-key is specific to user loup for 'Authorized Contacts'
     @FindBy(xpath = "//*[@id='groups_configure']//li[@data-key='p6UJ9A0005C7']")
-    WebElement groupsConfigureAuthContacts;
+    public WebElement groupsConfigureAuthContacts;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//li[@data-title='Authorized Contacts']")
-    WebElement rmenu_groupAuthContacts;
+    public WebElement rmenu_groupAuthContacts;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//span[2][@data-propertyname='WorkPhone']")
-    WebElement contactGroupViewWorkPhoneFld;
+    public WebElement contactGroupViewWorkPhoneFld;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//span[2][@data-propertyname='Mobile']")
-    WebElement contactGroupViewMobileFld;
+    public WebElement contactGroupViewMobileFld;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_detail']//ul[@class='tab-list']/li[1]")
-    WebElement contactDetailViewDetailsTab;
+    public WebElement contactDetailViewDetailsTab;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_detail']//ul[@class='tab-list']/li[2]")
-    WebElement contactDetailViewMoreDetailsTab;
+    public WebElement contactDetailViewMoreDetailsTab;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_detail']//ul[@class='tab-list']/li[3]")
-    WebElement contactDetailViewRelatedItemsTab;
+    public WebElement contactDetailViewRelatedItemsTab;
 
 	
 	//Methods
@@ -492,8 +495,7 @@ public class ContactViewsElements extends BaseTest {
 	/**
 	 * This method will return a String that represents the contents of the Contacts list view. 
 	 * list view.  
-	 * 
-	 * @param N/A
+	 *
 	 * @throws InterruptedException, Exception 
 	 */
 	public String getContactsListViewTxt() {

@@ -1,13 +1,10 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium.pages;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
-import java.io.IOException;
-
-import org.testng.annotations.Test;
-import org.testng.Assert;
-import org.testng.AssertJUnit;
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.test.BaseTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -27,608 +24,608 @@ public class TicketViewsElements extends BaseTest {
 	//List View elements
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
-	WebElement ticketsSearchTxtBox;
+	public WebElement ticketsSearchTxtBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
-	WebElement ticketsSearchClearBtn;
+	public WebElement ticketsSearchClearBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
-	WebElement ticketsSearchLookupBtn;
+	public WebElement ticketsSearchLookupBtn;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']")
-	WebElement ticketsListViewPnl;
+	public WebElement ticketsListViewPnl;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul")
-	WebElement ticketsListViewHdr;
+	public WebElement ticketsListViewHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul")
-	WebElement ticketsListView;
+	public WebElement ticketsListView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[4]/div[2]/div/div/div/button")
-	WebElement ticketsListView1stKPICard;
+	public WebElement ticketsListView1stKPICard;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list_search-expression']/div")
-	WebElement ticketsListView1stHashTagFilter;
+	public WebElement ticketsListView1stHashTagFilter;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']")
-	WebElement ticketsListViewNotesBox;
+	public WebElement ticketsListViewNotesBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]")
-	WebElement ticketsListViewNotesBox1stItem;
+	public WebElement ticketsListViewNotesBox1stItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[1]/div")
-	WebElement ticketsListViewNotesBox1stItemInitialsBox;
+	public WebElement ticketsListViewNotesBox1stItemInitialsBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[1]/strong")
-	WebElement ticketsListViewNotesBox1stItemRegarding;
+	public WebElement ticketsListViewNotesBox1stItemRegarding;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[2]")
-	WebElement ticketsListViewNotesBox1stItemLastActivity;
+	public WebElement ticketsListViewNotesBox1stItemLastActivity;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[3]/div/h4")
-	WebElement ticketsListViewNotesBox1stItemNotes;
+	public WebElement ticketsListViewNotesBox1stItemNotes;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[2]/div[4]/div[2]")
-	WebElement ticketsListViewNotesBoxSeeListLink;
+	public WebElement ticketsListViewNotesBoxSeeListLink;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]")
-	WebElement topTicketsListItem;
+	public WebElement topTicketsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[1]")
-	WebElement topTicketsListItemTab;
+	public WebElement topTicketsListItemTab;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/button")
-	WebElement topTicketsListItemIcon;
+	public WebElement topTicketsListItemIcon;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[2]/h3")
-    WebElement topTicketsListItemNumber;
+    public WebElement topTicketsListItemNumber;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[2]/h4[2]")
-    WebElement topTicketsListItemLine2;
+    public WebElement topTicketsListItemLine2;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[2]/h4[3]")
-    WebElement topTicketsListItemLine3;
+    public WebElement topTicketsListItemLine3;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[2]/h4[4]")
-    WebElement topTicketsListItemLine4;
+    public WebElement topTicketsListItemLine4;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_list']//ul/li[1]/div[2]/h4[5]")
-    WebElement topTicketsListItemLine5;
+    public WebElement topTicketsListItemLine5;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='bottom_item_indicators']/span/img")
-	WebElement topTicketsListItemBtmIndicator;
+	public WebElement topTicketsListItemBtmIndicator;
 	
 	@CacheLookup
 	//@FindBy(css = "#ticket_list > ul.list-content > li > #bottom_item_indicators > span > img")
     @FindBy(xpath = "//*[@id='bottom_item_indicators']/span")
-	WebElement topTicketsListItemTouch;
+	public WebElement topTicketsListItemTouch;
 	
 	@CacheLookup
 	//@FindBy(css = "#ticket_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
     @FindBy(xpath = "//*[@id='list-item-footer']/div/button")
-	WebElement topTicketsListItemQuickActionsBtn;
+	public WebElement topTicketsListItemQuickActionsBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//li[2]//button[@aria-label='addAttachment']")
-	WebElement topTicketsListItemQuickActionsAddAttachmentBtn;
+	public WebElement topTicketsListItemQuickActionsAddAttachmentBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]//button[@aria-label='addActivity']")
-	WebElement topTicketsListItemQuickActionsAddActivityBtn;
+	public WebElement topTicketsListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]//button[@aria-label='addNote']")
-	WebElement topTicketsListItemQuickActionsAddNoteBtn;
+	public WebElement topTicketsListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]//button[@aria-label='viewContact']")
-	WebElement topTicketsListItemQuickActionsContactBtn;
+	public WebElement topTicketsListItemQuickActionsContactBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]//button[@aria-label='viewAccount']")
-	WebElement topTicketsListItemQuickActionsAccountBtn;
+	public WebElement topTicketsListItemQuickActionsAccountBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul/li[2]//button[@aria-label='edit']")
-	WebElement topTicketsListItemQuickActionsEditBtn;
+	public WebElement topTicketsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul[2]/li[11]")
-	WebElement eleventhLeadsListItem;
+	public WebElement eleventhLeadsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul[2]/li[21]")
-	WebElement twentyfirstLeadsListItem;
+	public WebElement twentyfirstLeadsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul[2]/li[31]")
-	WebElement thirtyfirstLeadsListItem;
+	public WebElement thirtyfirstLeadsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']/div[2]/div/span")
-	WebElement recordsRemainingListItem;
+	public WebElement recordsRemainingListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_list']//ul[2]/li/h3")
-	WebElement noRecordsListItem;
+	public WebElement noRecordsListItem;
 	
 	//Context Menu elements
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
-	WebElement ticketsHashTagsHdr;
+	public WebElement ticketsHashTagsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
-	WebElement ticketsHashTagsPnl;
+	public WebElement ticketsHashTagsPnl;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
-	WebElement ticketsKPIHdr;
+	public WebElement ticketsKPIHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
-	WebElement ticketsKPIPnl;
+	public WebElement ticketsKPIPnl;
 	
 	//Detail View elements
 	//TODO: the Ticket Edit fields need to be updated when needed
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']")
-	WebElement ticketsDetailView;
+	public WebElement ticketsDetailView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/h2[1]")
-	WebElement ticketsDetailViewQuickActionsHdr;
+	public WebElement ticketsDetailViewQuickActionsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/ul[1]/li[1]/a")
-	WebElement ticketsDetailViewCallMainNumberLnk;
+	public WebElement ticketsDetailViewCallMainNumberLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/ul[1]/li/a")
-	WebElement ticketsDetailViewScheduleActivityLnk;
+	public WebElement ticketsDetailViewScheduleActivityLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/ul[1]/li[3]/a")
-	WebElement ticketsDetailViewAddNoteLnk;
+	public WebElement ticketsDetailViewAddNoteLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/ul[1]/li[4]/a")
-	WebElement ticketsDetailViewViewAddressLnk;
+	public WebElement ticketsDetailViewViewAddressLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/h2[2]")
-	WebElement ticketsDetailViewDetailsHdr;
+	public WebElement ticketsDetailViewDetailsHdr;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[2]")
     @FindBy(xpath = "//*[@id='ticket_detail']/div[3]/div[4]/div[2]/span")
-	WebElement ticketsDetailViewContactFld;
+	public WebElement ticketsDetailViewContactFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[1]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='Area']/span")
-	WebElement ticketsDetailViewAreaFld;
+	public WebElement ticketsDetailViewAreaFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[2]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='Category']/span")
-	WebElement ticketsDetailViewCategoryFld;
+	public WebElement ticketsDetailViewCategoryFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[3]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='Issue']/span")
-	WebElement ticketsDetailViewIssueFld;
+	public WebElement ticketsDetailViewIssueFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[4]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='Subject']/span")
-	WebElement ticketsDetailViewSubjectFld;
+	public WebElement ticketsDetailViewSubjectFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[5]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='TicketProblem.Notes']/span")
-	WebElement ticketsDetailViewDescriptionFld;
+	public WebElement ticketsDetailViewDescriptionFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[2]")
-	WebElement ticketsDetailViewWebFld;
+	public WebElement ticketsDetailViewWebFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[3]")
-	WebElement ticketsDetailViewFaxFld;
+	public WebElement ticketsDetailViewFaxFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[4]")
-	WebElement ticketsDetailViewTypeFld;
+	public WebElement ticketsDetailViewTypeFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[5]")
-	WebElement ticketsDetailViewSubTypeFld;
+	public WebElement ticketsDetailViewSubTypeFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[6]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='StatusCode']/span")
-	WebElement ticketsDetailViewStatusFld;
+	public WebElement ticketsDetailViewStatusFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[4]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='Urgency.Description']/span")
-	WebElement ticketsDetailViewUrgencyFld;
+	public WebElement ticketsDetailViewUrgencyFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[5]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='NeededByDate']/span")
-	WebElement ticketsDetailViewNeededDateFld;
+	public WebElement ticketsDetailViewNeededDateFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[3]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='AssignedTo.OwnerDescription']/span")
-	WebElement ticketsDetailViewAssignedToFld;
+	public WebElement ticketsDetailViewAssignedToFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[7]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='CompletedBy.OwnerDescription']/span")
-	WebElement ticketsDetailViewCompletedByFld;
+	public WebElement ticketsDetailViewCompletedByFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[8]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='Contract.ReferenceNumber']/span")
-	WebElement ticketsDetailViewContractFld;
+	public WebElement ticketsDetailViewContractFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[9]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='ViaCode']/span")
-	WebElement ticketsDetailViewSourceFld;
+	public WebElement ticketsDetailViewSourceFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[10]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='AssignedDate']/span")
-	WebElement ticketsDetailViewAssignedDateFld;
+	public WebElement ticketsDetailViewAssignedDateFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[11]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='TicketSolution.Notes']/span")
-	WebElement ticketsDetailViewResolutionFld;
+	public WebElement ticketsDetailViewResolutionFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[12]")
     @FindBy(xpath = "//*[@id='ticket_detail']//div[@data-property='Notes']/span")
-	WebElement ticketsDetailViewCommentsFld;
+	public WebElement ticketsDetailViewCommentsFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/h2[3]")
-	WebElement ticketsDetailViewMoreDetailsHdr;
+	public WebElement ticketsDetailViewMoreDetailsHdr;
 		
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]")
-	WebElement ticketsDetailViewMoreDetailsFields;	
+	public WebElement ticketsDetailViewMoreDetailsFields;	
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[1]")
-	WebElement ticketsDetailViewIndustryFld;
+	public WebElement ticketsDetailViewIndustryFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[2]")
-	WebElement ticketsDetailViewBusDescFld;
+	public WebElement ticketsDetailViewBusDescFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[1]/div[1]")
     @FindBy(xpath = "//*[@id='ticket_detail']/div[3]/div[4]/div[1]/span")
-	WebElement ticketsDetailViewAccountFld;
+	public WebElement ticketsDetailViewAccountFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[3]")
-	WebElement ticketsDetailViewAcctMgrFld;
+	public WebElement ticketsDetailViewAcctMgrFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[4]")
-	WebElement ticketsDetailViewOwnerFld;
+	public WebElement ticketsDetailViewOwnerFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/div[2]/div[5]")
-	WebElement ticketsDetailViewLeadSourceFld;
+	public WebElement ticketsDetailViewLeadSourceFld;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/div[2]/h2[4]")
-	WebElement ticketsDetailViewRelatedItemsHdr;
+	public WebElement ticketsDetailViewRelatedItemsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/descendant::*[text() = 'Activities']")
-	WebElement ticketsDetailViewActivitiesLnk;
+	public WebElement ticketsDetailViewActivitiesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/descendant::*[text() = 'Ticket Activities']")
-	WebElement ticketsDetailViewTicketsActivitiesLnk;
+	public WebElement ticketsDetailViewTicketsActivitiesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/descendant::*[text() = 'Contacts']")
-	WebElement ticketsDetailViewContactsLnk;
+	public WebElement ticketsDetailViewContactsLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/descendant::*[text() = 'Opportunities']")
-	WebElement ticketsDetailViewOpportunitiesLnk;
+	public WebElement ticketsDetailViewOpportunitiesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/descendant::*[text() = 'Tickets']")
-	WebElement ticketsDetailViewTicketsLnk;
+	public WebElement ticketsDetailViewTicketsLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/descendant::*[text() = 'Notes/History']")
-	WebElement ticketsDetailViewNotesHistoryLnk;
+	public WebElement ticketsDetailViewNotesHistoryLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/descendant::*[text() = 'Addresses']")
-	WebElement ticketsDetailViewAddressesLnk;
+	public WebElement ticketsDetailViewAddressesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_detail']/descendant::*[text() = 'Attachments']")
-	WebElement ticketsDetailViewAttachmentsLnk;
+	public WebElement ticketsDetailViewAttachmentsLnk;
 		
 	//Edit View elements
 	//TODO: the Lead Edit fields need to be updated when needed
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_edit']")
-	WebElement ticketsEditView;
+	public WebElement ticketsEditView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='ticket_edit']/div[2]/h2")
-	WebElement ticketsEditViewDetailsHdr;
+	public WebElement ticketsEditViewDetailsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
-	WebElement ticketsEditViewAccountFld;
+	public WebElement ticketsEditViewAccountFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/button")
-	WebElement ticketsEditViewAccountFldBtn;
+	public WebElement ticketsEditViewAccountFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
-	WebElement ticketsEditViewContactFld;
+	public WebElement ticketsEditViewContactFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/button")
-	WebElement ticketsEditViewContactFldBtn;
+	public WebElement ticketsEditViewContactFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/input")
-	WebElement ticketsEditViewContractFld;
+	public WebElement ticketsEditViewContractFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/button")
-	WebElement ticketsEditViewContractFldBtn;
+	public WebElement ticketsEditViewContractFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_3']/input")
-	WebElement ticketsEditViewAreaFld;
+	public WebElement ticketsEditViewAreaFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_3']/button")
-	WebElement ticketsEditViewAreaFldBtn;
+	public WebElement ticketsEditViewAreaFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_4']/input")
-	WebElement ticketsEditViewCategoryFld;
+	public WebElement ticketsEditViewCategoryFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_4']/button")
-	WebElement ticketsEditViewCategoryFldBtn;
+	public WebElement ticketsEditViewCategoryFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_5']/input")
-	WebElement ticketsEditViewIssueFld;
+	public WebElement ticketsEditViewIssueFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_5']/button")
-	WebElement ticketsEditViewIssueFldBtn;
+	public WebElement ticketsEditViewIssueFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/input")
-	WebElement ticketsEditViewSourceFld;
+	public WebElement ticketsEditViewSourceFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_0']/button")
-	WebElement ticketsEditViewSourceFldBtn;
+	public WebElement ticketsEditViewSourceFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_6']/input")
-	WebElement ticketsEditViewUrgencyFld;
+	public WebElement ticketsEditViewUrgencyFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_6']/button")
-	WebElement ticketsEditViewUrgencyFldBtn;
+	public WebElement ticketsEditViewUrgencyFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@data-field='NeededByDate']//input")
-	WebElement ticketsEditViewNeededDateFld;
+	public WebElement ticketsEditViewNeededDateFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@data-field='NeededByDate']//button")
-	WebElement ticketsEditViewNeededDateFldBtn;
+	public WebElement ticketsEditViewNeededDateFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@data-field='AssignedDate']//input")
-	WebElement ticketsEditViewAssignedDateFld;
+	public WebElement ticketsEditViewAssignedDateFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@data-field='AssignedDate']//button")
-	WebElement ticketsEditViewAssignedDateFldBtn;
+	public WebElement ticketsEditViewAssignedDateFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_7']/input")
-	WebElement ticketsEditViewAssignedToFld;
+	public WebElement ticketsEditViewAssignedToFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_7']/button")
-	WebElement ticketsEditViewAssignedToFldBtn;
+	public WebElement ticketsEditViewAssignedToFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_TextField_2']/input")
-	WebElement ticketsEditViewSubjectInputFld;
+	public WebElement ticketsEditViewSubjectInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_NoteField_0']/textarea")
-	WebElement ticketsEditViewDescInputFld;
+	public WebElement ticketsEditViewDescInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_NoteField_1']/textarea")
-	WebElement ticketsEditViewResolutionInputFld;
+	public WebElement ticketsEditViewResolutionInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_NoteField_2']/textarea")
-	WebElement ticketsEditViewCommentsInputFld;
+	public WebElement ticketsEditViewCommentsInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_TextField_15']/input")
-	WebElement ticketsEditViewWebInputFld;
+	public WebElement ticketsEditViewWebInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_5']/input")
-	WebElement ticketsEditViewPhoneInputFld;
+	public WebElement ticketsEditViewPhoneInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_2']/div")
-	WebElement ticketsEditViewAddressFld;
+	public WebElement ticketsEditViewAddressFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_2']/button")
-	WebElement ticketsEditViewAddressFldBtn;
+	public WebElement ticketsEditViewAddressFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_PhoneField_6']/input")
-	WebElement ticketsEditViewFaxInputFld;
+	public WebElement ticketsEditViewFaxInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_11']/input")
-	WebElement ticketsEditViewTypeFld;
+	public WebElement ticketsEditViewTypeFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_11']/button")
-	WebElement ticketsEditViewTypeFldBtn;
+	public WebElement ticketsEditViewTypeFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_12']/input")
-	WebElement ticketsEditViewSubTypeFld;
+	public WebElement ticketsEditViewSubTypeFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_12']/button")
-	WebElement ticketsEditViewSubTypeFldBtn;
+	public WebElement ticketsEditViewSubTypeFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/input")
-	WebElement ticketsEditViewStatusFld;
+	public WebElement ticketsEditViewStatusFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_1']/button")
-	WebElement ticketsEditViewStatusFldBtn;
+	public WebElement ticketsEditViewStatusFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_14']/input")
-	WebElement ticketsEditViewIndustryFld;
+	public WebElement ticketsEditViewIndustryFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_PicklistField_14']/button")
-	WebElement ticketsEditViewIndustryFldBtn;
+	public WebElement ticketsEditViewIndustryFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_NoteField_0']/div")
-	WebElement ticketsEditViewBusDescFld;
+	public WebElement ticketsEditViewBusDescFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_NoteField_0']/button")
-	WebElement ticketsEditViewBusDescFldBtn;
+	public WebElement ticketsEditViewBusDescFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/input")
-	WebElement ticketsEditViewAcctMgrFld;
+	public WebElement ticketsEditViewAcctMgrFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_0']/button")
-	WebElement ticketsEditViewAcctMgrFldBtn;
+	public WebElement ticketsEditViewAcctMgrFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
-	WebElement ticketsEditViewOwnerFld;
+	public WebElement ticketsEditViewOwnerFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/button")
-	WebElement ticketsEditViewOwnerFldBtn;
+	public WebElement ticketsEditViewOwnerFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/input")
-	WebElement ticketsEditViewLeadSourceFld;
+	public WebElement ticketsEditViewLeadSourceFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='argos_Fields_LookupField_2']/button")
-	WebElement ticketsEditViewLeadSourceFldBtn;
+	public WebElement ticketsEditViewLeadSourceFldBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticketactivity_edit']//div[@data-field='AssignedDate']//button")
-    WebElement ticketActivityStartDateBtn;
+    public WebElement ticketActivityStartDateBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticketactivity_edit']//div[@data-field='CompletedDate']//button")
-    WebElement ticketActivityEndDateBtn;
+    public WebElement ticketActivityEndDateBtn;
 
     @CacheLookup
     // this data-key is specific to user loup for 'Follow-Up' group
     @FindBy(xpath = "//*[@id='groups_configure']//li[@data-key='p6UJ9A0004QM']")
-    WebElement groupsConfigureFollowUp;
+    public WebElement groupsConfigureFollowUp;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//a[@data-title='Follow-Up']")
-    WebElement rmenu_groupFollowUp;
+    public WebElement rmenu_groupFollowUp;
 
     @FindBy(xpath = "//div[@id='ticket_list']/div/div/div[1]/div/div[2]/div[2]/div[1]/div[last()]/div/span[2]")
-    WebElement followUpTicketsGroupTopComplDate;
+    public WebElement followUpTicketsGroupTopComplDate;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_list']//span[2][@data-name='callPhone']")
-    WebElement ticketGroupViewWorkPhoneFld;
+    public WebElement ticketGroupViewWorkPhoneFld;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='urgency_list']//li[1]//h3")
-    WebElement ticketUrgency1stItem;
+    public WebElement ticketUrgency1stItem;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='urgency_list']//li[2]//h3")
-    WebElement ticketUrgency2ndItem;
+    public WebElement ticketUrgency2ndItem;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_detail']//ul[@class='tab-list']/li[1]")
-    WebElement ticketDetailViewDetailsTab;
+    public WebElement ticketDetailViewDetailsTab;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_detail']//ul[@class='tab-list']/li[2]")
-    WebElement ticketDetailViewMoreDetailsTab;
+    public WebElement ticketDetailViewMoreDetailsTab;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='ticket_detail']//ul[@class='tab-list']/li[3]")
-    WebElement ticketDetailViewRelatedItemsTab;
+    public WebElement ticketDetailViewRelatedItemsTab;
 
 	
 	//Methods

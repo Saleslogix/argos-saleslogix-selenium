@@ -1,6 +1,8 @@
-package argos.saleslogix.selenium.test;
+package argos.saleslogix.selenium.pages;
 
 import java.io.IOException;
+
+import argos.saleslogix.selenium.test.BaseTest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -27,476 +29,476 @@ public class AccountViewsElements extends BaseTest {
 	//==================
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
-	WebElement accountsSearchTxtBox;
+	public WebElement accountsSearchTxtBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
-	WebElement accountsSearchClearBtn;
+	public WebElement accountsSearchClearBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
-	WebElement accountsSearchLookupBtn;
+	public WebElement accountsSearchLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//input[@name='query']")
-	WebElement relatedAccountsSearchTxtBox;
+	public WebElement relatedAccountsSearchTxtBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='clear-button']")
-	WebElement relatedAccountsSearchClearBtn;
+	public WebElement relatedAccountsSearchClearBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@selected='true']//button[@class='subHeaderButton searchButton']")
-	WebElement relatedAccountsSearchLookupBtn;
+	public WebElement relatedAccountsSearchLookupBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']/div/ul")
-	WebElement accountsListView;
+	public WebElement accountsListView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_related']//ul")
-	WebElement relatedAccountsListView;
+	public WebElement relatedAccountsListView;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_related']//ul/li[1]")
-    WebElement relatedAccountsListViewTopItem;
+	public WebElement relatedAccountsListViewTopItem;
 
 	@CacheLookup
 	@FindBy(xpath = "//div[8]/div[2]/div/div/div/button")
-	WebElement accountsListView1stKPICard;
+	public WebElement accountsListView1stKPICard;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[9]/div[2]/div/button")
-	WebElement accountsListView2ndKPICard;
+	public WebElement accountsListView2ndKPICard;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[10]/div[2]/div/button")
-	WebElement accountsListView3rdKPICard;
+	public WebElement accountsListView3rdKPICard;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list_search-expression']/div")
-	WebElement accountsListView1stHashTagFilter;
+	public WebElement accountsListView1stHashTagFilter;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Views_MetricWidget_1']/button")
-	WebElement accountsListViewKPIBox1;
+	public WebElement accountsListViewKPIBox1;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Views_MetricWidget_2']/button")
-	WebElement accountsListViewKPIBox2;
+	public WebElement accountsListViewKPIBox2;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Views_MetricWidget_3']/button")
-	WebElement accountsListViewKPIBox3;
+	public WebElement accountsListViewKPIBox3;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']")
-	WebElement accountsListViewNotesBox;
+	public WebElement accountsListViewNotesBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]")
-	WebElement accountsListViewNotesBox1stItem;
+	public WebElement accountsListViewNotesBox1stItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[1]/div")
-	WebElement accountsListViewNotesBox1stItemInitialsBox;
+	public WebElement accountsListViewNotesBox1stItemInitialsBox;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[1]/strong")
-	WebElement accountsListViewNotesBox1stItemRegarding;
+	public WebElement accountsListViewNotesBox1stItemRegarding;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[2]/h4[2]")
-	WebElement accountsListViewNotesBox1stItemLastActivity;
+	public WebElement accountsListViewNotesBox1stItemLastActivity;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='itemsNode']/div[2]/div/div[3]/div/h4")
-	WebElement accountsListViewNotesBox1stItemNotes;
+	public WebElement accountsListViewNotesBox1stItemNotes;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[2]/div[4]/div[2]")
-	WebElement accountsListViewNotesBoxSeeListLink;
+	public WebElement accountsListViewNotesBoxSeeListLink;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]")
-	WebElement topAccountsListItem;
+	public WebElement topAccountsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[1]/button")
-	WebElement topAccountsListItemIcon;
+	public WebElement topAccountsListItemIcon;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h3[1]")
-    WebElement topAccountsListItemName;
+	public WebElement topAccountsListItemName;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[1]")
-    WebElement topAccountsListItemLine2;
+	public WebElement topAccountsListItemLine2;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[2]")
-    WebElement topAccountsListItemLine3;
+	public WebElement topAccountsListItemLine3;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[3]")
-    WebElement topAccountsListItemLine4;
+	public WebElement topAccountsListItemLine4;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[4]")
-    WebElement topAccountsListItemLine5;
+	public WebElement topAccountsListItemLine5;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[5]")
-    WebElement topAccountsListItemLine6;
+	public WebElement topAccountsListItemLine6;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_list']//ul/li[1]/div/h4[6]")
-    WebElement topAccountsListItemLine7;
+	public WebElement topAccountsListItemLine7;
 	
 	@CacheLookup
 	//@FindBy(css = "#account_list > ul.list-content > li > #bottom_item_indicators > span > img")
     @FindBy(xpath = "//*[@id='bottom_item_indicators']/span")
-    WebElement topAccountsListItemTouch;
+	public WebElement topAccountsListItemTouch;
 	
 	@CacheLookup
 	//@FindBy(css = "#account_list > ul.list-content > li > #list-item-footer > div > button.footer-item-selector.button")
     @FindBy(xpath = "//*[@id='list-item-footer']/div/button")
-	WebElement topAccountsListItemQuickActionsBtn;
+	public WebElement topAccountsListItemQuickActionsBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='__editPrefs__']")
-	WebElement topAccountsListItemQuickActionsConfiguretBtn;
+	public WebElement topAccountsListItemQuickActionsConfiguretBtn;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='addAttachment']")
-    WebElement topAccountsListItemQuickActionsAddAttachmentBtn;
+	public WebElement topAccountsListItemQuickActionsAddAttachmentBtn;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='addActivity']")
-	WebElement topAccountsListItemQuickActionsAddActivityBtn;
+	public WebElement topAccountsListItemQuickActionsAddActivityBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='addNote']")
-	WebElement topAccountsListItemQuickActionsAddNoteBtn;
+	public WebElement topAccountsListItemQuickActionsAddNoteBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='viewContacts']")
-	WebElement topAccountsListItemQuickActionsContactsBtn;
+	public WebElement topAccountsListItemQuickActionsContactsBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='callMain']")
-	WebElement topAccountsListItemQuickActionsCallMainBtn;
+	public WebElement topAccountsListItemQuickActionsCallMainBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[2]//button[@aria-label='edit']")
-	WebElement topAccountsListItemQuickActionsEditBtn;
+	public WebElement topAccountsListItemQuickActionsEditBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[11]")
-	WebElement eleventhAccountsListItem;
+	public WebElement eleventhAccountsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[21]")
-	WebElement twentyfirstAccountsListItem;
+	public WebElement twentyfirstAccountsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li[31]")
-	WebElement thirtyfirstAccountsListItem;
+	public WebElement thirtyfirstAccountsListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']/div[2]")
-	WebElement recordsRemainingListItem;
+	public WebElement recordsRemainingListItem;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_list']//ul/li/h3")
-	WebElement noRecordsListItem;
+	public WebElement noRecordsListItem;
 	
 	//Context Menu elements
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']/div[3]/h2[2]")
-	WebElement accountHashTagsHdr;
+	public WebElement accountHashTagsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='view']")
-	WebElement accountHashTagsPnl;
+	public WebElement accountHashTagsPnl;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@id='right_drawer']//h2[contains(., 'KPI')]")
-	WebElement accountKPIHdr;
+	public WebElement accountKPIHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='right_drawer']//ul[@data-group='kpi']")
-	WebElement accountKPIPnl;
+	public WebElement accountKPIPnl;
 	
 	//Detail View elements
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']")
-	WebElement accountDetailView;
+	public WebElement accountDetailView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[1]")
-	WebElement accountDetailViewQuickActionsHdr;
+	public WebElement accountDetailViewQuickActionsHdr;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[2]/span/a")
     @FindBy(xpath = "//*[@id='account_detail']//a[@data-action='callMainPhone']")
-	WebElement accountDetailViewCallMainNumberLnk;
+	public WebElement accountDetailViewCallMainNumberLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/div[2]/ul[1]/li[1]/a")
-	WebElement accountDetailViewScheduleActivityLnk;
+	public WebElement accountDetailViewScheduleActivityLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/div[2]/ul[1]/li[2]/a")
-	WebElement accountDetailViewAddNoteLnk;
+	public WebElement accountDetailViewAddNoteLnk;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[2]/span/a")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='Address']/span")
-	WebElement accountDetailViewViewAddressLnk;
+	public WebElement accountDetailViewViewAddressLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[2]")
-	WebElement accountDetailViewDetailsHdr;
+	public WebElement accountDetailViewDetailsHdr;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[1]/div[1]/span")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='AccountName']/span")
-	WebElement accountDetailViewAccountFld;
+	public WebElement accountDetailViewAccountFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[1]/span")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='WebAddress']/span")
-	WebElement accountDetailViewWebFld;
+	public WebElement accountDetailViewWebFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[3]/span/a")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='Fax']/span")
-	WebElement accountDetailViewFaxFld;
+	public WebElement accountDetailViewFaxFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[4]/span")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='Type']/span")
-	WebElement accountDetailViewTypeFld;
+	public WebElement accountDetailViewTypeFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[5]/span")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='SubType']/span")
-	WebElement accountDetailViewSubTypeFld;
+	public WebElement accountDetailViewSubTypeFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[3]/span")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='Status']/span")
-	WebElement accountDetailViewStatusFld;
+	public WebElement accountDetailViewStatusFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[3]")
-	WebElement accountDetailViewMoreDetailsHdr;
+	public WebElement accountDetailViewMoreDetailsHdr;
 		
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]")
-	WebElement accountDetailViewMoreDetailsFields;	
+	public WebElement accountDetailViewMoreDetailsFields;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[6]/span")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='Industry']/span")
-	WebElement accountDetailViewIndustryFld;
+	public WebElement accountDetailViewIndustryFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[7]/span")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='BusinessDescription']/span")
-	WebElement accountDetailViewBusDescFld;
+	public WebElement accountDetailViewBusDescFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div/div[4]/span")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='AccountManager.UserInfo']/span")
-	WebElement accountDetailViewAcctMgrFld;
+	public WebElement accountDetailViewAcctMgrFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[9]/span")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='Owner.OwnerDescription']/span")
-	WebElement accountDetailViewOwnerFld;
+	public WebElement accountDetailViewOwnerFld;
 	
 	@CacheLookup
 	//@FindBy(xpath = "//*[@id='account_detail']/div[2]/div[2]/div[8]/span")
     @FindBy(xpath = "//*[@id='account_detail']//div[@data-property='LeadSource.Description']/span")
-	WebElement accountDetailViewLeadSourceFld;
+	public WebElement accountDetailViewLeadSourceFld;
 
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/div[2]/h2[4]")
-	WebElement accountDetailViewRelatedItemsHdr;
+	public WebElement accountDetailViewRelatedItemsHdr;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/descendant::*[text() = 'Activities']")
-	WebElement accountDetailViewActivitiesLnk;
+	public WebElement accountDetailViewActivitiesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/descendant::*[text() = 'Contacts']")
-	WebElement accountDetailViewContactsLnk;
+	public WebElement accountDetailViewContactsLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/descendant::*[text() = 'Opportunities']")
-	WebElement accountDetailViewOpportunitiesLnk;
+	public WebElement accountDetailViewOpportunitiesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/descendant::*[text() = 'Tickets']")
-	WebElement accountDetailViewTicketsLnk;
+	public WebElement accountDetailViewTicketsLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/descendant::*[text() = 'Notes/History']")
-	WebElement accountDetailViewNotesHistoryLnk;
+	public WebElement accountDetailViewNotesHistoryLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/descendant::*[text() = 'Addresses']")
-	WebElement accountDetailViewAddressesLnk;
+	public WebElement accountDetailViewAddressesLnk;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_detail']/descendant::*[text() = 'Attachments']")
-	WebElement accountDetailViewAttachmentsLnk;
+	public WebElement accountDetailViewAttachmentsLnk;
 		
 	//Edit View elements
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_edit']")
-	WebElement accountEditView;
+	public WebElement accountEditView;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='account_edit']/div[3]/h2")
-	WebElement accountEditViewDetailsHdr;
+	public WebElement accountEditViewDetailsHdr;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='AccountName']")
-	WebElement accountEditViewAccountInputFld;
+	public WebElement accountEditViewAccountInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='WebAddress']")
-	WebElement accountEditViewWebInputFld;
+	public WebElement accountEditViewWebInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='MainPhone']")
-	WebElement accountEditViewPhoneInputFld;
+	public WebElement accountEditViewPhoneInputFld;
 	
 	@CacheLookup
 	@FindBy(css = "//*[@id='crm_Fields_AddressField_0']/div")
-	WebElement accountEditViewAddressFld;
+	public WebElement accountEditViewAddressFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//*[@id='crm_Fields_AddressField_0']//button")
-	WebElement accountEditViewAddressFldBtn;
+	public WebElement accountEditViewAddressFldBtn;
 	
 	@CacheLookup
 	@FindBy(css = "input[name='Fax']")
-	WebElement accountEditViewFaxInputFld;
+	public WebElement accountEditViewFaxInputFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Type']//input")
-	WebElement accountEditViewTypeFld;
+	public WebElement accountEditViewTypeFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Type']//button")
-	WebElement accountEditViewTypeFldBtn;
+	public WebElement accountEditViewTypeFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='SubType']//input")
-	WebElement accountEditViewSubTypeFld;
+	public WebElement accountEditViewSubTypeFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='SubType']//button")
-	WebElement accountEditViewSubTypeFldBtn;
+	public WebElement accountEditViewSubTypeFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Status']//input")
-	WebElement accountEditViewStatusFld;
+	public WebElement accountEditViewStatusFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Status']//button")
-	WebElement accountEditViewStatusFldBtn;
+	public WebElement accountEditViewStatusFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Industry']//input")
-	WebElement accountEditViewIndustryFld;
+	public WebElement accountEditViewIndustryFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Industry']//button")
-	WebElement accountEditViewIndustryFldBtn;
+	public WebElement accountEditViewIndustryFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@data-field='BusinessDescription']/div/textarea")
-	WebElement accountEditViewBusDescFld;
+	public WebElement accountEditViewBusDescFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='AccountManager']//input")
-	WebElement accountEditViewAcctMgrFld;
+	public WebElement accountEditViewAcctMgrFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='AccountManager']//button")
-	WebElement accountEditViewAcctMgrFldBtn;
+	public WebElement accountEditViewAcctMgrFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='Owner']//input")
-	WebElement accountEditViewOwnerFld;
+	public WebElement accountEditViewOwnerFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "///div[@selected='selected']//div[@data-field='Owner']//button")
-	WebElement accountEditViewOwnerFldBtn;
+	public WebElement accountEditViewOwnerFldBtn;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='LeadSource']//input")
-	WebElement accountEditViewLeadSourceFld;
+	public WebElement accountEditViewLeadSourceFld;
 	
 	@CacheLookup
 	@FindBy(xpath = "//div[@selected='selected']//div[@data-field='LeadSource']//button")
-	WebElement accountEditViewLeadSourceFldBtn;
+	public WebElement accountEditViewLeadSourceFldBtn;
 
     // the data-key given here is for user loup 'My Accounts' group
     @CacheLookup
     @FindBy(xpath = "//*[@id='groups_configure']//li[@data-key='p6UJ9A00028V']")
-    WebElement groupsConfigureMyAccounts;
+	public WebElement groupsConfigureMyAccounts;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//a[@data-title='My Accounts']")
-    WebElement rmenu_groupMyAccounts;
+    public WebElement rmenu_groupMyAccounts;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//a[@data-title='All Accounts']")
-    WebElement rmenu_groupAllAccounts;
+    public WebElement rmenu_groupAllAccounts;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='right_drawer']//a[@data-title='Customers']")
-    WebElement rmenu_groupCustomers;
+	public WebElement rmenu_groupCustomers;
 
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_list']//span[2][@data-propertyname='MainPhone']")
-    WebElement accountGroupViewMainPhoneFld;
+    public WebElement accountGroupViewMainPhoneFld;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='configure_quickactions']//li[@data-key='callMain']")
-    WebElement accountConfigureQACallMain;
+	public WebElement accountConfigureQACallMain;
 
     @CacheLookup
     @FindBy(xpath = "//li[@data-descriptor='Add Attachment']/div/h3/span[2]")
-    WebElement accountConfigureQAAddAttach;
+	public WebElement accountConfigureQAAddAttach;
 
     @CacheLookup
     @FindBy(xpath = "//li[5]//span[2]")
-    WebElement accountConfigureQAPosition5;
+	public WebElement accountConfigureQAPosition5;
 
     @CacheLookup
     @FindBy(xpath = "//li[6]//span[2]")
-    WebElement accountConfigureQAPosition6;
+	public WebElement accountConfigureQAPosition6;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_detail']//ul[@class='tab-list']/li[1]")
-    WebElement accountDetailViewDetailsTab;
+	public WebElement accountDetailViewDetailsTab;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_detail']//ul[@class='tab-list']/li[2]")
-    WebElement accountDetailViewMoreDetailsTab;
+	public WebElement accountDetailViewMoreDetailsTab;
 
     @CacheLookup
     @FindBy(xpath = "//*[@id='account_detail']//ul[@class='tab-list']/li[3]")
-    WebElement accountDetailViewRelatedItemsTab;
+	public WebElement accountDetailViewRelatedItemsTab;
 
 
 
@@ -703,8 +705,7 @@ public class AccountViewsElements extends BaseTest {
 	
 	/**
 	 * This method captures the contents of the Accounts List view and return the same contents in a string. 
-	 * 
-	 * @param N/A
+	 *
 	 * @return String Accounts list view info
 	 */	
 	public String getAccountsListViewTxt() {
@@ -725,8 +726,7 @@ public class AccountViewsElements extends BaseTest {
 	/**
 	 * This method returns a boolean value to determine if the 'no record' result is displayed on the Accounts
 	 * List view. 
-	 * 
-	 * @param strAcctName		name of a target Account record to find and open
+	 *
 	 * @return boolean		whether or not the 'no record' result it displayed in the Accounts list view
 	 * @throws InterruptedException 
 	 */	
@@ -757,15 +757,14 @@ public class AccountViewsElements extends BaseTest {
 	/**
 	 * This method will perform a "filter-less" search (no hash-tag & no search string) on the Accounts 
 	 * List view.  The resulting Activities search is displayed in the List view.
-	 * 
-	 * @param N/A
+	 *
 	 * @throws InterruptedException
 	 */
 	public void performNoFilterSearch() throws InterruptedException {
 		String methodID = "performNoFilterSearch";
 		
 		AccountViewsElements accountsListView = PageFactory.initElements(driver, AccountViewsElements.class);
-		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class); 
+		HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
 				
 		//Step: execute a filter-free search
 		try {
