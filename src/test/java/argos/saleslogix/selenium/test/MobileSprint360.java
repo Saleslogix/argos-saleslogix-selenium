@@ -376,17 +376,26 @@ public class MobileSprint360 extends BaseTest {
         //Step: wait for page Meeting to open
         commNav.waitForPage("Meeting");
 
-        //Step: check if 'for lead' toggle is on, and if so, then switch it off
+        //Step: Lead defaults to off, toggle it on and back off
         activityEditView.activityEditViewForLeadTgl.click();
         commNav.waitForAnimation();
-        activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        activityEditView.activityEditViewForLeadTgl.click();
+        commNav.waitForAnimation();
 
-        //Step: verify that fields lead and company do not display where 'for lead' is off
-        if (activityEditView.activityEditViewLeadFld.isDisplayed() || activityEditView.activityEditViewCompanyFld.isDisplayed()) {
+        //Step: verify that field lead do not display where 'for lead' is off
+        if (activityEditView.activityEditViewLeadFld.isDisplayed()) {
             System.out.println("VP: on the edit activity screen, should not see lead and company fields when 'for lead' is off - FAILED");
             AssertJUnit.fail("test failed");
         } else {
-            System.out.println("VP: on the edit activity screen, should not see lead and company fields when 'for lead' is off - PASSED");
+            System.out.println("VP: on the edit activity screen, should not see lead field when 'for lead' is off - PASSED");
+        }
+
+        //Step: verify that field company do not display where 'for lead' is off
+        if (activityEditView.activityEditViewCompanyFld.isDisplayed()) {
+            System.out.println("VP: on the edit activity screen, should not see company fields when 'for lead' is off - FAILED");
+            AssertJUnit.fail("test failed");
+        } else {
+            System.out.println("VP: on the edit activity screen, should not see lead and company field when 'for lead' is off - PASSED");
         }
 
         System.out.println(ENDLINE);
