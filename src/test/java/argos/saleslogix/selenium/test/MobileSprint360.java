@@ -29,19 +29,18 @@ public class MobileSprint360 extends BaseTest {
     // INFORCRM-10474 ... Calendar modal control ... allow 24-hour clock option
     public void test01_INFORCRM10474() throws Exception {
         String methodID = "test01_INFORCRM10474";
-
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
-        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
         String viewName = "Modal Calendar";
 
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: logout & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+
 
         //Step: go to settings, then choose to switch to a 24-hour clock
         commNav.clickGlobalMenuItem("Settings");
@@ -61,6 +60,7 @@ public class MobileSprint360 extends BaseTest {
             System.out.println("VP: 24-hour clock is already in effect ");
         }
 
+        LogOutThenLogBackIn(userName, userPwd);
 
         //Step: go to Calendar view ... wait for page Calendar
         commNav.clickGlobalMenuItem("Calendar");
@@ -81,7 +81,7 @@ public class MobileSprint360 extends BaseTest {
 
         //Step: Open Start Time calendar, and wait for modal calendar control to open
         activityEditView.activityEditViewStartTimeFldBtn.click();
-        Thread.sleep(1000);
+        commNav.waitForAnimation();
         driver.switchTo().activeElement();
 
         //Press Advanced button to open Calendar view
@@ -123,7 +123,7 @@ public class MobileSprint360 extends BaseTest {
 
         //Step : extract the time portion of the date/time ... characters following the space after the date
         calendarView.calendarModalConfirm.click();
-        Thread.sleep(1000);
+        commNav.waitForAnimation();
         driver.switchTo().activeElement();
         commNav.waitForPage("Meeting");
         String editedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -136,22 +136,25 @@ public class MobileSprint360 extends BaseTest {
 
         //Step: Re-open Start Time calendar, and wait for modal calendar control to open
         activityEditView.activityEditViewStartTimeFldBtn.click();
-        Thread.sleep(1000);
+        commNav.waitForAnimation();
         driver.switchTo().activeElement();
 
         //Step: Press Advanced button to open Calendar view
         calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
         calendarView.calendarModalAdvanced.click();
+        commNav.waitForAnimation();
 
         //Step: choose a time of 14:00 in the afternoon
         calendarView.calendarHourField.click();
+        commNav.waitForAnimation();
         calendarView.calendarHourFifteen.click();
         calendarView.calendarMinuteField.click();
+        commNav.waitForAnimation();
         calendarView.calendarMinute00.click();
 
         //Step : extract the time portion of the date/time ... characters following the space after the date
         calendarView.calendarModalConfirm.click();
-        Thread.sleep(1000);
+        commNav.waitForAnimation();
         driver.switchTo().activeElement();
         commNav.waitForPage("Meeting");
         editedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -177,6 +180,8 @@ public class MobileSprint360 extends BaseTest {
         System.out.println("VP: message on changing from 24 hour clock to 12 hour clock of : '" + alert.getText() + "' - PASSED");
         alert.accept();
 
+        LogOutThenLogBackIn(userName, userPwd);
+
         //Step: client should refresh after changing the clock ... as 'remember me' is set for automation, will not see login screen, it auto refreshes
         //Step: go to Settings and ensure that 12-hour clock is in effect again
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
@@ -197,18 +202,15 @@ public class MobileSprint360 extends BaseTest {
     // INFORCRM-13623 ... one may now clear My Briefcase and Recently Viewed separately
     public void test02_INFORCRM13623() throws Exception {
         String methodID = "test02_INFORCRM13623";
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
+        //Step: logout & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
         CommonViewsElements commView = PageFactory.initElements(driver, CommonViewsElements.class);
         MyBriefcaseViewsElements briefcaseListView = PageFactory.initElements(driver, MyBriefcaseViewsElements.class);
         RecentlyViewedViewsElements recentlyViewedListView = PageFactory.initElements(driver, RecentlyViewedViewsElements.class);
-
-
-        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-
-        //Step: logout & log back in (to clear cookies)
-        LogOutThenLogBackIn(userName, userPwd);
 
         //Step: go to settings, then Offline Options ... ready to clear all offline data
         commNav.clickGlobalMenuItem("Settings");

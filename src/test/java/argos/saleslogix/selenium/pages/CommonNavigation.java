@@ -125,13 +125,11 @@ public class CommonNavigation {
     // Accordion Headers
     @FindBy(css = ".toolbar > .title > .application-menu-trigger")
     WebElement navTrigger;
-    @CacheLookup
-    @FindBy(xpath = "//nav//div[contains(@class, 'accordion-header')][1]")
+    @FindBy(xpath = "//div[@id='left_drawer']/div[@data-dojo-attach-point='contentNode']/div[contains(@class, 'accordion-header')][1]")
     WebElement quickActionsHeader;
-    @FindBy(xpath = "//nav//div[contains(@class, 'accordion-header')][2]")
+    @FindBy(xpath = "//div[@id='left_drawer']/div[@data-dojo-attach-point='contentNode']/div[contains(@class, 'accordion-header')][2]")
     WebElement gotoHeader;
-    @CacheLookup
-    @FindBy(xpath = "//nav//div[contains(@class, 'accordion-header')][3]")
+    @FindBy(xpath = "//div[@id='left_drawer']/div[@data-dojo-attach-point='contentNode']/div[contains(@class, 'accordion-header')][3]")
     WebElement otherHeader;
     private WebDriver driver;
 
