@@ -821,7 +821,6 @@ public class MobileSprint304Test extends BaseTest {
         String actyTypeLinkXPath = ".//*[@id='activity_types_list']/descendant::*[text() = '" + actyType + "']";
         driver.findElement(By.xpath(actyTypeLinkXPath)).click();
         commNav.waitForPage(actyType);
-        Thread.sleep(1000);
 
         String actyEditViewPhoneFldCSS = "input[name='PhoneNumber']";
         String actyEditViewPhoneFldVal = driver.findElement(By.cssSelector(actyEditViewPhoneFldCSS)).getAttribute("value");
@@ -864,7 +863,6 @@ public class MobileSprint304Test extends BaseTest {
         actyTypeLinkXPath = ".//*[@id='activity_types_list']/descendant::*[text() = '" + actyType + "']";
         driver.findElement(By.xpath(actyTypeLinkXPath)).click();
         commNav.waitForPage(actyType);
-        Thread.sleep(1000);
 
         actyEditViewPhoneFldCSS = "input[name='PhoneNumber']";
         actyEditViewPhoneFldVal = driver.findElement(By.cssSelector(actyEditViewPhoneFldCSS)).getAttribute("value");

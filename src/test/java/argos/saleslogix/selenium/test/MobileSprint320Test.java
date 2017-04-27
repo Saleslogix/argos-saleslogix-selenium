@@ -98,7 +98,6 @@ public class MobileSprint320Test extends BaseTest {
 
         //Step: wait for page Meeting to open
         commNav.waitForPage("Meeting");
-        Thread.sleep(1000);
 
 
         //Step: add an Activity record with a random value for 'regarding'
@@ -112,7 +111,6 @@ public class MobileSprint320Test extends BaseTest {
         commNav.waitForPage("Recurring");
         activityEditView.activityRecurringDailyFld.click();
         commNav.waitForPage("Meeting");
-        Thread.sleep(1000);
 
 
         activityEditView.activityEditViewRecurringFldBtn.click();
@@ -193,7 +191,6 @@ public class MobileSprint320Test extends BaseTest {
         commNav.waitForPage("Schedule...");
         activityEditView.activityScheduleMeetingBtn.click();
         commNav.waitForPage("Meeting");
-        Thread.sleep(1000);
 
         //Step: add an Activity record with a random value for 'regarding'
         String newActivityRegarding = "SeAutoTestActivity-1-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -214,10 +211,8 @@ public class MobileSprint320Test extends BaseTest {
         activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
         activityEditView.topRelatedActivitiesListItem.click();
         commNav.waitForPage("Activity");
-        Thread.sleep(1000);
         activityEditView.activityDetailViewCompleteActivityLnk.click();
         commNav.waitForPage("Complete Activity");
-        Thread.sleep(1000);
 
         //Step: on Complete Activity, choose to 'follow-up' with a phone call activity after completion   ++
         activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -226,13 +221,11 @@ public class MobileSprint320Test extends BaseTest {
         commNav.waitForPage("Follow-up type");
         activityEditView.activityFollowUpSchedulePhoneCallBtn.click();
         commNav.waitForPage("Complete Activity");
-        Thread.sleep(1000);
         headerButton.clickHeaderButton("save");
 
         //Step: after saving the completed activity, should pop-up the follow-up activity for a phone call
         activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
         commNav.waitForPage("Phone Call");
-        Thread.sleep(3000);
 
         //Step: checking whether or not 'loading...' is constantly displaying on the 'Phone Call' screen : it should not
         String loadingMessage = activityEditView.activityEditViewLoadingMessage.getText();

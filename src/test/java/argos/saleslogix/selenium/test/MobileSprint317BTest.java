@@ -113,7 +113,6 @@ public class MobileSprint317BTest extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: verify that the 'repeats' field defaults to 'Never'
             String repeatsFieldValue = activityEditView.activityEditViewRepeatsFld.getAttribute("value");
@@ -426,7 +425,6 @@ public class MobileSprint317BTest extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -439,7 +437,6 @@ public class MobileSprint317BTest extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             String recurringValue = activityEditView.activityEditViewRecurringFld.getText();
@@ -457,11 +454,10 @@ public class MobileSprint317BTest extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
-            Thread.sleep(1000);
 
 
             //Step: open the activity created in edit mode ... close alert, should default to 'OK' being chosen
-            headerButton.clickHeaderButton("Edit");
+            headerButton.clickHeaderButton("edit");
             Thread.sleep(2000);
             closeAlert();
             Thread.sleep(1000);
@@ -469,14 +465,12 @@ public class MobileSprint317BTest extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: change 'repeats' to 'Never', then check value of recurring ... should be blank
             activityEditView.activityEditViewRepeatsFldBtn.click();
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringNeverFld.click();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             recurringValue = activityEditView.activityEditViewRecurringFld.getText();
             AssertJUnit.assertEquals("VP: after setting 'repeats' to Never, 'recurring' field on activity edit view is not blank - FAILED", "", recurringValue);
             System.out.println("VP: after setting 'repeats' to Never, 'recurring' field on activity edit view is now blank - PASSED");
@@ -485,10 +479,8 @@ public class MobileSprint317BTest extends BaseTest {
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             headerButton.clickHeaderButton("Save");
             commNav.waitForNotPage("Meeting");
-            Thread.sleep(1000);
             headerButton.clickHeaderButton("Edit");
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             recurringValue = activityEditView.activityEditViewRecurringFld.getText();
             AssertJUnit.assertEquals("VP: after setting 'repeats' to Never, and re-opening in edit mode, 'recurring' field on activity edit view is not blank - FAILED", "", recurringValue);
             System.out.println("VP: after setting 'repeats' to Never, and re-opening in edit mode, 'recurring' field on activity edit view is still blank - PASSED");

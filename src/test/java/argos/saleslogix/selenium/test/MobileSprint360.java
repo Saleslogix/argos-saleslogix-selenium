@@ -92,7 +92,6 @@ public class MobileSprint360 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: Open Start Time calendar, and wait for modal calendar control to open
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -141,7 +140,6 @@ public class MobileSprint360 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String editedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: start time has been set to a morning time of ... " + editedStartTime);
             String activityTime = editedStartTime.substring(editedStartTime.indexOf(' ') + 1);
@@ -170,7 +168,6 @@ public class MobileSprint360 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             editedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: start time has been set to an afternoon time of ... " + editedStartTime);
             activityTime = editedStartTime.substring(editedStartTime.indexOf(' ') + 1);
@@ -409,7 +406,6 @@ public class MobileSprint360 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: check if 'for lead' toggle is on, and if so, then switch it off
             List forLeadToggle = driver.findElements(By.xpath("//div[@data-field='IsLead'][contains(@class,'toggleStateOn')]"));

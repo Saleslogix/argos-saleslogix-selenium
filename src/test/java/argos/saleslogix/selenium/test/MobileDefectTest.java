@@ -1452,7 +1452,6 @@ public class MobileDefectTest extends BaseTest {
                     //TODO: re-factor the following to use ActivityViewsElements def.
                     driver.findElement(By.xpath("//*[@id='activity_types_list']/descendant::*[text() = 'To-Do']")).click();
                     AssertJUnit.assertTrue(commNav.waitForPage("To-Do"));
-                    Thread.sleep(1000);
 
                     // setup the Regarding field value
                     //TODO: re-factor the following to use ActivityViewsElements def.
@@ -1854,14 +1853,12 @@ public class MobileDefectTest extends BaseTest {
             //set Start Date (use default)
             driver.findElement(By.xpath("//*[@id='argos_Fields_DateField_6']/button")).click();
             commNav.waitForPage("Calendar");
-            Thread.sleep(1000);
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Edit Ticket Activity");
 
             //set End Date (use default)
             driver.findElement(By.xpath("//*[@id='argos_Fields_DateField_7']/button")).click();
             commNav.waitForPage("Calendar");
-            Thread.sleep(1000);
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Edit Ticket Activity");
 
@@ -1952,14 +1949,12 @@ public class MobileDefectTest extends BaseTest {
             //set Start Date (use default)
             driver.findElement(By.xpath("//*[@id='argos_Fields_DateField_6']/button")).click();
             commNav.waitForPage("Calendar");
-            Thread.sleep(1000);
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Edit Ticket Activity");
 
             //set End Date (use default)
             driver.findElement(By.xpath("//*[@id='argos_Fields_DateField_7']/button")).click();
             commNav.waitForPage("Calendar");
-            Thread.sleep(1000);
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Edit Ticket Activity");
 

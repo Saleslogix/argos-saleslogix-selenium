@@ -123,7 +123,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -158,7 +157,6 @@ public class MobileSprint308Test extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
-            Thread.sleep(1000);
 
 
             //Step: open the activity created in edit mode
@@ -166,7 +164,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Activity");
-            Thread.sleep(1000);
 
             //Step: Open Start Time calendar, and wait for page Calendar
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -360,8 +357,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
-
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -391,7 +386,6 @@ public class MobileSprint308Test extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
-            Thread.sleep(1000);
 
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             activityEditView.activityDetailViewMoreDetailsTab.click();
@@ -459,7 +453,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -499,7 +492,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -515,8 +507,6 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
-
 
             activityEditView.activityEditViewRecurringFldBtn.click();
             commNav.waitForPage("Recurrence");
@@ -524,8 +514,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("3");
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
-
 
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -555,7 +543,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Phone Call to open
             commNav.waitForPage("Phone Call");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -598,7 +585,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page To-Do to open
             commNav.waitForPage("To-Do");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -638,7 +624,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -678,7 +663,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -718,7 +702,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Phone Call to open
             commNav.waitForPage("Phone Call");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -737,7 +720,6 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("Phone Call");
-            Thread.sleep(1000);
 
 
             activityEditView.activityEditViewRecurringFldBtn.click();
@@ -746,7 +728,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("3");
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Phone Call");
-            Thread.sleep(1000);
 
 
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -777,7 +758,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -817,7 +797,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page To-Do to open
             commNav.waitForPage("To-Do");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -833,7 +812,6 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("To-Do");
-            Thread.sleep(1000);
 
 
             activityEditView.activityEditViewRecurringFldBtn.click();
@@ -842,7 +820,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("3");
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("To-Do");
-            Thread.sleep(1000);
 
 
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -873,7 +850,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -913,7 +889,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -932,7 +907,6 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             activityEditView.activityEditViewRecurringFldBtn.click();
@@ -941,7 +915,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("5");
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -972,7 +945,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -1012,8 +984,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
-
 
             //Step: add an Activity record with a random value for 'regarding'
             newActivityRegarding = "SeAutoTestActivity-13-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -1055,8 +1025,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
-
 
             //Step: add an Activity record with a random value for 'regarding'
             newActivityRegarding = "SeAutoTestActivity-14-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -1071,7 +1039,6 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             activityEditView.activityEditViewRecurringFldBtn.click();
@@ -1080,7 +1047,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("5");
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -1111,7 +1077,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Phone Call to open
             commNav.waitForPage("Phone Call");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -1127,7 +1092,6 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("Phone Call");
-            Thread.sleep(1000);
 
 
             activityEditView.activityEditViewRecurringFldBtn.click();
@@ -1136,7 +1100,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("4");
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Phone Call");
-            Thread.sleep(1000);
 
 
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -1167,7 +1130,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Phone Call to open
             commNav.waitForPage("Phone Call");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -1207,7 +1169,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -1247,7 +1208,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -1263,8 +1223,6 @@ public class MobileSprint308Test extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringWeeklyFld.click();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
-
 
             activityEditView.activityEditViewRecurringFldBtn.click();
             commNav.waitForPage("Recurrence");
@@ -1272,7 +1230,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityRecurrenceOccurencesFld.sendKeys("2");
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -1300,11 +1257,8 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             activityEditView.activityScheduleMeetingBtn.click();
 
-
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
-
 
             //Step: add an Activity record with a random value for 'regarding'
             newActivityRegarding = "SeAutoTestActivity-19-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -1343,8 +1297,6 @@ public class MobileSprint308Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
-
 
             //Step: add an Activity record with a random value for 'regarding'
             newActivityRegarding = "SeAutoTestActivity-20-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());

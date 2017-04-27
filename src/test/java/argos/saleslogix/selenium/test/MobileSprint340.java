@@ -59,7 +59,6 @@ public class MobileSprint340 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: press the Contact lookup to ensure that this may be opened correctly without first selecting an account
             activityEditView.activityEditViewContactBtn.click();
@@ -117,7 +116,6 @@ public class MobileSprint340 extends BaseTest {
 
             //Step: wait for page Meeting to open, and store default value of 'start time'
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String defaultStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
 
             //Step: Open Start Time calendar, and wait for modal calendar control to open
@@ -153,7 +151,6 @@ public class MobileSprint340 extends BaseTest {
                 Thread.sleep(1000);
                 driver.switchTo().activeElement();
                 commNav.waitForPage("Meeting");
-                Thread.sleep(1000);
                 String thisEveningStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
                 System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'This Evening' is ... " + thisEveningStartTime);
             }
@@ -169,7 +166,6 @@ public class MobileSprint340 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String tomorrowMorningStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'Tomorrow Morning' is ... " + tomorrowMorningStartTime);
 
@@ -183,7 +179,6 @@ public class MobileSprint340 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String tomorrowEveningStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'Tomorrow Evening' is ... " + tomorrowEveningStartTime);
 
@@ -197,7 +192,6 @@ public class MobileSprint340 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String nextWeekStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'Next Week' is ... " + nextWeekStartTime);
 
@@ -211,7 +205,6 @@ public class MobileSprint340 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String nextMonthStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'Next Month' is ... " + nextMonthStartTime);
 
@@ -265,7 +258,6 @@ public class MobileSprint340 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: Open Start Time calendar, and wait for modal calendar control to open
             activityEditView.activityEditViewStartTimeFldBtn.click();

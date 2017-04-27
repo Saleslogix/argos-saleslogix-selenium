@@ -248,7 +248,6 @@ public class MobileSprint317Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -269,7 +268,6 @@ public class MobileSprint317Test extends BaseTest {
             accountsListView.relatedAccountsListViewTopItem.click();
             System.out.println("Initial account chosen was : " + TEST_ACCOUNT1_RECORD);
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: set the initial Contact for the activity
             activityEditView.activityEditViewContactBtn.click();
@@ -288,7 +286,6 @@ public class MobileSprint317Test extends BaseTest {
             contactsListView.relatedContactsListViewTopItem.click();
             System.out.println("Initial contact chosen was : " + TEST_CONTACT1_RECORD);
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: save activity
             headerButton.clickHeaderButton("Save");
@@ -301,7 +298,6 @@ public class MobileSprint317Test extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
-            Thread.sleep(1000);
 
 
             //Step: open the activity created in edit mode
@@ -309,7 +305,6 @@ public class MobileSprint317Test extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Activity");
-            Thread.sleep(1000);
 
             //Step: print values for account and contact in 'edit' mode, and verify that both still have the expected values
             System.out.println("*** START OF SCENARIO 1 ... CHANGING ACTIVITY ACCOUNT WITHIN SAME LOGIN SESSION AS CREATED ***");
@@ -339,7 +334,6 @@ public class MobileSprint317Test extends BaseTest {
             accountsListView.relatedAccountsListViewTopItem.click();
             System.out.println("WITHIN SAME LOGIN SESSION ... Second account chosen was : " + TEST_ACCOUNT2_RECORD);
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: print new (second) values for account and contact in 'edit' mode, and verify that both values are as expected ... Contact field should be cleared
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -372,7 +366,6 @@ public class MobileSprint317Test extends BaseTest {
             contactsListView.relatedContactsListViewTopItem.click();
             System.out.println("Second contact chosen was : " + TEST_CONTACT2_RECORD);
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: save activity
             headerButton.clickHeaderButton("Save");
@@ -392,7 +385,6 @@ public class MobileSprint317Test extends BaseTest {
             activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
-            Thread.sleep(1000);
 
 
             //Step: open the activity created in edit mode
@@ -400,7 +392,6 @@ public class MobileSprint317Test extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Activity");
-            Thread.sleep(1000);
 
             //Step: print values for account and contact in 'edit' mode, and verify that both still have the expected values
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -430,7 +421,6 @@ public class MobileSprint317Test extends BaseTest {
             accountsListView.relatedAccountsListViewTopItem.click();
             System.out.println("WITHIN DIFFERENT LOGIN SESSION ... Third account chosen was : " + TEST_ACCOUNT3_RECORD);
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: print new (third) values for account and contact in 'edit' mode, and verify that both values are as expected ... Contact field should be cleared
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -489,13 +479,11 @@ public class MobileSprint317Test extends BaseTest {
                 //click the Edit Quick Action item
                 accountListView.topAccountsListItemQuickActionsEditBtn.click();
                 commNav.waitForPage("Account");
-                Thread.sleep(1000);
                 AccountViewsElements accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
 
                 //click the edit address button to open the Address screen
                 accountEditView.accountEditViewAddressFldBtn.click();
                 commNav.waitForPage("Address");
-                Thread.sleep(1000);
 
                 String addressLine1Data = commView.addressLine1.getAttribute("value");
                 System.out.println("address Line1 is ... " + addressLine1Data);
@@ -649,7 +637,6 @@ public class MobileSprint317Test extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: open the Leader lookup, and check that the correct users are displaying for loup
             activityEditView.activityEditViewLeaderFldBtn.click();

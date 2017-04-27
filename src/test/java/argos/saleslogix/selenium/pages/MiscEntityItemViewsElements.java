@@ -26,83 +26,83 @@ public class MiscEntityItemViewsElements extends BaseTest {
     //Address Edit view elements
     @CacheLookup
     @FindBy(xpath = "//*[@id='address_edit']")
-    WebElement addressEditView;
+    public WebElement addressEditView;
     @CacheLookup
     @FindBy(xpath = "//*[@id='address_edit']/div[2]/h2")
-    WebElement addressEditHdr;
+    public WebElement addressEditHdr;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_7']/input")
-    WebElement addressEditDescriptionInputFld;
+    public WebElement addressEditDescriptionInputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_7']/button")
-    WebElement addressEditDescriptionInputBtn;
+    public WebElement addressEditDescriptionInputBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_BooleanField_1']/div/span[1]")
-    WebElement addressEditPrimaryTglBtn;
+    public WebElement addressEditPrimaryTglBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_BooleanField_2']/div/span[1]")
-    WebElement addressEditShippingTglBtn;
+    public WebElement addressEditShippingTglBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_TextField_69']/input")
-    WebElement addressEditAddress1InputFld;
+    public WebElement addressEditAddress1InputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_TextField_70']/input")
-    WebElement addressEditAddress2InputFld;
+    public WebElement addressEditAddress2InputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_TextField_71']/input")
-    WebElement addressEditAddress3InputFld;
+    public WebElement addressEditAddress3InputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_8']/input")
-    WebElement addressEditCityInputFld;
+    public WebElement addressEditCityInputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_8']/button")
-    WebElement addressEditCityInputBtn;
+    public WebElement addressEditCityInputBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_9']/input")
-    WebElement addressEditStateInputFld;
+    public WebElement addressEditStateInputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_9']/button")
-    WebElement addressEditStateInputBtn;
+    public WebElement addressEditStateInputBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_TextField_72']/input")
-    WebElement addressEditPostalInputFld;
+    public WebElement addressEditPostalInputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_10']/input")
-    WebElement addressEditCountryInputFld;
+    public WebElement addressEditCountryInputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_10']/button")
-    WebElement addressEditCountryInputBtn;
+    public WebElement addressEditCountryInputBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_TextField_73']/input")
-    WebElement addressEditAttentionInputFld;
+    public WebElement addressEditAttentionInputFld;
     //Name Edit view elements
     @CacheLookup
     @FindBy(xpath = "//*[@id='name_edit']")
-    WebElement nameEditView;
+    public WebElement nameEditView;
     @CacheLookup
     @FindBy(xpath = "//*[@id='name_edit']/div[2]/h2")
-    WebElement nameEditHdr;
+    public WebElement nameEditHdr;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_5']/input")
-    WebElement nameEditPrefixInputFld;
+    public WebElement nameEditPrefixInputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_5']/button")
-    WebElement nameEditPrefixInputBtn;
+    public WebElement nameEditPrefixInputBtn;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_TextField_66']/input")
-    WebElement nameEditFirstInputFld;
+    public WebElement nameEditFirstInputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_TextField_67']/input")
-    WebElement nameEditMiddleInputFld;
+    public WebElement nameEditMiddleInputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_TextField_68']/input")
-    WebElement nameEditLastInputFld;
+    public WebElement nameEditLastInputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_6']/input")
-    WebElement nameEditSuffixInputFld;
+    public WebElement nameEditSuffixInputFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='crm_Fields_PicklistField_6']/button")
-    WebElement nameEditSuffixInputBtn;
+    public WebElement nameEditSuffixInputBtn;
     private WebDriver driver;
     CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 

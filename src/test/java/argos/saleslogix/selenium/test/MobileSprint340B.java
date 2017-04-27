@@ -164,7 +164,6 @@ public class MobileSprint340B extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -183,7 +182,6 @@ public class MobileSprint340B extends BaseTest {
             String activityTitle = scheduleListView.myScheduleListItem1.getAttribute("data-descriptor");
             scheduleListView.myScheduleListItem1.click();
             commNav.waitForPage(activityTitle);
-            Thread.sleep(1000);
 
             headerButton.clickHeaderButton("Briefcase");
             System.out.println("VP: Activity " + activityTitle + " is being briefcased");
@@ -195,7 +193,6 @@ public class MobileSprint340B extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage(activityTitle);
-            Thread.sleep(1000);
 
             //Step: go to My Briefcase
             System.out.println("VP: go to My Briefcase ...");
