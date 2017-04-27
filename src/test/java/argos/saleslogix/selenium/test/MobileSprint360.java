@@ -402,7 +402,7 @@ public class MobileSprint360 extends BaseTest {
     }
 
 
-    @Test
+    @Test(enabled = false)
     // INFORCRM-4262 ... Field Level Security
     //
     // requires manual setup ...
@@ -420,12 +420,9 @@ public class MobileSprint360 extends BaseTest {
         LogOutThenLogBackIn("penny", userPwd);
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-        NotesHistoryViewsElements notesHistoryAddView = PageFactory.initElements(driver, NotesHistoryViewsElements.class);
-        SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);
 
         String entityType = "Accounts";
         String entityRecord = TEST_ACCOUNT_RECORD;
-        String viewName = "Account Detail view";
 
         //Step: search for Account entity, then open it's Detail view
         commNav.entityRecordOpenDetailView(entityType, entityRecord);
