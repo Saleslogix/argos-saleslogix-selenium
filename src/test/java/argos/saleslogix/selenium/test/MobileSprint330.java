@@ -16,9 +16,9 @@ import java.util.List;
 
 /**
  * Test class that defines test methods for the SLX Mobile Defect (v3.3.0) fixes.
- * 
+ *
  * @author kathleen.lockyer-bratton@infor.com
- * @version	1.0
+ * @version 1.0
  */
 public class MobileSprint330 extends BaseTest {
 
@@ -26,18 +26,18 @@ public class MobileSprint330 extends BaseTest {
     public String TEST_CONTACT_RECORD = "Abbott, John";
     public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test(enabled = true)
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
 
     @Test(enabled = true)
     // Add My Activities as a menu item
@@ -66,9 +66,7 @@ public class MobileSprint330 extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -141,10 +139,9 @@ public class MobileSprint330 extends BaseTest {
 
             //  if original month is 01, then expected month should be 12, and the expected year should be 1 less than the original year
             if (Integer.valueOf(dateValues[0]) == 1) {
-                expectedMonth =  "12";
+                expectedMonth = "12";
                 expectedYear = Integer.toString(Integer.valueOf(dateValues[2]) - 1);
-            }
-            else {
+            } else {
                 expectedMonth = Integer.toString(Integer.valueOf(dateValues[0]) - 1);
                 expectedYear = dateValues[2];
             }
@@ -158,9 +155,7 @@ public class MobileSprint330 extends BaseTest {
             System.out.println("VP: revised date does have the expected year of ... " + expectedYear + " - PASSED");
 
 
-
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             AssertJUnit.fail("test failed");
         }
@@ -192,7 +187,7 @@ public class MobileSprint330 extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -279,9 +274,7 @@ public class MobileSprint330 extends BaseTest {
             AssertJUnit.assertEquals("VP: after editing start date and re-saving timeless activity, activity is no longer timeless - FAILED", editedActivityStartDate, edited2ActivityStartDate);
             System.out.println("VP: after editing start date and re-saving timeless activity, activity remains timeless - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: changing timeless activity start date and saving should keep activity as timeless " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -336,10 +329,9 @@ public class MobileSprint330 extends BaseTest {
             driver.switchTo().frame(0);
             List elements = driver.findElements(By.xpath("//*[@id='mapDiv']//span[1][contains(text(), 'Google')]"));
 
-            if(elements.size() > 0) {
+            if (elements.size() > 0) {
                 System.out.println("VP: View Address action for contact has opened a map with address - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: View Address action for contact has opened a map with address - FAILED");
                 AssertJUnit.fail("test failed");
             }
@@ -406,8 +398,7 @@ public class MobileSprint330 extends BaseTest {
             System.out.println("VP: 2nd item in Urgency list is 'High'  - PASSED");
 
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(e.toString());
             System.out.println(methodID + ": ticket urgency lookup failed");
             AssertJUnit.fail("test failed");
@@ -468,8 +459,7 @@ public class MobileSprint330 extends BaseTest {
             AssertJUnit.assertEquals("VP: Activity created from Calendar has been pre-populated with previous Account value of ... " + TEST_ACCOUNT_RECORD + " - FAILED", TEST_ACCOUNT_RECORD, newActivityAccount);
             System.out.println("VP: Activity created from Calendar has been pre-populated with previous Account value of ... " + TEST_ACCOUNT_RECORD + " - PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(e.toString());
             System.out.println(methodID + ": auto-population of calendar activity failed");
             AssertJUnit.fail("test failed");
@@ -501,7 +491,7 @@ public class MobileSprint330 extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -546,9 +536,7 @@ public class MobileSprint330 extends BaseTest {
             AssertJUnit.assertEquals("VP: Timeless activity displays in listview with a timeframe of 'Timeless' - FAILED", "Timeless", activityTime);
             System.out.println("VP: Timeless activity displays in listview with a timeframe of 'Timeless' - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Timeless activities in listview displaying unexpected timeframe " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -556,7 +544,6 @@ public class MobileSprint330 extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -603,13 +590,11 @@ public class MobileSprint330 extends BaseTest {
             System.out.println("VP: When added via listview quick action, Product opportunity value has been pre-populated with associated opportunity of ... " + TEST_OPPORTUNITY_RECORD + " - PASSED");
 
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Opportunity populated when adding product via listview quick action " + " - FAILED");
             AssertJUnit.fail("test failed");
         }
-
 
 
         System.out.println(ENDLINE);
@@ -656,7 +641,7 @@ public class MobileSprint330 extends BaseTest {
             //Step: retrieve value for start time ... creating an activity for "today"
             String strDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: 'Today' activity date/ time is ... " + strDateTime);
-            String activityTime = strDateTime.substring(strDateTime.indexOf(' ')+1);
+            String activityTime = strDateTime.substring(strDateTime.indexOf(' ') + 1);
             System.out.println("VP: Activity time has a value of ... " + activityTime);
 
 
@@ -664,7 +649,6 @@ public class MobileSprint330 extends BaseTest {
             SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
             Calendar activityDateTime1 = Calendar.getInstance();
             activityDateTime1.setTime(ft.parse(activityTime));
-
 
 
             //Step: convert current date/ time to date format of "hh:mm a", then convert time portion back to calendar date format
@@ -685,8 +669,7 @@ public class MobileSprint330 extends BaseTest {
             //Step: check that the number of minutes between activity date/time and current date is between 1 and 15
             if (diffInMinutes >= 1 && diffInMinutes <= 15) {
                 System.out.println("VP: new activity added today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: new activity added today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - FAILED");
                 AssertJUnit.fail("test failed");
             }
@@ -717,7 +700,7 @@ public class MobileSprint330 extends BaseTest {
             //Step: retrieve value for start time ... creating an activity that is "not for today"
             strDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: 'Not for Today' activity date/ time is ... " + strDateTime);
-            activityTime = strDateTime.substring(strDateTime.indexOf(' ')+1);
+            activityTime = strDateTime.substring(strDateTime.indexOf(' ') + 1);
             System.out.println("VP: Activity time has a value of ... " + activityTime);
 
 
@@ -725,7 +708,6 @@ public class MobileSprint330 extends BaseTest {
             ft = new SimpleDateFormat("hh:mm a");
             activityDateTime1 = Calendar.getInstance();
             activityDateTime1.setTime(ft.parse(activityTime));
-
 
 
             //Step: convert current date/ time to date format of "hh:mm a", then convert time portion back to calendar date format
@@ -746,14 +728,12 @@ public class MobileSprint330 extends BaseTest {
             //Step: check that the number of minutes between activity date/time and current date/time is between 1 and 15
             if (diffInMinutes >= 1 && diffInMinutes <= 15) {
                 System.out.println("VP: new activity added not for today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: new activity added not for today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - FAILED");
                 AssertJUnit.fail("test failed");
             }
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(e.toString());
             System.out.println(methodID + ": new activities added default to a time within the next 15 minutes failed");
             AssertJUnit.fail("test failed");
@@ -764,20 +744,16 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-
-
-
     @Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
 
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 
 
 }

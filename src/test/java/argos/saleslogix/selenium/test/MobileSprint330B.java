@@ -16,9 +16,9 @@ import java.util.GregorianCalendar;
 
 /**
  * Test class that defines test methods for the SLX Mobile Defect (v3.3.0) fixes.
- * 
+ *
  * @author kathleen.lockyer-bratton@infor.com
- * @version	1.0
+ * @version 1.0
  */
 public class MobileSprint330B extends BaseTest {
 
@@ -27,18 +27,18 @@ public class MobileSprint330B extends BaseTest {
     public String TEST_CONTACT_RECORD = "Abbott, John";
     public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test(enabled = true)
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
 
     @Test(enabled = true)
     // Add My Activities as a menu item
@@ -67,9 +67,7 @@ public class MobileSprint330B extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -92,7 +90,6 @@ public class MobileSprint330B extends BaseTest {
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
 
-
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         try {
@@ -103,7 +100,7 @@ public class MobileSprint330B extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -174,9 +171,7 @@ public class MobileSprint330B extends BaseTest {
             AssertJUnit.assertEquals("VP: second activity phone number is not displaying as blank - FAILED", "", secondActivityPhoneNo);
             System.out.println("VP: second activity phone number is displaying as blank - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: second activity phone number is displaying as blank " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -250,9 +245,7 @@ public class MobileSprint330B extends BaseTest {
             AssertJUnit.assertEquals("VP: after cancelled edit current value of phone equals initial value of phone - FAILED", initialPhoneValue, currentPhoneValue);
             System.out.println("VP: after cancelled edit current value of phone equals initial value of phone - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: cancelled edits still unexpectedly displaying " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -437,9 +430,7 @@ public class MobileSprint330B extends BaseTest {
             System.out.println("VP: On re-opening different Opportunity " + TEST_OPPORTUNITY_RECORD2 + " after 3rd edit via Quick Edit, 'sales potential' does have expected value of : " + thirdEditSalesPotential + " - PASSED");
 
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Opportunity Quick Edit functioning as expected " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -545,7 +536,7 @@ public class MobileSprint330B extends BaseTest {
 
         //Step: verify that group 'Closed - Won' is displayed
         commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        AssertJUnit.assertEquals("VP: user is not seeing the chosen group (Closed - Won) just selected  - FAILED","Closed - Won", driver.findElement(By.id("pageTitle")).getText());
+        AssertJUnit.assertEquals("VP: user is not seeing the chosen group (Closed - Won) just selected  - FAILED", "Closed - Won", driver.findElement(By.id("pageTitle")).getText());
         System.out.println("VP: user is seeing the chosen group (Closed - Won) just selected  - PASSED");
 
         //Step: save group listview card layout information ... for 'Closed - Won' group
@@ -764,9 +755,7 @@ public class MobileSprint330B extends BaseTest {
             AssertJUnit.assertEquals("VP: after resetting to OOTB order and display 7th Account quick action is 'Add Attachment' - FAILED", "Add Attachment", quickActionText6);
             System.out.println("VP: after resetting to OOTB order and display 7th Account quick action is 'Add Attachment' - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: personalization of quick actions " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -839,7 +828,7 @@ public class MobileSprint330B extends BaseTest {
 
             //Step: retrieve date only value (MM/DD/YYYY), time only value (hh:mm a), convert time string to a calendar time (hh:mm a), ready for manipulation
             String savedDateOnly = newActivityStartDate.split("\\ ")[0];
-            String savedTimeOnly = newActivityStartDate.substring(newActivityStartDate.indexOf(' ')+1);
+            String savedTimeOnly = newActivityStartDate.substring(newActivityStartDate.indexOf(' ') + 1);
 
             //SimpleDateFormat ft = new SimpleDateFormat("M/d/YYYY hh:mm a");
             SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
@@ -847,7 +836,7 @@ public class MobileSprint330B extends BaseTest {
             activityInitialTime.setTime(ft.parse(savedTimeOnly));
 
             //Step: subtract an hour from the default value for start time, so time will be earlier than the current time
-            activityInitialTime.add(Calendar.HOUR,-1);
+            activityInitialTime.add(Calendar.HOUR, -1);
 
             //Step: combine date only value and edited time ... to replace value in 'start time' field
             String editedActivityStartDate = savedDateOnly + " " + ft.format(activityInitialTime.getTime()).toString();
@@ -858,7 +847,7 @@ public class MobileSprint330B extends BaseTest {
             System.out.println("VP: 'Value for updated Start Time is ... " + strDateTime);
 
             //Step: retrieve the new value for start time, then find the 'time' portion only
-            String activityTime = strDateTime.substring(strDateTime.indexOf(' ')+1);
+            String activityTime = strDateTime.substring(strDateTime.indexOf(' ') + 1);
             System.out.println("VP: Activity time has a value of ... " + activityTime);
 
 
@@ -876,10 +865,9 @@ public class MobileSprint330B extends BaseTest {
             todayDateTime2.setTime(ft.parse(todayString));
 
             //Step: check that the time of the activity is less than the current time 'today'
-            if (activityDateTime1.before(todayDateTime2)){
+            if (activityDateTime1.before(todayDateTime2)) {
                 System.out.println("VP: Activity time is less than the current time for today ... continue test");
-            }
-            else {
+            } else {
                 System.out.println("VP: Activity time is not less than the current time for today ... stop test " + " - FAILED");
                 AssertJUnit.fail("test failed");
             }
@@ -904,10 +892,7 @@ public class MobileSprint330B extends BaseTest {
             System.out.println("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - PASSED");
 
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -919,16 +904,15 @@ public class MobileSprint330B extends BaseTest {
 
 
     @Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
 
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 
 
 }

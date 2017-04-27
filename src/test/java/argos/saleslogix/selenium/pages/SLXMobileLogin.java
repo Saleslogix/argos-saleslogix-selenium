@@ -1,6 +1,9 @@
 package argos.saleslogix.selenium.pages;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -83,14 +86,14 @@ public class SLXMobileLogin {
      * Assuming that the Mobile Client login page is displayed, this method will enter a username,
      * password and optionally check the Remember Me box then click the Login button.
      *
-     * @author mike.llena@swiftpage.com
-     * @version 1.0
-     * @param    userName    username to login as
-     * @param    passWord    password of username to use for login
-     * @param    rememberMe    if true, then the Remember Me check box will be checked; if false, then
-     * the check box will be left un-checked
+     * @param userName   username to login as
+     * @param passWord   password of username to use for login
+     * @param rememberMe if true, then the Remember Me check box will be checked; if false, then
+     *                   the check box will be left un-checked
      * @return boolean        true - if Mobile Client login is successful
      * false - otherwise
+     * @author mike.llena@swiftpage.com
+     * @version 1.0
      */
     public boolean doLogin(String userName, String passWord, Boolean rememberMe) throws InterruptedException {
         System.out.println("doLogin: username = " + userName + ", password = " + passWord + ", remember? = " + rememberMe);

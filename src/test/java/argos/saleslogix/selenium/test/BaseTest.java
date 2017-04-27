@@ -3,7 +3,6 @@ package argos.saleslogix.selenium.test;
 import argos.saleslogix.selenium.pages.CommonNavigation;
 import argos.saleslogix.selenium.pages.SLXMobileLogin;
 import org.openqa.selenium.*;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -11,12 +10,18 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -53,13 +58,13 @@ public class BaseTest {
      * Test properties specified in the app.properties file are read and used to setup global test variables.
      * To configure a different browser, you can change your app.properties browser line or pass in a
      * system property to maven: "maven -Dbrowser=firefox test". Note: all of the app.properties can be override this way.
-     *
+     * <p>
      * The browsers property can be any of the following:
-     *  firefox
-     *  chrome
-     *  internetExplorer
-     *  android
-     *  phantomjs
+     * firefox
+     * chrome
+     * internetExplorer
+     * android
+     * phantomjs
      *
      * @throws InterruptedException
      */
@@ -126,8 +131,7 @@ public class BaseTest {
             reader.close();
 
             Enumeration<?> enumeration = p.propertyNames();
-            while(enumeration.hasMoreElements())
-            {
+            while (enumeration.hasMoreElements()) {
                 String key = (String) enumeration.nextElement();
                 if (System.getProperty(key) == null) {
                     System.setProperty(key, p.getProperty(key));
@@ -160,7 +164,7 @@ public class BaseTest {
     /**
      * This method will return a boolean value that indicates if a specific WebElement is present.
      *
-     * @param    by        element locator
+     * @param by element locator
      */
     protected boolean isElementPresent(By by) {
         try {
@@ -174,7 +178,6 @@ public class BaseTest {
 
     /**
      * This method will capture an expected Alert and return the Alert text in a string.
-     *
      */
     public String closeAlertAndGetItsText() {
         try {
@@ -194,7 +197,6 @@ public class BaseTest {
 
     /**
      * This method will capture and close an expected Alert.
-     *
      */
     public String closeAlert() {
         try {
@@ -210,7 +212,6 @@ public class BaseTest {
 
     /**
      * This method will close an on-screen modal dialog/window.
-     *
      */
     public void closeModal() {
         Set<String> windowids = driver.getWindowHandles();
@@ -243,7 +244,6 @@ public class BaseTest {
 
     /**
      * This method will close and quit the WebDriver.
-     *
      */
     @AfterMethod
     public void closeBrowser() {
@@ -275,7 +275,6 @@ public class BaseTest {
      * This method perform a Logoff from the Mobile Client.  After logoff, a verification check on the
      * SLX Mobile Client Logoff page is performed.  The verification values are defined in the app.properties
      * file.
-     *
      */
     public void doVerificationLogout() throws InterruptedException {
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);

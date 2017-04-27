@@ -11,15 +11,15 @@ import org.testng.annotations.Test;
 
 /**
  * @author Kathy Lockyer-Bratton
- * Class: MobileSprint350
- * Desc.: Test class for some defects or features in Mobile 3.5.0
+ *         Class: MobileSprint350
+ *         Desc.: Test class for some defects or features in Mobile 3.5.0
  */
 public class MobileSprint350 extends BaseTest {
 
     public String TEST_ACCOUNT_LOOKUP = "Account Graphics";
-	
-	//Test Methods Set
-	//================
+
+    //Test Methods Set
+    //================
 
 
     @Test(enabled = true)
@@ -53,7 +53,7 @@ public class MobileSprint350 extends BaseTest {
 
             commNav.highlightNClick(contactListView.topContactsListItemName);
             String contactName = contactListView.topContactsListItemName.getText();
-            AssertJUnit.assertEquals("VP: under contact listview, able to lookup contacts by account name " + TEST_ACCOUNT_LOOKUP + " - FAILED", "Mindzak, Lisa" ,contactName);
+            AssertJUnit.assertEquals("VP: under contact listview, able to lookup contacts by account name " + TEST_ACCOUNT_LOOKUP + " - FAILED", "Mindzak, Lisa", contactName);
             System.out.println("VP: under contact listview, able to lookup contacts by account name " + TEST_ACCOUNT_LOOKUP + ", found contact : " + contactName + " - PASSED");
 
         } catch (Exception e) {
@@ -66,28 +66,27 @@ public class MobileSprint350 extends BaseTest {
     }
 
 
+    //Login & Logout
+    //==============
+    @Test(enabled = true)
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test(enabled = true)
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 }

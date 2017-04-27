@@ -15,9 +15,9 @@ import java.util.GregorianCalendar;
 
 /**
  * Test class that defines test methods for the SLX Mobile Defect (v3.1 sprint 7) fixes
- * 
+ *
  * @author kathleen.lockyer-bratton@swiftpage.com
- * @version	1.0
+ * @version 1.0
  */
 public class MobileSprint317Test extends BaseTest {
 
@@ -34,29 +34,29 @@ public class MobileSprint317Test extends BaseTest {
 
     public String TEST_LEAD_RECORD = "Beck, John";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test(enabled = true)
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test(enabled = true)
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 
 
     @Test(enabled = true)
@@ -86,9 +86,7 @@ public class MobileSprint317Test extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -134,8 +132,7 @@ public class MobileSprint317Test extends BaseTest {
             commView.addressAttentionInputFld.sendKeys("Mr. Rogers");
             headerButton.clickHeaderButton("check");
             commNav.waitForPage("Add Account / Contact");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: adding address for new contact " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -156,7 +153,6 @@ public class MobileSprint317Test extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -235,7 +231,7 @@ public class MobileSprint317Test extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -386,7 +382,7 @@ public class MobileSprint317Test extends BaseTest {
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
             commNav = PageFactory.initElements(driver, CommonNavigation.class);
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -447,10 +443,7 @@ public class MobileSprint317Test extends BaseTest {
             System.out.println("*** END OF SCENARIO 2 ... CHANGING ACTIVITY ACCOUNT WITHIN NEXT LOGIN SESSION AFTER CREATED ***");
 
 
-
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: changing activity account should clear the contact field " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -507,22 +500,19 @@ public class MobileSprint317Test extends BaseTest {
                 String addressLine1Data = commView.addressLine1.getAttribute("value");
                 System.out.println("address Line1 is ... " + addressLine1Data);
                 String addressLine1ExpectedData = "4206 W. Grand Avenue";
-                AssertJUnit.assertEquals("VP: edit view, opened by quick action, is not displaying address line 1 for " + TEST_ACCOUNT1_RECORD + " as ... " + addressLine1ExpectedData + " - FAILED" ,addressLine1ExpectedData, addressLine1Data);
+                AssertJUnit.assertEquals("VP: edit view, opened by quick action, is not displaying address line 1 for " + TEST_ACCOUNT1_RECORD + " as ... " + addressLine1ExpectedData + " - FAILED", addressLine1ExpectedData, addressLine1Data);
                 System.out.println("VP: edit view, opened by quick action, is displaying address line 1 for " + TEST_ACCOUNT1_RECORD + " as ... " + addressLine1ExpectedData + " - PASSED");
 
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 verificationErrors.append(methodID + "(): " + e.toString());
                 AssertJUnit.fail("test failed");
             }
 
-        }
-        else {
+        } else {
             System.out.println(methodID + ": required '" + entityType + "' view not loaded; test aborted");
             AssertJUnit.fail("test failed");
         }
         System.out.println(ENDLINE);
-
 
 
     }
@@ -577,8 +567,7 @@ public class MobileSprint317Test extends BaseTest {
             String valSummaryTitleActual = notesHistoryEditView.notesHistoryEditViewValSummTitle.getText();
             AssertJUnit.assertEquals("VP: Validation Summary title does not have the expected value of " + valSummaryTitleExpected + " - FAILED", valSummaryTitleExpected, valSummaryTitleActual);
             System.out.println("VP: Validation Summary title does have the expected value of ... " + valSummaryTitleExpected + " - PASSED");
-        }
-        else {
+        } else {
             System.out.println("VP: expected Validation Summary title not present - FAILED");
             AssertJUnit.fail("test failed");
         }
@@ -589,8 +578,7 @@ public class MobileSprint317Test extends BaseTest {
             String valSummaryMessageActual = notesHistoryEditView.notesHistoryEditViewValSummMessage.getText();
             AssertJUnit.assertEquals("VP: Validation Summary message does not have the expected value of " + valSummaryMessageExpected + " - FAILED", valSummaryMessageExpected, valSummaryMessageActual);
             System.out.println("VP: Validation Summary message does have the expected value of ... " + valSummaryMessageExpected + " - PASSED");
-        }
-        else {
+        } else {
             System.out.println("VP: expected Validation Summary message not present - FAILED");
             AssertJUnit.fail("test failed");
         }
@@ -601,8 +589,7 @@ public class MobileSprint317Test extends BaseTest {
             String valSummaryFieldActual = notesHistoryEditView.notesHistoryEditViewValSummField.getText();
             AssertJUnit.assertEquals("VP: Validation Summary field does not have the expected value of " + valSummaryFieldExpected + " - FAILED", valSummaryFieldExpected, valSummaryFieldActual);
             System.out.println("VP: Validation Summary field does have the expected value of ... " + valSummaryFieldExpected + " - PASSED");
-        }
-        else {
+        } else {
             System.out.println("VP: expected Validation Summary field not present - FAILED");
             AssertJUnit.fail("test failed");
         }
@@ -645,7 +632,7 @@ public class MobileSprint317Test extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -731,9 +718,7 @@ public class MobileSprint317Test extends BaseTest {
             System.out.println("VP: Activity Leader should use calendar security for list of users available " + " - PASSED");
 
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Activity Leader should use calendar security for list of users available " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -741,7 +726,6 @@ public class MobileSprint317Test extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
 
 
     @Test(enabled = true)
@@ -819,31 +803,30 @@ public class MobileSprint317Test extends BaseTest {
             String contactPostalRecheck = commView.addressPostalInputFld.getAttribute("value");
             String contactCountryRecheck = commView.addressCountryInputFld.getAttribute("value");
 
-            AssertJUnit.assertEquals("VP: Address1 has not been retained after saving contact ... it is now    : " + contactAddress1Recheck, contactAddress1,contactAddress1Recheck);
+            AssertJUnit.assertEquals("VP: Address1 has not been retained after saving contact ... it is now    : " + contactAddress1Recheck, contactAddress1, contactAddress1Recheck);
             System.out.println("VP: Address1 has been retained after saving contact as : " + contactAddress1Recheck);
 
-            AssertJUnit.assertEquals("VP: Address2 has not been retained after saving contact ... it is now    : " + contactAddress2Recheck, contactAddress2,contactAddress2Recheck);
+            AssertJUnit.assertEquals("VP: Address2 has not been retained after saving contact ... it is now    : " + contactAddress2Recheck, contactAddress2, contactAddress2Recheck);
             System.out.println("VP: Address2 has been retained after saving contact as : " + contactAddress2Recheck);
 
-            AssertJUnit.assertEquals("VP: Address3 has not been retained after saving contact ... it is now    : " + contactAddress3Recheck, contactAddress3,contactAddress3Recheck);
+            AssertJUnit.assertEquals("VP: Address3 has not been retained after saving contact ... it is now    : " + contactAddress3Recheck, contactAddress3, contactAddress3Recheck);
             System.out.println("VP: Address3 has been retained after saving contact as : " + contactAddress3Recheck);
 
-            AssertJUnit.assertEquals("VP: City has not been retained after saving contact ... it is now        : " + contactCityRecheck, contactCity,contactCityRecheck);
+            AssertJUnit.assertEquals("VP: City has not been retained after saving contact ... it is now        : " + contactCityRecheck, contactCity, contactCityRecheck);
             System.out.println("VP: City has been retained after saving contact as : " + contactCityRecheck);
 
-            AssertJUnit.assertEquals("VP: State has not been retained after saving contact ... it is now       : " + contactStateRecheck, contactState,contactStateRecheck);
+            AssertJUnit.assertEquals("VP: State has not been retained after saving contact ... it is now       : " + contactStateRecheck, contactState, contactStateRecheck);
             System.out.println("VP: State has been retained after saving contact as : " + contactStateRecheck);
 
-            AssertJUnit.assertEquals("VP: Postal code has not been retained after saving contact ... it is now : " + contactPostalRecheck, contactNewPostal,contactPostalRecheck);
+            AssertJUnit.assertEquals("VP: Postal code has not been retained after saving contact ... it is now : " + contactPostalRecheck, contactNewPostal, contactPostalRecheck);
             System.out.println("VP: Postal code has been retained after saving contact as : " + contactPostalRecheck);
 
-            AssertJUnit.assertEquals("VP: Country has not been retained after saving contact ... it is now     : " + contactCountryRecheck, contactCountry,contactCountryRecheck);
+            AssertJUnit.assertEquals("VP: Country has not been retained after saving contact ... it is now     : " + contactCountryRecheck, contactCountry, contactCountryRecheck);
             System.out.println("VP: Country has been retained after saving contact as : " + contactCountryRecheck);
 
             System.out.println("VP: no error trying to save edited address for contacts, and address data retained - PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: no error trying to save edited address for contacts - FAILED");
             AssertJUnit.fail("test failed");
@@ -903,7 +886,7 @@ public class MobileSprint317Test extends BaseTest {
             commView.addressPostalInputFld.clear();
             commView.addressPostalInputFld.sendKeys("60188-9422");
             String leadNewPostal = commView.addressPostalInputFld.getAttribute("value");
-            System.out.println("Postal code for lead " + TEST_LEAD_RECORD + " has been changed from " +leadPostal + " to : " + leadNewPostal);
+            System.out.println("Postal code for lead " + TEST_LEAD_RECORD + " has been changed from " + leadPostal + " to : " + leadNewPostal);
 
             //Step: set Address description to 'mailing', accept changes and save lead
             commView.addressDescriptionInputFld.clear();
@@ -955,8 +938,7 @@ public class MobileSprint317Test extends BaseTest {
 
             System.out.println("VP: no error trying to save edited address for leads, and address data retained - PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: no error trying to save edited address for leads - FAILED");
             AssertJUnit.fail("test failed");

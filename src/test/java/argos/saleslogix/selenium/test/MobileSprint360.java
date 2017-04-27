@@ -15,8 +15,8 @@ import java.util.List;
 
 /**
  * @author Kathy Lockyer-Bratton
- * Class: MobileSprint360
- * Desc.: Test class for some defects or features in Mobile 3.6.0
+ *         Class: MobileSprint360
+ *         Desc.: Test class for some defects or features in Mobile 3.6.0
  */
 public class MobileSprint360 extends BaseTest {
 
@@ -26,9 +26,8 @@ public class MobileSprint360 extends BaseTest {
     public String TEST_CONTACT_RECORD2 = "Aceti, Janet";
 
 
-	
-	//Test Methods Set
-	//================
+    //Test Methods Set
+    //================
 
 
     @Test(enabled = true)
@@ -72,8 +71,7 @@ public class MobileSprint360 extends BaseTest {
                 //Thread.sleep(1000);
                 WebDriverWait wait = new WebDriverWait(driver, 120);
                 WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='pageTitle'][contains(text(), 'My Schedule')]")));
-            }
-            else {
+            } else {
                 System.out.println("VP: 24-hour clock is already in effect ");
             }
 
@@ -146,7 +144,7 @@ public class MobileSprint360 extends BaseTest {
             Thread.sleep(1000);
             String editedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: start time has been set to a morning time of ... " + editedStartTime);
-            String activityTime = editedStartTime.substring(editedStartTime.indexOf(' ')+1);
+            String activityTime = editedStartTime.substring(editedStartTime.indexOf(' ') + 1);
 
             //Step : verify that the selected time is displaying in 24-hour clock format
             AssertJUnit.assertEquals("VP: selected time of '" + activityTime + "' displays with 24-hour clock - FAILED", "9:00", activityTime);
@@ -175,7 +173,7 @@ public class MobileSprint360 extends BaseTest {
             Thread.sleep(1000);
             editedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: start time has been set to an afternoon time of ... " + editedStartTime);
-            activityTime = editedStartTime.substring(editedStartTime.indexOf(' ')+1);
+            activityTime = editedStartTime.substring(editedStartTime.indexOf(' ') + 1);
 
             //Step : verify that the selected time is displaying in 24-hour clock format
             AssertJUnit.assertEquals("VP: selected time of '" + activityTime + "' displays with 24-hour clock - FAILED", "14:00", activityTime);
@@ -212,9 +210,7 @@ public class MobileSprint360 extends BaseTest {
 
             System.out.println("VP: 24-hour clock available and working - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: 24-hour clock available and working  - FAILED");
             AssertJUnit.fail("test failed");
@@ -367,10 +363,7 @@ public class MobileSprint360 extends BaseTest {
 
             System.out.println("VP: ability to clear My Briefcase and Recently Viewed separately - PASSED");
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: ability to clear My Briefcase and Recently Viewed separately - FAILED");
             AssertJUnit.fail("test failed");
@@ -431,16 +424,13 @@ public class MobileSprint360 extends BaseTest {
             //Step: verify that fields lead and company do not display where 'for lead' is off
             if (!activityEditView.activityEditViewLeadFld.isDisplayed() && !activityEditView.activityEditViewCompanyFld.isDisplayed()) {
                 System.out.println("VP: on the edit activity screen, should not see lead and company fields when 'for lead' is off - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: on the edit activity screen, should not see lead and company fields when 'for lead' is off - FAILED");
                 AssertJUnit.fail("test failed");
             }
 
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: on the edit activity screen, should not see lead and company fields when 'for lead' is off - FAILED");
             AssertJUnit.fail("test failed");
@@ -503,10 +493,9 @@ public class MobileSprint360 extends BaseTest {
             //Step: verify that 'phone' (Read Only security) does display under the Details section
             commNav.highlightNClick(accountDetailView.accountDetailViewDetailsTab);
 
-            if(accountDetailView.accountDetailViewCallMainNumberLnk.isDisplayed()) {
+            if (accountDetailView.accountDetailViewCallMainNumberLnk.isDisplayed()) {
                 System.out.println("VP: 'phone' which has 'Read Only' security should display on Account detail view - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: 'phone' which has 'Read Only' security should display on Account detail view - FAILED");
                 AssertJUnit.fail("test failed");
             }
@@ -515,19 +504,17 @@ public class MobileSprint360 extends BaseTest {
             // Step: verify that 'web' (Read Only security) does display under the More Details section
             commNav.highlightNClick(accountDetailView.accountDetailViewMoreDetailsTab);
 
-            if(accountDetailView.accountDetailViewWebFld.isDisplayed()) {
+            if (accountDetailView.accountDetailViewWebFld.isDisplayed()) {
                 System.out.println("VP: 'web' which has 'Read Only' security should display on Account detail view - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: 'web' which has 'Read Only' security should display on Account detail view - FAILED");
                 AssertJUnit.fail("test failed");
             }
 
             // Step: verify that 'industry' (Read Only security) does display under the More Details section
-            if(accountDetailView.accountDetailViewIndustryFld.isDisplayed()) {
+            if (accountDetailView.accountDetailViewIndustryFld.isDisplayed()) {
                 System.out.println("VP: 'industry' which has 'Read Only' security should display on Account detail view - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: 'industry' which has 'Read Only' security should display on Account detail view - FAILED");
                 AssertJUnit.fail("test failed");
             }
@@ -538,27 +525,24 @@ public class MobileSprint360 extends BaseTest {
 
             AccountViewsElements accountEditView = PageFactory.initElements(driver, AccountViewsElements.class);
 
-            if(accountEditView.accountEditViewWebInputFld.isEnabled()) {
+            if (accountEditView.accountEditViewWebInputFld.isEnabled()) {
                 System.out.println("VP: 'web' which has 'Read Only' security should be disabled on Account edit view - FAILED");
                 AssertJUnit.fail("test failed");
-            }
-            else {
+            } else {
                 System.out.println("VP: 'web' which has 'Read Only' security should be disabled on Account edit view - PASSED");
             }
 
-            if(accountEditView.accountEditViewPhoneInputFld.isEnabled()) {
+            if (accountEditView.accountEditViewPhoneInputFld.isEnabled()) {
                 System.out.println("VP: 'phone' which has 'Read Only' security should be disabled on Account edit view - FAILED");
                 AssertJUnit.fail("test failed");
-            }
-            else {
+            } else {
                 System.out.println("VP: 'phone' which has 'Read Only' security should be disabled on Account edit view - PASSED");
             }
 
-            if(accountEditView.accountEditViewIndustryFld.isEnabled()) {
+            if (accountEditView.accountEditViewIndustryFld.isEnabled()) {
                 System.out.println("VP: 'industry' which has 'Read Only' security should be disabled on Account edit view - FAILED");
                 AssertJUnit.fail("test failed");
-            }
-            else {
+            } else {
                 System.out.println("VP: 'industry' which has 'Read Only' security should be disabled on Account edit view - PASSED");
             }
 
@@ -574,8 +558,7 @@ public class MobileSprint360 extends BaseTest {
 
             if (!contactDetailView.contactsDetailViewCallMainNumberLnk.isDisplayed() && !contactDetailView.contactsDetailViewSendEmailLnk.isDisplayed()) {
                 System.out.println("VP: 'Call work' and 'Send email' ('No Access' security) quick actions should not display on Contact detail view - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: 'Call work' and 'Send email' ('No Access' security) quick actions should not display on Contact detail view - FAILED");
                 AssertJUnit.fail("test failed");
             }
@@ -584,10 +567,9 @@ public class MobileSprint360 extends BaseTest {
             //Step: verify that 'work phone' (No Access security) does not display under the Contact Details section
             commNav.highlightNClick(contactDetailView.contactDetailViewDetailsTab);
 
-            if(!contactDetailView.contactsDetailViewWorkPhoneFld.isDisplayed()) {
+            if (!contactDetailView.contactsDetailViewWorkPhoneFld.isDisplayed()) {
                 System.out.println("VP: 'work phone' which has 'No Access' security should not display on Contact detail view - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: 'work phone' which has 'No Access' security should not display on Contact detail view - FAILED");
                 AssertJUnit.fail("test failed");
             }
@@ -599,24 +581,21 @@ public class MobileSprint360 extends BaseTest {
 
             ContactViewsElements contactEditView = PageFactory.initElements(driver, ContactViewsElements.class);
 
-            if(!contactEditView.contactsEditViewPhoneInputFld.isDisplayed()) {
+            if (!contactEditView.contactsEditViewPhoneInputFld.isDisplayed()) {
                 System.out.println("VP: 'work phone' which has 'No Access' security should not display on Contact edit view - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: 'work phone' which has 'No Access' security should not display on Contact edit view - FAILED");
                 AssertJUnit.fail("test failed");
             }
 
-            if(!contactEditView.contactsEditViewEmailInputFld.isDisplayed()) {
+            if (!contactEditView.contactsEditViewEmailInputFld.isDisplayed()) {
                 System.out.println("VP: 'email' which has 'No Access' security should not display on Contact edit view - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: 'email' which has 'No Access' security should not display on Contact edit view - FAILED");
                 AssertJUnit.fail("test failed");
             }
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println(methodID + ": field level security test aborted.");
         }
@@ -627,27 +606,27 @@ public class MobileSprint360 extends BaseTest {
     }
 
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test(enabled = true)
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test(enabled = true)
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 }

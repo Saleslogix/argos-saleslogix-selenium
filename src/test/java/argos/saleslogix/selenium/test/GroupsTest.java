@@ -111,7 +111,6 @@ public class GroupsTest extends BaseTest {
         commNav.clickGlobalMenuItem(entityType);
 
 
-
         //Step: verify that group 'My Accounts' is displayed
         commNav.waitForPage("My Accounts");
 

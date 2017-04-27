@@ -15,39 +15,38 @@ import java.util.GregorianCalendar;
 
 /**
  * Test class that defines test methods for the SLX Mobile Defect (v3.0.4 sprint 8) fixes.
- * 
+ *
  * @author kathleen.lockyer-bratton@swiftpage.com
- * @version	1.0
+ * @version 1.0
  */
 public class MobileSprint308Test extends BaseTest {
 
     public String TEST_CONTACT_RECORD = "Abbott, John";
     public String TEST_TICKET_RECORD_NULL_CONTACT = "001-00-000002";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test(enabled = true)
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test(enabled = true)
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 
 
     @Test(enabled = true)
@@ -77,9 +76,7 @@ public class MobileSprint308Test extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -109,7 +106,7 @@ public class MobileSprint308Test extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -182,9 +179,7 @@ public class MobileSprint308Test extends BaseTest {
             AssertJUnit.assertEquals("VP: Timeless activity day of the week on the Calendar screen is not as expected " + " - FAILED", dayOfWeek, calendarDayOfWeek);
             System.out.println("VP: Timeless activity day of the week on the Calendar screen is as expected " + " - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Timeless activity day of the week on the Calendar screen is not as expected " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -220,7 +215,7 @@ public class MobileSprint308Test extends BaseTest {
 
             //String currHashTag = myActivitiesListView.myActivitiesSearchTxtBox.getAttribute("value");
             String currHashTag = commView.lookupTxtBox.getAttribute("value");
-            AssertJUnit.assertEquals(resultsMsg + " - FAILED","#this-week",currHashTag);
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED", "#this-week", currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
@@ -232,7 +227,7 @@ public class MobileSprint308Test extends BaseTest {
 
             //currHashTag = notesHistoryListView.notesHistorysSearchTxtBox.getAttribute("value");
             currHashTag = commView.lookupTxtBox.getAttribute("value");
-            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED", "", currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
@@ -244,7 +239,7 @@ public class MobileSprint308Test extends BaseTest {
 
             //currHashTag = accountsListView.accountsSearchTxtBox.getAttribute("value");
             currHashTag = commView.lookupTxtBox.getAttribute("value");
-            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED", "", currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
@@ -256,7 +251,7 @@ public class MobileSprint308Test extends BaseTest {
 
             //currHashTag = contactsListView.contactsSearchTxtBox.getAttribute("value");
             currHashTag = commView.lookupTxtBox.getAttribute("value");
-            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED", "", currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
@@ -268,7 +263,7 @@ public class MobileSprint308Test extends BaseTest {
 
             //currHashTag = leadsListView.leadsSearchTxtBox.getAttribute("value");
             currHashTag = commView.lookupTxtBox.getAttribute("value");
-            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED", "", currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
@@ -280,7 +275,7 @@ public class MobileSprint308Test extends BaseTest {
 
             //currHashTag = opportunityListView.opportunitySearchTxtBox.getAttribute("value");
             currHashTag = commView.lookupTxtBox.getAttribute("value");
-            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED", "", currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
@@ -292,7 +287,7 @@ public class MobileSprint308Test extends BaseTest {
 
             //currHashTag = ticketListView.ticketsSearchTxtBox.getAttribute("value");
             currHashTag = commView.lookupTxtBox.getAttribute("value");
-            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED", "", currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
@@ -304,14 +299,11 @@ public class MobileSprint308Test extends BaseTest {
 
             //currHashTag = myAttachmentsListView.myAttachmentsSearchTxtBox.getAttribute("value");
             currHashTag = commView.lookupTxtBox.getAttribute("value");
-            AssertJUnit.assertEquals(resultsMsg + " - FAILED","",currHashTag);
+            AssertJUnit.assertEquals(resultsMsg + " - FAILED", "", currHashTag);
             System.out.println(resultsMsg + " - PASSED");
 
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Default hash tags not as expected " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -320,8 +312,6 @@ public class MobileSprint308Test extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
-
 
 
     @Test(enabled = true)
@@ -335,8 +325,6 @@ public class MobileSprint308Test extends BaseTest {
         HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
         MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
         CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
@@ -383,8 +371,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: press the timeless toggle button to ON, then retrieve the value for MM/dd/yy
             activityEditView.activityEditViewTimelessTgl.click();
             String newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -416,10 +402,7 @@ public class MobileSprint308Test extends BaseTest {
             System.out.println("VP: Timeless activity created " + newActivityRegarding + " is displaying under the expected day in Calendar Month view " + " - PASSED");
 
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Timeless activity created is not displaying under the expected day in Calendar Month view " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -428,8 +411,6 @@ public class MobileSprint308Test extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
-
 
 
     @Test(enabled = false)
@@ -503,8 +484,6 @@ public class MobileSprint308Test extends BaseTest {
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
 
-
-
             //Step: add a 2nd activity (recurring Meeting for 3 days) ... by default the same date will be used as for the previous activity ****
             headerButton.clickHeaderButton("Add");
 
@@ -529,8 +508,6 @@ public class MobileSprint308Test extends BaseTest {
 
 
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
-
-
 
 
             //Step: set meeting to be recurring for 3 days, then retrieve the value for MM/dd/yy
@@ -563,8 +540,6 @@ public class MobileSprint308Test extends BaseTest {
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
 
-
-
             //Step: add a 3rd activity (timeless Phone Call)... by default the same date will be used as for the previous activity  ****
             headerButton.clickHeaderButton("Add");
 
@@ -591,8 +566,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: set phone call to be timeless, then retrieve the value for MM/dd/yy
             activityEditView.activityEditViewTimelessTgl.click();
 
@@ -608,8 +581,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add a 4th activity (To-Do) ... by default the same date will be used as for the previous activity  ****
@@ -638,8 +609,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: retrieve the value for MM/dd/yy
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -652,8 +621,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add a 5th activity (Meeting) ... by default the same date will be used as for the previous activity  ****
@@ -682,8 +649,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: retrieve the value for MM/dd/yy
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -696,8 +661,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add a 6th activity (Meeting) ... by default the same date will be used as for the previous activity  ****
@@ -726,8 +689,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: retrieve the value for MM/dd/yy
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -740,8 +701,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add a 7th activity (timeless recurring Phone Call for 3 days) ... by default the same date will be used as for the previous activity  ****
@@ -768,8 +727,6 @@ public class MobileSprint308Test extends BaseTest {
 
 
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
-
-
 
 
             //Step: set phone call to be timeless, recurring for 3 days, then retrieve the value for MM/dd/yy
@@ -805,8 +762,6 @@ public class MobileSprint308Test extends BaseTest {
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
 
-
-
             //Step: add a 8th activity (Meeting) ... by default the same date will be used as for the previous activity  ****
             headerButton.clickHeaderButton("Add");
 
@@ -833,8 +788,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: retrieve the value for MM/dd/yy
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -847,8 +800,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add a 9th activity (recurring To-Do for 3 days) ... by default the same date will be used as for the previous activity  ****
@@ -875,8 +826,6 @@ public class MobileSprint308Test extends BaseTest {
 
 
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
-
-
 
 
             //Step: set to-do to be recurring for 3 days, then retrieve the value for MM/dd/yy
@@ -909,8 +858,6 @@ public class MobileSprint308Test extends BaseTest {
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
 
-
-
             //Step: add a 10th activity (Meeting) ... by default the same date will be used as for the previous activity  ****
             headerButton.clickHeaderButton("Add");
 
@@ -937,8 +884,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: retrieve the value for MM/dd/yy
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -951,8 +896,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add an 11th activity (timeless recurring Meeting for 5 days) ... by default the same date will be used as for the previous activity ****
@@ -979,8 +922,6 @@ public class MobileSprint308Test extends BaseTest {
 
 
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
-
-
 
 
             //Step: set meeting to be timeless, recurring for 5 days, then retrieve the value for MM/dd/yy
@@ -1016,8 +957,6 @@ public class MobileSprint308Test extends BaseTest {
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
 
-
-
             //Step: add a 12th activity (Meeting) ... by default the same date will be used as for the previous activity  ****
             headerButton.clickHeaderButton("Add");
 
@@ -1044,8 +983,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: retrieve the value for MM/dd/yy
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -1058,8 +995,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add a 13th activity (timeless Meeting) ... by default the same date will be used as for the previous activity  ****
@@ -1088,8 +1023,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: set meeting to timeless, then retrieve the value for MM/dd/yy
             activityEditView.activityEditViewTimelessTgl.click();
 
@@ -1105,8 +1038,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add an 14th activity (recurring Meeting for 5 days) ... by default the same date will be used as for the previous activity ****
@@ -1133,8 +1064,6 @@ public class MobileSprint308Test extends BaseTest {
 
 
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
-
-
 
 
             //Step: set meeting to be recurring for 5 days, then retrieve the value for MM/dd/yy
@@ -1167,8 +1096,6 @@ public class MobileSprint308Test extends BaseTest {
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
 
-
-
             //Step: add a 15th activity (recurring Phone Call for 4 days) ... by default the same date will be used as for the previous activity  ****
             headerButton.clickHeaderButton("Add");
 
@@ -1193,8 +1120,6 @@ public class MobileSprint308Test extends BaseTest {
 
 
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
-
-
 
 
             //Step: set phone call to be recurring for 4 days, then retrieve the value for MM/dd/yy
@@ -1227,8 +1152,6 @@ public class MobileSprint308Test extends BaseTest {
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
 
-
-
             //Step: add a 16th activity (Phone Call)... by default the same date will be used as for the previous activity  ****
             headerButton.clickHeaderButton("Add");
 
@@ -1255,8 +1178,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: retrieve the value for MM/dd/yy
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -1269,8 +1190,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add a 17th activity (Meeting) ... by default the same date will be used as for the previous activity  ****
@@ -1299,8 +1218,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: retrieve the value for MM/dd/yy
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -1313,8 +1230,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add an 18th activity (recurring Meeting for 2 weeks) ... by default the same date will be used as for the previous activity ****
@@ -1341,8 +1256,6 @@ public class MobileSprint308Test extends BaseTest {
 
 
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
-
-
 
 
             //Step: set meeting to be recurring for 2 weeks, then retrieve the value for MM/dd/yy
@@ -1375,8 +1288,6 @@ public class MobileSprint308Test extends BaseTest {
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
 
-
-
             //Step: add a 19th activity (Meeting) ... by default the same date will be used as for the previous activity  ****
             headerButton.clickHeaderButton("Add");
 
@@ -1403,8 +1314,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: retrieve the value for MM/dd/yy
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -1417,8 +1326,6 @@ public class MobileSprint308Test extends BaseTest {
             //Step: wait for page Calendar ... should still be positioned on Month view
             commNav.waitForPage("Calendar");
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
 
 
             //Step: add a 20th activity (Meeting) ... by default the same date will be used as for the previous activity  ****
@@ -1447,8 +1354,6 @@ public class MobileSprint308Test extends BaseTest {
             activityEditView.activityEditViewRegardingFld.sendKeys(newActivityRegarding);
 
 
-
-
             //Step: retrieve the value for MM/dd/yy
             newActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date is : " + newActivityStartDate);
@@ -1463,28 +1368,23 @@ public class MobileSprint308Test extends BaseTest {
             calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
 
-
-
             //Step: open Day view for date to which all activities were assigned, and check that all 20 records display in calendar Day view
             calendarView.calendarMonthFirstDayFourthRow.click();
             calendarView.calendarDayBtn.click();
 
 
-            int n=2;
+            int n = 2;
             int i;
             WebElement activityElement = driver.findElement(By.xpath("(//div[@id='calendar_daylist']/ul/li)[" + n + "]"));
-            while (n <=21)    {
+            while (n <= 21) {
                 i = n - 1;
                 activityElement = driver.findElement(By.xpath("(//div[@id='calendar_daylist']/ul/li)[" + n + "]"));
                 AssertJUnit.assertTrue("FAILED : Activity - " + i + " is not present under Calendar Day view", commNav.isWebElementPresent("PASSED : Activity - " + i, activityElement));
-                n=n+1;
+                n = n + 1;
             }
 
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar activities not displaying in Day view as expected " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -1535,8 +1435,7 @@ public class MobileSprint308Test extends BaseTest {
             System.out.println("Title value 5 as expected ... " + contactEditView.contactsEditViewTitleValue5.getText() + " - PASSED");
 
             System.out.println("VP: Title values in picklist sorted by text " + " - PASSED");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Title values in picklist sorted by text " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -1588,9 +1487,6 @@ public class MobileSprint308Test extends BaseTest {
 
         System.out.println(ENDLINE);
     }
-
-
-
 
 
 }

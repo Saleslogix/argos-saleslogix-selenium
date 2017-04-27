@@ -1,8 +1,5 @@
 package argos.saleslogix.selenium.pages;
 
-import argos.saleslogix.selenium.pages.CommonNavigation;
-import argos.saleslogix.selenium.pages.CommonViewsElements;
-import argos.saleslogix.selenium.pages.HeaderButton;
 import argos.saleslogix.selenium.test.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -423,10 +420,10 @@ public class LeadViewsElements extends BaseTest {
      * This method will add an auto-generated test Lead record by filling-in the Lead Edit input fields.
      * The Lead will have a unique string appended to the Last Name in order to ensure uniqueness.
      *
+     * @param strLeadLastName  lead last name to set
+     * @param strLeadFirstName lead first name to set
+     * @param strLeadCompany   company name for lead
      * @throws Exception
-     * @param    strLeadLastName    lead last name to set
-     * @param    strLeadFirstName    lead first name to set
-     * @param    strLeadCompany    company name for lead
      */
     public void doAddRandTestLead(String strLeadLastName, String strLeadFirstName, String strLeadCompany) throws Exception {
         String methodID = "doAddRandTestLead";

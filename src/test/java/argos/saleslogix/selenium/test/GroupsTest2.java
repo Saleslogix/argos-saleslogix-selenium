@@ -88,7 +88,7 @@ public class GroupsTest2 extends BaseTest {
 
         try {
             commNav.waitForPage("All Leads");
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             LeadViewsElements leadsListView = PageFactory.initElements(driver, LeadViewsElements.class);
             //Step: if 'All Leads' group not displaying, reveal Right Context Menu panel
             commNav.openGroupConfigure();
@@ -327,7 +327,8 @@ public class GroupsTest2 extends BaseTest {
 
         //Step: navigate to Leads list view
         commNav.clickGlobalMenuItem(entityType);
-        commNav.waitForPage("All Leads");;
+        commNav.waitForPage("All Leads");
+        ;
 
         commNav.setGroupDetailMode();
         commNav.waitForPage("All Leads");

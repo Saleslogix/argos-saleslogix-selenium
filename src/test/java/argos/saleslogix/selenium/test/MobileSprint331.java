@@ -13,14 +13,14 @@ import java.util.GregorianCalendar;
 
 /**
  * @author Kathy Lockyer-Bratton
- * Class: MobileSprint331
- * Desc.: Test class for some defects or features in Mobile 3.3.1
+ *         Class: MobileSprint331
+ *         Desc.: Test class for some defects or features in Mobile 3.3.1
  */
 public class MobileSprint331 extends BaseTest {
 
-	
-	//Test Methods Set
-	//================
+
+    //Test Methods Set
+    //================
 
     @Test(enabled = true)
     // Add My Activities as a menu item
@@ -49,9 +49,7 @@ public class MobileSprint331 extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -129,13 +127,10 @@ public class MobileSprint331 extends BaseTest {
             headerButton.clickHeaderButton("Add");
             commNav.waitForPage("Schedule...");
             String pageTitle = "Schedule...";
-            AssertJUnit.assertEquals("VP: after creating an activity under Calendar Month view, again pressing Add header button opens the Schedule page - FAILED",pageTitle, driver.findElement(By.id("pageTitle")).getText());
+            AssertJUnit.assertEquals("VP: after creating an activity under Calendar Month view, again pressing Add header button opens the Schedule page - FAILED", pageTitle, driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: after creating an activity under Calendar Month view, again pressing Add header button opens the Schedule page - PASSED");
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: after creating an activity under Calendar Month view, again pressing Add header button opens the Schedule page - FAILED");
             AssertJUnit.fail("test failed");
@@ -167,7 +162,7 @@ public class MobileSprint331 extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -259,9 +254,7 @@ public class MobileSprint331 extends BaseTest {
             AssertJUnit.assertEquals("VP: DateTimePicker Calendar month not off by a month when setting activity to be timeless on 1st day of the month - FAILED", initialMonthText, currentMonthText);
             System.out.println("VP: DateTimePicker Calendar month not off by a month when setting activity to be timeless on 1st day of the month - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: DateTimePicker Calendar month not off by a month when setting activity to be timeless on 1st day of the month - FAILED");
             AssertJUnit.fail("test failed");
@@ -336,13 +329,10 @@ public class MobileSprint331 extends BaseTest {
 
             String expectedActivityCount = Integer.toString(Integer.parseInt(activityCountInitial) + 1);
             System.out.println("VP: Expected value of activity count for first day of current month is - " + expectedActivityCount);
-            AssertJUnit.assertEquals("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - FAILED",expectedActivityCount, activityCountFinal);
+            AssertJUnit.assertEquals("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - FAILED", expectedActivityCount, activityCountFinal);
             System.out.println("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - PASSED");
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - FAILED");
             AssertJUnit.fail("test failed");
@@ -353,27 +343,27 @@ public class MobileSprint331 extends BaseTest {
     }
 
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test(enabled = true)
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test(enabled = true)
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 }
