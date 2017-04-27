@@ -350,14 +350,13 @@ public class MobileSprint360 extends BaseTest {
     public void test03_INFORCRM14057() throws Exception {
         String methodID = "test03_INFORCRM14057";
 
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: logout & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
 
 
         //Step: go to Calendar view ... wait for page Calendar
@@ -378,21 +377,16 @@ public class MobileSprint360 extends BaseTest {
         commNav.waitForPage("Meeting");
 
         //Step: check if 'for lead' toggle is on, and if so, then switch it off
-        List forLeadToggle = driver.findElements(By.xpath("//div[@data-field='IsLead'][contains(@class,'toggleStateOn')]"));
-
-        if (forLeadToggle.size() != 0) {
-            activityEditView.activityEditViewForLeadTgl.click();
-            System.out.println("VP: 'for lead' toggle has been turned off");
-        } else {
-            System.out.println("VP: 'for lead' toggle is already off");
-        }
+        activityEditView.activityEditViewForLeadTgl.click();
+        commNav.waitForAnimation();
+        activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
 
         //Step: verify that fields lead and company do not display where 'for lead' is off
-        if (!activityEditView.activityEditViewLeadFld.isDisplayed() && !activityEditView.activityEditViewCompanyFld.isDisplayed()) {
-            System.out.println("VP: on the edit activity screen, should not see lead and company fields when 'for lead' is off - PASSED");
-        } else {
+        if (activityEditView.activityEditViewLeadFld.isDisplayed() || activityEditView.activityEditViewCompanyFld.isDisplayed()) {
             System.out.println("VP: on the edit activity screen, should not see lead and company fields when 'for lead' is off - FAILED");
             AssertJUnit.fail("test failed");
+        } else {
+            System.out.println("VP: on the edit activity screen, should not see lead and company fields when 'for lead' is off - PASSED");
         }
 
         System.out.println(ENDLINE);

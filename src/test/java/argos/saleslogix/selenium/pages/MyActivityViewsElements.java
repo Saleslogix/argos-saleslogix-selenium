@@ -342,16 +342,14 @@ public class MyActivityViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='argos_Fields_NoteField_0']/textarea")
     public WebElement activityEditViewNotesFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_BooleanField_4']/div/span[1]")
+    @FindBy(xpath = "//div[@id='activity_edit']//*[@data-field='IsLead']//label")
     public WebElement activityEditViewForLeadTgl;
-    @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_LookupField_5']/input")
+    @FindBy(xpath = "//div[@id='activity_edit']//*[@data-field='Lead']//input")
     public WebElement activityEditViewLeadFld;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_LookupField_5']/button")
+    @FindBy(xpath = "//div[@id='activity_edit']//*[@data-field='Leader']//button")
     public WebElement activityEditViewLeadBtn;
-    @CacheLookup
-    @FindBy(xpath = "//*[@id='argos_Fields_TextField_3']/input")
+    @FindBy(xpath = "//div[@id='activity_edit']//*[@data-field='AccountName']//input")
     public WebElement activityEditViewCompanyFld;
     @CacheLookup
     @FindBy(xpath = "//*[@id='argos_Fields_LookupField_1']/input")
