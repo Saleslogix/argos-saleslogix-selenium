@@ -22,28 +22,38 @@ import java.util.List;
 public class MobileSprint341A extends BaseTest {
 
     public String TEST_CONTACT_RECORD = "Abbott, John";
-    public String TEST_CONTACT_RECORD2 = "Aceti, Janet";
-    public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
-    public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
-    public String TEST_OPPORTUNITY_RECORD3 = "Abbott Ltd.-Phase3";
-    public String TEST_TICKET_RECORD = "001-00-000014";
+    private String TEST_CONTACT_RECORD2 = "Aceti, Janet";
+    private String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
+    private String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
+    private String TEST_OPPORTUNITY_RECORD3 = "Abbott Ltd.-Phase3";
+    private String TEST_TICKET_RECORD = "001-00-000014";
 
     private void clickHourField(WebElement element) throws InterruptedException {
         CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+        CommonNavigation commonNav = PageFactory.initElements(driver, CommonNavigation.class);
         calendarView.calendarHourField.click();
-        Thread.sleep(250);
+        commonNav.waitForAnimation();
         element.click();
-        Thread.sleep(250);
+        commonNav.waitForAnimation();
     }
 
     private void clickMinuteField(WebElement element) throws InterruptedException {
         CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+        CommonNavigation commonNav = PageFactory.initElements(driver, CommonNavigation.class);
         calendarView.calendarMinuteField.click();
-        Thread.sleep(250);
+        commonNav.waitForAnimation();
         element.click();
-        Thread.sleep(250);
+        commonNav.waitForAnimation();
     }
 
+    private void clickMonthField(WebElement element) throws InterruptedException {
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+        CommonNavigation commonNav = PageFactory.initElements(driver, CommonNavigation.class);
+        calendarView.calendarModalMonthField.click();
+        commonNav.waitForAnimation();
+        element.click();
+        commonNav.waitForAnimation();
+    }
 
     @Test
     // INFORCRM-8810 ... Calendar modal control ... unable to set minutes to 00 or 05 from the Advanced view
@@ -281,101 +291,96 @@ public class MobileSprint341A extends BaseTest {
         calendarView.openAdvanced();
 
         //Verify that the month value chosen from the dropdown displays in the field
-        calendarView.calendarMonthField.click();
-        calendarView.calendarModalMonthJan.click();
-        String currentMonth = "January";
+        clickMonthField(calendarView.calendarModalMonthJan);
+        String currentMonth = "0";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'January' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'January' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthFeb.click();
-        currentMonth = "February";
+        clickMonthField(calendarView.calendarModalMonthFeb);
+        currentMonth = "1";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'February' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'February' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthMar.click();
-        currentMonth = "March";
+        clickMonthField(calendarView.calendarModalMonthMar);
+        currentMonth = "2";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'March' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'March' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthApr.click();
-        currentMonth = "April";
+        clickMonthField(calendarView.calendarModalMonthApr);
+        currentMonth = "3";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'April' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'April' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthMay.click();
-        currentMonth = "May";
+        clickMonthField(calendarView.calendarModalMonthMay);
+        currentMonth = "4";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'May' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'May' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthJun.click();
-        currentMonth = "June";
+        clickMonthField(calendarView.calendarModalMonthJun);
+        currentMonth = "5";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'June' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'June' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthJul.click();
-        currentMonth = "July";
+        clickMonthField(calendarView.calendarModalMonthJul);
+        currentMonth = "6";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'July' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'July' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthAug.click();
-        currentMonth = "August";
+        clickMonthField(calendarView.calendarModalMonthAug);
+        currentMonth = "7";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'August' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'August' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthSep.click();
-        currentMonth = "September";
+        clickMonthField(calendarView.calendarModalMonthSep);
+        currentMonth = "8";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'September' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'September' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthOct.click();
-        currentMonth = "October";
+        clickMonthField(calendarView.calendarModalMonthOct);
+        currentMonth = "9";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'October' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'October' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthNov.click();
-        currentMonth = "November";
+        clickMonthField(calendarView.calendarModalMonthNov);
+        currentMonth = "10";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'November' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'November' month from dropdown displays that value in the month field - PASSED");
 
-        calendarView.calendarModalCurrMonthValue.click();
-        calendarView.calendarModalMonthDec.click();
-        currentMonth = "December";
+        clickMonthField(calendarView.calendarModalMonthDec);
+        currentMonth = "11";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing 'December' month from dropdown displays that value in the month field - FAILED", currentMonth, calendarView.calendarModalCurrMonthValue.getAttribute("value"));
         System.out.println("VP: Pressing 'December' month from dropdown displays that value in the month field - PASSED");
 
+        calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
         //Verify that the top and bottom year values chosen from the dropdown displays in the field
-        calendarView.calendarModalCurrYearValue.click();
+        calendarView.calendarModalCurrYearField.click();
+        commNav.waitForAnimation();
+        String topYear = calendarView.calendarModalYearTopItem.getAttribute("data-val");
         calendarView.calendarModalYearTopItem.click();
-        String topYear = calendarView.calendarModalYearTopItem.getAttribute("data-value");
+        commNav.waitForAnimation();
         System.out.println("Top year value is ... " + calendarView.calendarModalCurrYearValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing top year from dropdown displays that value in the year field - FAILED", topYear, calendarView.calendarModalCurrYearValue.getAttribute("value"));
         System.out.println("VP: Pressing top year from dropdown displays that value in the year field - PASSED");
 
-        calendarView.calendarModalCurrYearValue.click();
+        calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
+        calendarView.calendarModalCurrYearField.click();
+        commNav.waitForAnimation();
+        String bottomYear = calendarView.calendarModalYearBottomItem.getAttribute("data-val");
         calendarView.calendarModalYearBottomItem.click();
-        String bottomYear = calendarView.calendarModalYearBottomItem.getAttribute("data-value");
+        commNav.waitForAnimation();
+
         System.out.println("Bottom year value is ... " + calendarView.calendarModalCurrYearValue.getAttribute("value"));
         AssertJUnit.assertEquals("VP: Pressing bottom year from dropdown displays that value in the year field - FAILED", bottomYear, calendarView.calendarModalCurrYearValue.getAttribute("value"));
         System.out.println("VP: Pressing bottom year from dropdown displays that value in the year field - PASSED");

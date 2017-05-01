@@ -48,8 +48,8 @@ public class CalendarViewsElements extends BaseTest {
     @CacheLookup
     @FindBy(xpath = "//div[contains(@id,'calendar-view__calendar')]//div[@class='year']//input")
     public WebElement calendarYearField;
-    @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'year-dropdown datetime-calendar')]/ul/li[1]")
+
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[1]")
     public WebElement calendarModalYearTopItem;
 
     // Date Time Picker Calendar fields
@@ -64,7 +64,7 @@ public class CalendarViewsElements extends BaseTest {
     // - for the calendar screen use calendarYearxxx Item
     // - for the modal calendar control use calendarModalYearxxx Item
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'year-dropdown datetime-calendar')]/ul/li[21]")
+    @FindBy(xpath = "//div[@id='dropdown-list']//ul/li[last()]")
     public WebElement calendarModalYearBottomItem;
     @CacheLookup
     @FindBy(xpath = "//div[contains(@id,'year-dropdown datetime-calendar')]/ul//li[contains(@class, 'item--selected')]/following-sibling::*[1]")
@@ -85,8 +85,12 @@ public class CalendarViewsElements extends BaseTest {
     @FindBy(xpath = "//div[contains(@id,'year-dropdown calendar-view__calendar')]/ul//li[contains(@class, 'item--selected')]/following-sibling::*[1]")
     public WebElement calendarYearFollowingSelectedYear;
     // CalendarMonthField ... use this for the Calendar screen (not calendar control)
-    @FindBy(xpath = "//*[@data-action='toggleMonthModal']//div[@role='combobox']")
+    @FindBy(xpath = "//*[contains(@id, 'month-dropdown')]")
     public WebElement calendarMonthField;
+
+    @FindBy(xpath = "//div[@id='modal-template']//div[contains(@id, 'month-dropdown')]//div[@role='combobox']")
+    public WebElement calendarModalMonthField;
+
     @FindBy(xpath = "//*[@data-action='toggleMonthModal']//select")
     public WebElement calendarMonthSelect;
     @CacheLookup
@@ -325,12 +329,14 @@ public class CalendarViewsElements extends BaseTest {
     public WebElement calendarDaySelected;
     // CalendarModalCurrMonthValue ... use this for the Calendar control (not calendar screen)
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'datetime-calendar')]//div[@class='month']//select")
+    @FindBy(xpath = "//div[@id='modal-template']//div[contains(@id,'datetime-calendar')]//div[@class='month']//select")
     public WebElement calendarModalCurrMonthValue;
     // CalendarModalCurrYearValue ... use this for the Calendar control (not calendar screen)
     @CacheLookup
-    @FindBy(xpath = "//div[contains(@id,'datetime-calendar')]//div[@class='year']//select")
+    @FindBy(xpath = "//div[@id='modal-template']//div[contains(@id,'datetime-calendar')]//div[@class='year']//select")
     public WebElement calendarModalCurrYearValue;
+    @FindBy(xpath = "//div[@id='modal-template']//div[@data-action='toggleYearModal']//div[@role='combobox']")
+    public WebElement calendarModalCurrYearField;
     @CacheLookup
     @FindBy(xpath = "//div[@id='modal-template']//span[@data-action='incrementMonth']")
     public WebElement calendarModalIncrMonth;
