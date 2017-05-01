@@ -89,7 +89,7 @@ public class ContactViewsElements extends BaseTest {
     @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/button")
     public WebElement topContactsListItemIcon;
     @CacheLookup
-    @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h3[1]")
+    @FindBy(xpath = "//*[@id='contact_list']//div[@class='widget']/div/h2")
     public WebElement topContactsListItemName;
     @CacheLookup
     @FindBy(xpath = "//*[@id='contact_list']//ul/li[1]/div/h4[1]")
