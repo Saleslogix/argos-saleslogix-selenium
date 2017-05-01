@@ -246,18 +246,14 @@ public class MobileSprint341A extends BaseTest {
     // Add additional checking to verify that all months selected from the dropdown, as well as the top and bottom year, display in the month/ year fields respectively
     public void test02_INFORCRM8810() throws Exception {
         String methodID = "test02_INFORCRM8810";
-
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
-        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
-        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-
-
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         //Step: logout & log back in (to clear cookies)
         LogOutThenLogBackIn(userName, userPwd);
-
+        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        HeaderButton headerButton = PageFactory.initElements(driver, HeaderButton.class);
+        MyActivityViewsElements activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
+        CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
 
         //Step: go to Calendar view ... wait for page Calendar
         commNav.clickGlobalMenuItem("Calendar");
@@ -278,14 +274,14 @@ public class MobileSprint341A extends BaseTest {
 
         //Step: Open Start Time calendar, and wait for modal calendar control to open
         activityEditView.activityEditViewStartTimeFldBtn.click();
-        Thread.sleep(1000);
+        commNav.waitForAnimation();
         driver.switchTo().activeElement();
 
         //Press Advanced button to open Calendar view
-        calendarView.calendarModalAdvanced.click();
+        calendarView.openAdvanced();
 
         //Verify that the month value chosen from the dropdown displays in the field
-        calendarView.calendarModalCurrMonthValue.click();
+        calendarView.calendarMonthField.click();
         calendarView.calendarModalMonthJan.click();
         String currentMonth = "January";
         System.out.println("Month value is ... " + calendarView.calendarModalCurrMonthValue.getAttribute("value"));

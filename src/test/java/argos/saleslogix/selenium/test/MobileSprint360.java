@@ -82,10 +82,9 @@ public class MobileSprint360 extends BaseTest {
         //Step: Open Start Time calendar, and wait for modal calendar control to open
         activityEditView.activityEditViewStartTimeFldBtn.click();
         commNav.waitForAnimation();
-        driver.switchTo().activeElement();
 
         //Press Advanced button to open Calendar view
-        calendarView.calendarModalAdvanced.click();
+        calendarView.openAdvanced();
 
         //Verify the hour dropdown is as expected for the 24 hour clock ... hours 0 through 23
         calendarView.calendarHourField.click();
@@ -122,8 +121,7 @@ public class MobileSprint360 extends BaseTest {
         System.out.println("Minute of 00 clicked");
 
         //Step : extract the time portion of the date/time ... characters following the space after the date
-        calendarView.calendarModalConfirm.click();
-        commNav.waitForAnimation();
+        calendarView.confirm();
         driver.switchTo().activeElement();
         commNav.waitForPage("Meeting");
         String editedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -137,12 +135,10 @@ public class MobileSprint360 extends BaseTest {
         //Step: Re-open Start Time calendar, and wait for modal calendar control to open
         activityEditView.activityEditViewStartTimeFldBtn.click();
         commNav.waitForAnimation();
-        driver.switchTo().activeElement();
 
         //Step: Press Advanced button to open Calendar view
         calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
-        calendarView.calendarModalAdvanced.click();
-        commNav.waitForAnimation();
+        calendarView.openAdvanced();
 
         //Step: choose a time of 14:00 in the afternoon
         calendarView.calendarHourField.click();
@@ -153,8 +149,7 @@ public class MobileSprint360 extends BaseTest {
         calendarView.calendarMinute00.click();
 
         //Step : extract the time portion of the date/time ... characters following the space after the date
-        calendarView.calendarModalConfirm.click();
-        commNav.waitForAnimation();
+        calendarView.confirm();
         driver.switchTo().activeElement();
         commNav.waitForPage("Meeting");
         editedStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
