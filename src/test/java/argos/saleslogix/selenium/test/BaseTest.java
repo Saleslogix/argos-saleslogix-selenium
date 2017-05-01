@@ -1,20 +1,27 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.CommonNavigation;
+import argos.saleslogix.selenium.pages.SLXMobileLogin;
 import org.openqa.selenium.*;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.AssertJUnit;
-import org.testng.annotations.*;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -51,17 +58,17 @@ public class BaseTest {
      * Test properties specified in the app.properties file are read and used to setup global test variables.
      * To configure a different browser, you can change your app.properties browser line or pass in a
      * system property to maven: "maven -Dbrowser=firefox test". Note: all of the app.properties can be override this way.
-     *
+     * <p>
      * The browsers property can be any of the following:
-     *  firefox
-     *  chrome
-     *  internetExplorer
-     *  android
-     *  phantomjs
+     * firefox
+     * chrome
+     * internetExplorer
+     * android
+     * phantomjs
      *
      * @throws InterruptedException
      */
-    @BeforeClass
+    @BeforeMethod
     public void launchBrowser() throws InterruptedException, MalformedURLException {
         // Run in grid
         loadProperties();
@@ -124,8 +131,7 @@ public class BaseTest {
             reader.close();
 
             Enumeration<?> enumeration = p.propertyNames();
-            while(enumeration.hasMoreElements())
-            {
+            while (enumeration.hasMoreElements()) {
                 String key = (String) enumeration.nextElement();
                 if (System.getProperty(key) == null) {
                     System.setProperty(key, p.getProperty(key));
@@ -158,7 +164,7 @@ public class BaseTest {
     /**
      * This method will return a boolean value that indicates if a specific WebElement is present.
      *
-     * @param    by        element locator
+     * @param by element locator
      */
     protected boolean isElementPresent(By by) {
         try {
@@ -172,7 +178,6 @@ public class BaseTest {
 
     /**
      * This method will capture an expected Alert and return the Alert text in a string.
-     *
      */
     public String closeAlertAndGetItsText() {
         try {
@@ -192,7 +197,6 @@ public class BaseTest {
 
     /**
      * This method will capture and close an expected Alert.
-     *
      */
     public String closeAlert() {
         try {
@@ -208,7 +212,6 @@ public class BaseTest {
 
     /**
      * This method will close an on-screen modal dialog/window.
-     *
      */
     public void closeModal() {
         Set<String> windowids = driver.getWindowHandles();
@@ -228,36 +231,29 @@ public class BaseTest {
      * @param passWord password of SLX username
      */
     public void LogOutThenLogBackIn(String userName, String passWord) throws InterruptedException {
-        String methodID = "LogOutThenLogBackIn";
-
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
         SLXMobileLogin slxmobilelogin = PageFactory.initElements(driver, SLXMobileLogin.class);
-
-        //Step: Log out of Mobile Client
-        commNav.clickGlobalMenuItem("sign off");
-        Thread.sleep(2000);
-        closeAlert();
-        Thread.sleep(1000);
-        driver.navigate().refresh();
-        Thread.sleep(2000);
-        System.out.println("invoking " + methodID + " method...");
 
         //Step: Clear cookies
         driver.manage().deleteAllCookies();
+        driver.navigate().refresh();
 
         //Step: Redo login using valid credentials
-        slxmobilelogin.doLogin(userName, passWord, true);
+        slxmobilelogin.doLogin(userName, passWord, false);
     }
 
 
     /**
      * This method will close and quit the WebDriver.
-     *
      */
-    @AfterClass
+    @AfterMethod
     public void closeBrowser() {
         try {
+            if (driver == null) {
+                return;
+            }
+
             driver.quit();
+            driver = null;
         } catch (Exception e) {
             System.out.println("WEBDRIVER ERROR: " + e.getMessage());
         }
@@ -269,81 +265,9 @@ public class BaseTest {
      * are defined in the app.properties file. After the verification check, this method will perform an login using the username an password members
      * defined in the BaseTest class.
      */
-    public void doVerificationLogin() throws InterruptedException {
-        String methodID = "doVerificationLogin";
-
+    public boolean doVerificationLogin() throws InterruptedException {
         SLXMobileLogin slxMobileLogin = PageFactory.initElements(driver, SLXMobileLogin.class);
-
-        //VP: the Mobile Login screen is loaded from base URL
-        CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
-        commNav.waitForPage(fullProdName);
-
-        //VP: Page Title (header text - not pagetitle property)
-        Thread.sleep(1000);
-        try {
-            AssertJUnit.assertEquals(shortProdName, driver.getTitle());
-            System.out.println("VP: Login Screen Title check - Passed");
-        }
-        catch (Error e) {
-            System.out.println("Error: Login Screen Title check - Failed");
-            verificationErrors.append(methodID).append("(): ").append(e.toString());
-        }
-
-        //VP: Login Page Name
-        Thread.sleep(1000);
-        try {
-            AssertJUnit.assertTrue(commNav.isPageDisplayed(fullProdName));
-            System.out.println("VP: Login Page Name check - Passed");
-        }
-        catch (Error e) {
-            System.out.println("Error: Login Page Name check - Failed");
-            verificationErrors.append(methodID + "(): " + e.toString());
-        }
-
-        //VP: product logo
-        try {
-            AssertJUnit.assertTrue(commNav.isElementDisplayed(By.xpath(".//*[@id='login']/p/img")));
-            System.out.println("VP: 'infor' logo check  - Passed");
-        }
-        catch (Error e) {
-            System.out.println("Error: product logo check - Failed");
-            verificationErrors.append(methodID + "(): " + e.toString());
-        }
-
-        //VP: Copyright Info
-
-        try {
-            AssertJUnit.assertEquals(copyrightLabel, driver.findElement(By.xpath(".//*[@id='login']/span[1]")).getText());
-            System.out.println("VP: Copyright check - Passed");
-        }
-        catch (Error e) {
-            System.out.println("Error: Copyright check - Failed");
-            verificationErrors.append(methodID + "(): " + e.toString());
-        }
-        try {
-            AssertJUnit.assertEquals(versionLabel, driver.findElement(By.xpath(".//*[@id='login']/span[2]")).getText());
-            System.out.println("VP: Version Label check - Passed");
-        }
-        catch (Error e) {
-            System.out.println("Error: Version Label check - Failed");
-            verificationErrors.append(methodID + "(): " + e.toString());
-        }
-
-        // Step: Enter username and password then click the logon button
-        slxMobileLogin.doLogin(userName, userPwd, true);
-
-        // VP: confirm that the 'My Activities' screen displays after login
-        Thread.sleep(3000);
-        try {
-            //AssertJUnit.assertTrue(driver.findElement(By.xpath(".//*[@id='myactivity_list']")).isDisplayed());
-            System.out.println("VP: Successfully logged in to Mobile Client.");
-        } catch (UnhandledAlertException e) {
-            //closeAlert();
-            closeModal();
-            //assertEquals("The user name or password is invalid.", closeAlertAndGetItsText());
-            System.out.println("Error: Unable to login to Mobile Client.");
-            System.out.println(methodID + "(): " + e.toString());
-        }
+        return slxMobileLogin.doLogin(userName, userPwd, false);
     }
 
 
@@ -351,32 +275,17 @@ public class BaseTest {
      * This method perform a Logoff from the Mobile Client.  After logoff, a verification check on the
      * SLX Mobile Client Logoff page is performed.  The verification values are defined in the app.properties
      * file.
-     *
      */
     public void doVerificationLogout() throws InterruptedException {
-        String methodID = "doVerificationLogout";
-
         CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
         // Click the Log Off button
         commNav.clickGlobalMenuItem("sign off");
-        Thread.sleep(2000);
         closeAlert();
-        Thread.sleep(1000);
         driver.navigate().refresh();
-        Thread.sleep(2000);
-
-
-        //WebDriverWait wait = new WebDriverWait(driver, 10);
-        //wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("pageTitle"), fullProdName));
-
-        // Verify the Mobile Login screen displays
-        try {
-            AssertJUnit.assertEquals(fullProdName, driver.findElement(By.id("pageTitle")).getText());
-            System.out.println("VP: Mobile Client Sign Off Check - Passed");
-        } catch (Error e) {
-            System.out.println("Error: Mobile Client Sign Off Check - FAILED");
-            System.out.println(methodID + "(): " + e.toString());
-        }
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .pollingEvery(250, TimeUnit.MILLISECONDS)
+                .withTimeout(30, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='login' and @selected='selected]")));
     }
 }

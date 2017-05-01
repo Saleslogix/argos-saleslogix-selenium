@@ -1,5 +1,6 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -15,9 +16,9 @@ import java.util.List;
 
 /**
  * Test class that defines test methods for the SLX Mobile Defect (v3.3.0) fixes.
- * 
+ *
  * @author kathleen.lockyer-bratton@infor.com
- * @version	1.0
+ * @version 1.0
  */
 public class MobileSprint330 extends BaseTest {
 
@@ -25,20 +26,20 @@ public class MobileSprint330 extends BaseTest {
     public String TEST_CONTACT_RECORD = "Abbott, John";
     public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-    @Test(enabled = true)
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -65,9 +66,7 @@ public class MobileSprint330 extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -77,7 +76,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10793 ... Opportunity - an edit to the 'est close' is setting the date to a day ahead of what was chosen
 
     public void test01_MBL10793() throws Exception {
@@ -105,7 +104,6 @@ public class MobileSprint330 extends BaseTest {
             //Step: edit the opportunity, save the original 'est close' value
             headerButton.editButton.click();
             commNav.waitForPage("Opportunity");
-            Thread.sleep(3000);
             String estCloseDateOriginal = oppsListView.opportunityEditViewEstCloseInputFld.getAttribute("value");
             String[] dateValues = estCloseDateOriginal.split("/");
             System.out.println("Original opportunity 'est close' date has a month of : " + dateValues[0] + ", a day of : " + dateValues[1] + ", and year of : " + dateValues[2]);
@@ -140,10 +138,9 @@ public class MobileSprint330 extends BaseTest {
 
             //  if original month is 01, then expected month should be 12, and the expected year should be 1 less than the original year
             if (Integer.valueOf(dateValues[0]) == 1) {
-                expectedMonth =  "12";
+                expectedMonth = "12";
                 expectedYear = Integer.toString(Integer.valueOf(dateValues[2]) - 1);
-            }
-            else {
+            } else {
                 expectedMonth = Integer.toString(Integer.valueOf(dateValues[0]) - 1);
                 expectedYear = dateValues[2];
             }
@@ -157,9 +154,7 @@ public class MobileSprint330 extends BaseTest {
             System.out.println("VP: revised date does have the expected year of ... " + expectedYear + " - PASSED");
 
 
-
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             AssertJUnit.fail("test failed");
         }
@@ -168,7 +163,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10838 ... 8.1 Update 05 Activity Endpoint Changes : changing timeless activity start date should not save activitiy as not timeless
 
     public void test02_MBL10838() throws Exception {
@@ -191,7 +186,7 @@ public class MobileSprint330 extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -208,7 +203,6 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -232,7 +226,6 @@ public class MobileSprint330 extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Meeting - Regarding: " + newActivityRegarding);
-            Thread.sleep(1000);
 
 
             //Step: open the activity created in edit mode
@@ -241,7 +234,6 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: edit the start date and re-save activity
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -258,19 +250,16 @@ public class MobileSprint330 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             String editedActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("Date/time value for Start Date changed to : " + editedActivityStartDate);
             headerButton.clickHeaderButton("Save");
             commNav.waitForPage("Meeting - Regarding: " + newActivityRegarding);
-            Thread.sleep(1000);
 
             //Step: re-edit activity, retrieve edited start date
             headerButton = PageFactory.initElements(driver, HeaderButton.class);
             headerButton.clickHeaderButton("Edit");
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             String edited2ActivityStartDate = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
@@ -278,9 +267,7 @@ public class MobileSprint330 extends BaseTest {
             AssertJUnit.assertEquals("VP: after editing start date and re-saving timeless activity, activity is no longer timeless - FAILED", editedActivityStartDate, edited2ActivityStartDate);
             System.out.println("VP: after editing start date and re-saving timeless activity, activity remains timeless - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: changing timeless activity start date and saving should keep activity as timeless " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -290,7 +277,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10659 ... for Firefox, the Contact detail 'View address' quick action does nothing
 
     public void test03_MBL10659() throws Exception {
@@ -335,10 +322,9 @@ public class MobileSprint330 extends BaseTest {
             driver.switchTo().frame(0);
             List elements = driver.findElements(By.xpath("//*[@id='mapDiv']//span[1][contains(text(), 'Google')]"));
 
-            if(elements.size() > 0) {
+            if (elements.size() > 0) {
                 System.out.println("VP: View Address action for contact has opened a map with address - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: View Address action for contact has opened a map with address - FAILED");
                 AssertJUnit.fail("test failed");
             }
@@ -360,7 +346,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10675 ... Lookup functionality is invalid in the Ticket Urgency
 
 
@@ -405,8 +391,7 @@ public class MobileSprint330 extends BaseTest {
             System.out.println("VP: 2nd item in Urgency list is 'High'  - PASSED");
 
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(e.toString());
             System.out.println(methodID + ": ticket urgency lookup failed");
             AssertJUnit.fail("test failed");
@@ -416,7 +401,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10853 ... New Activities opened from Calendar view in Mobile do not auto populate cached Account, Contact, or Lead information (Unifirst 15097946)
 
     public void test05_MBL10853() throws Exception {
@@ -457,7 +442,6 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: retrieve value for activity Account
             String newActivityAccount = activityEditView.activityEditViewAccountFld.getAttribute("value");
@@ -467,8 +451,7 @@ public class MobileSprint330 extends BaseTest {
             AssertJUnit.assertEquals("VP: Activity created from Calendar has been pre-populated with previous Account value of ... " + TEST_ACCOUNT_RECORD + " - FAILED", TEST_ACCOUNT_RECORD, newActivityAccount);
             System.out.println("VP: Activity created from Calendar has been pre-populated with previous Account value of ... " + TEST_ACCOUNT_RECORD + " - PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(e.toString());
             System.out.println(methodID + ": auto-population of calendar activity failed");
             AssertJUnit.fail("test failed");
@@ -479,7 +462,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10402 ... Activities - timeless activities in listview displaying unexpected timeframe
 
     public void test06_MBL10402() throws Exception {
@@ -500,7 +483,7 @@ public class MobileSprint330 extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -517,7 +500,6 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -545,9 +527,7 @@ public class MobileSprint330 extends BaseTest {
             AssertJUnit.assertEquals("VP: Timeless activity displays in listview with a timeframe of 'Timeless' - FAILED", "Timeless", activityTime);
             System.out.println("VP: Timeless activity displays in listview with a timeframe of 'Timeless' - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Timeless activities in listview displaying unexpected timeframe " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -557,8 +537,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-
-    @Test(enabled = true)
+    @Test
     //MBL-10749 ... Opportunity listview : when adding a product via Products quick action, the Opportunity field does not populate by default [DTS 14097414]
 
     public void test07_MBL10749() throws Exception {
@@ -602,20 +581,18 @@ public class MobileSprint330 extends BaseTest {
             System.out.println("VP: When added via listview quick action, Product opportunity value has been pre-populated with associated opportunity of ... " + TEST_OPPORTUNITY_RECORD + " - PASSED");
 
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Opportunity populated when adding product via listview quick action " + " - FAILED");
             AssertJUnit.fail("test failed");
         }
 
 
-
         System.out.println(ENDLINE);
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10893/ MBL-10894 ... new activities added default to a time within the next 15 minutes
 
     public void test08_MBL10894() throws Exception {
@@ -650,12 +627,11 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: retrieve value for start time ... creating an activity for "today"
             String strDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: 'Today' activity date/ time is ... " + strDateTime);
-            String activityTime = strDateTime.substring(strDateTime.indexOf(' ')+1);
+            String activityTime = strDateTime.substring(strDateTime.indexOf(' ') + 1);
             System.out.println("VP: Activity time has a value of ... " + activityTime);
 
 
@@ -663,7 +639,6 @@ public class MobileSprint330 extends BaseTest {
             SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
             Calendar activityDateTime1 = Calendar.getInstance();
             activityDateTime1.setTime(ft.parse(activityTime));
-
 
 
             //Step: convert current date/ time to date format of "hh:mm a", then convert time portion back to calendar date format
@@ -684,8 +659,7 @@ public class MobileSprint330 extends BaseTest {
             //Step: check that the number of minutes between activity date/time and current date is between 1 and 15
             if (diffInMinutes >= 1 && diffInMinutes <= 15) {
                 System.out.println("VP: new activity added today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: new activity added today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - FAILED");
                 AssertJUnit.fail("test failed");
             }
@@ -711,12 +685,11 @@ public class MobileSprint330 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: retrieve value for start time ... creating an activity that is "not for today"
             strDateTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: 'Not for Today' activity date/ time is ... " + strDateTime);
-            activityTime = strDateTime.substring(strDateTime.indexOf(' ')+1);
+            activityTime = strDateTime.substring(strDateTime.indexOf(' ') + 1);
             System.out.println("VP: Activity time has a value of ... " + activityTime);
 
 
@@ -724,7 +697,6 @@ public class MobileSprint330 extends BaseTest {
             ft = new SimpleDateFormat("hh:mm a");
             activityDateTime1 = Calendar.getInstance();
             activityDateTime1.setTime(ft.parse(activityTime));
-
 
 
             //Step: convert current date/ time to date format of "hh:mm a", then convert time portion back to calendar date format
@@ -745,14 +717,12 @@ public class MobileSprint330 extends BaseTest {
             //Step: check that the number of minutes between activity date/time and current date/time is between 1 and 15
             if (diffInMinutes >= 1 && diffInMinutes <= 15) {
                 System.out.println("VP: new activity added not for today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - PASSED");
-            }
-            else {
+            } else {
                 System.out.println("VP: new activity added not for today is defaulting to a time within the next 15 minutes ... " + diffInMinutes + " - FAILED");
                 AssertJUnit.fail("test failed");
             }
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(e.toString());
             System.out.println(methodID + ": new activities added default to a time within the next 15 minutes failed");
             AssertJUnit.fail("test failed");
@@ -763,20 +733,16 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
+    @Test
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
 
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
+        doVerificationLogout();
 
-    @Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
-
+        System.out.println(ENDLINE);
+    }
 
 
 }

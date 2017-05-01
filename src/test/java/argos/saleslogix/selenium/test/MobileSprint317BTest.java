@@ -1,5 +1,6 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -13,9 +14,9 @@ import java.util.GregorianCalendar;
 
 /**
  * Test class that defines test methods for the SLX Mobile Defect (v3.1 sprint 7) fixes
- * 
+ *
  * @author kathleen.lockyer-bratton@swiftpage.com
- * @version	1.0
+ * @version 1.0
  */
 public class MobileSprint317BTest extends BaseTest {
 
@@ -23,21 +24,21 @@ public class MobileSprint317BTest extends BaseTest {
     public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
     public String TEST_ACCOUNT2_RECORD = "Bank of the Sun";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
 
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -64,9 +65,7 @@ public class MobileSprint317BTest extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -76,7 +75,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10552 ... New activity defaults to 'repeats' of 'Daily' ... expecting blank or 'Never' ; 'Never' used
 
     public void test01_MBL10552() throws Exception {
@@ -97,7 +96,7 @@ public class MobileSprint317BTest extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -114,7 +113,6 @@ public class MobileSprint317BTest extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: verify that the 'repeats' field defaults to 'Never'
             String repeatsFieldValue = activityEditView.activityEditViewRepeatsFld.getAttribute("value");
@@ -122,9 +120,7 @@ public class MobileSprint317BTest extends BaseTest {
             System.out.println("VP: activity 'repeats' field does default to 'Never' - PASSED");
 
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: activity 'repeats' field does not default to 'Never' " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -134,7 +130,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10501 ... Lead web address may be entered with prefix of 'http://', but on trying to then access web site, it fails ... should open site as expected
 
     public void test02_MBL10501() throws Exception {
@@ -184,7 +180,7 @@ public class MobileSprint317BTest extends BaseTest {
             Thread.sleep(7000);
 
             //Switch to new window opened for the lead web site
-            for(String winHandle : driver.getWindowHandles()){
+            for (String winHandle : driver.getWindowHandles()) {
                 driver.switchTo().window(winHandle);
             }
 
@@ -207,7 +203,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10509 ... Create a logoff view
 
     public void test03_MBL10509() throws Exception {
@@ -244,7 +240,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10504 ... End user should not be able to edit the notes of any other user [submittal 14096396]
 
     public void test04_MBL10504() throws Exception {
@@ -311,17 +307,16 @@ public class MobileSprint317BTest extends BaseTest {
         //Step: search for note added by user lee ... 'Note added by lee'
         String strResultsMsg = "VP: Note added by user lee ... '" + strRegardingVal + "' ... found by user loup";
         WebElement entityListItem = commNav.entityListViewSearch("Notes/History", strRegardingVal);
-        if (entityListItem.isDisplayed())  {
+        if (entityListItem.isDisplayed()) {
             System.out.println(strResultsMsg + " - PASSED");
             entityListItem.click();
             commNav.waitForPage("Note");
             headerButton.clickHeaderButton("Edit");
             notesHistoryAddView.notesHistoryEditViewContactFldBtn.click();
             commNav.waitForPage("Note");
-            AssertJUnit.assertEquals("VP: it appears that user loup can edit user lee's note - FAILED","Note", driver.findElement(By.id("pageTitle")).getText());
+            AssertJUnit.assertEquals("VP: it appears that user loup can edit user lee's note - FAILED", "Note", driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: it appears that user loup cannot edit user lee's note - PASSED");
-        }
-        else {
+        } else {
             System.out.println(strResultsMsg + " - FAILED");
             AssertJUnit.fail("test failed");
         }
@@ -330,7 +325,7 @@ public class MobileSprint317BTest extends BaseTest {
 
     }
 
-    @Test(enabled = true)
+    @Test
     // MBL-10505 ... When product name contains quote (10"KSE-100-6T) on Opportunity Product screen, receive error trying to open the 'price level' lookup
     //               Pre-requisite ... product 10"KSE-100-6T has been added in admin's web client as follows ... Administration - New Product
     //               - Add product 10"KSE-100-6T, and assign it some price levels (MSRP and Wholesale)
@@ -380,11 +375,10 @@ public class MobileSprint317BTest extends BaseTest {
             //Step: verify that 'price level' lookup button opens the expected view, with no error
             opportunityDetailView.opportunityProductViewPriceLevelBtn.click();
             commNav.waitForPage("Product Programs");
-            AssertJUnit.assertEquals("VP: where product name contains double quotes, 'price level' lookup opens - FAILED","Product Programs", driver.findElement(By.id("pageTitle")).getText());
+            AssertJUnit.assertEquals("VP: where product name contains double quotes, 'price level' lookup opens - FAILED", "Product Programs", driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: where product name contains double quotes, 'price level' lookup opens - PASSED");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: where product name contains double quotes, 'price level' lookup opens - FAILED");
             AssertJUnit.fail("test failed");
@@ -394,7 +388,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10543 ... Recurring Activities - on editing all occurrences, changing repeats from Daily to 'Never' has no effect
     public void test06_MBL10543() throws Exception {
         String methodID = "test06_MBL10543";
@@ -414,7 +408,7 @@ public class MobileSprint317BTest extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -431,7 +425,6 @@ public class MobileSprint317BTest extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -444,7 +437,6 @@ public class MobileSprint317BTest extends BaseTest {
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringDailyFld.click();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             String recurringValue = activityEditView.activityEditViewRecurringFld.getText();
@@ -462,11 +454,10 @@ public class MobileSprint317BTest extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
-            Thread.sleep(1000);
 
 
             //Step: open the activity created in edit mode ... close alert, should default to 'OK' being chosen
-            headerButton.clickHeaderButton("Edit");
+            headerButton.clickHeaderButton("edit");
             Thread.sleep(2000);
             closeAlert();
             Thread.sleep(1000);
@@ -474,14 +465,12 @@ public class MobileSprint317BTest extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: change 'repeats' to 'Never', then check value of recurring ... should be blank
             activityEditView.activityEditViewRepeatsFldBtn.click();
             commNav.waitForPage("Recurring");
             activityEditView.activityRecurringNeverFld.click();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             recurringValue = activityEditView.activityEditViewRecurringFld.getText();
             AssertJUnit.assertEquals("VP: after setting 'repeats' to Never, 'recurring' field on activity edit view is not blank - FAILED", "", recurringValue);
             System.out.println("VP: after setting 'repeats' to Never, 'recurring' field on activity edit view is now blank - PASSED");
@@ -490,18 +479,14 @@ public class MobileSprint317BTest extends BaseTest {
             activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
             headerButton.clickHeaderButton("Save");
             commNav.waitForNotPage("Meeting");
-            Thread.sleep(1000);
             headerButton.clickHeaderButton("Edit");
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             recurringValue = activityEditView.activityEditViewRecurringFld.getText();
             AssertJUnit.assertEquals("VP: after setting 'repeats' to Never, and re-opening in edit mode, 'recurring' field on activity edit view is not blank - FAILED", "", recurringValue);
             System.out.println("VP: after setting 'repeats' to Never, and re-opening in edit mode, 'recurring' field on activity edit view is still blank - PASSED");
 
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: after setting activity 'repeats' to Never, recurring field is not blank - FAILED");
             AssertJUnit.fail("test failed");
@@ -511,7 +496,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10557 ... Non-Group listview : after lookup specific value, then edit record, on returning to listview see lookup value, but all records are actually
     public void test07_MBL10557() throws Exception {
         String methodID = "test07_MBL10557";
@@ -547,7 +532,7 @@ public class MobileSprint317BTest extends BaseTest {
             headerButton.clickHeaderButton("back");
             Thread.sleep(3000);
             String topAccountDisplayed = accountEditView.topAccountsListItemName.getText();
-            System.out.println("topAccountDisplayed is ... " + topAccountDisplayed );
+            System.out.println("topAccountDisplayed is ... " + topAccountDisplayed);
             AssertJUnit.assertEquals("VP: after an Account lookup, then edit and save of account, filtered lookup no longer in effect - FAILED", TEST_ACCOUNT2_RECORD, topAccountDisplayed);
             System.out.println("VP: after an Account lookup, then edit and save of account, filtered lookup is still in effect - PASSED");
 
@@ -561,7 +546,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10578 ... Mobile 3.0.x work phone field added via 'Add Account / Contact' does not populate for a contact
     public void test08_MBL10578() throws Exception {
         String methodID = "test08_MBL10578";
@@ -592,8 +577,7 @@ public class MobileSprint317BTest extends BaseTest {
                 commView.nameFirstInputFld.sendKeys("Andrew");
                 commView.nameLastInputFld.sendKeys(newConLastName);
                 headerButton.clickHeaderButton("check");
-            }
-            catch (Exception e0) {
+            } catch (Exception e0) {
                 System.out.println(methodID + "(): " + e0.toString());
                 headerButton.goBack();
                 AssertJUnit.fail("test failed adding contact name");
@@ -608,8 +592,7 @@ public class MobileSprint317BTest extends BaseTest {
             addAcctCntctView.addAcctCntContactWorkPhoneInputFld.sendKeys("602.555.1313");
             System.out.println("VP: contact work phone entered on Add Account / Contact screen is (602)-555-1313");
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(methodID + "(): " + e.toString());
             AssertJUnit.fail("test failed adding account/ contact");
         }
@@ -618,7 +601,7 @@ public class MobileSprint317BTest extends BaseTest {
         headerButton.clickHeaderButton("save");
         commNav.waitForNotPage("Add Account / Contact");
 
-        System.out.println(methodID + ": Auto-test new Account - " +  newAcctName + " with new Contact - " + newConLastName + "records were created.");
+        System.out.println(methodID + ": Auto-test new Account - " + newAcctName + " with new Contact - " + newConLastName + "records were created.");
 
 
         //Step: find the newly-added test Contact record using Contact NameLF lookup ... MBL-10587
@@ -648,17 +631,16 @@ public class MobileSprint317BTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+    @Test
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
 
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 
 
 }

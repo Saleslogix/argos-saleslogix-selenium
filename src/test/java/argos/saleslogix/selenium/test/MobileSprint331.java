@@ -1,10 +1,9 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
@@ -14,16 +13,16 @@ import java.util.GregorianCalendar;
 
 /**
  * @author Kathy Lockyer-Bratton
- * Class: MobileSprint331
- * Desc.: Test class for some defects or features in Mobile 3.3.1
+ *         Class: MobileSprint331
+ *         Desc.: Test class for some defects or features in Mobile 3.3.1
  */
 public class MobileSprint331 extends BaseTest {
 
-	
-	//Test Methods Set
-	//================
 
-    @Test(enabled = true)
+    //Test Methods Set
+    //================
+
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -50,9 +49,7 @@ public class MobileSprint331 extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -62,7 +59,7 @@ public class MobileSprint331 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-3395 ... Calendar - unable to add more than one activity under 'Month' view ... Schedule page not opening
     //                   Requires that Month view, first day on third row, has no activities (THIS RESTRICTION IS NO LONGER RELEVANT AND DOES NOT APPLY in 3.4.2)
     public void test01_INFORCRM3395() throws Exception {
@@ -105,7 +102,6 @@ public class MobileSprint331 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -130,13 +126,10 @@ public class MobileSprint331 extends BaseTest {
             headerButton.clickHeaderButton("Add");
             commNav.waitForPage("Schedule...");
             String pageTitle = "Schedule...";
-            AssertJUnit.assertEquals("VP: after creating an activity under Calendar Month view, again pressing Add header button opens the Schedule page - FAILED",pageTitle, driver.findElement(By.id("pageTitle")).getText());
+            AssertJUnit.assertEquals("VP: after creating an activity under Calendar Month view, again pressing Add header button opens the Schedule page - FAILED", pageTitle, driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: after creating an activity under Calendar Month view, again pressing Add header button opens the Schedule page - PASSED");
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: after creating an activity under Calendar Month view, again pressing Add header button opens the Schedule page - FAILED");
             AssertJUnit.fail("test failed");
@@ -147,7 +140,7 @@ public class MobileSprint331 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-3594 ... Date picker off by one month when setting up a Timeless Activity on the first day of the month
     public void test02_INFORCRM3594() throws Exception {
         String methodID = "test02_INFORCRM3594";
@@ -168,7 +161,7 @@ public class MobileSprint331 extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -185,7 +178,6 @@ public class MobileSprint331 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -215,7 +207,6 @@ public class MobileSprint331 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: save activity
             headerButton.clickHeaderButton("Save");
@@ -229,7 +220,6 @@ public class MobileSprint331 extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='myactivity_list']//ul/li[1]/descendant::*[text() = '" + newActivityRegarding + "']"));
             commNav.highlightNClick(activityItemLnk);
             commNav.waitForPage("Activity");
-            Thread.sleep(1000);
 
 
             //Step: open the activity created in edit mode
@@ -237,7 +227,6 @@ public class MobileSprint331 extends BaseTest {
 
             //Step: wait for page Activity
             commNav.waitForPage("Activity");
-            Thread.sleep(1000);
 
             //Step: toggle off the Timeless button
             activityEditView.activityEditViewTimelessTgl.click();
@@ -260,9 +249,7 @@ public class MobileSprint331 extends BaseTest {
             AssertJUnit.assertEquals("VP: DateTimePicker Calendar month not off by a month when setting activity to be timeless on 1st day of the month - FAILED", initialMonthText, currentMonthText);
             System.out.println("VP: DateTimePicker Calendar month not off by a month when setting activity to be timeless on 1st day of the month - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: DateTimePicker Calendar month not off by a month when setting activity to be timeless on 1st day of the month - FAILED");
             AssertJUnit.fail("test failed");
@@ -312,7 +299,6 @@ public class MobileSprint331 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -337,13 +323,10 @@ public class MobileSprint331 extends BaseTest {
 
             String expectedActivityCount = Integer.toString(Integer.parseInt(activityCountInitial) + 1);
             System.out.println("VP: Expected value of activity count for first day of current month is - " + expectedActivityCount);
-            AssertJUnit.assertEquals("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - FAILED",expectedActivityCount, activityCountFinal);
+            AssertJUnit.assertEquals("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - FAILED", expectedActivityCount, activityCountFinal);
             System.out.println("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - PASSED");
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: after adding an All-Day activity on the first day of the month under Calendar Month view, activity count has been increased by 1 - FAILED");
             AssertJUnit.fail("test failed");
@@ -354,27 +337,27 @@ public class MobileSprint331 extends BaseTest {
     }
 
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 }

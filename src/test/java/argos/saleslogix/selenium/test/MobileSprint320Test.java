@@ -1,32 +1,29 @@
 package argos.saleslogix.selenium.test;
 
-import org.openqa.selenium.By;
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 
 /**
  * @author Kathy Lockyer-Bratton
- * Class: MobileSprint320Test
- * Desc.: Test class for some defects or features in Mobile 3.2
+ *         Class: MobileSprint320Test
+ *         Desc.: Test class for some defects or features in Mobile 3.2
  */
 public class MobileSprint320Test extends BaseTest {
 
     public String TEST_CONTACT_RECORD = "Abbott, John";
-	
-	//Test Methods Set
-	//================
+
+    //Test Methods Set
+    //================
 
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -53,9 +50,7 @@ public class MobileSprint320Test extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -65,7 +60,7 @@ public class MobileSprint320Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10698 ... Recurring Activity : for Complete Occurrence screen, leader displays as an ID
 
     public void test01_MBL10698() throws Exception {
@@ -85,7 +80,7 @@ public class MobileSprint320Test extends BaseTest {
         LogOutThenLogBackIn(userName, userPwd);
 
         //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-        if (!commNav.isPageDisplayed("My Activities"))   {
+        if (!commNav.isPageDisplayed("My Activities")) {
             commNav.clickGlobalMenuItem("My Activities");
             commNav.waitForPage("My Activities");
         }
@@ -103,7 +98,6 @@ public class MobileSprint320Test extends BaseTest {
 
         //Step: wait for page Meeting to open
         commNav.waitForPage("Meeting");
-        Thread.sleep(1000);
 
 
         //Step: add an Activity record with a random value for 'regarding'
@@ -117,17 +111,14 @@ public class MobileSprint320Test extends BaseTest {
         commNav.waitForPage("Recurring");
         activityEditView.activityRecurringDailyFld.click();
         commNav.waitForPage("Meeting");
-        Thread.sleep(1000);
 
 
         activityEditView.activityEditViewRecurringFldBtn.click();
         commNav.waitForPage("Recurrence");
         activityEditView.activityRecurrenceOccurencesFld.clear();
         activityEditView.activityRecurrenceOccurencesFld.sendKeys("2");
-        headerButton.checkButton.click();
+        headerButton.clickHeaderButton("check");
         commNav.waitForPage("Meeting");
-        Thread.sleep(1000);
-
 
         //Step: retrieve the value of the activity's Leader ... and print
         String initialLeaderValue = activityEditView.activityEditViewLeaderFld.getAttribute("value");
@@ -149,15 +140,13 @@ public class MobileSprint320Test extends BaseTest {
         //Step: open the activity, then choose to 'Complete Occurrence'
         activityEditView.topMyActivitiesListItem.click();
         commNav.waitForPage("Activity");
-        Thread.sleep(3000);
         activityEditView.activityDetailViewCompleteOccurrenceLnk.click();
         commNav.waitForPage("Complete Occurrence");
-        Thread.sleep(1000);
 
         //Step: retrieve the value of the Leader on this dialog, and compare to the initial value of Leader ... should be the same (ie: NOT an ID)
         String completeOccurrenceLeaderValue = activityEditView.activityEditViewLeaderFld.getAttribute("value");
         System.out.println("VP: on 'Complete Occurrence' dialog, the value for Leader is ... " + completeOccurrenceLeaderValue);
-        AssertJUnit.assertEquals("VP: the value of Leader on 'Complete Occurrence' dialog is not the same as Leader value on initial activity creation - FAILED",initialLeaderValue,completeOccurrenceLeaderValue);
+        AssertJUnit.assertEquals("VP: the value of Leader on 'Complete Occurrence' dialog is not the same as Leader value on initial activity creation - FAILED", initialLeaderValue, completeOccurrenceLeaderValue);
         System.out.println("VP: the value of Leader on 'Complete Occurrence' dialog is the same as Leader value on initial activity creation - PASSED");
 
 
@@ -165,7 +154,7 @@ public class MobileSprint320Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10411 ... Complete activity with follow-up constantly displays 'loading...', and gives error on save
 
     public void test02_MBL10411() throws Exception {
@@ -202,7 +191,6 @@ public class MobileSprint320Test extends BaseTest {
         commNav.waitForPage("Schedule...");
         activityEditView.activityScheduleMeetingBtn.click();
         commNav.waitForPage("Meeting");
-        Thread.sleep(1000);
 
         //Step: add an Activity record with a random value for 'regarding'
         String newActivityRegarding = "SeAutoTestActivity-1-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -223,10 +211,8 @@ public class MobileSprint320Test extends BaseTest {
         activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
         activityEditView.topRelatedActivitiesListItem.click();
         commNav.waitForPage("Activity");
-        Thread.sleep(1000);
         activityEditView.activityDetailViewCompleteActivityLnk.click();
         commNav.waitForPage("Complete Activity");
-        Thread.sleep(1000);
 
         //Step: on Complete Activity, choose to 'follow-up' with a phone call activity after completion   ++
         activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
@@ -235,21 +221,18 @@ public class MobileSprint320Test extends BaseTest {
         commNav.waitForPage("Follow-up type");
         activityEditView.activityFollowUpSchedulePhoneCallBtn.click();
         commNav.waitForPage("Complete Activity");
-        Thread.sleep(1000);
         headerButton.clickHeaderButton("save");
 
         //Step: after saving the completed activity, should pop-up the follow-up activity for a phone call
         activityEditView = PageFactory.initElements(driver, MyActivityViewsElements.class);
         commNav.waitForPage("Phone Call");
-        Thread.sleep(3000);
 
         //Step: checking whether or not 'loading...' is constantly displaying on the 'Phone Call' screen : it should not
         String loadingMessage = activityEditView.activityEditViewLoadingMessage.getText();
-        if(loadingMessage.contentEquals("loading...")) {
+        if (loadingMessage.contentEquals("loading...")) {
             System.out.println("VP: Complete activity with follow-up constantly displaying 'loading...' - FAILED");
             AssertJUnit.fail("VP: test failed");
-        }
-        else {
+        } else {
             System.out.println("VP: Complete activity with follow-up not constantly displaying 'loading...' - PASSED");
         }
 
@@ -257,27 +240,27 @@ public class MobileSprint320Test extends BaseTest {
     }
 
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 }

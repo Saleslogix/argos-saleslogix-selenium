@@ -1,7 +1,7 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,13 +10,12 @@ import org.testng.annotations.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 
 /**
  * @author Kathy Lockyer-Bratton
- * Class: MobileSprint340B
- * Desc.: Test class for some defects or features in Mobile 3.4.0
+ *         Class: MobileSprint340B
+ *         Desc.: Test class for some defects or features in Mobile 3.4.0
  */
 public class MobileSprint340B extends BaseTest {
 
@@ -25,12 +24,12 @@ public class MobileSprint340B extends BaseTest {
     public String TEST_LEAD_RECORD = "Beck, John";
     public String TEST_OPPORTUNITY_RECORD = "Vegas Vision-Phase1";
     public String TEST_TICKET_RECORD = "001-00-000014";
-	
-	//Test Methods Set
-	//================
+
+    //Test Methods Set
+    //================
 
 
-    @Test(enabled = true)
+    @Test
     // OFFLINE ... briefcase items, view detail of items, clear offline data
     public void test01_OFFLINE() throws Exception {
         String methodID = "test01_OFFLINE";
@@ -165,7 +164,6 @@ public class MobileSprint340B extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -184,7 +182,6 @@ public class MobileSprint340B extends BaseTest {
             String activityTitle = scheduleListView.myScheduleListItem1.getAttribute("data-descriptor");
             scheduleListView.myScheduleListItem1.click();
             commNav.waitForPage(activityTitle);
-            Thread.sleep(1000);
 
             headerButton.clickHeaderButton("Briefcase");
             System.out.println("VP: Activity " + activityTitle + " is being briefcased");
@@ -196,7 +193,6 @@ public class MobileSprint340B extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage(activityTitle);
-            Thread.sleep(1000);
 
             //Step: go to My Briefcase
             System.out.println("VP: go to My Briefcase ...");
@@ -265,10 +261,7 @@ public class MobileSprint340B extends BaseTest {
 
             System.out.println("VP: OFFLINE features for briefcase, recently viewed, clearing offline data - PASSED");
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: OFFLINE features for briefcase, recently viewed, clearing offline data - FAILED");
             AssertJUnit.fail("test failed");
@@ -279,28 +272,27 @@ public class MobileSprint340B extends BaseTest {
     }
 
 
+    //Login & Logout
+    //==============
+    @Test
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 }

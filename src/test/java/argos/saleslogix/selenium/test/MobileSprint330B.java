@@ -1,5 +1,6 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -15,9 +16,9 @@ import java.util.GregorianCalendar;
 
 /**
  * Test class that defines test methods for the SLX Mobile Defect (v3.3.0) fixes.
- * 
+ *
  * @author kathleen.lockyer-bratton@infor.com
- * @version	1.0
+ * @version 1.0
  */
 public class MobileSprint330B extends BaseTest {
 
@@ -26,20 +27,20 @@ public class MobileSprint330B extends BaseTest {
     public String TEST_CONTACT_RECORD = "Abbott, John";
     public String TEST_ACCOUNT_RECORD = "Abbott Ltd.";
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-    @Test(enabled = true)
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -66,9 +67,7 @@ public class MobileSprint330B extends BaseTest {
 
             System.out.println("VP: added My Activities back as a menu item - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: added My Activities back as a menu item - FAILED");
             AssertJUnit.fail("test failed");
@@ -78,7 +77,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10613 ... My Activities : phone - on adding a second activity, phone displays value for the first activity's account, while account is blank
 
     public void test01_MBL10613() throws Exception {
@@ -91,7 +90,6 @@ public class MobileSprint330B extends BaseTest {
         AccountViewsElements accountListView = PageFactory.initElements(driver, AccountViewsElements.class);
 
 
-
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
         try {
@@ -102,7 +100,7 @@ public class MobileSprint330B extends BaseTest {
 
 
             //Step: go to "My Activities" view, if not already there ... wait for page My Activities
-            if (!commNav.isPageDisplayed("My Activities"))   {
+            if (!commNav.isPageDisplayed("My Activities")) {
                 commNav.clickGlobalMenuItem("My Activities");
                 commNav.waitForPage("My Activities");
             }
@@ -119,7 +117,6 @@ public class MobileSprint330B extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: add an Activity record with a random value for 'regarding'
             String newActivityRegarding = "SeAutoTestActivity-" + new SimpleDateFormat("yyMMddHHmmss").format(new GregorianCalendar().getTime());
@@ -139,7 +136,6 @@ public class MobileSprint330B extends BaseTest {
             accountListView.relatedAccountsListViewTopItem.click();
             Thread.sleep(500);
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: retrieve the value for phone for the account record chosen
             String firstActivityPhoneNo = activityEditView.activityEditViewPhoneFld.getAttribute("value");
@@ -164,7 +160,6 @@ public class MobileSprint330B extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: with no account chosen for activity, verify that phone number is not set to the first activity's phone number - should be blank
             String secondActivityPhoneNo = activityEditView.activityEditViewPhoneFld.getAttribute("value");
@@ -173,9 +168,7 @@ public class MobileSprint330B extends BaseTest {
             AssertJUnit.assertEquals("VP: second activity phone number is not displaying as blank - FAILED", "", secondActivityPhoneNo);
             System.out.println("VP: second activity phone number is displaying as blank - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: second activity phone number is displaying as blank " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -185,7 +178,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10930 ... Cancelled edits still unexpectedly displaying
 
     public void test02_MBL10930() throws Exception {
@@ -219,7 +212,6 @@ public class MobileSprint330B extends BaseTest {
             //Step: press the 'edit' quick action button
             accountListView.topAccountsListItemQuickActionsEditBtn.click();
             commNav.waitForPage("Account");
-            Thread.sleep(1000);
 
             //Step: save the initial value of the phone
             String initialPhoneValue = accountListView.accountEditViewPhoneInputFld.getAttribute("value");
@@ -239,7 +231,6 @@ public class MobileSprint330B extends BaseTest {
             accountListView.topAccountsListItemIcon.click();
             accountListView.topAccountsListItemQuickActionsEditBtn.click();
             commNav.waitForPage("Account");
-            Thread.sleep(1000);
 
             //Step: retrieve the current value of phone ... should be equal to the initial value of the phone, before the edit
             String currentPhoneValue = accountListView.accountEditViewPhoneInputFld.getAttribute("value");
@@ -249,9 +240,7 @@ public class MobileSprint330B extends BaseTest {
             AssertJUnit.assertEquals("VP: after cancelled edit current value of phone equals initial value of phone - FAILED", initialPhoneValue, currentPhoneValue);
             System.out.println("VP: after cancelled edit current value of phone equals initial value of phone - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: cancelled edits still unexpectedly displaying " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -261,7 +250,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test03_MBL10928() throws Exception {
         //MBL-10928 ... Opportunity 'Quick Edit' quick action and 'Edit' screen
         //MBL-10935 ... Opportunity Quick Edit - disable 'close prob' editing for closed opportunities
@@ -436,9 +425,7 @@ public class MobileSprint330B extends BaseTest {
             System.out.println("VP: On re-opening different Opportunity " + TEST_OPPORTUNITY_RECORD2 + " after 3rd edit via Quick Edit, 'sales potential' does have expected value of : " + thirdEditSalesPotential + " - PASSED");
 
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Opportunity Quick Edit functioning as expected " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -449,7 +436,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test04_MBL10931() throws Exception {
         //MBL-10931 ... groups : verify that summary and detail listview layouts are reflected on the Quick Edit screen
         //                     : verify that group layout for a different group is reflected on the Quick Edit screen
@@ -459,143 +446,120 @@ public class MobileSprint330B extends BaseTest {
         HeaderButton headerbutton = PageFactory.initElements(driver, HeaderButton.class);
         OpportunityViewsElements opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
 
-
         System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
 
-        try {
+        //Step: login & log back in (to clear cookies)
+        LogOutThenLogBackIn(userName, userPwd);
 
-            //Step: login & log back in (to clear cookies)
-            LogOutThenLogBackIn(userName, userPwd);
+        //Step: navigate to Opportunity list view
+        commNav.clickGlobalMenuItem("Opportunities");
+        commNav.waitForPage("All Opportunities");
 
-            //Step: navigate to Opportunity list view
-            commNav.clickGlobalMenuItem("Opportunities");
-            commNav.waitForPage("All Opportunities");
-
-            //Step: reveal Right Context Menu panel, and choose 'Summary' layout
-            headerbutton.showRightContextMenu();
-            commNav.rmenu_GroupSummary.click();
-            System.out.println("VP: Summary layout chosen for 'All Opportunities' group");
-            commNav.waitForPage("All Opportunities");
-            Thread.sleep(3000);
+        //Step: reveal Right Context Menu panel, and choose 'Summary' layout
+        commNav.setGroupSummaryMode();
+        System.out.println("VP: Summary layout chosen for 'All Opportunities' group");
+        commNav.waitForPage("All Opportunities");
 
 
-            //Step: save group listview card layout information
-            String opportunityGroupLayout = opportunitiesListView.topOpportunityCardLayout.getText();
-            System.out.println("VP: Summary opportunityGroupLayout is ... " + opportunityGroupLayout);
+        //Step: save group listview card layout information
+        String opportunityGroupLayout = opportunitiesListView.topOpportunityCardLayout.getText();
+        System.out.println("VP: Summary opportunityGroupLayout is ... " + opportunityGroupLayout);
 
-            //Step: click button to display the Quick Actions
-            opportunitiesListView.topOpportunityListItemIcon.click();
+        //Step: click button to display the Quick Actions
+        opportunitiesListView.topOpportunityListItemIcon.click();
 
-            //Step: verify existence of the Quick Edit quick action, then click it to open the 'Edit' screen
-            commNav.checkIfWebElementPresent("Opportunity, Quick Action Quick Edit button", opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn);
-            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
-            commNav.waitForPage("Edit");
-            Thread.sleep(1000);
+        //Step: verify existence of the Quick Edit quick action, then click it to open the 'Edit' screen
+        commNav.checkIfWebElementPresent("Opportunity, Quick Action Quick Edit button", opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn);
+        opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+        commNav.waitForPage("Edit");
 
-            //Step: save quick edit card layout information
-            String quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
-            System.out.println("VP: quickEditCardLayout is ... " + quickEditCardLayout);
+        //Step: save quick edit card layout information
+        String quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
+        System.out.println("VP: quickEditCardLayout is ... " + quickEditCardLayout);
 
-            //Step: compare card layouts from Opportunity group Summary listview and Quick Edit 'Edit' view
-            AssertJUnit.assertEquals("VP: Summary Opportunity group layout matches Quick Edit card layout - FAILED", opportunityGroupLayout, quickEditCardLayout);
-            System.out.println("VP: Summary Opportunity group layout matches Quick Edit card layout - PASSED");
-
-
-            //Step: cancel out of the 'Edit' screen
-            headerbutton.clickHeaderButton("cancel");
-            commNav.waitForPage("All Opportunities");
-
-            //Step: reveal Right Context Menu panel, and choose 'Detail' layout
-            headerbutton.showRightContextMenu();
-            commNav.rmenu_GroupDetail.click();
-            System.out.println("VP: Detail layout chosen for 'All Opportunities' group");
-            commNav.waitForPage("All Opportunities");
-            Thread.sleep(3000);
+        //Step: compare card layouts from Opportunity group Summary listview and Quick Edit 'Edit' view
+        AssertJUnit.assertEquals("VP: Summary Opportunity group layout matches Quick Edit card layout - FAILED", opportunityGroupLayout, quickEditCardLayout);
+        System.out.println("VP: Summary Opportunity group layout matches Quick Edit card layout - PASSED");
 
 
-            //Step: save group listview card layout information
-            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-            opportunityGroupLayout = opportunitiesListView.topOpportunityCardLayout.getText();
-            System.out.println("VP: Detail opportunityGroupLayout is ... " + opportunityGroupLayout);
+        //Step: cancel out of the 'Edit' screen
+        headerbutton.clickHeaderButton("cancel");
+        commNav.waitForPage("All Opportunities");
 
-            //Step: click button to display the Quick Actions
-            opportunitiesListView.topOpportunityListItemIcon.click();
-
-            //Step: click the Quick Edit quick action to open the 'Edit' screen
-            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
-            commNav.waitForPage("Edit");
-            Thread.sleep(1000);
-
-            //Step: save quick edit card layout information
-            quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
-            System.out.println("VP: quickEditCardLayout is ... " + quickEditCardLayout);
-
-            //Step: compare card layouts from Opportunity group Detail listview and Quick Edit 'Edit' view
-            AssertJUnit.assertEquals("VP: Detail Opportunity group layout matches Quick Edit card layout - FAILED", opportunityGroupLayout, quickEditCardLayout);
-            System.out.println("VP: Detail Opportunity group layout matches Quick Edit card layout - PASSED");
+        //Step: reveal Right Context Menu panel, and choose 'Detail' layout
+        commNav.setGroupDetailMode();
+        System.out.println("VP: Detail layout chosen for 'All Opportunities' group");
+        commNav.waitForPage("All Opportunities");
 
 
-            //Step: cancel out of the 'Edit' screen
-            headerbutton.clickHeaderButton("cancel");
-            commNav.waitForPage("All Opportunities");
+        //Step: save group listview card layout information
+        opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+        opportunityGroupLayout = opportunitiesListView.topOpportunityCardLayout.getText();
+        System.out.println("VP: Detail opportunityGroupLayout is ... " + opportunityGroupLayout);
 
-            //Step: reveal Right Context Menu panel
-            headerbutton.showRightContextMenu();
+        //Step: click button to display the Quick Actions
+        opportunitiesListView.topOpportunityListItemIcon.click();
 
-            //Step: click on Configure button to open 'Groups Lookup' and select 'Closed - Won' for loup
-            commNav.rmenu_GroupConfigure.click();
-            commNav.waitForPage("Groups Lookup");
-            opportunitiesListView.groupsConfigureClosedWon.click();
-            headerbutton.checkButton.click();
-            commNav.waitForPage("All Opportunities");
+        //Step: click the Quick Edit quick action to open the 'Edit' screen
+        opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+        commNav.waitForPage("Edit");
+
+        //Step: save quick edit card layout information
+        quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
+        System.out.println("VP: quickEditCardLayout is ... " + quickEditCardLayout);
+
+        //Step: compare card layouts from Opportunity group Detail listview and Quick Edit 'Edit' view
+        AssertJUnit.assertEquals("VP: Detail Opportunity group layout matches Quick Edit card layout - FAILED", opportunityGroupLayout, quickEditCardLayout);
+        System.out.println("VP: Detail Opportunity group layout matches Quick Edit card layout - PASSED");
 
 
-            //Step: open right menu and select 'Closed - Won' group to display
-            headerbutton.showRightContextMenu();
-            opportunitiesListView.rmenu_groupClosedWon.click();
-            commNav.waitForPage("Closed - Won");
+        //Step: cancel out of the 'Edit' screen
+        headerbutton.clickHeaderButton("cancel");
+        commNav.waitForPage("All Opportunities");
 
-            //Step: verify that group 'Closed - Won' is displayed
-            commNav = PageFactory.initElements(driver, CommonNavigation.class);
-            AssertJUnit.assertEquals("VP: user is not seeing the chosen group (Closed - Won) just selected  - FAILED","Closed - Won", driver.findElement(By.id("pageTitle")).getText());
-            System.out.println("VP: user is seeing the chosen group (Closed - Won) just selected  - PASSED");
+        //Step: click on Configure button to open 'Groups Lookup' and select 'Closed - Won' for loup
+        commNav.openGroupConfigure();
+        opportunitiesListView.groupsConfigureClosedWon.click();
+        headerbutton.checkButton.click();
+        commNav.waitForPage("All Opportunities");
 
-            //Step: save group listview card layout information ... for 'Closed - Won' group
-            headerbutton.closeRightContextMenu();
-            opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
-            opportunityGroupLayout = opportunitiesListView.topOpportunityCardLayout.getText();
-            System.out.println("VP: 'Closed - Won' opportunityGroupLayout is ... " + opportunityGroupLayout);
 
-            //Step: click button to display the Quick Actions
-            opportunitiesListView.topOpportunityListItemIcon.click();
+        //Step: open right menu and select 'Closed - Won' group to display
+        headerbutton.showRightContextMenu();
+        opportunitiesListView.rmenu_groupClosedWon.click();
+        commNav.waitForPage("Closed - Won");
 
-            //Step: click the Quick Edit quick action to open the 'Edit' screen
-            opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
-            commNav.waitForPage("Edit");
-            Thread.sleep(1000);
+        //Step: verify that group 'Closed - Won' is displayed
+        commNav = PageFactory.initElements(driver, CommonNavigation.class);
+        AssertJUnit.assertEquals("VP: user is not seeing the chosen group (Closed - Won) just selected  - FAILED", "Closed - Won", driver.findElement(By.id("pageTitle")).getText());
+        System.out.println("VP: user is seeing the chosen group (Closed - Won) just selected  - PASSED");
 
-            //Step: save quick edit card layout information
-            quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
-            System.out.println("VP: quickEditCardLayout is ... " + quickEditCardLayout);
+        //Step: save group listview card layout information ... for 'Closed - Won' group
+        headerbutton.closeRightContextMenu();
+        opportunitiesListView = PageFactory.initElements(driver, OpportunityViewsElements.class);
+        opportunityGroupLayout = opportunitiesListView.topOpportunityCardLayout.getText();
+        System.out.println("VP: 'Closed - Won' opportunityGroupLayout is ... " + opportunityGroupLayout);
 
-            //Step: compare card layouts from 'Closed - Won' Opportunity group Detail listview and Quick Edit 'Edit' view
-            AssertJUnit.assertEquals("VP: 'Closed - Won' Opportunity group layout matches Quick Edit card layout - FAILED", opportunityGroupLayout, quickEditCardLayout);
-            System.out.println("VP: 'Closed - Won' Opportunity group layout matches Quick Edit card layout - PASSED");
+        //Step: click button to display the Quick Actions
+        opportunitiesListView.topOpportunityListItemIcon.click();
 
-        }
+        //Step: click the Quick Edit quick action to open the 'Edit' screen
+        opportunitiesListView.topOpportunityListItemQuickActionsQuickEditBtn.click();
+        commNav.waitForPage("Edit");
 
-        catch (Exception e) {
-            verificationErrors.append(methodID + "(): " + e.toString());
-            System.out.println("VP: Opportunity Quick Edit layout as expected for detail/ summary/ different groups " + " - FAILED");
-            AssertJUnit.fail("test failed");
-        }
+        //Step: save quick edit card layout information
+        quickEditCardLayout = opportunitiesListView.opportunityQuickEditCardLayout.getText();
+        System.out.println("VP: quickEditCardLayout is ... " + quickEditCardLayout);
 
+        //Step: compare card layouts from 'Closed - Won' Opportunity group Detail listview and Quick Edit 'Edit' view
+        AssertJUnit.assertEquals("VP: 'Closed - Won' Opportunity group layout matches Quick Edit card layout - FAILED", opportunityGroupLayout, quickEditCardLayout);
+        System.out.println("VP: 'Closed - Won' Opportunity group layout matches Quick Edit card layout - PASSED");
 
         System.out.println(ENDLINE);
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test05_MBL10925() throws Exception {
         //MBL-10925 ... personalize quick actions
         String methodID = "test05_MBL10925";
@@ -786,9 +750,7 @@ public class MobileSprint330B extends BaseTest {
             AssertJUnit.assertEquals("VP: after resetting to OOTB order and display 7th Account quick action is 'Add Attachment' - FAILED", "Add Attachment", quickActionText6);
             System.out.println("VP: after resetting to OOTB order and display 7th Account quick action is 'Add Attachment' - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: personalization of quick actions " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -799,7 +761,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-2071 (MBL-10894) ... Calendar Month view : where activity is created not today, with start time earlier than current time,
     //               on saving, (N/A for Mobile 3.4 + ...the calendar cell count is incremented by 1 as expected), the associated activity doesn't display
     //               Requires that Month view ... next month ... first day on second row has no activities (THIS RESTRICTION HAS BEEN REMOVED in 3.4.2)
@@ -844,7 +806,6 @@ public class MobileSprint330B extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
 
             //Step: add an Activity record with a random value for 'regarding'
@@ -861,7 +822,7 @@ public class MobileSprint330B extends BaseTest {
 
             //Step: retrieve date only value (MM/DD/YYYY), time only value (hh:mm a), convert time string to a calendar time (hh:mm a), ready for manipulation
             String savedDateOnly = newActivityStartDate.split("\\ ")[0];
-            String savedTimeOnly = newActivityStartDate.substring(newActivityStartDate.indexOf(' ')+1);
+            String savedTimeOnly = newActivityStartDate.substring(newActivityStartDate.indexOf(' ') + 1);
 
             //SimpleDateFormat ft = new SimpleDateFormat("M/d/YYYY hh:mm a");
             SimpleDateFormat ft = new SimpleDateFormat("hh:mm a");
@@ -869,7 +830,7 @@ public class MobileSprint330B extends BaseTest {
             activityInitialTime.setTime(ft.parse(savedTimeOnly));
 
             //Step: subtract an hour from the default value for start time, so time will be earlier than the current time
-            activityInitialTime.add(Calendar.HOUR,-1);
+            activityInitialTime.add(Calendar.HOUR, -1);
 
             //Step: combine date only value and edited time ... to replace value in 'start time' field
             String editedActivityStartDate = savedDateOnly + " " + ft.format(activityInitialTime.getTime()).toString();
@@ -880,7 +841,7 @@ public class MobileSprint330B extends BaseTest {
             System.out.println("VP: 'Value for updated Start Time is ... " + strDateTime);
 
             //Step: retrieve the new value for start time, then find the 'time' portion only
-            String activityTime = strDateTime.substring(strDateTime.indexOf(' ')+1);
+            String activityTime = strDateTime.substring(strDateTime.indexOf(' ') + 1);
             System.out.println("VP: Activity time has a value of ... " + activityTime);
 
 
@@ -898,10 +859,9 @@ public class MobileSprint330B extends BaseTest {
             todayDateTime2.setTime(ft.parse(todayString));
 
             //Step: check that the time of the activity is less than the current time 'today'
-            if (activityDateTime1.before(todayDateTime2)){
+            if (activityDateTime1.before(todayDateTime2)) {
                 System.out.println("VP: Activity time is less than the current time for today ... continue test");
-            }
-            else {
+            } else {
                 System.out.println("VP: Activity time is not less than the current time for today ... stop test " + " - FAILED");
                 AssertJUnit.fail("test failed");
             }
@@ -920,16 +880,12 @@ public class MobileSprint330B extends BaseTest {
             WebElement activityItemLnk = driver.findElement(By.xpath("//*[@id='calendar_view']//h3[text() = '" + newActivityRegarding + "']"));
             activityItemLnk.click();
             commNav.waitForPage(newActivityRegarding);
-            Thread.sleep(1000);
 
             AssertJUnit.assertEquals("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - FAILED", newActivityRegarding, driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - PASSED");
 
 
-        }
-
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Activity created, not today, and earlier time than today, is displaying under the expected day in Calendar Month view " + " - FAILED");
             AssertJUnit.fail("test failed");
@@ -940,17 +896,16 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+    @Test
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
 
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 
 
 }

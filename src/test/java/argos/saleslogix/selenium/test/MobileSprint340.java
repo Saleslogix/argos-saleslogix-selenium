@@ -1,30 +1,28 @@
 package argos.saleslogix.selenium.test;
 
+import argos.saleslogix.selenium.pages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 
 /**
  * @author Kathy Lockyer-Bratton
- * Class: MobileSprint340
- * Desc.: Test class for some defects or features in Mobile 3.4.0
+ *         Class: MobileSprint340
+ *         Desc.: Test class for some defects or features in Mobile 3.4.0
  */
 public class MobileSprint340 extends BaseTest {
 
-	
-	//Test Methods Set
-	//================
+
+    //Test Methods Set
+    //================
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4569 ... My Activities : on creating an activity, without first selecting an account, press the Contact lookup to ensure that this may be opened correctly
 
     public void test01_INFORCRM4569() throws Exception {
@@ -61,7 +59,6 @@ public class MobileSprint340 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: press the Contact lookup to ensure that this may be opened correctly without first selecting an account
             activityEditView.activityEditViewContactBtn.click();
@@ -71,9 +68,7 @@ public class MobileSprint340 extends BaseTest {
             AssertJUnit.assertEquals("VP: able to open Contacts lookup with no account chosen first - FAILED", "Contacts", driver.findElement(By.id("pageTitle")).getText());
             System.out.println("VP: able to open Contacts lookup with no account chosen first - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: able to open Contacts lookup with no account chosen first - FAILED");
             AssertJUnit.fail("test failed");
@@ -83,7 +78,7 @@ public class MobileSprint340 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4861 ... Calendar modal control ... relative dates
     public void test02_INFORCRM4861() throws Exception {
         String methodID = "test02_INFORCRM4861";
@@ -121,7 +116,6 @@ public class MobileSprint340 extends BaseTest {
 
             //Step: wait for page Meeting to open, and store default value of 'start time'
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String defaultStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
 
             //Step: Open Start Time calendar, and wait for modal calendar control to open
@@ -135,9 +129,9 @@ public class MobileSprint340 extends BaseTest {
             //First check if 'This Evening' displays ... it will not after a certain time of day
             List elements = driver.findElements(By.xpath("//ul//li//div[contains(., 'This Evening')]"));
 
-            if(elements.size() > 0) {
-            commNav.isWebElementPresent(viewName + ",This Evening title", calendarView.calendarModalThisEveningTitle);
-            commNav.isWebElementPresent(viewName + ",This Evening value", calendarView.calendarModalThisEveningValue);
+            if (elements.size() > 0) {
+                commNav.isWebElementPresent(viewName + ",This Evening title", calendarView.calendarModalThisEveningTitle);
+                commNav.isWebElementPresent(viewName + ",This Evening value", calendarView.calendarModalThisEveningValue);
             }
 
             commNav.isWebElementPresent(viewName + ",Tomorrow Morning title", calendarView.calendarModalTomorrowMorningTitle);
@@ -152,14 +146,13 @@ public class MobileSprint340 extends BaseTest {
             commNav.isWebElementPresent(viewName + ",Advanced button", calendarView.calendarModalAdvanced);
 
             //Choose Relative date of 'This Evening', if it is displaying, and display the date/ time
-            if(elements.size() > 0) {
-             calendarView.calendarModalThisEveningTitle.click();
-             Thread.sleep(1000);
-             driver.switchTo().activeElement();
-             commNav.waitForPage("Meeting");
-             Thread.sleep(1000);
-             String thisEveningStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
-             System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'This Evening' is ... " + thisEveningStartTime);
+            if (elements.size() > 0) {
+                calendarView.calendarModalThisEveningTitle.click();
+                Thread.sleep(1000);
+                driver.switchTo().activeElement();
+                commNav.waitForPage("Meeting");
+                String thisEveningStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
+                System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'This Evening' is ... " + thisEveningStartTime);
             }
 
             //Step: Open Start Time calendar, and wait for modal calendar control to open
@@ -173,7 +166,6 @@ public class MobileSprint340 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String tomorrowMorningStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'Tomorrow Morning' is ... " + tomorrowMorningStartTime);
 
@@ -187,7 +179,6 @@ public class MobileSprint340 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String tomorrowEveningStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'Tomorrow Evening' is ... " + tomorrowEveningStartTime);
 
@@ -201,7 +192,6 @@ public class MobileSprint340 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String nextWeekStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'Next Week' is ... " + nextWeekStartTime);
 
@@ -215,15 +205,12 @@ public class MobileSprint340 extends BaseTest {
             Thread.sleep(1000);
             driver.switchTo().activeElement();
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
             String nextMonthStartTime = activityEditView.activityEditViewStartTimeFld.getAttribute("value");
             System.out.println("VP: default value for 'start time' is ... " + defaultStartTime + " and for 'Next Month' is ... " + nextMonthStartTime);
 
             System.out.println("VP: Modal Calendar relative date/time functionality - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Modal Calendar relative date/time functionality - FAILED");
             AssertJUnit.fail("test failed");
@@ -233,7 +220,7 @@ public class MobileSprint340 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4861 ... Calendar modal control ... calendar/ time selection
     public void test03_INFORCRM4861() throws Exception {
         String methodID = "test03_INFORCRM4861";
@@ -271,7 +258,6 @@ public class MobileSprint340 extends BaseTest {
 
             //Step: wait for page Meeting to open
             commNav.waitForPage("Meeting");
-            Thread.sleep(1000);
 
             //Step: Open Start Time calendar, and wait for modal calendar control to open
             activityEditView.activityEditViewStartTimeFldBtn.click();
@@ -367,7 +353,6 @@ public class MobileSprint340 extends BaseTest {
             commNav.isWebElementPresent(viewName + ", Minutes - 55", calendarView.calendarMinute55);
 
 
-
             //Step: cancel to close the calendar modal control
             //calendarView.calendarModalCancel.click();
 
@@ -377,9 +362,7 @@ public class MobileSprint340 extends BaseTest {
 
             System.out.println("VP: Modal Calendar/ time select control functionality - PASSED");
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Modal Calendar/ time select control functionality - FAILED");
             AssertJUnit.fail("test failed");
@@ -389,7 +372,7 @@ public class MobileSprint340 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4861 ... Calendar screen
     public void test04_INFORCRM4861() throws Exception {
         String methodID = "test04_INFORCRM4861";
@@ -474,10 +457,10 @@ public class MobileSprint340 extends BaseTest {
             //Step: check the day/ week toggle
             calendarView.calendarWeekToggle.click();
             List<WebElement> allElements = driver.findElements(By.xpath("//tr[@class='calendar-week']//td[contains(@class, 'selected')]"));
-            AssertJUnit.assertEquals("VP: Calendar - pressing the week toggle should select 7 days of the week - FAILED",7,allElements.size());
+            AssertJUnit.assertEquals("VP: Calendar - pressing the week toggle should select 7 days of the week - FAILED", 7, allElements.size());
             System.out.println("VP: Calendar - pressing the week toggle should select 7 days of the week - PASSED");
 
-            for (WebElement element: allElements) {
+            for (WebElement element : allElements) {
                 System.out.println("Day of month selected - " + element.getText() + " " + calendarView.calendarMonthField.getAttribute("value") + " " + calendarView.calendarYearField.getAttribute("value"));
             }
 
@@ -485,9 +468,7 @@ public class MobileSprint340 extends BaseTest {
             System.out.println("VP: Calendar screen functionality - PASSED");
 
 
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             verificationErrors.append(methodID + "(): " + e.toString());
             System.out.println("VP: Calendar screen functionality - FAILED");
             AssertJUnit.fail("test failed");
@@ -497,27 +478,27 @@ public class MobileSprint340 extends BaseTest {
     }
 
 
-	//Login & Logout
-	//==============
-	@Test(enabled = true)
-	public void test00_MobileClient_Login() throws InterruptedException {
-		String methodID = "test00_MobileClient_Login";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogin();
-		
-		System.out.println(ENDLINE);	
-	}
+    //Login & Logout
+    //==============
+    @Test
+    public void test00_MobileClient_Login() throws InterruptedException {
+        String methodID = "test00_MobileClient_Login";
 
-	@Test(enabled = true)
-	public void test99_Mobile_LogOut()  throws InterruptedException {				
-		String methodID = "test99_Mobile_LogOut";
-		
-		System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
-		
-		doVerificationLogout();
-		
-		System.out.println(ENDLINE);
-	}
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogin();
+
+        System.out.println(ENDLINE);
+    }
+
+    @Test
+    public void test99_Mobile_LogOut() throws InterruptedException {
+        String methodID = "test99_Mobile_LogOut";
+
+        System.out.println(STARTLINE + " " + methodID + " " + STARTLINE);
+
+        doVerificationLogout();
+
+        System.out.println(ENDLINE);
+    }
 }
