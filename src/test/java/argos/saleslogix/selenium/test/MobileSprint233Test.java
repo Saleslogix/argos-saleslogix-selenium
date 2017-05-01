@@ -118,7 +118,7 @@ public class MobileSprint233Test extends BaseTest {
     }
 
     //MBL10115 - Index filtering Selection in Contextual menu
-    @Test(enabled = true)
+    @Test
     public void test02_MBL10115() throws Exception {
         String methodID = "test02_MBL10115";
 
@@ -166,7 +166,7 @@ public class MobileSprint233Test extends BaseTest {
     }
 
     //MBL10222 - Update Login Screen to include Logo
-    @Test(enabled = true)
+    @Test
     public void test03_MBL10222() throws InterruptedException {
         String methodID = "test03_MBL10222";
 
@@ -213,7 +213,7 @@ public class MobileSprint233Test extends BaseTest {
     }
 
     //MBL10112 - KPI widgets need to work for listviews under an entity - Notes History (no filtering by hash tags)
-    @Test(enabled = true)
+    @Test
     public void test04_MBL10112_NotesHistory_NoFiltering() throws InterruptedException {
         String methodID = "test04_MBL10112_NotesHistory_NoFiltering";
 
@@ -369,7 +369,7 @@ public class MobileSprint233Test extends BaseTest {
 
 
     //MBL10112 - KPI widgets need to work for list views under an entity - Notes History (filtering by hash tags)
-    @Test(enabled = true)
+    @Test
     public void test05_MBL10112_NotesHistory_Filtering() throws InterruptedException {
         String methodID = "test05_MBL10112_NotesHistory_Filtering";
 
@@ -491,7 +491,7 @@ public class MobileSprint233Test extends BaseTest {
 
 
     //MBL10112 - KPI widgets need to work for list views under an entity - Accounts (no filtered lookups)
-    @Test(enabled = true)
+    @Test
     public void test06_MBL10112_Accounts_NoFiltering() throws InterruptedException {
         String methodID = "test06_MBL10112_Accounts_NoFiltering";
 
@@ -721,7 +721,7 @@ public class MobileSprint233Test extends BaseTest {
 
 
     //MBL10112 - KPI widgets need to work for list views under an entity - Contacts (no filtered lookups)
-    @Test(enabled = true)
+    @Test
     public void test08_MBL10112_Contacts_NoFiltering() throws InterruptedException {
         String methodID = "test08_MBL10112_Contacts_NoFiltering";
 
@@ -961,7 +961,7 @@ public class MobileSprint233Test extends BaseTest {
     }
 
     //MBL10112 - KPI widgets need to work for list views under an entity - Leads (no filtered lookups)
-    @Test(enabled = true)
+    @Test
     public void test10_MBL10112_Leads_NoFiltering() throws InterruptedException {
         String methodID = "test10_MBL10112_Leads_NoFiltering";
 
@@ -1188,7 +1188,7 @@ public class MobileSprint233Test extends BaseTest {
 
 
     //MBL10112 - KPI widgets need to work for listviews under an entity - Opportunities (no filtered lookups)
-    @Test(enabled = true)
+    @Test
     public void test12_MBL10112_Opportunities_NoFiltering() throws InterruptedException {
         String methodID = "test12_MBL10112_Opportunities_NoFiltering";
 
@@ -1425,7 +1425,7 @@ public class MobileSprint233Test extends BaseTest {
 
 
     //MBL10112 - KPI widgets need to work for listviews under an entity - Tickets (no filtered lookups)
-    @Test(enabled = true)
+    @Test
     public void test14_MBL10112_Tickets_NoFiltering() throws InterruptedException {
         String methodID = "test14_MBL10112_Tickets_NoFiltering";
 
@@ -1654,7 +1654,7 @@ public class MobileSprint233Test extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -1665,7 +1665,7 @@ public class MobileSprint233Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

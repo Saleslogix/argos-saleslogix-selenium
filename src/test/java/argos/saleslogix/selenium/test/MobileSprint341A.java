@@ -28,9 +28,6 @@ public class MobileSprint341A extends BaseTest {
     public String TEST_OPPORTUNITY_RECORD3 = "Abbott Ltd.-Phase3";
     public String TEST_TICKET_RECORD = "001-00-000014";
 
-    //Test Methods Set
-    //================
-
     private void clickHourField(WebElement element) throws InterruptedException {
         CalendarViewsElements calendarView = PageFactory.initElements(driver, CalendarViewsElements.class);
         calendarView.calendarHourField.click();
@@ -48,7 +45,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-8810 ... Calendar modal control ... unable to set minutes to 00 or 05 from the Advanced view
     // Add additional checking to verify that all hours and minutes selected from the dropdowns display in the hour/ minute fields respectively
     public void test01_INFORCRM8810() throws Exception {
@@ -244,7 +241,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-8810 ... Calendar modal control ... unable to set minutes to 00 or 05 from the Advanced view
     // Add additional checking to verify that all months selected from the dropdown, as well as the top and bottom year, display in the month/ year fields respectively
     public void test02_INFORCRM8810() throws Exception {
@@ -393,7 +390,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-8390 ... Calendar : not seeing 'Event' as an option when opening an activity
     public void test03_INFORCRM8390() throws Exception {
         String methodID = "test03_INFORCRM8390";
@@ -438,7 +435,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-8139 ... on editing Ticket dates should not see the Relative date view before calendar control view
     public void test04_INFORCRM8139() throws Exception {
         String methodID = "test04_INFORCRM8139";
@@ -480,7 +477,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-8380 ... Calendar : all day activities not appearing as expected on the calendar for the first day of a month
     public void test05_INFORCRM8380() throws Exception {
         String methodID = "test05_INFORCRM8380";
@@ -543,7 +540,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     //INFORCRM-6889 ... Opportunity - unable to change the value of the 'close prob' field
     public void test06_INFORCRM6889() throws Exception {
         String methodID = "test06_INFORCRM6889";
@@ -576,7 +573,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-6722 ... Activity Detail - complete activity quick action opens relevant screen, but unable to save completion
     public void test07_INFORCRM6722() throws Exception {
         String methodID = "test07_INFORCRM-6722";
@@ -636,7 +633,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     //INFORCRM-6401 ... Calendar/ time control : where there is no default date/ time assigned to a field, unable to open the 'Advanced' calendar/ time control
     public void test08_INFORCRM6401() throws Exception {
         String methodID = "test08_INFORCRM6401";
@@ -690,7 +687,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     //INFORCRM-5710 ... My Schedule - online : after adding an activity, listview not always being automatically refreshed
     public void test09_INFORCRM5710() throws Exception {
         String methodID = "test09_INFORCRM5710";
@@ -750,7 +747,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     //INFORCRM-5301 ... My Schedule - online : activity listview quick actions for Contact and Opportunity open screen with expected title, then see continuous loading and no detail
     public void test10_INFORCRM5301() throws Exception {
         String methodID = "test10_INFORCRM5301";
@@ -889,7 +886,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     //INFORCRM-5302 ... My Schedule - online : activity listview quick action for 'Call' does nothing
     public void test11_INFORCRM5302() throws Exception {
         String methodID = "test11_INFORCRM5302";
@@ -986,7 +983,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     //INFORCRM-5303 ... My Schedule - online : online : clicking on the listview phone link does nothing
     public void test12_INFORCRM5303() throws Exception {
         String methodID = "test12_INFORCRM5303";
@@ -1079,7 +1076,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     //INFORCRM-5299 ... My Schedule - online : after completing an activity, listview is not always reflecting this until one does an explicit refresh
     public void test13_INFORCRM5299() throws Exception {
         String methodID = "test13_INFORCRM5299";
@@ -1155,7 +1152,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4950 ... Calendar/ time control - where date/ time value is confirmed, then date/ time value is cancelled, the saved date has the incorrect month and year
     public void test14_INFORCRM4950() throws Exception {
         String methodID = "test14_INFORCRM4950";
@@ -1287,7 +1284,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4948 ... Calendar/ time control - date/ time displayed on opening control is not the value of the field from which it was opened
     public void test15_INFORCRM4948() throws Exception {
         String methodID = "test15_INFORCRM4948";
@@ -1433,7 +1430,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-6527 ... Calendar screen - month and year dropdowns stop working after modal calendar opened
     public void test16_INFORCRM6527() throws Exception {
         String methodID = "test16_INFORCRM6527";
@@ -1506,7 +1503,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // NOTE : this method covers both INFORCRM-6887 and INFORCRM-6888
 
     // INFORCRM-6887 ... Add Recurring Activity problems - contact and opportunity display as ID's, 'repeats' as [object Object], and may not save
@@ -1660,7 +1657,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-7247 ... Calendar select control - incorrect year may display on control per scenario ... on confirm does appear correctly on edit view
     public void test18_INFORCRM7247_1() throws Exception {
         String methodID = "test18_INFORCRM7247_1";
@@ -1805,7 +1802,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-7247 ... Calendar select control - incorrect month may display on control per scenarios ... on confirm does appear correctly on edit view
     public void test19_INFORCRM7247_2() throws Exception {
         String methodID = "test19_INFORCRM7247_2";
@@ -1950,7 +1947,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-7168 ... Activities - on saving the edited occurrence of a recurring activity, there is no error
     public void test20_INFORCRM7168() throws Exception {
         String methodID = "test20_INFORCRM7168";
@@ -2051,7 +2048,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test21_AddMyActivities() throws Exception {
         String methodID = "test21_AddMyActivities";
@@ -2079,7 +2076,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-7170 ... Activities - editing/ saving an occurrence of a recurring activity from My Activities incorrectly changes all occurrences
     public void test21_INFORCRM7170() throws Exception {
         String methodID = "test21_INFORCRM7170";
@@ -2226,7 +2223,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-9481 ... Calendar control - no longer opening where activity is timeless, since fix for Jira INFORCRM-8810
     // Part 1
     public void test22_INFORCRM9481_1() throws Exception {
@@ -2309,7 +2306,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-9481 ... Calendar control - no longer opening where activity has time of '00' minutes, since fix for Jira INFORCRM-8810
     // Part 2
     public void test23_INFORCRM9481_2() throws Exception {
@@ -2413,7 +2410,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-5597 ... Relative date format control - 'This Evening' and 'Tomorrow Evening' not resulting in expected date or time
     public void test24_INFORCRM5597() throws Exception {
         String methodID = "test24_INFORCRM5597";
@@ -2557,7 +2554,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4949 ... Date/ time field : now able to manually enter and save an unwanted or invalid date/ time ... should see error
     public void test25_INFORCRM4949() throws Exception {
         String methodID = "test25_INFORCRM4949";
@@ -2613,7 +2610,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-9563 ... Calendar Control - where 'start time' minutes have a value not present in the minutes dropdown list, on pressing Confirm button, minutes are set to '00'
     public void test26_INFORCRM9563() throws Exception {
         String methodID = "test26_INFORCRM9563";
@@ -2689,7 +2686,7 @@ public class MobileSprint341A extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-9676 ... Calendar control : addition of non-standard minutes to minutes dropdown should only display for that instance of the date being used, not for all other activities in the login session
     public void test27_INFORCRM9676() throws Exception {
         String methodID = "test27_INFORCRM9676";

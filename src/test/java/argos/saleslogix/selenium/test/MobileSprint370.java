@@ -34,7 +34,7 @@ public class MobileSprint370 extends BaseTest {
     //================
 
 
-    @Test(enabled = true)
+    @Test
     // Add email value for the lead if email is blank
 
     public void test01_AddEmailAddressIfNeeded() throws Exception {
@@ -74,7 +74,7 @@ public class MobileSprint370 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-14569 ... Mobile - lead detail view : for 'Send email' quick action, history is not saved for the lead
 
     public void test02_INFORCRM14569() throws Exception {
@@ -131,7 +131,7 @@ public class MobileSprint370 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-14570 ... Mobile - lead listview : when pressing email link, lead information not appearing in potential history record
 
     public void test03_INFORCRM14570() throws Exception {
@@ -201,7 +201,7 @@ public class MobileSprint370 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-14570 ... Mobile - lead listview : when pressing email quick action, lead information not appearing in potential history record
 
     public void test04_INFORCRM14570() throws Exception {
@@ -272,7 +272,7 @@ public class MobileSprint370 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-14570 ... Mobile - lead group view : when pressing email link, lead information not appearing in potential history record
 
     public void test05_INFORCRM14570() throws Exception {
@@ -336,7 +336,7 @@ public class MobileSprint370 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-14570 ... Mobile - lead group view : when pressing email quick action, lead information not appearing in potential history record
 
     public void test06_INFORCRM14570() throws Exception {
@@ -578,7 +578,7 @@ public class MobileSprint370 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-14930 ... Activities - edit view : 'reminder' field is enabled even though the 'alarm' field is turned off
     public void test13_INFORCRM14930() throws Exception {
         String methodID = "test13_INFORCRM14930";

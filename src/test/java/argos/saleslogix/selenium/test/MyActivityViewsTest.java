@@ -20,7 +20,7 @@ public class MyActivityViewsTest extends BaseTest {
 
     //Test Methods Set
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -58,7 +58,7 @@ public class MyActivityViewsTest extends BaseTest {
 
 
     //================
-    @Test(enabled = true)
+    @Test
     public void test01_SeTestTCMyActivitiesListView() throws Exception {
         //Reference: MBL-10071
         String methodID = "test01_SeTestTCMyActivitiesListView";
@@ -129,7 +129,7 @@ public class MyActivityViewsTest extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -140,7 +140,7 @@ public class MyActivityViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

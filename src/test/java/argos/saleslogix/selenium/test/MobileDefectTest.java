@@ -31,7 +31,7 @@ public class MobileDefectTest extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -42,7 +42,7 @@ public class MobileDefectTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 
@@ -57,7 +57,7 @@ public class MobileDefectTest extends BaseTest {
     //Test Methods
     //============
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -95,7 +95,7 @@ public class MobileDefectTest extends BaseTest {
 
 
     //TODO: test41_MobileDefect13092144 mysteriously fails to run on Jenkins server
-    @Test(enabled = true)
+    @Test
     public void test41_MobileDefect13092144() throws InterruptedException {
         //tags: download attachment, jpg image
         String methodID = "test41_MobileDefect13092144";
@@ -171,7 +171,7 @@ public class MobileDefectTest extends BaseTest {
     }
 
     //TODO: test42_MobileDefect13092160 mysteriously fails on Jenkins server
-    @Test(enabled = true)
+    @Test
     public void test42_MobileDefect13092160() throws InterruptedException {
         //tags: download attachment, url
         String methodID = "test42_MobileDefect13092160";
@@ -240,7 +240,7 @@ public class MobileDefectTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test43_MobileDefect13092222() throws InterruptedException {
         String methodID = "test43_MobileDefect13092222";
 
@@ -332,7 +332,7 @@ public class MobileDefectTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test44_MobileDefect13092239() throws InterruptedException {
         String methodID = "test44_MobileDefect13092239";
 
@@ -370,7 +370,7 @@ public class MobileDefectTest extends BaseTest {
     }
 
     //TODO: test45_MobileDefect13092219 mysteriously fails on Jenkins server
-    @Test(enabled = true)
+    @Test
     public void test45_MobileDefect13092219() throws InterruptedException {
         String methodID = "test45_MobileDefect13092219";
 
@@ -469,7 +469,7 @@ public class MobileDefectTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test46_MobileDefect13092249() throws InterruptedException {
         String methodID = "test46_MobileDefect13092249";
 
@@ -532,7 +532,7 @@ public class MobileDefectTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test47_MobileDefect13092260() throws InterruptedException {
         String methodID = "test47_MobileDefect13092260";
 
@@ -571,7 +571,7 @@ public class MobileDefectTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test48_MobileDefect13092154() throws Exception {
         String methodID = "test48_MobileDefect13092154";
 
@@ -859,7 +859,7 @@ public class MobileDefectTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test50_MobileDefect13092146() throws Exception {
         String methodID = "test50_MobileDefect13092146";
 
@@ -1035,7 +1035,7 @@ public class MobileDefectTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test51_MobileDefect13092282() throws InterruptedException {
         String methodID = "test51_MobileDefect13092282";
 
@@ -1047,7 +1047,7 @@ public class MobileDefectTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test52_MobileDefect13092102() throws Exception {
         String methodID = "test52_MobileDefect13092102";
 
@@ -1493,7 +1493,7 @@ public class MobileDefectTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test55_MobileDefect13092411() throws Exception {
         String methodID = "test55_MobileDefect13092411";
 
@@ -1631,7 +1631,7 @@ public class MobileDefectTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test56_MobileDefect13092300() throws InterruptedException {
         //tags: my attachments, download view attachment
         String methodID = "test56_MobileDefect13092300";
@@ -2217,7 +2217,7 @@ public class MobileDefectTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test63_MobileDefect13092387() throws Exception {
         //tags: notes/history, hashtag, #phonecall
         String methodID = "test63_MobileDefect13092387";
@@ -2266,7 +2266,7 @@ public class MobileDefectTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test65_MobileDefect13092422() throws Exception {
         //tags: My Activities, list view, Unknown
         String methodID = "test65_MobileDefect13092422";
@@ -2410,7 +2410,7 @@ public class MobileDefectTest extends BaseTest {
     }
 
     //TODO: test70_MobileDefect13093076 cannot be run on Jenkins server
-    @Test(enabled = true)
+    @Test
     public void test70_MobileDefect13093076() throws Exception {
         //tags: accounts list view, kpi, Avg Time as Customer
         String methodID = "test70_MobileDefect13093076";
@@ -2461,7 +2461,7 @@ public class MobileDefectTest extends BaseTest {
     }
 
     //TODO: test64_MobileDefect13092410 needs a bug fix
-    @Test(enabled = true)
+    @Test
     public void test64_MobileDefect13092410() throws Exception {
         //tags: accounts, list view, no records
         String methodID = "test64_MobileDefect13092410";

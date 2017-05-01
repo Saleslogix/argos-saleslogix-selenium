@@ -31,7 +31,7 @@ public class LeadEntityViewsTest extends BaseTest {
 
     public String TEST_LEAD_RECORD = "Beck, John";
 
-    @Test(enabled = true)
+    @Test
     // Add mobile phone for the lead
     public void test01_SeTestAddMobilePhoneForLead() throws Exception {
         String methodID = "test01_SeTestAddMobilePhoneForLead";
@@ -72,7 +72,7 @@ public class LeadEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test01_SeTestTCLeadListView() throws Exception {
         //Reference: MBL-10050
         String methodID = "test01_SeTestTCLeadListView";
@@ -123,7 +123,7 @@ public class LeadEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test02_SeTestTCLeadListViewLoadMoreResults() throws Exception {
         String methodID = "test02_SeTestTCLeadListViewLoadMoreResults";
 
@@ -183,7 +183,7 @@ public class LeadEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test03_SeTestTCLeadListViewSearch() throws Exception {
         String methodID = "test03_SeTestTCLeadListViewSearch";
 
@@ -204,7 +204,7 @@ public class LeadEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test04_SeTestTCLeadListViewNegativeSearch() throws Exception {
         String methodID = "test04_SeTestTCLeadListViewNegativeSearch";
 
@@ -224,7 +224,7 @@ public class LeadEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test05_SeTestTCLeadListViewClearSearch() throws Exception {
         String methodID = "test05_SeTestTCLeadListViewClearSearch";
 
@@ -273,7 +273,7 @@ public class LeadEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test06_SeTestTCLeadListViewOpenRecord() throws Exception {
         String methodID = "test06_SeTestTCLeadListViewOpenRecord";
 
@@ -300,7 +300,7 @@ public class LeadEntityViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test07_SeTestTCLeadDetailView() throws Exception {
         String methodID = "test07_SeTestTCLeadDetailView";
 
@@ -365,7 +365,7 @@ public class LeadEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test08_SeTestTCLeadEditView() throws Exception {
         String methodID = "test08_SeTestTCLeadEditView";
 
@@ -632,7 +632,7 @@ public class LeadEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test11_SeTestTCLeadListViewKPI() throws Exception {
         String methodID = "test11_SeTestTCLeadListViewKPI";
 
@@ -661,7 +661,7 @@ public class LeadEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test12_SeTestTCLeadListViewAddLead() throws Exception {
         String methodID = "test12_SeTestTCLeadListViewAddLead";
 
@@ -764,7 +764,7 @@ public class LeadEntityViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test09_SeTestTCLeadAddEditView() throws Exception {
         String methodID = "test09_SeTestTCLeadAddEditView";
 

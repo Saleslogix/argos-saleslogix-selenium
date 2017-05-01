@@ -29,7 +29,7 @@ public class AccountEntityViewsTest extends BaseTest {
 
     //Test Methods Set
     //================
-    @Test(enabled = true)
+    @Test
     public void test01_SeTestTCAccountListView() throws Exception {
         //Reference: MBL-10069
         String methodID = "test01_SeTestTCAccountListView";
@@ -101,7 +101,7 @@ public class AccountEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test02_SeTestTCAccountListViewLoadMoreResults() throws Exception {
         String methodID = "test02_SeTestTCAccountListViewLoadMoreResults";
 
@@ -158,7 +158,7 @@ public class AccountEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test03_SeTestTCAccountListViewSearch() throws Exception {
         String methodID = "test03_SeTestTCAccountListViewSearch";
 
@@ -179,7 +179,7 @@ public class AccountEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test04_SeTestTCAccountListViewNegativeSearch() throws Exception {
         String methodID = "test04_SeTestTCAccountListViewNegativeSearch";
 
@@ -199,7 +199,7 @@ public class AccountEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test05_SeTestTCAccountListViewClearSearch() throws Exception {
         String methodID = "test05_SeTestTCAccountListViewClearSearch";
 
@@ -242,7 +242,7 @@ public class AccountEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test06_SeTestTCAccountListViewOpenRecord() throws Exception {
         String methodID = "test06_SeTestTCAccountListViewOpenRecord";
 
@@ -264,7 +264,7 @@ public class AccountEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test07_SeTestTCAccountDetailView() throws Exception {
         String methodID = "test07_SeTestTCAccountDetailView";
 
@@ -328,7 +328,7 @@ public class AccountEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test08_SeTestTCAccountEditView() throws Exception {
         String methodID = "test08_SeTestTCAccountEditView";
 
@@ -370,7 +370,7 @@ public class AccountEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test09_SeTestTCAccountAddEditView() throws Exception {
         String methodID = "test09_SeTestTCAccountAddEditView";
 
@@ -488,7 +488,7 @@ public class AccountEntityViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test11_SeTestTCAccountListViewKPI() throws Exception {
         String methodID = "test11_SeTestTCAccountListViewKPI";
 
@@ -539,7 +539,7 @@ public class AccountEntityViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test12_SeTestTCAccountListViewAddAccount() throws Exception {
         String methodID = "test12_SeTestTCAccountListViewAddAccount";
 

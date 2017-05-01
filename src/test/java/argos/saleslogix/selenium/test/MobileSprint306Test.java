@@ -24,7 +24,7 @@ public class MobileSprint306Test extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -35,7 +35,7 @@ public class MobileSprint306Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 
@@ -47,7 +47,7 @@ public class MobileSprint306Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -84,7 +84,7 @@ public class MobileSprint306Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10319 ... Can't remove items from multi-select picklist
     public void test01_MBL10319() throws Exception {
         String methodID = "test01_MBL10319";
@@ -222,7 +222,7 @@ public class MobileSprint306Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10280 ... Editing records is cumbersome when editing original information
     public void test02_MBL10280() throws Exception {
         String methodID = "test02_MBL10280";
@@ -302,7 +302,7 @@ public class MobileSprint306Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     // MBL-10397 ... Activity Start Date is wrong when toggling timeless (not retaining the same date)
     public void test03_MBL10397() throws Exception {
         String methodID = "test03_MBL10397";
@@ -392,7 +392,7 @@ public class MobileSprint306Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     // MBL-10193 ... Calendar - in Week and Day view a couple of activities are not appearing in time order for the day
     public void test04_MBL10193() throws Exception {
         String methodID = "test04_MBL10193";
@@ -753,7 +753,7 @@ public class MobileSprint306Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10400 ... unexpected Activity values for start date/ time and alarm per three scenarios
     public void test05_MBL10400() throws Exception {
         String methodID = "test05_MBL10400";

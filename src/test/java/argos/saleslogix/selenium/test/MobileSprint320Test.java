@@ -23,7 +23,7 @@ public class MobileSprint320Test extends BaseTest {
     //================
 
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -60,7 +60,7 @@ public class MobileSprint320Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10698 ... Recurring Activity : for Complete Occurrence screen, leader displays as an ID
 
     public void test01_MBL10698() throws Exception {
@@ -154,7 +154,7 @@ public class MobileSprint320Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10411 ... Complete activity with follow-up constantly displays 'loading...', and gives error on save
 
     public void test02_MBL10411() throws Exception {
@@ -242,7 +242,7 @@ public class MobileSprint320Test extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -253,7 +253,7 @@ public class MobileSprint320Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

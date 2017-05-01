@@ -36,7 +36,7 @@ public class MobileSprint317Test extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -47,7 +47,7 @@ public class MobileSprint317Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 
@@ -59,7 +59,7 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -95,7 +95,7 @@ public class MobileSprint317Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     // MBL-10429 ... For a new contact/ account, the address entered for the contact is copied into the account address if the account address is not set
     public void test01_MBL10429() throws Exception {
         String methodID = "test01_MBL10429";
@@ -155,7 +155,7 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10404 ... load home page based on user's preference as defined on Configure View
     public void test02_MBL10404() throws Exception {
         String methodID = "test02_MBL10404";
@@ -207,7 +207,7 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10452 ... While editing an Activity in the Mobile Client, changing the Account doesn't validate the Contact ... Contact field should be cleared out as in web client and LAN
     //               Two Scenarios :
     //               1. adding and editing the activity within the same login session ... changing the account (this was working previously)
@@ -443,7 +443,7 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10472 ... Using Account listview Edit quick action to edit account should display address on edit view or Address view
     public void test04_MBL10472() throws Exception {
         String methodID = "test04_MBL10472";
@@ -506,7 +506,7 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     //MBL-10483 ...   Adding a Note with no account specified should not give a server error
     public void test05_MBL10483() throws Exception {
         String methodID = "test05_MBL10483";
@@ -598,7 +598,7 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10486 ... Activity Leader should use calendar security for list of users available (as in web client)
     //               This is designed to work for user name of 'loup', the user used for all automation
 
@@ -715,7 +715,7 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10454 ... error trying to save an edited address for contacts (and accounts)
     public void test07_MBL10454() throws Exception {
         String methodID = "test07_MBL10454";
@@ -823,7 +823,7 @@ public class MobileSprint317Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10455 ... after editing lead address, most of address is disappearing
     public void test08_MBL10455() throws Exception {
         String methodID = "test08_MBL10455";

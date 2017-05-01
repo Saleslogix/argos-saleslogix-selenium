@@ -69,7 +69,7 @@ public class MobileSprint304Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test02_MobileDefect_MBL10190() throws InterruptedException {
         //MBL-10190: Right Contextual menu - where SpeedSearch is executed consecutively more than once from the left Global menu, the contextual menu opens and hides a good part of the SpeedS
         String methodID = "test02_MobileDefect_MBL10190";
@@ -163,7 +163,7 @@ public class MobileSprint304Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test04_MobileDefect_MBL10127() throws Exception {
         //MBL-10127: Lead Detail/Edit - Add Mobile Phone
         String methodID = "test04_MobileDefect_MBL10127";
@@ -298,7 +298,7 @@ public class MobileSprint304Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test06_MobileDefect_MBL10139() throws Exception {
         //MBL-10139: SpeedSearch - card layout includes some unexpected html
         String methodID = "test06_MobileDefect_MBL10139";
@@ -662,7 +662,7 @@ public class MobileSprint304Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test11_MobileDefect_MBL10172() throws Exception {
         //MBL-10172: Mobile - Ticket Activities : elapsed hours not displaying as it does in web client (16 dec positions versus 2) [DTS 13091638]
         String methodID = "test11_MobileDefect_MBL10172";
@@ -787,7 +787,7 @@ public class MobileSprint304Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test13_MobileDefect_MBL10186() throws Exception {
         //MBL-10186: Activity Work Phone
         String methodID = "test13_MobileDefect_MBL10186";
@@ -1006,7 +1006,7 @@ public class MobileSprint304Test extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -1017,7 +1017,7 @@ public class MobileSprint304Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

@@ -29,7 +29,7 @@ public class MobileSprint340B extends BaseTest {
     //================
 
 
-    @Test(enabled = true)
+    @Test
     // OFFLINE ... briefcase items, view detail of items, clear offline data
     public void test01_OFFLINE() throws Exception {
         String methodID = "test01_OFFLINE";
@@ -274,7 +274,7 @@ public class MobileSprint340B extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -285,7 +285,7 @@ public class MobileSprint340B extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

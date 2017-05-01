@@ -22,7 +22,7 @@ public class MobileSprint331 extends BaseTest {
     //Test Methods Set
     //================
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -59,7 +59,7 @@ public class MobileSprint331 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-3395 ... Calendar - unable to add more than one activity under 'Month' view ... Schedule page not opening
     //                   Requires that Month view, first day on third row, has no activities (THIS RESTRICTION IS NO LONGER RELEVANT AND DOES NOT APPLY in 3.4.2)
     public void test01_INFORCRM3395() throws Exception {
@@ -140,7 +140,7 @@ public class MobileSprint331 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-3594 ... Date picker off by one month when setting up a Timeless Activity on the first day of the month
     public void test02_INFORCRM3594() throws Exception {
         String methodID = "test02_INFORCRM3594";
@@ -339,7 +339,7 @@ public class MobileSprint331 extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -350,7 +350,7 @@ public class MobileSprint331 extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

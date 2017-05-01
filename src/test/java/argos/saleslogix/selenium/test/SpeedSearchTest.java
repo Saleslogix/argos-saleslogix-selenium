@@ -12,7 +12,7 @@ public class SpeedSearchTest extends BaseTest {
     CommonNavigation commNav = PageFactory.initElements(driver, CommonNavigation.class);
 
 
-    @Test(enabled = true)
+    @Test
     public void test01_SeTestTCSpeedSearchGeneral() throws Exception {
         // SE Test: SETest-TC-SpeedSearch-General
         // Version: 2.3
@@ -671,7 +671,7 @@ public class SpeedSearchTest extends BaseTest {
 	}
 
 	//MBL10115 - Index filtering Selection in Contextual menu
-	@Test(enabled = true)
+	@Test
 	public void test05_MBL10115() throws Exception {
 		String methodID = "test05_MBL10115";
 		
@@ -713,7 +713,7 @@ public class SpeedSearchTest extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -725,7 +725,7 @@ public class SpeedSearchTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

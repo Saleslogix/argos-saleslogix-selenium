@@ -22,7 +22,7 @@ public class MobileSprint340 extends BaseTest {
     //================
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4569 ... My Activities : on creating an activity, without first selecting an account, press the Contact lookup to ensure that this may be opened correctly
 
     public void test01_INFORCRM4569() throws Exception {
@@ -78,7 +78,7 @@ public class MobileSprint340 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4861 ... Calendar modal control ... relative dates
     public void test02_INFORCRM4861() throws Exception {
         String methodID = "test02_INFORCRM4861";
@@ -220,7 +220,7 @@ public class MobileSprint340 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4861 ... Calendar modal control ... calendar/ time selection
     public void test03_INFORCRM4861() throws Exception {
         String methodID = "test03_INFORCRM4861";
@@ -372,7 +372,7 @@ public class MobileSprint340 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-4861 ... Calendar screen
     public void test04_INFORCRM4861() throws Exception {
         String methodID = "test04_INFORCRM4861";
@@ -480,7 +480,7 @@ public class MobileSprint340 extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -491,7 +491,7 @@ public class MobileSprint340 extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

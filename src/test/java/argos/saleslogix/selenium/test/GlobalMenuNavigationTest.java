@@ -27,7 +27,7 @@ public class GlobalMenuNavigationTest extends BaseTest {
         }
     }
 
-    @Test(enabled = true)
+    @Test
     public void test01_SeTestTCGlobalMenuAddAccountContactScreens() throws Exception {
         // SE Test: SETest-GlobalMenu-AddAccountContact_Screens
         // Version: 2.3

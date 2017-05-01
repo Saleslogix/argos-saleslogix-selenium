@@ -29,7 +29,7 @@ public class MobileSprint330B extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -40,7 +40,7 @@ public class MobileSprint330B extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -77,7 +77,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10613 ... My Activities : phone - on adding a second activity, phone displays value for the first activity's account, while account is blank
 
     public void test01_MBL10613() throws Exception {
@@ -178,7 +178,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10930 ... Cancelled edits still unexpectedly displaying
 
     public void test02_MBL10930() throws Exception {
@@ -250,7 +250,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test03_MBL10928() throws Exception {
         //MBL-10928 ... Opportunity 'Quick Edit' quick action and 'Edit' screen
         //MBL-10935 ... Opportunity Quick Edit - disable 'close prob' editing for closed opportunities
@@ -436,7 +436,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test04_MBL10931() throws Exception {
         //MBL-10931 ... groups : verify that summary and detail listview layouts are reflected on the Quick Edit screen
         //                     : verify that group layout for a different group is reflected on the Quick Edit screen
@@ -559,7 +559,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test05_MBL10925() throws Exception {
         //MBL-10925 ... personalize quick actions
         String methodID = "test05_MBL10925";
@@ -761,7 +761,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // INFORCRM-2071 (MBL-10894) ... Calendar Month view : where activity is created not today, with start time earlier than current time,
     //               on saving, (N/A for Mobile 3.4 + ...the calendar cell count is incremented by 1 as expected), the associated activity doesn't display
     //               Requires that Month view ... next month ... first day on second row has no activities (THIS RESTRICTION HAS BEEN REMOVED in 3.4.2)
@@ -896,7 +896,7 @@ public class MobileSprint330B extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

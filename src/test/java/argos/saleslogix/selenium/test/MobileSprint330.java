@@ -28,7 +28,7 @@ public class MobileSprint330 extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -39,7 +39,7 @@ public class MobileSprint330 extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -76,7 +76,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10793 ... Opportunity - an edit to the 'est close' is setting the date to a day ahead of what was chosen
 
     public void test01_MBL10793() throws Exception {
@@ -163,7 +163,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10838 ... 8.1 Update 05 Activity Endpoint Changes : changing timeless activity start date should not save activitiy as not timeless
 
     public void test02_MBL10838() throws Exception {
@@ -277,7 +277,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10659 ... for Firefox, the Contact detail 'View address' quick action does nothing
 
     public void test03_MBL10659() throws Exception {
@@ -346,7 +346,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10675 ... Lookup functionality is invalid in the Ticket Urgency
 
 
@@ -401,7 +401,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10853 ... New Activities opened from Calendar view in Mobile do not auto populate cached Account, Contact, or Lead information (Unifirst 15097946)
 
     public void test05_MBL10853() throws Exception {
@@ -462,7 +462,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10402 ... Activities - timeless activities in listview displaying unexpected timeframe
 
     public void test06_MBL10402() throws Exception {
@@ -537,7 +537,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     //MBL-10749 ... Opportunity listview : when adding a product via Products quick action, the Opportunity field does not populate by default [DTS 14097414]
 
     public void test07_MBL10749() throws Exception {
@@ -592,7 +592,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10893/ MBL-10894 ... new activities added default to a time within the next 15 minutes
 
     public void test08_MBL10894() throws Exception {
@@ -733,7 +733,7 @@ public class MobileSprint330 extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

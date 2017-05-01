@@ -29,7 +29,7 @@ public class ContactEntityViewsTest extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -41,7 +41,7 @@ public class ContactEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 
@@ -55,7 +55,7 @@ public class ContactEntityViewsTest extends BaseTest {
 
     //Test Methods Set
     //================
-    @Test(enabled = true)
+    @Test
     public void test01_SeTestTCContactListView() throws Exception {
         String methodID = "test01_SeTestTCContactListView";
 
@@ -125,7 +125,7 @@ public class ContactEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test02_SeTestTCContactListViewLoadMoreResults() throws Exception {
         String methodID = "test02_SeTestTCContactListViewLoadMoreResults";
 
@@ -185,7 +185,7 @@ public class ContactEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test03_SeTestTCContactListViewSearch() throws Exception {
         String methodID = "test03_SeTestTCContactListViewSearch";
 
@@ -206,7 +206,7 @@ public class ContactEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test04_SeTestTCContactListViewNegativeSearch() throws Exception {
         String methodID = "test04_SeTestTCContactListViewNegativeSearch";
 
@@ -223,7 +223,7 @@ public class ContactEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test05_SeTestTCContactListViewClearSearch() throws Exception {
         String methodID = "test05_SeTestTCContactListViewClearSearch";
 
@@ -273,7 +273,7 @@ public class ContactEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test06_SeTestTCContactListViewOpenRecord() throws Exception {
         String methodID = "test06_SeTestTCContactListViewOpenRecord";
 
@@ -365,7 +365,7 @@ public class ContactEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test08_SeTestTCContactEditView() throws Exception {
         String methodID = "test08_SeTestTCContactEditView";
 
@@ -496,7 +496,7 @@ public class ContactEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test11_SeTestTCContactListViewKPI() throws Exception {
         String methodID = "test11_SeTestTCContactListViewKPI";
 
@@ -566,7 +566,7 @@ public class ContactEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test12_SeTestTCContactListViewAddContact() throws Exception {
         String methodID = "test12_SeTestTCContactListViewAddContact";
 
@@ -687,7 +687,7 @@ public class ContactEntityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test09_SeTestTCContactAddEditView() throws Exception {
         String methodID = "test09_SeTestTCContactAddEditView";
 

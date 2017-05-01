@@ -26,7 +26,7 @@ public class MobileSprint317BTest extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -38,7 +38,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -75,7 +75,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10552 ... New activity defaults to 'repeats' of 'Daily' ... expecting blank or 'Never' ; 'Never' used
 
     public void test01_MBL10552() throws Exception {
@@ -130,7 +130,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10501 ... Lead web address may be entered with prefix of 'http://', but on trying to then access web site, it fails ... should open site as expected
 
     public void test02_MBL10501() throws Exception {
@@ -203,7 +203,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10509 ... Create a logoff view
 
     public void test03_MBL10509() throws Exception {
@@ -240,7 +240,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10504 ... End user should not be able to edit the notes of any other user [submittal 14096396]
 
     public void test04_MBL10504() throws Exception {
@@ -325,7 +325,7 @@ public class MobileSprint317BTest extends BaseTest {
 
     }
 
-    @Test(enabled = true)
+    @Test
     // MBL-10505 ... When product name contains quote (10"KSE-100-6T) on Opportunity Product screen, receive error trying to open the 'price level' lookup
     //               Pre-requisite ... product 10"KSE-100-6T has been added in admin's web client as follows ... Administration - New Product
     //               - Add product 10"KSE-100-6T, and assign it some price levels (MSRP and Wholesale)
@@ -388,7 +388,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10543 ... Recurring Activities - on editing all occurrences, changing repeats from Daily to 'Never' has no effect
     public void test06_MBL10543() throws Exception {
         String methodID = "test06_MBL10543";
@@ -496,7 +496,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10557 ... Non-Group listview : after lookup specific value, then edit record, on returning to listview see lookup value, but all records are actually
     public void test07_MBL10557() throws Exception {
         String methodID = "test07_MBL10557";
@@ -546,7 +546,7 @@ public class MobileSprint317BTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10578 ... Mobile 3.0.x work phone field added via 'Add Account / Contact' does not populate for a contact
     public void test08_MBL10578() throws Exception {
         String methodID = "test08_MBL10578";
@@ -631,7 +631,7 @@ public class MobileSprint317BTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

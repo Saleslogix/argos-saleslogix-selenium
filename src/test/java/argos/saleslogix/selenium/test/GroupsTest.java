@@ -18,7 +18,7 @@ public class GroupsTest extends BaseTest {
     public String TEST_CONTACT_RECORD = "Abbott, John";
     public String TEST_TICKET_RECORD_NULL_CONTACT = "001-00-000002";
 
-    @Test(enabled = true)
+    @Test
     // MBL-10514 ... Right Menu - Groups section disappearing per scenario
     public void test01_MBL10514() throws Exception {
         String methodID = "test01_MBL10514";
@@ -67,7 +67,7 @@ public class GroupsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10519 ... Last group used mostly not being retained between login sessions
 
     public void test02_MBL10519() throws Exception {
@@ -210,7 +210,7 @@ public class GroupsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10526 ... In 'Follow-Up' ticket group see 'Invalid date' for Completed Date, instead of just blank
 
     public void test04_MBL10526() throws Exception {

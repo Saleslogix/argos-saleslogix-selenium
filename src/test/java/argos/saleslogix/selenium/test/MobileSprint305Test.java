@@ -22,7 +22,7 @@ public class MobileSprint305Test extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -33,7 +33,7 @@ public class MobileSprint305Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 
@@ -48,7 +48,7 @@ public class MobileSprint305Test extends BaseTest {
     //Test Methods
     //============
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -85,7 +85,7 @@ public class MobileSprint305Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test01_MobileDefect_MBL10267() throws InterruptedException {
         //Reference: MBL-10267
         String methodID = "test01_MobileDefect_MBL10267";
@@ -281,7 +281,7 @@ public class MobileSprint305Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test04_MobileDefect_MBL10086() throws Exception {
         String methodID = "test04_MobileDefect_MBL10086";
 
@@ -347,7 +347,7 @@ public class MobileSprint305Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test02_MobileDefect_MBL10268() throws Exception {
         //Reference: MBL-10268
         String methodID = "test02_MobileDefect_MBL10268";

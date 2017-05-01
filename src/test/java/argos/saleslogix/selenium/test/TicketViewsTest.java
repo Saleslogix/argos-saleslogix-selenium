@@ -23,7 +23,7 @@ public class TicketViewsTest extends BaseTest {
 
     //Test Methods Set
     //================
-    @Test(enabled = true)
+    @Test
     public void test01_SeTestTCTicketListView() throws Exception {
         //Reference: MBL-10049
         String methodID = "test01_SeTestTCTicketListView";
@@ -176,7 +176,7 @@ public class TicketViewsTest extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -188,7 +188,7 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 
@@ -200,7 +200,7 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test02_SeTestTCTicketListViewLoadMoreResults() throws Exception {
         String methodID = "test02_SeTestTCTickettListViewLoadMoreResults";
 
@@ -262,7 +262,7 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test03_SeTestTCTicketListViewSearch() throws Exception {
         String methodID = "test03_SeTestTCTicketListViewSearch";
 
@@ -281,7 +281,7 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test04_SeTestTCTicketListViewNegativeSearch() throws Exception {
         String methodID = "test04_SeTestTCTicketListViewNegativeSearch";
 
@@ -299,7 +299,7 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test05_SeTestTCTicketListViewClearSearch() throws Exception {
         String methodID = "test05_SeTestTCTicketListViewClearSearch";
 
@@ -347,7 +347,7 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test06_SeTestTCTicketListViewOpenRecord() throws Exception {
         String methodID = "test06_SeTestTCTicketListViewOpenRecord";
 
@@ -378,7 +378,7 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test07_SeTestTCTicketDetailView() throws Exception {
         String methodID = "test07_SeTestTCTicketDetailView";
 
@@ -456,7 +456,7 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test08_SeTestTCTicketEditView() throws Exception {
         String methodID = "test08_SeTestTCTicketEditView";
 
@@ -516,7 +516,7 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test09_SeTestTCTicketAddEditView() throws Exception {
         String methodID = "test09_SeTestTCTicketAddEditView";
 
@@ -654,7 +654,7 @@ public class TicketViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test11_SeTestTCTicketListViewKPI() throws Exception {
         String methodID = "test11_SeTestTCTicketListViewKPI";
 

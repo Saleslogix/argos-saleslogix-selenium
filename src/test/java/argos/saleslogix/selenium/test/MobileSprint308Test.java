@@ -26,7 +26,7 @@ public class MobileSprint308Test extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -37,7 +37,7 @@ public class MobileSprint308Test extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 
@@ -49,7 +49,7 @@ public class MobileSprint308Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // Add My Activities as a menu item
     public void test01_AddMyActivities() throws Exception {
         String methodID = "test01_AddMyActivities";
@@ -186,7 +186,7 @@ public class MobileSprint308Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10428 ... for default HashTag testing (Lookup control again above listview covered in MobileDefectTest - test66)
     public void test02_MBL10428() throws Exception {
         String methodID = "test02_MBL10428";
@@ -311,7 +311,7 @@ public class MobileSprint308Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10433 ... Calendar Month view : timeless activity displays under previous day
     //               Assumes eval data contains no activities for the Sunday at the start of the second row for the month (THIS RESTRICTION HAS BEEN REMOVED in 3.4.2)
     public void test03_MBL10433() throws Exception {
@@ -1347,7 +1347,7 @@ public class MobileSprint308Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10473 ... mobile picklists should be ordered by text (check contact Title picklist, not ordered before fixed in 3.0.4)
     public void test05_MBL10473() throws Exception {
         String methodID = "test05_MBL10473";
@@ -1397,7 +1397,7 @@ public class MobileSprint308Test extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     // MBL-10474 ... in ticket listview should not see 'Error rendering row template' if contactid is null
     // for 10.4.10.102 (8.1) and 10.4.10.101 (8.0) databases, for ticket 001-00-000002, the contactid has been permanently set to null
     public void test06_MBL10474() throws Exception {

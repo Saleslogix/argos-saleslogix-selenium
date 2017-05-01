@@ -18,7 +18,7 @@ public class MyAttachmentsViewsTest extends BaseTest {
 
     //Test Methods Set
     //================
-    @Test(enabled = true)
+    @Test
     public void test01_SeTestTCMyAttachmentsListView() throws Exception {
         //Reference: MBL-10052
         String methodID = "test01_SeTestTCMyAttachmentsListView";
@@ -67,7 +67,7 @@ public class MyAttachmentsViewsTest extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -78,7 +78,7 @@ public class MyAttachmentsViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 

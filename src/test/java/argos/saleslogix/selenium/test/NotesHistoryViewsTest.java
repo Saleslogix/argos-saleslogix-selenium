@@ -26,7 +26,7 @@ public class NotesHistoryViewsTest extends BaseTest {
     //Test Methods Set
     //================
 
-    @Test(enabled = true)
+    @Test
     // Add an activity with 'regarding' set to 'Research the prospect', for use in test08_SeTestTCNotesHistoryEditView
     public void test01_AddAndCompleteActivity() throws Exception {
         String methodID = "test01_AddAndCompleteActivity";
@@ -106,7 +106,7 @@ public class NotesHistoryViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test01_SeTestTCNotesHistoryListView() throws Exception {
         //Reference: MBL-10068
         String methodID = "test01_SeTestTCNotesHistoryListView";
@@ -174,7 +174,7 @@ public class NotesHistoryViewsTest extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -185,7 +185,7 @@ public class NotesHistoryViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 
@@ -196,7 +196,7 @@ public class NotesHistoryViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test02_SeTestTCNotesHistoryListViewLoadMoreResults() throws Exception {
         String methodID = "test02_SeTestTCNotesHistoryListViewLoadMoreResults";
 
@@ -256,7 +256,7 @@ public class NotesHistoryViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test03_SeTestTCNotesHistoryViewSearch() throws Exception {
         String methodID = "test03_SeTestTCNotesHistoryViewSearch";
 
@@ -275,7 +275,7 @@ public class NotesHistoryViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test04_SeTestTCNotesHistoryListViewNegativeSearch() throws Exception {
         String methodID = "test04_SeTestTCNotesHistoryListViewNegativeSearch";
 
@@ -293,7 +293,7 @@ public class NotesHistoryViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test05_SeTestTCNotesHistoryListViewClearSearch() throws Exception {
         String methodID = "test05_SeTestTCNotesHistoryListViewClearSearch";
 
@@ -342,7 +342,7 @@ public class NotesHistoryViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test06_SeTestTCNotesHistoryListViewOpenRecord() throws Exception {
         String methodID = "test06_SeTestTCNotesHistoryListViewOpenRecord";
 
@@ -372,7 +372,7 @@ public class NotesHistoryViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test07_SeTestTCNotesHistoryDetailView() throws Exception {
         String methodID = "test07_SeTestTCNotesHistoryDetailView";
 
@@ -427,7 +427,7 @@ public class NotesHistoryViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     // This test searches on 'Research the prospect', then edits that item ... now that loup may only edit his own notes, this will fail unless loup adds
     //  a note for 'Research the prospect' manually : later - automate this note creation
     public void test08_SeTestTCNotesHistoryEditView() throws Exception {
@@ -477,7 +477,7 @@ public class NotesHistoryViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test10_SeTestTCNotesHistoryListViewHashTags() throws Exception {
         String methodID = "test10_SeTestTCNotesHistoryListViewHashTags";
 
@@ -549,7 +549,7 @@ public class NotesHistoryViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test11_SeTestTCNotesHistoryListViewKPI() throws Exception {
         String methodID = "test11_SeTestTCNotesHistoryListViewKPI";
 
@@ -620,7 +620,7 @@ public class NotesHistoryViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test09_SeTestTCNotesHistoryAddEditView() throws Exception {
         String methodID = "test09_SeTestTCNotesHistoryAddEditView";
 
@@ -669,7 +669,7 @@ public class NotesHistoryViewsTest extends BaseTest {
         System.out.println(ENDLINE);
     }
 
-    @Test(enabled = true)
+    @Test
     public void test12_SeTestTCNotesHistoryListViewAddNote() throws Exception {
         String methodID = "test12_SeTestTCNotesHistoryListViewAddNote";
 

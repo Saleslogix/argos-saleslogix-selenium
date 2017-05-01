@@ -29,7 +29,7 @@ public class OpportunityViewsTest extends BaseTest {
 
     //Login & Logout
     //==============
-    @Test(enabled = true)
+    @Test
     public void test00_MobileClient_Login() throws InterruptedException {
         String methodID = "test00_MobileClient_Login";
 
@@ -41,7 +41,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test99_Mobile_LogOut() throws InterruptedException {
         String methodID = "test99_Mobile_LogOut";
 
@@ -55,7 +55,7 @@ public class OpportunityViewsTest extends BaseTest {
 
     //Test Methods Set
     //================
-    @Test(enabled = true)
+    @Test
     public void test01_SeTestTCOpportunityListView() throws Exception {
         //Reference: MBL-10049
         String methodID = "test01_SeTestTCOpportunityListView";
@@ -124,7 +124,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test02_SeTestTCOpportunityListViewLoadMoreResults() throws Exception {
         String methodID = "test02_SeTestTCOpportunityListViewLoadMoreResults";
 
@@ -184,7 +184,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test03_SeTestTCOpportunityViewSearch() throws Exception {
         String methodID = "test03_SeTestTCOpportunityViewSearch";
 
@@ -203,7 +203,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test04_SeTestTCOpportunityListViewNegativeSearch() throws Exception {
         String methodID = "test04_SeTestTCOpportunityListViewNegativeSearch";
 
@@ -218,7 +218,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test05_SeTestTCOpportunityListViewClearSearch() throws Exception {
         String methodID = "test05_SeTestTCOpportunityListViewClearSearch";
 
@@ -266,7 +266,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test06_SeTestTCOpportunityListViewOpenRecord() throws Exception {
         String methodID = "test06_SeTestTCOpportunityListViewOpenRecord";
 
@@ -298,7 +298,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test07_SeTestTCOpportunityDetailView() throws Exception {
         String methodID = "test07_SeTestTCOpportunityDetailView";
 
@@ -386,7 +386,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test08_SeTestTCOpportunityEditView() throws Exception {
         String methodID = "test08_SeTestTCOpportunityEditView";
 
@@ -448,7 +448,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test09_SeTestTCOpportunityAddEditView() throws Exception {
         String methodID = "test09_SeTestTCOpportunityAddEditView";
 
@@ -574,7 +574,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test11_SeTestTCOpportunityListViewKPI() throws Exception {
         String methodID = "test11_SeTestTCOpportunityListViewKPI";
 
@@ -732,7 +732,7 @@ public class OpportunityViewsTest extends BaseTest {
     }
 
 
-    @Test(enabled = true)
+    @Test
     public void test12_SeTestTCOpportunityListViewAddOpportunity() throws Exception {
         String methodID = "test12_SeTestTCOpportunityListViewAddOpportunity";
 
