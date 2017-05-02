@@ -11,4 +11,5 @@ ROOT="$( cd $CURRENT_DIR && pwd)" # Absolute path to the directory that contains
 
 java \
     -Dwebdriver.chrome.driver=$ROOT/drivers/OSX/chromedriver \
+    -Dwebdriver.gecko.driver=$ROOT/drivers/OSX/geckodriver \
     -jar $ROOT/selenium-server-standalone-3.3.1.jar -role standalone
