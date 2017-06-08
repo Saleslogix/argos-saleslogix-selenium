@@ -55,8 +55,8 @@ public class GroupsTest2 extends BaseTest {
         commNav.clickGlobalMenuItem(entityType);
         commNav.waitForPage("All Accounts");
 
-        //Step: verify that 'Summary' layout is in effect ... should not see a second column with 'Sub-Type' in group listview
-        AssertJUnit.assertFalse("VP: Account Group List View is not displaying Summary layout by default - FAILED", driver.getPageSource().contains("Sub-Type"));
+        //Step: verify that 'Summary' layout is in effect ... should not see a second column with 'Status' in group listview
+        AssertJUnit.assertFalse("VP: Account Group List View is not displaying Summary layout by default - FAILED", driver.getPageSource().contains("Status"));
         System.out.println("VP: Account Group List View is displaying Summary layout by default - PASSED");
 
         //Step: reveal Right Context Menu panel, and verify that both 'Summary' and 'Detail' layout options appear
@@ -64,19 +64,19 @@ public class GroupsTest2 extends BaseTest {
         AssertJUnit.assertTrue("Accounts : Right Menu Group Summary layout option is not present", commNav.checkIfWebElementPresent("Accounts ... Right Menu Group Summary layout option",commNav.rmenu_GroupSummary));
         AssertJUnit.assertTrue("Accounts : Right Menu Group Detail layout option is not present", commNav.checkIfWebElementPresent("Accounts ... Right Menu Group Detail layout option",commNav.rmenu_GroupDetail));
 
-        //Step: choose 'Detail' layout ... should see a second column with 'Sub-Type' in group listview
+        //Step: choose 'Detail' layout ... should see a second column with 'Status' in group listview
         commNav.rmenu_GroupDetail.click();
         commNav.waitForPage("All Accounts");
         Thread.sleep(3000);
-        AssertJUnit.assertTrue("VP: Account Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("Sub-Type"));
+        AssertJUnit.assertTrue("VP: Account Group List View is not displaying Detail layout when chosen - FAILED", driver.getPageSource().contains("Status"));
         System.out.println("VP: Account Group List View is displaying Detail layout when chosen - PASSED");
 
-        //Step: open right menu and choose 'Summary' layout ... should not see a second column with 'Sub-Type' in group listview
+        //Step: open right menu and choose 'Summary' layout ... should not see a second column with 'Status' in group listview
         headerButton.showRightContextMenu();
         commNav.rmenu_GroupSummary.click();
         commNav.waitForPage("All Accounts");
         Thread.sleep(3000);
-        AssertJUnit.assertFalse("VP: Account Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("Sub-Type"));
+        AssertJUnit.assertFalse("VP: Account Group List View is not displaying Summary layout when chosen - FAILED", driver.getPageSource().contains("Status"));
         System.out.println("VP: Account Group List View is displaying Summary layout when chosen - PASSED");
 
         System.out.println("VP: Account group layouts functioning as expected - PASSED");
