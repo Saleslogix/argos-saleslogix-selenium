@@ -586,6 +586,10 @@ public class TicketViewsElements extends BaseTest {
 	WebElement ticketsEditViewLeadSourceFldBtn;
 
     @CacheLookup
+    @FindBy(xpath = "//*[@id='ticketactivity_related']//ul/li[1]")
+    WebElement topTicketActivityListItem;
+
+    @CacheLookup
     @FindBy(xpath = "//*[@id='ticketactivity_edit']//div[@data-field='AssignedDate']//button")
     WebElement ticketActivityStartDateBtn;
 
